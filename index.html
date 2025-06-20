@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mescius Europe | Customer Solutions & Case Studies</title>
+    <link rel="stylesheet" href="./styles/main.css">
+    <style>
+        /* All necessary styles are contained in this file */
+        *, *::before, *::after { box-sizing: border-box; }
+        :root {
+            --brand-header: #474D57;
+            --brand-light-gray: #f8f9fa;
+            --brand-heading: #2D3748;
+            --brand-body: #4A5568;
+            --brand-js: #809B59;
+            --brand-net: #D6564C;
+            --brand-wijmo: #48A9C5;
+            --brand-ds: #5A7E9E;
+            --brand-arjs: #EA8939; /* Added specific color for ActiveReports JS/NET */
+        }
+        body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(--brand-light-gray); color: var(--brand-body); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .header { background-color: var(--brand-header); padding: 15px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { height: 32px; filter: brightness(0) invert(1); }
+        .main-nav { display: flex; gap: 30px; }
+        .nav-link { color: #ffffff; text-decoration: none; font-weight: 600; font-size: 14px; padding-bottom: 5px; border-bottom: 2px solid transparent; }
+        .nav-link.active { border-bottom-color: #ffffff; }
+        .footer { background-color: var(--brand-header); color: #cccccc; text-align: center; padding: 30px 0; margin-top: 50px; font-size: 14px; }
+        .case-study-header { background-color: #ffffff; text-align: center; padding: 60px 20px; border-bottom: 1px solid #e2e8f0; }
+        .case-study-tag { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-color); }
+        .case-study-title { font-size: 42px; font-weight: 700; color: var(--brand-heading); margin: 10px auto 15px auto; max-width: 900px; }
+        .case-study-subtitle { font-size: 18px; max-width: 700px; margin: 0 auto; line-height: 1.6; }
+        .case-study-content { padding: 80px 0; }
+        .content-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 60px; align-items: start; }
+        .main-story { font-size: 17px; line-height: 1.8; }
+        .main-story h2 { font-size: 28px; font-weight: 700; color: var(--brand-heading); margin: 40px 0 20px 0; padding-bottom: 10px; border-bottom: 3px solid var(--accent-color); }
+        .main-story > div:first-of-type h2 { margin-top: 0; }
+        .main-story p, .main-story ul { margin-bottom: 20px; }
+        .main-story ul { padding-left: 20px; }
+        .main-story blockquote { font-style: italic; color: #000; padding-left: 20px; border-left: 4px solid #e2e8f0; margin: 30px 0; font-size: 18px; font-weight: 500; }
+        .main-story blockquote footer { font-style: normal; font-size: 14px; color: var(--brand-body); margin-top: 10px; font-weight: 400;}
+
+        /* Styles for the case study grid cards */
+        .case-study-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .case-study-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .case-study-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-tag {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 10px;
+            align-self: flex-start;
+        }
+
+        /* Product-specific tag colors for the cards */
+        .net-tag { background-color: var(--brand-net); color: #ffffff; }
+        .wijmo-tag { background-color: var(--brand-wijmo); color: #ffffff; }
+        .js-tag { background-color: var(--brand-js); color: #ffffff; }
+        .ds-tag { background-color: var(--brand-ds); color: #ffffff; }
+        .arjs-tag { background-color: var(--brand-arjs); color: #ffffff; }
+
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--brand-heading);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .card-excerpt {
+            font-size: 15px;
+            color: var(--brand-body);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .card-link {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--brand-heading); /* Default color for the link */
+            text-decoration: none;
+            display: inline-block;
+            margin-top: auto; /* Pushes the link to the bottom */
+            transition: color 0.3s ease; /* Smooth transition for color change */
+        }
+
+        /* Hover effects for card links based on product tag */
+        .case-study-card:has(.net-tag) .card-link:hover { color: var(--brand-net); }
+        .case-study-card:has(.wijmo-tag) .card-link:hover { color: var(--brand-wijmo); }
+        .case-study-card:has(.js-tag) .card-link:hover { color: var(--brand-js); }
+        .case-study-card:has(.ds-tag) .card-link:hover { color: var(--brand-ds); }
+        .case-study-card:has(.arjs-tag) .card-link:hover { color: var(--brand-arjs); }
+
+        .sidebar { background-color: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
+        .sidebar-item { margin-bottom: 30px; }
+        .sidebar-item:last-child { margin-bottom: 0; }
+        .sidebar h3 { font-size: 16px; font-weight: 700; color: var(--brand-heading); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; margin: 0 0 15px 0; }
+        .sidebar ul { list-style: none; padding: 0; margin: 0; font-size: 15px; }
+        .sidebar ul li { padding: 5px 0; }
+        .sidebar ul li strong { font-weight: 600; }
+        .cta-button { display: block; width: 100%; text-align: center; text-decoration: none; padding: 15px; border-radius: 8px; font-weight: 600; font-size: 16px; color: #ffffff; background-color: var(--accent-color); transition: opacity 0.3s ease; }
+        .cta-button:hover { opacity: 0.9; }
+
+        @media (max-width: 992px) {
+            .content-layout { grid-template-columns: 1fr; }
+            .sidebar { grid-row: 1; margin-bottom: 50px; }
+        }
+        @media (max-width: 768px) {
+            .case-study-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header-content">
+            <a href="/"><img src="https://cdn.mescius.io/umb/media/pujnxfci/mescuis-logo-horiz.svg" alt="Mescius Europe Logo" class="logo"></a>
+            <nav class="main-nav">
+                <a href="#case-studies" class="nav-link">Case Studies</a>
+                <a href="./pricing/index.html" class="nav-link">Pricing</a>
+                <a href="./benchmarks/index.html" class="nav-link">Benchmarks</a>
+                <a href="./promotions/index.html" class="nav-link">Promotions</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title">Solving Complex Development Challenges</h1>
+            <p class="hero-subtitle">Discover how leading European companies leverage Mescius developer tools to build high-performance, data-driven applications faster and more reliably.</p>
+        </div>
+    </section>
+
+    <main class="case-study-section" id="case-studies">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Success Stories</h2>
+                <p class="section-subtitle">Real-world examples of how our components solve specific business problems.</p>
+            </div>
+
+            <div class="case-study-grid">
+
+                <a href="./case-studies/logistics-app-modernization.html" class="case-study-card">
+                    <img src="https://placehold.co/600x400/D6564C/FFFFFF?text=Unified+Platforms" alt="Unified Desktop and Web App" class="card-image">
+                    <div class="card-content">
+                        <p class="card-tag net-tag">Enterprise Software</p>
+                        <h3 class="card-title">EuroLogistik: Unified Desktop & Web, 40% Faster Dev with Mescius.</h3>
+                        <p class="card-excerpt">Learn how the .NET Suite unified a legacy desktop app and a new Blazor web portal, boosting development speed.</p>
+                        <span class="card-link">Read Case Study &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="./case-studies/real-time-dashboard.html" class="case-study-card">
+                    <img src="https://placehold.co/600x400/48A9C5/FFFFFF?text=Live+IoT+Dashboard" alt="Real-time IoT Dashboard" class="card-image">
+                    <div class="card-content">
+                        <p class="card-tag wijmo-tag">Energy & Utilities</p>
+                        <h3 class="card-title">GridSense Energy: Real-Time Grid Monitoring, Zero Lag with Mescius.</h3>
+                        <p class="card-excerpt">Discover how Wijmo powered a mission-critical dashboard, processing thousands of real-time data updates without lag.</p>
+                        <span class="card-link">Read Case Study &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="./case-studies/bi-saas-performance.html" class="case-study-card">
+                    <img src="https://placehold.co/600x400/48A9C5/FFFFFF?text=BI+Performance" alt="Business Intelligence Performance" class="card-image">
+                    <div class="card-content">
+                        <p class="card-tag wijmo-tag">Business Intelligence SaaS</p>
+                        <h3 class="card-title">Infiniaytics GmbH Reduces Enterprise Customer Churn by 20% with Mescius</h3>
+                        <p class="card-excerpt">See how Wijmo resolved performance issues, reducing enterprise customer churn and support costs.</p>
+                        <span class="card-link">Read Case Study &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="./case-studies/fintech-data-integrity.html" class="case-study-card">
+                    <img src="https://placehold.co/600x400/809B59/FFFFFF?text=FinTech+Reporting" alt="Financial Technology Dashboard" class="card-image">
+                    <div class="card-content">
+                        <p class="card-tag js-tag">Financial Services</p>
+                        <h3 class="card-title">FinSys Compliance: 100% Audit Success, 60% Faster Reporting with Mescius.</h3>
+                        <p class="card-excerpt">Explore how SpreadJS & Document Solutions ensured 100% audit success and accelerated financial reporting.</p>
+                        <span class="card-link">Read Case Study &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="./case-studies/high-volume-reporting.html" class="case-study-card">
+                    <img src="https://placehold.co/600x400/EA8939/FFFFFF?text=Automated+Reports" alt="Automated Report Generation" class="card-image">
+                    <div class="card-content">
+                        <p class="card-tag arjs-tag">Enterprise Healthcare</p>
+                        <h3 class="card-title">MediConnect Health: Faster Client-Side Reporting, Increased Productivity with Mescius.</h3>
+                        <p class="card-excerpt">Find out how ActiveReportsJS delivered 95% faster client-side reports, boosting clinician productivity.</p>
+                        <span class="card-link">Read Case Study &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="./case-studies/interactive-financial-modeling.html" class="case-study-card">
+                    <img src="https://placehold.co/600x400/809B59/FFFFFF?text=Financial+Modeling" alt="Interactive Financial Modeling Application" class="card-image">
+                    <div class="card-content">
+                        <p class="card-tag js-tag">Financial Services</p>
+                        <h3 class="card-title">CapitalVault Advisors: 50% Faster Financial Models, Enhanced Trust with Mescius.</h3>
+                        <p class="card-excerpt">Learn how SpreadJS transformed Excel models into a secure, collaborative web platform, speeding up development.</p>
+                        <span class="card-link">Read Case Study &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="./case-studies/secure-document-generation.html" class="case-study-card">
+                    <img src="https://placehold.co/600x400/5A7E9E/FFFFFF?text=Secure+Documents" alt="Secure Document Generation" class="card-image">
+                    <div class="card-content">
+                        <p class="card-tag ds-tag">Insurance</p>
+                        <h3 class="card-title">AssureGuard Group: 100% Policy Compliance, 40% Cost Reduction with Mescius.</h3>
+                        <p class="card-excerpt">Discover how Document Solutions automated secure policy generation, ensuring compliance and cutting costs.</p>
+                        <span class="card-link">Read Case Study &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="./case-studies/legacy-system-data-entry.html" class="case-study-card">
+                    <img src="https://placehold.co/600x400/D6564C/FFFFFF?text=Modernized+Desktop+UI" alt="Modernized Desktop Application UI" class="card-image">
+                    <div class="card-content">
+                        <p class="card-tag net-tag">Enterprise Software</p>
+                        <h3 class="card-title">EuroCargo Logistics: 35% Fewer Data Entry Errors, 40% Faster Processing with Mescius.</h3>
+                        <p class="card-excerpt">See how .NET UI controls modernized a legacy app, reducing data entry errors and training time.</p>
+                        <span class="card-link">Read Case Study &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="./case-studies/cross-platform-hybrid-ui.html" class="case-study-card">
+                    <img src="https://placehold.co/600x400/D6564C/FFFFFF?text=Blazor+Hybrid+App" alt="Blazor Hybrid Cross-Platform App" class="card-image">
+                    <div class="card-content">
+                        <p class="card-tag net-tag">Manufacturing</p>
+                        <h3 class="card-title">Manufacturing Firm Unifies Web & Desktop Apps with Blazor Hybrid</h3>
+                        <p class="card-excerpt">Discover how Blazor Hybrid enabled a single, modern, cross-platform app with native performance from web skills.</p>
+                        <span class="card-link">Read Case Study &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="./case-studies/excel-vba-migration.html" class="case-study-card">
+                    <img src="https://placehold.co/600x400/809B59/FFFFFF?text=VBA+to+Web" alt="Excel VBA to Web Application Migration" class="card-image">
+                    <div class="card-content">
+                        <p class="card-tag js-tag">Legacy System Modernization</p>
+                        <h3 class="card-title">Modernizing Legacy Excel VBA for a Web-Based Future</h3>
+                        <p class="card-excerpt">Learn how SpreadJS & Document Solutions modernized Excel VBA processes into a secure, web-based platform.</p>
+                        <span class="card-link">Read Case Study &rarr;</span>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Mescius Europe GmbH | All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script src="./scripts/main.js"></script>
+</body>
+</html>
