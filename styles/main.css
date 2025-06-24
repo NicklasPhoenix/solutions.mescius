@@ -8,30 +8,33 @@
     --brand-light-gray: #f8f9fa;
     --brand-heading: #2D3748;
     --brand-body: #4A5568;
+    --brand-js: #809B59;
+    --brand-net: #D6564C;
     --brand-wijmo: #48A9C5;
-    --border-color: #e2e8f0;
+    --brand-ds: #5A7E9E;
+    --brand-arjs: #EA8939; 
 }
 *, *::before, *::after { box-sizing: border-box; }
 body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(--brand-light-gray); color: var(--brand-body); }
 .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
 /* ===============================================
-    Header, Footer, Nav
+    General Layout (Header, Footer, etc.)
     =============================================== */
 .header { background-color: var(--brand-header); padding: 15px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
 .header-content { display: flex; justify-content: space-between; align-items: center; }
 .logo { height: 32px; filter: brightness(0) invert(1); }
-.footer { background-color: var(--brand-header); color: #cccccc; text-align: center; padding: 30px 0; margin-top: 50px; font-size: 14px; }
 .main-nav { display: flex; gap: 30px; }
 .nav-link { color: #ffffff; text-decoration: none; font-weight: 600; font-size: 14px; padding-bottom: 5px; border-bottom: 2px solid transparent; }
 .nav-link:hover, .nav-link.active { border-bottom-color: #ffffff; }
-.nav-toggle { display: none; }
+.footer { background-color: var(--brand-header); color: #cccccc; text-align: center; padding: 30px 0; margin-top: 50px; font-size: 14px; }
+.nav-toggle { display: none; } /* For potential mobile use */
 
 /* ===============================================
-    Case Study Header
-    =============================================== */
-.case-study-header { background-color: #ffffff; text-align: center; padding: 60px 20px; border-bottom: 1px solid var(--border-color); }
-.case-study-tag { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+   Case Study Page Specific Header
+   =============================================== */
+.case-study-header { background-color: #ffffff; text-align: center; padding: 60px 20px; border-bottom: 1px solid #e2e8f0; }
+.case-study-tag { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-color); }
 .case-study-title { font-size: 42px; font-weight: 700; color: var(--brand-heading); margin: 10px auto 15px auto; max-width: 900px; }
 .case-study-subtitle { font-size: 18px; max-width: 700px; margin: 0 auto; line-height: 1.6; }
 
@@ -40,12 +43,11 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
    =============================================== */
 .expandable-card {
     background-color: #ffffff;
-    border: 1px solid var(--border-color);
+    border: 1px solid #e2e8f0;
     border-radius: 12px;
     margin: 50px auto;
     box-shadow: 0 5px 30px rgba(45, 55, 72, 0.08);
     overflow: hidden;
-    transition: all 0.4s ease;
 }
 .card-visible-content {
     padding: 40px;
@@ -63,7 +65,8 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
     color: var(--brand-heading);
     margin: 0 0 10px 0;
     padding-bottom: 10px;
-    border-bottom: 2px solid var(--brand-wijmo);
+    /* CORRECTED: Uses the page's accent color */
+    border-bottom: 2px solid var(--accent-color);
 }
 .profile-item p {
     font-size: 16px;
@@ -90,14 +93,10 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
     top: 50%;
     width: 50px;
     height: 1px;
-    background-color: var(--border-color);
+    background-color: #e2e8f0;
 }
-.results-heading h4::before {
-    left: -60px;
-}
-.results-heading h4::after {
-    right: -60px;
-}
+.results-heading h4::before { left: -60px; }
+.results-heading h4::after { right: -60px; }
 
 .results-metrics {
     display: grid;
@@ -109,13 +108,14 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
     background-color: #f8f9fa;
     padding: 20px;
     border-radius: 8px;
-    border: 1px solid var(--border-color);
+    border: 1px solid #e2e8f0;
 }
 .metric-value {
     display: block;
     font-size: 36px;
     font-weight: 700;
-    color: var(--brand-wijmo);
+    /* CORRECTED: Uses the page's accent color */
+    color: var(--accent-color);
 }
 .metric-label {
     display: block;
@@ -123,14 +123,14 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
     color: var(--brand-body);
 }
 
-/* --- CTA Button styles --- */
 .profile-cta {
     text-align: center;
     margin-top: 40px;
     padding-top: 30px;
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid #e2e8f0;
 }
-.cta-button {
+/* This now styles the button inside the card on the case study pages */
+.profile-cta .cta-button {
     display: inline-block;
     text-decoration: none;
     padding: 12px 25px;
@@ -139,23 +139,20 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
     font-size: 15px;
     color: #ffffff;
     transition: opacity 0.3s ease;
+    /* CORRECTED: Uses the page's accent color */
+    background-color: var(--accent-color);
 }
-.cta-button.btn-wijmo {
-    background-color: var(--brand-wijmo);
-}
-.cta-button:hover {
+.profile-cta .cta-button:hover {
     opacity: 0.9;
 }
 
-
-/* --- Toggle Bar --- */
 .card-toggle-bar {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
     background-color: #f8f9fa;
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid #e2e8f0;
     padding: 15px;
     cursor: pointer;
     transition: background-color 0.2s ease;
@@ -196,10 +193,25 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
     font-size: 17px;
     line-height: 1.8;
 }
-.main-story h2 { font-size: 24px; font-weight: 700; color: var(--brand-heading); margin: 40px 0 20px 0; padding-bottom: 10px; border-bottom: 3px solid var(--brand-wijmo); }
+.main-story h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--brand-heading);
+    margin: 40px 0 20px 0;
+    padding-bottom: 10px;
+    /* CORRECTED: Uses the page's accent color */
+    border-bottom: 3px solid var(--accent-color);
+}
 .main-story > div:first-of-type h2 { margin-top: 0; }
 .main-story p, .main-story ul { margin-bottom: 20px; }
 
-.executive-quote-section { background-color: #f8f9fa; border-left: 4px solid var(--brand-wijmo); padding: 20px 30px; margin: 30px 0; border-radius: 4px; }
-.executive-quote-section p { font-size: 1.1em; margin: 0; }
-.executive-quote-section .author { display: block; text-align: right; font-weight: 600; margin-top: 15px; }
+.executive-quote-section {
+    background-color: #f8f9fa;
+    /* CORRECTED: Uses the page's accent color */
+    border-left: 4px solid var(--accent-color);
+    padding: 20px 30px;
+    margin: 30px 0;
+    border-radius: 4px;
+}
+.executive-quote-section p { font-size: 1.1em; margin: 0; font-style: italic; }
+.executive-quote-section .author { display: block; text-align: right; font-weight: 600; font-style: normal; margin-top: 15px; }
