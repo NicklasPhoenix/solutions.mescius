@@ -37,29 +37,40 @@
         <section class="case-study-content">
 
             <div class="container">
-                <div class="solution-profile" id="solution-profile">
-                    <div class="profile-header">
-                        <h3 class="profile-title">Solution Profile: <strong>Infiniaytics GmbH</strong></h3>
-                        <button class="profile-toggle" id="profile-toggle" aria-expanded="false" aria-controls="profile-expandable-content">
-                            View Full Profile
-                            <svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="profile-expandable-content" id="profile-expandable-content">
-                        <div class="profile-details">
-                            <div class="detail-item">
-                                <span class="detail-label">Industry</span>
-                                <span class="detail-value">BI SaaS for Manufacturing</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label">Location</span>
-                                <span class="detail-value">Munich, Germany</span>
-                            </div>
+                <div class="collapsible-container" id="collapsible-container">
+                    <div class="collapsible-header" id="collapsible-header" role="button" aria-expanded="false" aria-controls="collapsible-content">
+                        <h3 class="collapsible-title">Case Study at a Glance</h3>
+                        <div class="collapsible-toggle">
+                            <span class="icon-plus"></span>
+                            <span class="icon-minus"></span>
                         </div>
-                        <div class="profile-main-text">
-                            <p>Infiniaytics provides a powerful, white-label analytics platform that manufacturing companies embed into their own systems. Their solution allows clients to monitor production lines, analyze supply chain data, and visualize IoT sensor information in real time. The company serves mid-market and large enterprise clients across Germany, Austria, and Switzerland.</p>
+                    </div>
+                    <div class="collapsible-content" id="collapsible-content">
+                        <div class="glance-grid">
+                            <div class="glance-item">
+                                <h4>Organization Profile</h4>
+                                <ul>
+                                    <li><strong>Company Name:</strong> Infiniaytics GmbH</li>
+                                    <li><strong>Industry:</strong> Business Intelligence (BI) SaaS for Manufacturing</li>
+                                    <li><strong>Location:</strong> Munich, Germany</li>
+                                    <li><strong>Business Profile:</strong> Provides a white-label analytics platform for manufacturing companies to monitor production, supply chains, and IoT data.</li>
+                                </ul>
+                            </div>
+                            <div class="glance-item">
+                                <h4>Measurable Outcomes</h4>
+                                <ul>
+                                    <li><strong>20%</strong> reduction in key account churn</li>
+                                    <li><strong>60%</strong> increase in app performance</li>
+                                    <li><strong>75%</strong> cut in performance-related support</li>
+                                    <li><strong>€220,000</strong> reduced annual revenue loss</li>
+                                    <li>Full ROI in <strong>10 months</strong></li>
+                                </ul>
+                            </div>
+                            <div class="glance-item">
+                                <h4>Ready for a Solution?</h4>
+                                <p>See how our high-performance components can impact your business.</p>
+                                <a href="../benchmarks/index.html" class="cta-button btn-wijmo">View Performance Benchmarks</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -69,58 +80,26 @@
             <div class="content-layout container">
                 <article class="main-story">
                     <div>
-                        <h2>Executive Summary</h2>
-                        <p><strong>Company:</strong> Infiniaytics GmbH is a Munich-based SaaS provider delivering embedded business intelligence solutions to the European manufacturing and automotive sectors.</p>
-                        <p><strong>Challenge:</strong> The company’s core analytics platform experienced severe performance degradation when processing large-scale industrial datasets, which placed major enterprise client renewals and future revenue at significant risk.</p>
-                        <p><strong>Solution:</strong> Infiniaytics’ leadership chose to integrate the Mescius Wijmo component suite to replace their underperforming data visualization layer.</p>
-                        <p><strong>Results:</strong> This strategic investment increased application performance by 60%, cut performance-related support costs by 75%, and directly contributed to a 20% reduction in churn among its key enterprise accounts.</p>
-                    </div>
-
-                    <div>
                         <h2>The Challenge: Platform Performance Was a Barrier to Growth</h2>
                         <p><strong>Operational Pain:</strong> The central feature of the Infiniaytics platform, its interactive data dashboard, became extremely slow and often unresponsive. Clients trying to analyze multi-million-row datasets from factory sensors found the system unusable. This poor user experience frustrated clients and created a constant stream of high-priority support tickets, pulling valuable engineering resources away from innovation and onto continuous maintenance.</p>
                         <p><strong>Financial & Business Impact:</strong> The performance bottleneck had direct financial consequences. The sales team consistently failed to pass the proof-of-concept stage with larger manufacturing prospects, as the platform could not handle their data requirements. More critically, existing enterprise clients flagged the slow performance as a key reason for dissatisfaction during contract renewal talks, threatening over €1.5 million in annual recurring revenue. The high volume of support tickets also inflated operational costs.</p>
-                        <p><strong>Strategic Risk:</strong> The platform's inability to perform at scale fundamentally undermined Infiniaytics' core value proposition: providing fast, actionable insights. This flaw made the product uncompetitive in the lucrative enterprise manufacturing sector. It jeopardized the company's strategic objective to become the market leader for embedded industrial analytics.</p>
                     </div>
-
-                    <div>
+                     <div>
                         <h2>The Solution: A Strategic Choice for Mescius</h2>
                         <p>The executive team at Infiniaytics recognized that building a high-performance data visualization component from scratch was not a viable option. It would be too costly, too slow, and too risky. They needed a proven, commercially-backed solution that could solve their business problem immediately. The procurement team selected the Mescius Wijmo suite based on a rigorous evaluation focused on business outcomes.</p>
                         <p><strong>Why Mescius:</strong></p>
                         <ul>
-                            <li><strong>Total Cost of Ownership (TCO):</strong> Acquiring Wijmo’s pre-built, optimized components presented a significantly lower TCO compared to the high and unpredictable costs of internal research and development. This allowed Infiniaytics to redirect its engineering budget towards core product features instead of reinventing the wheel.</li>
-                            <li><strong>Risk Reduction:</strong> Mescius, as an established vendor, provided extensive performance benchmarks that proved Wijmo’s capacity to handle massive datasets. This verification gave the management team confidence that the solution would work as expected, effectively mitigating the project's technical and financial risks.</li>
-                            <li><strong>Functionality:</strong> Wijmo's datagrid component, FlexGrid, offered the exact high-performance capabilities needed to resolve their core issue. Its ability to render millions of data points with a minimal performance footprint solved their primary challenge without requiring complex custom workarounds.</li>
-                            <li><strong>Future-Proofing:</strong> By choosing Mescius, Infiniaytics invested in a component suite that receives continuous updates and supports modern web frameworks. This ensures their platform can evolve and scale alongside the needs of their enterprise clients.</li>
+                            <li><strong>Total Cost of Ownership (TCO):</strong> Acquiring Wijmo’s pre-built, optimized components presented a significantly lower TCO compared to the high and unpredictable costs of internal research and development.</li>
+                            <li><strong>Risk Reduction:</strong> Mescius, as an established vendor, provided extensive performance benchmarks that proved Wijmo’s capacity to handle massive datasets.</li>
+                            <li><strong>Functionality:</strong> Wijmo's datagrid component, FlexGrid, offered the exact high-performance capabilities needed to resolve their core issue.</li>
                         </ul>
-                        <p><strong>Implementation Focus:</strong> To address the critical performance failures, the Infiniaytics team strategically replaced their lagging datagrid with Wijmo’s FlexGrid. This single, focused implementation immediately empowered their application to provide a fluid, real-time data analysis experience, even with the largest industrial datasets. The familiar, intuitive interface meant client adoption was seamless, requiring no additional user training.</p>
                     </div>
-
-                    <div class="executive-quote-section">
+                     <div class="executive-quote-section">
                         <p>“Our clients in the manufacturing sector deal with immense data streams. Our platform's inability to handle this scale was a critical business threat. Choosing Mescius Wijmo was an investment in our core value proposition. The performance gains were immediate, securing our enterprise client base and unlocking a new tier of market opportunities for us.”</p>
                         <span class="author">Katarina Bauer, Chief Operating Officer, Infiniaytics GmbH</span>
                     </div>
-
                 </article>
-
-                <aside class="sidebar">
-                    <div class="sidebar-item">
-                        <h3>Measurable Outcomes</h3>
-                        <ul>
-                            <li><strong>20%</strong> reduction in churn among key enterprise accounts</li>
-                            <li><strong>60%</strong> increase in application performance</li>
-                            <li><strong>75%</strong> cut in performance-related support costs</li>
-                            <li><strong>€220,000</strong> reduced churn-related revenue loss and operational support overhead annually</li>
-                            <li>Full ROI achieved in just <strong>10 months</strong></li>
-                            <li>Freed up over <strong>500 engineering hours per quarter</strong></li>
-                            <li>Platform supports data volumes <strong>10 times larger than before</strong></li>
-                        </ul>
-                    </div>
-                    <div class="sidebar-item">
-                        <a href="../benchmarks/index.html" class="cta-button btn-wijmo">View Performance Benchmarks</a>
-                    </div>
-                </aside>
-            </div>
+                </div>
         </section>
     </main>
 

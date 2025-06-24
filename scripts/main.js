@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     /**
      * Feature 1: Responsive Mobile Navigation
-     * Toggles the mobile navigation menu.
      */
     const navToggle = document.getElementById('nav-toggle');
     const mainNav = document.getElementById('main-nav');
@@ -18,7 +17,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * Feature 2: Fade-in Sections on Scroll
+     * NEW Feature: Collapsible "At a Glance" Container
+     * Toggles the visibility of the key case study info.
+     */
+    const collapsibleContainer = document.getElementById('collapsible-container');
+    const collapsibleHeader = document.getElementById('collapsible-header');
+
+    if (collapsibleContainer && collapsibleHeader) {
+        collapsibleHeader.addEventListener('click', () => {
+            const isOpening = !collapsibleContainer.classList.contains('is-open');
+            
+            // Toggle the master class
+            collapsibleContainer.classList.toggle('is-open');
+
+            // Update ARIA for accessibility
+            collapsibleHeader.setAttribute('aria-expanded', isOpening);
+        });
+    }
+
+    /**
+     * Feature 2: Fade-in Sections on Scroll (Restored from original)
      * Uses the Intersection Observer API for better performance.
      */
     const fadeInSections = document.querySelectorAll('.fade-in-section');
@@ -40,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * Feature 3: Smooth Scrolling for Anchor Links
+     * Feature 3: Smooth Scrolling for Anchor Links (Restored from original)
      * Applies to any link starting with '#'
      */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

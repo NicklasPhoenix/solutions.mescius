@@ -3,182 +3,165 @@
 /* ===============================================
     Global Reset & Variables
     =============================================== */
-*, *::before, *::after {
-    box-sizing: border-box;
-}
-
 :root {
     --brand-header: #474D57;
     --brand-light-gray: #f8f9fa;
     --brand-heading: #2D3748;
     --brand-body: #4A5568;
-    --brand-js: #809B59;
-    --brand-net: #D6564C;
     --brand-wijmo: #48A9C5;
-    --brand-arjs: #EA8939;
-    --brand-ds: #5A7E9E;
+    --border-color: #e2e8f0;
 }
-
-body {
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    background-color: var(--brand-light-gray);
-    color: var(--brand-body);
-}
-
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(--brand-light-gray); color: var(--brand-body); }
+.container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
 /* ===============================================
     Header & Footer
     =============================================== */
-.header {
-    background-color: var(--brand-header);
-    padding: 15px 0;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-.header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.logo {
-    height: 32px;
-    filter: brightness(0) invert(1);
-}
-.footer {
-    background-color: var(--brand-header);
-    color: #cccccc;
-    text-align: center;
-    padding: 30px 0;
-    margin-top: 50px;
-    font-size: 14px;
-}
-
-/* ===============================================
-    Navigation (Desktop & Mobile)
-    =============================================== */
+.header { background-color: var(--brand-header); padding: 15px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+.header-content { display: flex; justify-content: space-between; align-items: center; }
+.logo { height: 32px; filter: brightness(0) invert(1); }
+.footer { background-color: var(--brand-header); color: #cccccc; text-align: center; padding: 30px 0; margin-top: 50px; font-size: 14px; }
 .main-nav { display: flex; gap: 30px; }
-.nav-link { color: #ffffff; text-decoration: none; font-weight: 600; font-size: 14px; transition: color 0.2s ease, border-color 0.2s ease; padding-bottom: 5px; border-bottom: 2px solid transparent; }
-.nav-link:hover { color: #cccccc; border-bottom-color: #cccccc; }
-.nav-link.active { border-bottom-color: #ffffff; }
-
-.nav-toggle { display: none; width: 30px; height: 25px; position: relative; cursor: pointer; }
-.nav-toggle span, .nav-toggle span::before, .nav-toggle span::after { content: ''; display: block; background-color: #ffffff; height: 3px; width: 100%; position: absolute; left: 0; transition: all 0.3s ease; }
-.nav-toggle span { top: 11px; }
-.nav-toggle span::before { top: -8px; }
-.nav-toggle span::after { top: 8px; }
-.nav-toggle.is-active span { background-color: transparent; }
-.nav-toggle.is-active span::before { transform: rotate(45deg); top: 0; }
-.nav-toggle.is-active span::after { transform: rotate(-45deg); top: 0; }
-
+.nav-link { color: #ffffff; text-decoration: none; font-weight: 600; font-size: 14px; padding-bottom: 5px; border-bottom: 2px solid transparent; }
+.nav-link:hover, .nav-link.active { border-bottom-color: #ffffff; }
+.nav-toggle { display: none; }
 
 /* ===============================================
     Case Study Detail Page Layout
     =============================================== */
-.case-study-header { background-color: #ffffff; text-align: center; padding: 60px 20px; border-bottom: 1px solid #e2e8f0; }
+.case-study-header { background-color: #ffffff; text-align: center; padding: 60px 20px; border-bottom: 1px solid var(--border-color); }
 .case-study-tag { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
 .case-study-title { font-size: 42px; font-weight: 700; color: var(--brand-heading); margin: 10px auto 15px auto; max-width: 900px; }
 .case-study-subtitle { font-size: 18px; max-width: 700px; margin: 0 auto; line-height: 1.6; }
-.case-study-content { padding: 50px 0; } /* Adjusted padding */
+.case-study-content { padding: 50px 0; }
 
 /* ===============================================
-   NEW - Solution Profile Component
+   Collapsible "At a Glance" Container
    =============================================== */
-.solution-profile {
+.collapsible-container {
     background-color: #ffffff;
-    border: 1px solid #e2e8f0;
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     margin-bottom: 50px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    overflow: hidden; /* Important for the expand/collapse transition */
 }
-.profile-header {
+.collapsible-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 25px;
     cursor: pointer;
+    transition: background-color 0.2s ease;
 }
-.profile-title {
+.collapsible-header:hover {
+    background-color: #f8f9fa;
+}
+.collapsible-title {
     margin: 0;
     font-size: 20px;
+    font-weight: 600;
     color: var(--brand-heading);
 }
-.profile-title strong {
-    font-weight: 700;
+.collapsible-toggle {
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--brand-body);
+    border-radius: 50%;
+    position: relative;
+    transition: transform 0.3s ease;
 }
-.profile-toggle {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background-color: transparent;
-    border: none;
-    color: var(--brand-wijmo);
-    font-weight: 600;
-    font-size: 15px;
-    cursor: pointer;
-    font-family: 'Montserrat', sans-serif;
+.collapsible-header:hover .collapsible-toggle {
+    transform: scale(1.1);
 }
-.profile-toggle .arrow {
-    transition: transform 0.3s ease-in-out;
+.icon-plus, .icon-minus {
+    display: block;
+    background-color: var(--brand-body);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.2s ease;
 }
-.solution-profile.is-open .profile-toggle .arrow {
-    transform: rotate(180deg);
+.icon-plus {
+    width: 14px;
+    height: 2px;
+}
+.icon-plus::after {
+    content: '';
+    display: block;
+    width: 2px;
+    height: 14px;
+    background-color: var(--brand-body);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.icon-minus {
+    width: 14px;
+    height: 2px;
+    opacity: 0;
+}
+.collapsible-container.is-open .icon-plus {
+    opacity: 0;
+}
+.collapsible-container.is-open .icon-minus {
+    opacity: 1;
 }
 
-.profile-expandable-content {
+.collapsible-content {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.4s ease-in-out;
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+    padding: 0 25px;
 }
-.solution-profile.is-open .profile-expandable-content {
-    max-height: 500px; /* Adjust if content is taller */
+.collapsible-container.is-open .collapsible-content {
+    max-height: 800px; /* Adjust if content is taller */
+    padding: 25px 25px;
+    border-top: 1px solid var(--border-color);
 }
 
-.profile-details {
-    display: flex;
+.glance-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
-    padding: 0 25px 20px 25px;
-    border-bottom: 1px solid #e2e8f0;
 }
-.detail-item {
-    display: flex;
-    flex-direction: column;
-}
-.detail-label {
-    font-size: 13px;
+.glance-item h4 {
+    font-size: 16px;
     font-weight: 700;
-    text-transform: uppercase;
     color: var(--brand-heading);
-    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--brand-wijmo);
+    padding-bottom: 10px;
+    margin: 0 0 15px 0;
 }
-.detail-value {
-    font-size: 16px;
-    color: var(--brand-body);
-}
-
-.profile-main-text {
-    padding: 20px 25px;
-    font-size: 16px;
-    line-height: 1.7;
-}
-.profile-main-text p {
+.glance-item ul {
+    list-style: none;
+    padding: 0;
     margin: 0;
+    font-size: 15px;
+    line-height: 1.8;
 }
+.glance-item ul li {
+    padding: 4px 0;
+}
+.glance-item p {
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+.cta-button { display: block; width: 100%; text-align: center; text-decoration: none; padding: 15px; border-radius: 8px; font-weight: 600; font-size: 16px; color: #ffffff; transition: opacity 0.3s ease; }
+.cta-button:hover { opacity: 0.9; }
+.cta-button.btn-wijmo { background-color: var(--brand-wijmo); }
 
 
-/* Main Content & Sidebar */
-.content-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 60px; align-items: start; padding-top: 0; }
+/* Main Content Area */
+.content-layout {
+    /* No longer a two-column grid */
+    padding-top: 0;
+}
 .main-story { font-size: 17px; line-height: 1.8; }
 .main-story h2 { font-size: 28px; font-weight: 700; color: var(--brand-heading); margin: 40px 0 20px 0; padding-bottom: 10px; border-bottom: 3px solid var(--brand-wijmo); }
 .main-story > div:first-of-type h2 { margin-top: 0; }
@@ -186,40 +169,13 @@ body {
 .main-story ul { padding-left: 20px; }
 
 .executive-quote-section { background-color: #ffffff; border-left: 4px solid var(--brand-wijmo); padding: 20px 30px; margin: 30px 0; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-.executive-quote-section p { margin-bottom: 15px; font-size: 1.1em; line-height: 1.6; font-style: italic; color: var(--brand-body); }
-.executive-quote-section .author { display: block; text-align: right; font-weight: 600; font-style: normal; margin-top: 10px; color: var(--brand-heading); font-size: 0.95em; }
-
-.sidebar { background-color: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
-.sidebar-item { margin-bottom: 30px; }
-.sidebar-item:last-child { margin-bottom: 0; }
-.sidebar h3 { font-size: 16px; font-weight: 700; color: var(--brand-heading); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; margin: 0 0 15px 0; }
-.sidebar ul { list-style: none; padding: 0; margin: 0; font-size: 15px; }
-.sidebar ul li { padding: 5px 0; }
-.sidebar ul li strong { font-weight: 600; }
-.cta-button { display: block; width: 100%; text-align: center; text-decoration: none; padding: 15px; border-radius: 8px; font-weight: 600; font-size: 16px; color: #ffffff; transition: opacity 0.3s ease; }
-.cta-button:hover { opacity: 0.9; }
-.cta-button.btn-wijmo { background-color: var(--brand-wijmo); }
+.executive-quote-section p { font-size: 1.1em; }
+.executive-quote-section .author { display: block; text-align: right; font-weight: 600; margin-top: 10px; }
 
 /* ===============================================
     Responsive Design
     =============================================== */
-@media (max-width: 992px) {
-    .content-layout { grid-template-columns: 1fr; }
-    .sidebar { grid-row: 1; margin-bottom: 50px; }
-}
-
 @media (max-width: 768px) {
-    /* Mobile Navigation */
-    .nav-toggle { display: block; }
-    .main-nav { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 40px; position: fixed; top: 0; left: 100%; width: 100%; height: 100vh; background-color: var(--brand-header); transition: left 0.3s ease-in-out; }
-    .main-nav.is-active { left: 0; }
-    .nav-link { font-size: 22px; }
-
-    /* Adjust typography and spacing for mobile */
     .case-study-title { font-size: 32px; }
-    .hero, .case-study-section, .case-study-content { padding-top: 40px; padding-bottom: 40px; }
-
-    /* Responsive profile */
-    .profile-header { flex-direction: column; align-items: flex-start; gap: 15px; }
-    .profile-details { flex-direction: column; gap: 15px; }
+    .collapsible-title { font-size: 18px; }
 }
