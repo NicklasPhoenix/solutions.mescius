@@ -48,51 +48,73 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
     transition: all 0.4s ease;
 }
 .card-visible-content {
-    padding: 30px 40px;
+    padding: 40px;
 }
 
-/* --- New Top Grid Layout --- */
-.card-top-grid {
+/* --- New Solution Profile Layout --- */
+.solution-profile-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: start;
-    margin-bottom: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
 }
-.profile-details-list h3 {
-    margin: 0 0 15px 0;
-    font-size: 28px;
+.profile-item h4 {
+    font-size: 16px;
+    font-weight: 700;
     color: var(--brand-heading);
+    margin: 0 0 10px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--brand-wijmo);
 }
-.profile-details-list ul {
-    list-style: none;
-    padding: 0;
+.profile-item p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--brand-body);
     margin: 0;
 }
-.profile-details-list li {
-    font-size: 16px;
-    color: var(--brand-body);
-    padding: 4px 0;
+
+.results-heading {
+    text-align: center;
+    margin-bottom: 20px;
 }
-.profile-details-list li span {
+.results-heading h4 {
+    display: inline-block;
+    position: relative;
+    margin: 0;
+    font-size: 18px;
     font-weight: 600;
     color: var(--brand-heading);
 }
+.results-heading h4::before, .results-heading h4::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 50px;
+    height: 1px;
+    background-color: var(--border-color);
+}
+.results-heading h4::before {
+    left: -60px;
+}
+.results-heading h4::after {
+    right: -60px;
+}
 
-.profile-key-metrics {
+.results-metrics {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
     text-align: center;
 }
 .metric-item {
     background-color: #f8f9fa;
     padding: 20px;
     border-radius: 8px;
+    border: 1px solid var(--border-color);
 }
 .metric-value {
     display: block;
-    font-size: 32px;
+    font-size: 36px;
     font-weight: 700;
     color: var(--brand-wijmo);
 }
@@ -100,12 +122,6 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
     display: block;
     font-size: 14px;
     color: var(--brand-body);
-}
-
-.profile-cta {
-    text-align: center;
-    border-top: 1px solid var(--border-color);
-    padding-top: 30px;
 }
 
 .card-toggle-bar {
@@ -162,17 +178,3 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
 .executive-quote-section { background-color: #f8f9fa; border-left: 4px solid var(--brand-wijmo); padding: 20px 30px; margin: 30px 0; border-radius: 4px; }
 .executive-quote-section p { font-size: 1.1em; margin: 0; }
 .executive-quote-section .author { display: block; text-align: right; font-weight: 600; margin-top: 15px; }
-
-.cta-button { display: inline-block; text-decoration: none; padding: 12px 25px; border-radius: 8px; font-weight: 600; font-size: 15px; color: #ffffff; transition: opacity 0.3s ease; }
-.cta-button.btn-wijmo { background-color: var(--brand-wijmo); }
-.cta-button:hover { opacity: 0.9; }
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .card-top-grid {
-        grid-template-columns: 1fr;
-    }
-    .profile-key-metrics {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    }
-}

@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * CORRECTED Feature: Expandable Case Study Card
+     * Feature: Expandable Case Study Card
      */
     const expandableCard = document.getElementById('expandable-card');
     const cardToggle = document.getElementById('card-toggle');
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * Feature 2: Fade-in Sections on Scroll (Restored from original)
+     * Feature: Fade-in Sections on Scroll (from original file)
      */
     const fadeInSections = document.querySelectorAll('.fade-in-section');
     if (fadeInSections.length > 0) {
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * Feature 3: Smooth Scrolling for Anchor Links (Restored from original)
+     * Feature: Smooth Scrolling for Anchor Links (from original file)
      */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
