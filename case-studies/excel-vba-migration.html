@@ -8,88 +8,7 @@
     <meta name="keywords" content="excel vba migration, replace excel macro, web-based excel, spreadjs case study, document solutions for excel, legacy modernization, javascript spreadsheet">
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <style>
-        /* All necessary styles are contained in this file */
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
-        :root {
-            --brand-header: #474D57;
-            --brand-light-gray: #f8f9fa;
-            --brand-heading: #2D3748;
-            --brand-body: #4A5568;
-            --brand-js: #809B59;
-            --brand-net: #D6564C;
-            --brand-wijmo: #48A9C5;
-            --brand-ds: #5A7E9E; /* Document Solutions Color */
-            --accent-color: var(--brand-js); /* Page-specific accent for JS/SpreadJS */
-        }
-        body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(--brand-light-gray); color: var(--brand-body); }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .header { background-color: var(--brand-header); padding: 15px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .header-content { display: flex; justify-content: space-between; align-items: center; }
-        .logo { height: 32px; filter: brightness(0) invert(1); }
-        .main-nav { display: flex; gap: 30px; }
-        .nav-link { color: #ffffff; text-decoration: none; font-weight: 600; font-size: 14px; padding-bottom: 5px; border-bottom: 2px solid transparent; }
-        .nav-link.active { border-bottom-color: #ffffff; }
-        .footer { background-color: var(--brand-header); color: #cccccc; text-align: center; padding: 30px 0; margin-top: 50px; font-size: 14px; }
-        .case-study-header { background-color: #ffffff; text-align: center; padding: 60px 20px; border-bottom: 1px solid #e2e8f0; }
-        .case-study-tag { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-color); }
-        .case-study-title { font-size: 42px; font-weight: 700; color: var(--brand-heading); margin: 10px auto 15px auto; max-width: 800px; }
-        .case-study-subtitle { font-size: 18px; max-width: 700px; margin: 0 auto; line-height: 1.6; }
-        .case-study-content { padding: 80px 0; }
-        .content-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 60px; align-items: start; }
-        .main-story { font-size: 17px; line-height: 1.8; }
-        .main-story h2 { font-size: 28px; font-weight: 700; color: var(--brand-heading); margin: 40px 0 20px 0; padding-bottom: 10px; border-bottom: 3px solid var(--accent-color); }
-        .main-story > div:first-of-type h2 { margin-top: 0; }
-        .main-story p, .main-story ul, .main-story ol { margin-bottom: 20px; }
-        .main-story ul, .main-story ol { padding-left: 20px; }
-
-        /* Updated Quote Styling to match requested appearance */
-        .executive-quote-section {
-            background-color: #ffffff; /* Same as main content background */
-            border-left: 4px solid var(--accent-color); /* Green accent border */
-            padding: 20px 30px; /* Adjusted padding */
-            margin: 30px 0;
-            border-radius: 4px; /* Slightly rounded corners */
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Subtle shadow */
-        }
-
-        .executive-quote-section p {
-            margin-bottom: 15px;
-            font-size: 1.1em;
-            line-height: 1.6;
-            font-style: italic;
-            color: var(--brand-body); /* Body text color for the quote text */
-        }
-
-        .executive-quote-section .author {
-            display: block;
-            text-align: right;
-            font-weight: 600;
-            font-style: normal; /* Override italic for author */
-            margin-top: 10px;
-            color: var(--brand-heading); /* Darker color for author name */
-            font-size: 0.95em;
-        }
-
-        .sidebar { background-color: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
-        .sidebar-item { margin-bottom: 30px; }
-        .sidebar-item:last-child { margin-bottom: 0; }
-        .sidebar h3 { font-size: 16px; font-weight: 700; color: var(--brand-heading); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; margin: 0 0 15px 0; }
-        .sidebar ul { list-style: none; padding: 0; margin: 0; font-size: 15px; }
-        .sidebar ul li { padding: 5px 0; }
-        .sidebar ul li strong { font-weight: 600; }
-        .cta-button { display: block; width: 100%; text-align: center; text-decoration: none; padding: 15px; border-radius: 8px; font-weight: 600; font-size: 16px; color: #ffffff; transition: opacity 0.3s ease; }
-        .cta-button.btn-js { background-color: var(--brand-js); }
-        .cta-button.btn-ds { background-color: var(--brand-ds); } /* Color updated here */
-        .cta-button:hover { opacity: 0.9; }
-        @media (max-width: 992px) {
-            .content-layout { grid-template-columns: 1fr; }
-            .sidebar { grid-row: 1; margin-bottom: 50px; }
-        }
-    </style>
+    <link rel="stylesheet" href="../styles/main.css">
 </head>
 <body>
 
@@ -102,120 +21,93 @@
                 <a href="../promotions/index.html" class="nav-link">Promotions</a>
                 <a href="../benchmarks/index.html" class="nav-link">Benchmarks</a>
             </nav>
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+            </div>
         </div>
     </header>
 
     <main>
         <section class="case-study-header">
-            <p class="case-study-tag">Legacy System Modernization</p>
-            <h1 class="case-study-title">EuroData Solutions Achieves 35% Cost Reduction, 70% Faster Reporting with Mescius.</h1>
-            <p class="case-study-subtitle">By implementing Mescius SpreadJS and Document Solutions, the firm successfully migrated its critical data processing and reporting functions to a modern, robust web platform, delivering significant ROI.</p>
+            <p class="case-study-tag" style="color: var(--brand-js);">Legacy System Modernization</p>
+            <h1 class="case-study-title">Financial Analytics Firm Achieves 35% Cost Reduction and 70% Faster Reporting with Mescius.</h1>
+            <p class="case-study-subtitle">By implementing Mescius SpreadJS and Document Solutions, the firm successfully migrated its critical data processing and reporting functions from Excel VBA to a modern, robust web platform.</p>
         </section>
 
-        <section class="case-study-content">
-            <div class="content-layout container">
-                <article class="main-story">
-                    <div>
-                        <h2>Executive Summary</h2>
-                        <p>EuroData Solutions, a prominent data analytics firm based in Munich, faced significant challenges with its legacy Excel VBA applications, leading to spiraling operational costs and slow report delivery. By implementing Mescius SpreadJS and Document Solutions, the firm successfully migrated its critical data processing and reporting functions to a modern, robust web platform. This strategic move resulted in a <strong>35% reduction in annual operational costs</strong>, a <strong>70% acceleration in client report generation</strong>, and significantly <strong>enhanced data integrity and security</strong>.</p>
-
-                        <h2>About the Company</h2>
-                        <p><strong>Company Name:</strong> EuroData Solutions AG</p>
-                        <p><strong>Industry:</strong> Data Analytics and Financial Consulting</p>
-                        <p><strong>Location:</strong> Munich, Germany</p>
-                        <p><strong>Business Profile:</strong> EuroData Solutions AG is a well-established, mid-to-large-sized firm specializing in providing complex data analysis, financial modeling, and strategic consulting services to clients across the European financial sector. With a team of over 250 analysts and consultants, the company processes vast amounts of sensitive financial data, generating critical insights and reports that drive its clients' investment and operational decisions. Their reputation hinges on accuracy, speed, and reliability.</p>
-
-                        <h2>The Challenge: The Constraints of Outdated Excel VBA Workflows</h2>
-                        <p>Before partnering with Mescius, EuroData Solutions relied heavily on a sprawling ecosystem of Excel VBA workbooks for its core analytical and reporting processes. While these applications had served their purpose for years, their limitations became increasingly apparent as the company grew and data volumes surged.</p>
-                        <h3>Operational Pain:</h3>
-                        <p>The reliance on fragmented Excel VBA files created significant operational bottlenecks. Analysts spent excessive hours manually consolidating data from disparate sources, verifying formulas, and debugging VBA macros. This manual intervention was prone to human error, leading to frequent inaccuracies in reports. Sharing and collaborating on these files was cumbersome, often resulting in version control chaos and "file not found" errors, severely impacting team productivity and delaying client deliverables. The lack of a centralized, robust environment meant that even minor changes to business logic required extensive, error-prone updates across numerous spreadsheets.</p>
-                        <h3>Financial & Business Impact:</h3>
-                        <p>The hidden costs of their legacy system were substantial. The sheer volume of wasted labor hours due to manual data handling, error correction, and system downtime translated into an estimated <strong>€250,000 in annual operational overhead</strong>. Furthermore, the slow and unreliable reporting cycles often led to missed deadlines and a reduced capacity to take on new, high-value projects. The firm also incurred significant expenses related to maintaining an aging IT infrastructure that was constantly struggling to keep up with the demands of large Excel files.</p>
-                        <h3>Strategic Risk:</h3>
-                        <p>The firm's dependency on a fragile, unscalable Excel VBA infrastructure posed a critical strategic risk. Data security was a constant concern, with sensitive client information residing in potentially unsecured local files. The inability to scale their data processing capabilities threatened their market competitiveness, as larger datasets took days, rather than hours, to process. Moreover, the "tribal knowledge" embedded within the complex VBA code created a single point of failure, making the company vulnerable to staff turnover and hindering business continuity. The lack of audit trails and robust compliance features within their Excel-based processes also exposed them to potential regulatory non-compliance issues in the tightly regulated financial sector.</p>
-                    </div>
-
-                    <div>
-                        <h2>The Solution: A Strategic Migration to Modern Web Applications with Mescius</h2>
-                        <p>EuroData Solutions recognized the urgent need to modernize its core analytical platform. After a thorough evaluation of various solutions, the management and procurement teams strategically selected Mescius SpreadJS and Document Solutions as the foundation for their new web-based analytical application. The decision was driven by Mescius's proven reliability, comprehensive functionality, and clear value proposition focused on business outcomes.</p>
-                        <h3>Why Mescius:</h3>
-                        <ul>
-                            <li><strong>Total Cost of Ownership (TCO):</strong> Mescius offered a unified, powerful toolset that could replace multiple disparate legacy systems and custom-built workarounds, significantly reducing the complexity and cost associated with vendor management and licensing. The long-term savings in maintenance, development time, and infrastructure overhead were a key factor.</li>
-                            <li><strong>Risk Reduction:</strong> Choosing Mescius, a vendor with a strong European presence and a long track record of providing high-performance components, mitigated the risk associated with a large-scale migration. Their dedicated support and continuous product development provided confidence in the long-term viability and security of the solution.</li>
-                            <li><strong>Functionality:</strong> SpreadJS provided the familiar, powerful spreadsheet functionality that their financial analysts required, but within a secure, web-native environment. Document Solutions for .NET offered the robust server-side processing capabilities needed to handle complex Excel file manipulations without reliance on Microsoft Excel itself. This combination directly addressed their core pain points out-of-the-box.</li>
-                            <li><strong>Future-Proofing:</strong> The move to a modern JavaScript-based front-end with SpreadJS and a .NET back-end with Document Solutions positioned EuroData Solutions for future growth and technological advancements. This architecture provided the flexibility to scale horizontally, integrate with other enterprise systems, and adapt to evolving data analysis requirements without further costly migrations.</li>
-                        </ul>
-                        <h3>Implementation Focus:</h3>
-                        <p>The implementation centered on transforming their manual, Excel VBA-driven processes into automated, secure web-based workflows. With SpreadJS, EuroData Solutions developed a series of web portals that mimicked the Excel experience, allowing analysts to perform complex calculations, visualize data, and generate reports directly in their browser. This eliminated the need for local Excel installations and decentralized files. For server-side operations, Document Solutions was integrated into their .NET backend to programmatically generate, parse, and manipulate large Excel reports and data extracts. This ensured high performance and strict adherence to data governance policies, all while maintaining full compatibility with the Excel file format their clients expected.</p>
-                    </div>
-
-                    <div>
-                        <h2>The Results: Measurable and Quantifiable Outcomes</h2>
-                        <p>The strategic investment in Mescius components yielded significant, quantifiable improvements across EuroData Solutions' operations, delivering a rapid and impressive return on investment.</p>
-                        <ul>
-                            <li><strong>Return on Investment (ROI):</strong> Reduced annual operational costs by <strong>€200,000</strong>, primarily through automation, reduced error rates, and optimized labor, achieving a full return on investment within <strong>7 months</strong>.</li>
-                            <li><strong>Efficiency Gains:</strong> Decreased the average time spent on preparing and generating complex client reports from an average of 8 hours to just <strong>2.5 hours</strong>, representing a <strong>70% acceleration</strong>. Data consolidation and validation processes, previously taking days, were reduced to minutes.</li>
-                            <li><strong>Risk & Compliance:</strong> Achieved <strong>100% data integrity</strong> for all regulatory and client-facing reports, eliminating previous instances of data discrepancy errors and significantly mitigating the risk of compliance failures or financial penalties. Enhanced security features of the web platform drastically reduced unauthorized access risks.</li>
-                            <li><strong>Performance & Scalability:</strong> Improved application load times for large datasets by <strong>60%</strong>, allowing the system to handle <strong>4x the previous user load</strong> and process significantly larger datasets without any performance degradation. This newfound scalability enabled EuroData Solutions to pursue larger and more complex projects.</li>
-                            <li><strong>Employee Productivity & Satisfaction:</strong> Analysts reported a <strong>45% increase in productivity</strong> due to reduced manual work and a more stable, user-friendly environment. This led to higher job satisfaction and reduced employee frustration.</li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h2>Executive Quote:</h2>
-                        <div class="executive-quote-section">
-                            <p>“Migrating from our legacy Excel VBA systems was not just about technology, it was a crucial business imperative for our growth and risk management. Mescius SpreadJS and Document Solutions provided the precise tools we needed to build a modern, high-performance web platform that replicated the familiarity of Excel while delivering enterprise-grade security and scalability. The demonstrable ROI and efficiency gains have truly transformed our operational capabilities and positioned us strongly for the future.”</p>
-                            <span class="author">Julian Schneider, Chief Operations Officer, EuroData Solutions AG</span>
+        <div class="container">
+            <div class="expandable-card" id="expandable-card">
+                
+                <div class="card-visible-content">
+                    <div class="solution-profile-grid">
+                        <div class="profile-item">
+                            <h4>Industry</h4>
+                            <p>Data Analytics & Financial Consulting</p>
+                        </div>
+                        <div class="profile-item">
+                            <h4>The Challenge</h4>
+                            <p>An unmaintainable legacy Excel VBA ecosystem led to high operational costs, data integrity risks, and slow, error-prone reporting.</p>
+                        </div>
+                        <div class="profile-item">
+                            <h4>The Solution</h4>
+                            <p>Migrated legacy processes to a secure web app using SpreadJS for the front-end and Document Solutions for back-end Excel file processing.</p>
                         </div>
                     </div>
-                </article>
 
-                <aside class="sidebar">
-                    <div class="sidebar-item">
-                        <h3>Client Profile</h3>
-                        <ul>
-                            <li><strong>Company:</strong> EuroData Solutions AG (Fictional)</li>
-                            <li><strong>Industry:</strong> Data Analytics and Financial Consulting</li>
-                            <li><strong>HQ:</strong> Munich, Germany</li>
-                        </ul>
+                    <div class="results-heading">
+                        <h4>Key Results</h4>
                     </div>
-                    <div class="sidebar-item">
-                        <h3>The Problem</h3>
-                        <ul>
-                            <li>Unmaintainable legacy Excel VBA app</li>
-                            <li>Poor performance with large datasets</li>
-                            <li>Data integrity and version control issues</li>
-                            <li>"Tribal knowledge" dependent process</li>
-                            <li>High operational costs</li>
-                        </ul>
+                    
+                    <div class="results-metrics">
+                        <div class="metric-item">
+                            <span class="metric-value">35%</span>
+                            <span class="metric-label">Cost Reduction</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-value">70%</span>
+                            <span class="metric-label">Faster Reporting</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-value">45%</span>
+                            <span class="metric-label">Productivity Increase</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-value">7</span>
+                            <span class="metric-label">Months to ROI</span>
+                        </div>
                     </div>
-                    <div class="sidebar-item">
-                        <h3>The Solution</h3>
-                        <ul>
-                            <li><strong>Front-End:</strong> SpreadJS</li>
-                            <li><strong>Back-End:</strong> Document Solutions (for .NET)</li>
-                        </ul>
-                    </div>
-                    <div class="sidebar-item">
-                        <h3>Key Results</h3>
-                        <ul>
-                            <li><strong>35%</strong> reduction in operational costs</li>
-                            <li><strong>70%</strong> faster report generation</li>
-                            <li>Successful migration from VBA to Web</li>
-                            <li>Centralized data & enhanced security</li>
-                            <li>Improved performance & maintainability</li>
-                            <li>High user adoption with familiar UI</li>
-                        </ul>
-                    </div>
-                    <div class="sidebar-item">
+                    
+                    <div class="profile-cta">
                         <a href="#" class="cta-button btn-js">Learn More About SpreadJS</a>
                     </div>
-                    <div class="sidebar-item">
-                        <a href="#" class="cta-button btn-ds">Learn More About Document Solutions</a>
-                    </div>
-                </aside>
+                </div>
+
+                <div class="card-toggle-bar" id="card-toggle" role="button" aria-expanded="false" aria-controls="collapsible-story-content">
+                    <span class="toggle-text">Read Full Case Study</span>
+                    <span class="toggle-icon"></span>
+                </div>
+
+                <div class="card-collapsible-content" id="collapsible-story-content">
+                    <article class="main-story">
+                        <div>
+                            <h2>Executive Summary</h2>
+                            <p>A prominent data analytics firm based in Munich faced significant challenges with its legacy Excel VBA applications, leading to spiraling operational costs and slow report delivery. By implementing Mescius SpreadJS and Document Solutions, the firm successfully migrated its critical data processing and reporting functions to a modern, robust web platform. This strategic move resulted in a <strong>35% reduction in annual operational costs</strong>, a <strong>70% acceleration in client report generation</strong>, and significantly <strong>enhanced data integrity and security</strong>.</p>
+                        </div>
+                        <div>
+                            <h2>The Challenge: The Constraints of Outdated Excel VBA Workflows</h2>
+                            <p>Before partnering with Mescius, the firm relied heavily on a sprawling ecosystem of Excel VBA workbooks for its core analytical and reporting processes. The reliance on fragmented Excel VBA files created significant operational bottlenecks, including excessive hours spent on manual data consolidation, formula verification, and macro debugging. This manual intervention was prone to human error and version control chaos, severely impacting team productivity. The "tribal knowledge" embedded within the complex VBA code also created a single point of failure, making the company vulnerable to staff turnover.</p>
+                        </div>
+                        <div>
+                            <h2>The Solution: A Strategic Migration to Modern Web Applications with Mescius</h2>
+                            <p>The firm recognized the urgent need to modernize its core analytical platform. Management strategically selected Mescius SpreadJS and Document Solutions as the foundation for their new web-based analytical application. The implementation centered on transforming their manual, Excel VBA-driven processes into automated, secure web-based workflows. With SpreadJS, they developed web portals that mimicked the Excel experience, eliminating the need for decentralized files. For server-side operations, Document Solutions was integrated into their .NET backend to programmatically generate, parse, and manipulate large Excel reports, ensuring high performance and strict adherence to data governance policies.</p>
+                        </div>
+                         <div class="executive-quote-section" style="border-left-color: var(--brand-js);">
+                            <p>“Migrating from our legacy Excel VBA systems was not just about technology, it was a crucial business imperative for our growth and risk management. Mescius SpreadJS and Document Solutions provided the precise tools we needed to build a modern, high-performance web platform that replicated the familiarity of Excel while delivering enterprise-grade security and scalability. The demonstrable ROI and efficiency gains have truly transformed our operational capabilities.”</p>
+                            <span class="author">Chief Operations Officer, Financial Analytics Firm</span>
+                        </div>
+                    </article>
+                </div>
             </div>
-        </section>
+        </div>
     </main>
 
     <footer class="footer">
