@@ -10,34 +10,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (navToggle && mainNav) {
         navToggle.addEventListener('click', () => {
-            // Toggles the 'is-active' class on both the hamburger icon and the menu
             navToggle.classList.toggle('is-active');
             mainNav.classList.toggle('is-active');
         });
     }
 
     /**
-     * NEW Feature: Collapsible "At a Glance" Container
-     * Toggles the visibility of the key case study info.
+     * NEW Feature: Collapsible Case Study Text
+     * Toggles the visibility of the main story content.
      */
-    const collapsibleContainer = document.getElementById('collapsible-container');
-    const collapsibleHeader = document.getElementById('collapsible-header');
+    const storyContainer = document.getElementById('story-container');
+    const storyToggleBtn = document.getElementById('story-toggle');
 
-    if (collapsibleContainer && collapsibleHeader) {
-        collapsibleHeader.addEventListener('click', () => {
-            const isOpening = !collapsibleContainer.classList.contains('is-open');
+    if (storyContainer && storyToggleBtn) {
+        storyToggleBtn.addEventListener('click', () => {
+            const isOpening = !storyContainer.classList.contains('is-open');
             
-            // Toggle the master class
-            collapsibleContainer.classList.toggle('is-open');
+            // Toggle the master class on the container
+            storyContainer.classList.toggle('is-open');
 
             // Update ARIA for accessibility
-            collapsibleHeader.setAttribute('aria-expanded', isOpening);
+            storyToggleBtn.setAttribute('aria-expanded', isOpening);
+
+            // Update button text
+            const buttonText = storyToggleBtn.querySelector('.button-text');
+            if (isOpening) {
+                buttonText.textContent = 'Hide Full Case Study';
+            } else {
+                buttonText.textContent = 'Read Full Case Study';
+            }
         });
     }
 
+
     /**
      * Feature 2: Fade-in Sections on Scroll (Restored from original)
-     * Uses the Intersection Observer API for better performance.
      */
     const fadeInSections = document.querySelectorAll('.fade-in-section');
     if (fadeInSections.length > 0) {
@@ -49,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }, {
-            threshold: 0.1 // Triggers when 10% of the element is visible
+            threshold: 0.1
         });
 
         fadeInSections.forEach(section => {
@@ -59,7 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /**
      * Feature 3: Smooth Scrolling for Anchor Links (Restored from original)
-     * Applies to any link starting with '#'
      */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {

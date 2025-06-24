@@ -28,106 +28,28 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
 .nav-toggle { display: none; }
 
 /* ===============================================
-    Case Study Detail Page Layout
+    Case Study Header
     =============================================== */
 .case-study-header { background-color: #ffffff; text-align: center; padding: 60px 20px; border-bottom: 1px solid var(--border-color); }
 .case-study-tag { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
 .case-study-title { font-size: 42px; font-weight: 700; color: var(--brand-heading); margin: 10px auto 15px auto; max-width: 900px; }
 .case-study-subtitle { font-size: 18px; max-width: 700px; margin: 0 auto; line-height: 1.6; }
-.case-study-content { padding: 50px 0; }
 
 /* ===============================================
-   Collapsible "At a Glance" Container
+   NEW: Centered Profile Card
    =============================================== */
-.collapsible-container {
+.profile-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
     background-color: #ffffff;
     border: 1px solid var(--border-color);
     border-radius: 8px;
-    margin-bottom: 50px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    padding: 30px 40px;
+    margin: 50px auto;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.07);
 }
-.collapsible-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 25px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-.collapsible-header:hover {
-    background-color: #f8f9fa;
-}
-.collapsible-title {
-    margin: 0;
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--brand-heading);
-}
-.collapsible-toggle {
-    width: 30px;
-    height: 30px;
-    border: 2px solid var(--brand-body);
-    border-radius: 50%;
-    position: relative;
-    transition: transform 0.3s ease;
-}
-.collapsible-header:hover .collapsible-toggle {
-    transform: scale(1.1);
-}
-.icon-plus, .icon-minus {
-    display: block;
-    background-color: var(--brand-body);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: opacity 0.2s ease;
-}
-.icon-plus {
-    width: 14px;
-    height: 2px;
-}
-.icon-plus::after {
-    content: '';
-    display: block;
-    width: 2px;
-    height: 14px;
-    background-color: var(--brand-body);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-.icon-minus {
-    width: 14px;
-    height: 2px;
-    opacity: 0;
-}
-.collapsible-container.is-open .icon-plus {
-    opacity: 0;
-}
-.collapsible-container.is-open .icon-minus {
-    opacity: 1;
-}
-
-.collapsible-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease-out, padding 0.4s ease-out;
-    padding: 0 25px;
-}
-.collapsible-container.is-open .collapsible-content {
-    max-height: 800px; /* Adjust if content is taller */
-    padding: 25px 25px;
-    border-top: 1px solid var(--border-color);
-}
-
-.glance-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
-.glance-item h4 {
+.profile-card-item h3 {
     font-size: 16px;
     font-weight: 700;
     color: var(--brand-heading);
@@ -137,32 +59,74 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
     padding-bottom: 10px;
     margin: 0 0 15px 0;
 }
-.glance-item ul {
+.profile-card-item ul {
     list-style: none;
     padding: 0;
     margin: 0;
     font-size: 15px;
     line-height: 1.8;
 }
-.glance-item ul li {
+.profile-card-item ul li {
     padding: 4px 0;
 }
-.glance-item p {
+.profile-card-item p {
     font-size: 15px;
     line-height: 1.7;
-    margin-bottom: 20px;
+    margin: 0 0 20px 0;
 }
 .cta-button { display: block; width: 100%; text-align: center; text-decoration: none; padding: 15px; border-radius: 8px; font-weight: 600; font-size: 16px; color: #ffffff; transition: opacity 0.3s ease; }
 .cta-button:hover { opacity: 0.9; }
 .cta-button.btn-wijmo { background-color: var(--brand-wijmo); }
 
-
-/* Main Content Area */
-.content-layout {
-    /* No longer a two-column grid */
-    padding-top: 0;
+/* ===============================================
+   NEW: Collapsible Story Section
+   =============================================== */
+.story-toggle-wrapper {
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    padding-top: 50px;
 }
-.main-story { font-size: 17px; line-height: 1.8; }
+.story-toggle-button {
+    background-color: transparent;
+    border: 2px solid var(--brand-heading);
+    color: var(--brand-heading);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 15px 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+.story-toggle-button:hover {
+    background-color: var(--brand-heading);
+    color: #ffffff;
+}
+.story-toggle-button .arrow {
+    transition: transform 0.3s ease;
+}
+#story-container.is-open .story-toggle-button .arrow {
+    transform: rotate(180deg);
+}
+
+.story-content-wrapper {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.7s ease-in-out;
+}
+#story-container.is-open .story-content-wrapper {
+    max-height: 5000px; /* Large enough for any content */
+}
+
+/* Main Story Content */
+.main-story {
+    padding-top: 50px;
+    font-size: 17px;
+    line-height: 1.8;
+}
 .main-story h2 { font-size: 28px; font-weight: 700; color: var(--brand-heading); margin: 40px 0 20px 0; padding-bottom: 10px; border-bottom: 3px solid var(--brand-wijmo); }
 .main-story > div:first-of-type h2 { margin-top: 0; }
 .main-story p, .main-story ul { margin-bottom: 20px; }
@@ -177,5 +141,5 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
     =============================================== */
 @media (max-width: 768px) {
     .case-study-title { font-size: 32px; }
-    .collapsible-title { font-size: 18px; }
+    .profile-card { padding: 25px; gap: 25px; margin: 40px auto; }
 }
