@@ -16,32 +16,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * NEW Feature: Collapsible Case Study Text
-     * Toggles the visibility of the main story content.
+     * NEW Feature: Expandable Case Study Card
      */
-    const storyContainer = document.getElementById('story-container');
-    const storyToggleBtn = document.getElementById('story-toggle');
+    const expandableCard = document.getElementById('expandable-card');
+    const cardToggle = document.getElementById('card-toggle');
 
-    if (storyContainer && storyToggleBtn) {
-        storyToggleBtn.addEventListener('click', () => {
-            const isOpening = !storyContainer.classList.contains('is-open');
+    if (expandableCard && cardToggle) {
+        cardToggle.addEventListener('click', () => {
+            const isOpening = !expandableCard.classList.contains('is-open');
             
-            // Toggle the master class on the container
-            storyContainer.classList.toggle('is-open');
+            // Toggle the master class on the parent card
+            expandableCard.classList.toggle('is-open');
 
             // Update ARIA for accessibility
-            storyToggleBtn.setAttribute('aria-expanded', isOpening);
-
+            cardToggle.setAttribute('aria-expanded', isOpening);
+            
             // Update button text
-            const buttonText = storyToggleBtn.querySelector('.button-text');
+            const toggleText = cardToggle.querySelector('.toggle-text');
             if (isOpening) {
-                buttonText.textContent = 'Hide Full Case Study';
+                toggleText.textContent = 'Hide Full Case Study';
             } else {
-                buttonText.textContent = 'Read Full Case Study';
+                toggleText.textContent = 'Read Full Case Study';
             }
         });
     }
-
 
     /**
      * Feature 2: Fade-in Sections on Scroll (Restored from original)

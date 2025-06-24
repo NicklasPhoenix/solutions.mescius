@@ -6,6 +6,7 @@
     <title>Case Study: Infiniaytics GmbH Reduces Customer Churn by 20% with Mescius</title>
     <meta name="description" content="Infiniaytics GmbH, a Munich-based BI SaaS provider, reduced enterprise customer churn by 20% and cut performance-related support costs by 75% by implementing the Mescius Wijmo component suite.">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="../styles/main.css">
 </head>
 <body>
@@ -33,65 +34,63 @@
         </section>
 
         <div class="container">
-            <div class="profile-card">
-                <div class="profile-card-item">
-                    <h3>Organization Profile</h3>
-                    <ul>
-                        <li><strong>Company Name:</strong> Infiniaytics GmbH</li>
-                        <li><strong>Industry:</strong> Business Intelligence (BI) SaaS for Manufacturing</li>
-                        <li><strong>Location:</strong> Munich, Germany</li>
-                        <li><strong>Business Profile:</strong> Provides a white-label analytics platform for manufacturing companies to monitor production, supply chains, and IoT data.</li>
-                    </ul>
+            <div class="expandable-card" id="expandable-card">
+                
+                <div class="card-visible-content">
+                    <div class="card-main-profile">
+                        <div class="profile-info">
+                            <h2 class="profile-company-name">Infiniaytics GmbH</h2>
+                            <p class="profile-industry">BI SaaS for Manufacturing | Munich, Germany</p>
+                        </div>
+                        <div class="profile-cta">
+                            <a href="../benchmarks/index.html" class="cta-button btn-wijmo">View Performance Benchmarks</a>
+                        </div>
+                    </div>
+                    <div class="card-key-metrics">
+                        <div class="metric-item">
+                            <span class="metric-value">20%</span>
+                            <span class="metric-label">Churn Reduction</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-value">60%</span>
+                            <span class="metric-label">Performance Increase</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-value">75%</span>
+                            <span class="metric-label">Support Cost Cut</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-value">10</span>
+                            <span class="metric-label">Months to ROI</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="profile-card-item">
-                    <h3>Measurable Outcomes</h3>
-                    <ul>
-                        <li><strong>20%</strong> reduction in key account churn</li>
-                        <li><strong>60%</strong> increase in app performance</li>
-                        <li><strong>75%</strong> cut in performance-related support</li>
-                        <li>Full ROI achieved in just <strong>10 months</strong></li>
-                    </ul>
-                </div>
-                <div class="profile-card-item">
-                    <h3>Ready for a Solution?</h3>
-                    <p>See how our high-performance components can impact your business and deliver measurable ROI.</p>
-                    <a href="../benchmarks/index.html" class="cta-button btn-wijmo">View Performance Benchmarks</a>
-                </div>
-            </div>
-        </div>
 
-        <div class="container" id="story-container">
-            <div class="story-toggle-wrapper">
-                <button id="story-toggle" class="story-toggle-button" aria-expanded="false" aria-controls="collapsible-story-content">
-                    <span class="button-text">Read Full Case Study</span>
-                    <svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                      <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                    </svg>
-                </button>
-            </div>
+                <div class="card-toggle-bar" id="card-toggle" role="button" aria-expanded="false" aria-controls="collapsible-story-content">
+                    <span class="toggle-text">Read Full Case Study</span>
+                    <span class="toggle-icon"></span>
+                </div>
 
-            <div class="story-content-wrapper" id="collapsible-story-content">
-                <article class="main-story">
-                    <div>
-                        <h2>Executive Summary</h2>
-                        <p><strong>Company:</strong> Infiniaytics GmbH is a Munich-based SaaS provider delivering embedded business intelligence solutions to the European manufacturing and automotive sectors.</p>
-                        <p><strong>Challenge:</strong> The company’s core analytics platform experienced severe performance degradation when processing large-scale industrial datasets, which placed major enterprise client renewals and future revenue at significant risk.</p>
-                        <p><strong>Solution:</strong> Infiniaytics’ leadership chose to integrate the Mescius Wijmo component suite to replace their underperforming data visualization layer.</p>
-                        <p><strong>Results:</strong> This strategic investment increased application performance by 60%, cut performance-related support costs by 75%, and directly contributed to a 20% reduction in churn among its key enterprise accounts.</p>
-                    </div>
-                    <div>
-                        <h2>The Challenge: Platform Performance Was a Barrier to Growth</h2>
-                        <p><strong>Operational Pain:</strong> The central feature of the Infiniaytics platform, its interactive data dashboard, became extremely slow and often unresponsive. Clients trying to analyze multi-million-row datasets from factory sensors found the system unusable. This poor user experience frustrated clients and created a constant stream of high-priority support tickets, pulling valuable engineering resources away from innovation and onto continuous maintenance.</p>
-                    </div>
-                    <div>
-                        <h2>The Solution: A Strategic Choice for Mescius</h2>
-                        <p>The executive team at Infiniaytics recognized that building a high-performance data visualization component from scratch was not a viable option. It would be too costly, too slow, and too risky. They needed a proven, commercially-backed solution that could solve their business problem immediately. The procurement team selected the Mescius Wijmo suite based on a rigorous evaluation focused on business outcomes.</p>
-                    </div>
-                    <div class="executive-quote-section">
-                        <p>“Our clients in the manufacturing sector deal with immense data streams. Our platform's inability to handle this scale was a critical business threat. Choosing Mescius Wijmo was an investment in our core value proposition. The performance gains were immediate, securing our enterprise client base and unlocking a new tier of market opportunities for us.”</p>
-                        <span class="author">Katarina Bauer, Chief Operating Officer, Infiniaytics GmbH</span>
-                    </div>
-                </article>
+                <div class="card-collapsible-content" id="collapsible-story-content">
+                    <article class="main-story">
+                        <div>
+                            <h2>Executive Summary</h2>
+                            <p>Infiniaytics GmbH is a Munich-based SaaS provider delivering embedded business intelligence solutions to the European manufacturing and automotive sectors. The company’s core analytics platform experienced severe performance degradation when processing large-scale industrial datasets, which placed major enterprise client renewals at significant risk. Leadership chose to integrate the Mescius Wijmo component suite, which increased application performance by 60%, cut performance-related support costs by 75%, and directly contributed to a 20% reduction in churn among its key enterprise accounts.</p>
+                        </div>
+                        <div>
+                            <h2>The Challenge: Platform Performance Was a Barrier to Growth</h2>
+                            <p><strong>Operational Pain:</strong> The central feature of the Infiniaytics platform, its interactive data dashboard, became extremely slow and often unresponsive. Clients trying to analyze multi-million-row datasets from factory sensors found the system unusable. This poor user experience frustrated clients and created a constant stream of high-priority support tickets, pulling valuable engineering resources away from innovation and onto continuous maintenance.</p>
+                        </div>
+                        <div>
+                            <h2>The Solution: A Strategic Choice for Mescius</h2>
+                            <p>The executive team at Infiniaytics recognized that building a high-performance data visualization component from scratch was not a viable option. It would be too costly, too slow, and too risky. They needed a proven, commercially-backed solution that could solve their business problem immediately. The procurement team selected the Mescius Wijmo suite based on a rigorous evaluation focused on business outcomes.</p>
+                        </div>
+                         <div class="executive-quote-section">
+                            <p>“Our clients in the manufacturing sector deal with immense data streams. Our platform's inability to handle this scale was a critical business threat. Choosing Mescius Wijmo was an investment in our core value proposition. The performance gains were immediate, securing our enterprise client base and unlocking a new tier of market opportunities for us.”</p>
+                            <span class="author">Katarina Bauer, Chief Operating Officer, Infiniaytics GmbH</span>
+                        </div>
+                    </article>
+                </div>
             </div>
         </div>
     </main>
@@ -102,6 +101,6 @@
         </div>
     </footer>
 
-    <script src="main.js"></script>
+    <script src="../scripts/main.js"></script>
 </body>
 </html>
