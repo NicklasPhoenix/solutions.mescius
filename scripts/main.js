@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * NEW Feature: Expandable Case Study Card
+     * CORRECTED Feature: Expandable Case Study Card
      */
     const expandableCard = document.getElementById('expandable-card');
     const cardToggle = document.getElementById('card-toggle');

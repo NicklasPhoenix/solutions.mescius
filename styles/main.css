@@ -16,7 +16,7 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
 .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
 /* ===============================================
-    Header, Footer, Nav (Unchanged)
+    Header, Footer, Nav
     =============================================== */
 .header { background-color: var(--brand-header); padding: 15px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
 .header-content { display: flex; justify-content: space-between; align-items: center; }
@@ -28,7 +28,7 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
 .nav-toggle { display: none; }
 
 /* ===============================================
-    Case Study Header (Unchanged)
+    Case Study Header
     =============================================== */
 .case-study-header { background-color: #ffffff; text-align: center; padding: 60px 20px; border-bottom: 1px solid var(--border-color); }
 .case-study-tag { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
@@ -36,7 +36,7 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
 .case-study-subtitle { font-size: 18px; max-width: 700px; margin: 0 auto; line-height: 1.6; }
 
 /* ===============================================
-   NEW: Expandable Card Component
+   Expandable Card Component
    =============================================== */
 .expandable-card {
     background-color: #ffffff;
@@ -44,41 +44,45 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
     border-radius: 12px;
     margin: 50px auto;
     box-shadow: 0 5px 30px rgba(45, 55, 72, 0.08);
-    overflow: hidden; /* Crucial for child border-radius */
+    overflow: hidden;
     transition: all 0.4s ease;
 }
 .card-visible-content {
     padding: 30px 40px;
 }
 
-.card-main-profile {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
+/* --- New Top Grid Layout --- */
+.card-top-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
     margin-bottom: 30px;
-    flex-wrap: wrap;
 }
-.profile-company-name {
-    margin: 0 0 5px 0;
+.profile-details-list h3 {
+    margin: 0 0 15px 0;
     font-size: 28px;
     color: var(--brand-heading);
 }
-.profile-industry {
+.profile-details-list ul {
+    list-style: none;
+    padding: 0;
     margin: 0;
+}
+.profile-details-list li {
     font-size: 16px;
     color: var(--brand-body);
+    padding: 4px 0;
 }
-.profile-cta .cta-button {
-    padding: 12px 25px;
-    font-size: 15px;
-    white-space: nowrap;
+.profile-details-list li span {
+    font-weight: 600;
+    color: var(--brand-heading);
 }
 
-.card-key-metrics {
+.profile-key-metrics {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
     text-align: center;
 }
 .metric-item {
@@ -96,6 +100,12 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
     display: block;
     font-size: 14px;
     color: var(--brand-body);
+}
+
+.profile-cta {
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    padding-top: 30px;
 }
 
 .card-toggle-bar {
@@ -153,6 +163,16 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
 .executive-quote-section p { font-size: 1.1em; margin: 0; }
 .executive-quote-section .author { display: block; text-align: right; font-weight: 600; margin-top: 15px; }
 
-.cta-button { display: inline-block; text-decoration: none; padding: 15px 30px; border-radius: 8px; font-weight: 600; font-size: 16px; color: #ffffff; transition: opacity 0.3s ease; }
+.cta-button { display: inline-block; text-decoration: none; padding: 12px 25px; border-radius: 8px; font-weight: 600; font-size: 15px; color: #ffffff; transition: opacity 0.3s ease; }
 .cta-button.btn-wijmo { background-color: var(--brand-wijmo); }
 .cta-button:hover { opacity: 0.9; }
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .card-top-grid {
+        grid-template-columns: 1fr;
+    }
+    .profile-key-metrics {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+}
