@@ -8,7 +8,60 @@
     <meta name="keywords" content="secure document generation, document automation, .net document api, pdf generation api, word automation, compliance, risk management">
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../styles/main.css">
+    
+    <style>
+        :root {
+            --brand-header: #474D57; --brand-light-gray: #f8f9fa; --brand-heading: #2D3748; --brand-body: #4A5568; --brand-js: #809B59; --brand-net: #D6564C; --brand-wijmo: #48A9C5; --brand-ds: #5A7E9E; --brand-arjs: #EA8939;
+            /* Page-specific accent color */
+            --accent-color: var(--brand-ds);
+        }
+        *, *::before, *::after { box-sizing: border-box; }
+        body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(--brand-light-gray); color: var(--brand-body); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .header { background-color: var(--brand-header); padding: 15px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { height: 32px; filter: brightness(0) invert(1); }
+        .main-nav { display: flex; gap: 30px; }
+        .nav-link { color: #ffffff; text-decoration: none; font-weight: 600; font-size: 14px; padding-bottom: 5px; border-bottom: 2px solid transparent; }
+        .nav-link:hover, .nav-link.active { border-bottom-color: #ffffff; }
+        .footer { background-color: var(--brand-header); color: #cccccc; text-align: center; padding: 30px 0; margin-top: 50px; font-size: 14px; }
+        .nav-toggle { display: none; }
+        .case-study-header { background-color: #ffffff; text-align: center; padding: 60px 20px; border-bottom: 1px solid #e2e8f0; }
+        .case-study-tag { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-color); }
+        .case-study-title { font-size: 42px; font-weight: 700; color: var(--brand-heading); margin: 10px auto 15px auto; max-width: 900px; }
+        .case-study-subtitle { font-size: 18px; max-width: 700px; margin: 0 auto; line-height: 1.6; }
+        .expandable-card { background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; margin: 50px auto; box-shadow: 0 5px 30px rgba(45, 55, 72, 0.08); overflow: hidden; }
+        .card-visible-content { padding: 40px; }
+        .solution-profile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 40px; }
+        .profile-item h4 { font-size: 16px; font-weight: 700; color: var(--brand-heading); margin: 0 0 10px 0; padding-bottom: 10px; border-bottom: 2px solid var(--accent-color); }
+        .profile-item p { font-size: 16px; line-height: 1.7; color: var(--brand-body); margin: 0; }
+        .results-heading { text-align: center; margin-bottom: 20px; }
+        .results-heading h4 { display: inline-block; position: relative; margin: 0; font-size: 18px; font-weight: 600; color: var(--brand-heading); }
+        .results-heading h4::before, .results-heading h4::after { content: ''; position: absolute; top: 50%; width: 50px; height: 1px; background-color: #e2e8f0; }
+        .results-heading h4::before { left: -60px; }
+        .results-heading h4::after { right: -60px; }
+        .results-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; text-align: center; }
+        .metric-item { background-color: #f8f9fa; padding: 20px; border-radius: 8px; border: 1px solid #e2e8f0; }
+        .metric-value { display: block; font-size: 36px; font-weight: 700; color: var(--accent-color); }
+        .metric-label { display: block; font-size: 14px; color: var(--brand-body); }
+        .profile-cta { text-align: center; margin-top: 40px; padding-top: 30px; border-top: 1px solid #e2e8f0; }
+        .profile-cta .cta-button { display: inline-block; text-decoration: none; padding: 12px 25px; border-radius: 8px; font-weight: 600; font-size: 15px; color: #ffffff; transition: opacity 0.3s ease; background-color: var(--accent-color); }
+        .profile-cta .cta-button:hover { opacity: 0.9; }
+        .card-toggle-bar { display: flex; justify-content: center; align-items: center; gap: 10px; background-color: #f8f9fa; border-top: 1px solid #e2e8f0; padding: 15px; cursor: pointer; transition: background-color 0.2s ease; }
+        .card-toggle-bar:hover { background-color: #f1f3f5; }
+        .toggle-text { font-weight: 600; color: var(--brand-heading); }
+        .toggle-icon { width: 16px; height: 16px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%232D3748' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E"); background-size: contain; background-repeat: no-repeat; transition: transform 0.3s ease-in-out; }
+        .card-collapsible-content { max-height: 0; overflow: hidden; transition: max-height 0.7s ease-in-out; }
+        .expandable-card.is-open .toggle-icon { transform: rotate(180deg); }
+        .expandable-card.is-open .card-collapsible-content { max-height: 5000px; }
+        .main-story { padding: 40px 40px 20px 40px; font-size: 17px; line-height: 1.8; }
+        .main-story h2 { font-size: 24px; font-weight: 700; color: var(--brand-heading); margin: 40px 0 20px 0; padding-bottom: 10px; border-bottom: 3px solid var(--accent-color); }
+        .main-story > div:first-of-type h2 { margin-top: 0; }
+        .main-story p, .main-story ul { margin-bottom: 20px; }
+        .executive-quote-section { background-color: #f8f9fa; border-left: 4px solid var(--accent-color); padding: 20px 30px; margin: 30px 0; border-radius: 4px; }
+        .executive-quote-section p { font-size: 1.1em; margin: 0; font-style: italic; }
+        .executive-quote-section .author { display: block; text-align: right; font-weight: 600; font-style: normal; margin-top: 15px; }
+    </style>
 </head>
 <body>
 
@@ -29,7 +82,7 @@
 
     <main>
         <section class="case-study-header">
-            <p class="case-study-tag" style="color: var(--brand-ds);">Insurance & Financial Services</p>
+            <p class="case-study-tag">Insurance & Financial Services</p>
             <h1 class="case-study-title">Major Insurer Achieves 100% Policy Compliance and 40% Cost Reduction.</h1>
             <p class="case-study-subtitle">By implementing Mescius Document Solutions, a leading insurance provider automated policy generation, ensuring compliance and achieving significant operational cost savings.</p>
         </section>
@@ -77,7 +130,7 @@
                     </div>
                     
                     <div class="profile-cta">
-                        <a href="../pricing/index.html" class="cta-button btn-ds">Explore Document Solutions</a>
+                        <a href="../pricing/index.html" class="cta-button">Explore Document Solutions</a>
                     </div>
                 </div>
 
@@ -100,7 +153,7 @@
                             <h2>The Solution: A Robust Server-Side Automation Engine</h2>
                             <p>The firm's leadership recognized the imperative to automate its document generation process. They required a secure, high-performance solution capable of programmatically generating documents on the server, ensuring data integrity and strict adherence to templates. After a comprehensive market evaluation, they strategically selected <strong>Mescius Document Solutions</strong>, a suite of .NET APIs for document manipulation. The implementation centered on transforming the manual workflow into a fully automated, server-side process, including centralized template management, automated data merging, and secure PDF generation and archival.</p>
                         </div>
-                         <div class="executive-quote-section" style="border-left-color: var(--brand-ds);">
+                         <div class="executive-quote-section">
                             <p>“Automating our policy generation with Mescius Document Solutions was a game-changer for our compliance and efficiency. We've not only eliminated human error and ensured 100% regulatory adherence, but we've also unlocked significant cost savings and faster service delivery for our clients. It's a strategic advantage.”</p>
                             <span class="author">Chief Operations Officer, European Insurance Group</span>
                         </div>
