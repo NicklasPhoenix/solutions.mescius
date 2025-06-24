@@ -31,7 +31,7 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
 .nav-toggle { display: none; }
 
 /* ===============================================
-   HOMEPAGE STYLES (Restored)
+   HOMEPAGE STYLES
    =============================================== */
 .hero {
     background-color: #ffffff;
@@ -72,6 +72,8 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 30px;
+    /* THIS IS THE FIX: Prevents cards from stretching to equal heights */
+    align-items: start;
 }
 .case-study-card {
     background-color: #ffffff;
@@ -147,9 +149,9 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
 /* ===============================================
    CASE STUDY DETAIL PAGE STYLES
    =============================================== */
+/* Styles for the detail pages remain unchanged */
 .case-study-header { background-color: #ffffff; text-align: center; padding: 60px 20px; border-bottom: 1px solid #e2e8f0; }
 .case-study-tag { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-color); }
-/* Re-using .case-study-title for detail pages */
 .case-study-header .case-study-title { font-size: 42px; max-width: 900px; margin: 10px auto 15px auto; }
 .case-study-subtitle { font-size: 18px; max-width: 700px; margin: 0 auto; line-height: 1.6; }
 .expandable-card { background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; margin: 50px auto; box-shadow: 0 5px 30px rgba(45, 55, 72, 0.08); overflow: hidden; }
