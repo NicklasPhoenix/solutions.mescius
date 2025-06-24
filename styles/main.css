@@ -72,8 +72,7 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 30px;
-    /* THIS IS THE FIX: Prevents cards from stretching to equal heights */
-    align-items: start;
+    /* align-items: start; --- This line is removed to allow cards to be equal height */
 }
 .case-study-card {
     background-color: #ffffff;
@@ -124,6 +123,9 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
     color: var(--brand-heading);
     margin-top: 0;
     margin-bottom: 10px;
+    line-height: 1.4; /* Set a consistent line height */
+    /* THIS IS THE FIX: Reserve space for 3 lines of text */
+    min-height: 84px; /* 20px font-size * 1.4 line-height * 3 lines */
 }
 .card-excerpt {
     font-size: 15px;
@@ -149,7 +151,6 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
 /* ===============================================
    CASE STUDY DETAIL PAGE STYLES
    =============================================== */
-/* Styles for the detail pages remain unchanged */
 .case-study-header { background-color: #ffffff; text-align: center; padding: 60px 20px; border-bottom: 1px solid #e2e8f0; }
 .case-study-tag { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-color); }
 .case-study-header .case-study-title { font-size: 42px; max-width: 900px; margin: 10px auto 15px auto; }
