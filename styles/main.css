@@ -72,7 +72,6 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 30px;
-    /* align-items: start; --- This line is removed to allow cards to be equal height */
 }
 .case-study-card {
     background-color: #ffffff;
@@ -123,9 +122,9 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
     color: var(--brand-heading);
     margin-top: 0;
     margin-bottom: 10px;
-    line-height: 1.4; /* Set a consistent line height */
-    /* THIS IS THE FIX: Reserve space for 3 lines of text */
-    min-height: 84px; /* 20px font-size * 1.4 line-height * 3 lines */
+    /* === THIS IS THE FIX === */
+    line-height: 1.4; 
+    min-height: 4.2em; /* 1.4em * 3 lines = space for 3 lines */
 }
 .card-excerpt {
     font-size: 15px;
