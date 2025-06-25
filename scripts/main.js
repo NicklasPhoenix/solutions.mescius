@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * Feature: Expandable Case Study Card
+     * Feature 2: Expandable Case Study Card (for detail pages)
      */
     const expandableCard = document.getElementById('expandable-card');
     const cardToggle = document.getElementById('card-toggle');
@@ -24,14 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (expandableCard && cardToggle) {
         cardToggle.addEventListener('click', () => {
             const isOpening = !expandableCard.classList.contains('is-open');
-            
-            // Toggle the master class on the parent card
             expandableCard.classList.toggle('is-open');
-
-            // Update ARIA for accessibility
             cardToggle.setAttribute('aria-expanded', isOpening);
-            
-            // Update button text
             const toggleText = cardToggle.querySelector('.toggle-text');
             if (isOpening) {
                 toggleText.textContent = 'Hide Full Case Study';
@@ -42,7 +36,54 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * Feature: Fade-in Sections on Scroll (from original file)
+     * NEW Feature 3: Case Study Grid Filtering (for main page)
+     */
+    const filterControls = document.getElementById('filter-controls');
+    const caseStudyCards = document.querySelectorAll('#case-study-grid .case-study-card');
+    const noResultsMessage = document.getElementById('no-results-message');
+
+    if (filterControls && caseStudyCards.length > 0) {
+        let currentFilters = {
+            industry: 'all',
+            product: 'all'
+        };
+
+        filterControls.addEventListener('click', (e) => {
+            const btn = e.target.closest('.filter-btn');
+            if (!btn) return;
+
+            const filterGroup = btn.dataset.filterGroup;
+            const filterValue = btn.dataset.filter;
+
+            currentFilters[filterGroup] = filterValue;
+
+            document.querySelectorAll(`.filter-btn[data-filter-group="${filterGroup}"]`).forEach(b => {
+                b.classList.remove('is-active');
+            });
+            btn.classList.add('is-active');
+
+            let visibleCount = 0;
+            caseStudyCards.forEach(card => {
+                const industryMatch = currentFilters.industry === 'all' || card.dataset.industry.includes(currentFilters.industry);
+                const productMatch = currentFilters.product === 'all' || card.dataset.product.includes(currentFilters.product);
+
+                if (industryMatch && productMatch) {
+                    card.classList.remove('is-hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('is-hidden');
+                }
+            });
+
+            if (noResultsMessage) {
+                noResultsMessage.style.display = visibleCount === 0 ? 'block' : 'none';
+            }
+        });
+    }
+
+
+    /**
+     * Feature 4: Fade-in Sections on Scroll
      */
     const fadeInSections = document.querySelectorAll('.fade-in-section');
     if (fadeInSections.length > 0) {
@@ -53,9 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     observer.unobserve(entry.target);
                 }
             });
-        }, {
-            threshold: 0.1
-        });
+        }, { threshold: 0.1 });
 
         fadeInSections.forEach(section => {
             observer.observe(section);
@@ -63,12 +102,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * Feature: Smooth Scrolling for Anchor Links (from original file)
+     * Feature 5: Smooth Scrolling for Anchor Links
      */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
 

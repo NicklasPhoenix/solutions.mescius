@@ -33,114 +33,80 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
 /* ===============================================
    HOMEPAGE STYLES
    =============================================== */
-.hero {
-    background-color: #ffffff;
-    text-align: center;
-    padding: 80px 20px;
-}
-.hero-title {
-    font-size: 48px;
-    font-weight: 700;
-    color: var(--brand-heading);
-    margin: 0;
-}
-.hero-subtitle {
-    font-size: 20px;
-    max-width: 700px;
-    margin: 15px auto 0 auto;
-    line-height: 1.6;
-}
-.case-study-section {
-    padding: 80px 0;
-}
-.section-header {
-    text-align: center;
-    margin-bottom: 50px;
-}
-.section-title {
-    font-size: 36px;
-    font-weight: 700;
-    color: var(--brand-heading);
-    margin: 0;
-}
-.section-subtitle {
-    font-size: 18px;
-    max-width: 600px;
-    margin: 10px auto 0 auto;
-}
-.case-study-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
-}
-.case-study-card {
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    overflow: hidden;
-    text-decoration: none;
-    color: inherit;
+.hero { background-color: #ffffff; text-align: center; padding: 80px 20px; }
+.hero-title { font-size: 48px; font-weight: 700; color: var(--brand-heading); margin: 0; }
+.hero-subtitle { font-size: 20px; max-width: 700px; margin: 15px auto 0 auto; line-height: 1.6; }
+.case-study-section { padding: 80px 0; }
+.section-header { text-align: center; margin-bottom: 50px; }
+.section-title { font-size: 36px; font-weight: 700; color: var(--brand-heading); margin: 0; }
+.section-subtitle { font-size: 18px; max-width: 600px; margin: 10px auto 0 auto; }
+
+/* ===============================================
+   Filter Controls
+   =============================================== */
+.filter-controls {
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.case-study-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-}
-.card-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    display: block;
-}
-.card-content {
+    gap: 15px;
+    background-color: #ffffff;
     padding: 20px;
-    flex-grow: 1;
+    border-radius: 8px;
+    margin-bottom: 40px;
+    border: 1px solid #e2e8f0;
+}
+.filter-group {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
 }
-.card-tag {
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    padding: 4px 8px;
-    border-radius: 4px;
-    display: inline-block;
-    margin-bottom: 10px;
-    align-self: flex-start;
+.filter-label {
+    font-weight: 600;
+    color: var(--brand-heading);
+    margin-right: 10px;
+    font-size: 14px;
 }
+.filter-btn {
+    padding: 8px 15px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    border: 1px solid #ced4da;
+    border-radius: 20px;
+    background-color: transparent;
+    color: var(--brand-body);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+.filter-btn:hover {
+    background-color: #e9ecef;
+    border-color: #adb5bd;
+}
+.filter-btn.is-active {
+    background-color: var(--brand-heading);
+    color: #ffffff;
+    border-color: var(--brand-heading);
+}
+
+/* ===============================================
+   Case Study Grid & Cards
+   =============================================== */
+.case-study-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; align-items: start; }
+.case-study-card { background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); overflow: hidden; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.case-study-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+.case-study-card.is-hidden { display: none; }
+.no-results-message { text-align: center; font-size: 18px; color: var(--brand-body); padding: 40px 20px; background-color: #ffffff; border-radius: 8px; }
+.card-image { width: 100%; height: 200px; object-fit: cover; display: block; }
+.card-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+.card-tag { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 8px; border-radius: 4px; display: inline-block; margin-bottom: 10px; align-self: flex-start; }
 .net-tag { background-color: var(--brand-net); color: #ffffff; }
 .wijmo-tag { background-color: var(--brand-wijmo); color: #ffffff; }
 .js-tag { background-color: var(--brand-js); color: #ffffff; }
 .ds-tag { background-color: var(--brand-ds); color: #ffffff; }
 .arjs-tag { background-color: var(--brand-arjs); color: #ffffff; }
-.card-title {
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--brand-heading);
-    margin-top: 0;
-    margin-bottom: 10px;
-    /* === THIS IS THE FIX === */
-    line-height: 1.4; 
-    min-height: 4.2em; /* 1.4em * 3 lines = space for 3 lines */
-}
-.card-excerpt {
-    font-size: 15px;
-    color: var(--brand-body);
-    margin-bottom: 20px;
-    flex-grow: 1;
-}
-.card-link {
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--brand-heading);
-    text-decoration: none;
-    display: inline-block;
-    margin-top: auto;
-    transition: color 0.3s ease;
-}
+.card-title { font-size: 20px; font-weight: 600; color: var(--brand-heading); margin-top: 0; margin-bottom: 10px; line-height: 1.4; min-height: 4.2em; }
+.card-excerpt { font-size: 15px; color: var(--brand-body); margin-bottom: 20px; flex-grow: 1; }
+.card-link { font-size: 15px; font-weight: 600; color: var(--brand-heading); text-decoration: none; display: inline-block; margin-top: auto; transition: color 0.3s ease; }
 .case-study-card:has(.net-tag) .card-link:hover { color: var(--brand-net); }
 .case-study-card:has(.wijmo-tag) .card-link:hover { color: var(--brand-wijmo); }
 .case-study-card:has(.js-tag) .card-link:hover { color: var(--brand-js); }
