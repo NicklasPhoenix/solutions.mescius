@@ -6,124 +6,6 @@
     <title>Promotions | Mescius Europe</title>
     <meta name="description" content="Get the best deals on Mescius developer components. Explore our limited-time promotions on .NET and JavaScript bundles to save on your next project.">
     <link rel="stylesheet" href="../styles/main.css">
-    <style>
-        /* Additional page-specific styles */
-        body {
-            background-color: var(--brand-light-gray);
-        }
-        .promo-section {
-            padding: 80px 0;
-        }
-        .promo-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .promo-card {
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-            border: 1px solid #e2e8f0;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-        }
-        .promo-card:hover {
-            transform: translateY(-5px);
-        }
-        .promo-highlight {
-            background-color: var(--brand-net);
-            color: #ffffff;
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: center;
-            width: 300px;
-            min-width: 300px;
-        }
-        .promo-save-title {
-            font-size: 20px;
-            font-weight: 600;
-            opacity: 0.8;
-            margin: 0;
-        }
-        .promo-save-amount {
-            font-size: 64px;
-            font-weight: 700;
-            margin: 10px 0;
-            line-height: 1.1;
-        }
-        .promo-save-percentage {
-            font-size: 22px;
-            font-weight: 600;
-            background-color: rgba(255,255,255,0.2);
-            padding: 5px 10px;
-            border-radius: 5px;
-            display: inline-block;
-        }
-        .promo-details {
-            padding: 30px 40px;
-            flex-grow: 1;
-        }
-        .promo-tag {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--brand-body);
-            margin-bottom: 10px;
-        }
-        .promo-title {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--brand-heading);
-            margin: 0 0 10px 0;
-        }
-        .promo-description {
-            font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 25px;
-        }
-        .promo-cta {
-            display: inline-block;
-            background-color: var(--brand-header);
-            color: #ffffff;
-            text-decoration: none;
-            padding: 12px 25px;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: background-color 0.3s ease;
-        }
-        .promo-cta:hover {
-            background-color: #2D3748;
-        }
-        .promo-cta.highlight-btn {
-            background-color: var(--brand-net);
-        }
-        .promo-cta.highlight-btn:hover {
-            background-color: #b84a41;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .promo-card {
-                flex-direction: column;
-            }
-            .promo-highlight {
-                width: 100%;
-                min-height: auto;
-                padding: 30px 20px;
-            }
-            .promo-save-amount {
-                font-size: 54px;
-            }
-            .promo-details {
-                text-align: center;
-            }
-        }
-    </style>
 </head>
 <body>
 
@@ -142,7 +24,7 @@
     <section class="hero">
         <div class="container">
             <h1 class="hero-title">Unlock Incredible Value</h1>
-            <p class="hero-subtitle">Maximize your budget with our specially priced bundles. These suites are designed to give your team the comprehensive toolsets they need at a fraction of the cost.</p>
+            <p class="hero-subtitle">Maximize your budget with our special offers and component bundles. These promotions are designed to give your team the tools they need to succeed.</p>
         </div>
     </section>
 
@@ -151,44 +33,59 @@
             <div class="promo-grid">
 
                 <div class="promo-card">
-                    <div class="promo-highlight">
-                        <p class="promo-save-title">SAVE</p>
-                        <h3 class="promo-save-amount">$10,284</h3>
-                        <p class="promo-save-percentage">Over 67% Off</p>
+                    <div class="promo-highlight" style="background-color: var(--brand-net);">
+                        <p class="promo-save-title">LIMITED TIME</p>
+                        <h3 class="promo-save-amount">40% OFF</h3>
+                        <p class="promo-save-percentage">To Modernize Your Apps</p>
                     </div>
                     <div class="promo-details">
-                        <p class="promo-tag">FOR ENTERPRISE TEAMS</p>
-                        <h2 class="promo-title">Enterprise .NET Solutions: Power Your Transformation.</h2>
-                        <p class="promo-description">The ultimate all-in-one suite for large teams. Unify complex desktop and web applications, accelerate large-scale modernization projects, and ensure mission-critical reliability with full source code and enterprise support.</p>
-                        <a href="../pricing/index.html" class="promo-cta highlight-btn">View Offer Details</a>
+                        <p class="promo-tag">FOR EXISTING APPLICATIONS</p>
+                        <h2 class="promo-title">Legacy Modernization Offer</h2>
+                        <p class="promo-description">Stuck with a slow, outdated desktop or web application? Get 40% off our .NET or JavaScript suites to build a modern, high-performance, and secure replacement.</p>
+                        <ul class="promo-benefits">
+                            <li>Reduce long-term maintenance costs</li>
+                            <li>Enhance application security & compliance</li>
+                            <li>Improve user satisfaction and productivity</li>
+                        </ul>
+                        <a href="../pricing/index.html" class="promo-cta highlight-btn">Claim 40% Off</a>
                     </div>
                 </div>
 
                 <div class="promo-card">
-                    <div class="promo-highlight" style="background-color: #5A7E9E;">
-                        <p class="promo-save-title">SAVE</p>
-                        <h3 class="promo-save-amount">$7,984</h3>
-                        <p class="promo-save-percentage">Over 76% Off</p>
+                    <div class="promo-highlight" style="background-color: var(--brand-ds);">
+                        <p class="promo-save-title">SWITCH & SAVE</p>
+                        <h3 class="promo-save-amount">€500</h3>
+                        <p class="promo-save-percentage">Trade-In Credit</p>
                     </div>
                     <div class="promo-details">
-                        <p class="promo-tag">FOR SMALL & MEDIUM BUSINESS</p>
-                        <h2 class="promo-title">.NET Professional: Modernize & Optimize.</h2>
-                        <p class="promo-description">The complete package for professional developers. Modernize legacy applications, improve data accuracy, and streamline reporting processes across all .NET platforms with a comprehensive toolset.</p>
-                        <a href="../pricing/index.html" class="promo-cta" style="background-color: #5A7E9E;">View Offer Details</a>
+                        <p class="promo-tag">FOR NEW CUSTOMERS</p>
+                        <h2 class="promo-title">Competitive Upgrade Program</h2>
+                        <p class="promo-description">Currently using a different component vendor? Switch to Mescius and receive a €500 credit towards the purchase of any of our professional suites.</p>
+                         <ul class="promo-benefits">
+                            <li>Access our legendary performance and reliability</li>
+                            <li>Benefit from our dedicated expert support</li>
+                            <li>Future-proof your applications with a trusted partner</li>
+                        </ul>
+                        <a href="#" class="promo-cta" style="background-color: var(--brand-ds);">Request Upgrade Offer</a>
                     </div>
                 </div>
 
                 <div class="promo-card">
                     <div class="promo-highlight" style="background-color: var(--brand-js);">
-                        <p class="promo-save-title">SAVE</p>
-                        <h3 class="promo-save-amount">$2,190</h3>
-                        <p class="promo-save-percentage">50% Off</p>
+                        <p class="promo-save-title">NEW PROJECT</p>
+                        <h3 class="promo-save-amount">Free</h3>
+                        <p class="promo-save-percentage">With Team Pack Purchase</p>
                     </div>
                     <div class="promo-details">
-                        <p class="promo-tag">FOR MODERN .NET APPS</p>
-                        <h2 class="promo-title">Blazor Hybrid: Native Power, Web Speed.</h2>
-                        <p class="promo-description">Leverage your web skills to build high-performance, cross-platform desktop and mobile applications with native capabilities and a unified user experience.</p>
-                        <a href="../pricing/index.html" class="promo-cta" style="background-color: var(--brand-js);">View Offer Details</a>
+                        <p class="promo-tag">FOR TEAMS</p>
+                        <h2 class="promo-title">New Project Starter Pack</h2>
+                        <p class="promo-description">Starting a new project? Purchase any Team Pack (5+ developers) and receive a complimentary 4-hour "Jumpstart" online training session for your team.</p>
+                         <ul class="promo-benefits">
+                            <li>Accelerate developer onboarding and adoption</li>
+                            <li>Ensure best-practice implementation from day one</li>
+                            <li>Maximize your team's productivity and ROI</li>
+                        </ul>
+                        <a href="../pricing/index.html" class="promo-cta" style="background-color: var(--brand-js);">Learn More</a>
                     </div>
                 </div>
 

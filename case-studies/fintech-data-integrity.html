@@ -61,6 +61,21 @@
         .executive-quote-section { background-color: #f8f9fa; border-left: 4px solid var(--accent-color); padding: 20px 30px; margin: 30px 0; border-radius: 4px; }
         .executive-quote-section p { font-size: 1.1em; margin: 0; font-style: italic; }
         .executive-quote-section .author { display: block; text-align: right; font-weight: 600; font-style: normal; margin-top: 15px; }
+        .recommended-bundle-section { padding: 60px 0 0 0; }
+        .bundle-card { background-color: var(--brand-header); color: #ffffff; border-radius: 12px; padding: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; align-items: center; border-top: 5px solid var(--accent-color); }
+        .bundle-header h3 { font-size: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; margin: 0 0 5px 0; }
+        .bundle-header h2 { font-size: 28px; font-weight: 700; margin: 0; line-height: 1.2; }
+        .bundle-price { text-align: right; }
+        .bundle-price .price { font-size: 40px; font-weight: 700; color: #ffffff; }
+        .bundle-price .term { font-size: 15px; opacity: 0.7; display: block; }
+        .bundle-inclusions { list-style: none; padding: 0; margin: 0; }
+        .bundle-inclusions li { padding: 4px 0; display: flex; align-items: center; gap: 10px; }
+        .bundle-inclusions li::before { content: '✓'; color: var(--brand-js); }
+        .bundle-cta { text-align: right; }
+        .bundle-cta .cta-button { display: inline-block; background-color: #ffffff; color: var(--brand-header); text-decoration: none; padding: 15px 35px; border-radius: 8px; font-weight: 700; transition: all 0.3s ease; }
+        .bundle-cta .cta-button:hover { background-color: var(--brand-light-gray); transform: translateY(-2px); }
+        @media (max-width: 992px) { .bundle-card, .bundle-price, .bundle-cta { text-align: center; } }
+        @media (max-width: 768px) { .case-study-title { font-size: 32px; } }
     </style>
 </head>
 <body>
@@ -161,6 +176,29 @@
                 </div>
             </div>
         </div>
+        
+        <section class="recommended-bundle-section">
+            <div class="container">
+                <div class="bundle-card">
+                    <div class="bundle-header">
+                        <h3>Recommended Solution</h3>
+                        <h2>SpreadJS + Documents</h2>
+                    </div>
+                    <ul class="bundle-inclusions">
+                        <li>✓ SpreadJS</li>
+                        <li>✓ Documents for Excel (JS)</li>
+                        <li>✓ For Web Excel Apps & Reporting</li>
+                    </ul>
+                    <div class="bundle-price">
+                        <span class="price">€1,203</span>
+                        <span class="term">per developer / year</span>
+                    </div>
+                    <div class="bundle-cta">
+                        <a href="../pricing/index.html" class="cta-button">View Pricing</a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="footer">
