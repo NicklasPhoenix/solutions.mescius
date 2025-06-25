@@ -33,7 +33,7 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
 /* ===============================================
    HOMEPAGE STYLES
    =============================================== */
-.hero { background-color: #ffffff; text-align: center; padding: 80px 20px; }
+.hero { background-color: #ffffff; text-align: center; padding: 80px 20px;}
 .hero-title { font-size: 48px; font-weight: 700; color: var(--brand-heading); margin: 0; }
 .hero-subtitle { font-size: 20px; max-width: 700px; margin: 15px auto 0 auto; line-height: 1.6; }
 .case-study-section { padding: 80px 0; }
@@ -41,9 +41,7 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
 .section-title { font-size: 36px; font-weight: 700; color: var(--brand-heading); margin: 0; }
 .section-subtitle { font-size: 18px; max-width: 600px; margin: 10px auto 0 auto; }
 
-/* ===============================================
-   Filter Controls
-   =============================================== */
+/* Filter Controls */
 .filter-controls {
     display: flex;
     flex-direction: column;
@@ -88,9 +86,7 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
     border-color: var(--brand-heading);
 }
 
-/* ===============================================
-   Case Study Grid & Cards
-   =============================================== */
+/* Case Study Grid & Cards on Homepage */
 .case-study-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; align-items: start; }
 .case-study-card { background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); overflow: hidden; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease; }
 .case-study-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
@@ -98,7 +94,7 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
 .no-results-message { text-align: center; font-size: 18px; color: var(--brand-body); padding: 40px 20px; background-color: #ffffff; border-radius: 8px; }
 .card-image { width: 100%; height: 200px; object-fit: cover; display: block; }
 .card-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
-.card-tag { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 8px; border-radius: 4px; display: inline-block; margin-bottom: 10px; align-self: flex-start; }
+.case-study-card .card-tag { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 8px; border-radius: 4px; display: inline-block; margin-bottom: 10px; align-self: flex-start; }
 .net-tag { background-color: var(--brand-net); color: #ffffff; }
 .wijmo-tag { background-color: var(--brand-wijmo); color: #ffffff; }
 .js-tag { background-color: var(--brand-js); color: #ffffff; }
@@ -152,8 +148,46 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
 .executive-quote-section p { font-size: 1.1em; margin: 0; font-style: italic; }
 .executive-quote-section .author { display: block; text-align: right; font-weight: 600; font-style: normal; margin-top: 15px; }
 
+/* ===============================================
+   PRICING PAGE STYLES
+   =============================================== */
+.pricing-section { padding: 80px 0; }
+.pricing-section > .container > .section-header:not(:first-of-type) {
+    margin-top: 80px;
+    padding-top: 50px;
+    border-top: 1px solid #e2e8f0;
+}
+.pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 40px; align-items: stretch; }
+.pricing-card { background-color: #ffffff; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.06); border: 1px solid #e2e8f0; display: flex; flex-direction: column; text-align: center; position: relative; padding: 40px 30px 30px 30px; }
+.pricing-card.highlight { border-color: var(--brand-net); border-width: 3px; }
+.pricing-card.highlight-blue { border-color: var(--brand-ds); border-width: 3px; }
+.pricing-card .card-tag { font-size: 12px; font-weight: 700; padding: 6px 18px; border-radius: 20px; color: #ffffff; position: absolute; top: -18px; left: 50%; transform: translateX(-50%); white-space: nowrap; background-color: var(--brand-body); }
+.pricing-card .js-tag { background-color: var(--brand-js); }
+.pricing-card .net-tag { background-color: var(--brand-net); }
+.pricing-card .ds-tag { background-color: var(--brand-ds); }
+.pricing-card .card-title { font-size: 24px; min-height: 0; line-height: 1.2; }
+.card-subtitle { font-size: 15px; color: var(--brand-body); margin: 8px 0 25px 0; min-height: 45px; }
+.price { font-size: 44px; font-weight: 700; color: var(--brand-heading); line-height: 1; }
+.price-term { font-size: 16px; font-weight: 500; color: var(--brand-body); display: block; margin-top: 5px; }
+.savings-badge { display: inline-block; background-color: #ddfbe8; color: #2f855a; font-weight: 700; padding: 8px 18px; border-radius: 6px; margin-top: 20px; font-size: 15px; }
+.inclusions-list { list-style: none; padding: 0; margin: 30px 0; text-align: left; font-size: 15px; color: var(--brand-body); flex-grow: 1; border-top: 1px solid #e2e8f0; }
+.inclusions-list li { padding: 10px 0; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #f7fafc; }
+.inclusions-list li:not(.total-value):not(.notes):not(.sub-item)::before { content: '✓'; color: var(--brand-js); font-weight: 700; font-size: 16px; }
+.inclusions-list .sub-item { padding-left: 26px; font-style: italic;}
+.inclusions-list .sub-item::before { display: none; }
+.inclusions-list .total-value { justify-content: flex-end; font-style: italic; color: #718096; border-top: 1px solid #e2e8f0; padding-top: 15px; margin-top: 10px; font-weight: 600; }
+.inclusions-list .total-value::before { display: none; }
+.inclusions-list .total-value del { font-weight: normal; }
+.inclusions-list li span:last-child:not(:first-child) { margin-left: auto; font-weight: 600; }
+.pricing-card .cta-button { display: inline-block; background-color: var(--brand-header); color: #ffffff; text-decoration: none; padding: 15px 30px; border-radius: 8px; font-weight: 600; transition: background-color 0.3s ease; width: 100%; }
+.pricing-card .cta-button:hover { background-color: #2D3748; }
+.pricing-card .cta-button.highlight-btn { background-color: var(--brand-net); }
+.pricing-card .cta-button.highlight-btn-blue { background-color: var(--brand-ds); }
+.notes { font-size: 13px; color: #718096; margin-top: 20px; background-color: #f8f9fa; padding: 10px; border-radius: 5px; text-align: left; border: none !important; }
+.notes::before { display: none; }
+
 /* Responsive Adjustments */
 @media (max-width: 768px) {
-    .case-study-grid { grid-template-columns: 1fr; }
+    .case-study-grid, .pricing-grid { grid-template-columns: 1fr; }
     .hero-title, .case-study-header .case-study-title { font-size: 32px; }
 }
