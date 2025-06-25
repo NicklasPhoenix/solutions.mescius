@@ -3,17 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pricing | Mescius Europe</title>
-    <meta name="description" content="Explore developer license pricing for Mescius .NET and JavaScript components, including spreadsheets, reporting, and UI controls.">
+    <title>Comprehensive Pricing | Mescius</title>
+    <meta name="description" content="Detailed developer license pricing for Mescius .NET and JavaScript components and bundles, including commercial, non-commercial, and renewal options.">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --brand-header: #474D57; --brand-light-gray: #f8f9fa; --brand-heading: #2D3748; --brand-body: #4A5568; --brand-js: #809B59; --brand-net: #D6564C; --brand-wijmo: #48A9C5; --brand-ds: #5A7E9E; --brand-arjs: #EA8939;
-            --accent-color: var(--brand-header);
+            --brand-header: #474D57; --brand-light-gray: #f8f9fa; --brand-heading: #2D3748; --brand-body: #4A5568;
+            /* Product Specific Colors */
+            --brand-c1: #D6564C;      /* ComponentOne (Red) */
+            --brand-spread: #809B59;  /* SpreadJS & Spread.NET (Green) */
+            --brand-ar: #EA8939;      /* ActiveReportsJS & ActiveReports.NET (Orange) */
+            --brand-wijmo: #48A9C5;   /* Wijmo (Blue) */
+            --brand-ds: #5A7E9E;      /* Document Solutions (Blue-Grey) */
         }
         *, *::before, *::after { box-sizing: border-box; }
-        body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(--brand-light-gray); color: var(--brand-body); }
+        body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(--brand-light-gray); color: var(--brand-body); line-height: 1.6; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         .header { background-color: var(--brand-header); padding: 15px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
         .header-content { display: flex; justify-content: space-between; align-items: center; }
@@ -22,89 +27,64 @@
         .nav-link { color: #ffffff; text-decoration: none; font-weight: 600; font-size: 14px; padding-bottom: 5px; border-bottom: 2px solid transparent; }
         .nav-link:hover, .nav-link.active { border-bottom-color: #ffffff; }
         .footer { background-color: var(--brand-header); color: #cccccc; text-align: center; padding: 30px 0; margin-top: 50px; font-size: 14px; }
-        .nav-toggle { display: none; }
-
-        .hero { background-color: #ffffff; text-align: center; padding: 80px 20px;}
-        .hero-title { font-size: 48px; font-weight: 700; color: var(--brand-heading); margin: 0; }
-        .hero-subtitle { font-size: 20px; max-width: 700px; margin: 15px auto 0 auto; line-height: 1.6; }
         
-        .pricing-section { padding: 80px 0; }
+        .pricing-section { padding: 60px 0; }
         .section-header { text-align: center; margin-bottom: 50px; }
-        .section-header:not(:first-of-type) { margin-top: 60px; }
         .section-title { font-size: 36px; font-weight: 700; color: var(--brand-heading); margin: 0; }
-        .section-subtitle { font-size: 18px; max-width: 600px; margin: 10px auto 0 auto; }
+        .section-subtitle { font-size: 18px; max-width: 800px; margin: 10px auto 0 auto; }
 
-        .simple-pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-        .product-card {
-            background-color: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 30px 25px;
-            text-align: center;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-        }
-        .product-card.is-hidden {
-            display: none;
-        }
-        .product-card h3 {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--brand-heading);
-            margin: 0 0 10px 0;
-        }
-        .product-card p {
-            font-size: 15px;
-            color: var(--brand-body);
-            flex-grow: 1;
-            margin: 0 0 25px 0;
-            line-height: 1.6;
-        }
-        .product-price {
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--brand-heading);
-            margin-bottom: 25px;
-        }
-        .product-price .price-term {
-            font-size: 14px;
-            font-weight: 500;
-            display: block;
-            line-height: 1;
-        }
-        .product-card .cta-button {
-            display: block;
-            width: 100%;
-            background-color: var(--brand-header);
-            color: #ffffff;
-            text-decoration: none;
-            padding: 12px 25px;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: background-color 0.3s ease;
-        }
-        .product-card .cta-button:hover {
-            background-color: #2D3748;
-        }
         .filter-controls { display: flex; justify-content: center; margin-bottom: 40px; }
         .filter-group { display: flex; background-color: #e9ecef; border-radius: 30px; padding: 5px; }
         .filter-btn { padding: 10px 25px; font-size: 14px; font-weight: 600; font-family: 'Montserrat', sans-serif; border: none; border-radius: 25px; background-color: transparent; color: var(--brand-body); cursor: pointer; transition: all 0.3s ease; }
         .filter-btn.is-active { background-color: #ffffff; color: var(--brand-heading); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+
+        .product-pricing-section {
+            background-color: #ffffff; border-radius: 12px; margin-bottom: 40px; border-top: 4px solid var(--accent-color);
+            overflow: hidden; box-shadow: 0 4px 25px rgba(0,0,0,0.06); transition: all 0.3s ease-in-out;
+        }
+        .product-pricing-section.is-hidden { display: none; }
+        .product-pricing-section.product-c1 { --accent-color: var(--brand-c1); }
+        .product-pricing-section.product-spread { --accent-color: var(--brand-spread); }
+        .product-pricing-section.product-ar { --accent-color: var(--brand-ar); }
+        .product-pricing-section.product-wijmo { --accent-color: var(--brand-wijmo); }
+        .product-pricing-section.product-ds { --accent-color: var(--brand-ds); }
+        
+        .product-header { padding: 25px 30px; border-bottom: 1px solid #e2e8f0; }
+        .product-header h2 { font-size: 28px; color: var(--brand-heading); margin: 0; }
+        
+        .product-tabs { display: flex; flex-wrap: wrap; gap: 10px; padding: 15px 30px; border-bottom: 1px solid #e2e8f0; }
+        .tab-btn { padding: 8px 18px; font-size: 14px; font-weight: 600; border: 1px solid #dee2e6; border-radius: 20px; background-color: #f8f9fa; color: var(--brand-body); cursor: pointer; transition: all 0.2s ease; }
+        .tab-btn:hover { background-color: #e9ecef; }
+        .tab-btn.is-active { background-color: var(--accent-color); color: #ffffff; border-color: var(--accent-color); }
+        
+        .tab-content { padding: 30px; }
+        .tab-pane { display: none; }
+        .tab-pane.is-active { display: block; animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .tab-pane h3 { font-size: 22px; margin-top: 0; margin-bottom: 25px; color: var(--accent-color); font-weight: 600; }
+        .tab-pane h4 { font-size: 18px; font-weight: 600; margin-top: 30px; margin-bottom: 15px; padding-bottom: 5px; border-bottom: 2px solid #e9ecef;}
+        
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 25px; }
+        .price-card {
+            background: #ffffff; border: 1px solid #e9ecef; border-radius: 8px; padding: 25px;
+            display: flex; flex-direction: column; transition: all 0.3s ease;
+        }
+        .price-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.07); }
+        .price-card h4 { margin: 0 0 10px 0; font-size: 18px; color: var(--brand-heading); font-weight: 600; padding: 0; border: none; }
+        .price-card .price { font-size: 30px; font-weight: 700; color: var(--brand-heading); margin-bottom: 2px; }
+        .price-card .price-term { font-size: 13px; color: #718096; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .price-card ul { list-style: none; padding-left: 0; margin: 0 0 25px 0; font-size: 14px; line-height: 1.7; flex-grow: 1; color: var(--brand-body); }
+        .price-card li { margin-bottom: 8px; padding-left: 20px; position: relative; }
+        .price-card li::before { content: '✓'; color: var(--accent-color); position: absolute; left: 0; font-weight: 700; }
+        .price-card .cta-button { display: block; text-align: center; background-color: #474D57; color: #ffffff; text-decoration: none; padding: 12px 20px; border-radius: 8px; font-weight: 600; margin-top: auto; transition: background-color 0.2s ease-in-out; }
+        .price-card .cta-button:hover { background-color: var(--accent-color); }
+        .promo-badge { background-color: var(--accent-color); color: #fff; font-weight: 600; padding: 5px 12px; border-radius: 6px; font-size: 13px; display: inline-block; margin-top: 15px; }
     </style>
 </head>
 <body>
     <header class="header">
         <div class="container header-content">
-            <a href="../index.html"><img src="https://cdn.mescius.io/umb/media/pujnxfci/mescuis-logo-horiz.svg" alt="Mescius Europe Logo" class="logo"></a>
+            <a href="#"><img src="https://cdn.mescius.io/umb/media/pujnxfci/mescuis-logo-horiz.svg" alt="Mescius Logo" class="logo"></a>
             <nav class="main-nav">
                 <a href="../index.html#case-studies" class="nav-link">Case Studies</a>
                 <a href="../pricing/index.html" class="nav-link active">Pricing</a>
@@ -112,9 +92,6 @@
                 <a href="../promotions/index.html" class="nav-link">Promotions</a>
                 <a href="../benchmarks/index.html" class="nav-link">Benchmarks</a>
             </nav>
-            <div class="nav-toggle" id="nav-toggle">
-                <span></span>
-            </div>
         </div>
     </header>
 
@@ -122,76 +99,310 @@
         <div class="container">
             <div class="section-header">
                 <h1 class="section-title">Developer License Pricing</h1>
-                <p class="section-subtitle">Standard annual licenses for individual developers. For bundles, teams, or distribution pricing, please see our Bundles page.</p>
+                <p class="section-subtitle">A comprehensive breakdown of our licensing options. Find the right plan for your needs, from individual developers to enterprise teams.</p>
             </div>
 
             <div class="filter-controls" id="pricing-filter-controls">
-                <div class="filter-group">
-                    <button class="filter-btn is-active" data-filter="all">All Platforms</button>
-                    <button class="filter-btn" data-filter="net">.NET</button>
-                    <button class="filter-btn" data-filter="js">JavaScript</button>
-                </div>
+                <div class="filter-group"><button class="filter-btn is-active" data-filter="all">All Products</button><button class="filter-btn" data-filter="net">.NET</button><button class="filter-btn" data-filter="js">JavaScript</button></div>
             </div>
 
-            <div class="simple-pricing-grid" id="product-grid">
-                <div class="product-card" data-platform="net">
-                    <h3>ComponentOne Studio</h3>
-                    <p>The complete toolkit of UI controls for all .NET platforms (WinForms, WPF, Blazor, etc.).</p>
-                    <div class="product-price">€1,385 <span class="price-term">/ dev / year</span></div>
-                    <a href="#" class="cta-button">View Details</a>
+            <div id="product-grid">
+                <div class="product-pricing-section product-c1" data-platform="net">
+                    <div class="product-header"><h2>ComponentOne</h2></div>
+                    <div class="product-tabs"><button class="tab-btn is-active" data-tab="c1-new">New Licenses</button><button class="tab-btn" data-tab="c1-renew">Renewals</button></div>
+                    <div class="tab-content">
+                        <div class="tab-pane is-active" id="c1-new">
+                            <h3>New License Pricing</h3>
+                            <div class="pricing-grid">
+                                <div class="price-card">
+                                    <h4>Studio Enterprise</h4>
+                                    <div class="price">$1,495</div>
+                                    <p class="price-term">per Developer</p>
+                                    <ul>
+                                        <li>All .NET platforms</li>
+                                        <li>Data Service components</li>
+                                        <li>Wijmo Enterprise</li>
+                                    </ul>
+                                    <a href="#" class="cta-button">Add to Cart</a>
+                                    <div class="promo-badge">Save Up To 30%: JUNE2025</div>
+                                </div>
+                                <div class="price-card">
+                                    <h4>WinForms Data Services</h4>
+                                    <div class="price">$1,295</div>
+                                    <p class="price-term">per Developer</p>
+                                    <ul>
+                                        <li>120+ WinForms controls</li>
+                                        <li>.NET Data Connectors</li>
+                                    </ul>
+                                    <a href="#" class="cta-button">Add to Cart</a>
+                                </div>
+                                <div class="price-card">
+                                    <h4>ActiveX Edition</h4>
+                                    <div class="price">$1,495</div>
+                                    <p class="price-term">per Developer</p>
+                                    <ul>
+                                        <li>Controls for legacy applications</li>
+                                    </ul>
+                                    <a href="#" class="cta-button">Add to Cart</a>
+                                </div>
+                                <div class="price-card">
+                                    <h4>WinForms Edition</h4>
+                                    <div class="price">$995</div>
+                                    <p class="price-term">per Developer</p>
+                                    <a href="#" class="cta-button">Add to Cart</a>
+                                </div>
+                                <div class="price-card">
+                                    <h4>WPF Edition</h4>
+                                    <div class="price">$995</div>
+                                    <p class="price-term">per Developer</p>
+                                    <a href="#" class="cta-button">Add to Cart</a>
+                                </div>
+                                 <div class="price-card">
+                                    <h4>WinUI & MAUI Edition</h4>
+                                    <div class="price">$995</div>
+                                    <p class="price-term">per Developer</p>
+                                    <a href="#" class="cta-button">Add to Cart</a>
+                                </div>
+                                <div class="price-card">
+                                    <h4>ASP.NET MVC Edition</h4>
+                                    <div class="price">$895</div>
+                                    <p class="price-term">per Developer</p>
+                                    <a href="#" class="cta-button">Add to Cart</a>
+                                </div>
+                                <div class="price-card">
+                                    <h4>ASP.NET Web Forms</h4>
+                                    <div class="price">$895</div>
+                                    <p class="price-term">per Developer</p>
+                                    <a href="#" class="cta-button">Add to Cart</a>
+                                </div>
+                                <div class="price-card">
+                                    <h4>Data Services Edition</h4>
+                                    <div class="price">$895</div>
+                                    <p class="price-term">per Developer</p>
+                                    <a href="#" class="cta-button">Add to Cart</a>
+                                </div>
+                                <div class="price-card">
+                                    <h4>Blazor Edition</h4>
+                                    <div class="price">$495</div>
+                                    <p class="price-term">per Developer</p>
+                                    <a href="#" class="cta-button">Add to Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="c1-renew">
+                            <h3>Renewal Pricing (Saves up to 40%)</h3>
+                            <table class="pricing-table" style="width: 100%; text-align: left; border-collapse: collapse;">
+                                <thead style="background-color: #f8f9fa;">
+                                    <tr>
+                                        <th style="padding: 12px;">Product Edition</th>
+                                        <th style="padding: 12px;">With Standard Support</th>
+                                        <th style="padding: 12px;">With Platinum Support</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom: 1px solid #e9ecef;">
+                                        <td style="padding: 12px;">Studio Enterprise</td>
+                                        <td style="padding: 12px;">$895</td>
+                                        <td style="padding: 12px;">$1,295</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid #e9ecef;">
+                                        <td style="padding: 12px;">WinForms Data Services Edition</td>
+                                        <td style="padding: 12px;">$775</td>
+                                        <td style="padding: 12px;">$1,175</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid #e9ecef;">
+                                        <td style="padding: 12px;">WinForms, WPF, WinUI & MAUI</td>
+                                        <td style="padding: 12px;">$595</td>
+                                        <td style="padding: 12px;">$995</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid #e9ecef;">
+                                        <td style="padding: 12px;">ASP.NET MVC & Web Forms</td>
+                                        <td style="padding: 12px;">$535</td>
+                                        <td style="padding: 12px;">$935</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid #e9ecef;">
+                                        <td style="padding: 12px;">Blazor Edition</td>
+                                        <td style="padding: 12px;">$295</td>
+                                        <td style="padding: 12px;">$695</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
-                <div class="product-card" data-platform="net">
-                    <h3>Spread.NET</h3>
-                    <p>Add powerful, Excel-like spreadsheet functionality to your .NET desktop applications.</p>
-                    <div class="product-price">€1,499 <span class="price-term">/ dev / year</span></div>
-                    <a href="#" class="cta-button">View Details</a>
+
+                <div class="product-pricing-section product-spread" data-platform="js">
+                    <div class="product-header"><h2>SpreadJS</h2></div>
+                    <div class="product-tabs">
+                        <button class="tab-btn is-active" data-tab="sjs-noncom">Non-Commercial</button>
+                        <button class="tab-btn" data-tab="sjs-com">Commercial</button>
+                        <button class="tab-btn" data-tab="sjs-renew">Renewals</button>
+                        <button class="tab-btn" data-tab="sjs-perp">Perpetual</button>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane" id="sjs-com">
+                            <h3>Commercial & SaaS Licensing</h3>
+                            <div class="pricing-grid">
+                                <div class="price-card">
+                                    <h4>Developer License</h4>
+                                    <div class="price">$999</div><p class="price-term">per Developer</p>
+                                    <ul><li>1-Year Support</li><li>1 Designer App License</li><li>90-day test deployment</li></ul>
+                                    <a href="#" class="cta-button">Contact Sales</a>
+                                </div>
+                                <div class="price-card">
+                                    <h4>Limited Annual Deployment</h4>
+                                    <div class="price">$12,499</div><p class="price-term">per Single Domain</p>
+                                    <ul><li>Single Domain or 5 Hostnames</li><li>1 Mobile/Desktop App</li><li>Annual subscription</li></ul>
+                                    <a href="#" class="cta-button">Contact Sales</a>
+                                </div>
+                                <div class="price-card">
+                                    <h4>Unlimited Annual Deployment</h4>
+                                    <div class="price">Contact Us</div><p class="price-term">for a quote</p>
+                                    <ul><li>Unlimited distributions</li><li>Annual subscription</li></ul>
+                                    <a href="#" class="cta-button">Contact Sales</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane is-active" id="sjs-noncom">
+                            <h3>Internal & Non-Commercial</h3>
+                            <div class="pricing-grid">
+                                <div class="price-card" style="border-color: var(--accent-color); border-width: 2px;">
+                                    <h4>Hostname License Pack</h4>
+                                    <div class="price">$1,999</div><p class="price-term">for 3-5 Hostnames</p>
+                                    <ul><li>Annual subscription</li><li>For non-commercial use</li><li>Best value for multiple sites</li></ul>
+                                    <a href="#" class="cta-button">Contact Sales</a>
+                                </div>
+                                <div class="price-card">
+                                    <h4>Dev + Hostname Bundle</h4>
+                                    <div class="price">$1,499</div><p class="price-term">per Dev Bundle / year</p>
+                                    <ul><li>1 Developer License</li><li>1 Annual Hostname License</li><li>1 Designer App License</li></ul>
+                                    <a href="#" class="cta-button">Add to Cart</a>
+                                </div>
+                                <div class="price-card">
+                                    <h4>Annual Hostname License</h4>
+                                    <div class="price">$599</div><p class="price-term">for 1 Hostname</p>
+                                    <ul><li>Annual subscription</li><li>For non-commercial use</li></ul>
+                                    <a href="#" class="cta-button">Add to Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="sjs-renew">
+                            <h3>Annual Renewal</h3>
+                            <div class="pricing-grid">
+                                <div class="price-card">
+                                    <h4>Developer License Renewal</h4>
+                                    <div class="price">$499</div><p class="price-term">Annual Price</p>
+                                    <ul><li>1-Year Support</li><li>Latest version releases</li></ul>
+                                    <a href="#" class="cta-button">Contact Sales</a>
+                                </div>
+                                <div class="price-card">
+                                    <h4>Dev + Hostname Renewal</h4>
+                                    <div class="price">$899</div><p class="price-term">Annual Price</p>
+                                    <ul><li>Renews 1 Dev License</li><li>Renews 1 Non-Comm Hostname</li></ul>
+                                    <a href="#" class="cta-button">Contact Sales</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="sjs-perp">
+                            <h3>Perpetual License Options</h3>
+                             <div class="pricing-grid">
+                                <div class="price-card">
+                                    <h4>Perpetual Hostname</h4>
+                                    <div class="price">Contact Us</div><p class="price-term">Non-Commercial</p>
+                                    <ul><li>One-Time Licensing Fee</li><li>Deploy licensed version forever</li></ul>
+                                    <a href="#" class="cta-button">Contact Sales</a>
+                                </div>
+                                <div class="price-card">
+                                    <h4>Commercial Limited Perpetual</h4>
+                                    <div class="price">Contact Us</div><p class="price-term">Commercial</p>
+                                    <ul><li>One-Time Fee</li><li>Single Domain or 5 Hostnames</li></ul>
+                                    <a href="#" class="cta-button">Contact Sales</a>
+                                </div>
+                                 <div class="price-card">
+                                    <h4>Commercial Unlimited Perpetual</h4>
+                                    <div class="price">Contact Us</div><p class="price-term">Commercial</p>
+                                    <ul><li>One-Time Fee</li><li>Unlimited distributions</li></ul>
+                                    <a href="#" class="cta-button">Contact Sales</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="product-card" data-platform="js">
-                    <h3>Wijmo</h3>
-                    <p>High-performance, lightweight datagrids and 100+ UI components for modern web apps.</p>
-                    <div class="product-price">€1,105 <span class="price-term">/ dev / year</span></div>
-                    <a href="#" class="cta-button">View Details</a>
+                <div class="product-pricing-section product-spread" data-platform="net">
+                    <div class="product-header"><h2>Spread.NET</h2></div>
+                    <div class="product-tabs"><button class="tab-btn is-active" data-tab="snet-new">New License</button><button class="tab-btn" data-tab="snet-renew">Renewal</button></div>
+                    <div class="tab-content"><div class="tab-pane is-active" id="snet-new"><h3>New License Pricing</h3><div class="pricing-grid"><div class="price-card"><h4>Spread.NET License</h4><div class="price">$1,499</div><p class="price-term">per developer</p><ul><li>WinForms, ASP.NET, WPF</li><li>1-Year Support</li><li>Perpetual Licensing</li></ul><a href="#" class="cta-button">Add to Cart</a><div class="promo-badge">Save 20% With Code: JUNE2025</div></div></div></div><div class="tab-pane" id="snet-renew"><h3>Renewal License</h3><div class="pricing-grid"><div class="price-card"><h4>Spread.NET Renewal</h4><div class="price">$799</div><p class="price-term">per developer</p><ul><li>1-Year Support</li><li>Next major version</li><li>Phone & Email Support</li></ul><a href="#" class="cta-button">Contact Sales</a></div></div></div></div>
                 </div>
-                <div class="product-card" data-platform="js">
-                    <h3>SpreadJS</h3>
-                    <p>The #1 JavaScript spreadsheet for high-fidelity, Excel-like experiences on the web.</p>
-                    <div class="product-price">€925 <span class="price-term">/ dev / year</span></div>
-                    <a href="#" class="cta-button">View Details</a>
+
+                <div class="product-pricing-section product-wijmo" data-platform="js">
+                    <div class="product-header"><h2>Wijmo</h2></div>
+                    <div class="product-tabs"><button class="tab-btn is-active" data-tab="wj-new">New License</button><button class="tab-btn" data-tab="wj-renew">Renewal</button></div>
+                    <div class="tab-content"><div class="tab-pane is-active" id="wj-new"><h3>New License Pricing</h3><div class="pricing-grid"><div class="price-card"><h4>Wijmo Enterprise</h4><div class="price">$799</div><p class="price-term">per developer</p><ul><li>1 Dev License + 1 Year Support</li><li>5 Non-Commercial Hostnames</li><li>Royalty-free distribution</li></ul><a href="#" class="cta-button">Add to Cart</a></div><div class="price-card"><h4>Commercial Hostname</h4><div class="price">$499</div><p class="price-term">per hostname</p><ul><li>For commercial use</li><li>Perpetual for version purchased</li><li>Wildcard/SaaS available</li></ul><a href="#" class="cta-button">Add to Cart</a></div></div></div><div class="tab-pane" id="wj-renew"><h3>Renewal License</h3><div class="pricing-grid"><div class="price-card"><h4>Wijmo Enterprise Renewal</h4><div class="price">$599</div><p class="price-term">per developer</p><ul><li>Saves 25% vs new license</li><li>1 Year Support & Updates</li></ul><a href="#" class="cta-button">Contact Sales</a></div></div></div></div>
                 </div>
-                <div class="product-card" data-platform="net">
-                    <h3>ActiveReports.NET</h3>
-                    <p>A complete reporting solution for .NET applications with an intuitive Visual Studio designer.</p>
-                    <div class="product-price">€1,599 <span class="price-term">/ dev / year</span></div>
-                    <a href="#" class="cta-button">View Details</a>
+
+                <div class="product-pricing-section product-ar" data-platform="js">
+                    <div class="product-header"><h2>ActiveReportsJS</h2></div>
+                    <div class="product-tabs"><button class="tab-btn is-active" data-tab="arjs-annual">Annual License</button><button class="tab-btn" data-tab="arjs-perp">Perpetual</button></div>
+                    <div class="tab-content"><div class="tab-pane is-active" id="arjs-annual"><h3>Annual Subscription</h3><div class="pricing-grid"><div class="price-card"><h4>Single Deployment</h4><div class="price">$1,249</div><p class="price-term">Annual - Non-Commercial</p><ul><li>1 Production Key</li><li>2 Testing Keys</li><li>1 Designer Key</li></ul><a href="#" class="cta-button">Add to Cart</a></div><div class="price-card"><h4>Single Domain License</h4><div class="price">$3,999</div><p class="price-term">Annual - Commercial/SaaS</p><ul><li>Unlimited hostnames on *.domain</li><li>1 Designer Key</li></ul><a href="#" class="cta-button">Add to Cart</a></div><div class="price-card"><h4>Unlimited Domain License</h4><div class="price">Contact Us</div><p class="price-term">Annual - Commercial/SaaS</p><ul><li>Unlimited domains</li><li>1 Designer Key</li></ul><a href="#" class="cta-button">Contact Sales</a></div></div></div><div class="tab-pane" id="arjs-perp"><h3>Perpetual Deployment</h3><div class="pricing-grid"><div class="price-card"><h4>Single Deployment</h4><div class="price">Contact Us</div><p class="price-term">Perpetual - Non-Commercial</p><ul><li>One-Time Fee</li><li>Deploy licensed version forever</li></ul><a href="#" class="cta-button">Contact Sales</a></div><div class="price-card"><h4>Single / Unlimited Domain</h4><div class="price">Contact Us</div><p class="price-term">Perpetual - Commercial</p><ul><li>One-Time Fee</li><li>Deploy licensed version forever</li></ul><a href="#" class="cta-button">Contact Sales</a></div></div></div></div>
                 </div>
-                <div class="product-card" data-platform="js">
-                    <h3>ActiveReportsJS</h3>
-                    <p>A powerful JavaScript solution for interactive, client-side reporting in web apps.</p>
-                    <div class="product-price">€1,599 <span class="price-term">/ dev / year</span></div>
-                    <a href="#" class="cta-button">View Details</a>
+                <div class="product-pricing-section product-ar" data-platform="net">
+                    <div class="product-header"><h2>ActiveReports.NET</h2></div>
+                    <div class="product-tabs"><button class="tab-btn is-active" data-tab="arnet-new">New Licenses</button><button class="tab-btn" data-tab="arnet-renew">Renewals</button></div>
+                    <div class="tab-content"><div class="tab-pane is-active" id="arnet-new"><h3>New License Pricing</h3><div class="pricing-grid"><div class="price-card"><h4>Standard</h4><div class="price">$849</div><p class="price-term">per Developer</p><ul><li>WYSIWYG reporting</li><li>VS integrated designer</li><li>Desktop Viewers</li></ul><a href="#" class="cta-button">Add to Cart</a><div class="promo-badge">Save Up To 30%: JUNE2025</div></div><div class="price-card"><h4>Professional</h4><div class="price">$1,599</div><p class="price-term">per Developer</p><ul><li>All Standard features</li><li>End-user designers</li><li>Web Viewers (React, Vue)</li></ul><a href="#" class="cta-button">Add to Cart</a><div class="promo-badge">Save Up To 30%: JUNE2025</div></div></div></div><div class="tab-pane" id="arnet-renew"><h3>Renewal & Maintenance</h3><div class="pricing-grid"><div class="price-card"><h4>Standard Renewal</h4><div class="price">$699</div><p class="price-term">Annual Maintenance</p><ul><li>Renews Dev License</li><li>Support & Downloads</li></ul><a href="#" class="cta-button">Contact Sales</a></div><div class="price-card"><h4>Professional Renewal</h4><div class="price">$999</div><p class="price-term">Annual Maintenance</p><ul><li>Renews Dev License</li><li>Support & Downloads</li></ul><a href="#" class="cta-button">Contact Sales</a></div></div></div></div>
                 </div>
-                 <div class="product-card" data-platform="net">
-                    <h3>Documents for .NET</h3>
-                    <p>A suite of server-side APIs to create, load, and edit Excel, Word, & PDF files.</p>
-                    <div class="product-price">€925 <span class="price-term">/ dev / year</span></div>
-                    <a href="#" class="cta-button">View Details</a>
-                </div>
-                 <div class="product-card" data-platform="js">
-                    <h3>Documents for Java</h3>
-                    <p>A suite of server-side APIs for creating Excel, Word, & PDF files in Java applications.</p>
-                    <div class="product-price">€925 <span class="price-term">/ dev / year</span></div>
-                    <a href="#" class="cta-button">View Details</a>
+
+                <div class="product-pricing-section product-ds" data-platform="net">
+                    <div class="product-header"><h2>Document Solutions</h2></div>
+                    <div class="product-tabs"><button class="tab-btn is-active" data-tab="ds-bundle">.NET Bundle</button><button class="tab-btn" data-tab="ds-excel">.NET Excel</button><button class="tab-btn" data-tab="ds-pdf">.NET PDF</button><button class="tab-btn" data-tab="ds-word">.NET Word</button><button class="tab-btn" data-tab="ds-img">.NET Imaging</button><button class="tab-btn" data-tab="ds-java">Java</button><button class="tab-btn" data-tab="ds-renew">Renewals</button></div>
+                    <div class="tab-content">
+                        <div class="tab-pane is-active" id="ds-bundle"><h3>Documents for .NET Bundle</h3><div class="pricing-grid"><div class="price-card"><h4>Developer Bundle</h4><div class="price">$1,799</div><p class="price-term">1 Dev, 1 Location</p><ul><li>Excel, PDF, Word, Imaging</li><li>Includes JS Viewers</li><li>1-Year Support</li></ul><a href="#" class="cta-button">Add to Cart</a></div><div class="price-card"><h4>Unlimited Bundle</h4><div class="price">$4,950</div><p class="price-term">1 Dev, Unlimited Locations</p><ul><li>Excel, PDF, Word, Imaging</li><li>Unlimited Cloud (Azure, AWS)</li><li>1-Year Support</li></ul><a href="#" class="cta-button">Add to Cart</a></div><div class="price-card"><h4>Team Unlimited Bundle</h4><div class="price">$10,345</div><p class="price-term">5 Devs, Unlimited Locations</p><ul><li>Excel, PDF, Word, Imaging</li><li>For teams of 5</li><li>1-Year Support</li></ul><a href="#" class="cta-button">Add to Cart</a></div></div></div>
+                        <div class="tab-pane" id="ds-excel"><h3>Documents for Excel, .NET</h3><div class="pricing-grid"><div class="price-card"><h4>Developer License</h4><div class="price">$999</div><p class="price-term">1 Dev, 1 Location</p><ul><li>High-speed spreadsheet API</li><li>Includes JS Data Viewer</li><li>1-Year Support</li></ul><a href="#" class="cta-button">Add to Cart</a></div><div class="price-card"><h4>Unlimited License</h4><div class="price">$2,799</div><p class="price-term">1 Dev, Unlimited Locations</p><ul><li>Deploy to unlimited sites</li><li>Cloud (Azure, AWS) friendly</li><li>1-Year Support</li></ul><a href="#" class="cta-button">Add to Cart</a></div><div class="price-card"><h4>Team Unlimited</h4><div class="price">$5,799</div><p class="price-term">5 Devs, Unlimited Locations</p><ul><li>For teams of 5</li><li>Unlimited deployments</li><li>1-Year Support</li></ul><a href="#" class="cta-button">Add to Cart</a></div></div></div>
+                        <div class="tab-pane" id="ds-pdf"><h3>Documents for PDF, .NET</h3><div class="pricing-grid"><div class="price-card"><h4>Developer License</h4><div class="price">$999</div><p class="price-term">1 Dev, 1 Location</p><ul><li>Generate, load, save PDFs</li><li>Includes JS PDF Viewer</li><li>1-Year Support</li></ul><a href="#" class="cta-button">Add to Cart</a></div><div class="price-card"><h4>Unlimited License</h4><div class="price">$2,799</div><p class="price-term">1 Dev, Unlimited Locations</p><ul><li>Deploy to unlimited sites</li><li>Cloud (Azure, AWS) friendly</li><li>1-Year Support</li></ul><a href="#" class="cta-button">Add to Cart</a></div><div class="price-card"><h4>Team Unlimited</h4><div class="price">$5,799</div><p class="price-term">5 Devs, Unlimited Locations</p><ul><li>For teams of 5</li><li>Unlimited deployments</li><li>1-Year Support</li></ul><a href="#" class="cta-button">Add to Cart</a></div></div></div>
+                        <div class="tab-pane" id="ds-word"><h3>Documents for Word, .NET</h3><div class="pricing-grid"><div class="price-card"><h4>Developer License</h4><div class="price">$999</div><p class="price-term">1 Dev, 1 Location</p><ul><li>High-performance Word API</li><li>No MS Word dependency</li><li>1-Year Support</li></ul><a href="#" class="cta-button">Add to Cart</a></div><div class="price-card"><h4>Unlimited License</h4><div class="price">$2,799</div><p class="price-term">1 Dev, Unlimited Locations</p><ul><li>Deploy to unlimited sites</li><li>Cloud (Azure, AWS) friendly</li><li>1-Year Support</li></ul><a href="#" class="cta-button">Add to Cart</a></div><div class="price-card"><h4>Team Unlimited</h4><div class="price">$5,799</div><p class="price-term">5 Devs, Unlimited Locations</p><ul><li>For teams of 5</li><li>Unlimited deployments</li><li>1-Year Support</li></ul><a href="#" class="cta-button">Add to Cart</a></div></div></div>
+                        <div class="tab-pane" id="ds-img"><h3>Documents for Imaging, .NET</h3><div class="pricing-grid"><div class="price-card"><h4>Developer License</h4><div class="price">$999</div><p class="price-term">1 Dev, 1 Location</p><ul><li>Create, load, modify images</li><li>Includes JS Image Viewer</li><li>1-Year Support</li></ul><a href="#" class="cta-button">Add to Cart</a></div><div class="price-card"><h4>Unlimited License</h4><div class="price">$2,799</div><p class="price-term">1 Dev, Unlimited Locations</p><ul><li>Deploy to unlimited sites</li><li>Cloud (Azure, AWS) friendly</li><li>1-Year Support</li></ul><a href="#" class="cta-button">Add to Cart</a></div><div class="price-card"><h4>Team Unlimited</h4><div class="price">$5,799</div><p class="price-term">5 Devs, Unlimited Locations</p><ul><li>For teams of 5</li><li>Unlimited deployments</li><li>1-Year Support</li></ul><a href="#" class="cta-button">Add to Cart</a></div></div></div>
+                        <div class="tab-pane" id="ds-java"><h3>Document Solutions for Java</h3><div class="pricing-grid"><div class="price-card"><h4>Excel, Java Edition</h4><div class="price">$999</div><p class="price-term">1 Dev, 1 Location</p><ul><li>For Java 8.0+</li><li>High-speed spreadsheet API</li><li>1-Year Support</li></ul><a href="#" class="cta-button">Add to Cart</a></div><div class="price-card"><h4>Excel, Java Unlimited</h4><div class="price">$2,799</div><p class="price-term">1 Dev, Unlimited Locations</p><ul><li>Unlimited Distributions</li><li>Cloud Locations (Azure, AWS)</li><li>1-Year Support</li></ul><a href="#" class="cta-button">Add to Cart</a></div><div class="price-card"><h4>Team Unlimited Java</h4><div class="price">$5,799</div><p class="price-term">5 Devs, Unlimited Locations</p><ul><li>For teams of 5</li><li>Unlimited deployments</li><li>1-Year Support</li></ul><a href="#" class="cta-button">Add to Cart</a></div></div></div>
+                        <div class="tab-pane" id="ds-renew"><h3>Renewal Rates</h3><h4>Individual Product Renewals</h4><div class="pricing-grid"><div class="price-card"><h4>Developer</h4><div class="price">$649</div><p class="price-term">1 Dev, 1 Location</p><a href="#" class="cta-button">Contact Sales</a></div><div class="price-card"><h4>Developer Unlimited</h4><div class="price">$1,849</div><p class="price-term">1 Dev, Unlimited</p><a href="#" class="cta-button">Contact Sales</a></div><div class="price-card"><h4>Team Unlimited</h4><div class="price">$3,799</div><p class="price-term">5 Devs, Unlimited</p><a href="#" class="cta-button">Contact Sales</a></div></div><h4>Bundle Renewals</h4><div class="pricing-grid"><div class="price-card"><h4>Developer Bundle</h4><div class="price">$1,199</div><p class="price-term">1 Dev, 1 Location</p><a href="#" class="cta-button">Contact Sales</a></div><div class="price-card"><h4>Unlimited Bundle</h4><div class="price">$3,249</div><p class="price-term">1 Dev, Unlimited</p><a href="#" class="cta-button">Contact Sales</a></div><div class="price-card"><h4>Team Unlimited Bundle</h4><div class="price">$6,799</div><p class="price-term">5 Devs, Unlimited</p><a href="#" class="cta-button">Contact Sales</a></div></div></div>
+                    </div>
                 </div>
             </div>
-             <p class="no-results-message" id="pricing-no-results" style="display: none;">No products match the selected filter.</p>
         </div>
     </main>
 
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Mescius Europe GmbH | All Rights Reserved</p>
-        </div>
+        <div class="container"><p>&copy; 2025 Mescius | All Rights Reserved</p></div>
     </footer>
-    <script src="../scripts/main.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const productSections = document.querySelectorAll('.product-pricing-section');
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('is-active'));
+                    btn.classList.add('is-active');
+                    const filter = btn.dataset.filter;
+                    productSections.forEach(card => {
+                        card.style.display = (filter === 'all' || card.dataset.platform === filter || (filter==='net' && card.dataset.platform !=='js') || (filter==='js' && card.dataset.platform !=='net') ) ? '' : 'none';
+                    });
+                });
+            });
+
+            const allTabsContainers = document.querySelectorAll('.product-pricing-section');
+            allTabsContainers.forEach(container => {
+                const tabs = container.querySelectorAll('.tab-btn');
+                const panes = container.querySelectorAll('.tab-pane');
+                tabs.forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        tabs.forEach(t => t.classList.remove('is-active'));
+                        tab.classList.add('is-active');
+                        const targetPaneId = tab.dataset.tab;
+                        panes.forEach(pane => {
+                            pane.classList.toggle('is-active', pane.id === targetPaneId);
+                        });
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 </html>
