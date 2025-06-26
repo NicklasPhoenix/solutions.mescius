@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comprehensive Pricing | Mescius</title>
-    <meta name="description" content="Detailed developer license pricing for Mescius .NET and JavaScript components and bundles, including commercial, non-commercial, and renewal options.">
+    <meta name="description" content="Detailed developer license pricing for Mescius .NET and JavaScript components and bundles, including Paid & SaaS Apps, Internal & Free Apps, and renewal options.">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
@@ -28,16 +28,19 @@
         .nav-link:hover, .nav-link.active { border-bottom-color: #ffffff; }
         .footer { background-color: var(--brand-header); color: #cccccc; text-align: center; padding: 30px 0; margin-top: 50px; font-size: 14px; }
         
+        /* Main Page Structure */
         .pricing-section { padding: 60px 0; }
         .section-header { text-align: center; margin-bottom: 50px; }
         .section-title { font-size: 36px; font-weight: 700; color: var(--brand-heading); margin: 0; }
         .section-subtitle { font-size: 18px; max-width: 800px; margin: 10px auto 0 auto; }
 
+        /* Filter Controls */
         .filter-controls { display: flex; justify-content: center; margin-bottom: 40px; }
         .filter-group { display: flex; background-color: #e9ecef; border-radius: 30px; padding: 5px; }
         .filter-btn { padding: 10px 25px; font-size: 14px; font-weight: 600; font-family: 'Montserrat', sans-serif; border: none; border-radius: 25px; background-color: transparent; color: var(--brand-body); cursor: pointer; transition: all 0.3s ease; }
         .filter-btn.is-active { background-color: #ffffff; color: var(--brand-heading); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
 
+        /* Product Section Wrapper */
         .product-pricing-section {
             background-color: #ffffff; border-radius: 12px; margin-bottom: 40px; border-top: 4px solid var(--accent-color);
             overflow: hidden; box-shadow: 0 4px 25px rgba(0,0,0,0.06); transition: all 0.3s ease-in-out;
@@ -64,6 +67,7 @@
         .tab-pane h3 { font-size: 22px; margin-top: 0; margin-bottom: 25px; color: var(--accent-color); font-weight: 600; }
         .tab-pane h4 { font-size: 18px; font-weight: 600; margin-top: 30px; margin-bottom: 15px; padding-bottom: 5px; border-bottom: 2px solid #e9ecef;}
         
+        /* Pricing Cards */
         .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 25px; }
         .price-card {
             background: #ffffff; border: 1px solid #e9ecef; border-radius: 8px; padding: 25px;
@@ -76,9 +80,55 @@
         .price-card ul { list-style: none; padding-left: 0; margin: 0 0 25px 0; font-size: 14px; line-height: 1.7; flex-grow: 1; color: var(--brand-body); }
         .price-card li { margin-bottom: 8px; padding-left: 20px; position: relative; }
         .price-card li::before { content: '✓'; color: var(--accent-color); position: absolute; left: 0; font-weight: 700; }
-        .price-card .cta-button { display: block; text-align: center; background-color: #474D57; color: #ffffff; text-decoration: none; padding: 12px 20px; border-radius: 8px; font-weight: 600; margin-top: auto; transition: background-color 0.2s ease-in-out; }
-        .price-card .cta-button:hover { background-color: var(--accent-color); }
         .promo-badge { background-color: var(--accent-color); color: #fff; font-weight: 600; padding: 5px 12px; border-radius: 6px; font-size: 13px; display: inline-block; margin-top: 15px; }
+        
+        /* Floating Cart */
+        .floating-cart {
+            position: fixed; bottom: 20px; right: 20px; width: 320px; max-height: 450px;
+            background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15); z-index: 1010;
+            display: flex; flex-direction: column;
+            transform: translateY(150%); transition: transform 0.4s ease-in-out;
+        }
+        .floating-cart.is-visible { transform: translateY(0); }
+        .cart-header {
+            display: flex; justify-content: space-between; align-items: center; padding: 15px 20px;
+            background-color: #f8f9fa; border-bottom: 1px solid #e2e8f0; cursor: pointer;
+        }
+        .cart-header h3 { margin: 0; font-size: 16px; padding: 0; border-bottom: none; }
+        .cart-toggle-btn {
+            background: #e2e8f0; border: none; width: 24px; height: 24px; border-radius: 50%;
+            font-size: 20px; font-weight: bold; color: var(--brand-body); cursor: pointer;
+            line-height: 24px; text-align: center; transition: transform 0.3s ease;
+        }
+        #cart-items { padding: 10px 20px; overflow-y: auto; flex-grow: 1; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; font-size: 14px; padding: 10px 0; border-bottom: 1px solid #f1f1f1; }
+        .cart-item:last-child { border-bottom: none; }
+        .cart-item-controls { display: flex; align-items: center; }
+        .item-name { flex-grow: 1; }
+        .item-price { font-weight: 600; margin-left: 10px; }
+        .remove-item-btn {
+            background: transparent; border: none; color: #d6564c; font-size: 18px; font-weight: bold;
+            cursor: pointer; padding: 0 5px; margin-right: 10px;
+        }
+        .cart-footer { padding: 15px 20px; border-top: 1px solid #e2e8f0; background-color: #f8f9fa; }
+        .cart-total { display: flex; justify-content: space-between; font-size: 16px; margin-bottom: 15px; }
+        
+        /* General CTA Button Style */
+        .cta-button, .add-to-cart-btn {
+            display: block; width: 100%; text-align: center; padding: 12px; border-radius: 8px;
+            background-color: #474D57; color: #ffffff; text-decoration: none; font-weight: 600;
+            transition: background-color 0.2s ease; border: none; font-family: 'Montserrat', sans-serif; font-size: 14px; cursor: pointer;
+        }
+        .cta-button:hover, .add-to-cart-btn:hover { background-color: var(--accent-color); }
+        .price-card .cta-button, .price-card .add-to-cart-btn { margin-top: auto; }
+        .cta-button.is-disabled { background-color: #cccccc; pointer-events: none; cursor: not-allowed; }
+        
+        /* Minimized Cart State */
+        .floating-cart.is-minimized #cart-items,
+        .floating-cart.is-minimized .cart-footer { display: none; }
+        .floating-cart.is-minimized { max-height: 55px; }
+        .floating-cart.is-minimized .cart-toggle-btn { transform: rotate(45deg); }
     </style>
 </head>
 <body>
@@ -89,11 +139,27 @@
                 <a href="../index.html#case-studies" class="nav-link">Case Studies</a>
                 <a href="../pricing/index.html" class="nav-link active">Pricing</a>
                 <a href="../bundles/index.html" class="nav-link">Bundles</a>
-                <a href="../promotions/index.html" class="nav-link">Promotions</a>
                 <a href="../benchmarks/index.html" class="nav-link">Benchmarks</a>
+                <a href="../promotions/index.html" class="nav-link">Promotions</a>
             </nav>
         </div>
     </header>
+    
+    <div id="floating-cart" class="floating-cart">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button id="cart-toggle-btn" class="cart-toggle-btn">—</button>
+        </div>
+        <div id="cart-items">
+            <p>Your cart is empty.</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <strong>Total:</strong> <span id="cart-total-price">€0.00</span>
+            </div>
+            <a id="checkout-link" class="cta-button is-disabled" href="#">Go to Checkout</a>
+        </div>
+    </div>
 
     <main class="pricing-section">
         <div class="container">
@@ -116,76 +182,47 @@
                             <div class="pricing-grid">
                                 <div class="price-card">
                                     <h4>Studio Enterprise</h4>
-                                    <div class="price">$1,495</div>
-                                    <p class="price-term">per Developer</p>
-                                    <ul>
-                                        <li>All .NET platforms</li>
-                                        <li>Data Service components</li>
-                                        <li>Wijmo Enterprise</li>
-                                    </ul>
-                                    <a href="#" class="cta-button">Add to Cart</a>
-                                    <div class="promo-badge">Save Up To 30%: JUNE2025</div>
+                                    <div class="price">€1,385</div><p class="price-term">per Developer</p>
+                                    <ul><li>All .NET platforms</li><li>Data Service components</li><li>Wijmo Enterprise</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="277294" data-product-name="C1 Studio Enterprise" data-price="1385">Add to Cart</button>
+                                    <div class="promo-badge">Most Popular</div>
                                 </div>
                                 <div class="price-card">
                                     <h4>WinForms Data Services</h4>
-                                    <div class="price">$1,295</div>
-                                    <p class="price-term">per Developer</p>
-                                    <ul>
-                                        <li>120+ WinForms controls</li>
-                                        <li>.NET Data Connectors</li>
-                                    </ul>
-                                    <a href="#" class="cta-button">Add to Cart</a>
+                                    <div class="price">€1,205</div><p class="price-term">per Developer</p>
+                                    <ul><li>120+ WinForms controls</li><li>.NET Data Connectors</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="276993" data-product-name="C1 WinForms Data Services" data-price="1205">Add to Cart</button>
                                 </div>
                                 <div class="price-card">
                                     <h4>ActiveX Edition</h4>
-                                    <div class="price">$1,495</div>
-                                    <p class="price-term">per Developer</p>
-                                    <ul>
-                                        <li>Controls for legacy applications</li>
-                                    </ul>
-                                    <a href="#" class="cta-button">Add to Cart</a>
+                                    <div class="price">€1,385</div><p class="price-term">per Developer</p>
+                                    <ul><li>Controls for legacy applications</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="277324" data-product-name="C1 ActiveX Edition" data-price="1385">Add to Cart</button>
                                 </div>
                                 <div class="price-card">
                                     <h4>WinForms Edition</h4>
-                                    <div class="price">$995</div>
-                                    <p class="price-term">per Developer</p>
-                                    <a href="#" class="cta-button">Add to Cart</a>
+                                    <div class="price">€925</div><p class="price-term">per Developer</p>
+                                    <button class="add-to-cart-btn" data-product-id="277484" data-product-name="C1 WinForms Edition" data-price="925">Add to Cart</button>
                                 </div>
                                 <div class="price-card">
                                     <h4>WPF Edition</h4>
-                                    <div class="price">$995</div>
-                                    <p class="price-term">per Developer</p>
-                                    <a href="#" class="cta-button">Add to Cart</a>
+                                    <div class="price">€925</div><p class="price-term">per Developer</p>
+                                    <button class="add-to-cart-btn" data-product-id="277564" data-product-name="C1 WPF Edition" data-price="925">Add to Cart</button>
                                 </div>
-                                 <div class="price-card">
+                                <div class="price-card">
                                     <h4>WinUI & MAUI Edition</h4>
-                                    <div class="price">$995</div>
-                                    <p class="price-term">per Developer</p>
-                                    <a href="#" class="cta-button">Add to Cart</a>
+                                    <div class="price">€925</div><p class="price-term">per Developer</p>
+                                    <button class="add-to-cart-btn" data-product-id="277032" data-product-name="C1 WinUI & MAUI Edition" data-price="925">Add to Cart</button>
                                 </div>
                                 <div class="price-card">
                                     <h4>ASP.NET MVC Edition</h4>
-                                    <div class="price">$895</div>
-                                    <p class="price-term">per Developer</p>
-                                    <a href="#" class="cta-button">Add to Cart</a>
-                                </div>
-                                <div class="price-card">
-                                    <h4>ASP.NET Web Forms</h4>
-                                    <div class="price">$895</div>
-                                    <p class="price-term">per Developer</p>
-                                    <a href="#" class="cta-button">Add to Cart</a>
-                                </div>
-                                <div class="price-card">
-                                    <h4>Data Services Edition</h4>
-                                    <div class="price">$895</div>
-                                    <p class="price-term">per Developer</p>
-                                    <a href="#" class="cta-button">Add to Cart</a>
+                                    <div class="price">€835</div><p class="price-term">per Developer</p>
+                                    <button class="add-to-cart-btn" data-product-id="277318" data-product-name="C1 ASP.NET MVC Edition" data-price="835">Add to Cart</button>
                                 </div>
                                 <div class="price-card">
                                     <h4>Blazor Edition</h4>
-                                    <div class="price">$495</div>
-                                    <p class="price-term">per Developer</p>
-                                    <a href="#" class="cta-button">Add to Cart</a>
+                                    <div class="price">€465</div><p class="price-term">per Developer</p>
+                                    <button class="add-to-cart-btn" data-product-id="277052" data-product-name="C1 Blazor Edition" data-price="465">Add to Cart</button>
                                 </div>
                             </div>
                         </div>
@@ -193,38 +230,14 @@
                             <h3>Renewal Pricing (Saves up to 40%)</h3>
                             <table class="pricing-table" style="width: 100%; text-align: left; border-collapse: collapse;">
                                 <thead style="background-color: #f8f9fa;">
-                                    <tr>
-                                        <th style="padding: 12px;">Product Edition</th>
-                                        <th style="padding: 12px;">With Standard Support</th>
-                                        <th style="padding: 12px;">With Platinum Support</th>
-                                    </tr>
+                                    <tr><th style="padding: 12px;">Product Edition</th><th style="padding: 12px;">With Standard Support</th><th style="padding: 12px;">With Platinum Support</th></tr>
                                 </thead>
                                 <tbody>
-                                    <tr style="border-bottom: 1px solid #e9ecef;">
-                                        <td style="padding: 12px;">Studio Enterprise</td>
-                                        <td style="padding: 12px;">$895</td>
-                                        <td style="padding: 12px;">$1,295</td>
-                                    </tr>
-                                    <tr style="border-bottom: 1px solid #e9ecef;">
-                                        <td style="padding: 12px;">WinForms Data Services Edition</td>
-                                        <td style="padding: 12px;">$775</td>
-                                        <td style="padding: 12px;">$1,175</td>
-                                    </tr>
-                                    <tr style="border-bottom: 1px solid #e9ecef;">
-                                        <td style="padding: 12px;">WinForms, WPF, WinUI & MAUI</td>
-                                        <td style="padding: 12px;">$595</td>
-                                        <td style="padding: 12px;">$995</td>
-                                    </tr>
-                                    <tr style="border-bottom: 1px solid #e9ecef;">
-                                        <td style="padding: 12px;">ASP.NET MVC & Web Forms</td>
-                                        <td style="padding: 12px;">$535</td>
-                                        <td style="padding: 12px;">$935</td>
-                                    </tr>
-                                    <tr style="border-bottom: 1px solid #e9ecef;">
-                                        <td style="padding: 12px;">Blazor Edition</td>
-                                        <td style="padding: 12px;">$295</td>
-                                        <td style="padding: 12px;">$695</td>
-                                    </tr>
+                                    <tr style="border-bottom: 1px solid #e9ecef;"><td style="padding: 12px;">Studio Enterprise</td><td style="padding: 12px;">€835</td><td style="padding: 12px;">€1,205</td></tr>
+                                    <tr style="border-bottom: 1px solid #e9ecef;"><td style="padding: 12px;">WinForms Data Services</td><td style="padding: 12px;">€715</td><td style="padding: 12px;">€1,105</td></tr>
+                                    <tr style="border-bottom: 1px solid #e9ecef;"><td style="padding: 12px;">WinForms, WPF, WinUI & MAUI</td><td style="padding: 12px;">€555</td><td style="padding: 12px;">€925</td></tr>
+                                    <tr style="border-bottom: 1px solid #e9ecef;"><td style="padding: 12px;">ASP.NET MVC & Web Forms</td><td style="padding: 12px;">€495</td><td style="padding: 12px;">€865</td></tr>
+                                    <tr style="border-bottom: 1px solid #e9ecef;"><td style="padding: 12px;">Blazor Edition</td><td style="padding: 12px;">€275</td><td style="padding: 12px;">€645</td></tr>
                                 </tbody>
                             </table>
                         </div>
@@ -234,135 +247,248 @@
                 <div class="product-pricing-section product-spread" data-platform="js">
                     <div class="product-header"><h2>SpreadJS</h2></div>
                     <div class="product-tabs">
-                        <button class="tab-btn is-active" data-tab="sjs-noncom">Non-Commercial</button>
-                        <button class="tab-btn" data-tab="sjs-com">Commercial</button>
+                        <button class="tab-btn is-active" data-tab="sjs-noncom">Internal & Free Apps</button>
+                        <button class="tab-btn" data-tab="sjs-com">Paid & SaaS Apps</button>
                         <button class="tab-btn" data-tab="sjs-renew">Renewals</button>
                         <button class="tab-btn" data-tab="sjs-perp">Perpetual</button>
                     </div>
                     <div class="tab-content">
                         <div class="tab-pane" id="sjs-com">
-                            <h3>Commercial & SaaS Licensing</h3>
+                            <h3>Paid & SaaS Apps</h3>
                             <div class="pricing-grid">
-                                <div class="price-card">
-                                    <h4>Developer License</h4>
-                                    <div class="price">$999</div><p class="price-term">per Developer</p>
-                                    <ul><li>1-Year Support</li><li>1 Designer App License</li><li>90-day test deployment</li></ul>
-                                    <a href="#" class="cta-button">Contact Sales</a>
-                                </div>
-                                <div class="price-card">
-                                    <h4>Limited Annual Deployment</h4>
-                                    <div class="price">$12,499</div><p class="price-term">per Single Domain</p>
-                                    <ul><li>Single Domain or 5 Hostnames</li><li>1 Mobile/Desktop App</li><li>Annual subscription</li></ul>
-                                    <a href="#" class="cta-button">Contact Sales</a>
-                                </div>
-                                <div class="price-card">
-                                    <h4>Unlimited Annual Deployment</h4>
-                                    <div class="price">Contact Us</div><p class="price-term">for a quote</p>
-                                    <ul><li>Unlimited distributions</li><li>Annual subscription</li></ul>
-                                    <a href="#" class="cta-button">Contact Sales</a>
-                                </div>
+                                <div class="price-card"><h4>Developer License</h4><div class="price">€925</div><p class="price-term">per Developer</p><ul><li>1-Year Support</li><li>1 Designer App License</li><li>90-day test deployment</li></ul><button class="add-to-cart-btn" data-product-id="280043" data-product-name="SpreadJS Developer License" data-price="925">Add to Cart</button></div>
+                                <div class="price-card"><h4>Limited Annual Deployment</h4><div class="price">€11,605</div><p class="price-term">per Single Domain</p><ul><li>Single Domain or 5 Hostnames</li><li>1 Mobile/Desktop App</li></ul><button class="add-to-cart-btn" data-product-id="279879" data-product-name="SpreadJS Limited Deployment" data-price="11605">Add to Cart</button></div>
                             </div>
                         </div>
                         <div class="tab-pane is-active" id="sjs-noncom">
-                            <h3>Internal & Non-Commercial</h3>
+                            <h3>Internal & Free Apps</h3>
                             <div class="pricing-grid">
                                 <div class="price-card" style="border-color: var(--accent-color); border-width: 2px;">
-                                    <h4>Hostname License Pack</h4>
-                                    <div class="price">$1,999</div><p class="price-term">for 3-5 Hostnames</p>
-                                    <ul><li>Annual subscription</li><li>For non-commercial use</li><li>Best value for multiple sites</li></ul>
-                                    <a href="#" class="cta-button">Contact Sales</a>
+                                    <h4>Hostname License Pack</h4><div class="price">€1,855</div><p class="price-term">for 3-5 Hostnames</p><ul><li>Annual subscription</li><li>Best value for multiple sites</li></ul><button class="add-to-cart-btn" data-product-id="280075" data-product-name="SpreadJS Hostname Pack" data-price="1855">Add to Cart</button>
                                 </div>
-                                <div class="price-card">
-                                    <h4>Dev + Hostname Bundle</h4>
-                                    <div class="price">$1,499</div><p class="price-term">per Dev Bundle / year</p>
-                                    <ul><li>1 Developer License</li><li>1 Annual Hostname License</li><li>1 Designer App License</li></ul>
-                                    <a href="#" class="cta-button">Add to Cart</a>
-                                </div>
-                                <div class="price-card">
-                                    <h4>Annual Hostname License</h4>
-                                    <div class="price">$599</div><p class="price-term">for 1 Hostname</p>
-                                    <ul><li>Annual subscription</li><li>For non-commercial use</li></ul>
-                                    <a href="#" class="cta-button">Add to Cart</a>
-                                </div>
+                                <div class="price-card"><h4>Dev + Hostname Bundle</h4><div class="price">€1,395</div><p class="price-term">per Dev Bundle / year</p><ul><li>1 Developer License</li><li>1 Annual Hostname License</li></ul><button class="add-to-cart-btn" data-product-id="279886" data-product-name="SpreadJS Dev+Host Bundle" data-price="1395">Add to Cart</button></div>
+                                <div class="price-card"><h4>Annual Hostname License</h4><div class="price">€555</div><p class="price-term">for 1 Hostname</p><ul><li>Annual subscription</li></ul><button class="add-to-cart-btn" data-product-id="279976" data-product-name="SpreadJS Hostname License" data-price="555">Add to Cart</button></div>
                             </div>
                         </div>
                         <div class="tab-pane" id="sjs-renew">
                             <h3>Annual Renewal</h3>
                             <div class="pricing-grid">
-                                <div class="price-card">
-                                    <h4>Developer License Renewal</h4>
-                                    <div class="price">$499</div><p class="price-term">Annual Price</p>
-                                    <ul><li>1-Year Support</li><li>Latest version releases</li></ul>
-                                    <a href="#" class="cta-button">Contact Sales</a>
-                                </div>
-                                <div class="price-card">
-                                    <h4>Dev + Hostname Renewal</h4>
-                                    <div class="price">$899</div><p class="price-term">Annual Price</p>
-                                    <ul><li>Renews 1 Dev License</li><li>Renews 1 Non-Comm Hostname</li></ul>
-                                    <a href="#" class="cta-button">Contact Sales</a>
-                                </div>
+                                <div class="price-card"><h4>Developer License Renewal</h4><div class="price">€465</div><p class="price-term">Annual Price</p><ul><li>1-Year Support</li><li>Latest version releases</li></ul><button class="add-to-cart-btn" data-product-id="280119" data-product-name="SpreadJS Dev Renewal" data-price="465">Add to Cart</button></div>
+                                <div class="price-card"><h4>Dev + Hostname Renewal</h4><div class="price">€835</div><p class="price-term">Annual Price</p><ul><li>Renews 1 Dev License</li><li>Renews 1 Non-Comm Hostname</li></ul><button class="add-to-cart-btn" data-product-id="280135" data-product-name="SpreadJS Bundle Renewal" data-price="835">Add to Cart</button></div>
                             </div>
                         </div>
                         <div class="tab-pane" id="sjs-perp">
                             <h3>Perpetual License Options</h3>
                              <div class="pricing-grid">
-                                <div class="price-card">
-                                    <h4>Perpetual Hostname</h4>
-                                    <div class="price">Contact Us</div><p class="price-term">Non-Commercial</p>
-                                    <ul><li>One-Time Licensing Fee</li><li>Deploy licensed version forever</li></ul>
-                                    <a href="#" class="cta-button">Contact Sales</a>
-                                </div>
-                                <div class="price-card">
-                                    <h4>Commercial Limited Perpetual</h4>
-                                    <div class="price">Contact Us</div><p class="price-term">Commercial</p>
-                                    <ul><li>One-Time Fee</li><li>Single Domain or 5 Hostnames</li></ul>
-                                    <a href="#" class="cta-button">Contact Sales</a>
-                                </div>
-                                 <div class="price-card">
-                                    <h4>Commercial Unlimited Perpetual</h4>
-                                    <div class="price">Contact Us</div><p class="price-term">Commercial</p>
-                                    <ul><li>One-Time Fee</li><li>Unlimited distributions</li></ul>
-                                    <a href="#" class="cta-button">Contact Sales</a>
-                                </div>
+                                <div class="price-card"><h4>Perpetual Hostname</h4><div class="price">Contact Us</div><p class="price-term">Internal & Free Apps</p><ul><li>One-Time Licensing Fee</li><li>Deploy licensed version forever</li></ul><a href="#" class="cta-button">Contact Sales</a></div>
+                                <div class="price-card"><h4>Paid & SaaS Apps Limited Perpetual</h4><div class="price">Contact Us</div><p class="price-term">Paid & SaaS Apps</p><ul><li>One-Time Fee</li><li>Single Domain or 5 Hostnames</li></ul><a href="#" class="cta-button">Contact Sales</a></div>
+                                 <div class="price-card"><h4>Paid & SaaS Apps Unlimited Perpetual</h4><div class="price">Contact Us</div><p class="price-term">Paid & SaaS Apps</p><ul><li>One-Time Fee</li><li>Unlimited distributions</li></ul><a href="#" class="cta-button">Contact Sales</a></div>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="product-pricing-section product-spread" data-platform="net">
                     <div class="product-header"><h2>Spread.NET</h2></div>
                     <div class="product-tabs"><button class="tab-btn is-active" data-tab="snet-new">New License</button><button class="tab-btn" data-tab="snet-renew">Renewal</button></div>
-                    <div class="tab-content"><div class="tab-pane is-active" id="snet-new"><h3>New License Pricing</h3><div class="pricing-grid"><div class="price-card"><h4>Spread.NET License</h4><div class="price">$1,499</div><p class="price-term">per developer</p><ul><li>WinForms, ASP.NET, WPF</li><li>1-Year Support</li><li>Perpetual Licensing</li></ul><a href="#" class="cta-button">Add to Cart</a><div class="promo-badge">Save 20% With Code: JUNE2025</div></div></div></div><div class="tab-pane" id="snet-renew"><h3>Renewal License</h3><div class="pricing-grid"><div class="price-card"><h4>Spread.NET Renewal</h4><div class="price">$799</div><p class="price-term">per developer</p><ul><li>1-Year Support</li><li>Next major version</li><li>Phone & Email Support</li></ul><a href="#" class="cta-button">Contact Sales</a></div></div></div></div>
+                    <div class="tab-content"><div class="tab-pane is-active" id="snet-new"><h3>New License Pricing</h3><div class="pricing-grid"><div class="price-card"><h4>Spread.NET License</h4><div class="price">€1,395</div><p class="price-term">per developer</p><ul><li>WinForms, ASP.NET, WPF</li><li>1-Year Support</li><li>Perpetual Licensing</li></ul><button class="add-to-cart-btn" data-product-id="279767" data-product-name="Spread.NET" data-price="1395">Add to Cart</button></div></div></div><div class="tab-pane" id="snet-renew"><h3>Renewal License</h3><div class="pricing-grid"><div class="price-card"><h4>Spread.NET Renewal</h4><div class="price">€745</div><p class="price-term">per developer</p><ul><li>1-Year Support</li><li>Next major version</li></ul><button class="add-to-cart-btn" data-product-id="279754" data-product-name="Spread.NET Renewal" data-price="745">Add to Cart</button></div></div></div></div>
                 </div>
 
                 <div class="product-pricing-section product-wijmo" data-platform="js">
                     <div class="product-header"><h2>Wijmo</h2></div>
                     <div class="product-tabs"><button class="tab-btn is-active" data-tab="wj-new">New License</button><button class="tab-btn" data-tab="wj-renew">Renewal</button></div>
-                    <div class="tab-content"><div class="tab-pane is-active" id="wj-new"><h3>New License Pricing</h3><div class="pricing-grid"><div class="price-card"><h4>Wijmo Enterprise</h4><div class="price">$799</div><p class="price-term">per developer</p><ul><li>1 Dev License + 1 Year Support</li><li>5 Non-Commercial Hostnames</li><li>Royalty-free distribution</li></ul><a href="#" class="cta-button">Add to Cart</a></div><div class="price-card"><h4>Commercial Hostname</h4><div class="price">$499</div><p class="price-term">per hostname</p><ul><li>For commercial use</li><li>Perpetual for version purchased</li><li>Wildcard/SaaS available</li></ul><a href="#" class="cta-button">Add to Cart</a></div></div></div><div class="tab-pane" id="wj-renew"><h3>Renewal License</h3><div class="pricing-grid"><div class="price-card"><h4>Wijmo Enterprise Renewal</h4><div class="price">$599</div><p class="price-term">per developer</p><ul><li>Saves 25% vs new license</li><li>1 Year Support & Updates</li></ul><a href="#" class="cta-button">Contact Sales</a></div></div></div></div>
+                    <div class="tab-content"><div class="tab-pane is-active" id="wj-new"><h3>New License Pricing</h3><div class="pricing-grid"><div class="price-card"><h4>Wijmo Enterprise</h4><div class="price">€645</div><p class="price-term">per developer</p><ul><li>1 Dev License + 1 Year Support</li><li>5 Internal & Free Apps Hostnames</li></ul><button class="add-to-cart-btn" data-product-id="280167" data-product-name="Wijmo Enterprise" data-price="645">Add to Cart</button></div><div class="price-card"><h4>Paid & SaaS Apps Hostname</h4><div class="price">€465</div><p class="price-term">per hostname</p><ul><li>For Paid & SaaS Apps use</li><li>Perpetual for version purchased</li></ul><button class="add-to-cart-btn" data-product-id="280151" data-product-name="Wijmo Commercial Hostname" data-price="465">Add to Cart</button></div></div></div><div class="tab-pane" id="wj-renew"><h3>Renewal License</h3><div class="pricing-grid"><div class="price-card"><h4>Wijmo Enterprise Renewal</h4><div class="price">€555</div><p class="price-term">per developer</p><ul><li>Saves 25% vs new license</li><li>1 Year Support & Updates</li></ul><button class="add-to-cart-btn" data-product-id="280149" data-product-name="Wijmo Enterprise Renewal" data-price="555">Add to Cart</button></div></div></div></div>
                 </div>
 
                 <div class="product-pricing-section product-ar" data-platform="js">
                     <div class="product-header"><h2>ActiveReportsJS</h2></div>
                     <div class="product-tabs"><button class="tab-btn is-active" data-tab="arjs-annual">Annual License</button><button class="tab-btn" data-tab="arjs-perp">Perpetual</button></div>
-                    <div class="tab-content"><div class="tab-pane is-active" id="arjs-annual"><h3>Annual Subscription</h3><div class="pricing-grid"><div class="price-card"><h4>Single Deployment</h4><div class="price">$1,249</div><p class="price-term">Annual - Non-Commercial</p><ul><li>1 Production Key</li><li>2 Testing Keys</li><li>1 Designer Key</li></ul><a href="#" class="cta-button">Add to Cart</a></div><div class="price-card"><h4>Single Domain License</h4><div class="price">$3,999</div><p class="price-term">Annual - Commercial/SaaS</p><ul><li>Unlimited hostnames on *.domain</li><li>1 Designer Key</li></ul><a href="#" class="cta-button">Add to Cart</a></div><div class="price-card"><h4>Unlimited Domain License</h4><div class="price">Contact Us</div><p class="price-term">Annual - Commercial/SaaS</p><ul><li>Unlimited domains</li><li>1 Designer Key</li></ul><a href="#" class="cta-button">Contact Sales</a></div></div></div><div class="tab-pane" id="arjs-perp"><h3>Perpetual Deployment</h3><div class="pricing-grid"><div class="price-card"><h4>Single Deployment</h4><div class="price">Contact Us</div><p class="price-term">Perpetual - Non-Commercial</p><ul><li>One-Time Fee</li><li>Deploy licensed version forever</li></ul><a href="#" class="cta-button">Contact Sales</a></div><div class="price-card"><h4>Single / Unlimited Domain</h4><div class="price">Contact Us</div><p class="price-term">Perpetual - Commercial</p><ul><li>One-Time Fee</li><li>Deploy licensed version forever</li></ul><a href="#" class="cta-button">Contact Sales</a></div></div></div></div>
+                    <div class="tab-content"><div class="tab-pane is-active" id="arjs-annual"><h3>Annual Subscription</h3><div class="pricing-grid"><div class="price-card"><h4>Single Deployment</h4><div class="price">€1,155</div><p class="price-term">Annual - Internal & Free Apps</p><ul><li>1 Production Key</li><li>2 Testing Keys</li></ul><button class="add-to-cart-btn" data-product-id="279374" data-product-name="ARJS Single Deployment" data-price="1155">Add to Cart</button></div><div class="price-card"><h4>Single Domain License</h4><div class="price">€3,715</div><p class="price-term">Annual - Paid & SaaS Apps</p><ul><li>Unlimited hostnames on *.domain</li></ul><button class="add-to-cart-btn" data-product-id="279364" data-product-name="ARJS Single Domain" data-price="3715">Add to Cart</button></div></div></div><div class="tab-pane" id="arjs-perp"><h3>Perpetual Deployment</h3><div class="pricing-grid"><div class="price-card"><h4>Single Deployment</h4><div class="price">Contact Us</div><p class="price-term">Perpetual - Internal & Free Apps</p><ul><li>One-Time Fee</li><li>Deploy licensed version forever</li></ul><a href="#" class="cta-button">Contact Sales</a></div><div class="price-card"><h4>Single / Unlimited Domain</h4><div class="price">Contact Us</div><p class="price-term">Perpetual - Paid & SaaS Apps</p><ul><li>One-Time Fee</li><li>Deploy licensed version forever</li></ul><a href="#" class="cta-button">Contact Sales</a></div></div></div></div>
                 </div>
+                
                 <div class="product-pricing-section product-ar" data-platform="net">
                     <div class="product-header"><h2>ActiveReports.NET</h2></div>
                     <div class="product-tabs"><button class="tab-btn is-active" data-tab="arnet-new">New Licenses</button><button class="tab-btn" data-tab="arnet-renew">Renewals</button></div>
-                    <div class="tab-content"><div class="tab-pane is-active" id="arnet-new"><h3>New License Pricing</h3><div class="pricing-grid"><div class="price-card"><h4>Standard</h4><div class="price">$849</div><p class="price-term">per Developer</p><ul><li>WYSIWYG reporting</li><li>VS integrated designer</li><li>Desktop Viewers</li></ul><a href="#" class="cta-button">Add to Cart</a><div class="promo-badge">Save Up To 30%: JUNE2025</div></div><div class="price-card"><h4>Professional</h4><div class="price">$1,599</div><p class="price-term">per Developer</p><ul><li>All Standard features</li><li>End-user designers</li><li>Web Viewers (React, Vue)</li></ul><a href="#" class="cta-button">Add to Cart</a><div class="promo-badge">Save Up To 30%: JUNE2025</div></div></div></div><div class="tab-pane" id="arnet-renew"><h3>Renewal & Maintenance</h3><div class="pricing-grid"><div class="price-card"><h4>Standard Renewal</h4><div class="price">$699</div><p class="price-term">Annual Maintenance</p><ul><li>Renews Dev License</li><li>Support & Downloads</li></ul><a href="#" class="cta-button">Contact Sales</a></div><div class="price-card"><h4>Professional Renewal</h4><div class="price">$999</div><p class="price-term">Annual Maintenance</p><ul><li>Renews Dev License</li><li>Support & Downloads</li></ul><a href="#" class="cta-button">Contact Sales</a></div></div></div></div>
+                    <div class="tab-content"><div class="tab-pane is-active" id="arnet-new"><h3>New License Pricing</h3><div class="pricing-grid"><div class="price-card"><h4>Standard</h4><div class="price">€785</div><p class="price-term">per Developer</p><ul><li>WYSIWYG reporting</li><li>VS integrated designer</li></ul><button class="add-to-cart-btn" data-product-id="279161" data-product-name="AR.NET Standard" data-price="785">Add to Cart</button></div><div class="price-card"><h4>Professional</h4><div class="price">€1,485</div><p class="price-term">per Developer</p><ul><li>All Standard features</li><li>End-user designers</li></ul><button class="add-to-cart-btn" data-product-id="279126" data-product-name="AR.NET Professional" data-price="1485">Add to Cart</button></div></div></div><div class="tab-pane" id="arnet-renew"><h3>Renewal & Maintenance</h3><div class="pricing-grid"><div class="price-card"><h4>Standard Renewal</h4><div class="price">€645</div><p class="price-term">Annual Maintenance</p><ul><li>Renews Dev License</li><li>Support & Downloads</li></ul><button class="add-to-cart-btn" data-product-id="279220" data-product-name="AR.NET Standard Renewal" data-price="645">Add to Cart</button></div><div class="price-card"><h4>Professional Renewal</h4><div class="price">€925</div><p class="price-term">Annual Maintenance</p><ul><li>Renews Dev License</li><li>Support & Downloads</li></ul><button class="add-to-cart-btn" data-product-id="279144" data-product-name="AR.NET Pro Renewal" data-price="925">Add to Cart</button></div></div></div></div>
                 </div>
 
-                <div class="product-pricing-section product-ds" data-platform="net">
+<div class="product-pricing-section product-ds" data-platform="net">
                     <div class="product-header"><h2>Document Solutions</h2></div>
                     <div class="product-tabs"><button class="tab-btn is-active" data-tab="ds-bundle">.NET Bundle</button><button class="tab-btn" data-tab="ds-excel">.NET Excel</button><button class="tab-btn" data-tab="ds-pdf">.NET PDF</button><button class="tab-btn" data-tab="ds-word">.NET Word</button><button class="tab-btn" data-tab="ds-img">.NET Imaging</button><button class="tab-btn" data-tab="ds-java">Java</button><button class="tab-btn" data-tab="ds-renew">Renewals</button></div>
                     <div class="tab-content">
-                        <div class="tab-pane is-active" id="ds-bundle"><h3>Documents for .NET Bundle</h3><div class="pricing-grid"><div class="price-card"><h4>Developer Bundle</h4><div class="price">$1,799</div><p class="price-term">1 Dev, 1 Location</p><ul><li>Excel, PDF, Word, Imaging</li><li>Includes JS Viewers</li><li>1-Year Support</li></ul><a href="#" class="cta-button">Add to Cart</a></div><div class="price-card"><h4>Unlimited Bundle</h4><div class="price">$4,950</div><p class="price-term">1 Dev, Unlimited Locations</p><ul><li>Excel, PDF, Word, Imaging</li><li>Unlimited Cloud (Azure, AWS)</li><li>1-Year Support</li></ul><a href="#" class="cta-button">Add to Cart</a></div><div class="price-card"><h4>Team Unlimited Bundle</h4><div class="price">$10,345</div><p class="price-term">5 Devs, Unlimited Locations</p><ul><li>Excel, PDF, Word, Imaging</li><li>For teams of 5</li><li>1-Year Support</li></ul><a href="#" class="cta-button">Add to Cart</a></div></div></div>
-                        <div class="tab-pane" id="ds-excel"><h3>Documents for Excel, .NET</h3><div class="pricing-grid"><div class="price-card"><h4>Developer License</h4><div class="price">$999</div><p class="price-term">1 Dev, 1 Location</p><ul><li>High-speed spreadsheet API</li><li>Includes JS Data Viewer</li><li>1-Year Support</li></ul><a href="#" class="cta-button">Add to Cart</a></div><div class="price-card"><h4>Unlimited License</h4><div class="price">$2,799</div><p class="price-term">1 Dev, Unlimited Locations</p><ul><li>Deploy to unlimited sites</li><li>Cloud (Azure, AWS) friendly</li><li>1-Year Support</li></ul><a href="#" class="cta-button">Add to Cart</a></div><div class="price-card"><h4>Team Unlimited</h4><div class="price">$5,799</div><p class="price-term">5 Devs, Unlimited Locations</p><ul><li>For teams of 5</li><li>Unlimited deployments</li><li>1-Year Support</li></ul><a href="#" class="cta-button">Add to Cart</a></div></div></div>
-                        <div class="tab-pane" id="ds-pdf"><h3>Documents for PDF, .NET</h3><div class="pricing-grid"><div class="price-card"><h4>Developer License</h4><div class="price">$999</div><p class="price-term">1 Dev, 1 Location</p><ul><li>Generate, load, save PDFs</li><li>Includes JS PDF Viewer</li><li>1-Year Support</li></ul><a href="#" class="cta-button">Add to Cart</a></div><div class="price-card"><h4>Unlimited License</h4><div class="price">$2,799</div><p class="price-term">1 Dev, Unlimited Locations</p><ul><li>Deploy to unlimited sites</li><li>Cloud (Azure, AWS) friendly</li><li>1-Year Support</li></ul><a href="#" class="cta-button">Add to Cart</a></div><div class="price-card"><h4>Team Unlimited</h4><div class="price">$5,799</div><p class="price-term">5 Devs, Unlimited Locations</p><ul><li>For teams of 5</li><li>Unlimited deployments</li><li>1-Year Support</li></ul><a href="#" class="cta-button">Add to Cart</a></div></div></div>
-                        <div class="tab-pane" id="ds-word"><h3>Documents for Word, .NET</h3><div class="pricing-grid"><div class="price-card"><h4>Developer License</h4><div class="price">$999</div><p class="price-term">1 Dev, 1 Location</p><ul><li>High-performance Word API</li><li>No MS Word dependency</li><li>1-Year Support</li></ul><a href="#" class="cta-button">Add to Cart</a></div><div class="price-card"><h4>Unlimited License</h4><div class="price">$2,799</div><p class="price-term">1 Dev, Unlimited Locations</p><ul><li>Deploy to unlimited sites</li><li>Cloud (Azure, AWS) friendly</li><li>1-Year Support</li></ul><a href="#" class="cta-button">Add to Cart</a></div><div class="price-card"><h4>Team Unlimited</h4><div class="price">$5,799</div><p class="price-term">5 Devs, Unlimited Locations</p><ul><li>For teams of 5</li><li>Unlimited deployments</li><li>1-Year Support</li></ul><a href="#" class="cta-button">Add to Cart</a></div></div></div>
-                        <div class="tab-pane" id="ds-img"><h3>Documents for Imaging, .NET</h3><div class="pricing-grid"><div class="price-card"><h4>Developer License</h4><div class="price">$999</div><p class="price-term">1 Dev, 1 Location</p><ul><li>Create, load, modify images</li><li>Includes JS Image Viewer</li><li>1-Year Support</li></ul><a href="#" class="cta-button">Add to Cart</a></div><div class="price-card"><h4>Unlimited License</h4><div class="price">$2,799</div><p class="price-term">1 Dev, Unlimited Locations</p><ul><li>Deploy to unlimited sites</li><li>Cloud (Azure, AWS) friendly</li><li>1-Year Support</li></ul><a href="#" class="cta-button">Add to Cart</a></div><div class="price-card"><h4>Team Unlimited</h4><div class="price">$5,799</div><p class="price-term">5 Devs, Unlimited Locations</p><ul><li>For teams of 5</li><li>Unlimited deployments</li><li>1-Year Support</li></ul><a href="#" class="cta-button">Add to Cart</a></div></div></div>
-                        <div class="tab-pane" id="ds-java"><h3>Document Solutions for Java</h3><div class="pricing-grid"><div class="price-card"><h4>Excel, Java Edition</h4><div class="price">$999</div><p class="price-term">1 Dev, 1 Location</p><ul><li>For Java 8.0+</li><li>High-speed spreadsheet API</li><li>1-Year Support</li></ul><a href="#" class="cta-button">Add to Cart</a></div><div class="price-card"><h4>Excel, Java Unlimited</h4><div class="price">$2,799</div><p class="price-term">1 Dev, Unlimited Locations</p><ul><li>Unlimited Distributions</li><li>Cloud Locations (Azure, AWS)</li><li>1-Year Support</li></ul><a href="#" class="cta-button">Add to Cart</a></div><div class="price-card"><h4>Team Unlimited Java</h4><div class="price">$5,799</div><p class="price-term">5 Devs, Unlimited Locations</p><ul><li>For teams of 5</li><li>Unlimited deployments</li><li>1-Year Support</li></ul><a href="#" class="cta-button">Add to Cart</a></div></div></div>
-                        <div class="tab-pane" id="ds-renew"><h3>Renewal Rates</h3><h4>Individual Product Renewals</h4><div class="pricing-grid"><div class="price-card"><h4>Developer</h4><div class="price">$649</div><p class="price-term">1 Dev, 1 Location</p><a href="#" class="cta-button">Contact Sales</a></div><div class="price-card"><h4>Developer Unlimited</h4><div class="price">$1,849</div><p class="price-term">1 Dev, Unlimited</p><a href="#" class="cta-button">Contact Sales</a></div><div class="price-card"><h4>Team Unlimited</h4><div class="price">$3,799</div><p class="price-term">5 Devs, Unlimited</p><a href="#" class="cta-button">Contact Sales</a></div></div><h4>Bundle Renewals</h4><div class="pricing-grid"><div class="price-card"><h4>Developer Bundle</h4><div class="price">$1,199</div><p class="price-term">1 Dev, 1 Location</p><a href="#" class="cta-button">Contact Sales</a></div><div class="price-card"><h4>Unlimited Bundle</h4><div class="price">$3,249</div><p class="price-term">1 Dev, Unlimited</p><a href="#" class="cta-button">Contact Sales</a></div><div class="price-card"><h4>Team Unlimited Bundle</h4><div class="price">$6,799</div><p class="price-term">5 Devs, Unlimited</p><a href="#" class="cta-button">Contact Sales</a></div></div></div>
+                        <div class="tab-pane is-active" id="ds-bundle">
+                            <h3>Documents for .NET Bundle</h3>
+                            <div class="pricing-grid">
+                                <div class="price-card">
+                                    <h4>Developer Bundle</h4>
+                                    <div class="price">€1,665</div><p class="price-term">1 Dev, 1 Location</p>
+                                    <ul><li>Excel, PDF, Word, Imaging</li><li>Includes JS Viewers</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="278518" data-product-name="DS .NET Bundle" data-price="1665">Add to Cart</button>
+                                </div>
+                                <div class="price-card">
+                                    <h4>Unlimited Bundle</h4>
+                                    <div class="price">€4,595</div><p class="price-term">1 Dev, Unlimited Locations</p>
+                                    <ul><li>Unlimited Cloud (Azure, AWS)</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="278562" data-product-name="DS .NET Unlimited Bundle" data-price="4595">Add to Cart</button>
+                                </div>
+                                <div class="price-card">
+                                    <h4>Team Unlimited Bundle</h4>
+                                    <div class="price">€9,605</div><p class="price-term">5 Devs, Unlimited Locations</p>
+                                    <ul><li>For teams of 5</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="278556" data-product-name="DS .NET Team Bundle" data-price="9605">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="ds-excel">
+                            <h3>Documents for Excel, .NET</h3>
+                            <div class="pricing-grid">
+                                <div class="price-card">
+                                    <h4>Developer License</h4>
+                                    <div class="price">€925</div><p class="price-term">1 Dev, 1 Location</p>
+                                    <ul><li>High-speed spreadsheet API</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="278180" data-product-name="DS for Excel .NET" data-price="925">Add to Cart</button>
+                                </div>
+                                <div class="price-card">
+                                    <h4>Unlimited License</h4>
+                                    <div class="price">€2,595</div><p class="price-term">1 Dev, Unlimited Locations</p>
+                                    <ul><li>Deploy to unlimited sites</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="278197" data-product-name="DS Excel .NET Unlimited" data-price="2595">Add to Cart</button>
+                                </div>
+                                <div class="price-card">
+                                    <h4>Team Unlimited</h4>
+                                    <div class="price">€5,385</div><p class="price-term">5 Devs, Unlimited Locations</p>
+                                    <ul><li>For teams of 5</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="278292" data-product-name="DS Excel .NET Team" data-price="5385">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="tab-pane" id="ds-pdf">
+                            <h3>Documents for PDF, .NET</h3>
+                            <div class="pricing-grid">
+                                <div class="price-card">
+                                    <h4>Developer License</h4>
+                                    <div class="price">€925</div><p class="price-term">1 Dev, 1 Location</p>
+                                    <ul><li>Generate, load, and save PDFs</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="278346" data-product-name="DS for PDF .NET" data-price="925">Add to Cart</button>
+                                </div>
+                                <div class="price-card">
+                                    <h4>Unlimited License</h4>
+                                    <div class="price">€2,595</div><p class="price-term">1 Dev, Unlimited Locations</p>
+                                    <ul><li>Deploy to unlimited sites</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="278367" data-product-name="DS PDF .NET Unlimited" data-price="2595">Add to Cart</button>
+                                </div>
+                                <div class="price-card">
+                                    <h4>Team Unlimited</h4>
+                                    <div class="price">€5,385</div><p class="price-term">5 Devs, Unlimited Locations</p>
+                                    <ul><li>For teams of 5</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="278453" data-product-name="DS PDF .NET Team" data-price="5385">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="ds-word">
+                            <h3>Documents for Word, .NET</h3>
+                             <div class="pricing-grid">
+                                <div class="price-card">
+                                    <h4>Developer License</h4>
+                                    <div class="price">€925</div><p class="price-term">1 Dev, 1 Location</p>
+                                    <ul><li>High-performance Word API</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="278625" data-product-name="DS for Word .NET" data-price="925">Add to Cart</button>
+                                </div>
+                                <div class="price-card">
+                                    <h4>Unlimited License</h4>
+                                    <div class="price">€2,595</div><p class="price-term">1 Dev, Unlimited Locations</p>
+                                    <ul><li>Deploy to unlimited sites</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="278607" data-product-name="DS Word .NET Unlimited" data-price="2595">Add to Cart</button>
+                                </div>
+                                <div class="price-card">
+                                    <h4>Team Unlimited</h4>
+                                    <div class="price">€5,385</div><p class="price-term">5 Devs, Unlimited Locations</p>
+                                    <ul><li>For teams of 5</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="278675" data-product-name="DS Word .NET Team" data-price="5385">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="ds-img">
+                             <h3>Documents for Imaging, .NET</h3>
+                             <div class="pricing-grid">
+                                <div class="price-card">
+                                    <h4>Developer License</h4>
+                                    <div class="price">€925</div><p class="price-term">1 Dev, 1 Location</p>
+                                    <ul><li>Create, load, and modify images</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="278466" data-product-name="DS for Imaging .NET" data-price="925">Add to Cart</button>
+                                </div>
+                                <div class="price-card">
+                                    <h4>Unlimited License</h4>
+                                    <div class="price">€2,595</div><p class="price-term">1 Dev, Unlimited Locations</p>
+                                    <ul><li>Deploy to unlimited sites</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="278426" data-product-name="DS Imaging .NET Unlimited" data-price="2595">Add to Cart</button>
+                                </div>
+                                <div class="price-card">
+                                    <h4>Team Unlimited</h4>
+                                    <div class="price">€5,385</div><p class="price-term">5 Devs, Unlimited Locations</p>
+                                    <ul><li>For teams of 5</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="278473" data-product-name="DS Imaging .NET Team" data-price="5385">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="ds-java">
+                            <h3>Document Solutions for Java</h3>
+                            <div class="pricing-grid">
+                                <div class="price-card">
+                                    <h4>Excel, Java Edition</h4>
+                                    <div class="price">€925</div><p class="price-term">1 Dev, 1 Location</p>
+                                    <ul><li>For Java 8.0+</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="278379" data-product-name="DS for Excel, Java" data-price="925">Add to Cart</button>
+                                </div>
+                                <div class="price-card">
+                                    <h4>Excel, Java Unlimited</h4>
+                                    <div class="price">€2,595</div><p class="price-term">1 Dev, Unlimited Locations</p>
+                                    <ul><li>Unlimited Distributions</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="278378" data-product-name="DS Excel, Java Unlimited" data-price="2595">Add to Cart</button>
+                                </div>
+                                <div class="price-card">
+                                    <h4>Team Unlimited Java</h4>
+                                    <div class="price">€5,385</div><p class="price-term">5 Devs, Unlimited Locations</p>
+                                    <ul><li>For teams of 5</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="278395" data-product-name="DS Excel, Java Team" data-price="5385">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="ds-renew">
+                            <h3>Renewal Rates</h3>
+                            <h4>Individual Product Renewals</h4>
+                            <div class="pricing-grid">
+                                <div class="price-card">
+                                    <h4>Developer</h4><div class="price">€605</div><p class="price-term">1 Dev, 1 Location</p>
+                                    <button class="add-to-cart-btn" data-product-id="278287" data-product-name="DS Individual Renewal" data-price="605">Add to Cart</button>
+                                </div>
+                                <div class="price-card">
+                                    <h4>Developer Unlimited</h4><div class="price">€1,715</div><p class="price-term">1 Dev, Unlimited</p>
+                                    <button class="add-to-cart-btn" data-product-id="278300" data-product-name="DS Individual Unlimited Renewal" data-price="1715">Add to Cart</button>
+                                </div>
+                                <div class="price-card">
+                                    <h4>Team Unlimited</h4><div class="price">€3,525</div><p class="price-term">5 Devs, Unlimited</p>
+                                    <button class="add-to-cart-btn" data-product-id="278289" data-product-name="DS Individual Team Renewal" data-price="3525">Add to Cart</button>
+                                </div>
+                            </div>
+                            <h4>Bundle Renewals</h4>
+                            <div class="pricing-grid">
+                                <div class="price-card">
+                                    <h4>Developer Bundle</h4><div class="price">€1,115</div><p class="price-term">1 Dev, 1 Location</p>
+                                    <button class="add-to-cart-btn" data-product-id="278545" data-product-name="DS Bundle Renewal" data-price="1115">Add to Cart</button>
+                                </div>
+                                <div class="price-card">
+                                    <h4>Unlimited Bundle</h4><div class="price">€3,015</div><p class="price-term">1 Dev, Unlimited</p>
+                                    <button class="add-to-cart-btn" data-product-id="278660" data-product-name="DS Unlimited Bundle Renewal" data-price="3015">Add to Cart</button>
+                                </div>
+                                <div class="price-card">
+                                    <h4>Team Unlimited Bundle</h4><div class="price">€6,315</div><p class="price-term">5 Devs, Unlimited</p>
+                                    <button class="add-to-cart-btn" data-product-id="278626" data-product-name="DS Team Bundle Renewal" data-price="6315">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                </div>
                 </div>
             </div>
         </div>
@@ -373,36 +499,129 @@
     </footer>
     
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            const productSections = document.querySelectorAll('.product-pricing-section');
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    filterBtns.forEach(b => b.classList.remove('is-active'));
-                    btn.classList.add('is-active');
-                    const filter = btn.dataset.filter;
-                    productSections.forEach(card => {
-                        card.style.display = (filter === 'all' || card.dataset.platform === filter || (filter==='net' && card.dataset.platform !=='js') || (filter==='js' && card.dataset.platform !=='net') ) ? '' : 'none';
-                    });
-                });
+    document.addEventListener('DOMContentLoaded', () => {
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const productSections = document.querySelectorAll('.product-pricing-section');
+        const allTabsContainers = document.querySelectorAll('.product-pricing-section');
+        const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+
+        const cartUI = document.getElementById('floating-cart');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartTotalPriceEl = document.getElementById('cart-total-price');
+        const checkoutLink = document.getElementById('checkout-link');
+        const cartToggleBtn = document.getElementById('cart-toggle-btn');
+        const cartHeader = cartUI.querySelector('.cart-header');
+
+        let cart = [];
+
+        const addToCart = (productId, productName, price) => {
+            const existingItem = cart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ id: productId, name: productName, price: parseFloat(price), quantity: 1 });
+            }
+            updateCart();
+        };
+
+        const removeFromCart = (productId) => {
+            cart = cart.filter(item => item.id !== productId);
+            updateCart();
+        };
+
+        const updateCart = () => {
+            cartItemsContainer.innerHTML = '';
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+                cartUI.classList.remove('is-visible');
+                checkoutLink.classList.add('is-disabled');
+                return;
+            }
+
+            let totalPrice = 0;
+            cart.forEach(item => {
+                totalPrice += item.price * item.quantity;
+                const itemEl = document.createElement('div');
+                itemEl.className = 'cart-item';
+                itemEl.innerHTML = `
+                    <div class="cart-item-controls">
+                        <button class="remove-item-btn" data-product-id="${item.id}" title="Remove item">&times;</button>
+                        <span class="item-name">${item.name} (x${item.quantity})</span>
+                    </div>
+                    <span class="item-price">€${(item.price * item.quantity).toFixed(2)}</span>
+                `;
+                cartItemsContainer.appendChild(itemEl);
             });
 
-            const allTabsContainers = document.querySelectorAll('.product-pricing-section');
-            allTabsContainers.forEach(container => {
-                const tabs = container.querySelectorAll('.tab-btn');
-                const panes = container.querySelectorAll('.tab-pane');
-                tabs.forEach(tab => {
-                    tab.addEventListener('click', () => {
-                        tabs.forEach(t => t.classList.remove('is-active'));
-                        tab.classList.add('is-active');
-                        const targetPaneId = tab.dataset.tab;
-                        panes.forEach(pane => {
-                            pane.classList.toggle('is-active', pane.id === targetPaneId);
-                        });
-                    });
+            cartTotalPriceEl.textContent = `€${totalPrice.toFixed(2)}`;
+            checkoutLink.href = generateCleverbridgeLink();
+            checkoutLink.classList.remove('is-disabled');
+            cartUI.classList.add('is-visible');
+        };
+
+        const generateCleverbridgeLink = () => {
+            const baseURL = 'https://www.cleverbridge.com/your-cleverbridge-id/checkout/cart';
+            const productParams = cart.map(item => `&product${item.id}=${item.quantity}`);
+            return baseURL + '?' + productParams.join('').substring(1);
+        };
+
+        const toggleCart = () => {
+            cartUI.classList.toggle('is-minimized');
+            cartToggleBtn.textContent = cartUI.classList.contains('is-minimized') ? '+' : '—';
+        };
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('is-active'));
+                btn.classList.add('is-active');
+                const filter = btn.dataset.filter;
+                productSections.forEach(card => {
+                    const platform = card.dataset.platform;
+                    const isNet = platform !== 'js';
+                    const isJs = platform === 'js';
+                    
+                    if (filter === 'all' || (filter === 'net' && isNet) || (filter === 'js' && isJs)) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
                 });
             });
         });
+
+        allTabsContainers.forEach(container => {
+            const tabs = container.querySelectorAll('.tab-btn');
+            const panes = container.querySelectorAll('.tab-pane');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('is-active'));
+                    tab.classList.add('is-active');
+                    const targetPaneId = tab.dataset.tab;
+                    panes.forEach(pane => pane.classList.toggle('is-active', pane.id === targetPaneId));
+                });
+            });
+        });
+        
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+                addToCart(button.dataset.productId, button.dataset.productName, button.dataset.price);
+            });
+        });
+
+        cartItemsContainer.addEventListener('click', (e) => {
+            if (e.target.matches('.remove-item-btn')) {
+                removeFromCart(e.target.dataset.productId);
+            }
+        });
+
+        cartToggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleCart();
+        });
+
+        cartHeader.addEventListener('click', toggleCart);
+    });
     </script>
 </body>
 </html>
