@@ -250,11 +250,27 @@
                     </div>
                     <div class="tab-content">
                         <div class="tab-pane" id="sjs-com">
-                            <h3>Paid & SaaS Apps</h3>
-                            <div class="pricing-grid">
-                                <div class="price-card"><h4>Developer License</h4><div class="price">€925</div><p class="price-term">per Developer</p><ul><li>1-Year Support</li><li>1 Designer App License</li></ul><button class="add-to-cart-btn" data-product-id="57922" data-product-name="SpreadJS Dev License (Paid Apps)" data-price="925">Add to Cart</button></div>
-                                <div class="price-card"><h4>Limited Annual Deployment</h4><div class="price">€11,605</div><p class="price-term">per Single Domain</p><ul><li>Single Domain or 5 Hostnames</li><li>Annual subscription</li></ul><button class="add-to-cart-btn" data-product-id="61408" data-product-name="SpreadJS Limited Deployment" data-price="11605">Add to Cart</button></div>
-                            </div>
+<h3>Paid & SaaS Apps</h3>
+              <div class="pricing-grid">
+                  <div class="price-card">
+                      <h4>Developer License</h4>
+                      <div class="price">€925</div><p class="price-term">per Developer</p>
+                      <ul><li>1-Year Support</li><li>1 Designer App License</li></ul>
+                      <button class="add-to-cart-btn" data-product-id="57922" data-product-name="SpreadJS Dev License (Paid Apps)" data-price="925">Add to Cart</button>
+                  </div>
+                  <div class="price-card">
+                      <h4>Limited Annual Deployment</h4>
+                      <div class="price">€11,605</div><p class="price-term">per Single Domain</p>
+                      <ul><li>Single Domain or 5 Hostnames</li><li>Annual subscription</li></ul>
+                      <button class="add-to-cart-btn" data-product-id="61408" data-product-name="SpreadJS Limited Deployment" data-price="11605">Add to Cart</button>
+                  </div>
+                  <div class="price-card">
+                      <h4>Unlimited Annual Deployment</h4>
+                      <div class="price">Contact Us</div><p class="price-term">for a quote</p>
+                      <ul><li>Includes Unlimited distributions</li><li>Annual subscription</li></ul>
+                      <a href="#" class="cta-button">Contact Sales</a>
+                  </div>
+              </div>
                         </div>
                         <div class="tab-pane is-active" id="sjs-noncom">
                             <h3>Internal & Free Apps</h3>
@@ -392,14 +408,19 @@
         };
 
         const generateCleverbridgeLink = () => {
-            const baseURL = 'https://checkout.mescius.eu/1878/purl-shop';
-            const productIds = [];
-            cart.forEach(item => {
-                for (let i = 0; i < item.quantity; i++) {
-                    productIds.push(`i${item.id}`);
-                }
-            });
-            return `${baseURL}?cart=${productIds.join(',')}`;
+const baseURL = 'https://checkout.mescius.eu/1878/purl-shop';
+
+    // 1. Create a list of unique product IDs for the 'cart' parameter.
+    const uniqueProductIds = cart.map(item => `i${item.id}`);
+    
+    // 2. Create a list of quantity parameters for each unique product.
+    const quantityParams = cart.map(item => `quantity_i${item.id}=${item.quantity}`);
+
+    // 3. Combine everything into the final URL.
+    const cartString = `cart=${uniqueProductIds.join(',')}`;
+    const quantityString = quantityParams.join('&');
+
+    return `${baseURL}?${cartString}&${quantityString}`;
         };
 
         const toggleCart = () => {
