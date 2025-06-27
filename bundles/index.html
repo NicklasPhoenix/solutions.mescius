@@ -6,6 +6,8 @@
     <title>Bundles | Mescius Europe</title>
     <meta name="description" content="Explore pricing for Mescius developer tool bundles, including .NET, JavaScript, and reporting components. Find the right suite for your needs and budget.">
     <link rel="stylesheet" href="../styles/main.css">
+    <!-- FontAwesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root { --accent-color: var(--brand-header); }
         .pricing-grid {
@@ -185,6 +187,140 @@
             transition: color 0.2s ease-in-out;
         }
 
+        /* Footer Styles from the previous page, adapted for this one */
+        .footer {
+            background-color: var(--brand-header);
+            color: #cccccc;
+            padding: 50px 0;
+            margin-top: 50px;
+            font-size: 14px;
+            text-align: left; /* Changed from center to left */
+        }
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+        .footer-col-left {
+            min-width: 250px;
+            flex: 1.5;
+        }
+        .footer-logo {
+            height: 38px;
+            filter: brightness(0) invert(1);
+            margin-bottom: 20px;
+        }
+        .footer-text {
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .footer-heading {
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        .footer-links a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .footer-links a:hover {
+            color: #ffffff;
+        }
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+        .social-icon {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 36px;
+            height: 36px;
+            background-color: #5a626a; /* Darker gray for icons */
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 18px;
+            text-decoration: none;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        .social-icon:hover {
+            background-color: #ffffff;
+            color: var(--brand-header); /* Icon color becomes header color on hover */
+        }
+        .news-signup-text {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .join-now-btn {
+            background-color: #a0a0a0; /* Light gray from screenshot */
+            color: var(--brand-header);
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.2s ease;
+        }
+        .join-now-btn:hover {
+            background-color: #bebebe;
+        }
+        .copyright-section {
+            width: 100%;
+            text-align: left;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .copyright-section p {
+            margin: 0;
+            color: #a0a0a0;
+        }
+
+        /* Responsive adjustments for footer */
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .footer-col {
+                min-width: unset;
+                width: 100%;
+            }
+            .footer-col-left {
+                min-width: unset;
+                width: 100%;
+            }
+            .social-icons {
+                justify-content: center;
+            }
+            .copyright-section {
+                text-align: center;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero-title { font-size: 32px; }
+            .hero-subtitle { font-size: 16px; }
+            .section-title { font-size: 28px; }
+        }
     </style>
 </head>
 <body>
@@ -266,7 +402,7 @@
                             <li><span>Documents for Excel (JS)</span><span>€925</span></li>
                             <li class="total-value"><span>Total List Price:</span> <span><del>€1,850</del></span></li>
                         </ul>
-                         <div class="discount-calculator">
+                        <div class="discount-calculator">
                             <div class="discount-option">
                                 <label for="quantity-js">Volume
                                     <span class="tooltip-icon">?
@@ -360,7 +496,7 @@
                         <ul class="inclusions-list">
                             <li><span>ActiveReports.NET Standard</span><span>€1,485</span></li>
                             <li><span>Documents for Excel (.NET)</span><span>€925</span></li>
-                             <li class="total-value"><span>Total List Value:</span> <span><del>€2,410</del></span></li>
+                            <li class="total-value"><span>Total List Value:</span> <span><del>€2,410</del></span></li>
                         </ul>
                         <div class="discount-calculator">
                             <div class="discount-option">
@@ -382,7 +518,7 @@
                         </div>
                         <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285867" class="cta-button" id="cta-autoreport">Buy Now</a>
                     </div>
-                     <!-- NEW CARD 3: Blazor Hybrid Power Pack -->
+                    <!-- NEW CARD 3: Blazor Hybrid Power Pack -->
                     <div class="pricing-card" data-product-id="285848" data-base-price="2658" data-list-price="3415">
                         <div class="card-tag blazor-tag">Blazor Suite</div>
                         <h2 class="card-title">Blazor Hybrid Power Pack</h2>
@@ -433,7 +569,7 @@
                             <li><span>For web, desktop, and mobile apps</span></li>
                             <li><span>Volume & revenue-share models available</span></li>
                         </ul>
-                         <a href="#" class="cta-button">Contact for OEM Quote</a>
+                        <a href="#" class="cta-button">Contact for OEM Quote</a>
                     </div>
                     <div class="pricing-card">
                         <div class="card-tag js-tag">Full Excel Experience</div>
@@ -472,7 +608,7 @@
                         <h2 class="card-title">Small Team Universal <br>(1-5)</h2>
                         <p class="card-subtitle">Full access to all products for teams of up to 5 developers.</p>
                         <p class="price" style="font-size: 32px; padding-top: 10px;">Custom Pricing</p>
-                         <p class="price-term" style="min-height: 24px;"></p>
+                        <p class="price-term" style="min-height: 24px;"></p>
                         <ul class="inclusions-list">
                             <li><span>All .NET & JavaScript Products</span></li>
                             <li><span>All Reporting & Document APIs</span></li>
@@ -513,8 +649,45 @@
     </main>
 
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Mescius Europe GmbH | All Rights Reserved</p>
+        <div class="container footer-content">
+            <!-- First Column: Logo, Copyright, Phone, Trademarks -->
+            <div class="footer-col footer-col-left">
+                <img src="https://cdn.mescius.io/umb/media/pujnxfci/mescuis-logo-horiz.svg" alt="Mescius Europe Logo" class="footer-logo">
+                <p class="footer-text">© 2025 Mescius Europe GmbH | All Rights Reserved</p>
+                <p class="footer-text">1.800.858.2739</p>
+                <p class="footer-text">All product and company names herein may be trademarks of their respective owners.</p>
+            </div>
+
+            <!-- Second Column: Company Links -->
+            <div class="footer-col">
+                <h4 class="footer-heading">COMPANY</h4>
+                <ul class="footer-links">
+                    <li><a href="https://www.mescius.eu/en/about" target="_blank">About</a></li>
+                    <li><a href="https://www.mescius.eu/en/contact" target="_blank">Contact</a></li>
+                    <li><a href="https://developer.mescius.com/about/media-center" target="_blank">Media Center</a></li>
+                    <li><a href="https://www.mescius.eu/en/legal.html" target="_blank">Legal Page</a></li>
+                    <li><a href="https://www.mescius.eu/en/legal/eula" target="_blank">EULA</a></li>
+                </ul>
+            </div>
+
+            <!-- Third Column: Follow Us -->
+            <div class="footer-col">
+                <h4 class="footer-heading">FOLLOW US</h4>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/mescius" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.twitter.com/mescius" target="_blank" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/company/mescius" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.youtube.com/user/mescius" target="_blank" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://mescius.eu/rss" target="_blank" class="social-icon" aria-label="RSS"><i class="fa fa-rss"></i></a>
+                </div>
+            </div>
+
+            <!-- Fourth Column: Get the Latest News -->
+            <div class="footer-col">
+                <h4 class="footer-heading">GET THE LATEST NEWS</h4>
+                <p class="news-signup-text">Stay up to date with blogs, eBooks, events, and whitepapers.</p>
+                <a href="https://mescius.eu/newsletter-signup" target="_blank" class="join-now-btn">JOIN NOW</a>
+            </div>
         </div>
     </footer>
 

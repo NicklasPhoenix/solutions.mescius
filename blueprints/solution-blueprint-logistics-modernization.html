@@ -8,6 +8,7 @@
     <meta name="keywords" content="legacy system modernization, wpf data entry, winforms update, modernize desktop application, componentone, .net ui controls, data entry efficiency">
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
         :root {
@@ -24,7 +25,6 @@
         .main-nav { display: flex; gap: 30px; }
         .nav-link { color: #ffffff; text-decoration: none; font-weight: 600; font-size: 14px; padding-bottom: 5px; border-bottom: 2px solid transparent; }
         .nav-link:hover, .nav-link.active { border-bottom-color: #ffffff; }
-        .footer { background-color: var(--brand-header); color: #cccccc; text-align: center; padding: 30px 0; margin-top: 50px; font-size: 14px; }
         .nav-toggle { display: none; }
         .case-study-header { background-color: #ffffff; text-align: center; padding: 60px 20px; border-bottom: 1px solid #e2e8f0; }
         .case-study-tag { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-color); }
@@ -94,8 +94,142 @@
         .modal-body .cta-button.cta-secondary { background-color: #80B1A0; }
         .modal-body .cta-button:hover { filter: brightness(90%); }
         
+        /* Footer Styles from the previous page, adapted for this one */
+        .footer {
+            background-color: var(--brand-header);
+            color: #cccccc;
+            padding: 50px 0;
+            margin-top: 50px;
+            font-size: 14px;
+            text-align: left; /* Changed from center to left */
+        }
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+        .footer-col-left {
+            min-width: 250px;
+            flex: 1.5;
+        }
+        .footer-logo {
+            height: 38px;
+            filter: brightness(0) invert(1);
+            margin-bottom: 20px;
+        }
+        .footer-text {
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .footer-heading {
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        .footer-links a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .footer-links a:hover {
+            color: #ffffff;
+        }
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+        .social-icon {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 36px;
+            height: 36px;
+            background-color: #5a626a; /* Darker gray for icons */
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 18px;
+            text-decoration: none;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        .social-icon:hover {
+            background-color: #ffffff;
+            color: var(--brand-header); /* Icon color becomes header color on hover */
+        }
+        .news-signup-text {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .join-now-btn {
+            background-color: #a0a0a0; /* Light gray from screenshot */
+            color: var(--brand-header);
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.2s ease;
+        }
+        .join-now-btn:hover {
+            background-color: #bebebe;
+        }
+        .copyright-section {
+            width: 100%;
+            text-align: left;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .copyright-section p {
+            margin: 0;
+            color: #a0a0a0;
+        }
+
+        /* Responsive adjustments for footer */
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .footer-col {
+                min-width: unset;
+                width: 100%;
+            }
+            .footer-col-left {
+                min-width: unset;
+                width: 100%;
+            }
+            .social-icons {
+                justify-content: center;
+            }
+            .copyright-section {
+                text-align: center;
+            }
+        }
         @media (max-width: 992px) { .bundle-card { grid-template-columns: 1fr; } .bundle-purchase, .bundle-price { text-align: center; } }
         @media (max-width: 768px) { .case-study-title { font-size: 32px; } }
+        @media (max-width: 480px) {
+            .hero-title { font-size: 32px; }
+            .hero-subtitle { font-size: 16px; }
+            .section-title { font-size: 28px; }
+        }
     </style>
 </head>
 <body>
@@ -158,7 +292,7 @@
                             <span class="metric-label">Less Training Time</span>
                         </div>
                         <div class="metric-item">
-                            <span class="metric-value">&lt;10</span>
+                            <span class="metric-value"><10</span>
                             <span class="metric-label">Months to ROI</span>
                         </div>
                     </div>
@@ -181,21 +315,21 @@
                         </div>
                         <div>
                             <h2>Architectural Approach: A Low-Risk, High-ROI Modernization Path</h2>
-                            <p>A UI modernization project is a practical alternative to a full rewrite. The strategy focuses on replacing inefficient, standard UI controls with a professional library of modern components, targeting the areas of an application that cause the most user friction and errors.</p>
-                             <ul>
+                            <p>A UI modernization project is a pragmatic alternative to a full rewrite. The strategy focuses on replacing inefficient, standard UI controls with a professional library of modern components, targeting the areas of an application that cause the most user friction and errors.</p>
+                            <ul>
                                 <li><strong>Identify Bottlenecks:</strong> Analyze the existing application to find the most inefficient screens and controls, such as slow data grids or basic text boxes that lack proper data validation.</li>
                                 <li><strong>Incremental Replacement:</strong> Replace these standard controls one by one or screen by screen. This iterative approach minimizes risk and allows for continuous delivery of improvements.</li>
                                 <li><strong>Focus on High-Impact Areas:</strong> Prioritize controls like datagrids (for example, ComponentOne FlexGrid) and intelligent input controls (like InputMask or AutoComplete) to achieve the fastest improvements in data accuracy and user speed.</li>
-                             </ul>
+                            </ul>
                         </div>
                         <div class="implementation-summary">
-                           <h3>Blueprint Summary</h3>
-                           <ul>
-                               <li>Extend the life of critical desktop applications without the cost and risk of a rewrite.</li>
-                               <li>Boost user productivity and reduce data errors with modern, feature-rich UI controls.</li>
-                               <li>Target the most problematic UI elements first for the highest return on investment.</li>
-                               <li>Leverage a comprehensive .NET suite to ensure a consistent look and feel across your application.</li>
-                           </ul>
+                            <h3>Blueprint Summary</h3>
+                            <ul>
+                                <li>Extend the life of critical desktop applications without the cost and risk of a rewrite.</li>
+                                <li>Boost user productivity and reduce data errors with modern, feature-rich UI controls.</li>
+                                <li>Target the most problematic UI elements first for the highest return on investment.</li>
+                                <li>Leverage a comprehensive .NET suite to ensure a consistent look and feel across your application.</li>
+                            </ul>
                         </div>
                     </article>
                 </div>
@@ -219,7 +353,7 @@
                                     <a href="#" class="action-link product-info-trigger" data-title="ComponentOne Studio" data-description='<strong>The complete UI toolkit for .NET developers.</strong><br>ComponentOne includes hundreds of controls to solve any business need. Key features include:<ul><li>High-performance DataGrids and Charts</li><li>Full support for WinForms, WPF, Blazor, and MAUI</li><li>Powerful reporting and document generation</li></ul>'>Info</a>
                                 </div>
                             </li>
-                             <li class="interactive">
+                            <li class="interactive">
                                 <div class="product-name"><span class="checkmark">✓</span> Wijmo Enterprise</div>
                                 <div class="product-actions">
                                     <a href="https://developer.mescius.com/wijmo/download" target="_blank" class="action-link">Try</a>
@@ -227,7 +361,7 @@
                                     <a href="#" class="action-link product-info-trigger" data-title="Wijmo Enterprise" data-description="<strong>Build high-performance, enterprise-level web applications</strong> with Wijmo's comprehensive library of JavaScript/TypeScript UI components.<p>Key features include:</p><ul><li>A <strong>zero-dependency, small footprint</strong> architecture written for performance.</li><li>The industry's best datagrid, <strong>FlexGrid</strong>, plus 100+ other controls for data visualization and UI.</li><li>Full framework support for <strong>Angular, React, Vue</strong>, and more.</li></ul><p>Wijmo is the premier choice for your most <strong>demanding data-driven applications.</strong></p>">Info</a>
                                 </div>
                             </li>
-                             <li class="interactive">
+                            <li class="interactive">
                                 <div class="product-name"><span class="checkmark">✓</span> ActiveReports.NET</div>
                                 <div class="product-actions">
                                     <a href="https://developer.mescius.com/activereportsnet/download" target="_blank" class="action-link">Try</a>
@@ -246,13 +380,13 @@
                         </ul>
                     </div>
                     <div class="bundle-purchase">
-                         <div class="bundle-price">
-                            <span class="price">€3,632</span>
-                            <span class="term">per developer / year</span>
-                        </div>
-                        <div class="bundle-cta">
-                            <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285847" class="cta-button">Buy Now</a>
-                        </div>
+                           <div class="bundle-price">
+                                <span class="price">€3,632</span>
+                                <span class="term">per developer / year</span>
+                            </div>
+                            <div class="bundle-cta">
+                                <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285847" class="cta-button">Buy Now</a>
+                            </div>
                     </div>
                 </div>
             </div>
@@ -261,18 +395,51 @@
 
     <div id="product-info-modal" class="modal-overlay">
         <div class="modal-container">
-            <button id="modal-close" class="modal-close-btn">&times;</button>
+            <button id="modal-close" class="modal-close-btn">×</button>
             <div id="modal-body-content" class="modal-body">
                 </div>
         </div>
     </div>
     
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Mescius Europe GmbH | All Rights Reserved</p>
+        <div class="container footer-content">
+            <div class="footer-col footer-col-left">
+                <img src="https://cdn.mescius.io/umb/media/pujnxfci/mescuis-logo-horiz.svg" alt="Mescius Europe Logo" class="footer-logo">
+                <p class="footer-text">© 2025 Mescius Europe GmbH | All Rights Reserved</p>
+                <p class="footer-text">1.800.858.2739</p>
+                <p class="footer-text">All product and company names herein may be trademarks of their respective owners.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">COMPANY</h4>
+                <ul class="footer-links">
+                    <li><a href="https://www.mescius.eu/en/about" target="_blank">About</a></li>
+                    <li><a href="https://www.mescius.eu/en/contact" target="_blank">Contact</a></li>
+                    <li><a href="https://developer.mescius.com/about/media-center" target="_blank">Media Center</a></li>
+                    <li><a href="https://www.mescius.eu/en/legal.html" target="_blank">Legal Page</a></li>
+                    <li><a href="https://www.mescius.eu/en/legal/eula" target="_blank">EULA</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">FOLLOW US</h4>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/mescius" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.twitter.com/mescius" target="_blank" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/company/mescius" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.youtube.com/user/mescius" target="_blank" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://mescius.eu/rss" target="_blank" class="social-icon" aria-label="RSS"><i class="fa fa-rss"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">GET THE LATEST NEWS</h4>
+                <p class="news-signup-text">Stay up to date with blogs, eBooks, events, and whitepapers.</p>
+                <a href="https://mescius.eu/newsletter-signup" target="_blank" class="join-now-btn">JOIN NOW</a>
+            </div>
         </div>
     </footer>
-
+    
     <script>
     document.addEventListener('DOMContentLoaded', () => {
         // --- Expandable Card Logic ---
@@ -283,6 +450,7 @@
                 card.classList.toggle('is-open');
                 const isExpanded = card.classList.contains('is-open');
                 toggle.setAttribute('aria-expanded', isExpanded);
+                // Update button text on toggle
                 toggle.querySelector('.toggle-text').textContent = isExpanded ? 'Hide Implementation Details' : 'View Implementation Details';
             });
         }
@@ -319,7 +487,7 @@
 
             infoTriggers.forEach(trigger => {
                 trigger.addEventListener('click', (e) => {
-                    e.preventDefault();
+                    e.preventDefault(); 
                     openModal(trigger);
                 });
             });

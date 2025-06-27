@@ -6,6 +6,7 @@
     <title>Mescius Europe | Solution Blueprints & Implementation Patterns</title>
     <meta name="description" content="Explore practical guides and solution blueprints for solving common development challenges with Mescius developer tools for .NET and JavaScript.">
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* All necessary styles are contained in this file */
         *, *::before, *::after { box-sizing: border-box; }
@@ -28,7 +29,114 @@
         .main-nav { display: flex; gap: 30px; }
         .nav-link { color: #ffffff; text-decoration: none; font-weight: 600; font-size: 14px; padding-bottom: 5px; border-bottom: 2px solid transparent; }
         .nav-link.active, .nav-link:hover { border-bottom-color: #ffffff; }
-        .footer { background-color: var(--brand-header); color: #cccccc; text-align: center; padding: 30px 0; margin-top: 50px; font-size: 14px; }
+        
+        /* Footer Styles */
+        .footer {
+            background-color: var(--brand-header);
+            color: #cccccc;
+            padding: 50px 0;
+            margin-top: 50px;
+            font-size: 14px;
+            text-align: left; /* Changed from center to left */
+        }
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+        .footer-col-left {
+            min-width: 250px;
+            flex: 1.5;
+        }
+        .footer-logo {
+            height: 38px;
+            filter: brightness(0) invert(1);
+            margin-bottom: 20px;
+        }
+        .footer-text {
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .footer-heading {
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        .footer-links a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .footer-links a:hover {
+            color: #ffffff;
+        }
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+        .social-icon {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 36px;
+            height: 36px;
+            background-color: #5a626a; /* Darker gray for icons */
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 18px;
+            text-decoration: none;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        .social-icon:hover {
+            background-color: #ffffff;
+            color: var(--brand-header); /* Icon color becomes header color on hover */
+        }
+        .news-signup-text {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .join-now-btn {
+            background-color: #a0a0a0; /* Light gray from screenshot */
+            color: var(--brand-header);
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.2s ease;
+        }
+        .join-now-btn:hover {
+            background-color: #bebebe;
+        }
+        .copyright-section {
+            width: 100%;
+            text-align: left;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .copyright-section p {
+            margin: 0;
+            color: #a0a0a0;
+        }
+
         .hero { background-color: #ffffff; text-align: center; padding: 60px 20px; border-bottom: 1px solid #dee2e6;}
         .hero-title { font-size: 42px; font-weight: 700; color: var(--brand-heading); }
         .hero-subtitle { font-size: 18px; max-width: 700px; margin: 15px auto 0; line-height: 1.6; }
@@ -178,6 +286,35 @@
         .case-study-card.product-ds { --border-color: var(--brand-ds); }
         .case-study-card.product-arjs { --border-color: var(--brand-arjs); }
 
+        /* Responsive adjustments for footer */
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .footer-col {
+                min-width: unset;
+                width: 100%;
+            }
+            .footer-col-left {
+                min-width: unset;
+                width: 100%;
+            }
+            .social-icons {
+                justify-content: center;
+            }
+            .copyright-section {
+                text-align: center;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero-title { font-size: 32px; }
+            .hero-subtitle { font-size: 16px; }
+            .section-title { font-size: 28px; }
+            .filter-btn { padding: 6px 12px; font-size: 13px; }
+            .case-study-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -221,7 +358,7 @@
                     </div>
                 </div>
                 <div class="filter-set" data-filter-type="product">
-                     <p class="filter-set-label">Product</p>
+                       <p class="filter-set-label">Product</p>
                     <div class="filter-pills">
                         <button class="filter-btn is-active" data-filter="all">All</button>
                         <button class="filter-btn" data-filter="net">.NET Suite</button>
@@ -241,7 +378,7 @@
                         <p class="card-tag">Logistics & Supply Chain</p>
                         <h3 class="card-title">Modernize Legacy Desktop Applications</h3>
                         <p class="card-excerpt">Use ComponentOne controls to update mission-critical WPF and WinForms apps, reducing data entry errors and training time without a costly rewrite.</p>
-                        <span class="card-link">View the Blueprint &rarr;</span>
+                        <span class="card-link">View the Blueprint →</span>
                     </div>
                 </a>
                 
@@ -250,7 +387,7 @@
                         <p class="card-tag">Regulatory Technologies</p>
                         <h3 class="card-title">Ensure Data Integrity for Regulatory Compliance</h3>
                         <p class="card-excerpt">Build a unified data pipeline using SpreadJS for front-end validation and Document Solutions for automated, secure back-end report generation.</p>
-                        <span class="card-link">View the Blueprint &rarr;</span>
+                        <span class="card-link">View the Blueprint →</span>
                     </div>
                 </a>
 
@@ -259,7 +396,7 @@
                         <p class="card-tag">Financial Technology</p>
                         <h3 class="card-title">Create Cross-Platform Desktop & Web Apps</h3>
                         <p class="card-excerpt">Use the Blazor Hybrid Power Pack to unify disparate desktop and web financial applications into a single, high-performance solution.</p>
-                        <span class="card-link">View the Blueprint &rarr;</span>
+                        <span class="card-link">View the Blueprint →</span>
                     </div>
                 </a>
 
@@ -268,7 +405,7 @@
                         <p class="card-tag">BI SaaS for Manufacturing</p>
                         <h3 class="card-title">Improve Performance in Data-Intensive Apps</h3>
                         <p class="card-excerpt">Integrate Wijmo's high-performance components to resolve critical speed issues in BI dashboards and secure major client renewals.</p>
-                        <span class="card-link">View the Blueprint &rarr;</span>
+                        <span class="card-link">View the Blueprint →</span>
                     </div>
                 </a>
 
@@ -277,16 +414,16 @@
                         <p class="card-tag">Energy & Utilities</p>
                         <h3 class="card-title">Build Real-Time, High-Frequency Dashboards</h3>
                         <p class="card-excerpt">Leverage Wijmo's datagrid, engineered to process thousands of real-time IoT data updates per second without freezing or crashing.</p>
-                        <span class="card-link">View the Blueprint &rarr;</span>
+                        <span class="card-link">View the Blueprint →</span>
                     </div>
                 </a>
 
                 <a href="./blueprints/solution-blueprint-excel-vba-migration.html" class="case-study-card product-js" data-industry="finance" data-product="js">
-                     <div class="card-content">
+                       <div class="card-content">
                         <p class="card-tag">Financial Services</p>
                         <h3 class="card-title">Migrate from Excel VBA to a Secure Web App</h3>
                         <p class="card-excerpt">Use SpreadJS and Document Solutions to move critical reporting from insecure VBA macros to a scalable, secure, and modern web application.</p>
-                        <span class="card-link">View the Blueprint &rarr;</span>
+                        <span class="card-link">View the Blueprint →</span>
                     </div>
                 </a>
 
@@ -295,7 +432,7 @@
                         <p class="card-tag">Financial Services</p>
                         <h3 class="card-title">Create Interactive Financial Models on the Web</h3>
                         <p class="card-excerpt">Use SpreadJS to transform insecure, decentralized Excel models into a secure, collaborative web platform that cuts development time in half.</p>
-                        <span class="card-link">View the Blueprint &rarr;</span>
+                        <span class="card-link">View the Blueprint →</span>
                     </div>
                 </a>
 
@@ -304,7 +441,7 @@
                         <p class="card-tag">Enterprise Healthcare</p>
                         <h3 class="card-title">Deliver Fast, Reliable Client-Side Reporting</h3>
                         <p class="card-excerpt">Embed ActiveReportsJS to eliminate system freezes and provide clinicians with fast, interactive EHR reports directly in the browser.</p>
-                        <span class="card-link">View the Blueprint &rarr;</span>
+                        <span class="card-link">View the Blueprint →</span>
                     </div>
                 </a>
                 
@@ -313,7 +450,7 @@
                         <p class="card-tag">Insurance</p>
                         <h3 class="card-title">Automate Secure Document Generation</h3>
                         <p class="card-excerpt">Use Document Solutions for .NET to automate secure policy and report generation, ensuring 100% compliance and drastically cutting operational costs.</p>
-                        <span class="card-link">View the Blueprint &rarr;</span>
+                        <span class="card-link">View the Blueprint →</span>
                     </div>
                 </a>
 
@@ -325,8 +462,41 @@
     </main>
 
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Mescius Europe GmbH | All Rights Reserved</p>
+        <div class="container footer-content">
+            <div class="footer-col footer-col-left">
+                <img src="https://cdn.mescius.io/umb/media/pujnxfci/mescuis-logo-horiz.svg" alt="Mescius Europe Logo" class="footer-logo">
+                <p class="footer-text">© 2025 Mescius Europe GmbH | All Rights Reserved</p>
+                <p class="footer-text">1.800.858.2739</p>
+                <p class="footer-text">All product and company names herein may be trademarks of their respective owners.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">COMPANY</h4>
+                <ul class="footer-links">
+                    <li><a href="https://www.mescius.eu/en/about" target="_blank">About</a></li>
+                    <li><a href="https://www.mescius.eu/en/contact" target="_blank">Contact</a></li>
+                    <li><a href="https://developer.mescius.com/about/media-center" target="_blank">Media Center</a></li>
+                    <li><a href="https://www.mescius.eu/en/legal.html" target="_blank">Legal Page</a></li>
+                    <li><a href="https://www.mescius.eu/en/legal/eula" target="_blank">EULA</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">FOLLOW US</h4>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/mescius" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.twitter.com/mescius" target="_blank" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/company/mescius" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.youtube.com/user/mescius" target="_blank" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://mescius.eu/rss" target="_blank" class="social-icon" aria-label="RSS"><i class="fa fa-rss"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">GET THE LATEST NEWS</h4>
+                <p class="news-signup-text">Stay up to date with blogs, eBooks, events, and whitepapers.</p>
+                <a href="https://mescius.eu/newsletter-signup" target="_blank" class="join-now-btn">JOIN NOW</a>
+            </div>
         </div>
     </footer>
 
