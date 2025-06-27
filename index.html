@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mescius Europe | Customer Solutions & Case Studies</title>
+    <title>Mescius Europe | Solution Blueprints & Implementation Patterns</title>
+    <meta name="description" content="Explore practical guides and solution blueprints for solving common development challenges with Mescius developer tools for .NET and JavaScript.">
     <link rel="stylesheet" href="styles/main.css">
     <style>
         /* All necessary styles are contained in this file */
@@ -17,136 +18,166 @@
             --brand-net: #D6564C;
             --brand-wijmo: #48A9C5;
             --brand-ds: #5A7E9E;
-            --brand-arjs: #EA8939; /* Added specific color for ActiveReports JS/NET */
+            --brand-arjs: #EA8939;
         }
-        body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(--brand-light-gray); color: var(--brand-body); }
+        body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: #f0f2f5; color: var(--brand-body); }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         .header { background-color: var(--brand-header); padding: 15px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         .header-content { display: flex; justify-content: space-between; align-items: center; }
         .logo { height: 32px; filter: brightness(0) invert(1); }
         .main-nav { display: flex; gap: 30px; }
         .nav-link { color: #ffffff; text-decoration: none; font-weight: 600; font-size: 14px; padding-bottom: 5px; border-bottom: 2px solid transparent; }
-        .nav-link.active { border-bottom-color: #ffffff; }
+        .nav-link.active, .nav-link:hover { border-bottom-color: #ffffff; }
         .footer { background-color: var(--brand-header); color: #cccccc; text-align: center; padding: 30px 0; margin-top: 50px; font-size: 14px; }
-        .hero { background-color: #ffffff; text-align: center; padding: 60px 20px; }
+        .hero { background-color: #ffffff; text-align: center; padding: 60px 20px; border-bottom: 1px solid #dee2e6;}
         .hero-title { font-size: 42px; font-weight: 700; color: var(--brand-heading); }
         .hero-subtitle { font-size: 18px; max-width: 700px; margin: 15px auto 0; line-height: 1.6; }
-        .case-study-section { padding: 80px 0; }
-        .section-header { text-align: center; margin-bottom: 40px; }
+        .case-study-section { padding: 60px 0; }
+        .section-header { text-align: center; margin-bottom: 50px; }
         .section-title { font-size: 36px; font-weight: 700; color: var(--brand-heading); margin: 0; }
         .section-subtitle { font-size: 18px; margin: 10px auto 0; }
 
-        /* Styles for Filter Controls */
-        .filter-controls {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 40px;
-            border: 1px solid #e2e8f0;
+        /* --- COMPLETELY REDESIGNED FILTER CONTROLS --- */
+        .filter-toolbar {
             display: flex;
-            flex-direction: column;
-            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 20px;
+            margin-bottom: 40px;
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+            border-radius: 12px;
         }
-        .filter-group {
+        .filter-set {
             display: flex;
             align-items: center;
             flex-wrap: wrap;
             gap: 10px;
         }
-        .filter-label {
+        .filter-set-label {
             font-weight: 600;
+            font-size: 15px;
             color: var(--brand-heading);
             margin-right: 10px;
-            font-size: 14px;
+        }
+        .filter-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
         }
         .filter-btn {
-            padding: 8px 15px;
-            font-size: 13px;
+            padding: 8px 18px;
+            font-size: 14px;
             font-weight: 600;
-            font-family: 'Montserrat', sans-serif;
-            border: 1px solid #ced4da;
-            border-radius: 20px;
-            background-color: transparent;
+            border: 1px solid #d0d5dd;
+            border-radius: 30px;
+            background-color: #ffffff;
             color: var(--brand-body);
             cursor: pointer;
             transition: all 0.2s ease-in-out;
         }
         .filter-btn:hover {
-            background-color: #e9ecef;
             border-color: #adb5bd;
+            background-color: #f8f9fa;
         }
         .filter-btn.is-active {
-            background-color: var(--brand-heading);
             color: #ffffff;
             border-color: var(--brand-heading);
+            background-color: var(--brand-heading);
+        }
+        /* Color coding for active product filters */
+        .filter-set[data-filter-type="product"] .filter-btn[data-filter="net"].is-active { background-color: var(--brand-net); border-color: var(--brand-net); }
+        .filter-set[data-filter-type="product"] .filter-btn[data-filter="js"].is-active { background-color: var(--brand-js); border-color: var(--brand-js); }
+        .filter-set[data-filter-type="product"] .filter-btn[data-filter="wijmo"].is-active { background-color: var(--brand-wijmo); border-color: var(--brand-wijmo); }
+        .filter-set[data-filter-type="product"] .filter-btn[data-filter="arjs"].is-active { background-color: var(--brand-arjs); border-color: var(--brand-arjs); }
+        .filter-set[data-filter-type="product"] .filter-btn[data-filter="ds"].is-active { background-color: var(--brand-ds); border-color: var(--brand-ds); }
+        
+        .clear-filters-btn {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--brand-body);
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-decoration: underline;
+            opacity: 0.8;
+            transition: opacity 0.2s ease;
+            margin-left: auto;
+        }
+        .clear-filters-btn:hover { opacity: 1; }
+        @media (max-width: 1100px) {
+            .filter-toolbar { flex-direction: column; align-items: stretch; }
+            .clear-filters-btn { margin-left: 0; margin-top: 10px; text-align: right;}
         }
 
-        /* Styles for the case study grid cards */
+        /* --- CASE STUDY CARDS --- */
         .case-study-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 30px;
         }
         .case-study-card {
             background-color: #ffffff;
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            overflow: hidden;
             text-decoration: none;
             color: inherit;
             display: flex;
             flex-direction: column;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+            border: 1px solid #e2e8f0;
+            border-top-width: 4px; /* Creates space for the colored top border */
         }
         .case-study-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
-        .case-study-card.is-hidden {
-            display: none;
-        }
-        .no-results-message {
-            display: none; /* Hidden by default */
-            text-align: center;
-            font-size: 18px;
-            color: var(--brand-body);
-            padding: 40px 20px;
-            background-color: #ffffff;
-            border-radius: 8px;
-        }
-        .card-image {
-            width: 100%; height: 200px; object-fit: cover; display: block;
-        }
-        .card-content {
-            padding: 20px; flex-grow: 1; display: flex; flex-direction: column;
-        }
+        .case-study-card.is-hidden { display: none; }
+        
+        /* Product-specific border colors */
+        .case-study-card.product-net { border-top-color: var(--brand-net); }
+        .case-study-card.product-wijmo { border-top-color: var(--brand-wijmo); }
+        .case-study-card.product-js { border-top-color: var(--brand-js); }
+        .case-study-card.product-ds { border-top-color: var(--brand-ds); }
+        .case-study-card.product-arjs { border-top-color: var(--brand-arjs); }
+
+        .no-results-message { display: none; text-align: center; font-size: 18px; color: var(--brand-body); padding: 40px 20px; background-color: #ffffff; border-radius: 8px; }
+        
+        .card-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
         .card-tag {
             font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
-            padding: 4px 8px; border-radius: 4px; display: inline-block; margin-bottom: 10px; align-self: flex-start;
+            margin-bottom: 12px;
         }
-        /* Product-specific tag colors for the cards */
-        .net-tag { background-color: var(--brand-net); color: #ffffff; }
-        .wijmo-tag { background-color: var(--brand-wijmo); color: #ffffff; }
-        .js-tag { background-color: var(--brand-js); color: #ffffff; }
-        .ds-tag { background-color: var(--brand-ds); color: #ffffff; }
-        .arjs-tag { background-color: var(--brand-arjs); color: #ffffff; }
+
+        /* Product-specific tag text colors */
+        .case-study-card.product-net .card-tag { color: var(--brand-net); }
+        .case-study-card.product-wijmo .card-tag { color: var(--brand-wijmo); }
+        .case-study-card.product-js .card-tag { color: var(--brand-js); }
+        .case-study-card.product-ds .card-tag { color: var(--brand-ds); }
+        .case-study-card.product-arjs .card-tag { color: var(--brand-arjs); }
+        
         .card-title {
-            font-size: 20px; font-weight: 600; color: var(--brand-heading); margin-top: 0; margin-bottom: 10px;
+            font-size: 20px; font-weight: 600; color: var(--brand-heading); margin-top: 0; margin-bottom: 10px; line-height: 1.3;
         }
         .card-excerpt {
-            font-size: 15px; color: var(--brand-body); margin-bottom: 20px; flex-grow: 1;
+            font-size: 15px; color: var(--brand-body); margin-bottom: 20px; flex-grow: 1; line-height: 1.6;
         }
         .card-link {
             font-size: 15px; font-weight: 600; color: var(--brand-heading);
             text-decoration: none; display: inline-block; margin-top: auto;
-            transition: color 0.3s ease;
+            transition: color 0.2s ease;
         }
-        /* Hover effects for card links based on product tag */
-        .case-study-card:has(.net-tag) .card-link:hover { color: var(--brand-net); }
-        .case-study-card:has(.wijmo-tag) .card-link:hover { color: var(--brand-wijmo); }
-        .case-study-card:has(.js-tag) .card-link:hover { color: var(--brand-js); }
-        .case-study-card:has(.ds-tag) .card-link:hover { color: var(--brand-ds); }
-        .case-study-card:has(.arjs-tag) .card-link:hover { color: var(--brand-arjs); }
+        .case-study-card:hover .card-link {
+            color: var(--border-color); /* Uses the card's border color on hover */
+        }
+        .case-study-card.product-net { --border-color: var(--brand-net); }
+        .case-study-card.product-wijmo { --border-color: var(--brand-wijmo); }
+        .case-study-card.product-js { --border-color: var(--brand-js); }
+        .case-study-card.product-ds { --border-color: var(--brand-ds); }
+        .case-study-card.product-arjs { --border-color: var(--brand-arjs); }
+
     </style>
 </head>
 <body>
@@ -155,7 +186,7 @@
         <div class="container header-content">
             <a href="/"><img src="https://cdn.mescius.io/umb/media/pujnxfci/mescuis-logo-horiz.svg" alt="Mescius Europe Logo" class="logo"></a>
             <nav class="main-nav">
-                <a href="#case-studies" class="nav-link active">Case Studies</a>
+                <a href="#case-studies" class="nav-link active">Solutions</a>
                 <a href="./pricing/index.html" class="nav-link">Pricing</a>
                 <a href="./bundles/index.html" class="nav-link">Bundles</a>
             </nav>
@@ -164,117 +195,131 @@
 
     <section class="hero">
         <div class="container">
-            <h1 class="hero-title">Solving Complex Development Challenges</h1>
-            <p class="hero-subtitle">Discover how leading European companies leverage Mescius developer tools to build high-performance, data-driven applications faster and more reliably.</p>
+            <h1 class="hero-title">Build Better Applications, Faster</h1>
+            <p class="hero-subtitle">Explore common development challenges and discover how Mescius components provide the foundation for powerful, data-driven applications.</p>
         </div>
     </section>
 
     <main class="case-study-section" id="case-studies">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Solution Profiles</h2>
-                <p class="section-subtitle">Real-world examples of how our components solve specific business problems.</p>
+                <h2 class="section-title">Solution Blueprints</h2>
+                <p class="section-subtitle">Practical guides on how our components solve common development challenges.</p>
             </div>
             
-            <div class="filter-controls">
-                <div class="filter-group" id="industry-filter-group">
-                    <span class="filter-label">Industry:</span>
-                    <button class="filter-btn is-active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="logistics">Logistics</button>
-                    <button class="filter-btn" data-filter="finance">Finance</button>
-                    <button class="filter-btn" data-filter="healthcare">Healthcare</button>
-                    <button class="filter-btn" data-filter="energy">Energy</button>
-                    <button class="filter-btn" data-filter="insurance">Insurance</button>
-                    <button class="filter-btn" data-filter="bi">BI SaaS</button>
+            <div class="filter-toolbar">
+                <div class="filter-set" data-filter-type="industry">
+                    <p class="filter-set-label">Industry</p>
+                    <div class="filter-pills">
+                        <button class="filter-btn is-active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="finance">Finance</button>
+                        <button class="filter-btn" data-filter="logistics">Logistics</button>
+                        <button class="filter-btn" data-filter="healthcare">Healthcare</button>
+                        <button class="filter-btn" data-filter="energy">Energy</button>
+                        <button class="filter-btn" data-filter="insurance">Insurance</button>
+                        <button class="filter-btn" data-filter="bi">BI SaaS</button>
+                    </div>
                 </div>
-                <div class="filter-group" id="product-filter-group">
-                    <span class="filter-label">Product Family:</span>
-                    <button class="filter-btn is-active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="net">.NET</button>
-                    <button class="filter-btn" data-filter="js">SpreadJS</button>
-                    <button class="filter-btn" data-filter="wijmo">Wijmo</button>
-                    <button class="filter-btn" data-filter="arjs">ActiveReports</button>
-                    <button class="filter-btn" data-filter="ds">Document Solutions</button>
+                <div class="filter-set" data-filter-type="product">
+                     <p class="filter-set-label">Product</p>
+                    <div class="filter-pills">
+                        <button class="filter-btn is-active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="net">.NET Suite</button>
+                        <button class="filter-btn" data-filter="js">SpreadJS</button>
+                        <button class="filter-btn" data-filter="wijmo">Wijmo</button>
+                        <button class="filter-btn" data-filter="arjs">ActiveReports</button>
+                        <button class="filter-btn" data-filter="ds">Document Solutions</button>
+                    </div>
                 </div>
+                <button class="clear-filters-btn" id="clear-filters">Clear Filters</button>
             </div>
 
             <div class="case-study-grid" id="case-study-grid">
-                <a href="./case-studies/logistics-app-modernization.html" class="case-study-card" data-industry="logistics" data-product="net">
-                    <img src="https://placehold.co/600x400/D6564C/FFFFFF?text=Unified+Platforms" alt="Unified Desktop and Web App" class="card-image">
+                
+                <a href="./case-studies/logistics-wpf-modernization.html" class="case-study-card product-net" data-industry="logistics" data-product="net">
                     <div class="card-content">
-                        <p class="card-tag net-tag">Logistics & Supply Chain</p>
-                        <h3 class="card-title">Logistics Giant Unifies Desktop and Web, Accelerates Development by 40%.</h3>
-                        <p class="card-excerpt">Learn how the Mescius .NET Suite empowered a single team to modernize a legacy WPF app and build a new Blazor portal, boosting development speed.</p>
-                        <span class="card-link">Read Solution Profile &rarr;</span>
+                        <p class="card-tag">Logistics & Supply Chain</p>
+                        <h3 class="card-title">Modernize Legacy Desktop Applications</h3>
+                        <p class="card-excerpt">Use ComponentOne controls to update mission-critical WPF and WinForms apps, reducing data entry errors and training time without a costly rewrite.</p>
+                        <span class="card-link">View the Blueprint &rarr;</span>
                     </div>
                 </a>
-                <a href="./case-studies/real-time-dashboard.html" class="case-study-card" data-industry="energy" data-product="wijmo">
-                    <img src="https://placehold.co/600x400/48A9C5/FFFFFF?text=Live+IoT+Dashboard" alt="Real-time IoT Dashboard" class="card-image">
+                
+                <a href="./case-studies/logistics-platform-unification.html" class="case-study-card product-net" data-industry="logistics" data-product="net">
                     <div class="card-content">
-                        <p class="card-tag wijmo-tag">Energy & Utilities</p>
-                        <h3 class="card-title">Energy Provider Achieves Real-Time Grid Monitoring with Zero Lag.</h3>
-                        <p class="card-excerpt">Discover how Wijmo powered a mission-critical dashboard, processing thousands of real-time data updates without freezing or crashing.</p>
-                        <span class="card-link">Read Solution Profile &rarr;</span>
+                        <p class="card-tag">Logistics & Supply Chain</p>
+                        <h3 class="card-title">Unify Desktop & Web Apps with One Toolset</h3>
+                        <p class="card-excerpt">Leverage the complete .NET Suite to modernize a legacy WPF app and build a new Blazor portal, sharing a single codebase to boost development speed.</p>
+                        <span class="card-link">View the Blueprint &rarr;</span>
                     </div>
                 </a>
-                <a href="./case-studies/high-volume-reporting.html" class="case-study-card" data-industry="healthcare" data-product="arjs">
-                    <img src="https://placehold.co/600x400/EA8939/FFFFFF?text=Automated+Reports" alt="Automated Report Generation" class="card-image">
+
+                <a href="./case-studies/finance-blazor-hybrid.html" class="case-study-card product-net" data-industry="finance" data-product="net">
                     <div class="card-content">
-                        <p class="card-tag arjs-tag">Enterprise Healthcare</p>
-                        <h3 class="card-title">EHR Provider Boosts Clinician Productivity with Faster Reporting.</h3>
-                        <p class="card-excerpt">Find out how ActiveReportsJS delivered 95% faster client-side reports, eliminating system freezes and boosting clinician productivity.</p>
-                        <span class="card-link">Read Solution Profile &rarr;</span>
+                        <p class="card-tag">Financial Technology</p>
+                        <h3 class="card-title">Create Cross-Platform Desktop & Web Apps</h3>
+                        <p class="card-excerpt">Use the Blazor Hybrid Power Pack to unify disparate desktop and web financial applications into a single, high-performance solution.</p>
+                        <span class="card-link">View the Blueprint &rarr;</span>
                     </div>
                 </a>
-                <a href="./case-studies/interactive-financial-modeling.html" class="case-study-card" data-industry="finance" data-product="js">
-                    <img src="https://placehold.co/600x400/809B59/FFFFFF?text=Financial+Modeling" alt="Interactive Financial Modeling Application" class="card-image">
+
+                <a href="./case-studies/bi-saas-churn-reduction.html" class="case-study-card product-wijmo" data-industry="bi" data-product="wijmo">
                     <div class="card-content">
-                        <p class="card-tag js-tag">Financial Services</p>
-                        <h3 class="card-title">Wealth Management Firm Cuts Model Development Time by 50%.</h3>
-                        <p class="card-excerpt">Learn how SpreadJS transformed insecure Excel models into a secure, collaborative web platform, cutting model development time in half.</p>
-                        <span class="card-link">Read Solution Profile &rarr;</span>
+                        <p class="card-tag">BI SaaS for Manufacturing</p>
+                        <h3 class="card-title">Improve Performance in Data-Intensive Apps</h3>
+                        <p class="card-excerpt">Integrate Wijmo's high-performance components to resolve critical speed issues in BI dashboards and secure major client renewals.</p>
+                        <span class="card-link">View the Blueprint &rarr;</span>
                     </div>
                 </a>
-                <a href="./case-studies/secure-document-generation.html" class="case-study-card" data-industry="insurance" data-product="ds">
-                    <img src="https://placehold.co/600x400/5A7E9E/FFFFFF?text=Secure+Documents" alt="Secure Document Generation" class="card-image">
+
+                <a href="./case-studies/energy-iot-dashboard.html" class="case-study-card product-wijmo" data-industry="energy" data-product="wijmo">
                     <div class="card-content">
-                        <p class="card-tag ds-tag">Insurance</p>
-                        <h3 class="card-title">Major Insurer Achieves 100% Policy Compliance, 40% Cost Reduction.</h3>
-                        <p class="card-excerpt">Discover how Document Solutions for .NET automated secure policy generation, ensuring 100% compliance and drastically cutting operational costs.</p>
-                        <span class="card-link">Read Solution Profile &rarr;</span>
+                        <p class="card-tag">Energy & Utilities</p>
+                        <h3 class="card-title">Build Real-Time, High-Frequency Dashboards</h3>
+                        <p class="card-excerpt">Leverage Wijmo's datagrid, engineered to process thousands of real-time IoT data updates per second without freezing or crashing.</p>
+                        <span class="card-link">View the Blueprint &rarr;</span>
                     </div>
                 </a>
-                <a href="./case-studies/legacy-system-data-entry.html" class="case-study-card" data-industry="logistics" data-product="net">
-                    <img src="https://placehold.co/600x400/D6564C/FFFFFF?text=Modernized+Desktop+UI" alt="Modernized Desktop Application UI" class="card-image">
-                    <div class="card-content">
-                        <p class="card-tag net-tag">Logistics & Supply Chain</p>
-                        <h3 class="card-title">Logistics Firm Cuts Data Entry Errors by 35% with .NET Components.</h3>
-                        <p class="card-excerpt">See how .NET UI controls modernized a critical legacy desktop app, reducing data entry errors and new hire training time without a full rewrite.</p>
-                        <span class="card-link">Read Solution Profile &rarr;</span>
+
+                <a href="./case-studies/excel-vba-migration.html" class="case-study-card product-js" data-industry="finance" data-product="js">
+                     <div class="card-content">
+                        <p class="card-tag">Financial Services</p>
+                        <h3 class="card-title">Migrate from Excel VBA to a Secure Web App</h3>
+                        <p class="card-excerpt">Use SpreadJS and Document Solutions to move critical reporting from insecure VBA macros to a scalable, secure, and modern web application.</p>
+                        <span class="card-link">View the Blueprint &rarr;</span>
                     </div>
                 </a>
-                <a href="./case-studies/cross-platform-hybrid-ui.html" class="case-study-card" data-industry="finance" data-product="net">
-                    <img src="https://placehold.co/600x400/D6564C/FFFFFF?text=Blazor+Hybrid+App" alt="Blazor Hybrid Cross-Platform App" class="card-image">
+
+                <a href="./case-studies/interactive-financial-modeling.html" class="case-study-card product-js" data-industry="finance" data-product="js">
                     <div class="card-content">
-                        <p class="card-tag net-tag">Financial Technology</p>
-                        <h3 class="card-title">FinTech Provider Achieves €300k Annual Savings with Blazor Hybrid.</h3>
-                        <p class="card-excerpt">Discover how the Blazor Hybrid Power Pack unified disparate desktop and web financial apps into a single, high-performance solution.</p>
-                        <span class="card-link">Read Solution Profile &rarr;</span>
+                        <p class="card-tag">Financial Services</p>
+                        <h3 class="card-title">Create Interactive Financial Models on the Web</h3>
+                        <p class="card-excerpt">Use SpreadJS to transform insecure, decentralized Excel models into a secure, collaborative web platform that cuts development time in half.</p>
+                        <span class="card-link">View the Blueprint &rarr;</span>
                     </div>
                 </a>
-                <a href="./case-studies/excel-vba-migration.html" class="case-study-card" data-industry="finance" data-product="net">
-                    <img src="https://placehold.co/600x400/809B59/FFFFFF?text=VBA+To+Web" alt="VBA to Web" class="card-image">
+
+                <a href="./case-studies/healthcare-client-reporting.html" class="case-study-card product-arjs" data-industry="healthcare" data-product="arjs">
                     <div class="card-content">
-                        <p class="card-tag js-tag">Financial Services</p>
-                        <h3 class="card-title">Investment Firm Replaces Insecure Excel VBA, Slashes Reporting Time by 80%.</h3>
-                        <p class="card-excerpt">Learn how Spread.NET and Document Solutions enabled a major financial services firm to migrate critical reporting from insecure VBA macros to a scalable and secure web application.</p>
-                        <span class="card-link">Read Solution Profile &rarr;</span>
+                        <p class="card-tag">Enterprise Healthcare</p>
+                        <h3 class="card-title">Deliver Fast, Reliable Client-Side Reporting</h3>
+                        <p class="card-excerpt">Embed ActiveReportsJS to eliminate system freezes and provide clinicians with fast, interactive EHR reports directly in the browser.</p>
+                        <span class="card-link">View the Blueprint &rarr;</span>
                     </div>
                 </a>
+                
+                <a href="./case-studies/secure-document-generation.html" class="case-study-card product-ds" data-industry="insurance" data-product="ds">
+                    <div class="card-content">
+                        <p class="card-tag">Insurance</p>
+                        <h3 class="card-title">Automate Secure Document Generation</h3>
+                        <p class="card-excerpt">Use Document Solutions for .NET to automate secure policy and report generation, ensuring 100% compliance and drastically cutting operational costs.</p>
+                        <span class="card-link">View the Blueprint &rarr;</span>
+                    </div>
                 </a>
+
             </div>
             <div class="no-results-message" id="no-results-message">
-                <p>No case studies match the selected filters. Please broaden your criteria.</p>
+                <p>No solution blueprints match the selected filters. Please broaden your criteria.</p>
             </div>
         </div>
     </main>
@@ -289,7 +334,9 @@
         document.addEventListener('DOMContentLoaded', function () {
             const caseStudyCards = document.querySelectorAll('.case-study-card');
             const noResultsMessage = document.getElementById('no-results-message');
-            
+            const filterToolbar = document.querySelector('.filter-toolbar');
+            const clearFiltersBtn = document.getElementById('clear-filters');
+
             const currentFilters = {
                 industry: 'all',
                 product: 'all'
@@ -308,36 +355,59 @@
                         card.classList.add('is-hidden');
                     }
                 });
-
-                if (visibleCount === 0) {
-                    noResultsMessage.style.display = 'block';
-                } else {
-                    noResultsMessage.style.display = 'none';
-                }
+                noResultsMessage.style.display = (visibleCount === 0) ? 'block' : 'none';
             }
 
-            function setupFilterGroup(groupId) {
-                const filterGroup = document.getElementById(groupId);
-                if(filterGroup) {
-                    const filterButtons = filterGroup.querySelectorAll('.filter-btn');
-                    const filterType = groupId.split('-')[0]; // 'industry' or 'product'
+            function setupFilterControls(toolbar) {
+                if (!toolbar) return;
+                
+                toolbar.addEventListener('click', function(e) {
+                    if (!e.target.matches('.filter-btn')) return;
 
-                    filterButtons.forEach(btn => {
-                        btn.addEventListener('click', function (e) {
-                            e.preventDefault();
-                            filterButtons.forEach(b => b.classList.remove('is-active'));
-                            this.classList.add('is-active');
-                            currentFilters[filterType] = this.dataset.filter;
-                            applyFilters();
-                        });
+                    e.preventDefault();
+                    const clickedBtn = e.target;
+                    const filterGroup = clickedBtn.closest('.filter-set');
+                    const filterType = filterGroup.dataset.filterType; // 'industry' or 'product'
+                    const filterValue = clickedBtn.dataset.filter;
+
+                    // If the clicked button is already active, reset the group to "all"
+                    if (clickedBtn.classList.contains('is-active') && filterValue !== 'all') {
+                        const allBtn = filterGroup.querySelector('.filter-btn[data-filter="all"]');
+                        filterGroup.querySelector('.filter-btn.is-active').classList.remove('is-active');
+                        allBtn.classList.add('is-active');
+                        currentFilters[filterType] = 'all';
+                    } else {
+                        // Otherwise, set the new filter
+                        filterGroup.querySelector('.filter-btn.is-active').classList.remove('is-active');
+                        clickedBtn.classList.add('is-active');
+                        currentFilters[filterType] = filterValue;
+                    }
+                    
+                    applyFilters();
+                });
+            }
+
+            setupFilterControls(filterToolbar);
+
+            if (clearFiltersBtn) {
+                clearFiltersBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Reset internal state
+                    currentFilters.industry = 'all';
+                    currentFilters.product = 'all';
+
+                    // Reset button visual states
+                    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('is-active'));
+                    document.querySelectorAll('.filter-set').forEach(group => {
+                        group.querySelector('[data-filter="all"]').classList.add('is-active');
                     });
-                }
+                    
+                    applyFilters();
+                });
             }
-
-            setupFilterGroup('industry-filter-group');
-            setupFilterGroup('product-filter-group');
             
-            // Initial filter application in case of any default states
+            // Initial filter application
             applyFilters();
         });
     </script>

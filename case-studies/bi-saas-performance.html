@@ -59,20 +59,40 @@
         .executive-quote-section { background-color: #f8f9fa; border-left: 4px solid var(--accent-color); padding: 20px 30px; margin: 30px 0; border-radius: 4px; }
         .executive-quote-section p { font-size: 1.1em; margin: 0; font-style: italic; }
         .executive-quote-section .author { display: block; text-align: right; font-weight: 600; font-style: normal; margin-top: 15px; }
+        
+        /* Bundle Section */
         .recommended-bundle-section { padding: 60px 0 0 0; }
-        .bundle-card { background-color: var(--brand-header); color: #ffffff; border-radius: 12px; padding: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; align-items: center; border-top: 5px solid var(--accent-color); }
+        .bundle-card { background-color: var(--brand-header); color: #ffffff; border-radius: 12px; padding: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start; border-top: 5px solid var(--accent-color); }
+        .bundle-info { display: flex; flex-direction: column; gap: 20px; }
         .bundle-header h3 { font-size: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; margin: 0 0 5px 0; }
         .bundle-header h2 { font-size: 28px; font-weight: 700; margin: 0; line-height: 1.2; }
-        .bundle-price { text-align: right; }
+        .bundle-inclusions { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 15px; }
+        .bundle-inclusions li { display: flex; justify-content: space-between; align-items: center; background-color: rgba(255,255,255,0.05); padding: 10px 15px; border-radius: 6px; }
+        .bundle-inclusions .product-name { display: flex; align-items: center; gap: 10px; font-weight: 500; }
+        .bundle-inclusions .checkmark { color: var(--brand-js); }
+        .bundle-inclusions .product-actions .action-link { color: #ffffff; text-decoration: none; font-weight: 600; font-size: 14px; opacity: 0.8; transition: opacity 0.2s ease; }
+        .bundle-inclusions .product-actions .action-link:hover { opacity: 1; }
+        .bundle-inclusions .product-actions .action-divider { opacity: 0.5; margin: 0 5px; }
+        .bundle-purchase { text-align: right; }
+        .bundle-price { margin-bottom: 20px; }
         .bundle-price .price { font-size: 40px; font-weight: 700; }
         .bundle-price .term { font-size: 15px; opacity: 0.7; display: block; }
-        .bundle-inclusions { list-style: none; padding: 0; margin: 0; }
-        .bundle-inclusions li { padding: 4px 0; display: flex; align-items: center; gap: 10px; }
-        .bundle-inclusions li::before { content: '✓'; color: var(--brand-js); }
-        .bundle-cta { text-align: right; }
         .bundle-cta .cta-button { display: inline-block; background-color: #ffffff; color: var(--brand-header); text-decoration: none; padding: 15px 35px; border-radius: 8px; font-weight: 700; transition: all 0.3s ease; }
         .bundle-cta .cta-button:hover { background-color: var(--brand-light-gray); transform: translateY(-2px); }
-        @media (max-width: 992px) { .bundle-card, .bundle-price, .bundle-cta { text-align: center; } }
+
+        /* Modal Styles */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 2000; display: none; justify-content: center; align-items: center; }
+        .modal-container { background: #fff; padding: 30px; border-radius: 12px; width: 90%; max-width: 700px; max-height: 90vh; overflow-y: auto; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .modal-close-btn { position: absolute; top: 15px; right: 15px; background: transparent; border: none; font-size: 28px; color: #718096; cursor: pointer; line-height: 1; }
+        .modal-title { font-size: 26px; color: var(--brand-heading); margin-top: 0; margin-bottom: 15px; }
+        .modal-body p { margin-bottom: 20px; }
+        .modal-body ul { padding-left: 20px; margin-bottom: 20px;}
+        .modal-body .cta-button { display: inline-block; width: auto; padding: 12px 30px; margin-top: 15px; margin-right: 10px; border-radius: 8px; font-weight: 600; color: #fff; text-decoration: none; }
+        .modal-body .cta-button.cta-primary { background-color: var(--brand-wijmo); }
+        .modal-body .cta-button.cta-secondary { background-color: #80B1A0; }
+        .modal-body .cta-button:hover { filter: brightness(90%); }
+        
+        @media (max-width: 992px) { .bundle-card { grid-template-columns: 1fr; } .bundle-purchase, .bundle-price { text-align: center; } }
         @media (max-width: 768px) { .case-study-title { font-size: 32px; } }
     </style>
 </head>
@@ -138,19 +158,34 @@
             </div>
         </div>
         
-<section class="recommended-bundle-section">
-                <div class="container">
-                    <div class="bundle-card">
+        <section class="recommended-bundle-section">
+            <div class="container">
+                <div class="bundle-card">
+                    <div class="bundle-info">
                         <div class="bundle-header">
                             <h3>Recommended Solution</h3>
                             <h2>Web Dashboards & Grids</h2>
                         </div>
                         <ul class="bundle-inclusions">
-                            <li>✓ Wijmo Enterprise</li>
-                            <li>✓ High-Performance Datagrids & Charts</li>
-                            <li>✓ For Demanding Web Apps</li>
-                        </ul>
-                        <div class="bundle-price">
+                            <li>
+                                <div class="product-name">
+                                    <span class="checkmark">✓</span>
+                                    Wijmo Enterprise
+                                </div>
+                                <div class="product-actions">
+                                    <a href="https://developer.mescius.com/wijmo/download" target="_blank" class="action-link">Try</a>
+                                    <span class="action-divider">|</span>
+                                    <a href="#" class="action-link product-info-trigger"
+                                       data-title="Wijmo Enterprise"
+                                       data-description="<strong>Build high-performance, enterprise-level web applications</strong> with Wijmo's comprehensive library of JavaScript/TypeScript UI components.<p>Key features include:</p><ul><li>A <strong>zero-dependency, small footprint</strong> architecture written for performance.</li><li>The industry's best datagrid, <strong>FlexGrid</strong>, plus 100+ other controls for data visualization and UI.</li><li>Full framework support for <strong>Angular, React, Vue</strong>, and more.</li></ul><p>Wijmo is the premier choice for your most <strong>demanding data-driven applications.</strong></p>">
+                                       Info
+                                    </a>
+                                </div>
+                            </li>
+                            </ul>
+                    </div>
+                    <div class="bundle-purchase">
+                         <div class="bundle-price">
                             <span class="price">€1,105</span>
                             <span class="term">per developer / year</span>
                         </div>
@@ -159,11 +194,83 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
     </main>
+
+    <div id="product-info-modal" class="modal-overlay">
+        <div class="modal-container">
+            <button id="modal-close" class="modal-close-btn">&times;</button>
+            <div id="modal-body-content" class="modal-body">
+                </div>
+        </div>
+    </div>
+    
     <footer class="footer">
         <div class="container"><p>&copy; 2025 Mescius Europe GmbH | All Rights Reserved</p></div>
     </footer>
-    <script src="../scripts/main.js"></script>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Expandable Card Logic ---
+        const card = document.getElementById('expandable-card');
+        const toggle = document.getElementById('card-toggle');
+        if (card && toggle) {
+            toggle.addEventListener('click', () => {
+                card.classList.toggle('is-open');
+                const isExpanded = card.classList.contains('is-open');
+                toggle.setAttribute('aria-expanded', isExpanded);
+            });
+        }
+
+        // --- Product Info Modal Logic ---
+        const modalOverlay = document.getElementById('product-info-modal');
+        // Only run modal script if the modal element exists on the page
+        if (modalOverlay) {
+            const modalContainer = document.querySelector('.modal-container');
+            const modalBody = document.getElementById('modal-body-content');
+            const modalCloseBtn = document.getElementById('modal-close');
+            const infoTriggers = document.querySelectorAll('.product-info-trigger');
+
+            const openModal = (trigger) => {
+                const title = trigger.dataset.title || 'Product Details';
+                const description = trigger.dataset.description || 'No description available.';
+                
+                let modalHTML = `<h2 class="modal-title">${title}</h2>`;
+                modalHTML += description; // Directly render the HTML from the description
+
+                // Create dummy links for demonstration if real links aren't provided
+                const trialLink = trigger.href === '#' ? 'https://developer.mescius.com/download' : trigger.href;
+                const productLink = trigger.dataset.productlink || 'https://developer.mescius.com/';
+
+                modalHTML += `<a href="${trialLink}" target="_blank" class="cta-button cta-primary">Download Trial</a>`;
+                modalHTML += `<a href="${productLink}" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>`;
+
+                modalBody.innerHTML = modalHTML;
+                modalOverlay.style.display = 'flex';
+            };
+            
+            const closeModal = () => {
+                modalOverlay.style.display = 'none';
+                modalBody.innerHTML = '';
+            };
+
+            infoTriggers.forEach(trigger => {
+                trigger.addEventListener('click', (e) => {
+                    e.preventDefault(); // Prevent default link behavior
+                    openModal(trigger);
+                });
+            });
+
+            modalCloseBtn.addEventListener('click', closeModal);
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) closeModal();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modalOverlay.style.display === 'flex') closeModal();
+            });
+        }
+    });
+    </script>
 </body>
 </html>
