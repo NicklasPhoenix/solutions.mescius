@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solution Blueprint: Build Real-Time, High-Frequency Dashboards</title>
+    <meta name="description" content="A guide to building mission-critical, real-time monitoring dashboards that can process thousands of live data updates per second without UI degradation.">
+    <meta name="keywords" content="real-time dashboard, live data grid, iot dashboard, high-frequency updates, wijmo performance, javascript datagrid, streaming data, energy utilities, grid management">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --brand-header: #474D57; --brand-light-gray: #f8f9fa; --brand-heading: #2D3748; --brand-body: #4A5568; --brand-js: #809B59; --brand-net: #D6564C; --brand-wijmo: #48A9C5; --brand-ds: #5A7E9E; --brand-arjs: #EA8939;
+            /* Page-specific accent color */
+            --accent-color: var(--brand-wijmo);
+        }
+        *, *::before, *::after { box-sizing: border-box; }
+        body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(--brand-light-gray); color: var(--brand-body); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .header { background-color: var(--brand-header); padding: 15px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { height: 32px; filter: brightness(0) invert(1); }
+        .main-nav { display: flex; gap: 30px; }
+        .nav-link { color: #ffffff; text-decoration: none; font-weight: 600; font-size: 14px; padding-bottom: 5px; border-bottom: 2px solid transparent; }
+        .nav-link:hover, .nav-link.active { border-bottom-color: #ffffff; }
+        .footer { background-color: var(--brand-header); color: #cccccc; text-align: center; padding: 30px 0; margin-top: 50px; font-size: 14px; }
+        .nav-toggle { display: none; }
+        .case-study-header { background-color: #ffffff; text-align: center; padding: 60px 20px; border-bottom: 1px solid #e2e8f0; }
+        .case-study-tag { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-color); }
+        .case-study-title { font-size: 42px; font-weight: 700; color: var(--brand-heading); margin: 10px auto 15px auto; max-width: 900px; }
+        .case-study-subtitle { font-size: 18px; max-width: 700px; margin: 0 auto; line-height: 1.6; }
+        .expandable-card { background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; margin: 50px auto; box-shadow: 0 5px 30px rgba(45, 55, 72, 0.08); overflow: hidden; }
+        .card-visible-content { padding: 40px; }
+        .solution-profile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 40px; }
+        .profile-item h4 { font-size: 16px; font-weight: 700; color: var(--brand-heading); margin: 0 0 10px 0; padding-bottom: 10px; border-bottom: 2px solid var(--accent-color); }
+        .profile-item p { font-size: 16px; line-height: 1.7; color: var(--brand-body); margin: 0; }
+        .results-heading { text-align: center; margin-bottom: 20px; }
+        .results-heading h4 { display: inline-block; position: relative; margin: 0; font-size: 18px; font-weight: 600; color: var(--brand-heading); }
+        .results-heading h4::before, .results-heading h4::after { content: ''; position: absolute; top: 50%; width: 50px; height: 1px; background-color: #e2e8f0; }
+        .results-heading h4::before { left: -60px; }
+        .results-heading h4::after { right: -60px; }
+        .results-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; text-align: center; }
+        .metric-item { background-color: #f8f9fa; padding: 20px; border-radius: 8px; border: 1px solid #e2e8f0; }
+        .metric-value { display: block; font-size: 36px; font-weight: 700; color: var(--accent-color); }
+        .metric-label { display: block; font-size: 14px; color: var(--brand-body); }
+        .profile-cta { text-align: center; margin-top: 40px; padding-top: 30px; border-top: 1px solid #e2e8f0; }
+        .profile-cta .cta-button { display: inline-block; text-decoration: none; padding: 12px 25px; border-radius: 8px; font-weight: 600; font-size: 15px; color: #ffffff; transition: opacity 0.3s ease; background-color: var(--accent-color); }
+        .profile-cta .cta-button:hover { opacity: 0.9; }
+        .card-toggle-bar { display: flex; justify-content: center; align-items: center; gap: 10px; background-color: #f8f9fa; border-top: 1px solid #e2e8f0; padding: 15px; cursor: pointer; transition: background-color 0.2s ease; }
+        .card-toggle-bar:hover { background-color: #f1f3f5; }
+        .toggle-text { font-weight: 600; color: var(--brand-heading); }
+        .toggle-icon { width: 16px; height: 16px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%232D3748' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E"); background-size: contain; background-repeat: no-repeat; transition: transform 0.3s ease-in-out; }
+        .card-collapsible-content { max-height: 0; overflow: hidden; transition: max-height 0.7s ease-in-out; }
+        .expandable-card.is-open .toggle-icon { transform: rotate(180deg); }
+        .expandable-card.is-open .card-collapsible-content { max-height: 5000px; }
+        .main-story { padding: 40px 40px 20px 40px; font-size: 17px; line-height: 1.8; }
+        .main-story h2 { font-size: 24px; font-weight: 700; color: var(--brand-heading); margin: 40px 0 20px 0; padding-bottom: 10px; border-bottom: 3px solid var(--accent-color); }
+        .main-story > div:first-of-type h2 { margin-top: 0; }
+        .main-story p, .main-story ul { margin-bottom: 20px; }
+        .implementation-summary { background-color: #f8f9fa; border-left: 4px solid var(--accent-color); padding: 20px 30px; margin: 30px 0; border-radius: 4px; }
+        .implementation-summary h3 { font-size: 18px; margin-top: 0; color: var(--brand-heading); }
+        .implementation-summary ul { padding-left: 20px; margin-bottom: 0; }
+        
+        /* Bundle Section */
+        .recommended-bundle-section { padding: 60px 0 0 0; }
+        .bundle-card { background-color: var(--brand-header); color: #ffffff; border-radius: 12px; padding: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start; border-top: 5px solid var(--accent-color); }
+        .bundle-info { display: flex; flex-direction: column; gap: 20px; }
+        .bundle-header h3 { font-size: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; margin: 0 0 5px 0; }
+        .bundle-header h2 { font-size: 28px; font-weight: 700; margin: 0; line-height: 1.2; }
+        .bundle-inclusions { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 15px; }
+        .bundle-inclusions li { display: flex; justify-content: space-between; align-items: center; background-color: rgba(255,255,255,0.05); padding: 10px 15px; border-radius: 6px; }
+        .bundle-inclusions .product-name { display: flex; align-items: center; gap: 10px; font-weight: 500; }
+        .bundle-inclusions .checkmark { color: var(--brand-wijmo); }
+        .bundle-inclusions .product-actions .action-link { color: #ffffff; text-decoration: none; font-weight: 600; font-size: 14px; opacity: 0.8; transition: opacity 0.2s ease; }
+        .bundle-inclusions .product-actions .action-link:hover { opacity: 1; }
+        .bundle-inclusions .product-actions .action-divider { opacity: 0.5; margin: 0 5px; }
+        .bundle-purchase { text-align: right; }
+        .bundle-price { margin-bottom: 20px; }
+        .bundle-price .price { font-size: 40px; font-weight: 700; }
+        .bundle-price .term { font-size: 15px; opacity: 0.7; display: block; }
+        .bundle-cta .cta-button { display: inline-block; background-color: #ffffff; color: var(--brand-header); text-decoration: none; padding: 15px 35px; border-radius: 8px; font-weight: 700; transition: all 0.3s ease; }
+        .bundle-cta .cta-button:hover { background-color: var(--brand-light-gray); transform: translateY(-2px); }
+
+        /* Modal Styles */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 2000; display: none; justify-content: center; align-items: center; }
+        .modal-container { background: #fff; padding: 30px; border-radius: 12px; width: 90%; max-width: 700px; max-height: 90vh; overflow-y: auto; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .modal-close-btn { position: absolute; top: 15px; right: 15px; background: transparent; border: none; font-size: 28px; color: #718096; cursor: pointer; line-height: 1; }
+        .modal-title { font-size: 26px; color: var(--brand-heading); margin-top: 0; margin-bottom: 15px; }
+        .modal-body p { margin-bottom: 20px; }
+        .modal-body ul { padding-left: 20px; margin-bottom: 20px;}
+        .modal-body .cta-button { display: inline-block; width: auto; padding: 12px 30px; margin-top: 15px; margin-right: 10px; border-radius: 8px; font-weight: 600; color: #fff; text-decoration: none; }
+        .modal-body .cta-button.cta-primary { background-color: var(--brand-wijmo); }
+        .modal-body .cta-button.cta-secondary { background-color: #80B1A0; }
+        .modal-body .cta-button:hover { filter: brightness(90%); }
+        
+        @media (max-width: 992px) { .bundle-card { grid-template-columns: 1fr; } .bundle-purchase, .bundle-price { text-align: center; } }
+        @media (max-width: 768px) { .case-study-title { font-size: 32px; } }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header-content">
+            <a href="../index.html"><img src="https://cdn.mescius.io/umb/media/pujnxfci/mescuis-logo-horiz.svg" alt="Mescius Europe Logo" class="logo"></a>
+            <nav class="main-nav">
+                <a href="../index.html#case-studies" class="nav-link active">Solutions</a>
+                <a href="../pricing/index.html" class="nav-link">Pricing</a>
+                <a href="../bundles/index.html" class="nav-link">Bundles</a>
+            </nav>
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="case-study-header">
+            <p class="case-study-tag">Energy & Utilities / IoT</p>
+            <h1 class="case-study-title">Blueprint: Build Real-Time, High-Frequency Dashboards</h1>
+            <p class="case-study-subtitle">A guide to building mission-critical, real-time monitoring dashboards that process thousands of data updates per second without UI degradation.</p>
+        </section>
+
+        <div class="container">
+            <div class="expandable-card" id="expandable-card">
+                
+                <div class="card-visible-content">
+                    <div class="solution-profile-grid">
+                        <div class="profile-item">
+                            <h4>Industry</h4>
+                            <p>Energy & Utilities / IoT</p>
+                        </div>
+                        <div class="profile-item">
+                            <h4>Common Challenge</h4>
+                            <p>Standard UI components often fail under high-frequency data streams, causing mission-critical dashboards to lag, freeze, and become unresponsive.</p>
+                        </div>
+                        <div class="profile-item">
+                            <h4>The Blueprint</h4>
+                            <p>Replace underperforming UI components with a datagrid engineered for performance, capable of processing thousands of real-time updates per second.</p>
+                        </div>
+                    </div>
+
+                    <div class="results-heading">
+                        <h4>Potential Outcomes</h4>
+                    </div>
+                    
+                    <div class="results-metrics">
+                        <div class="metric-item">
+                            <span class="metric-value">99%</span>
+                            <span class="metric-label">Less UI Lag</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-value">80%</span>
+                            <span class="metric-label">Faster Anomaly Response</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-value">5x</span>
+                            <span class="metric-label">More Data Handled</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-value">€1.5M+</span>
+                            <span class="metric-label">Dev Cost Avoided</span>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-cta">
+                        <a href="../benchmarks/index.html" class="cta-button">View Performance Benchmarks</a>
+                    </div>
+                </div>
+
+                <div class="card-toggle-bar" id="card-toggle" role="button" aria-expanded="false" aria-controls="collapsible-story-content">
+                    <span class="toggle-text">View Implementation Details</span>
+                    <span class="toggle-icon"></span>
+                </div>
+
+                <div class="card-collapsible-content" id="collapsible-story-content">
+                    <article class="main-story">
+                        <div>
+                            <h2>The Objective</h2>
+                            <p>For applications in energy, finance, or IoT, reliable real-time data monitoring is paramount. When a central dashboard cannot keep pace with thousands of live data updates per second, it creates an unacceptable operational risk. The objective is to build a UI that remains fluid and responsive under extreme data loads, ensuring operators can monitor critical systems without interruption.</p>
+                        </div>
+                        <div>
+                            <h2>Architectural Approach: A Component Engineered for High-Performance</h2>
+                            <p>The solution requires identifying the primary UI bottleneck, which is almost always the datagrid component. A successful implementation depends on choosing a commercial-grade grid specifically built to handle high-frequency data streams.</p>
+                             <ul>
+                                 <li><strong>Targeted Component Replacement:</strong> Replace the underperforming grid with a component like Wijmo's FlexGrid, which is engineered for "Performance Without Compromise."</li>
+                                 <li><strong>Advanced Virtualization:</strong> The key to performance is a virtualization engine that only renders the DOM elements for visible cells. This drastically reduces the browser's workload and allows for lightning-fast, real-time updates.</li>
+                                 <li><strong>Optimized Data Binding:</strong> Ensure the grid can be bound to streaming data sources without triggering a full UI refresh on every update, preventing UI lag.</li>
+                             </ul>
+                        </div>
+                         <div class="implementation-summary">
+                            <h3>Blueprint Summary</h3>
+                            <ul>
+                                <li>Identify and replace the specific UI component causing the performance bottleneck.</li>
+                                <li>Choose a datagrid component specifically designed and optimized for real-time, high-frequency data streams.</li>
+                                <li>Leverage advanced UI virtualization to maintain a responsive dashboard, even with massive data volumes.</li>
+                                <li>Avoid costly custom development by using a proven, commercial-grade component.</li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+        
+        <section class="recommended-bundle-section">
+            <div class="container">
+                <div class="bundle-card">
+                    <div class="bundle-info">
+                        <div class="bundle-header">
+                            <h3>Recommended Solution</h3>
+                            <h2>Real-Time Analytics & Reporting</h2>
+                        </div>
+                        <ul class="bundle-inclusions">
+                            <li class="interactive">
+                                <div class="product-name">
+                                    <span class="checkmark">✓</span>
+                                    Wijmo Enterprise
+                                </div>
+                                <div class="product-actions">
+                                    <a href="https://developer.mescius.com/wijmo/download" target="_blank" class="action-link">Try</a>
+                                    <span class="action-divider">|</span>
+                                    <a href="#" class="action-link product-info-trigger"
+                                       data-title="Wijmo Enterprise"
+                                       data-description="<strong>Build high-performance, enterprise-level web applications</strong> with Wijmo's comprehensive library of JavaScript/TypeScript UI components.<p>Key features include:</p><ul><li>A <strong>zero-dependency, small footprint</strong> architecture written for performance.</li><li>The industry's best datagrid, <strong>FlexGrid</strong>, plus 100+ other controls for data visualization and UI.</li><li>Full framework support for <strong>Angular, React, Vue</strong>, and more.</li></ul><p>Wijmo is the premier choice for your most <strong>demanding data-driven applications.</strong></p>">
+                                       Info
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="interactive">
+                                <div class="product-name">
+                                    <span class="checkmark">✓</span>
+                                    ActiveReportsJS
+                                </div>
+                                <div class="product-actions">
+                                    <a href="https://developer.mescius.com/activereportsjs/download" target="_blank" class="action-link">Try</a>
+                                    <span class="action-divider">|</span>
+                                    <a href="#" class="action-link product-info-trigger"
+                                       data-title="ActiveReportsJS"
+                                       data-description="<strong>Integrate fast, feature-rich reporting</strong> into your client-side web applications with ActiveReportsJS.<p>This complete JavaScript solution provides:</p><ul><li>A powerful, <strong>embeddable report designer and viewer</strong>.</li><li>The ability for your end-users to create and interact with reports on <strong>any platform</strong>.</li><li>Connectivity to local and remote JSON data sources.</li><li>Direct-in-browser export to popular formats like <strong>PDF, Excel (XLSX), and HTML</strong>.</li></ul>">
+                                       Info
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bundle-purchase">
+                         <div class="bundle-price">
+                            <span class="price">€1,649</span>
+                            <span class="term">per developer / year</span>
+                        </div>
+                        <div class="bundle-cta">
+                            <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285850" class="cta-button">Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="product-info-modal" class="modal-overlay">
+        <div class="modal-container">
+            <button id="modal-close" class="modal-close-btn">&times;</button>
+            <div id="modal-body-content" class="modal-body">
+                </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Mescius Europe GmbH | All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Expandable Card Logic ---
+        const card = document.getElementById('expandable-card');
+        const toggle = document.getElementById('card-toggle');
+        if (card && toggle) {
+            toggle.addEventListener('click', () => {
+                card.classList.toggle('is-open');
+                const isExpanded = card.classList.contains('is-open');
+                toggle.setAttribute('aria-expanded', isExpanded);
+                toggle.querySelector('.toggle-text').textContent = isExpanded ? 'Hide Implementation Details' : 'View Implementation Details';
+            });
+        }
+
+        // --- Product Info Modal Logic ---
+        const modalOverlay = document.getElementById('product-info-modal');
+        if (modalOverlay) {
+            const modalContainer = document.querySelector('.modal-container');
+            const modalBody = document.getElementById('modal-body-content');
+            const modalCloseBtn = document.getElementById('modal-close');
+            const infoTriggers = document.querySelectorAll('.product-info-trigger');
+
+            const openModal = (trigger) => {
+                const title = trigger.dataset.title || 'Product Details';
+                const description = trigger.dataset.description || 'No description available.';
+                
+                let modalHTML = `<h2 class="modal-title">${title}</h2>`;
+                modalHTML += description;
+
+                const trialLink = trigger.parentElement.querySelector('a[target="_blank"]').href;
+                const productLink = 'https://developer.mescius.com/'; // Generic fallback
+
+                modalHTML += `<a href="${trialLink}" target="_blank" class="cta-button cta-primary">Download Trial</a>`;
+                modalHTML += `<a href="${productLink}" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>`;
+
+                modalBody.innerHTML = modalHTML;
+                modalOverlay.style.display = 'flex';
+            };
+            
+            const closeModal = () => {
+                modalOverlay.style.display = 'none';
+                modalBody.innerHTML = '';
+            };
+
+            infoTriggers.forEach(trigger => {
+                trigger.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    openModal(trigger);
+                });
+            });
+
+            modalCloseBtn.addEventListener('click', closeModal);
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) closeModal();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modalOverlay.style.display === 'flex') closeModal();
+            });
+        }
+    });
+    </script>
+</body>
+</html>
