@@ -3,43 +3,300 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comprehensive Pricing | Mescius</title>
-    <meta name="description" content="Detailed developer license pricing for Mescius .NET and JavaScript components and bundles, including Paid & SaaS Apps, Internal & Free Apps, and renewal options.">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome for social icons -->
+    <title>Mescius Developer License Pricing | .NET & JavaScript Components</title>
+    <meta name="description" content="Explore comprehensive developer license pricing for Mescius .NET and JavaScript components and bundles. Find the perfect plan for Paid & SaaS Apps, Internal & Free Apps, and easily renew your licenses.">
+    <meta name="keywords" content="Mescius pricing, developer licenses, .NET components, JavaScript components, UI controls, data grids, reporting tools, document automation, SaaS pricing, enterprise licensing, software renewals">
+    <meta name="author" content="Mescius Europe">
+    <link rel="canonical" href="https://www.mescius.eu/en/pricing">
+    <meta property="og:title" content="Mescius Developer License Pricing">
+    <meta property="og:description" content="Find comprehensive license options for Mescius .NET and JavaScript developer tools, including paid, SaaS, internal, and free app usage.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.mescius.eu/en/pricing">
+    <meta property="og:image" content="https://cdn.mescius.io/umb/media/pujnxfci/mescuis-logo-horiz.svg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@Mescius">
+    <meta name="twitter:title" content="Mescius Component Pricing">
+    <meta name="twitter:description" content="Detailed licensing costs for Mescius .NET & JavaScript developer components.">
+    <meta name="twitter:image" content="https://cdn.mescius.io/umb/media/pujnxfci/mescuis-logo-horiz.svg">
+    <link rel="icon" href="https://developer.mescius.com/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdn.mescius.io">
+    <link rel="preconnect" href="https://developer.mescius.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        :root {
-            --brand-header: #474D57; --brand-light-gray: #f8f9fa; --brand-heading: #2D3748; --brand-body: #4A5568;
-            /* Product Specific Colors */
-            --brand-c1: #D6564C;     /* ComponentOne (Red) */
-            --brand-spread: #809B59;  /* SpreadJS & Spread.NET (Green) */
-            --brand-ar: #EA8939;     /* ActiveReportsJS & ActiveReports.NET (Orange) */
-            --brand-wijmo: #48A9C5;   /* Wijmo (Blue) */
-            --brand-ds: #5A7E9E;     /* Document Solutions (Blue-Grey) */
-        }
+        /* All necessary styles are contained in this file */
         *, *::before, *::after { box-sizing: border-box; }
-        body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(--brand-light-gray); color: var(--brand-body); line-height: 1.6; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .header { background-color: var(--brand-header); padding: 15px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
-        .header-content { display: flex; justify-content: space-between; align-items: center; }
-        .logo { height: 32px; filter: brightness(0) invert(1); }
-        .main-nav { display: flex; gap: 30px; }
-        .nav-link { color: #ffffff; text-decoration: none; font-weight: 600; font-size: 14px; padding-bottom: 5px; border-bottom: 2px solid transparent; }
-        .nav-link:hover, .nav-link.active { border-bottom-color: #ffffff; }
-        .footer { background-color: var(--brand-header); color: #cccccc; text-align: left; padding: 30px 0; margin-top: 50px; font-size: 14px; }
+        :root {
+            /* Brand Colors (DO NOT CHANGE) */
+            --brand-header: #474D57; /* Dark header color */
+            --brand-light-gray: #f8f9fa; /* Light page background */
+            --brand-heading: #2D3748; /* Dark text for headings */
+            --brand-body: #4A5568; /* Standard body text color */
+            
+            /* Product-specific colors (DO NOT CHANGE THESE) */
+            --brand-c1: #D6564C;      /* ComponentOne (Red) */
+            --brand-spread: #809B59;  /* SpreadJS & Spread.NET (Green) */
+            --brand-ar: #EA8939;      /* ActiveReportsJS & ActiveReports.NET (Orange) */
+            --brand-wijmo: #48A9C5;    /* Wijmo (Blue) */
+            --brand-ds: #5A7E9E;      /* Document Solutions (Blue-Grey) */
+
+            /* General UI Colors (Selected to harmonize with brand, no bright blue, no red for general accents) */
+            --color-neutral-dark: #343a40; /* A dark neutral for some elements */
+            --color-neutral-light: #f1f3f5; /* A light neutral for background accents */
+            --color-border-light: #dee2e6; /* A very light border color */
+            --color-background-white: #ffffff;
+            --color-text-subtle: #6c757d; /* Softer text color for secondary info */
+            --color-shadow-subtle: rgba(0, 0, 0, 0.05); /* Very light shadow */
+            --color-shadow-medium: rgba(0, 0, 0, 0.1); /* Medium shadow for depth */
+            --color-shadow-strong: rgba(0, 0, 0, 0.15); /* Stronger shadow for active states */
+            
+            /* Header Navigation Specific Colors (Ensuring good contrast on dark header) */
+            --color-header-nav-link: #ffffff; 
+            --color-header-nav-link-hover: #D0D5DD; /* Light gray for hover, clearly visible */
+            --color-header-nav-link-active: #ffffff; /* White for active for clarity */
+        }
+
+        body { 
+            margin: 0; 
+            font-family: 'Montserrat', sans-serif; /* Kept Montserrat as requested */
+            background-color: var(--brand-light-gray); 
+            color: var(--brand-body); 
+            line-height: 1.6;
+        }
+        .container { 
+            max-width: 1280px; 
+            margin: 0 auto; 
+            padding: 0 24px; 
+        }
         
+        /* --- Header: Clean, clickable, and visually clear --- */
+        .header { 
+            background-color: var(--brand-header); 
+            padding: 18px 0; 
+            box-shadow: 0 4px 12px var(--color-shadow-medium); 
+            position: sticky; 
+            top: 0;
+            z-index: 1000; 
+            transition: all 0.3s ease;
+        }
+        .header-content { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .logo-link { /* Ensures the entire logo area is clickable */
+            display: block; 
+            line-height: 0; /* Prevents extra space below SVG */
+            transition: opacity 0.3s ease;
+        }
+        .logo-link:hover {
+            opacity: 0.8; /* Subtle hover effect for logo */
+        }
+        .logo { 
+            height: 36px; 
+            filter: brightness(0) invert(1); 
+        }
+        .main-nav { 
+            display: flex; 
+            gap: 35px; 
+        }
+        .nav-link { 
+            color: var(--color-header-nav-link); 
+            text-decoration: none; 
+            font-weight: 500; 
+            font-size: 15px; 
+            padding-bottom: 8px; 
+            border-bottom: 3px solid transparent; 
+            transition: all 0.3s ease;
+            /* Ensures it looks like a clear navigation link, not a button */
+            background-color: transparent; 
+            border-radius: 0; 
+            padding: 0 5px 8px; /* Adjusted padding to enhance link appearance */
+        }
+        .nav-link.active, .nav-link:hover { 
+            border-bottom-color: var(--color-header-nav-link-hover); /* Clear light gray underline on hover/active */
+            color: var(--color-header-nav-link-hover); /* Text color changes for emphasis */
+        }
+        
+        /* Mobile Navigation (Hamburger) */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 22px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: var(--color-header-nav-link); 
+            transition: all 0.3s ease-in-out;
+        }
+        .menu-toggle.is-active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .menu-toggle.is-active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.is-active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px; 
+                left: 0;
+                width: 100%;
+                background-color: var(--brand-header);
+                box-shadow: 0 4px 12px var(--color-shadow-medium);
+                padding: 20px 0;
+                border-top: 1px solid rgba(255,255,255,0.1);
+            }
+            .main-nav.is-open { display: flex; }
+            .main-nav .nav-link {
+                padding: 15px 24px;
+                width: 100%;
+                text-align: center;
+                border-bottom: none; 
+            }
+            .main-nav .nav-link:hover {
+                background-color: rgba(255,255,255,0.1); 
+            }
+            .menu-toggle { display: flex; }
+        }
+
+        /* --- Hero Section: Impactful and brand-aligned --- */
+        .hero { 
+            background: linear-gradient(135deg, var(--brand-header) 0%, #3C475B 100%); /* Subtle gradient using brand dark colors */
+            color: #ffffff; 
+            text-align: center; 
+            padding: 100px 20px; 
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before { /* Subtle background pattern/texture */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%239C92AC" fill-opacity="0.03"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 20v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 46v-4H4v4H0v2h4v4h2v-4h4v-2H6zm0-20v-4H4v4H0v2h4v4h2v-4h4v-2H6zM42 0v4h2v-4h4V0h-4V-4h-2v4h-4v2h4zm0 20v4h2v-4h4V20h-4v-4h-2v4h4v2h-4zm12 7H46v-2h8v-4h2v4h4v2h-4v4h-2v-4zm0-20H46v-2h8v-4h2v4h4v2h-4v4h-2v-4zM24 2v4h-2V2h-4V0h4V-4h2v4h4v2h-4zm0 20v4h-2v-4h-4V20h4v-4h2v4h4v2h-4zm-6-2v2H2v-2h-4v-2h4v-4h2v4h4v2h-4zm0 20v2H2v-2h-4v-2h4v-4h2v4h4v2h-4zM22 36v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 20v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM36 0v4h-2V0h-4V-4h4V-8h2v4h4v2h-4zm0 20v4h-2v-4h-4V20h4v-4h2v4h4v2h-4zM0 34v-4H-4v4h-4v2h4v4h4v-4h4v-2H0zm0-20v-4H-4v4h-4v2h4v4h4v-4h4v-2H0zm54 0v-4H50v4h-4v2h4v4h4v-4h4v-2h-4zm0 20v-4H50v4h-4v2h4v4h4v-4h4v-2h-4zM42 36v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 20v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM24 42v4h-2v-4h-4v-2h4v-4h2v4h4v2h-4zm0 20v4h-2v-4h-4v-2h4v-4h2v4h4v2h-4zM60 6v4h-2V6h-4V4h4V0h2v4h4v2h-4zm0 20v4h-2v-4h-4V20h4v-4h2v4h4v2h-4zm-6 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-20v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM36 42v4h-2v-4h-4v-2h4v-4h2v4h4v2h-4zM0 6v4H-4V6h-4V4h4V0h2v4h4v2h-4z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+            background-size: 60px 60px;
+            opacity: 0.03; /* Reduced opacity for subtlety */
+        }
+        .hero-title { 
+            font-size: 48px; 
+            font-weight: 700; 
+            color: #ffffff; 
+            margin-bottom: 20px;
+            letter-spacing: -1px; 
+        }
+        .hero-subtitle { 
+            font-size: 20px; 
+            max-width: 800px; 
+            margin: 0 auto 40px; 
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .hero-cta-button {
+            display: inline-block;
+            background-color: var(--brand-heading); /* Using brand heading color for a neutral, strong CTA */
+            color: #ffffff;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .hero-cta-button:hover {
+            background-color: #3C475B; /* Slightly darker shade for hover */
+            transform: translateY(-2px);
+        }
+
+        /* --- Section Headers: Clear and elegant --- */
+        .section-header { 
+            text-align: center; 
+            margin-bottom: 60px; 
+        }
+        .section-title { 
+            font-size: 40px; 
+            font-weight: 700; 
+            color: var(--brand-heading); 
+            margin-bottom: 15px; 
+            position: relative;
+            display: inline-block; 
+            padding-bottom: 10px;
+        }
+        .section-title::after { /* Animated, colored underline for style */
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%) scaleX(0); /* Start hidden */
+            transform-origin: center;
+            width: 80px;
+            height: 4px;
+            background-color: var(--brand-ds); /* Using Document Solutions blue as a general accent */
+            border-radius: 2px;
+            transition: transform 0.3s ease-out; /* Smooth animation */
+        }
+        .section-header:hover .section-title::after { /* Show on header hover */
+            transform: translateX(-50%) scaleX(1);
+        }
+        .section-subtitle { 
+            font-size: 19px; 
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--color-text-subtle);
+        }
+
+        /* --- Pricing Page Specific Styles --- */
         .pricing-section { padding: 60px 0; }
-        .section-header { text-align: center; margin-bottom: 50px; }
-        .section-title { font-size: 36px; font-weight: 700; color: var(--brand-heading); margin: 0; }
-        .section-subtitle { font-size: 18px; max-width: 800px; margin: 10px auto 0 auto; }
 
-        .filter-controls { display: flex; justify-content: center; margin-bottom: 40px; }
-        .filter-group { display: flex; background-color: #e9ecef; border-radius: 30px; padding: 5px; }
-        .filter-btn { padding: 10px 25px; font-size: 14px; font-weight: 600; font-family: 'Montserrat', sans-serif; border: none; border-radius: 25px; background-color: transparent; color: var(--brand-body); cursor: pointer; transition: all 0.3s ease; }
-        .filter-btn.is-active { background-color: #ffffff; color: var(--brand-heading); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-
+        .filter-controls { 
+            display: flex; 
+            justify-content: center; 
+            margin-bottom: 50px; 
+            padding: 25px; 
+            background-color: var(--color-background-white);
+            border: 1px solid var(--color-border-light);
+            border-radius: 16px; 
+            box-shadow: 0 6px 20px var(--color-shadow-medium); 
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .filter-group { 
+            display: flex; 
+            background-color: #e9ecef; 
+            border-radius: 30px; 
+            padding: 5px; 
+            flex-wrap: wrap;
+        }
+        .filter-btn { 
+            padding: 10px 25px; 
+            font-size: 14px; 
+            font-weight: 600; 
+            font-family: 'Montserrat', sans-serif; 
+            border: none; 
+            border-radius: 25px; 
+            background-color: transparent; 
+            color: var(--brand-body); 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+        }
+        .filter-btn.is-active { 
+            background-color: #ffffff; 
+            color: var(--brand-heading); 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+        }
+        
         .product-pricing-section {
             background-color: #ffffff; border-radius: 12px; margin-bottom: 40px; border-top: 4px solid var(--accent-color);
             overflow: hidden; box-shadow: 0 4px 25px rgba(0,0,0,0.06); transition: all 0.3s ease-in-out;
@@ -65,32 +322,52 @@
         .tab-pane { display: none; }
         .tab-pane.is-active { display: block; animation: fadeIn 0.5s; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .tab-pane h3 { font-size: 22px; margin-top: 0; margin-bottom: 25px; color: var(--accent-color); font-weight: 600; }
+        .tab-pane h3 { font-size: 24px; margin-top: 0; margin-bottom: 25px; color: var(--accent-color); font-weight: 700; }
         .tab-pane h4 { font-size: 18px; font-weight: 600; margin-top: 30px; margin-bottom: 15px; padding-bottom: 5px; border-bottom: 2px solid #e9ecef;}
         
-        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 25px; }
+        .pricing-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); 
+            gap: 25px; 
+        }
         .price-card {
             background: #ffffff; border: 1px solid #e9ecef; border-radius: 8px; padding: 25px;
             display: flex; flex-direction: column; transition: all 0.3s ease;
+            position: relative; 
         }
         .price-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.07); }
+        .price-card.featured {
+            border-color: var(--accent-color);
+            border-width: 2px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
         .price-card h4 { margin: 0 0 10px 0; font-size: 18px; color: var(--brand-heading); font-weight: 600; padding: 0; border: none; }
-        .price-card .price { font-size: 30px; font-weight: 700; color: var(--brand-heading); margin-bottom: 2px; }
-        .price-card .price-term { font-size: 13px; color: #718096; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .price-card ul { list-style: none; padding-left: 0; margin: 0 0 25px 0; font-size: 14px; line-height: 1.7; flex-grow: 1; color: var(--brand-body); }
-        .price-card li { margin-bottom: 8px; padding-left: 20px; position: relative; }
-        .price-card li::before { content: '✓'; color: var(--accent-color); position: absolute; left: 0; font-weight: 700; }
-        .promo-badge { background-color: var(--accent-color); color: #fff; font-weight: 600; padding: 5px 12px; border-radius: 6px; font-size: 13px; display: inline-block; margin-top: 15px; }
+        .price-card .price { font-size: 36px; font-weight: 700; color: var(--brand-heading); margin-bottom: 2px; }
+        .price-card .price-term { font-size: 14px; color: #718096; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .price-card ul { list-style: none; padding-left: 0; margin: 0 0 25px 0; font-size: 15px; line-height: 1.7; flex-grow: 1; color: var(--brand-body); }
+        .price-card li { margin-bottom: 8px; padding-left: 25px; position: relative; }
+        .price-card li::before { content: '✓'; color: var(--accent-color); position: absolute; left: 0; font-weight: 700; font-size: 18px; line-height: 1; top: 2px;}
+        .promo-badge { 
+            background-color: var(--accent-color); color: #fff; font-weight: 600; padding: 5px 12px; 
+            border-radius: 6px; font-size: 13px; display: inline-block; margin-top: 15px;
+            position: absolute; top: -15px; right: -15px;
+            transform: rotate(5deg);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            z-index: 5;
+        }
         
         /* General CTA Button Style */
         .cta-button, .add-to-cart-btn {
-            display: block; width: 100%; text-align: center; padding: 12px; border-radius: 8px;
+            display: block; width: 100%; text-align: center; padding: 14px; border-radius: 8px;
             background-color: #474D57; color: #ffffff; text-decoration: none; font-weight: 600;
-            transition: background-color 0.2s ease, filter 0.2s ease;
-            border: none; font-family: 'Montserrat', sans-serif; font-size: 14px; cursor: pointer;
+            transition: background-color 0.2s ease, filter 0.2s ease, transform 0.2s ease;
+            border: none; font-family: 'Montserrat', sans-serif; font-size: 15px; cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
         }
         .cta-button:hover, .add-to-cart-btn:hover {
             background-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
         .price-card .cta-button, .price-card .add-to-cart-btn {
             margin-top: auto;
@@ -98,6 +375,8 @@
         .cta-button.is-disabled {
             background-color: #cccccc; pointer-events: none; cursor: not-allowed;
             filter: none;
+            box-shadow: none;
+            transform: none;
         }
 
         /* --- Renewal Form Styles --- */
@@ -118,6 +397,8 @@
         .renewal-form .renewal-keys-textarea:focus {
             outline: none;
             border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(var(--accent-color-rgb, 0,0,0), 0.2); /* Fallback for older browsers */
+            box-shadow: 0 0 0 3px rgba(var(--accent-color), 0.2);
         }
         .renewal-form .cta-button { width: auto; padding: 12px 30px; }
         .renewal-form .form-feedback { margin-top: 15px; font-weight: 500; font-size: 14px; }
@@ -126,14 +407,96 @@
         .renewal-type-options input[type="radio"] { width: 16px; height: 16px; accent-color: var(--accent-color); }
         .renewal-type-options label { margin-bottom: 0; font-weight: normal; }
 
- /* Footer Styles */
- .footer {
+        /* Floating Cart Container */
+        .floating-cart {
+            position: fixed; bottom: 20px; right: 20px; width: 340px; max-height: 500px;
+            background-color: #ffffff; border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15); z-index: 1010;
+            display: flex; flex-direction: column;
+            transform: translateY(150%); transition: transform 0.4s ease-in-out;
+        }
+        .floating-cart.is-visible { transform: translateY(0); }
+        .floating-cart.is-minimized #cart-items,
+        .floating-cart.is-minimized .cart-footer { display: none; }
+        .floating-cart.is-minimized { max-height: 55px; }
+
+        /* Cart Header & Toggle Button */
+        .cart-header {
+            display: flex; justify-content: space-between; align-items: center; padding: 15px 20px;
+            background-color: #f8f9fa; border-bottom: 1px solid #e2e8f0; cursor: pointer;
+        }
+        .cart-header h3 { margin: 0; font-size: 16px; padding: 0; border-bottom: none; }
+
+        .cart-toggle-btn {
+            background: #e9ecef; border: none; width: 26px; height: 26px; border-radius: 50%;
+            color: var(--brand-body); cursor: pointer;
+            display: inline-flex; align-items: center; justify-content: center;
+            transition: transform 0.3s ease;
+        }
+        .cart-toggle-btn svg {
+            width: 14px; height: 14px;
+            stroke: currentColor;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+        }
+        .floating-cart.is-minimized .cart-toggle-btn {
+            transform: rotate(180deg);
+        }
+        
+        /* Cart Items & Controls */
+        #cart-items { padding: 5px 20px; overflow-y: auto; flex-grow: 1; }
+        .cart-item {
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 14px; padding: 12px 0; border-bottom: 1px solid #f1f1f1;
+        }
+        .cart-item:last-child { border-bottom: none; }
+        .item-info { display: flex; align-items: center; flex-grow: 1; min-width: 0; }
+        .item-info .item-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 500; color: var(--brand-heading); }
+        .item-details { display: flex; align-items: center; gap: 15px; }
+        .item-price { font-size: 15px; font-weight: 600; }
+        #cart-items > p { text-align: center; color: #8a96a8; padding: 40px 10px; margin: 0; font-style: italic; }
+
+        .remove-item-btn {
+            background: transparent; border: none; color: #d6564c;
+            font-size: 22px; line-height: 1; border-radius: 50%; width: 24px; height: 24px;
+            display: inline-flex; align-items: center; justify-content: center;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            margin-right: 12px; cursor: pointer;
+        }
+        .remove-item-btn:hover { background-color: #fce8e6; color: #a50e0e; }
+        
+        .quantity-controls { display: flex; align-items: center; border: 1px solid #e2e8f0; border-radius: 20px; }
+        .quantity-btn { background: transparent; border: none; cursor: pointer; font-size: 16px; font-weight: 600; color: var(--brand-body); padding: 2px 10px; line-height: 1; }
+        .quantity-btn:hover { color: var(--brand-heading); }
+        .item-quantity { font-weight: 600; font-size: 14px; padding: 0 4px; min-width: 20px; text-align: center; color: var(--brand-heading); }
+        
+        /* Cart Footer */
+        .cart-footer { padding: 15px 20px; border-top: 1px solid #e2e8f0; background-color: #f8f9fa; }
+        .cart-total { display: flex; justify-content: space-between; font-size: 16px; margin-bottom: 15px; }
+        .cart-footer .cta-button:hover { background-color: #474D57; filter: brightness(85%); }
+
+        /* Modal Styles */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 2000; display: none; justify-content: center; align-items: center; }
+        .modal-container { background: #fff; padding: 30px; border-radius: 12px; width: 90%; max-width: 700px; max-height: 90vh; overflow-y: auto; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .modal-close-btn { position: absolute; top: 15px; right: 15px; background: transparent; border: none; font-size: 28px; color: #718096; cursor: pointer; line-height: 1; }
+        .modal-title { font-size: 28px; color: var(--brand-heading); margin-top: 0; margin-bottom: 20px; }
+        .modal-body p { margin-bottom: 15px; line-height: 1.7; }
+        .modal-body strong { color: var(--brand-heading); }
+        .modal-body ul { padding-left: 25px; margin-bottom: 20px; list-style: disc;}
+        .modal-body li { margin-bottom: 5px; }
+        .modal-body .cta-button { display: inline-block; width: auto; padding-left: 30px; padding-right: 30px; margin-top: 20px; margin-right: 15px; }
+        .modal-body .cta-button.cta-primary { background-color: var(--accent-color); }
+        .modal-body .cta-button.cta-secondary { background-color: #80B1A0; }
+        .modal-body .cta-button:hover { filter: brightness(110%); }
+
+        /* Footer Styles */
+        .footer {
             background-color: var(--brand-header);
             color: #cccccc;
             padding: 50px 0;
             margin-top: 50px;
             font-size: 14px;
-            text-align: left; /* Changed from center to left */
+            text-align: left;
         }
         .footer-content {
             display: flex;
@@ -232,114 +595,54 @@
             margin: 0;
             color: #a0a0a0;
         }
-
-        .hero { background-color: #ffffff; text-align: center; padding: 60px 20px; border-bottom: 1px solid #dee2e6;}
-        .hero-title { font-size: 42px; font-weight: 700; color: var(--brand-heading); }
-        .hero-subtitle { font-size: 18px; max-width: 700px; margin: 15px auto 0; line-height: 1.6; }
-        .case-study-section { padding: 60px 0; }
-        .section-header { text-align: center; margin-bottom: 50px; }
-        .section-title { font-size: 36px; font-weight: 700; color: var(--brand-heading); margin: 0; }
-        .section-subtitle { font-size: 18px; margin: 10px auto 0; }
-
-        /* --- Consolidated UI Components & Overrides --- */
-
-        /* Floating Cart Container */
-        .floating-cart {
-            position: fixed; bottom: 20px; right: 20px; width: 340px; max-height: 500px;
-            background-color: #ffffff; border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15); z-index: 1010;
-            display: flex; flex-direction: column;
-            transform: translateY(150%); transition: transform 0.4s ease-in-out;
+        /* Responsive adjustments for footer (DO NOT CHANGE) */
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .footer-col {
+                min-width: unset;
+                width: 100%;
+            }
+            .footer-col-left {
+                min-width: unset;
+                width: 100%;
+            }
+            .social-icons {
+                justify-content: center;
+            }
+            .copyright-section {
+                text-align: center;
+            }
         }
-        .floating-cart.is-visible { transform: translateY(0); }
-        .floating-cart.is-minimized #cart-items,
-        .floating-cart.is-minimized .cart-footer { display: none; }
-        .floating-cart.is-minimized { max-height: 55px; }
-
-        /* Cart Header & Toggle Button */
-        .cart-header {
-            display: flex; justify-content: space-between; align-items: center; padding: 15px 20px;
-            background-color: #f8f9fa; border-bottom: 1px solid #e2e8f0; cursor: pointer;
+        @media (max-width: 480px) {
+            .hero-title { font-size: 36px; }
+            .hero-subtitle { font-size: 17px; }
+            .section-title { font-size: 32px; }
+            .filter-btn { padding: 8px 16px; font-size: 14px; }
         }
-        .cart-header h3 { margin: 0; font-size: 16px; padding: 0; border-bottom: none; }
-
-        .cart-toggle-btn {
-            background: #e9ecef; border: none; width: 26px; height: 26px; border-radius: 50%;
-            color: var(--brand-body); cursor: pointer;
-            display: inline-flex; align-items: center; justify-content: center;
-            transition: transform 0.3s ease;
-        }
-        .cart-toggle-btn svg {
-            width: 14px; height: 14px;
-            stroke: currentColor;
-            stroke-width: 2.5;
-            stroke-linecap: round;
-        }
-        .floating-cart.is-minimized .cart-toggle-btn {
-            transform: rotate(180deg);
-        }
-        
-        /* Cart Items & Controls */
-        #cart-items { padding: 5px 20px; overflow-y: auto; flex-grow: 1; }
-        .cart-item {
-            display: flex; justify-content: space-between; align-items: center;
-            font-size: 14px; padding: 12px 0; border-bottom: 1px solid #f1f1f1;
-        }
-        .cart-item:last-child { border-bottom: none; }
-        .item-info { display: flex; align-items: center; flex-grow: 1; min-width: 0; }
-        .item-info .item-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 500; color: var(--brand-heading); }
-        .item-details { display: flex; align-items: center; gap: 15px; }
-        .item-price { font-size: 15px; font-weight: 600; }
-        #cart-items > p { text-align: center; color: #8a96a8; padding: 40px 10px; margin: 0; font-style: italic; }
-
-        .remove-item-btn {
-            background: transparent; border: none; color: #d6564c;
-            font-size: 22px; line-height: 1; border-radius: 50%; width: 24px; height: 24px;
-            display: inline-flex; align-items: center; justify-content: center;
-            transition: background-color 0.2s ease, color 0.2s ease;
-            margin-right: 12px; cursor: pointer;
-        }
-        .remove-item-btn:hover { background-color: #fce8e6; color: #a50e0e; }
-        
-        .quantity-controls { display: flex; align-items: center; border: 1px solid #e2e8f0; border-radius: 20px; }
-        .quantity-btn { background: transparent; border: none; cursor: pointer; font-size: 16px; font-weight: 600; color: var(--brand-body); padding: 2px 10px; line-height: 1; }
-        .quantity-btn:hover { color: var(--brand-heading); }
-        .item-quantity { font-weight: 600; font-size: 14px; padding: 0 4px; min-width: 20px; text-align: center; color: var(--brand-heading); }
-        
-        /* Cart Footer */
-        .cart-footer { padding: 15px 20px; border-top: 1px solid #e2e8f0; background-color: #f8f9fa; }
-        .cart-total { display: flex; justify-content: space-between; font-size: 16px; margin-bottom: 15px; }
-        .cart-footer .cta-button:hover { background-color: #474D57; filter: brightness(85%); }
-
-        /* Modal Styles */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 2000; display: none; justify-content: center; align-items: center; }
-        .modal-container { background: #fff; padding: 30px; border-radius: 12px; width: 90%; max-width: 700px; max-height: 90vh; overflow-y: auto; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-        .modal-close-btn { position: absolute; top: 15px; right: 15px; background: transparent; border: none; font-size: 28px; color: #718096; cursor: pointer; line-height: 1; }
-        .modal-title { font-size: 26px; color: var(--brand-heading); margin-top: 0; margin-bottom: 15px; }
-        .modal-body p { margin-bottom: 20px; }
-        .modal-body ul { padding-left: 20px; margin-bottom: 20px;}
-        .modal-body .cta-button { display: inline-block; width: auto; padding-left: 30px; padding-right: 30px; margin-top: 15px; margin-right: 10px; }
-        .modal-body .cta-button.cta-primary { background-color: var(--accent-color); }
-        .modal-body .cta-button.cta-secondary { background-color: #80B1A0; }
-        .modal-body .cta-button:hover { border-color: var(--accent-color); filter: brightness(100%); }
-        .modal-body .cta-button { box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;}.modal-body .cta-button:hover { transform: translateY(-3px); /* Moves the button 3px up */ box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25); /* Enhances the shadow for a sense of depth */
-}
-
     </style>
 </head>
 <body>
     <header class="header">
         <div class="container header-content">
-            <a href="#"><img src="https://cdn.mescius.io/umb/media/pujnxfci/mescuis-logo-horiz.svg" alt="Mescius Logo" class="logo"></a>
-            <nav class="main-nav">
-                <a href="../index.html#case-studies" class="nav-link">Solutions</a>
+            <a href="/" aria-label="Mescius Europe Home" class="logo-link"><img src="https://cdn.mescius.io/umb/media/pujnxfci/mescuis-logo-horiz.svg" alt="Mescius Europe Logo" class="logo"></a>
+            <nav class="main-nav" id="main-nav">
+                <a href="../index.html" class="nav-link">Solutions</a>
                 <a href="../pricing/index.html" class="nav-link active">Pricing</a>
                 <a href="../bundles/index.html" class="nav-link">Bundles</a>
             </nav>
+            <div class="menu-toggle" id="menu-toggle" aria-controls="main-nav" aria-expanded="false" role="button" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </header>
     
-    <div id="floating-cart" class="floating-cart">
+    <div id="floating-cart" class="floating-cart" aria-live="polite" aria-atomic="true">
         <div class="cart-header">
             <h3>Your Cart</h3>
             <button id="cart-toggle-btn" class="cart-toggle-btn" title="Toggle Cart"></button>
@@ -351,26 +654,30 @@
             <div class="cart-total">
                 <strong>Total:</strong> <span id="cart-total-price">€0.00</span>
             </div>
-            <a id="checkout-link" class="cta-button is-disabled" href="#">Go to Checkout</a>
+            <a id="checkout-link" class="cta-button is-disabled" href="#">Proceed to Checkout</a>
         </div>
     </div>
 
     <main class="pricing-section">
         <div class="container">
-            <div class="section-header">
-                <h1 class="section-title">Developer License Pricing</h1>
-                <p class="section-subtitle">A comprehensive breakdown of our licensing options. Find the right plan for your needs, from individual developers to enterprise teams.</p>
-            </div>
+            <section class="section-header">
+                <h1 class="section-title">Flexible Developer License Pricing</h1>
+                <p class="section-subtitle">Find the right licensing plan for your development needs, from individual projects to large enterprise solutions. We offer comprehensive options for both .NET and JavaScript components.</p>
+            </section>
 
-            <div class="filter-controls" id="pricing-filter-controls">
-                <div class="filter-group"><button class="filter-btn is-active" data-filter="all">All Products</button><button class="filter-btn" data-filter="net">.NET</button><button class="filter-btn" data-filter="js">JavaScript</button></div>
+            <div class="filter-controls" id="pricing-filter-controls" role="tablist" aria-label="Filter products by platform">
+                <div class="filter-group">
+                    <button class="filter-btn is-active" data-filter="all" role="tab" aria-selected="true" aria-controls="product-grid">All Products</button>
+                    <button class="filter-btn" data-filter="net" role="tab" aria-selected="false" aria-controls="product-grid">.NET</button>
+                    <button class="filter-btn" data-filter="js" role="tab" aria-selected="false" aria-controls="product-grid">JavaScript</button>
+                </div>
             </div>
 
             <div id="product-grid">
-                <div class="product-pricing-section product-c1" data-platform="net">
+                <article class="product-pricing-section product-c1" data-platform="net">
                     <div class="product-header">
                         <h2>ComponentOne</h2>
-                        <span class="product-info-trigger" 
+                        <span class="product-info-trigger" role="button" aria-label="More information about ComponentOne"
                                 data-title="ComponentOne"
                                 data-description='<strong>The complete UI toolkit for .NET developers.</strong><br>ComponentOne includes hundreds of controls to solve any business need. Key features include:<ul><li>High-performance DataGrids and Charts</li><li>Full support for WinForms, WPF, Blazor, and MAUI</li><li>Powerful reporting and document generation</li></ul>'
                                 data-demolink="https://developer.mescius.com/componentone/download"
@@ -378,54 +685,96 @@
                                 i
                         </span>
                     </div>
-                    <div class="product-tabs"><button class="tab-btn is-active" data-tab="c1-new">New Licenses</button><button class="tab-btn" data-tab="c1-renew">Renewals</button></div>
+                    <div class="product-tabs" role="tablist" aria-label="ComponentOne License Types">
+                        <button class="tab-btn is-active" data-tab="c1-new" role="tab" aria-selected="true" aria-controls="c1-new-pane">New Licenses</button>
+                        <button class="tab-btn" data-tab="c1-renew" role="tab" aria-selected="false" aria-controls="c1-renew-pane">Renewals</button>
+                    </div>
                     <div class="tab-content">
-                        <div class="tab-pane is-active" id="c1-new">
-                            <h3>New License Pricing</h3>
+                        <section class="tab-pane is-active" id="c1-new-pane" role="tabpanel">
+                            <h3>New License Pricing for ComponentOne</h3>
                             <div class="pricing-grid">
-                                <div class="price-card"style="border-color: var(--accent-color); border-width: 2px;">
-                                    <h4>Studio Enterprise</h4>
+                                <div class="price-card" data-badge="Recommended" aria-labelledby="c1-enterprise-title">
+                                    <h4 id="c1-enterprise-title">Studio Enterprise</h4>
                                     <div class="price">€1,385</div><p class="price-term">per Developer</p>
-                                    <ul><li>All .NET platforms</li><li>Data Service components</li><li>Wijmo Enterprise</li></ul>
+                                    <ul>
+                                        <li>All .NET platforms</li>
+                                        <li>Data Service components</li>
+                                        <li>Wijmo Enterprise</li>
+                                    </ul>
                                     <button class="add-to-cart-btn" data-product-id="54087" data-product-name="C1 Studio Enterprise" data-price="1385">Add to Cart</button>
                                 </div>
-                                <div class="price-card">
-                                    <h4>WinForms Data Services</h4>
+                                <div class="price-card" aria-labelledby="c1-winforms-data-title">
+                                    <h4 id="c1-winforms-data-title">WinForms Data Services</h4>
                                     <div class="price">€1,205</div><p class="price-term">per Developer</p>
-                                    <ul><li>120+ WinForms controls</li><li>.NET Data Connectors</li></ul>
+                                    <ul>
+                                        <li>120+ WinForms controls</li>
+                                        <li>.NET Data Connectors</li>
+                                    </ul>
                                     <button class="add-to-cart-btn" data-product-id="60892" data-product-name="C1 WinForms Data Services" data-price="1205">Add to Cart</button>
                                 </div>
-                                <div class="price-card"><h4>ActiveX Edition</h4><div class="price">€1,385</div><p class="price-term">per Developer</p><ul><li>Controls for legacy applications</li></ul><button class="add-to-cart-btn" data-product-id="53600" data-product-name="C1 ActiveX Edition" data-price="1385">Add to Cart</button></div>
-                                <div class="price-card"><h4>WinForms Edition</h4><div class="price">€925</div><p class="price-term">per Developer</p><button class="add-to-cart-btn" data-product-id="53597" data-product-name="C1 WinForms Edition" data-price="925">Add to Cart</button></div>
-                                <div class="price-card"><h4>WPF Edition</h4><div class="price">€925</div><p class="price-term">per Developer</p><button class="add-to-cart-btn" data-product-id="55920" data-product-name="C1 WPF Edition" data-price="925">Add to Cart</button></div>
-                                <div class="price-card"><h4>WinUI & MAUI Edition</h4><div class="price">€925</div><p class="price-term">per Developer</p><button class="add-to-cart-btn" data-product-id="61875" data-product-name="C1 WinUI & MAUI Edition" data-price="925">Add to Cart</button></div>
-                                <div class="price-card"><h4>ASP.NET MVC Edition</h4><div class="price">€835</div><p class="price-term">per Developer</p><button class="add-to-cart-btn" data-product-id="58274" data-product-name="C1 ASP.NET MVC Edition" data-price="835">Add to Cart</button></div>
-                                <div class="price-card"><h4>Blazor Edition</h4><div class="price">€465</div><p class="price-term">per Developer</p><button class="add-to-cart-btn" data-product-id="60326" data-product-name="C1 Blazor Edition" data-price="465">Add to Cart</button></div>
+                                <div class="price-card" aria-labelledby="c1-activex-title">
+                                    <h4 id="c1-activex-title">ActiveX Edition</h4>
+                                    <div class="price">€1,385</div><p class="price-term">per Developer</p>
+                                    <ul>
+                                        <li>Controls for legacy applications</li>
+                                    </ul>
+                                    <button class="add-to-cart-btn" data-product-id="53600" data-product-name="C1 ActiveX Edition" data-price="1385">Add to Cart</button>
+                                </div>
+                                <div class="price-card" aria-labelledby="c1-winforms-title">
+                                    <h4 id="c1-winforms-title">WinForms Edition</h4>
+                                    <div class="price">€925</div><p class="price-term">per Developer</p>
+                                    <ul><li>Essential WinForms controls</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="53597" data-product-name="C1 WinForms Edition" data-price="925">Add to Cart</button>
+                                </div>
+                                <div class="price-card" aria-labelledby="c1-wpf-title">
+                                    <h4 id="c1-wpf-title">WPF Edition</h4>
+                                    <div class="price">€925</div><p class="price-term">per Developer</p>
+                                    <ul><li>Robust WPF controls</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="55920" data-product-name="C1 WPF Edition" data-price="925">Add to Cart</button>
+                                </div>
+                                <div class="price-card" aria-labelledby="c1-winui-maui-title">
+                                    <h4 id="c1-winui-maui-title">WinUI & MAUI Edition</h4>
+                                    <div class="price">€925</div><p class="price-term">per Developer</p>
+                                    <ul><li>Modern UI for WinUI & MAUI</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="61875" data-product-name="C1 WinUI & MAUI Edition" data-price="925">Add to Cart</button>
+                                </div>
+                                <div class="price-card" aria-labelledby="c1-aspnet-mvc-title">
+                                    <h4 id="c1-aspnet-mvc-title">ASP.NET MVC Edition</h4>
+                                    <div class="price">€835</div><p class="price-term">per Developer</p>
+                                    <ul><li>MVC controls for web apps</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="58274" data-product-name="C1 ASP.NET MVC Edition" data-price="835">Add to Cart</button>
+                                </div>
+                                <div class="price-card" aria-labelledby="c1-blazor-title">
+                                    <h4 id="c1-blazor-title">Blazor Edition</h4>
+                                    <div class="price">€465</div><p class="price-term">per Developer</p>
+                                    <ul><li>UI components for Blazor</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="60326" data-product-name="C1 Blazor Edition" data-price="465">Add to Cart</button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="tab-pane" id="c1-renew">
-                            <h3>Request Renewal</h3>
+                        </section>
+                        <section class="tab-pane" id="c1-renew-pane" role="tabpanel" hidden>
+                            <h3>Renew Your ComponentOne License</h3>
                             <p>To receive a personalized renewal quote and purchase link, please enter your details and existing product key(s) below. Our team will verify your eligibility and send a private purchase link to your email.</p>
                             <form class="renewal-form" data-product-name="ComponentOne">
                                 <div class="form-group">
                                     <label for="c1-renewal-email">Your Email Address:</label>
-                                    <input type="email" id="c1-renewal-email" class="renewal-email-input" required>
+                                    <input type="email" id="c1-renewal-email" class="renewal-email-input" required aria-required="true" autocomplete="email">
                                 </div>
                                 <div class="form-group">
                                     <label for="c1-renewal-keys">Your Existing Product Key(s):</label>
-                                    <textarea id="c1-renewal-keys" class="renewal-keys-textarea" rows="4" placeholder="Enter each key on a new line" required></textarea>
+                                    <textarea id="c1-renewal-keys" class="renewal-keys-textarea" rows="4" placeholder="Enter each key on a new line" required aria-required="true"></textarea>
                                 </div>
                                 <button type="submit" class="cta-button">Request Renewal Link</button>
-                                <div class="form-feedback"></div>
+                                <div class="form-feedback" aria-live="polite"></div>
                             </form>
-                        </div>
+                        </section>
                     </div>
-                </div>
+                </article>
 
-                <div class="product-pricing-section product-spread" data-platform="js">
+                <article class="product-pricing-section product-spread" data-platform="js">
                     <div class="product-header">
                         <h2>SpreadJS</h2>
-                        <span class="product-info-trigger" 
+                        <span class="product-info-trigger" role="button" aria-label="More information about SpreadJS"
                                 data-title="SpreadJS"
                                 data-description='<strong>Empower your web applications with the industry-leading JavaScript spreadsheet solution.</strong><br>SpreadJS provides a complete, Excel-like experience for your users, including:<ul><li>High-speed grids</li><li>Complex calculations & charts</li><li>Pivot tables</li><li>Advanced data analysis tools</li></ul><p>It is ideal for creating <strong>financial, scientific, and enterprise resource planning (ERP)</strong> applications.</p>'
                                 data-demolink="https://developer.mescius.com/spreadjs/download"
@@ -433,60 +782,126 @@
                                 i
                         </span>
                     </div>
-                    <div class="product-tabs">
-                        <button class="tab-btn is-active" data-tab="sjs-noncom">Internal & Free Apps</button>
-                        <button class="tab-btn" data-tab="sjs-com">Paid & SaaS Apps</button>
-                        <button class="tab-btn" data-tab="sjs-renew">Renewals</button>
-                        <button class="tab-btn" data-tab="sjs-perp">Perpetual</button>
+                    <div class="product-tabs" role="tablist" aria-label="SpreadJS License Types">
+                        <button class="tab-btn is-active" data-tab="sjs-noncom" role="tab" aria-selected="true" aria-controls="sjs-noncom-pane">Internal & Free Apps</button>
+                        <button class="tab-btn" data-tab="sjs-com" role="tab" aria-selected="false" aria-controls="sjs-com-pane">Paid & SaaS Apps</button>
+                        <button class="tab-btn" data-tab="sjs-renew" role="tab" aria-selected="false" aria-controls="sjs-renew-pane">Renewals</button>
+                        <button class="tab-btn" data-tab="sjs-perp" role="tab" aria-selected="false" aria-controls="sjs-perp-pane">Perpetual</button>
                     </div>
                     <div class="tab-content">
-                        <div class="tab-pane" id="sjs-com">
-                            <h3>Paid & SaaS Apps</h3>
+                        <section class="tab-pane" id="sjs-com-pane" role="tabpanel" hidden>
+                            <h3>SpreadJS Licenses for Paid & SaaS Applications</h3>
                             <div class="pricing-grid">
-                                <div class="price-card"><h4>Developer License</h4><div class="price">€925</div><p class="price-term">per Developer</p><ul><li>1-Year Support</li><li>1 Designer App License</li></ul><button class="add-to-cart-btn" data-product-id="57922" data-product-name="SpreadJS Dev License (Paid Apps)" data-price="925">Add to Cart</button></div>
-                                <div class="price-card"><h4>Limited Annual Deployment</h4><div class="price">€11,605</div><p class="price-term">per Single Domain</p><ul><li>Single Domain or 5 Hostnames</li><li>Annual subscription</li></ul><button class="add-to-cart-btn" data-product-id="61408" data-product-name="SpreadJS Limited Deployment" data-price="11605">Add to Cart</button></div>
-                                <div class="price-card"><h4>Unlimited Annual Deployment</h4><div class="price">Contact Us</div><p class="price-term">for a quote</p><ul><li>Includes Unlimited distributions</li><li>Annual subscription</li></ul><a href="#" class="cta-button">Contact Sales</a></div>
+                                <div class="price-card" aria-labelledby="sjs-dev-paid-title">
+                                    <h4 id="sjs-dev-paid-title">Developer License</h4>
+                                    <div class="price">€925</div><p class="price-term">per Developer</p>
+                                    <ul>
+                                        <li>1-Year Support</li>
+                                        <li>1 Designer App License</li>
+                                    </ul>
+                                    <button class="add-to-cart-btn" data-product-id="57922" data-product-name="SpreadJS Dev License (Paid Apps)" data-price="925">Add to Cart</button>
+                                </div>
+                                <div class="price-card" aria-labelledby="sjs-limited-annual-title">
+                                    <h4 id="sjs-limited-annual-title">Limited Annual Deployment</h4>
+                                    <div class="price">€11,605</div><p class="price-term">per Single Domain</p>
+                                    <ul>
+                                        <li>Single Domain or 5 Hostnames</li>
+                                        <li>Annual subscription</li>
+                                    </ul>
+                                    <button class="add-to-cart-btn" data-product-id="61408" data-product-name="SpreadJS Limited Deployment" data-price="11605">Add to Cart</button>
+                                </div>
+                                <div class="price-card" aria-labelledby="sjs-unlimited-annual-title">
+                                    <h4 id="sjs-unlimited-annual-title">Unlimited Annual Deployment</h4>
+                                    <div class="price">Contact Us</div><p class="price-term">for a quote</p>
+                                    <ul>
+                                        <li>Includes Unlimited distributions</li>
+                                        <li>Annual subscription</li>
+                                    </ul>
+                                    <a href="#contact-sales" class="cta-button">Contact Sales</a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="tab-pane is-active" id="sjs-noncom">
-                            <h3>Internal & Free Apps</h3>
+                        </section>
+                        <section class="tab-pane is-active" id="sjs-noncom-pane" role="tabpanel">
+                            <h3>SpreadJS Licenses for Internal & Free Applications</h3>
                             <div class="pricing-grid">
-                                <div class="price-card" style="border-color: var(--accent-color); border-width: 2px;"><h4>Hostname License Pack</h4><div class="price">€1,855</div><p class="price-term">for 3-5 Hostnames</p><ul><li>Annual subscription</li><li>Best value for multiple sites</li></ul><button class="add-to-cart-btn" data-product-id="60976" data-product-name="SpreadJS Hostname Pack" data-price="1855">Add to Cart</button></div>
-                                <div class="price-card"><h4>Dev + Hostname Bundle</h4><div class="price">€1,395</div><p class="price-term">per Dev Bundle / year</p><ul><li>1 Developer License</li><li>1 Annual Hostname License</li></ul><button class="add-to-cart-btn" data-product-id="62805" data-product-name="SpreadJS Dev+Host Bundle" data-price="1395">Add to Cart</button></div>
-                                <div class="price-card"><h4>Annual Hostname License</h4><div class="price">€555</div><p class="price-term">for 1 Hostname</p><ul><li>Annual subscription</li></ul><button class="add-to-cart-btn" data-product-id="60974" data-product-name="SpreadJS Hostname License" data-price="555">Add to Cart</button></div>
+                                <div class="price-card" data-badge="Best Value" aria-labelledby="sjs-hostname-pack-title">
+                                    <h4 id="sjs-hostname-pack-title">Hostname License Pack</h4>
+                                    <div class="price">€1,855</div><p class="price-term">for 3-5 Hostnames</p>
+                                    <ul>
+                                        <li>Annual subscription</li>
+                                        <li>Best value for multiple sites</li>
+                                    </ul>
+                                    <button class="add-to-cart-btn" data-product-id="60976" data-product-name="SpreadJS Hostname Pack" data-price="1855">Add to Cart</button>
+                                </div>
+                                <div class="price-card" aria-labelledby="sjs-dev-hostname-bundle-title">
+                                    <h4 id="sjs-dev-hostname-bundle-title">Dev + Hostname Bundle</h4>
+                                    <div class="price">€1,395</div><p class="price-term">per Dev Bundle / year</p>
+                                    <ul>
+                                        <li>1 Developer License</li>
+                                        <li>1 Annual Hostname License</li>
+                                    </ul>
+                                    <button class="add-to-cart-btn" data-product-id="62805" data-product-name="SpreadJS Dev+Host Bundle" data-price="1395">Add to Cart</button>
+                                </div>
+                                <div class="price-card" aria-labelledby="sjs-annual-hostname-title">
+                                    <h4 id="sjs-annual-hostname-title">Annual Hostname License</h4>
+                                    <div class="price">€555</div><p class="price-term">for 1 Hostname</p>
+                                    <ul><li>Annual subscription</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="60974" data-product-name="SpreadJS Hostname License" data-price="555">Add to Cart</button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="tab-pane" id="sjs-renew">
-                            <h3>Request Renewal</h3>
+                        </section>
+                        <section class="tab-pane" id="sjs-renew-pane" role="tabpanel" hidden>
+                            <h3>Renew Your SpreadJS License</h3>
                             <p>To receive a personalized renewal quote and purchase link, please enter your details and existing product key(s) below. Our team will verify your eligibility and send a private purchase link to your email.</p>
                             <form class="renewal-form" data-product-name="SpreadJS">
                                 <div class="form-group">
                                     <label for="sjs-renewal-email">Your Email Address:</label>
-                                    <input type="email" id="sjs-renewal-email" class="renewal-email-input" required>
+                                    <input type="email" id="sjs-renewal-email" class="renewal-email-input" required aria-required="true" autocomplete="email">
                                 </div>
                                 <div class="form-group">
                                     <label for="sjs-renewal-keys">Your Existing Product Key(s):</label>
-                                    <textarea id="sjs-renewal-keys" class="renewal-keys-textarea" rows="4" placeholder="Enter each key on a new line" required></textarea>
+                                    <textarea id="sjs-renewal-keys" class="renewal-keys-textarea" rows="4" placeholder="Enter each key on a new line" required aria-required="true"></textarea>
                                 </div>
                                 <button type="submit" class="cta-button">Request Renewal Link</button>
-                                <div class="form-feedback"></div>
+                                <div class="form-feedback" aria-live="polite"></div>
                             </form>
-                        </div>
-                        <div class="tab-pane" id="sjs-perp">
-                            <h3>Perpetual License Options</h3>
+                        </section>
+                        <section class="tab-pane" id="sjs-perp-pane" role="tabpanel" hidden>
+                            <h3>SpreadJS Perpetual License Options</h3>
                             <div class="pricing-grid">
-                                <div class="price-card"><h4>Perpetual Hostname</h4><div class="price">Contact Us</div><p class="price-term">Internal & Free Apps</p><ul><li>One-Time Licensing Fee</li></ul><a href="#" class="cta-button">Contact Sales</a></div>
-                                <div class="price-card"><h4>Limited Perpetual Deployment</h4><div class="price">Contact Us</div><p class="price-term">Paid & SaaS Apps</p><ul><li>One-Time Fee</li><li>Single Domain or 5 Hostnames</li></ul><a href="#" class="cta-button">Contact Sales</a></div>
-                                <div class="price-card"><h4>Unlimited Perpetual Deployment</h4><div class="price">Contact Us</div><p class="price-term">Paid & SaaS Apps</p><ul><li>One-Time Fee</li><li>Unlimited distributions</li></ul><a href="#" class="cta-button">Contact Sales</a></div>
+                                <div class="price-card" aria-labelledby="sjs-perp-hostname-title">
+                                    <h4 id="sjs-perp-hostname-title">Perpetual Hostname</h4>
+                                    <div class="price">Contact Us</div><p class="price-term">Internal & Free Apps</p>
+                                    <ul><li>One-Time Licensing Fee</li></ul>
+                                    <a href="#contact-sales" class="cta-button">Contact Sales</a>
+                                </div>
+                                <div class="price-card" aria-labelledby="sjs-limited-perp-title">
+                                    <h4 id="sjs-limited-perp-title">Limited Perpetual Deployment</h4>
+                                    <div class="price">Contact Us</div><p class="price-term">Paid & SaaS Apps</p>
+                                    <ul>
+                                        <li>One-Time Fee</li>
+                                        <li>Single Domain or 5 Hostnames</li>
+                                    </ul>
+                                    <a href="#contact-sales" class="cta-button">Contact Sales</a>
+                                </div>
+                                <div class="price-card" aria-labelledby="sjs-unlimited-perp-title">
+                                    <h4 id="sjs-unlimited-perp-title">Unlimited Perpetual Deployment</h4>
+                                    <div class="price">Contact Us</div><p class="price-term">Paid & SaaS Apps</p>
+                                    <ul>
+                                        <li>One-Time Fee</li>
+                                        <li>Unlimited distributions</li>
+                                    </ul>
+                                    <a href="#contact-sales" class="cta-button">Contact Sales</a>
+                                </div>
                             </div>
-                        </div>
+                        </section>
                     </div>
-                </div>
+                </article>
 
-                <div class="product-pricing-section product-spread" data-platform="net">
+                <article class="product-pricing-section product-spread" data-platform="net">
                     <div class="product-header">
                         <h2>Spread.NET</h2>
-                        <span class="product-info-trigger" 
+                        <span class="product-info-trigger" role="button" aria-label="More information about Spread.NET"
                                 data-title="Spread.NET"
                                 data-description='<strong>Deliver the ultimate spreadsheet experience in your .NET desktop and web applications with Spread.NET.</strong><br>This powerful component suite provides high-performance data grids and designers for <strong>WinForms, ASP.NET, and WPF</strong>.<p>Enable advanced features including:</p><ul><li>Complex calculations, charting, and pivot tables</li><li>Seamless Excel (.XLSX) import and export</li></ul><p>The perfect toolset for creating feature-rich <strong>financial and data analysis</strong> applications.</p>'
                                 data-demolink="https://developer.mescius.com/spreadnet/download"
@@ -494,32 +909,49 @@
                                 i
                         </span>
                     </div>
-                    <div class="product-tabs"><button class="tab-btn is-active" data-tab="snet-new">New License</button><button class="tab-btn" data-tab="snet-renew">Renewal</button></div>
+                    <div class="product-tabs" role="tablist" aria-label="Spread.NET License Types">
+                        <button class="tab-btn is-active" data-tab="snet-new" role="tab" aria-selected="true" aria-controls="snet-new-pane">New License</button>
+                        <button class="tab-btn" data-tab="snet-renew" role="tab" aria-selected="false" aria-controls="snet-renew-pane">Renewal</button>
+                    </div>
                     <div class="tab-content">
-                        <div class="tab-pane is-active" id="snet-new"><h3>New License Pricing</h3><div class="pricing-grid"><div class="price-card"><h4>Spread.NET License</h4><div class="price">€1,395</div><p class="price-term">per developer</p><ul><li>WinForms, ASP.NET, WPF</li><li>1-Year Support</li><li>Perpetual Licensing</li></ul><button class="add-to-cart-btn" data-product-id="62799" data-product-name="Spread.NET" data-price="1395">Add to Cart</button></div></div></div>
-                        <div class="tab-pane" id="snet-renew">
-                            <h3>Request Renewal</h3>
+                        <section class="tab-pane is-active" id="snet-new-pane" role="tabpanel">
+                            <h3>New License Pricing for Spread.NET</h3>
+                            <div class="pricing-grid">
+                                <div class="price-card" data-badge="Popular" aria-labelledby="snet-license-title">
+                                    <h4 id="snet-license-title">Spread.NET License</h4>
+                                    <div class="price">€1,395</div><p class="price-term">per developer</p>
+                                    <ul>
+                                        <li>WinForms, ASP.NET, WPF</li>
+                                        <li>1-Year Support</li>
+                                        <li>Perpetual Licensing</li>
+                                    </ul>
+                                    <button class="add-to-cart-btn" data-product-id="62799" data-product-name="Spread.NET" data-price="1395">Add to Cart</button>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="tab-pane" id="snet-renew-pane" role="tabpanel" hidden>
+                            <h3>Renew Your Spread.NET License</h3>
                             <p>To receive a personalized renewal quote and purchase link, please enter your details and existing product key(s) below. Our team will verify your eligibility and send a private purchase link to your email.</p>
                             <form class="renewal-form" data-product-name="Spread.NET">
                                 <div class="form-group">
                                     <label for="snet-renewal-email">Your Email Address:</label>
-                                    <input type="email" id="snet-renewal-email" class="renewal-email-input" required>
+                                    <input type="email" id="snet-renewal-email" class="renewal-email-input" required aria-required="true" autocomplete="email">
                                 </div>
                                 <div class="form-group">
                                     <label for="snet-renewal-keys">Your Existing Product Key(s):</label>
-                                    <textarea id="snet-renewal-keys" class="renewal-keys-textarea" rows="4" placeholder="Enter each key on a new line" required></textarea>
+                                    <textarea id="snet-renewal-keys" class="renewal-keys-textarea" rows="4" placeholder="Enter each key on a new line" required aria-required="true"></textarea>
                                 </div>
                                 <button type="submit" class="cta-button">Request Renewal Link</button>
-                                <div class="form-feedback"></div>
+                                <div class="form-feedback" aria-live="polite"></div>
                             </form>
-                        </div>
+                        </section>
                     </div>
-                </div>
+                </article>
 
-                <div class="product-pricing-section product-wijmo" data-platform="js">
+                <article class="product-pricing-section product-wijmo" data-platform="js">
                     <div class="product-header">
                         <h2>Wijmo</h2>
-                        <span class="product-info-trigger" 
+                        <span class="product-info-trigger" role="button" aria-label="More information about Wijmo"
                                 data-title="Wijmo"
                                 data-description="<strong>Build high-performance, enterprise-level web applications</strong> with Wijmo's comprehensive library of JavaScript/TypeScript UI components.<p>Key features include:</p><ul><li>A <strong>zero-dependency, small footprint</strong> architecture written for performance.</li><li>The industry's best datagrid, <strong>FlexGrid</strong>, plus 100+ other controls for data visualization and UI.</li><li>Full framework support for <strong>Angular, React, Vue</strong>, and more.</li></ul><p>Wijmo is the premier choice for your most <strong>demanding data-driven applications.</strong></p>"
                                 data-demolink="https://developer.mescius.com/wijmo/download"
@@ -527,32 +959,57 @@
                                 i
                         </span>
                     </div>
-                    <div class="product-tabs"><button class="tab-btn is-active" data-tab="wj-new">New License</button><button class="tab-btn" data-tab="wj-renew">Renewal</button></div>
+                    <div class="product-tabs" role="tablist" aria-label="Wijmo License Types">
+                        <button class="tab-btn is-active" data-tab="wj-new" role="tab" aria-selected="true" aria-controls="wj-new-pane">New License</button>
+                        <button class="tab-btn" data-tab="wj-renew" role="tab" aria-selected="false" aria-controls="wj-renew-pane">Renewal</button>
+                    </div>
                     <div class="tab-content">
-                        <div class="tab-pane is-active" id="wj-new"><h3>New License Pricing</h3><div class="pricing-grid"><div class="price-card"><h4>Wijmo Enterprise</h4><div class="price">€645</div><p class="price-term">per developer</p><ul><li>1 Dev License + 1 Year Support</li><li>5 Internal & Free Apps Hostnames</li></ul><button class="add-to-cart-btn" data-product-id="59102" data-product-name="Wijmo Enterprise" data-price="645">Add to Cart</button></div><div class="price-card"><h4>Paid & SaaS Apps Hostname</h4><div class="price">€465</div><p class="price-term">per hostname</p><ul><li>For Paid & SaaS Apps use</li><li>Perpetual for version purchased</li></ul><button class="add-to-cart-btn" data-product-id="62767" data-product-name="Wijmo Commercial Hostname" data-price="465">Add to Cart</button></div></div></div>
-                        <div class="tab-pane" id="wj-renew">
-                            <h3>Request Renewal</h3>
+                        <section class="tab-pane is-active" id="wj-new-pane" role="tabpanel">
+                            <h3>New License Pricing for Wijmo</h3>
+                            <div class="pricing-grid">
+                                <div class="price-card" data-badge="Best Value" aria-labelledby="wijmo-enterprise-title">
+                                    <h4 id="wijmo-enterprise-title">Wijmo Enterprise</h4>
+                                    <div class="price">€645</div><p class="price-term">per developer</p>
+                                    <ul>
+                                        <li>1 Dev License + 1 Year Support</li>
+                                        <li>5 Internal & Free Apps Hostnames</li>
+                                    </ul>
+                                    <button class="add-to-cart-btn" data-product-id="59102" data-product-name="Wijmo Enterprise" data-price="645">Add to Cart</button>
+                                </div>
+                                <div class="price-card" aria-labelledby="wijmo-paid-apps-hostname-title">
+                                    <h4 id="wijmo-paid-apps-hostname-title">Paid & SaaS Apps Hostname</h4>
+                                    <div class="price">€465</div><p class="price-term">per hostname</p>
+                                    <ul>
+                                        <li>For Paid & SaaS Apps use</li>
+                                        <li>Perpetual for version purchased</li>
+                                    </ul>
+                                    <button class="add-to-cart-btn" data-product-id="62767" data-product-name="Wijmo Commercial Hostname" data-price="465">Add to Cart</button>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="tab-pane" id="wj-renew-pane" role="tabpanel" hidden>
+                            <h3>Renew Your Wijmo License</h3>
                             <p>To receive a personalized renewal quote and purchase link, please enter your details and existing product key(s) below. Our team will verify your eligibility and send a private purchase link to your email.</p>
                             <form class="renewal-form" data-product-name="Wijmo">
                                 <div class="form-group">
                                     <label for="wj-renewal-email">Your Email Address:</label>
-                                    <input type="email" id="wj-renewal-email" class="renewal-email-input" required>
+                                    <input type="email" id="wj-renewal-email" class="renewal-email-input" required aria-required="true" autocomplete="email">
                                 </div>
                                 <div class="form-group">
                                     <label for="wj-renewal-keys">Your Existing Product Key(s):</label>
-                                    <textarea id="wj-renewal-keys" class="renewal-keys-textarea" rows="4" placeholder="Enter each key on a new line" required></textarea>
+                                    <textarea id="wj-renewal-keys" class="renewal-keys-textarea" rows="4" placeholder="Enter each key on a new line" required aria-required="true"></textarea>
                                 </div>
                                 <button type="submit" class="cta-button">Request Renewal Link</button>
-                                <div class="form-feedback"></div>
+                                <div class="form-feedback" aria-live="polite"></div>
                             </form>
-                        </div>
+                        </section>
                     </div>
-                </div>
+                </article>
 
-                <div class="product-pricing-section product-ar" data-platform="js" id="activereportsjs">
+                <article class="product-pricing-section product-ar" data-platform="js" id="activereportsjs">
                     <div class="product-header">
                         <h2>ActiveReportsJS</h2>
-                        <span class="product-info-trigger" 
+                        <span class="product-info-trigger" role="button" aria-label="More information about ActiveReportsJS"
                                 data-title="ActiveReportsJS"
                                 data-description="<strong>Integrate fast, feature-rich reporting</strong> into your client-side web applications with ActiveReportsJS.<p>This complete JavaScript solution provides:</p><ul><li>A powerful, <strong>embeddable report designer and viewer</strong>.</li><li>The ability for your end-users to create and interact with reports on <strong>any platform</strong>.</li><li>Connectivity to local and remote JSON data sources.</li><li>Direct-in-browser export to popular formats like <strong>PDF, Excel (XLSX), and HTML</strong>.</li></ul>"
                                 data-demolink="https://developer.mescius.com/activereportsjs/download"
@@ -560,15 +1017,55 @@
                                 i
                         </span>
                     </div>
-                    <div class="product-tabs"><button class="tab-btn is-active" data-tab="arjs-annual">Annual License</button><button class="tab-btn" data-tab="arjs-perp">Perpetual</button></div>
-                    <div class="tab-content"><div class="tab-pane is-active" id="arjs-annual"><h3>Annual Subscription</h3><div class="pricing-grid"><div class="price-card"><h4>Single Deployment</h4><div class="price">€1,155</div><p class="price-term">Annual - Internal & Free Apps</p><ul><li>1 Production Key</li><li>2 Testing Keys</li></ul><button class="add-to-cart-btn" data-product-id="62780" data-product-name="ARJS Single Deployment" data-price="1155">Add to Cart</button></div><div class="price-card"><h4>Single Domain License</h4><div class="price">€3,715</div><p class="price-term">Annual - Paid & SaaS Apps</p><ul><li>Unlimited hostnames on *.domain</li></ul><button class="add-to-cart-btn" data-product-id="62783" data-product-name="ARJS Single Domain" data-price="3715">Add to Cart</button></div></div></div><div class="tab-pane" id="arjs-perp"><h3>Perpetual Deployment</h3><div class="pricing-grid"><div class="price-card"><h4>Single Deployment</h4><div class="price">Contact Us</div><p class="price-term">Perpetual - Internal & Free Apps</p><ul><li>One-Time Fee</li><li>Deploy licensed version forever</li></ul><a href="#" class="cta-button">Contact Sales</a></div><div class="price-card"><h4>Single / Unlimited Domain</h4><div class="price">Contact Us</div><p class="price-term">Perpetual - Paid & SaaS Apps</p><ul><li>One-Time Fee</li><li>Deploy licensed version forever</li></ul><a href="#" class="cta-button">Contact Sales</a></div></div></div></div>
+                    <div class="product-tabs" role="tablist" aria-label="ActiveReportsJS License Types">
+                        <button class="tab-btn is-active" data-tab="arjs-annual" role="tab" aria-selected="true" aria-controls="arjs-annual-pane">Annual License</button>
+                        <button class="tab-btn" data-tab="arjs-perp" role="tab" aria-selected="false" aria-controls="arjs-perp-pane">Perpetual</button>
                     </div>
-                </div>
+                    <div class="tab-content">
+                        <section class="tab-pane is-active" id="arjs-annual-pane" role="tabpanel">
+                            <h3>ActiveReportsJS Annual Subscription</h3>
+                            <div class="pricing-grid">
+                                <div class="price-card" aria-labelledby="arjs-single-deployment-title">
+                                    <h4 id="arjs-single-deployment-title">Single Deployment</h4>
+                                    <div class="price">€1,155</div><p class="price-term">Annual - Internal & Free Apps</p>
+                                    <ul>
+                                        <li>1 Production Key</li>
+                                        <li>2 Testing Keys</li>
+                                    </ul>
+                                    <button class="add-to-cart-btn" data-product-id="62780" data-product-name="ARJS Single Deployment" data-price="1155">Add to Cart</button>
+                                </div>
+                                <div class="price-card" aria-labelledby="arjs-single-domain-title">
+                                    <h4 id="arjs-single-domain-title">Single Domain License</h4>
+                                    <div class="price">€3,715</div><p class="price-term">Annual - Paid & SaaS Apps</p>
+                                    <ul><li>Unlimited hostnames on *.domain</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="62783" data-product-name="ARJS Single Domain" data-price="3715">Add to Cart</button>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="tab-pane" id="arjs-perp-pane" role="tabpanel" hidden>
+                            <h3>ActiveReportsJS Perpetual Deployment</h3>
+                            <div class="pricing-grid">
+                                <div class="price-card" aria-labelledby="arjs-single-perp-title">
+                                    <h4 id="arjs-single-perp-title">Single Deployment</h4>
+                                    <div class="price">Contact Us</div><p class="price-term">Perpetual - Internal & Free Apps</p>
+                                    <ul><li>One-Time Fee</li><li>Deploy licensed version forever</li></ul>
+                                    <a href="#contact-sales" class="cta-button">Contact Sales</a>
+                                </div>
+                                <div class="price-card" aria-labelledby="arjs-domain-perp-title">
+                                    <h4 id="arjs-domain-perp-title">Single / Unlimited Domain</h4>
+                                    <div class="price">Contact Us</div><p class="price-term">Perpetual - Paid & SaaS Apps</p>
+                                    <ul><li>One-Time Fee</li><li>Deploy licensed version forever</li></ul>
+                                    <a href="#contact-sales" class="cta-button">Contact Sales</a>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </article>
                 
-                <div class="product-pricing-section product-ar" data-platform="net">
+                <article class="product-pricing-section product-ar" data-platform="net">
                     <div class="product-header">
                         <h2>ActiveReports.NET</h2>
-                        <span class="product-info-trigger" 
+                        <span class="product-info-trigger" role="button" aria-label="More information about ActiveReports.NET"
                                 data-title="ActiveReports.NET"
                                 data-description="<strong>Add powerful, interactive reporting</strong> to your <strong>WinForms, WPF, and ASP.NET</strong> applications with ActiveReports.NET.<p>This complete .NET reporting toolkit <strong>seamlessly integrates with Visual Studio</strong>, allowing developers to create everything from simple to complex reports.</p><p>Key capabilities include:</p><ul><li>Embeddable end-user report designers.</li><li>Extensive data-binding to any .NET data source.</li><li>Support for multiple report types, including <strong>RDL and Page reports</strong>.</li><li>Rich data visualization and export to popular formats like <strong>PDF, Excel, and Word</strong>.</li></ul>"
                                 data-demolink="https://developer.mescius.com/activereportsnet/download"
@@ -576,32 +1073,57 @@
                                 i
                         </span>
                     </div>
-                    <div class="product-tabs"><button class="tab-btn is-active" data-tab="arnet-new">New Licenses</button><button class="tab-btn" data-tab="arnet-renew">Renewals</button></div>
+                    <div class="product-tabs" role="tablist" aria-label="ActiveReports.NET License Types">
+                        <button class="tab-btn is-active" data-tab="arnet-new" role="tab" aria-selected="true" aria-controls="arnet-new-pane">New Licenses</button>
+                        <button class="tab-btn" data-tab="arnet-renew" role="tab" aria-selected="false" aria-controls="arnet-renew-pane">Renewals</button>
+                    </div>
                     <div class="tab-content">
-                        <div class="tab-pane is-active" id="arnet-new"><h3>New License Pricing</h3><div class="pricing-grid"><div class="price-card"><h4>Standard</h4><div class="price">€785</div><p class="price-term">per Developer</p><ul><li>WYSIWYG reporting</li><li>VS integrated designer</li></ul><button class="add-to-cart-btn" data-product-id="62965" data-product-name="AR.NET Standard" data-price="785">Add to Cart</button></div><div class="price-card"><h4>Professional</h4><div class="price">€1,485</div><p class="price-term">per Developer</p><ul><li>All Standard features</li><li>End-user designers</li></ul><button class="add-to-cart-btn" data-product-id="62957" data-product-name="AR.NET Professional" data-price="1485">Add to Cart</button></div></div></div>
-                        <div class="tab-pane" id="arnet-renew">
-                            <h3>Request Renewal</h3>
+                        <section class="tab-pane is-active" id="arnet-new-pane" role="tabpanel">
+                            <h3>New License Pricing for ActiveReports.NET</h3>
+                            <div class="pricing-grid">
+                                <div class="price-card" aria-labelledby="arnet-standard-title">
+                                    <h4 id="arnet-standard-title">Standard</h4>
+                                    <div class="price">€785</div><p class="price-term">per Developer</p>
+                                    <ul>
+                                        <li>WYSIWYG reporting</li>
+                                        <li>VS integrated designer</li>
+                                    </ul>
+                                    <button class="add-to-cart-btn" data-product-id="62965" data-product-name="AR.NET Standard" data-price="785">Add to Cart</button>
+                                </div>
+                                <div class="price-card" data-badge="Popular" aria-labelledby="arnet-professional-title">
+                                    <h4 id="arnet-professional-title">Professional</h4>
+                                    <div class="price">€1,485</div><p class="price-term">per Developer</p>
+                                    <ul>
+                                        <li>All Standard features</li>
+                                        <li>End-user designers</li>
+                                    </ul>
+                                    <button class="add-to-cart-btn" data-product-id="62957" data-product-name="AR.NET Professional" data-price="1485">Add to Cart</button>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="tab-pane" id="arnet-renew-pane" role="tabpanel" hidden>
+                            <h3>Renew Your ActiveReports.NET License</h3>
                             <p>To receive a personalized renewal quote and purchase link, please enter your details and existing product key(s) below. Our team will verify your eligibility and send a private purchase link to your email.</p>
                             <form class="renewal-form" data-product-name="ActiveReports.NET">
                                 <div class="form-group">
                                     <label for="arnet-renewal-email">Your Email Address:</label>
-                                    <input type="email" id="arnet-renewal-email" class="renewal-email-input" required>
+                                    <input type="email" id="arnet-renewal-email" class="renewal-email-input" required aria-required="true" autocomplete="email">
                                 </div>
                                 <div class="form-group">
                                     <label for="arnet-renewal-keys">Your Existing Product Key(s):</label>
-                                    <textarea id="arnet-renewal-keys" class="renewal-keys-textarea" rows="4" placeholder="Enter each key on a new line" required></textarea>
+                                    <textarea id="arnet-renewal-keys" class="renewal-keys-textarea" rows="4" placeholder="Enter each key on a new line" required aria-required="true"></textarea>
                                 </div>
                                 <button type="submit" class="cta-button">Request Renewal Link</button>
-                                <div class="form-feedback"></div>
+                                <div class="form-feedback" aria-live="polite"></div>
                             </form>
-                        </div>
+                        </section>
                     </div>
-                </div>
+                </article>
 
-                <div class="product-pricing-section product-ds" data-platform="net" id="documents">
+                <article class="product-pricing-section product-ds" data-platform="net" id="documents">
                     <div class="product-header">
                         <h2>Document Solutions</h2>
-                        <span class="product-info-trigger" 
+                        <span class="product-info-trigger" role="button" aria-label="More information about Document Solutions"
                                 data-title="Document Solutions"
                                 data-description="<strong>Supercharge your document processing</strong> with Document Solutions, a suite of <strong>high-speed, dependency-free APIs</strong> for .NET and Java.<p>Key features allow you to:</p><ul><li>Programmatically create, load, manipulate, and save <strong>Excel, PDF, & Word</strong> documents.</li><li>Deploy on any server (<strong>Windows, Linux, & macOS</strong>) with zero server-side dependencies on MS Office or Acrobat.</li><li>Automate common tasks like <strong>generating invoices, creating reports from templates,</strong> and managing documents in your enterprise applications.</li></ul>"
                                 data-demolink="https://developer.mescius.com/document-solutions/download-product"
@@ -609,21 +1131,161 @@
                                 i
                         </span>
                     </div>
-                    <div class="product-tabs"><button class="tab-btn is-active" data-tab="ds-bundle">.NET Bundle</button><button class="tab-btn" data-tab="ds-excel">.NET Excel</button><button class="tab-btn" data-tab="ds-pdf">.NET PDF</button><button class="tab-btn" data-tab="ds-word">.NET Word</button><button class="tab-btn" data-tab="ds-img">.NET Imaging</button><button class="tab-btn" data-tab="ds-java">Java</button><button class="tab-btn" data-tab="ds-renew">Renewals</button></div>
+                    <div class="product-tabs" role="tablist" aria-label="Document Solutions License Types">
+                        <button class="tab-btn is-active" data-tab="ds-bundle" role="tab" aria-selected="true" aria-controls="ds-bundle-pane">.NET Bundle</button>
+                        <button class="tab-btn" data-tab="ds-excel" role="tab" aria-selected="false" aria-controls="ds-excel-pane">.NET Excel</button>
+                        <button class="tab-btn" data-tab="ds-pdf" role="tab" aria-selected="false" aria-controls="ds-pdf-pane">.NET PDF</button>
+                        <button class="tab-btn" data-tab="ds-word" role="tab" aria-selected="false" aria-controls="ds-word-pane">.NET Word</button>
+                        <button class="tab-btn" data-tab="ds-img" role="tab" aria-selected="false" aria-controls="ds-img-pane">.NET Imaging</button>
+                        <button class="tab-btn" data-tab="ds-java" role="tab" aria-selected="false" aria-controls="ds-java-pane">Java</button>
+                        <button class="tab-btn" data-tab="ds-renew" role="tab" aria-selected="false" aria-controls="ds-renew-pane">Renewals</button>
+                    </div>
                     <div class="tab-content">
-                        <div class="tab-pane is-active" id="ds-bundle"><h3>Documents for .NET Bundle</h3><div class="pricing-grid"><div class="price-card"><h4>Developer Bundle</h4><div class="price">€1,665</div><p class="price-term">1 Dev, 1 Location</p><ul><li>Excel, PDF, Word, Imaging</li></ul><button class="add-to-cart-btn" data-product-id="62879" data-product-name="DS .NET Bundle" data-price="1665">Add to Cart</button></div><div class="price-card"><h4>Unlimited Bundle</h4><div class="price">€4,595</div><p class="price-term">1 Dev, Unlimited Locations</p><ul><li>Unlimited Cloud (Azure, AWS)</li></ul><button class="add-to-cart-btn" data-product-id="62881" data-product-name="DS .NET Unlimited Bundle" data-price="4595">Add to Cart</button></div><div class="price-card"><h4>Team Unlimited Bundle</h4><div class="price">€9,605</div><p class="price-term">5 Devs, Unlimited Locations</p><ul><li>For teams of 5</li></ul><button class="add-to-cart-btn" data-product-id="62884" data-product-name="DS .NET Team Bundle" data-price="9605">Add to Cart</button></div></div></div>
-                        <div class="tab-pane" id="ds-excel"><h3>Documents for Excel, .NET</h3><div class="pricing-grid"><div class="price-card"><h4>Developer License</h4><div class="price">€925</div><p class="price-term">1 Dev, 1 Location</p><ul><li>High-speed spreadsheet API</li></ul><button class="add-to-cart-btn" data-product-id="62845" data-product-name="DS for Excel .NET" data-price="925">Add to Cart</button></div><div class="price-card"><h4>Unlimited License</h4><div class="price">€2,595</div><p class="price-term">1 Dev, Unlimited Locations</p><ul><li>Deploy to unlimited sites</li></ul><button class="add-to-cart-btn" data-product-id="62848" data-product-name="DS Excel .NET Unlimited" data-price="2595">Add to Cart</button></div><div class="price-card"><h4>Team Unlimited</h4><div class="price">€5,385</div><p class="price-term">5 Devs, Unlimited Locations</p><ul><li>For teams of 5</li></ul><button class="add-to-cart-btn" data-product-id="62850" data-product-name="DS Excel .NET Team" data-price="5385">Add to Cart</button></div></div></div>
-                        <div class="tab-pane" id="ds-pdf"><h3>Documents for PDF, .NET</h3><div class="pricing-grid"><div class="price-card"><h4>Developer License</h4><div class="price">€925</div><p class="price-term">1 Dev, 1 Location</p><ul><li>Generate, load, and save PDFs</li></ul><button class="add-to-cart-btn" data-product-id="62859" data-product-name="DS for PDF .NET" data-price="925">Add to Cart</button></div><div class="price-card"><h4>Unlimited License</h4><div class="price">€2,595</div><p class="price-term">1 Dev, Unlimited Locations</p><ul><li>Deploy to unlimited sites</li></ul><button class="add-to-cart-btn" data-product-id="62863" data-product-name="DS PDF .NET Unlimited" data-price="2595">Add to Cart</button></div><div class="price-card"><h4>Team Unlimited</h4><div class="price">€5,385</div><p class="price-term">5 Devs, Unlimited Locations</p><ul><li>For teams of 5</li></ul><button class="add-to-cart-btn" data-product-id="62865" data-product-name="DS PDF .NET Team" data-price="5385">Add to Cart</button></div></div></div>
-                        <div class="tab-pane" id="ds-word"><h3>Documents for Word, .NET</h3><div class="pricing-grid"><div class="price-card"><h4>Developer License</h4><div class="price">€925</div><p class="price-term">1 Dev, 1 Location</p><ul><li>High-performance Word API</li></ul><button class="add-to-cart-btn" data-product-id="62886" data-product-name="DS for Word .NET" data-price="925">Add to Cart</button></div><div class="price-card"><h4>Unlimited License</h4><div class="price">€2,595</div><p class="price-term">1 Dev, Unlimited Locations</p><ul><li>Deploy to unlimited sites</li></ul><button class="add-to-cart-btn" data-product-id="62888" data-product-name="DS Word .NET Unlimited" data-price="2595">Add to Cart</button></div><div class="price-card"><h4>Team Unlimited</h4><div class="price">€5,385</div><p class="price-term">5 Devs, Unlimited Locations</p><ul><li>For teams of 5</li></ul><button class="add-to-cart-btn" data-product-id="62890" data-product-name="DS Word .NET Team" data-price="5385">Add to Cart</button></div></div></div>
-                        <div class="tab-pane" id="ds-img"><h3>Documents for Imaging, .NET</h3><div class="pricing-grid"><div class="price-card"><h4>Developer License</h4><div class="price">€925</div><p class="price-term">1 Dev, 1 Location</p><ul><li>Create, load, modify images</li></ul><button class="add-to-cart-btn" data-product-id="62893" data-product-name="DS for Imaging .NET" data-price="925">Add to Cart</button></div><div class="price-card"><h4>Unlimited License</h4><div class="price">€2,595</div><p class="price-term">1 Dev, Unlimited Locations</p><ul><li>Deploy to unlimited sites</li></ul><button class="add-to-cart-btn" data-product-id="62895" data-product-name="DS Imaging .NET Unlimited" data-price="2595">Add to Cart</button></div><div class="price-card"><h4>Team Unlimited</h4><div class="price">€5,385</div><p class="price-term">5 Devs, Unlimited Locations</p><ul><li>For teams of 5</li></ul><button class="add-to-cart-btn" data-product-id="62897" data-product-name="DS Imaging .NET Team" data-price="5385">Add to Cart</button></div></div></div>
-                        <div class="tab-pane" id="ds-java"><h3>Document Solutions for Java</h3><div class="pricing-grid"><div class="price-card"><h4>Excel, Java Edition</h4><div class="price">€925</div><p class="price-term">1 Dev, 1 Location</p><ul><li>For Java 8.0+</li></ul><button class="add-to-cart-btn" data-product-id="62873" data-product-name="DS for Excel, Java" data-price="925">Add to Cart</button></div><div class="price-card"><h4>Excel, Java Unlimited</h4><div class="price">€2,595</div><p class="price-term">1 Dev, Unlimited Locations</p><ul><li>Unlimited Distributions</li></ul><button class="add-to-cart-btn" data-product-id="62875" data-product-name="DS Excel, Java Unlimited" data-price="2595">Add to Cart</button></div><div class="price-card"><h4>Team Unlimited Java</h4><div class="price">€5,385</div><p class="price-term">5 Devs, Unlimited Locations</p><ul><li>For teams of 5</li></ul><button class="add-to-cart-btn" data-product-id="62877" data-product-name="DS Excel, Java Team" data-price="5385">Add to Cart</button></div></div></div>
-                        <div class="tab-pane" id="ds-renew">
+                        <section class="tab-pane is-active" id="ds-bundle-pane" role="tabpanel">
+                            <h3>Documents for .NET Bundle</h3>
+                            <div class="pricing-grid">
+                                <div class="price-card" data-badge="Best Value" aria-labelledby="ds-dev-bundle-title">
+                                    <h4 id="ds-dev-bundle-title">Developer Bundle</h4>
+                                    <div class="price">€1,665</div><p class="price-term">1 Dev, 1 Location</p>
+                                    <ul><li>Excel, PDF, Word, Imaging</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="62879" data-product-name="DS .NET Bundle" data-price="1665">Add to Cart</button>
+                                </div>
+                                <div class="price-card" aria-labelledby="ds-unlimited-bundle-title">
+                                    <h4 id="ds-unlimited-bundle-title">Unlimited Bundle</h4>
+                                    <div class="price">€4,595</div><p class="price-term">1 Dev, Unlimited Locations</p>
+                                    <ul><li>Unlimited Cloud (Azure, AWS)</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="62881" data-product-name="DS .NET Unlimited Bundle" data-price="4595">Add to Cart</button>
+                                </div>
+                                <div class="price-card" aria-labelledby="ds-team-unlimited-title">
+                                    <h4 id="ds-team-unlimited-title">Team Unlimited Bundle</h4>
+                                    <div class="price">€9,605</div><p class="price-term">5 Devs, Unlimited Locations</p>
+                                    <ul><li>For teams of 5</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="62884" data-product-name="DS .NET Team Bundle" data-price="9605">Add to Cart</button>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="tab-pane" id="ds-excel-pane" role="tabpanel" hidden>
+                            <h3>Documents for Excel, .NET</h3>
+                            <div class="pricing-grid">
+                                <div class="price-card" aria-labelledby="ds-excel-dev-title">
+                                    <h4 id="ds-excel-dev-title">Developer License</h4>
+                                    <div class="price">€925</div><p class="price-term">1 Dev, 1 Location</p>
+                                    <ul><li>High-speed spreadsheet API</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="62845" data-product-name="DS for Excel .NET" data-price="925">Add to Cart</button>
+                                </div>
+                                <div class="price-card" aria-labelledby="ds-excel-unlimited-title">
+                                    <h4 id="ds-excel-unlimited-title">Unlimited License</h4>
+                                    <div class="price">€2,595</div><p class="price-term">1 Dev, Unlimited Locations</p>
+                                    <ul><li>Deploy to unlimited sites</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="62848" data-product-name="DS Excel .NET Unlimited" data-price="2595">Add to Cart</button>
+                                </div>
+                                <div class="price-card" aria-labelledby="ds-excel-team-title">
+                                    <h4 id="ds-excel-team-title">Team Unlimited</h4>
+                                    <div class="price">€5,385</div><p class="price-term">5 Devs, Unlimited Locations</p>
+                                    <ul><li>For teams of 5</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="62850" data-product-name="DS Excel .NET Team" data-price="5385">Add to Cart</button>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="tab-pane" id="ds-pdf-pane" role="tabpanel" hidden>
+                            <h3>Documents for PDF, .NET</h3>
+                            <div class="pricing-grid">
+                                <div class="price-card" aria-labelledby="ds-pdf-dev-title">
+                                    <h4 id="ds-pdf-dev-title">Developer License</h4>
+                                    <div class="price">€925</div><p class="price-term">1 Dev, 1 Location</p>
+                                    <ul><li>Generate, load, and save PDFs</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="62859" data-product-name="DS for PDF .NET" data-price="925">Add to Cart</button>
+                                </div>
+                                <div class="price-card" aria-labelledby="ds-pdf-unlimited-title">
+                                    <h4 id="ds-pdf-unlimited-title">Unlimited License</h4>
+                                    <div class="price">€2,595</div><p class="price-term">1 Dev, Unlimited Locations</p>
+                                    <ul><li>Deploy to unlimited sites</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="62863" data-product-name="DS PDF .NET Unlimited" data-price="2595">Add to Cart</button>
+                                </div>
+                                <div class="price-card" aria-labelledby="ds-pdf-team-title">
+                                    <h4 id="ds-pdf-team-title">Team Unlimited</h4>
+                                    <div class="price">€5,385</div><p class="price-term">5 Devs, Unlimited Locations</p>
+                                    <ul><li>For teams of 5</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="62865" data-product-name="DS PDF .NET Team" data-price="5385">Add to Cart</button>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="tab-pane" id="ds-word-pane" role="tabpanel" hidden>
+                            <h3>Documents for Word, .NET</h3>
+                            <div class="pricing-grid">
+                                <div class="price-card" aria-labelledby="ds-word-dev-title">
+                                    <h4 id="ds-word-dev-title">Developer License</h4>
+                                    <div class="price">€925</div><p class="price-term">1 Dev, 1 Location</p>
+                                    <ul><li>High-performance Word API</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="62886" data-product-name="DS for Word .NET" data-price="925">Add to Cart</button>
+                                </div>
+                                <div class="price-card" aria-labelledby="ds-word-unlimited-title">
+                                    <h4 id="ds-word-unlimited-title">Unlimited License</h4>
+                                    <div class="price">€2,595</div><p class="price-term">1 Dev, Unlimited Locations</p>
+                                    <ul><li>Deploy to unlimited sites</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="62888" data-product-name="DS Word .NET Unlimited" data-price="2595">Add to Cart</button>
+                                </div>
+                                <div class="price-card" aria-labelledby="ds-word-team-title">
+                                    <h4 id="ds-word-team-title">Team Unlimited</h4>
+                                    <div class="price">€5,385</div><p class="price-term">5 Devs, Unlimited Locations</p>
+                                    <ul><li>For teams of 5</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="62890" data-product-name="DS Word .NET Team" data-price="5385">Add to Cart</button>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="tab-pane" id="ds-img-pane" role="tabpanel" hidden>
+                            <h3>Documents for Imaging, .NET</h3>
+                            <div class="pricing-grid">
+                                <div class="price-card" aria-labelledby="ds-img-dev-title">
+                                    <h4 id="ds-img-dev-title">Developer License</h4>
+                                    <div class="price">€925</div><p class="price-term">1 Dev, 1 Location</p>
+                                    <ul><li>Create, load, modify images</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="62893" data-product-name="DS for Imaging .NET" data-price="925">Add to Cart</button>
+                                </div>
+                                <div class="price-card" aria-labelledby="ds-img-unlimited-title">
+                                    <h4 id="ds-img-unlimited-title">Unlimited License</h4>
+                                    <div class="price">€2,595</div><p class="price-term">1 Dev, Unlimited Locations</p>
+                                    <ul><li>Deploy to unlimited sites</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="62895" data-product-name="DS Imaging .NET Unlimited" data-price="2595">Add to Cart</button>
+                                </div>
+                                <div class="price-card" aria-labelledby="ds-img-team-title">
+                                    <h4 id="ds-img-team-title">Team Unlimited</h4>
+                                    <div class="price">€5,385</div><p class="price-term">5 Devs, Unlimited Locations</p>
+                                    <ul><li>For teams of 5</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="62897" data-product-name="DS Imaging .NET Team" data-price="5385">Add to Cart</button>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="tab-pane" id="ds-java-pane" role="tabpanel" hidden>
+                            <h3>Document Solutions for Java</h3>
+                            <div class="pricing-grid">
+                                <div class="price-card" aria-labelledby="ds-java-excel-title">
+                                    <h4 id="ds-java-excel-title">Excel, Java Edition</h4>
+                                    <div class="price">€925</div><p class="price-term">1 Dev, 1 Location</p>
+                                    <ul><li>For Java 8.0+</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="62873" data-product-name="DS for Excel, Java" data-price="925">Add to Cart</button>
+                                </div>
+                                <div class="price-card" aria-labelledby="ds-java-excel-unlimited-title">
+                                    <h4 id="ds-java-excel-unlimited-title">Excel, Java Unlimited</h4>
+                                    <div class="price">€2,595</div><p class="price-term">1 Dev, Unlimited Locations</p>
+                                    <ul><li>Unlimited Distributions</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="62875" data-product-name="DS Excel, Java Unlimited" data-price="2595">Add to Cart</button>
+                                </div>
+                                <div class="price-card" aria-labelledby="ds-java-team-title">
+                                    <h4 id="ds-java-team-title">Team Unlimited Java</h4>
+                                    <div class="price">€5,385</div><p class="price-term">5 Devs, Unlimited Locations</p>
+                                    <ul><li>For teams of 5</li></ul>
+                                    <button class="add-to-cart-btn" data-product-id="62877" data-product-name="DS Excel, Java Team" data-price="5385">Add to Cart</button>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="tab-pane" id="ds-renew-pane" role="tabpanel" hidden>
                             <h3>Request Document Solutions Renewal</h3>
                             <p>To receive a personalized renewal quote, please select your renewal type and enter the details for your existing license below.</p>
                             <form class="renewal-form" data-product-name="Document Solutions">
                                 <div class="form-group">
                                     <label>Renewal Type:</label>
-                                    <div class="renewal-type-options">
+                                    <div class="renewal-type-options" role="radiogroup" aria-labelledby="renewal-type-label">
                                         <div>
                                             <input type="radio" id="ds-renew-individual" name="ds-renewal-type" value="Individual Product Renewal" checked>
                                             <label for="ds-renew-individual">Individual Product</label>
@@ -636,54 +1298,50 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="ds-renewal-email">Your Email Address:</label>
-                                    <input type="email" id="ds-renewal-email" class="renewal-email-input" required>
+                                    <input type="email" id="ds-renewal-email" class="renewal-email-input" required aria-required="true" autocomplete="email">
                                 </div>
                                 <div class="form-group">
                                     <label for="ds-renewal-keys">Your Existing Product Key(s):</label>
-                                    <textarea id="ds-renewal-keys" class="renewal-keys-textarea" rows="4" placeholder="Enter each key on a new line" required></textarea>
+                                    <textarea id="ds-renewal-keys" class="renewal-keys-textarea" rows="4" placeholder="Enter each key on a new line" required aria-required="true"></textarea>
                                 </div>
                                 <button type="submit" class="cta-button">Request Renewal Link</button>
-                                <div class="form-feedback"></div>
+                                <div class="form-feedback" aria-live="polite"></div>
                             </form>
-                        </div>
+                        </section>
                     </div>
-                </div>
+                </article>
             </div>
         </div>
     </main>
 
-    <div id="product-info-modal" class="modal-overlay">
+    <div id="product-info-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
         <div class="modal-container">
-            <button id="modal-close" class="modal-close-btn">&times;</button>
+            <button id="modal-close" class="modal-close-btn" aria-label="Close product information modal">×</button>
             <div id="modal-body-content" class="modal-body">
-                </div>
+            </div>
         </div>
     </div>
 
-
     <footer class="footer">
         <div class="container footer-content">
-            <!-- First Column: Logo, Copyright, Phone, Trademarks -->
             <div class="footer-col footer-col-left">
                 <img src="https://cdn.mescius.io/umb/media/pujnxfci/mescuis-logo-horiz.svg" alt="Mescius Europe Logo" class="footer-logo">
-                <p class="footer-text">&copy; 2025 Mescius Europe GmbH | All Rights Reserved</p>
+                <p class="footer-text">© 2025 Mescius Europe GmbH | All Rights Reserved</p>
                 <p class="footer-text">1.800.858.2739</p>
                 <p class="footer-text">All product and company names herein may be trademarks of their respective owners.</p>
             </div>
 
-            <!-- Second Column: Company Links -->
             <div class="footer-col">
                 <h4 class="footer-heading">COMPANY</h4>
                 <ul class="footer-links">
-                    <li><a href="https://www.mescius.eu/en/about" target="_blank">About</a></li>
-                    <li><a href="https://www.mescius.eu/en/contact" target="_blank">Contact</a></li>
+                    <li><a href="https://www.mescius.eu/en/about" target="_blank">About Us</a></li>
+                    <li><a href="https://www.mescius.eu/en/contact" target="_blank">Contact Us</a></li>
                     <li><a href="https://developer.mescius.com/about/media-center" target="_blank">Media Center</a></li>
                     <li><a href="https://www.mescius.eu/en/legal.html" target="_blank">Legal Page</a></li>
                     <li><a href="https://www.mescius.eu/en/legal/eula" target="_blank">EULA</a></li>
                 </ul>
             </div>
 
-            <!-- Third Column: Follow Us -->
             <div class="footer-col">
                 <h4 class="footer-heading">FOLLOW US</h4>
                 <div class="social-icons">
@@ -695,7 +1353,6 @@
                 </div>
             </div>
 
-            <!-- Fourth Column: Get the Latest News -->
             <div class="footer-col">
                 <h4 class="footer-heading">GET THE LATEST NEWS</h4>
                 <p class="news-signup-text">Stay up to date with blogs, eBooks, events, and whitepapers.</p>
@@ -703,256 +1360,479 @@
             </div>
         </div>
     </footer>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Mescius Developer License Pricing | .NET & JavaScript Components",
+      "description": "Explore comprehensive developer license pricing for Mescius .NET and JavaScript components and bundles. Find the perfect plan for Paid & SaaS Apps, Internal & Free Apps, and easily renew your licenses.",
+      "url": "https://www.mescius.eu/en/pricing",
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "EUR",
+        "offerCount": "10+"
+      },
+      "mainEntity": [
+        {
+          "@type": "Product",
+          "name": "ComponentOne Studio Enterprise",
+          "description": "The complete UI toolkit for .NET developers including hundreds of controls for WinForms, WPF, Blazor, and MAUI.",
+          "sku": "54087",
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "EUR",
+            "price": "1385",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "url": "https://checkout.mescius.eu/1878/purl-shop?cart=i54087"
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "SpreadJS Hostname License Pack",
+          "description": "Empower your web applications with the industry-leading JavaScript spreadsheet solution for internal & free apps.",
+          "sku": "60976",
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "EUR",
+            "price": "1855",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "url": "https://checkout.mescius.eu/1878/purl-shop?cart=i60976",
+            "hasMeasurement": {
+                "@type": "QuantitativeValue",
+                "unitText": "Hostnames",
+                "value": "3-5"
+            }
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "Spread.NET License",
+          "description": "Deliver the ultimate spreadsheet experience in your .NET desktop and web applications with high-performance data grids and designers.",
+          "sku": "62799",
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "EUR",
+            "price": "1395",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "url": "https://checkout.mescius.eu/1878/purl-shop?cart=i62799"
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "Wijmo Enterprise",
+          "description": "Build high-performance, enterprise-level web applications with Wijmo's comprehensive library of JavaScript/TypeScript UI components.",
+          "sku": "59102",
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "EUR",
+            "price": "645",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "url": "https://checkout.mescius.eu/1878/purl-shop?cart=i59102"
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "ActiveReports.NET Professional",
+          "description": "Add powerful, interactive reporting to your WinForms, WPF, and ASP.NET applications with this complete .NET reporting toolkit.",
+          "sku": "62957",
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "EUR",
+            "price": "1485",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "url": "https://checkout.mescius.eu/1878/purl-shop?cart=i62957"
+          }
+        },
+        {
+          "@type": "Product",
+          "name": "Document Solutions .NET Developer Bundle",
+          "description": "Supercharge your document processing with a suite of high-speed, dependency-free APIs for .NET to create, load, manipulate, and save Excel, PDF, & Word documents.",
+          "sku": "62879",
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "EUR",
+            "price": "1665",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "url": "https://checkout.mescius.eu/1878/purl-shop?cart=i62879"
+          }
+        }
+      ]
+    }
+    </script>
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // --- SVG ICONS ---
-        const iconMinus = '<svg viewBox="0 0 24 24"><line x1="6" y1="12" x2="18" y2="12"></line></svg>';
-        const iconPlus = '<svg viewBox="0 0 24 24"><line x1="12" y1="6" x2="12" y2="18"></line><line x1="6" y1="12" x2="18" y2="12"></line></svg>';
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- SVG ICONS ---
+            const iconMinus = '<svg viewBox="0 0 24 24"><line x1="6" y1="12" x2="18" y2="12"></line></svg>';
+            const iconPlus = '<svg viewBox="0 0 24 24"><line x1="12" y1="6" x2="12" y2="18"></line><line x1="6" y1="12" x2="18" y2="12"></line></svg>';
 
-        // --- ELEMENT REFERENCES ---
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const productSections = document.querySelectorAll('.product-pricing-section');
-        const allTabsContainers = document.querySelectorAll('.product-pricing-section');
-        const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
-        
-        const cartUI = document.getElementById('floating-cart');
-        const cartItemsContainer = document.getElementById('cart-items');
-        const cartTotalPriceEl = document.getElementById('cart-total-price');
-        const checkoutLink = document.getElementById('checkout-link');
-        const cartToggleBtn = document.getElementById('cart-toggle-btn');
-        const cartHeader = cartUI.querySelector('.cart-header');
+            // --- ELEMENT REFERENCES ---
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const productSections = document.querySelectorAll('.product-pricing-section');
+            const allTabsContainers = document.querySelectorAll('.product-pricing-section');
+            const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+            
+            const cartUI = document.getElementById('floating-cart');
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotalPriceEl = document.getElementById('cart-total-price');
+            const checkoutLink = document.getElementById('checkout-link');
+            const cartToggleBtn = document.getElementById('cart-toggle-btn');
+            const cartHeader = cartUI.querySelector('.cart-header');
 
-        const modalOverlay = document.getElementById('product-info-modal');
-        const modalContainer = document.querySelector('.modal-container');
-        const modalBody = document.getElementById('modal-body-content');
-        const modalCloseBtn = document.getElementById('modal-close');
-        const infoTriggers = document.querySelectorAll('.product-info-trigger');
+            const modalOverlay = document.getElementById('product-info-modal');
+            const modalContainer = document.querySelector('.modal-container');
+            const modalBody = document.getElementById('modal-body-content');
+            const modalCloseBtn = document.getElementById('modal-close');
+            const infoTriggers = document.querySelectorAll('.product-info-trigger');
 
-        // --- STATE ---
-        let cart = [];
+            const menuToggle = document.getElementById('menu-toggle');
+            const mainNav = document.getElementById('main-nav');
 
-        // --- CART LOGIC FUNCTIONS ---
-        const addItemToCart = (productId, productName, price) => {
-            const existingItem = cart.find(item => item.id === productId);
-            if (existingItem) {
-                existingItem.quantity++;
-            } else {
-                cart.push({ id: productId, name: productName, price: parseFloat(price), quantity: 1 });
-            }
-            updateCart();
-        };
+            // --- STATE ---
+            let cart = JSON.parse(localStorage.getItem('mesciusCart')) || [];
 
-        const decreaseItemQuantity = (productId) => {
-            const itemIndex = cart.findIndex(item => item.id === productId);
-            if (itemIndex > -1) {
-                if (cart[itemIndex].quantity > 1) {
-                    cart[itemIndex].quantity--;
+            // --- CART LOGIC FUNCTIONS ---
+            const saveCart = () => {
+                localStorage.setItem('mesciusCart', JSON.stringify(cart));
+            };
+
+            const addItemToCart = (productId, productName, price) => {
+                const existingItem = cart.find(item => item.id === productId);
+                if (existingItem) {
+                    existingItem.quantity++;
                 } else {
-                    cart.splice(itemIndex, 1);
+                    cart.push({ id: productId, name: productName, price: parseFloat(price), quantity: 1 });
                 }
-            }
-            updateCart();
-        };
-        
-        const increaseItemQuantity = (productId) => {
-            const existingItem = cart.find(item => item.id === productId);
-            if (existingItem) {
-                existingItem.quantity++;
-            }
-            updateCart();
-        };
+                updateCart();
+                saveCart();
+            };
 
-        const removeItemFromCart = (productId) => {
-            cart = cart.filter(item => item.id !== productId);
-            updateCart();
-        };
-
-        // --- RENDER/UPDATE FUNCTIONS ---
-        const updateCart = () => {
-            if (cart.length === 0) {
-                cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
-                cartUI.classList.remove('is-visible');
-                checkoutLink.classList.add('is-disabled');
-                return;
-            }
-
-            cartItemsContainer.innerHTML = '';
-            let totalPrice = 0;
-
-            cart.forEach(item => {
-                totalPrice += item.price * item.quantity;
-                const itemEl = document.createElement('div');
-                itemEl.className = 'cart-item';
-                itemEl.innerHTML = `
-                    <div class="item-info">
-                        <button class="remove-item-btn" data-product-id="${item.id}" title="Remove item">&times;</button>
-                        <span class="item-name">${item.name}</span>
-                    </div>
-                    <div class="item-details">
-                            <div class="quantity-controls">
-                                <button class="quantity-btn decrease-btn" data-product-id="${item.id}" title="Decrease quantity">-</button>
-                                <span class="item-quantity">${item.quantity}</span>
-                                <button class="quantity-btn increase-btn" data-product-id="${item.id}" title="Increase quantity">+</button>
-                            </div>
-                            <span class="item-price">€${(item.price * item.quantity).toFixed(2)}</span>
-                    </div>
-                `;
-                cartItemsContainer.appendChild(itemEl);
-            });
-
-            cartTotalPriceEl.textContent = `€${totalPrice.toFixed(2)}`;
-            checkoutLink.href = generateCleverbridgeLink();
-            checkoutLink.classList.remove('is-disabled');
-            cartUI.classList.add('is-visible');
-        };
-
-        const generateCleverbridgeLink = () => {
-            const baseURL = 'https://checkout.mescius.eu/1878/purl-shop';
-            const uniqueProductIds = cart.map(item => `i${item.id}`);
-            const quantityParams = cart.map(item => `quantity_i${item.id}=${item.quantity}`);
-            const cartString = `cart=${uniqueProductIds.join(',')}`;
-            const quantityString = quantityParams.join('&');
-            return `${baseURL}?${cartString}&${quantityString}`;
-        };
-        
-        const openModal = (trigger) => {
-            const productSection = trigger.closest('.product-pricing-section');
-            const accentColor = window.getComputedStyle(productSection).getPropertyValue('--accent-color');
-            modalContainer.style.setProperty('--accent-color', accentColor.trim());
-
-            const title = trigger.dataset.title || 'Product Details';
-            const description = trigger.dataset.description || 'No description available.';
-            const demoLink = trigger.dataset.demolink;
-            const productLink = trigger.dataset.productlink;
-
-            let modalHTML = `<h2 class="modal-title">${title}</h2>`;
-            modalHTML += description; 
-
-            if (demoLink && demoLink !== '#') {
-                modalHTML += `<a href="${demoLink}" target="_blank" class="cta-button cta-primary">Download Trial</a>`;
-            }
-            if (productLink && productLink !== '#') {
-                modalHTML += `<a href="${productLink}" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>`;
-            }
-
-            modalBody.innerHTML = modalHTML;
-            modalOverlay.style.display = 'flex';
-        };
-        
-        const closeModal = () => {
-            modalOverlay.style.display = 'none';
-            modalBody.innerHTML = '';
-        };
-        
-        // --- EVENT LISTENERS ---
-        addToCartButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.stopPropagation();
-                addItemToCart(button.dataset.productId, button.dataset.productName, button.dataset.price);
-            });
-        });
-
-        cartItemsContainer.addEventListener('click', (e) => {
-            const target = e.target;
-            const productId = target.closest('.quantity-btn, .remove-item-btn')?.dataset.productId;
-            if (!productId) return;
-
-            if (target.matches('.increase-btn')) increaseItemQuantity(productId);
-            else if (target.matches('.decrease-btn')) decreaseItemQuantity(productId);
-            else if (target.matches('.remove-item-btn')) removeItemFromCart(productId);
-        });
-
-        const toggleCart = () => {
-            const isMinimized = cartUI.classList.toggle('is-minimized');
-            cartToggleBtn.innerHTML = isMinimized ? iconPlus : iconMinus;
-        };
-        cartToggleBtn.addEventListener('click', (e) => { e.stopPropagation(); toggleCart(); });
-        cartHeader.addEventListener('click', toggleCart);
-        cartToggleBtn.innerHTML = iconMinus; // Set initial icon state
-
-        infoTriggers.forEach(trigger => trigger.addEventListener('click', () => openModal(trigger)));
-        modalCloseBtn.addEventListener('click', closeModal);
-        modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) closeModal(); });
-        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modalOverlay.style.display === 'flex') closeModal(); });
-
-        // --- FILTER/TAB LOGIC ---
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('is-active'));
-                btn.classList.add('is-active');
-                const filter = btn.dataset.filter;
-                productSections.forEach(card => {
-                    const platform = card.dataset.platform;
-                    if (filter === 'all' || card.dataset.platform === filter) {
-                        card.style.display = '';
+            const decreaseItemQuantity = (productId) => {
+                const itemIndex = cart.findIndex(item => item.id === productId);
+                if (itemIndex > -1) {
+                    if (cart[itemIndex].quantity > 1) {
+                        cart[itemIndex].quantity--;
                     } else {
-                        card.style.display = 'none';
+                        cart.splice(itemIndex, 1);
                     }
-                });
-            });
-        });
-        allTabsContainers.forEach(container => {
-            const tabs = container.querySelectorAll('.tab-btn');
-            const panes = container.querySelectorAll('.tab-pane');
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    tabs.forEach(t => t.classList.remove('is-active'));
-                    tab.classList.add('is-active');
-                    const targetPaneId = tab.dataset.tab;
-                    panes.forEach(pane => pane.classList.toggle('is-active', pane.id === targetPaneId));
-                });
-            });
-        });
+                }
+                updateCart();
+                saveCart();
+            };
+            
+            const increaseItemQuantity = (productId) => {
+                const existingItem = cart.find(item => item.id === productId);
+                if (existingItem) {
+                    existingItem.quantity++;
+                }
+                updateCart();
+                saveCart();
+            };
 
-        // --- NEW RENEWAL FORM LOGIC ---
-        const renewalForms = document.querySelectorAll('.renewal-form');
-        
-        renewalForms.forEach(form => {
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                
-                const productName = form.dataset.productName;
-                const emailInput = form.querySelector('.renewal-email-input');
-                const keysTextarea = form.querySelector('.renewal-keys-textarea');
-                const feedbackDiv = form.querySelector('.form-feedback');
-                
-                const email = emailInput.value.trim();
-                const keys = keysTextarea.value.trim();
-                
-                if (!email || !keys) {
-                    feedbackDiv.textContent = 'Please fill out both the email and product key fields.';
-                    feedbackDiv.style.color = 'var(--brand-c1)'; // Use a brand red for errors
+            const removeItemFromCart = (productId) => {
+                cart = cart.filter(item => item.id !== productId);
+                updateCart();
+                saveCart();
+            };
+
+            // --- RENDER/UPDATE FUNCTIONS ---
+            const updateCart = () => {
+                if (cart.length === 0) {
+                    cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+                    cartUI.classList.remove('is-visible');
+                    checkoutLink.classList.add('is-disabled');
+                    cartUI.classList.remove('is-minimized'); // Ensure it's not minimized when empty
+                    cartToggleBtn.innerHTML = iconMinus;
                     return;
                 }
-                
-                feedbackDiv.textContent = ''; // Clear previous feedback
 
-                // Check for Document Solutions specific radio buttons
-                const renewalTypeRadio = form.querySelector('input[name="ds-renewal-type"]:checked');
-                const renewalType = renewalTypeRadio ? renewalTypeRadio.value : '';
+                cartItemsContainer.innerHTML = '';
+                let totalPrice = 0;
 
-                // --- Construct mailto link (you can change the target email here) ---
-                const salesEmail = 'sales.in@mescius.com';
-                const subject = `Renewal Request for: ${productName}`;
-                let body = `Hello Sales Team,\n\nI would like to request a renewal for the following product:\nProduct: ${productName}\n`;
-                
-                if (renewalType) {
-                    body += `Renewal Type: ${renewalType}\n`;
+                cart.forEach(item => {
+                    totalPrice += item.price * item.quantity;
+                    const itemEl = document.createElement('div');
+                    itemEl.className = 'cart-item';
+                    itemEl.innerHTML = `
+                        <div class="item-info">
+                            <button class="remove-item-btn" data-product-id="${item.id}" title="Remove item">×</button>
+                            <span class="item-name">${item.name}</span>
+                        </div>
+                        <div class="item-details">
+                                <div class="quantity-controls">
+                                    <button class="quantity-btn decrease-btn" data-product-id="${item.id}" title="Decrease quantity">-</button>
+                                    <span class="item-quantity">${item.quantity}</span>
+                                    <button class="quantity-btn increase-btn" data-product-id="${item.id}" title="Increase quantity">+</button>
+                                </div>
+                                <span class="item-price">€${(item.price * item.quantity).toFixed(2)}</span>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(itemEl);
+                });
+
+                cartTotalPriceEl.textContent = `€${totalPrice.toFixed(2)}`;
+                checkoutLink.href = generateCleverbridgeLink();
+                checkoutLink.classList.remove('is-disabled');
+                cartUI.classList.add('is-visible');
+            };
+
+            const generateCleverbridgeLink = () => {
+                const baseURL = 'https://checkout.mescius.eu/1878/purl-shop';
+                const uniqueProductIds = cart.map(item => `i${item.id}`);
+                const quantityParams = cart.map(item => `quantity_i${item.id}=${item.quantity}`);
+                const cartString = `cart=${uniqueProductIds.join(',')}`;
+                const quantityString = quantityParams.join('&');
+                return `${baseURL}?${cartString}&${quantityString}`;
+            };
+            
+            const openModal = (trigger) => {
+                const productSection = trigger.closest('.product-pricing-section');
+                const accentColor = window.getComputedStyle(productSection).getPropertyValue('--accent-color');
+                modalContainer.style.setProperty('--accent-color', accentColor.trim());
+
+                const title = trigger.dataset.title || 'Product Details';
+                const description = trigger.dataset.description || 'No description available.';
+                const demoLink = trigger.dataset.demolink;
+                const productLink = trigger.dataset.productlink;
+
+                let modalHTML = `<h2 class="modal-title" id="modal-title">${title}</h2>`;
+                modalHTML += `<div class="modal-content-area">${description}</div>`; 
+
+                modalHTML += `<div class="modal-buttons">`;
+                if (demoLink && demoLink !== '#') {
+                    modalHTML += `<a href="${demoLink}" target="_blank" class="cta-button cta-primary" rel="noopener noreferrer">Download Trial</a>`;
                 }
+                if (productLink && productLink !== '#') {
+                    modalHTML += `<a href="${productLink}" target="_blank" class="cta-button cta-secondary" rel="noopener noreferrer">Visit Product Page</a>`;
+                }
+                modalHTML += `</div>`;
 
-                body += `\nMy contact email is: ${email}\n\nMy existing product key(s) are:\n${keys}\n\nPlease send the renewal purchase link to my email address.\n\nThank you,\n[Your Name]`;
-                
-                const mailtoLink = `mailto:${salesEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-                
-                // --- Trigger the email client ---
-                window.location.href = mailtoLink;
-
-                // --- Provide feedback to the user ---
-                feedbackDiv.textContent = 'Your email client should now open. Please send the pre-filled message to complete your request.';
-                feedbackDiv.style.color = 'var(--brand-spread)'; // Use a brand green for success
+                modalBody.innerHTML = modalHTML;
+                modalOverlay.style.display = 'flex';
+                modalOverlay.setAttribute('aria-hidden', 'false');
+                modalContainer.focus(); // Focus the modal for accessibility
+            };
+            
+            const closeModal = () => {
+                modalOverlay.style.display = 'none';
+                modalOverlay.setAttribute('aria-hidden', 'true');
+                modalBody.innerHTML = '';
+            };
+            
+            // --- EVENT LISTENERS ---
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    addItemToCart(button.dataset.productId, button.dataset.productName, button.dataset.price);
+                });
             });
+
+            cartItemsContainer.addEventListener('click', (e) => {
+                const target = e.target;
+                const productId = target.closest('.quantity-btn, .remove-item-btn')?.dataset.productId;
+                if (!productId) return;
+
+                if (target.matches('.increase-btn')) increaseItemQuantity(productId);
+                else if (target.matches('.decrease-btn')) decreaseItemQuantity(productId);
+                else if (target.matches('.remove-item-btn')) removeItemFromCart(productId);
+            });
+
+            const toggleCart = () => {
+                const isMinimized = cartUI.classList.toggle('is-minimized');
+                cartToggleBtn.innerHTML = isMinimized ? iconPlus : iconMinus;
+                cartToggleBtn.setAttribute('aria-expanded', !isMinimized);
+            };
+            cartToggleBtn.addEventListener('click', (e) => { e.stopPropagation(); toggleCart(); });
+            cartHeader.addEventListener('click', toggleCart);
+            
+            // Initialize cart toggle button icon based on state
+            if (cartUI.classList.contains('is-minimized')) {
+                cartToggleBtn.innerHTML = iconPlus;
+                cartToggleBtn.setAttribute('aria-expanded', 'false');
+            } else {
+                cartToggleBtn.innerHTML = iconMinus;
+                cartToggleBtn.setAttribute('aria-expanded', 'true');
+            }
+
+
+            infoTriggers.forEach(trigger => trigger.addEventListener('click', () => openModal(trigger)));
+            modalCloseBtn.addEventListener('click', closeModal);
+            modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) closeModal(); });
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modalOverlay.style.display === 'flex') closeModal(); });
+
+            // --- FILTER/TAB LOGIC ---
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => {
+                        b.classList.remove('is-active');
+                        b.setAttribute('aria-selected', 'false');
+                    });
+                    btn.classList.add('is-active');
+                    btn.setAttribute('aria-selected', 'true');
+                    const filter = btn.dataset.filter;
+                    productSections.forEach(card => {
+                        const platform = card.dataset.platform;
+                        if (filter === 'all' || card.dataset.platform === filter) {
+                            card.style.display = '';
+                            card.removeAttribute('aria-hidden');
+                        } else {
+                            card.style.display = 'none';
+                            card.setAttribute('aria-hidden', 'true');
+                        }
+                    });
+                });
+            });
+            allTabsContainers.forEach(container => {
+                const tabs = container.querySelectorAll('.tab-btn');
+                const panes = container.querySelectorAll('.tab-pane');
+                tabs.forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        tabs.forEach(t => {
+                            t.classList.remove('is-active');
+                            t.setAttribute('aria-selected', 'false');
+                        });
+                        tab.classList.add('is-active');
+                        tab.setAttribute('aria-selected', 'true');
+                        const targetPaneId = tab.dataset.tab + '-pane'; // Append '-pane' to match new IDs
+                        panes.forEach(pane => {
+                            pane.classList.toggle('is-active', pane.id === targetPaneId);
+                            if (pane.id === targetPaneId) {
+                                pane.removeAttribute('hidden');
+                                // Check if there's only one price-card in this tab-pane, and hide badges if so
+                                const priceCardsInPane = pane.querySelectorAll('.price-card');
+                                if (priceCardsInPane.length <= 1) {
+                                    priceCardsInPane.forEach(card => {
+                                        const badge = card.querySelector('.promo-badge');
+                                        if (badge) badge.style.display = 'none';
+                                        card.classList.remove('featured');
+                                    });
+                                } else {
+                                    // Re-show badges and 'featured' class if multiple cards
+                                    priceCardsInPane.forEach(card => {
+                                        const badge = card.querySelector('.promo-badge');
+                                        if (badge) {
+                                            badge.style.display = 'inline-block'; // Or whatever default display is
+                                            if (card.dataset.badge) { // Re-add featured class if it had a badge
+                                                card.classList.add('featured');
+                                            }
+                                        }
+                                    });
+                                }
+                            } else {
+                                pane.setAttribute('hidden', 'true');
+                            }
+                        });
+                    });
+                });
+            });
+
+            // --- NEW RENEWAL FORM LOGIC ---
+            const renewalForms = document.querySelectorAll('.renewal-form');
+            
+            renewalForms.forEach(form => {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    const productName = form.dataset.productName;
+                    const emailInput = form.querySelector('.renewal-email-input');
+                    const keysTextarea = form.querySelector('.renewal-keys-textarea');
+                    const feedbackDiv = form.querySelector('.form-feedback');
+                    
+                    const email = emailInput.value.trim();
+                    const keys = keysTextarea.value.trim();
+                    
+                    if (!email || !keys) {
+                        feedbackDiv.textContent = 'Please fill out both the email and product key fields.';
+                        feedbackDiv.style.color = 'var(--brand-c1)'; // Use a brand red for errors
+                        return;
+                    }
+                    
+                    feedbackDiv.textContent = ''; // Clear previous feedback
+
+                    // Check for Document Solutions specific radio buttons
+                    const renewalTypeRadio = form.querySelector('input[name="ds-renewal-type"]:checked');
+                    const renewalType = renewalTypeRadio ? renewalTypeRadio.value : '';
+
+                    // --- Construct mailto link (you can change the target email here) ---
+                    const salesEmail = 'sales.in@mescius.com'; // Consider making this configurable or a server-side endpoint
+                    const subject = `Renewal Request for: ${productName}`;
+                    let body = `Hello Sales Team,\n\nI would like to request a renewal for the following product:\nProduct: ${productName}\n`;
+                    
+                    if (renewalType) {
+                        body += `Renewal Type: ${renewalType}\n`;
+                    }
+
+                    body += `\nMy contact email is: ${email}\n\nMy existing product key(s) are:\n${keys}\n\nPlease send the renewal purchase link to my email address.\n\nThank you,\n[Your Name]`;
+                    
+                    const mailtoLink = `mailto:${salesEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                    
+                    // --- Trigger the email client ---
+                    window.location.href = mailtoLink;
+
+                    // --- Provide feedback to the user ---
+                    feedbackDiv.textContent = 'Your email client should now open. Please send the pre-filled message to complete your request.';
+                    feedbackDiv.style.color = 'var(--brand-spread)'; // Use a brand green for success
+                    form.reset(); // Clear form fields after submission
+                });
+            });
+
+            // --- Badge Logic (to hide "Popular" / "Recommended" if only one card) ---
+            const applyBadgeLogicToPanes = () => {
+                document.querySelectorAll('.tab-pane.is-active').forEach(pane => {
+                    const priceCardsInPane = pane.querySelectorAll('.price-card');
+                    if (priceCardsInPane.length <= 1) {
+                        priceCardsInPane.forEach(card => {
+                            const badge = card.querySelector('.promo-badge');
+                            if (badge) badge.style.display = 'none';
+                            card.classList.remove('featured');
+                        });
+                    } else {
+                        priceCardsInPane.forEach(card => {
+                            const badge = card.querySelector('.promo-badge');
+                            if (badge && card.dataset.badge) { // Only show if it has a data-badge
+                                badge.textContent = card.dataset.badge; // Set badge text
+                                badge.style.display = 'inline-block';
+                                card.classList.add('featured'); // Re-add featured class
+                            }
+                        });
+                    }
+                });
+            };
+
+            // Initial update of the cart on page load
+            updateCart();
+
+            // Initial application of badge logic
+            applyBadgeLogicToPanes();
+
+            // Listen for tab changes to re-apply badge logic
+            document.querySelectorAll('.tab-btn').forEach(tabButton => {
+                tabButton.addEventListener('click', applyBadgeLogicToPanes);
+            });
+
+            // Mobile menu toggle functionality
+            if (menuToggle && mainNav) {
+                menuToggle.addEventListener('click', function() {
+                    mainNav.classList.toggle('is-open');
+                    menuToggle.classList.toggle('is-active');
+                    this.setAttribute('aria-expanded', mainNav.classList.contains('is-open'));
+                });
+
+                // Close menu when a navigation link is clicked (for smoother mobile experience)
+                mainNav.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mainNav.classList.remove('is-open');
+                        menuToggle.classList.remove('is-active');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                    });
+                });
+            }
         });
-    });
     </script>
 </body>
 </html>
