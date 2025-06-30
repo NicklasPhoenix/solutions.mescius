@@ -354,8 +354,9 @@
                                     <a href="https://developer.mescius.com/wijmo/download" target="_blank" class="action-link">Try</a>
                                     <span class="action-divider">|</span>
                                     <a href="#" class="action-link product-info-trigger"
-                                       data-title="Wijmo Enterprise"
-                                       data-description="<strong>Build high-performance, enterprise-level web applications</strong> with Wijmo's comprehensive library of JavaScript/TypeScript UI components.<p>Key features include:</p><ul><li>A <strong>zero-dependency, small footprint</strong> architecture written for performance.</li><li>The industry's best datagrid, <strong>FlexGrid</strong>, plus 100+ other controls for data visualization and UI.</li><li>Full framework support for <strong>Angular, React, Vue</strong>, and more.</li></ul><p>Wijmo is the premier choice for your most <strong>demanding data-driven applications.</strong></p>">
+                                        data-title="Wijmo Enterprise"
+                                        data-description="<strong>Build high-performance, enterprise-level web applications</strong> with Wijmo's comprehensive library of JavaScript/TypeScript UI components.<p>Key features include:</p><ul><li>A <strong>zero-dependency, small footprint</strong> architecture written for performance.</li><li>The industry's best datagrid, <strong>FlexGrid</strong>, plus 100+ other controls for data visualization and UI.</li><li>Full framework support for <strong>Angular, React, Vue</strong>, and more.</li></ul><p>Wijmo is the premier choice for your most <strong>demanding data-driven applications.</strong></p>"
+                                        data-product-page="https://developer.mescius.com/wijmo">
                                             Info
                                     </a>
                                 </div>
@@ -369,8 +370,9 @@
                                     <a href="https://developer.mescius.com/activereportsjs/download" target="_blank" class="action-link">Try</a>
                                     <span class="action-divider">|</span>
                                     <a href="#" class="action-link product-info-trigger"
-                                       data-title="ActiveReportsJS"
-                                       data-description='<strong>Integrate fast, feature-rich reporting</strong> into your client-side web applications with ActiveReportsJS.<p>This complete JavaScript solution provides:</p><ul><li>A powerful, <strong>embeddable report designer and viewer</strong>.</li><li>The ability for your end-users to create and interact with reports on <strong>any platform</strong>.</li><li>Connectivity to local and remote JSON data sources.</li><li>Direct-in-browser export to popular formats like <strong>PDF, Excel (XLSX), and HTML</strong>.</li></ul>'>
+                                        data-title="ActiveReportsJS"
+                                        data-description='<strong>Integrate fast, feature-rich reporting</strong> into your client-side web applications with ActiveReportsJS.<p>This complete JavaScript solution provides:</p><ul><li>A powerful, <strong>embeddable report designer and viewer</strong>.</li><li>The ability for your end-users to create and interact with reports on <strong>any platform</strong>.</li><li>Connectivity to local and remote JSON data sources.</li><li>Direct-in-browser export to popular formats like <strong>PDF, Excel (XLSX), and HTML</strong>.</li></ul>'
+                                        data-product-page="https://developer.mescius.com/activereportsjs">
                                             Info
                                     </a>
                                 </div>
@@ -378,7 +380,7 @@
                         </ul>
                     </div>
                     <div class="bundle-purchase">
-                           <div class="bundle-price">
+                            <div class="bundle-price">
                                 <span class="price">€1,649</span>
                                 <span class="term">per developer / year</span>
                             </div>
@@ -469,7 +471,8 @@
                 modalHTML += description;
 
                 const trialLink = trigger.parentElement.querySelector('a[target="_blank"]').href;
-                const productLink = 'https://developer.mescius.com/'; // Generic fallback
+                // Get the specific product page link from the data attribute
+                const productLink = trigger.dataset.productPage || 'https://developer.mescius.com/'; // Generic fallback
 
                 modalHTML += `<a href="${trialLink}" target="_blank" class="cta-button cta-primary">Download Trial</a>`;
                 modalHTML += `<a href="${productLink}" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>`;

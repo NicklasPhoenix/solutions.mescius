@@ -293,7 +293,7 @@
                             <span class="metric-label">Annual Savings</span>
                         </div>
                         <div class="metric-item">
-                            <span class="metric-value">&lt;12</span>
+                            <span class="metric-value"><12</span>
                             <span class="metric-label">Months to ROI</span>
                         </div>
                     </div>
@@ -340,7 +340,7 @@
         <section class="recommended-bundle-section">
             <div class="container">
                 <div class="bundle-card">
-                     <div class="bundle-info">
+                    <div class="bundle-info">
                         <div class="bundle-header">
                             <h3>Recommended Solution</h3>
                             <h2>SpreadJS Power Pack</h2>
@@ -355,8 +355,9 @@
                                     <a href="https://developer.mescius.com/spreadjs/download" target="_blank" class="action-link">Try</a>
                                     <span class="action-divider">|</span>
                                     <a href="#" class="action-link product-info-trigger"
-                                       data-title="SpreadJS Professional"
-                                       data-description="<strong>Empower your web applications with the industry-leading JavaScript spreadsheet solution.</strong><br>SpreadJS provides a complete, Excel-like experience for your users, including high-speed grids, complex calculations, charts, and advanced data analysis tools.">
+                                        data-title="SpreadJS Professional"
+                                        data-description="<strong>Empower your web applications with the industry-leading JavaScript spreadsheet solution.</strong><br>SpreadJS provides a complete, Excel-like experience for your users, including high-speed grids, complex calculations, charts, and advanced data analysis tools.<br>"
+                                        data-product-page="https://developer.mescius.com/spreadjs">
                                             Info
                                     </a>
                                 </div>
@@ -376,7 +377,7 @@
                         </ul>
                     </div>
                     <div class="bundle-purchase">
-                           <div class="bundle-price">
+                            <div class="bundle-price">
                                 <span class="price">€2,116</span>
                                 <span class="term">per developer / year</span>
                             </div>
@@ -462,14 +463,15 @@
             const openModal = (trigger) => {
                 const title = trigger.dataset.title || 'Product Details';
                 const description = trigger.dataset.description || 'No description available.';
+                const trialLink = trigger.parentElement.querySelector('a[target="_blank"]').href;
+                // Get the specific product page link from the data attribute
+                const productLink = trigger.dataset.productPage || 'https://developer.mescius.com/'; // Fallback to generic if not set
                 
                 let modalHTML = `<h2 class="modal-title">${title}</h2>`;
                 modalHTML += description; 
 
-                const trialLink = trigger.parentElement.querySelector('a[target="_blank"]').href;
-                const productLink = 'https://developer.mescius.com/'; // Generic fallback
-
                 modalHTML += `<a href="${trialLink}" target="_blank" class="cta-button cta-primary">Download Trial</a>`;
+                // Use the specific productLink here
                 modalHTML += `<a href="${productLink}" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>`;
 
                 modalBody.innerHTML = modalHTML;

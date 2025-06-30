@@ -338,7 +338,7 @@
         <section class="recommended-bundle-section">
             <div class="container">
                 <div class="bundle-card">
-                     <div class="bundle-info">
+                    <div class="bundle-info">
                         <div class="bundle-header">
                             <h3>Recommended Solution</h3>
                             <h2>Web-Based Excel Migration Pack</h2>
@@ -353,8 +353,9 @@
                                     <a href="https://developer.mescius.com/spreadjs/download" target="_blank" class="action-link">Try</a>
                                     <span class="action-divider">|</span>
                                     <a href="#" class="action-link product-info-trigger"
-                                       data-title="SpreadJS"
-                                       data-description="<strong>Empower your web applications with the industry-leading JavaScript spreadsheet solution.</strong><br>SpreadJS provides a complete, Excel-like experience for your users, including:<ul><li>High-speed grids</li><li>Complex calculations & charts</li><li>Pivot tables</li><li>Advanced data analysis tools</li></ul><p>It is ideal for creating financial, scientific, and enterprise resource planning (ERP) applications.</p>">
+                                        data-title="SpreadJS"
+                                        data-description="<strong>Empower your web applications with the industry-leading JavaScript spreadsheet solution.</strong><br>SpreadJS provides a complete, Excel-like experience for your users, including:<ul><li>High-speed grids</li><li>Complex calculations & charts</li><li>Pivot tables</li><li>Advanced data analysis tools</li></ul><p>It is ideal for creating financial, scientific, and enterprise resource planning (ERP) applications.</p>"
+                                        data-product-page="https://developer.mescius.com/spreadjs">
                                             Info
                                     </a>
                                 </div>
@@ -368,8 +369,9 @@
                                     <a href="https://developer.mescius.com/document-solutions/download-product" target="_blank" class="action-link">Try</a>
                                     <span class="action-divider">|</span>
                                     <a href="#" class="action-link product-info-trigger"
-                                       data-title="Document Solutions for Excel"
-                                       data-description="<strong>Supercharge your document processing</strong> with Document Solutions, a suite of <strong>high-speed, dependency-free APIs</strong> for .NET and Java.<p>Key features allow you to:</p><ul><li>Programmatically create, load, and save <strong>Excel, PDF, & Word</strong> documents.</li><li>Deploy on any server (<strong>Windows, Linux, & macOS</strong>) with zero server-side dependencies on MS Office or Acrobat.</li><li>Automate common tasks like <strong>generating invoices and creating reports from templates.</strong></li></ul>">
+                                        data-title="Document Solutions for Excel"
+                                        data-description="<strong>Supercharge your document processing</strong> with Document Solutions, a suite of <strong>high-speed, dependency-free APIs</strong> for .NET and Java.<p>Key features allow you to:</p><ul><li>Programmatically create, load, and save <strong>Excel, PDF, & Word</strong> documents.</li><li>Deploy on any server (<strong>Windows, Linux, & macOS</strong>) with zero server-side dependencies on MS Office or Acrobat.</li><li>Automate common tasks like <strong>generating invoices and creating reports from templates.</strong></li></ul>"
+                                        data-product-page="https://developer.mescius.com/documents/excel">
                                             Info
                                     </a>
                                 </div>
@@ -377,7 +379,7 @@
                         </ul>
                     </div>
                     <div class="bundle-purchase">
-                           <div class="bundle-price">
+                            <div class="bundle-price">
                                 <span class="price">€1,203</span>
                                 <span class="term">per developer / year</span>
                             </div>
@@ -463,14 +465,15 @@
             const openModal = (trigger) => {
                 const title = trigger.dataset.title || 'Product Details';
                 const description = trigger.dataset.description || 'No description available.';
+                const trialLink = trigger.parentElement.querySelector('a[target="_blank"]').href;
+                // Get the specific product page link from the data attribute
+                const productLink = trigger.dataset.productPage || 'https://developer.mescius.com/'; // Fallback to generic if not set
                 
                 let modalHTML = `<h2 class="modal-title">${title}</h2>`;
                 modalHTML += description; 
 
-                const trialLink = trigger.parentElement.querySelector('a[target="_blank"]').href;
-                const productLink = 'https://developer.mescius.com/'; // Generic fallback
-
                 modalHTML += `<a href="${trialLink}" target="_blank" class="cta-button cta-primary">Download Trial</a>`;
+                // Use the specific productLink here
                 modalHTML += `<a href="${productLink}" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>`;
 
                 modalBody.innerHTML = modalHTML;
