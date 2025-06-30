@@ -177,6 +177,7 @@
             padding: 100px 20px; 
             position: relative;
             overflow: hidden;
+            z-index: 1;
         }
         .hero::before { /* Subtle background pattern/texture */
             content: '';
@@ -188,6 +189,7 @@
             background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%239C92AC" fill-opacity="0.03"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 20v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 46v-4H4v4H0v2h4v4h2v-4h4v-2H6zm0-20v-4H4v4H0v2h4v4h2v-4h4v-2H6zM42 0v4h2v-4h4V0h-4V-4h-2v4h-4v2h4zm0 20v4h2v-4h4V20h-4v-4h-2v4h4v2h-4zm12 7H46v-2h8v-4h2v4h4v2h-4v4h-2v-4zm0-20H46v-2h8v-4h2v4h4v2h-4v4h-2v-4zM24 2v4h-2V2h-4V0h4V-4h2v4h4v2h-4zm0 20v4h-2v-4h-4V20h4v-4h2v4h4v2h-4zm-6-2v2H2v-2h-4v-2h4v-4h2v4h4v2h-4zm0 20v2H2v-2h-4v-2h4v-4h2v4h4v2h-4zM22 36v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 20v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM36 0v4h-2V0h-4V-4h4V-8h2v4h4v2h-4zm0 20v4h-2v-4h-4V20h4v-4h2v4h4v2h-4zM0 34v-4H-4v4h-4v2h4v4h4v-4h4v-2H0zm0-20v-4H-4v4h-4v2h4v4h4v-4h4v-2H0zm54 0v-4H50v4h-4v2h4v4h4v-4h4v-2h-4zm0 20v-4H50v4h-4v2h4v4h4v-4h4v-2h-4zM42 36v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 20v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM24 42v4h-2v-4h-4v-2h4v-4h2v4h4v2h-4zm0 20v4h-2v-4h-4v-2h4v-4h2v4h4v2h-4zM60 6v4h-2V6h-4V4h4V0h2v4h4v2h-4zm0 20v4h-2v-4h-4V20h4v-4h2v4h4v2h-4zm-6 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-20v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM36 42v4h-2v-4h-4v-2h4v-4h2v4h4v2h-4zM0 6v4H-4V6h-4V4h4V0h2v4h4v2h-4z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
             background-size: 60px 60px;
             opacity: 0.03; /* Reduced opacity for subtlety */
+            pointer-events: none; /* ADDED THIS LINE */
         }
         .hero-title { 
             font-size: 48px; 
@@ -260,46 +262,170 @@
         /* --- Pricing Page Specific Styles --- */
         .pricing-section { padding: 60px 0; }
 
-        .filter-controls { 
-            display: flex; 
+        .filter-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
             justify-content: center; 
-            margin-bottom: 50px; 
+            gap: 25px; 
             padding: 25px; 
+            margin-bottom: 30px; /* Reduced margin to make space for chips */
             background-color: var(--color-background-white);
             border: 1px solid var(--color-border-light);
             border-radius: 16px; 
             box-shadow: 0 6px 20px var(--color-shadow-medium); 
-            flex-wrap: wrap;
-            gap: 15px;
         }
-        .filter-group { 
-            display: flex; 
-            background-color: #e9ecef; 
+        .filter-set {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px; 
+        }
+        .filter-set-label {
+            font-weight: 700; 
+            font-size: 16px; 
+            color: var(--brand-heading);
+            margin-right: 15px; 
+        }
+        .filter-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px; 
+        }
+        .filter-btn {
+            padding: 10px 22px; 
+            font-size: 15px; 
+            font-weight: 600;
+            border: 1px solid var(--color-border-light);
             border-radius: 30px; 
-            padding: 5px; 
-            flex-wrap: wrap;
+            background-color: var(--color-background-white);
+            color: var(--brand-body);
+            cursor: pointer;
+            transition: all 0.3s ease-in-out; 
+            box-shadow: 0 2px 5px var(--color-shadow-subtle); 
+            min-width: 100px; /* Ensure buttons don't get too small on collapse */
+            text-align: center;
         }
-        .filter-btn { 
-            padding: 10px 25px; 
-            font-size: 14px; 
-            font-weight: 600; 
-            font-family: 'Montserrat', sans-serif; 
-            border: none; 
-            border-radius: 25px; 
-            background-color: transparent; 
-            color: var(--brand-body); 
-            cursor: pointer; 
-            transition: all 0.3s ease; 
-        }
-        .filter-btn.is-active { 
-            background-color: #ffffff; 
+        .filter-btn:hover:not(.is-active) { 
+            border-color: var(--color-neutral-dark); /* Darker gray for border on hover */
+            background-color: var(--color-neutral-light); /* Light neutral for background */
             color: var(--brand-heading); 
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+            transform: translateY(-1px);
+        }
+        .filter-btn.is-active {
+            color: #ffffff;
+            border-color: var(--brand-heading); 
+            background-color: var(--brand-heading);
+            box-shadow: 0 4px 8px var(--color-shadow-strong); 
+            transform: scale(1.02); 
+        }
+        /* Product-specific border colors (DO NOT CHANGE) */
+        .filter-set[data-filter-type="platform"] .filter-btn[data-filter="net"].is-active { background-color: var(--brand-c1); border-color: var(--brand-c1); }
+        .filter-set[data-filter-type="platform"] .filter-btn[data-filter="js"].is-active { background-color: var(--brand-spread); border-color: var(--brand-spread); }
+        
+        .clear-filters-btn {
+            font-size: 15px; 
+            font-weight: 600;
+            color: var(--color-text-subtle); 
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-decoration: underline;
+            opacity: 0.9;
+            transition: color 0.2s ease, opacity 0.2s ease;
+            margin-left: auto;
+            padding: 5px 10px; 
+        }
+        .clear-filters-btn:hover { 
+            color: var(--brand-heading); 
+            opacity: 1; 
+        }
+        @media (max-width: 1100px) {
+            .filter-toolbar { 
+                flex-direction: column; 
+                align-items: stretch; 
+                gap: 15px;
+            }
+            .filter-set {
+                justify-content: flex-start;
+                gap: 8px;
+            }
+            .filter-set-label {
+                margin-right: 0;
+            }
+            .clear-filters-btn { 
+                margin-left: 0; 
+                margin-top: 15px; 
+                text-align: right;
+            }
+        }
+        @media (max-width: 768px) {
+            .filter-set {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .filter-set-label {
+                margin-bottom: 5px;
+            }
+            .filter-pills {
+                width: 100%;
+                justify-content: center;
+            }
+            .filter-btn {
+                flex: 1 1 auto; 
+                min-width: 120px; 
+            }
+        }
+
+        /* --- Applied Filter Chips: Clear and actionable --- */
+        .applied-filters-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px; /* Space between chips and grid */
+            min-height: 40px; /* Give it some height even when empty */
+            align-items: center;
+            padding: 0 24px; /* Align with container padding */
+        }
+
+        .filter-chip {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--color-neutral-dark); /* Dark chip background */
+            color: #ffffff;
+            padding: 8px 12px;
+            border-radius: 20px; /* Pill shape */
+            font-size: 14px;
+            font-weight: 500;
+            gap: 8px;
+            transition: background-color 0.2s ease;
+            box-shadow: 0 2px 5px var(--color-shadow-subtle);
+        }
+        .filter-chip-text {
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+        .filter-chip-remove {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.7); /* Lighter 'x' for contrast */
+            cursor: pointer;
+            font-size: 16px;
+            line-height: 1;
+            padding: 0;
+            margin-left: 4px;
+            transition: color 0.2s ease;
+        }
+        .filter-chip-remove:hover {
+            color: #ffffff; /* White 'x' on hover */
+        }
+        /* Hide if no filters are applied */
+        .applied-filters-container:empty {
+            display: none;
         }
         
         .product-pricing-section {
             background-color: #ffffff; border-radius: 12px; margin-bottom: 40px; border-top: 4px solid var(--accent-color);
-            overflow: hidden; box-shadow: 0 4px 25px rgba(0,0,0,0.06); transition: all 0.3s ease-in-out;
+            overflow: hidden; box-shadow: 0 8px 25px var(--color-shadow-subtle); transition: all 0.3s ease-in-out;
         }
         .product-pricing-section.is-hidden { display: none; }
         .product-pricing-section.product-c1 { --accent-color: var(--brand-c1); }
@@ -383,6 +509,8 @@
         .renewal-form { margin-top: 20px; }
         .renewal-form .form-group { margin-bottom: 20px; }
         .renewal-form label { display: block; font-weight: 600; margin-bottom: 8px; color: var(--brand-heading); font-size: 14px; }
+        .renewal-form select,
+        .renewal-form input[type="number"],
         .renewal-form .renewal-email-input,
         .renewal-form .renewal-keys-textarea {
             width: 100%;
@@ -392,7 +520,16 @@
             font-family: 'Montserrat', sans-serif;
             font-size: 14px;
             transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            -webkit-appearance: none; /* Remove default select arrow on WebKit browsers */
+            -moz-appearance: none;    /* Remove default select arrow on Firefox */
+            appearance: none;         /* Remove default select arrow */
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%234A5568%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13%205.7L146.2%20203.7%2018.3%2075.1a17.6%2017.6%200%200%200-24.7%2024.7l130.4%20130.4c6.6%206.6%2017.3%206.6%2023.9%200l130.4-130.4c6.6-6.5%206.6-17.3%200-23.9z%22%2F%3E%3C%2Fsvg%3E');
+            background-repeat: no-repeat;
+            background-position: right .8em top 50%;
+            background-size: .65em auto;
         }
+        .renewal-form select:focus,
+        .renewal-form input[type="number"]:focus,
         .renewal-form .renewal-email-input:focus,
         .renewal-form .renewal-keys-textarea:focus {
             outline: none;
@@ -400,6 +537,22 @@
             box-shadow: 0 0 0 3px rgba(var(--accent-color-rgb, 0,0,0), 0.2); /* Fallback for older browsers */
             box-shadow: 0 0 0 3px rgba(var(--accent-color), 0.2);
         }
+        .renewal-form input[type="number"] {
+            width: 80px; /* Smaller width for quantity */
+            text-align: center;
+        }
+        .renewal-form .product-selector-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+        .renewal-form .product-selector-group label {
+            margin-bottom: 0;
+            white-space: nowrap;
+        }
+
         .renewal-form .cta-button { width: auto; padding: 12px 30px; }
         .renewal-form .form-feedback { margin-top: 15px; font-weight: 500; font-size: 14px; }
         .renewal-type-options { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 10px; }
@@ -477,7 +630,10 @@
 
         /* Modal Styles */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 2000; display: none; justify-content: center; align-items: center; }
-        .modal-container { background: #fff; padding: 30px; border-radius: 12px; width: 90%; max-width: 700px; max-height: 90vh; overflow-y: auto; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .modal-container { 
+            background: #fff; padding: 30px; border-radius: 12px; width: 90%; max-width: 700px; max-height: 90vh; overflow-y: auto; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+            border-top: 6px solid var(--accent-color, #474D57); /* Default or dynamic accent color */
+        }
         .modal-close-btn { position: absolute; top: 15px; right: 15px; background: transparent; border: none; font-size: 28px; color: #718096; cursor: pointer; line-height: 1; }
         .modal-title { font-size: 28px; color: var(--brand-heading); margin-top: 0; margin-bottom: 20px; }
         .modal-body p { margin-bottom: 15px; line-height: 1.7; }
@@ -631,8 +787,8 @@
             <a href="/" aria-label="Mescius Europe Home" class="logo-link"><img src="https://cdn.mescius.io/umb/media/pujnxfci/mescuis-logo-horiz.svg" alt="Mescius Europe Logo" class="logo"></a>
             <nav class="main-nav" id="main-nav">
                 <a href="../index.html" class="nav-link">Solutions</a>
-                <a href="../pricing/index.html" class="nav-link active">Pricing</a>
-                <a href="../bundles/index.html" class="nav-link">Bundles</a>
+                <a href="./pricing/index.html" class="nav-link active">Pricing</a>
+                <a href="./bundles/index.html" class="nav-link">Bundles</a>
             </nav>
             <div class="menu-toggle" id="menu-toggle" aria-controls="main-nav" aria-expanded="false" role="button" aria-label="Toggle navigation">
                 <span></span>
@@ -665,12 +821,18 @@
                 <p class="section-subtitle">Find the right licensing plan for your development needs, from individual projects to large enterprise solutions. We offer comprehensive options for both .NET and JavaScript components.</p>
             </section>
 
-            <div class="filter-controls" id="pricing-filter-controls" role="tablist" aria-label="Filter products by platform">
-                <div class="filter-group">
-                    <button class="filter-btn is-active" data-filter="all" role="tab" aria-selected="true" aria-controls="product-grid">All Products</button>
-                    <button class="filter-btn" data-filter="net" role="tab" aria-selected="false" aria-controls="product-grid">.NET</button>
-                    <button class="filter-btn" data-filter="js" role="tab" aria-selected="false" aria-controls="product-grid">JavaScript</button>
+            <div class="filter-toolbar" id="pricing-filter-controls">
+                <div class="filter-set" data-filter-type="platform">
+                    <p class="filter-set-label">Filter by Platform:</p>
+                    <div class="filter-pills">
+                        <button class="filter-btn is-active" data-filter="all" role="tab" aria-selected="true" aria-controls="product-grid">All Products</button>
+                        <button class="filter-btn" data-filter="net" role="tab" aria-selected="false" aria-controls="product-grid">.NET</button>
+                        <button class="filter-btn" data-filter="js" role="tab" aria-selected="false" aria-controls="product-grid">JavaScript</button>
+                    </div>
                 </div>
+            </div>
+
+            <div class="applied-filters-container" id="applied-filters-container" role="status" aria-live="polite">
             </div>
 
             <div id="product-grid">
@@ -755,14 +917,20 @@
                         <section class="tab-pane" id="c1-renew-pane" role="tabpanel" hidden>
                             <h3>Renew Your ComponentOne License</h3>
                             <p>To receive a personalized renewal quote and purchase link, please enter your details and existing product key(s) below. Our team will verify your eligibility and send a private purchase link to your email.</p>
-                            <form class="renewal-form" data-product-name="ComponentOne">
+                            <form class="renewal-form" data-product-name="ComponentOne" data-renewal-product-ids='[{"id": "54087", "name": "Studio Enterprise"}, {"id": "60892", "name": "WinForms Data Services"}, {"id": "53600", "name": "ActiveX Edition"}, {"id": "53597", "name": "WinForms Edition"}, {"id": "55920", "name": "WPF Edition"}, {"id": "61875", "name": "WinUI & MAUI Edition"}, {"id": "58274", "name": "ASP.NET MVC Edition"}, {"id": "60326", "name": "Blazor Edition"}]'>
+                                <div class="form-group product-selector-group">
+                                    <label for="c1-renewal-product">Select Product:</label>
+                                    <select id="c1-renewal-product" required aria-required="true"></select>
+                                    <label for="c1-renewal-quantity">Quantity:</label>
+                                    <input type="number" id="c1-renewal-quantity" min="1" value="1" required aria-required="true">
+                                </div>
                                 <div class="form-group">
                                     <label for="c1-renewal-email">Your Email Address:</label>
                                     <input type="email" id="c1-renewal-email" class="renewal-email-input" required aria-required="true" autocomplete="email">
                                 </div>
                                 <div class="form-group">
-                                    <label for="c1-renewal-keys">Your Existing Product Key(s):</label>
-                                    <textarea id="c1-renewal-keys" class="renewal-keys-textarea" rows="4" placeholder="Enter each key on a new line" required aria-required="true"></textarea>
+                                    <label for="c1-renewal-keys">Your Existing Product Key(s) (comma-separated if multiple, match quantity):</label>
+                                    <textarea id="c1-renewal-keys" class="renewal-keys-textarea" rows="4" placeholder="Enter each key on a new line or comma-separated" required aria-required="true"></textarea>
                                 </div>
                                 <button type="submit" class="cta-button">Request Renewal Link</button>
                                 <div class="form-feedback" aria-live="polite"></div>
@@ -853,14 +1021,20 @@
                         <section class="tab-pane" id="sjs-renew-pane" role="tabpanel" hidden>
                             <h3>Renew Your SpreadJS License</h3>
                             <p>To receive a personalized renewal quote and purchase link, please enter your details and existing product key(s) below. Our team will verify your eligibility and send a private purchase link to your email.</p>
-                            <form class="renewal-form" data-product-name="SpreadJS">
+                            <form class="renewal-form" data-product-name="SpreadJS" data-renewal-product-ids='[{"id": "57922", "name": "Developer License (Paid Apps)"}, {"id": "61408", "name": "Limited Annual Deployment"}, {"id": "60976", "name": "Hostname License Pack"}, {"id": "62805", "name": "Dev + Hostname Bundle"}, {"id": "60974", "name": "Annual Hostname License"}]'>
+                                <div class="form-group product-selector-group">
+                                    <label for="sjs-renewal-product">Select Product:</label>
+                                    <select id="sjs-renewal-product" required aria-required="true"></select>
+                                    <label for="sjs-renewal-quantity">Quantity:</label>
+                                    <input type="number" id="sjs-renewal-quantity" min="1" value="1" required aria-required="true">
+                                </div>
                                 <div class="form-group">
                                     <label for="sjs-renewal-email">Your Email Address:</label>
                                     <input type="email" id="sjs-renewal-email" class="renewal-email-input" required aria-required="true" autocomplete="email">
                                 </div>
                                 <div class="form-group">
-                                    <label for="sjs-renewal-keys">Your Existing Product Key(s):</label>
-                                    <textarea id="sjs-renewal-keys" class="renewal-keys-textarea" rows="4" placeholder="Enter each key on a new line" required aria-required="true"></textarea>
+                                    <label for="sjs-renewal-keys">Your Existing Product Key(s) (comma-separated if multiple, match quantity):</label>
+                                    <textarea id="sjs-renewal-keys" class="renewal-keys-textarea" rows="4" placeholder="Enter each key on a new line or comma-separated" required aria-required="true"></textarea>
                                 </div>
                                 <button type="submit" class="cta-button">Request Renewal Link</button>
                                 <div class="form-feedback" aria-live="polite"></div>
@@ -932,14 +1106,20 @@
                         <section class="tab-pane" id="snet-renew-pane" role="tabpanel" hidden>
                             <h3>Renew Your Spread.NET License</h3>
                             <p>To receive a personalized renewal quote and purchase link, please enter your details and existing product key(s) below. Our team will verify your eligibility and send a private purchase link to your email.</p>
-                            <form class="renewal-form" data-product-name="Spread.NET">
+                            <form class="renewal-form" data-product-name="Spread.NET" data-renewal-product-ids='[{"id": "62799", "name": "Spread.NET License"}]'>
+                                <div class="form-group product-selector-group">
+                                    <label for="snet-renewal-product">Select Product:</label>
+                                    <select id="snet-renewal-product" required aria-required="true"></select>
+                                    <label for="snet-renewal-quantity">Quantity:</label>
+                                    <input type="number" id="snet-renewal-quantity" min="1" value="1" required aria-required="true">
+                                </div>
                                 <div class="form-group">
                                     <label for="snet-renewal-email">Your Email Address:</label>
                                     <input type="email" id="snet-renewal-email" class="renewal-email-input" required aria-required="true" autocomplete="email">
                                 </div>
                                 <div class="form-group">
-                                    <label for="snet-renewal-keys">Your Existing Product Key(s):</label>
-                                    <textarea id="snet-renewal-keys" class="renewal-keys-textarea" rows="4" placeholder="Enter each key on a new line" required aria-required="true"></textarea>
+                                    <label for="snet-renewal-keys">Your Existing Product Key(s) (comma-separated if multiple, match quantity):</label>
+                                    <textarea id="snet-renewal-keys" class="renewal-keys-textarea" rows="4" placeholder="Enter each key on a new line or comma-separated" required aria-required="true"></textarea>
                                 </div>
                                 <button type="submit" class="cta-button">Request Renewal Link</button>
                                 <div class="form-feedback" aria-live="polite"></div>
@@ -990,14 +1170,20 @@
                         <section class="tab-pane" id="wj-renew-pane" role="tabpanel" hidden>
                             <h3>Renew Your Wijmo License</h3>
                             <p>To receive a personalized renewal quote and purchase link, please enter your details and existing product key(s) below. Our team will verify your eligibility and send a private purchase link to your email.</p>
-                            <form class="renewal-form" data-product-name="Wijmo">
+                            <form class="renewal-form" data-product-name="Wijmo" data-renewal-product-ids='[{"id": "59102", "name": "Wijmo Enterprise"}, {"id": "62767", "name": "Paid & SaaS Apps Hostname"}]'>
+                                <div class="form-group product-selector-group">
+                                    <label for="wj-renewal-product">Select Product:</label>
+                                    <select id="wj-renewal-product" required aria-required="true"></select>
+                                    <label for="wj-renewal-quantity">Quantity:</label>
+                                    <input type="number" id="wj-renewal-quantity" min="1" value="1" required aria-required="true">
+                                </div>
                                 <div class="form-group">
                                     <label for="wj-renewal-email">Your Email Address:</label>
                                     <input type="email" id="wj-renewal-email" class="renewal-email-input" required aria-required="true" autocomplete="email">
                                 </div>
                                 <div class="form-group">
-                                    <label for="wj-renewal-keys">Your Existing Product Key(s):</label>
-                                    <textarea id="wj-renewal-keys" class="renewal-keys-textarea" rows="4" placeholder="Enter each key on a new line" required aria-required="true"></textarea>
+                                    <label for="wj-renewal-keys">Your Existing Product Key(s) (comma-separated if multiple, match quantity):</label>
+                                    <textarea id="wj-renewal-keys" class="renewal-keys-textarea" rows="4" placeholder="Enter each key on a new line or comma-separated" required aria-required="true"></textarea>
                                 </div>
                                 <button type="submit" class="cta-button">Request Renewal Link</button>
                                 <div class="form-feedback" aria-live="polite"></div>
@@ -1104,14 +1290,20 @@
                         <section class="tab-pane" id="arnet-renew-pane" role="tabpanel" hidden>
                             <h3>Renew Your ActiveReports.NET License</h3>
                             <p>To receive a personalized renewal quote and purchase link, please enter your details and existing product key(s) below. Our team will verify your eligibility and send a private purchase link to your email.</p>
-                            <form class="renewal-form" data-product-name="ActiveReports.NET">
+                            <form class="renewal-form" data-product-name="ActiveReports.NET" data-renewal-product-ids='[{"id": "62965", "name": "Standard"}, {"id": "62957", "name": "Professional"}]'>
+                                <div class="form-group product-selector-group">
+                                    <label for="arnet-renewal-product">Select Product:</label>
+                                    <select id="arnet-renewal-product" required aria-required="true"></select>
+                                    <label for="arnet-renewal-quantity">Quantity:</label>
+                                    <input type="number" id="arnet-renewal-quantity" min="1" value="1" required aria-required="true">
+                                </div>
                                 <div class="form-group">
                                     <label for="arnet-renewal-email">Your Email Address:</label>
                                     <input type="email" id="arnet-renewal-email" class="renewal-email-input" required aria-required="true" autocomplete="email">
                                 </div>
                                 <div class="form-group">
-                                    <label for="arnet-renewal-keys">Your Existing Product Key(s):</label>
-                                    <textarea id="arnet-renewal-keys" class="renewal-keys-textarea" rows="4" placeholder="Enter each key on a new line" required aria-required="true"></textarea>
+                                    <label for="arnet-renewal-keys">Your Existing Product Key(s) (comma-separated if multiple, match quantity):</label>
+                                    <textarea id="arnet-renewal-keys" class="renewal-keys-textarea" rows="4" placeholder="Enter each key on a new line or comma-separated" required aria-required="true"></textarea>
                                 </div>
                                 <button type="submit" class="cta-button">Request Renewal Link</button>
                                 <div class="form-feedback" aria-live="polite"></div>
@@ -1282,27 +1474,20 @@
                         <section class="tab-pane" id="ds-renew-pane" role="tabpanel" hidden>
                             <h3>Request Document Solutions Renewal</h3>
                             <p>To receive a personalized renewal quote, please select your renewal type and enter the details for your existing license below.</p>
-                            <form class="renewal-form" data-product-name="Document Solutions">
-                                <div class="form-group">
-                                    <label>Renewal Type:</label>
-                                    <div class="renewal-type-options" role="radiogroup" aria-labelledby="renewal-type-label">
-                                        <div>
-                                            <input type="radio" id="ds-renew-individual" name="ds-renewal-type" value="Individual Product Renewal" checked>
-                                            <label for="ds-renew-individual">Individual Product</label>
-                                        </div>
-                                        <div>
-                                            <input type="radio" id="ds-renew-bundle" name="ds-renewal-type" value="Bundle Renewal">
-                                            <label for="ds-renew-bundle">Bundle</label>
-                                        </div>
-                                    </div>
+                            <form class="renewal-form" data-product-name="Document Solutions" data-renewal-product-ids='[{"id": "62879", "name": ".NET Developer Bundle"}, {"id": "62881", "name": ".NET Unlimited Bundle"}, {"id": "62884", "name": ".NET Team Unlimited Bundle"}, {"id": "62845", "name": "Excel .NET Developer"}, {"id": "62848", "name": "Excel .NET Unlimited"}, {"id": "62850", "name": "Excel .NET Team Unlimited"}, {"id": "62859", "name": "PDF .NET Developer"}, {"id": "62863", "name": "PDF .NET Unlimited"}, {"id": "62865", "name": "PDF .NET Team Unlimited"}, {"id": "62886", "name": "Word .NET Developer"}, {"id": "62888", "name": "Word .NET Unlimited"}, {"id": "62890", "name": "Word .NET Team Unlimited"}, {"id": "62893", "name": "Imaging .NET Developer"}, {"id": "62895", "name": "Imaging .NET Unlimited"}, {"id": "62897", "name": "Imaging .NET Team Unlimited"}, {"id": "62873", "name": "Excel Java Developer"}, {"id": "62875", "name": "Excel Java Unlimited"}, {"id": "62877", "name": "Excel Java Team Unlimited"}]'>
+                                <div class="form-group product-selector-group">
+                                    <label for="ds-renewal-product">Select Product:</label>
+                                    <select id="ds-renewal-product" required aria-required="true"></select>
+                                    <label for="ds-renewal-quantity">Quantity:</label>
+                                    <input type="number" id="ds-renewal-quantity" min="1" value="1" required aria-required="true">
                                 </div>
                                 <div class="form-group">
                                     <label for="ds-renewal-email">Your Email Address:</label>
                                     <input type="email" id="ds-renewal-email" class="renewal-email-input" required aria-required="true" autocomplete="email">
                                 </div>
                                 <div class="form-group">
-                                    <label for="ds-renewal-keys">Your Existing Product Key(s):</label>
-                                    <textarea id="ds-renewal-keys" class="renewal-keys-textarea" rows="4" placeholder="Enter each key on a new line" required aria-required="true"></textarea>
+                                    <label for="ds-renewal-keys">Your Existing Product Key(s) (comma-separated if multiple, match quantity):</label>
+                                    <textarea id="ds-renewal-keys" class="renewal-keys-textarea" rows="4" placeholder="Enter each key on a new line or comma-separated" required aria-required="true"></textarea>
                                 </div>
                                 <button type="submit" class="cta-button">Request Renewal Link</button>
                                 <div class="form-feedback" aria-live="polite"></div>
@@ -1472,6 +1657,7 @@
             const iconPlus = '<svg viewBox="0 0 24 24"><line x1="12" y1="6" x2="12" y2="18"></line><line x1="6" y1="12" x2="18" y2="12"></line></svg>';
 
             // --- ELEMENT REFERENCES ---
+            const filterToolbar = document.querySelector('.filter-toolbar');
             const filterBtns = document.querySelectorAll('.filter-btn');
             const productSections = document.querySelectorAll('.product-pricing-section');
             const allTabsContainers = document.querySelectorAll('.product-pricing-section');
@@ -1483,6 +1669,7 @@
             const checkoutLink = document.getElementById('checkout-link');
             const cartToggleBtn = document.getElementById('cart-toggle-btn');
             const cartHeader = cartUI.querySelector('.cart-header');
+            const appliedFiltersContainer = document.getElementById('applied-filters-container');
 
             const modalOverlay = document.getElementById('product-info-modal');
             const modalContainer = document.querySelector('.modal-container');
@@ -1495,6 +1682,16 @@
 
             // --- STATE ---
             let cart = JSON.parse(localStorage.getItem('mesciusCart')) || [];
+            const currentFilters = {
+                platform: 'all'
+            };
+
+            // Map data-filter values to human-readable labels for chips
+            const filterLabels = {
+                'all': 'All Products', // Default label for 'all'
+                'net': '.NET',
+                'js': 'JavaScript'
+            };
 
             // --- CART LOGIC FUNCTIONS ---
             const saveCart = () => {
@@ -1589,6 +1786,11 @@
                 const quantityString = quantityParams.join('&');
                 return `${baseURL}?${cartString}&${quantityString}`;
             };
+
+            const generateCleverbridgeRenewalLink = (productId, quantity, oldKeys) => {
+                const baseURL = 'https://checkout.mescius.eu/1878/purl-shop'; 
+                return `${baseURL}?cart=i${productId}&quantity_i${productId}=${quantity}&x-oldkeys_i${productId}=${encodeURIComponent(oldKeys)}`;
+            };
             
             const openModal = (trigger) => {
                 const productSection = trigger.closest('.product-pricing-section');
@@ -1665,28 +1867,149 @@
             modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) closeModal(); });
             document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modalOverlay.style.display === 'flex') closeModal(); });
 
-            // --- FILTER/TAB LOGIC ---
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    filterBtns.forEach(b => {
-                        b.classList.remove('is-active');
-                        b.setAttribute('aria-selected', 'false');
-                    });
-                    btn.classList.add('is-active');
-                    btn.setAttribute('aria-selected', 'true');
-                    const filter = btn.dataset.filter;
-                    productSections.forEach(card => {
-                        const platform = card.dataset.platform;
-                        if (filter === 'all' || card.dataset.platform === filter) {
-                            card.style.display = '';
-                            card.removeAttribute('aria-hidden');
-                        } else {
-                            card.style.display = 'none';
-                            card.setAttribute('aria-hidden', 'true');
-                        }
-                    });
+            /**
+             * Renders the filter chips based on current active filters.
+             * Also includes functionality to remove filters via chips.
+             */
+            function renderFilterChips() {
+                appliedFiltersContainer.innerHTML = ''; // Clear existing chips
+
+                const activePlatformFilter = currentFilters.platform;
+
+                const addChip = (type, value) => {
+                    if (value !== 'all') { // Only add chips for specific selections, not 'all'
+                        const chip = document.createElement('div');
+                        chip.classList.add('filter-chip');
+                        chip.setAttribute('data-filter-type', type);
+                        chip.setAttribute('data-filter-value', value);
+                        chip.innerHTML = `<span class="filter-chip-text">${filterLabels[value] || value}</span>
+                                          <button class="filter-chip-remove" aria-label="Remove filter ${filterLabels[value] || value}">×</button>`;
+                        
+                        appliedFiltersContainer.appendChild(chip);
+
+                        // Add click listener to the remove button on the chip
+                        chip.querySelector('.filter-chip-remove').addEventListener('click', (e) => {
+                            e.stopPropagation(); // Prevent the chip itself from triggering anything else
+                            removeFilterByChip(type);
+                        });
+                    }
+                };
+
+                addChip('platform', activePlatformFilter);
+
+                // Add an overall "Clear All" chip if any filters are active
+                if (activePlatformFilter !== 'all') {
+                    const clearAllChip = document.createElement('button');
+                    clearAllChip.classList.add('filter-chip', 'clear-all-chip');
+                    clearAllChip.innerHTML = `<span class="filter-chip-text">Clear All Filters</span>
+                                              <span class="filter-chip-remove" aria-label="Clear all filters">×</span>`;
+                    clearAllChip.addEventListener('click', clearAllFilters);
+                    appliedFiltersContainer.appendChild(clearAllChip);
+                }
+            }
+
+            /**
+             * Removes a filter based on its type (e.g., 'platform').
+             * @param {string} filterType - The type of filter to remove.
+             */
+            function removeFilterByChip(filterType) {
+                // Find the 'All' button for the given filter type
+                const filterSet = document.querySelector(`.filter-set[data-filter-type="${filterType}"]`);
+                if (filterSet) {
+                    const allButton = filterSet.querySelector(`.filter-btn[data-filter="all"]`);
+                    if (allButton) {
+                        // Simulate a click on the 'All' button to reset that filter group
+                        allButton.click();
+                    }
+                }
+            }
+
+
+            /**
+             * Applies the current filters to the product sections.
+             * Shows/hides sections accordingly.
+             */
+            function applyFilters() {
+                let visibleCount = 0;
+                productSections.forEach(section => {
+                    const platformMatch = currentFilters.platform === 'all' || section.dataset.platform === currentFilters.platform;
+
+                    if (platformMatch) {
+                        section.classList.remove('is-hidden');
+                        visibleCount++;
+                    } else {
+                        section.classList.add('is-hidden');
+                    }
                 });
-            });
+                renderFilterChips(); // Update chips after filters are applied
+            }
+
+            /**
+             * Sets up click event listeners for filter buttons within the toolbar.
+             * Implements toggle-to-unfilter functionality.
+             * @param {HTMLElement} toolbar - The filter toolbar element.
+             */
+            function setupFilterControls(toolbar) {
+                if (!toolbar) return;
+                
+                toolbar.addEventListener('click', function(e) {
+                    const clickedBtn = e.target.closest('.filter-btn');
+                    if (!clickedBtn) return;
+
+                    e.preventDefault();
+                    
+                    const filterGroup = clickedBtn.closest('.filter-set');
+                    if (!filterGroup) return; 
+
+                    const filterType = filterGroup.dataset.filterType;
+                    const filterValue = clickedBtn.dataset.filter;
+                    const allBtn = filterGroup.querySelector(`[data-filter="all"]`); // Get the 'All' button for this group
+
+                    // If the clicked button is already active AND it's not the "All" button
+                    if (clickedBtn.classList.contains('is-active') && filterValue !== 'all') {
+                        // Deactivate the current button and activate the "All" button for that group
+                        clickedBtn.classList.remove('is-active');
+                        allBtn.classList.add('is-active');
+                        currentFilters[filterType] = 'all'; // Reset filter to 'all'
+                    } else {
+                        // If it's not active, or if it's the "All" button, set it as the new active filter
+                        filterGroup.querySelectorAll('.filter-btn').forEach(btn => {
+                            btn.classList.remove('is-active');
+                        });
+                        clickedBtn.classList.add('is-active');
+                        currentFilters[filterType] = filterValue;
+                    }
+                    
+                    applyFilters();
+                });
+            }
+
+            // Function to clear all filters
+            function clearAllFilters(e) {
+                if (e) e.preventDefault(); // Prevent default if called from an event
+
+                // Reset internal state
+                currentFilters.platform = 'all';
+
+                // Reset button visual states
+                document.querySelectorAll('.filter-set').forEach(group => {
+                    group.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('is-active'));
+                    group.querySelector('[data-filter="all"]').classList.add('is-active');
+                });
+                
+                applyFilters();
+            }
+
+            // Event listener for the "Clear All Filters" button within the no-results message (if any)
+            const noResultsMessage = document.getElementById('no-results-message');
+            if (noResultsMessage) {
+                const noResultsClearBtn = noResultsMessage.querySelector('.clear-filters-btn');
+                if (noResultsClearBtn) {
+                    noResultsClearBtn.addEventListener('click', clearAllFilters);
+                }
+            }
+
+
             allTabsContainers.forEach(container => {
                 const tabs = container.querySelectorAll('.tab-btn');
                 const panes = container.querySelectorAll('.tab-pane');
@@ -1715,11 +2038,10 @@
                                     // Re-show badges and 'featured' class if multiple cards
                                     priceCardsInPane.forEach(card => {
                                         const badge = card.querySelector('.promo-badge');
-                                        if (badge) {
-                                            badge.style.display = 'inline-block'; // Or whatever default display is
-                                            if (card.dataset.badge) { // Re-add featured class if it had a badge
-                                                card.classList.add('featured');
-                                            }
+                                        if (badge && card.dataset.badge) { // Only show if it has a data-badge
+                                            badge.textContent = card.dataset.badge; // Set badge text
+                                            badge.style.display = 'inline-block';
+                                            card.classList.add('featured'); // Re-add featured class
                                         }
                                     });
                                 }
@@ -1731,89 +2053,62 @@
                 });
             });
 
-            // --- NEW RENEWAL FORM LOGIC ---
+            // --- RENEWAL FORM LOGIC ---
             const renewalForms = document.querySelectorAll('.renewal-form');
             
             renewalForms.forEach(form => {
+                const productSelect = form.querySelector('select');
+                const quantityInput = form.querySelector('input[type="number"]');
+
+                // Populate product select dropdown
+                const renewalProducts = JSON.parse(form.dataset.renewalProductIds);
+                if (productSelect && renewalProducts) {
+                    productSelect.innerHTML = ''; // Clear existing options
+                    renewalProducts.forEach(product => {
+                        const option = document.createElement('option');
+                        option.value = product.id;
+                        option.textContent = product.name;
+                        productSelect.appendChild(option);
+                    });
+                }
+
                 form.addEventListener('submit', (e) => {
                     e.preventDefault();
                     
-                    const productName = form.dataset.productName;
+                    const selectedProductId = productSelect ? productSelect.value : null;
+                    const quantity = quantityInput ? parseInt(quantityInput.value, 10) : 1;
                     const emailInput = form.querySelector('.renewal-email-input');
                     const keysTextarea = form.querySelector('.renewal-keys-textarea');
                     const feedbackDiv = form.querySelector('.form-feedback');
                     
                     const email = emailInput.value.trim();
-                    const keys = keysTextarea.value.trim();
+                    // Clean keys: replace newlines with commas, remove extra spaces around commas, remove empty entries
+                    const keys = keysTextarea.value.trim().split(/[\n,]+/).map(key => key.trim()).filter(key => key !== '').join(',');
                     
-                    if (!email || !keys) {
-                        feedbackDiv.textContent = 'Please fill out both the email and product key fields.';
-                        feedbackDiv.style.color = 'var(--brand-c1)'; // Use a brand red for errors
+                    if (!selectedProductId || !quantity || !email || !keys) {
+                        feedbackDiv.textContent = 'Please select a product, specify quantity, and fill out email and product key fields.';
+                        feedbackDiv.style.color = 'var(--brand-c1)'; 
                         return;
                     }
                     
                     feedbackDiv.textContent = ''; // Clear previous feedback
 
-                    // Check for Document Solutions specific radio buttons
-                    const renewalTypeRadio = form.querySelector('input[name="ds-renewal-type"]:checked');
-                    const renewalType = renewalTypeRadio ? renewalTypeRadio.value : '';
-
-                    // --- Construct mailto link (you can change the target email here) ---
-                    const salesEmail = 'sales.in@mescius.com'; // Consider making this configurable or a server-side endpoint
-                    const subject = `Renewal Request for: ${productName}`;
-                    let body = `Hello Sales Team,\n\nI would like to request a renewal for the following product:\nProduct: ${productName}\n`;
+                    const cleverbridgeRenewalUrl = generateCleverbridgeRenewalLink(selectedProductId, quantity, keys);
                     
-                    if (renewalType) {
-                        body += `Renewal Type: ${renewalType}\n`;
-                    }
+                    // Redirect to Cleverbridge
+                    window.location.href = cleverbridgeRenewalUrl;
 
-                    body += `\nMy contact email is: ${email}\n\nMy existing product key(s) are:\n${keys}\n\nPlease send the renewal purchase link to my email address.\n\nThank you,\n[Your Name]`;
-                    
-                    const mailtoLink = `mailto:${salesEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-                    
-                    // --- Trigger the email client ---
-                    window.location.href = mailtoLink;
-
-                    // --- Provide feedback to the user ---
-                    feedbackDiv.textContent = 'Your email client should now open. Please send the pre-filled message to complete your request.';
-                    feedbackDiv.style.color = 'var(--brand-spread)'; // Use a brand green for success
-                    form.reset(); // Clear form fields after submission
+                    feedbackDiv.textContent = 'Redirecting to Cleverbridge for renewal...';
+                    feedbackDiv.style.color = 'var(--brand-spread)'; 
                 });
             });
-
-            // --- Badge Logic (to hide "Popular" / "Recommended" if only one card) ---
-            const applyBadgeLogicToPanes = () => {
-                document.querySelectorAll('.tab-pane.is-active').forEach(pane => {
-                    const priceCardsInPane = pane.querySelectorAll('.price-card');
-                    if (priceCardsInPane.length <= 1) {
-                        priceCardsInPane.forEach(card => {
-                            const badge = card.querySelector('.promo-badge');
-                            if (badge) badge.style.display = 'none';
-                            card.classList.remove('featured');
-                        });
-                    } else {
-                        priceCardsInPane.forEach(card => {
-                            const badge = card.querySelector('.promo-badge');
-                            if (badge && card.dataset.badge) { // Only show if it has a data-badge
-                                badge.textContent = card.dataset.badge; // Set badge text
-                                badge.style.display = 'inline-block';
-                                card.classList.add('featured'); // Re-add featured class
-                            }
-                        });
-                    }
-                });
-            };
 
             // Initial update of the cart on page load
             updateCart();
 
-            // Initial application of badge logic
-            applyBadgeLogicToPanes();
-
-            // Listen for tab changes to re-apply badge logic
-            document.querySelectorAll('.tab-btn').forEach(tabButton => {
-                tabButton.addEventListener('click', applyBadgeLogicToPanes);
-            });
+            // Initial application of filter logic
+            setupFilterControls(filterToolbar);
+            applyFilters();
 
             // Mobile menu toggle functionality
             if (menuToggle && mainNav) {
