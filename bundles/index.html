@@ -843,6 +843,14 @@
     </header>
 
     <main>
+        <section class="hero">
+            <div class="container">
+                <h1 class="hero-title">Unlock More with Mescius Bundles</h1>
+                <p class="hero-subtitle">Discover powerful tool suites and flexible licensing options designed to accelerate your development and maximize value for your team.</p>
+                <a href="#popular-bundles-section" class="hero-cta-button">Explore Bundles <i class="fas fa-arrow-down" style="margin-left: 8px;"></i></a>
+            </div>
+        </section>
+
         <section class="pricing-section" id="popular-bundles-section">
             <div class="container">
                 <div class="section-header">
@@ -994,7 +1002,7 @@
                                 <div class="multi-year-options" role="radiogroup" aria-labelledby="subscription-analytics-label">
                                     <input type="radio" id="years1-analytics" name="years-analytics" value="1" checked aria-label="1 year subscription"> <label for="years1-analytics">1Y</label>
                                     <input type="radio" id="years2-analytics" name="years-analytics" value="2" aria-label="2 year subscription with 10 percent discount"> <label for="years2-analytics">2Y <span class="discount-tag">10%</span></label>
-                                    <input type="radio" id="years3-analytics" name="years-analytics" value="3" aria-label="3 year subscription with 15 percent discount"> <label for="years3-analytics">3Y <span class="discount-tag">15%</span></label>
+                                    <input type="radio" id="years3-analytics" name="years3-analytics" value="3" aria-label="3 year subscription with 15 percent discount"> <label for="years3-analytics">3Y <span class="discount-tag">15%</span></label>
                                 </div>
                             </div>
                         </div>
@@ -1032,7 +1040,7 @@
                                 <div class="multi-year-options" role="radiogroup" aria-labelledby="subscription-autoreport-label">
                                     <input type="radio" id="years1-autoreport" name="years-autoreport" value="1" checked aria-label="1 year subscription"> <label for="years1-autoreport">1Y</label>
                                     <input type="radio" id="years2-autoreport" name="years-autoreport" value="2" aria-label="2 year subscription with 10 percent discount"> <label for="years2-autoreport">2Y <span class="discount-tag">10%</span></label>
-                                    <input type="radio" id="years3-autoreport" name="years-autoreport" value="3" aria-label="3 year subscription with 15 percent discount"> <label for="years3-autoreport">3Y <span class="discount-tag">15%</span></label>
+                                    <input type="radio" id="years3-autoreport" name="years3-autoreport" value="3" aria-label="3 year subscription with 15 percent discount"> <label for="years3-autoreport">3Y <span class="discount-tag">15%</span></label>
                                 </div>
                             </div>
                         </div>
@@ -1071,7 +1079,7 @@
                                 <div class="multi-year-options" role="radiogroup" aria-labelledby="subscription-blazor-label">
                                     <input type="radio" id="years1-blazor" name="years-blazor" value="1" checked aria-label="1 year subscription"> <label for="years1-blazor">1Y</label>
                                     <input type="radio" id="years2-blazor" name="years-blazor" value="2" aria-label="2 year subscription with 10 percent discount"> <label for="years2-blazor">2Y <span class="discount-tag">10%</span></label>
-                                    <input type="radio" id="years3-blazor" name="years-blazor" value="3" aria-label="3 year subscription with 15 percent discount"> <label for="years3-blazor">3Y <span class="discount-tag">15%</span></label>
+                                    <input type="radio" id="years3-blazor" name="years3-blazor" value="3" aria-label="3 year subscription with 15 percent discount"> <label for="years3-blazor">3Y <span class="discount-tag">15%</span></label>
                                 </div>
                             </div>
                         </div>
@@ -1458,7 +1466,8 @@
             const basePrice = parseFloat(card.dataset.basePrice);
             const listPrice = parseFloat(card.dataset.listPrice);
             const quantityInput = card.querySelector('.quantity-input');
-            const yearRadios = card.querySelectorAll(`input[type="radio"][name="years-${cardId}"]`); // Corrected name attribute selector
+            // Corrected name attribute selector for year radios
+            const yearRadios = card.querySelectorAll(`input[type="radio"][name="years-${cardId}"]`); 
             const priceEl = card.querySelector(`#price-${cardId}`);
             const savingsEl = card.querySelector(`#savings-${cardId}`);
             const ctaButton = card.querySelector(`#cta-${cardId}`);
@@ -1485,12 +1494,10 @@
                 const itemNameSpan = item.querySelector('span:first-child');
                 const itemPriceSpan = item.querySelector('span:last-child');
                 
-                // Store the original component name
-                // This will get the text content before any JS modification.
-                // It's crucial to get the *initial* text content from the HTML.
+                // Store the original component name cleanly
                 item.dataset.originalName = itemNameSpan.textContent.trim();
                 
-                // Store the original single-unit price from the price span
+                // Store the original single-unit price
                 if (!item.dataset.originalPrice) {
                     item.dataset.originalPrice = parseFloat(itemPriceSpan.textContent.replace(/[^0-9,-]+/g, '').replace(',', '.'));
                 }
@@ -1522,7 +1529,7 @@
                 const discountPerDevAmount = basePrice - finalPricePerDev;
                 
                 const totalActualCost = finalPricePerDev * quantity;
-                const totalCurrentPriceForYears = totalActualCost * years;
+                const totalCurrentPriceForYears = totalActualCost * years; // Total cost includes both quantity and years
                 
                 // Calculate total list price for the current quantity and years
                 let currentTotalListPriceRaw = 0;
@@ -1532,7 +1539,7 @@
                         currentTotalListPriceRaw += originalItemPrice;
                     }
                 });
-                currentTotalListPriceRaw = currentTotalListPriceRaw * quantity * years; 
+                currentTotalListPriceRaw = currentTotalListPriceRaw * quantity * years; // Total list price also includes both quantity and years
 
                 const totalSavingsAmount = currentTotalListPriceRaw - totalCurrentPriceForYears;
 
@@ -1563,11 +1570,10 @@
                         itemNameSpan.textContent = originalItemName; 
                         itemPriceSpan.textContent = `€0,00`; 
                     } else {
-                        // THIS IS THE CRUCIAL LINE FOR INDIVIDUAL ITEM PRICE:
-                        // Multiply by both quantity AND years
+                        // CRUCIAL: Multiplied price now also accounts for years
                         const multipliedPrice = originalItemPrice * quantity * years; 
                         
-                        // Dynamically update the text content of the name span
+                        // Update the text content of the name span with the multiplier
                         if (quantity > 1) {
                             itemNameSpan.textContent = `${quantity}x ${originalItemName}`;
                         } else {
