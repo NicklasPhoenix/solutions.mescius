@@ -5,102 +5,585 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solution Blueprint: Improve Performance in Data-Intensive Apps</title>
     <meta name="description" content="A blueprint for replacing underperforming UI components with high-performance datagrids to solve critical performance issues in data-heavy SaaS applications.">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome for social icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
+        /* All necessary styles are contained in this file */
+        *, *::before, *::after { box-sizing: border-box; }
         :root {
-            --brand-header: #474D57; --brand-light-gray: #f8f9fa; --brand-heading: #2D3748; --brand-body: #4A5568; --brand-js: #809B59; --brand-net: #D6564C; --brand-wijmo: #48A9C5; --brand-ds: #5A7E9E; --brand-arjs: #EA8939;
-            /* Page-specific accent color */
+            /* Brand Colors (DO NOT CHANGE) */
+            --brand-header: #474D57; /* Dark header color */
+            --brand-light-gray: #f8f9fa; /* Light page background */
+            --brand-heading: #2D3748; /* Dark text for headings */
+            --brand-body: #4A5568; /* Standard body text color */
+            
+            /* Product-specific colors (DO NOT CHANGE THESE) */
+            --brand-js: #809B59;
+            --brand-net: #D6564C;
+            --brand-wijmo: #48A9C5;
+            --brand-ds: #5A7E9E;
+            --brand-arjs: #EA8939;
+
+            /* General UI Colors (Selected to harmonize with brand, no bright blue, no red for general accents) */
+            --color-neutral-dark: #343a40; /* A dark neutral for some elements */
+            --color-neutral-light: #f1f3f5; /* A light neutral for background accents */
+            --color-border-light: #dee2e6; /* A very light border color */
+            --color-background-white: #ffffff;
+            --color-text-subtle: #6c757d; /* Softer text color for secondary info */
+            --color-shadow-subtle: rgba(0, 0, 0, 0.05); /* Very light shadow */
+            --color-shadow-medium: rgba(0, 0, 0, 0.1); /* Medium shadow for depth */
+            --color-shadow-strong: rgba(0, 0, 0, 0.15); /* Stronger shadow for active states */
+            
+            /* Header Navigation Specific Colors (Ensuring good contrast on dark header) */
+            --color-header-nav-link: #ffffff; 
+            --color-header-nav-link-hover: #D0D5DD; /* Light gray for hover, clearly visible */
+            --color-header-nav-link-active: #ffffff; /* White for active for clarity */
+
+            /* Page-specific accent color, derived from brand-wijmo */
             --accent-color: var(--brand-wijmo);
         }
-        *, *::before, *::after { box-sizing: border-box; }
-        body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(--brand-light-gray); color: var(--brand-body); }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .header { background-color: var(--brand-header); padding: 15px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
-        .header-content { display: flex; justify-content: space-between; align-items: center; }
-        .logo { height: 32px; filter: brightness(0) invert(1); }
-        .main-nav { display: flex; gap: 30px; }
-        .nav-link { color: #ffffff; text-decoration: none; font-weight: 600; font-size: 14px; padding-bottom: 5px; border-bottom: 2px solid transparent; }
-        .nav-link:hover, .nav-link.active { border-bottom-color: #ffffff; }
-        .nav-toggle { display: none; }
-        .case-study-header { background-color: #ffffff; text-align: center; padding: 60px 20px; border-bottom: 1px solid #e2e8f0; }
-        .case-study-tag { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-color); }
-        .case-study-title { font-size: 42px; font-weight: 700; color: var(--brand-heading); margin: 10px auto 15px auto; max-width: 900px; }
-        .case-study-subtitle { font-size: 18px; max-width: 700px; margin: 0 auto; line-height: 1.6; }
-        .expandable-card { background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; margin: 50px auto; box-shadow: 0 5px 30px rgba(45, 55, 72, 0.08); overflow: hidden; }
-        .card-visible-content { padding: 40px; }
-        .solution-profile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 40px; }
-        .profile-item h4 { font-size: 16px; font-weight: 700; color: var(--brand-heading); margin: 0 0 10px 0; padding-bottom: 10px; border-bottom: 2px solid var(--accent-color); }
-        .profile-item p { font-size: 16px; line-height: 1.7; color: var(--brand-body); margin: 0; }
-        .results-heading { text-align: center; margin-bottom: 20px; }
-        .results-heading h4 { display: inline-block; position: relative; margin: 0; font-size: 18px; font-weight: 600; color: var(--brand-heading); }
-        .results-heading h4::before, .results-heading h4::after { content: ''; position: absolute; top: 50%; width: 50px; height: 1px; background-color: #e2e8f0; }
-        .results-heading h4::before { left: -60px; }
-        .results-heading h4::after { right: -60px; }
-        .results-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; text-align: center; }
-        .metric-item { background-color: #f8f9fa; padding: 20px; border-radius: 8px; border: 1px solid #e2e8f0; }
-        .metric-value { display: block; font-size: 36px; font-weight: 700; color: var(--accent-color); }
-        .metric-label { display: block; font-size: 14px; color: var(--brand-body); }
-        .profile-cta { text-align: center; margin-top: 40px; padding-top: 30px; border-top: 1px solid #e2e8f0; }
-        .profile-cta .cta-button { display: inline-block; text-decoration: none; padding: 12px 25px; border-radius: 8px; font-weight: 600; font-size: 15px; color: #ffffff; transition: opacity 0.3s ease; background-color: var(--accent-color); }
-        .profile-cta .cta-button:hover { opacity: 0.9; }
-        .card-toggle-bar { display: flex; justify-content: center; align-items: center; gap: 10px; background-color: #f8f9fa; border-top: 1px solid #e2e8f0; padding: 15px; cursor: pointer; transition: background-color 0.2s ease; }
-        .card-toggle-bar:hover { background-color: #f1f3f5; }
-        .toggle-text { font-weight: 600; color: var(--brand-heading); }
-        .toggle-icon { width: 16px; height: 16px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%232D3748' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E"); background-size: contain; background-repeat: no-repeat; transition: transform 0.3s ease-in-out; }
-        .card-collapsible-content { max-height: 0; overflow: hidden; transition: max-height 0.7s ease-in-out; }
-        .expandable-card.is-open .toggle-icon { transform: rotate(180deg); }
-        .expandable-card.is-open .card-collapsible-content { max-height: 5000px; }
-        .main-story { padding: 40px 40px 20px 40px; font-size: 17px; line-height: 1.8; }
-        .main-story h2 { font-size: 24px; font-weight: 700; color: var(--brand-heading); margin: 40px 0 20px 0; padding-bottom: 10px; border-bottom: 3px solid var(--accent-color); }
-        .main-story > div:first-of-type h2 { margin-top: 0; }
-        .main-story p, .main-story ul { margin-bottom: 20px; }
-        .implementation-summary { background-color: #f8f9fa; border-left: 4px solid var(--accent-color); padding: 20px 30px; margin: 30px 0; border-radius: 4px; }
-        .implementation-summary h3 { font-size: 18px; margin-top: 0; color: var(--brand-heading); }
-        .implementation-summary ul { padding-left: 20px; margin-bottom: 0; }
+
+        body { 
+            margin: 0; 
+            font-family: 'Montserrat', sans-serif; /* Kept Montserrat as requested */
+            background-color: var(--brand-light-gray); 
+            color: var(--brand-body); 
+            line-height: 1.6;
+        }
+        .container { 
+            max-width: 1280px; 
+            margin: 0 auto; 
+            padding: 0 24px; 
+        }
+        
+        /* --- Header: Clean, clickable, and visually clear --- */
+        .header { 
+            background-color: var(--brand-header); 
+            padding: 18px 0; 
+            box-shadow: 0 4px 12px var(--color-shadow-medium); 
+            position: sticky; 
+            top: 0;
+            z-index: 1000; 
+            transition: all 0.3s ease;
+        }
+        .header-content { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .logo-link { /* Ensures the entire logo area is clickable */
+            display: block; 
+            line-height: 0; /* Prevents extra space below SVG */
+            transition: opacity 0.3s ease;
+        }
+        .logo-link:hover {
+            opacity: 0.8; /* Subtle hover effect for logo */
+        }
+        .logo { 
+            height: 36px; 
+            filter: brightness(0) invert(1); 
+        }
+        .main-nav { 
+            display: flex; 
+            gap: 35px; 
+        }
+        .nav-link { 
+            color: var(--color-header-nav-link); 
+            text-decoration: none; 
+            font-weight: 500; 
+            font-size: 15px; 
+            padding-bottom: 8px; 
+            border-bottom: 3px solid transparent; 
+            transition: all 0.3s ease;
+            /* Ensures it looks like a clear navigation link, not a button */
+            background-color: transparent; 
+            border-radius: 0; 
+            padding: 0 5px 8px; /* Adjusted padding to enhance link appearance */
+        }
+        .nav-link.active, .nav-link:hover { 
+            border-bottom-color: var(--color-header-nav-link-hover); /* Clear light gray underline on hover/active */
+            color: var(--color-header-nav-link-hover); /* Text color changes for emphasis */
+        }
+        
+        /* Mobile Navigation (Hamburger) */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 22px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: var(--color-header-nav-link); 
+            transition: all 0.3s ease-in-out;
+        }
+        .menu-toggle.is-active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .menu-toggle.is-active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.is-active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px; 
+                left: 0;
+                width: 100%;
+                background-color: var(--brand-header);
+                box-shadow: 0 4px 12px var(--color-shadow-medium);
+                padding: 20px 0;
+                border-top: 1px solid rgba(255,255,255,0.1);
+            }
+            .main-nav.is-open { display: flex; }
+            .main-nav .nav-link {
+                padding: 15px 24px;
+                width: 100%;
+                text-align: center;
+                border-bottom: none; 
+            }
+            .main-nav .nav-link:hover {
+                background-color: rgba(255,255,255,0.1); 
+            }
+            .menu-toggle { display: flex; }
+        }
+
+        /* --- Case Study Header (Blueprint Page Specific) --- */
+        .case-study-header { 
+            background-color: var(--color-background-white); 
+            text-align: center; 
+            padding: 80px 24px; /* Increased padding */
+            border-bottom: none; /* Removed border-bottom */
+            box-shadow: 0 4px 15px var(--color-shadow-subtle); /* Subtle shadow */
+            margin-bottom: 40px; /* Space before the card */
+        }
+        .case-study-tag { 
+            font-size: 14px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px; /* Increased letter-spacing */
+            color: var(--accent-color); 
+            margin-bottom: 10px;
+            display: block; /* Ensures it takes full width for text-align */
+            font-family: 'Montserrat', sans-serif; /* Explicitly set font */
+        }
+        .case-study-title { 
+            font-size: 48px; /* Increased font size */
+            font-weight: 700; 
+            color: var(--brand-heading); 
+            margin: 10px auto 15px auto; 
+            max-width: 900px; 
+            letter-spacing: -1.5px; /* Negative letter-spacing */
+        }
+        .case-study-subtitle { 
+            font-size: 20px; /* Increased font size */
+            max-width: 800px; /* Increased max-width */
+            margin: 0 auto; 
+            line-height: 1.8; /* Increased line-height */
+            color: var(--color-text-subtle); /* Subtler color */
+        }
+
+        /* --- Expandable Card --- */
+        .expandable-card { 
+            background-color: var(--color-background-white); 
+            border: 1px solid var(--color-border-light); 
+            border-radius: 16px; /* Larger border-radius */
+            margin: 50px auto; 
+            box-shadow: 0 8px 30px var(--color-shadow-medium); /* Stronger shadow */
+            overflow: hidden; 
+        }
+        .card-visible-content { 
+            padding: 40px; 
+        }
+        .solution-profile-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 30px; 
+            margin-bottom: 40px; 
+        }
+        .profile-item h4 { 
+            font-size: 18px; /* Increased font size */
+            font-weight: 700; 
+            color: var(--brand-heading); 
+            margin: 0 0 10px 0; 
+            padding-bottom: 10px; 
+            border-bottom: 3px solid var(--accent-color); /* Thicker border */
+        }
+        .profile-item p { 
+            font-size: 16px; 
+            line-height: 1.7; 
+            color: var(--brand-body); 
+            margin: 0; 
+        }
+        .results-heading { 
+            text-align: center; 
+            margin-bottom: 25px; /* Adjusted margin */
+            position: relative;
+        }
+        .results-heading h4 { 
+            display: inline-block; 
+            position: relative; 
+            margin: 0; 
+            font-size: 22px; /* Increased font size */
+            font-weight: 700; /* Bolder */
+            color: var(--brand-heading); 
+            padding-bottom: 10px; /* Space for underline */
+        }
+        .results-heading h4::after { /* Animated, colored underline for style */
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%) scaleX(1); /* Always visible */
+            transform-origin: center;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color); 
+            border-radius: 2px;
+            transition: transform 0.3s ease-out; 
+        }
+        .results-heading h4::before, .results-heading h4::after { 
+            background-color: transparent; /* Remove default lines */
+        }
+        .results-metrics { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+            gap: 30px; /* Increased gap */
+            text-align: center; 
+        }
+        .metric-item { 
+            background-color: var(--color-neutral-light); /* Light neutral background */
+            padding: 25px; /* Increased padding */
+            border-radius: 10px; /* Rounded corners */
+            border: 1px solid var(--color-border-light); 
+            box-shadow: 0 4px 10px var(--color-shadow-subtle); /* Subtle shadow */
+            transition: transform 0.2s ease;
+        }
+        .metric-item:hover {
+            transform: translateY(-3px); /* Lift on hover */
+        }
+        .metric-value { 
+            display: block; 
+            font-size: 40px; /* Increased font size */
+            font-weight: 700; 
+            color: var(--accent-color); 
+            margin-bottom: 5px;
+        }
+        .metric-label { 
+            display: block; 
+            font-size: 15px; /* Adjusted font size */
+            color: var(--brand-body); 
+        }
+        .profile-cta { 
+            text-align: center; 
+            margin-top: 40px; 
+            padding-top: 30px; 
+            border-top: 1px solid var(--color-border-light); 
+        }
+        .profile-cta .cta-button { 
+            display: inline-block; 
+            background-color: var(--brand-heading); /* Using brand heading color for a neutral, strong CTA */
+            color: #ffffff;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .profile-cta .cta-button:hover {
+            background-color: #3C475B; /* Slightly darker shade for hover */
+            transform: translateY(-2px);
+        }
+        .card-toggle-bar { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            gap: 10px; 
+            background-color: var(--color-neutral-light); /* Lighter background */
+            border-top: 1px solid var(--color-border-light); 
+            padding: 20px; /* More padding */
+            cursor: pointer; 
+            transition: background-color 0.2s ease; 
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+        }
+        .card-toggle-bar:hover { 
+            background-color: #e9ecef; /* Slightly darker light neutral on hover */
+        }
+        .toggle-text { 
+            font-weight: 600; 
+            color: var(--brand-heading); 
+            font-size: 16px;
+        }
+        .toggle-icon { 
+            width: 18px; /* Slightly larger icon */
+            height: 18px; 
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%232D3748' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E"); 
+            background-size: contain; 
+            background-repeat: no-repeat; 
+            transition: transform 0.3s ease-in-out; 
+        }
+        .card-collapsible-content { 
+            max-height: 0; 
+            overflow: hidden; 
+            transition: max-height 0.7s ease-in-out; 
+        }
+        .expandable-card.is-open .toggle-icon { 
+            transform: rotate(180deg); 
+        }
+        .expandable-card.is-open .card-collapsible-content { 
+            max-height: 5000px; 
+        }
+        .main-story { 
+            padding: 40px; /* Consistent padding */
+            font-size: 17px; 
+            line-height: 1.8; 
+            color: var(--brand-body);
+        }
+        .main-story h2 { 
+            font-size: 28px; /* Increased font size */
+            font-weight: 700; 
+            color: var(--brand-heading); 
+            margin: 40px 0 20px 0; 
+            padding-bottom: 12px; /* More padding for underline */
+            border-bottom: 4px solid var(--accent-color); /* Thicker border */
+            display: inline-block; /* For the underline to fit content */
+        }
+        .main-story > div:first-of-type h2 { 
+            margin-top: 0; 
+        }
+        .main-story p, .main-story ul { 
+            margin-bottom: 20px; 
+        }
+        .main-story ul {
+            list-style: disc; /* Ensure disc for lists */
+            padding-left: 25px;
+        }
+        .main-story li {
+            margin-bottom: 10px;
+        }
+        .implementation-summary { 
+            background-color: var(--color-neutral-light); /* Lighter background */
+            border-left: 5px solid var(--accent-color); /* Thicker border */
+            padding: 25px 30px; /* More padding */
+            margin: 30px 0; 
+            border-radius: 8px; /* Rounded corners */
+        }
+        .implementation-summary h3 { 
+            font-size: 20px; /* Increased font size */
+            margin-top: 0; 
+            color: var(--brand-heading); 
+            margin-bottom: 15px;
+        }
+        .implementation-summary ul { 
+            padding-left: 20px; 
+            margin-bottom: 0; 
+        }
         
         /* Bundle Section */
-        .recommended-bundle-section { padding: 60px 0 0 0; }
-        .bundle-card { background-color: var(--brand-header); color: #ffffff; border-radius: 12px; padding: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start; border-top: 5px solid var(--accent-color); }
-        .bundle-info { display: flex; flex-direction: column; gap: 20px; }
-        .bundle-header h3 { font-size: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; margin: 0 0 5px 0; }
-        .bundle-header h2 { font-size: 28px; font-weight: 700; margin: 0; line-height: 1.2; }
-        .bundle-inclusions { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 15px; }
-        .bundle-inclusions li { display: flex; justify-content: space-between; align-items: center; background-color: rgba(255,255,255,0.05); padding: 10px 15px; border-radius: 6px; }
-        .bundle-inclusions .product-name { display: flex; align-items: center; gap: 10px; font-weight: 500; }
-        .bundle-inclusions .checkmark { color: var(--brand-wijmo); }
-        .bundle-inclusions .product-actions .action-link { color: #ffffff; text-decoration: none; font-weight: 600; font-size: 14px; opacity: 0.8; transition: opacity 0.2s ease; }
-        .bundle-inclusions .product-actions .action-link:hover { opacity: 1; }
-        .bundle-inclusions .product-actions .action-divider { opacity: 0.5; margin: 0 5px; }
-        .bundle-purchase { text-align: right; }
-        .bundle-price { margin-bottom: 20px; }
-        .bundle-price .price { font-size: 40px; font-weight: 700; }
-        .bundle-price .term { font-size: 15px; opacity: 0.7; display: block; }
-        .bundle-cta .cta-button { display: inline-block; background-color: #ffffff; color: var(--brand-header); text-decoration: none; padding: 15px 35px; border-radius: 8px; font-weight: 700; transition: all 0.3s ease; }
-        .bundle-cta .cta-button:hover { background-color: var(--brand-light-gray); transform: translateY(-2px); }
+        .recommended-bundle-section { 
+            padding: 60px 0 0 0; 
+            margin-bottom: 60px; /* Space above footer */
+        }
+        .bundle-card { 
+            background-color: var(--brand-header); 
+            color: #ffffff; 
+            border-radius: 16px; /* Larger border-radius */
+            padding: 40px; 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 30px; 
+            align-items: center; /* Align items vertically */
+            border-top: 6px solid var(--accent-color); /* Thicker border */
+            box-shadow: 0 10px 30px var(--color-shadow-medium); /* Stronger shadow */
+        }
+        .bundle-info { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 20px; 
+        }
+        .bundle-header h3 { 
+            font-size: 16px; 
+            font-weight: 600; 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px; /* More letter spacing */
+            opacity: 0.8; 
+            margin: 0 0 5px 0; 
+        }
+        .bundle-header h2 { 
+            font-size: 32px; /* Larger font size */
+            font-weight: 700; 
+            margin: 0; 
+            line-height: 1.2; 
+        }
+        .bundle-inclusions { 
+            list-style: none; 
+            padding: 0; 
+            margin: 0; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 15px; 
+        }
+        .bundle-inclusions li { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            background-color: rgba(255,255,255,0.08); /* Slightly more visible background */
+            padding: 12px 18px; /* More padding */
+            border-radius: 8px; /* Rounded corners */
+        }
+        .bundle-inclusions .product-name { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            font-weight: 500; 
+            font-size: 16px;
+        }
+        .bundle-inclusions .checkmark { 
+            color: var(--accent-color); /* Use accent color for checkmark */
+            font-size: 1.2em;
+        }
+        .bundle-inclusions .product-actions .action-link { 
+            color: #ffffff; 
+            text-decoration: none; 
+            font-weight: 600; 
+            font-size: 14px; 
+            opacity: 0.8; 
+            transition: opacity 0.2s ease; 
+        }
+        .bundle-inclusions .product-actions .action-link:hover { 
+            opacity: 1; 
+        }
+        .bundle-inclusions .product-actions .action-divider { 
+            opacity: 0.5; 
+            margin: 0 8px; /* More space */
+        }
+        .bundle-purchase { 
+            text-align: right; 
+        }
+        .bundle-price { 
+            margin-bottom: 20px; 
+        }
+        .bundle-price .price { 
+            font-size: 44px; /* Larger price */
+            font-weight: 700; 
+        }
+        .bundle-price .term { 
+            font-size: 16px; /* Larger term */
+            opacity: 0.7; 
+            display: block; 
+        }
+        .bundle-cta .cta-button { 
+            display: inline-block; 
+            background-color: #ffffff; 
+            color: var(--brand-header); 
+            text-decoration: none; 
+            padding: 16px 40px; /* More padding */
+            border-radius: 10px; /* More rounded */
+            font-weight: 700; 
+            font-size: 18px;
+            transition: all 0.3s ease; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .bundle-cta .cta-button:hover { 
+            background-color: var(--brand-light-gray); 
+            transform: translateY(-2px); 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
 
         /* Modal Styles */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 2000; display: none; justify-content: center; align-items: center; }
-        .modal-container { background: #fff; padding: 30px; border-radius: 12px; width: 90%; max-width: 700px; max-height: 90vh; overflow-y: auto; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-        .modal-close-btn { position: absolute; top: 15px; right: 15px; background: transparent; border: none; font-size: 28px; color: #718096; cursor: pointer; line-height: 1; }
-        .modal-title { font-size: 26px; color: var(--brand-heading); margin-top: 0; margin-bottom: 15px; }
-        .modal-body p { margin-bottom: 20px; }
-        .modal-body ul { padding-left: 20px; margin-bottom: 20px;}
-        .modal-body .cta-button { display: inline-block; width: auto; padding: 12px 30px; margin-top: 15px; margin-right: 10px; border-radius: 8px; font-weight: 600; color: #fff; text-decoration: none; }
-        .modal-body .cta-button.cta-primary { background-color: var(--brand-wijmo); }
-        .modal-body .cta-button.cta-secondary { background-color: #80B1A0; }
-        .modal-body .cta-button:hover { filter: brightness(90%); }
+        .modal-overlay { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: rgba(0, 0, 0, 0.6); 
+            z-index: 2000; 
+            display: none; 
+            justify-content: center; 
+            align-items: center; 
+        }
+        .modal-container { 
+            background: #fff; 
+            padding: 40px; /* More padding */
+            border-radius: 16px; /* Larger border-radius */
+            width: 90%; 
+            max-width: 700px; 
+            max-height: 90vh; 
+            overflow-y: auto; 
+            position: relative; 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3); /* Stronger shadow */
+        }
+        .modal-close-btn { 
+            position: absolute; 
+            top: 15px; 
+            right: 15px; 
+            background: transparent; 
+            border: none; 
+            font-size: 32px; /* Larger close button */
+            color: #718096; 
+            cursor: pointer; 
+            line-height: 1; 
+        }
+        .modal-title { 
+            font-size: 30px; /* Larger title */
+            color: var(--brand-heading); 
+            margin-top: 0; 
+            margin-bottom: 20px; 
+        }
+        .modal-body p { 
+            margin-bottom: 20px; 
+            line-height: 1.7;
+        }
+        .modal-body ul { 
+            padding-left: 20px; 
+            margin-bottom: 20px;
+            list-style: disc;
+        }
+        .modal-body li {
+            margin-bottom: 8px;
+        }
+        .modal-body .cta-button { 
+            display: inline-block; 
+            width: auto; 
+            padding: 15px 30px; /* Larger padding */
+            margin-top: 20px; 
+            margin-right: 15px; 
+            border-radius: 8px; 
+            font-weight: 600; 
+            color: #fff; 
+            text-decoration: none; 
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .modal-body .cta-button.cta-primary { 
+            background-color: var(--accent-color); 
+        }
+        .modal-body .cta-button.cta-secondary { 
+            background-color: var(--color-neutral-dark); /* Using neutral dark for secondary */
+        }
+        .modal-body .cta-button:hover { 
+            filter: brightness(110%); 
+            transform: translateY(-1px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+        }
         
-        /* Footer Styles from the previous page, adapted for this one */
+        /* Footer Styles (DO NOT CHANGE) */
         .footer {
             background-color: var(--brand-header);
             color: #cccccc;
             padding: 50px 0;
             margin-top: 50px;
             font-size: 14px;
-            text-align: left; /* Changed from center to left */
+            text-align: left;
         }
         .footer-content {
             display: flex;
@@ -158,7 +641,7 @@
             align-items: center;
             width: 36px;
             height: 36px;
-            background-color: #5a626a; /* Darker gray for icons */
+            background-color: #5a626a;
             border-radius: 8px;
             color: #ffffff;
             font-size: 18px;
@@ -167,14 +650,14 @@
         }
         .social-icon:hover {
             background-color: #ffffff;
-            color: var(--brand-header); /* Icon color becomes header color on hover */
+            color: var(--brand-header);
         }
         .news-signup-text {
             line-height: 1.6;
             margin-bottom: 20px;
         }
         .join-now-btn {
-            background-color: #a0a0a0; /* Light gray from screenshot */
+            background-color: #a0a0a0;
             color: var(--brand-header);
             padding: 12px 25px;
             border: none;
@@ -200,7 +683,7 @@
             color: #a0a0a0;
         }
 
-        /* Responsive adjustments for footer */
+        /* Responsive adjustments for footer (DO NOT CHANGE) */
         @media (max-width: 768px) {
             .footer-content {
                 flex-direction: column;
@@ -221,24 +704,50 @@
             .copyright-section {
                 text-align: center;
             }
+
+            /* Blueprint page specific adjustments for 768px */
+            .case-study-title { font-size: 38px; }
+            .case-study-subtitle { font-size: 18px; }
+            .profile-item h4 { font-size: 16px; }
+            .profile-item p { font-size: 15px; }
+            .results-heading h4 { font-size: 20px; }
+            .metric-value { font-size: 34px; }
+            .main-story h2 { font-size: 26px; }
+            .main-story { padding: 30px; font-size: 16px; }
+            .implementation-summary h3 { font-size: 18px; }
+            .bundle-card { grid-template-columns: 1fr; }
+            .bundle-purchase { text-align: center; }
+            .bundle-cta .cta-button { width: 100%; max-width: 300px; }
+            .modal-container { padding: 30px; }
+            .modal-title { font-size: 28px; }
         }
         @media (max-width: 480px) {
-            .hero-title { font-size: 32px; }
-            .hero-subtitle { font-size: 16px; }
-            .section-title { font-size: 28px; }
+            .case-study-title { font-size: 32px; }
+            .case-study-subtitle { font-size: 16px; }
+            .profile-cta .cta-button { font-size: 16px; padding: 12px 25px; }
+            .main-story h2 { font-size: 24px; }
+            .main-story { padding: 20px; font-size: 15px; }
+            .bundle-header h2 { font-size: 28px; }
+            .bundle-price .price { font-size: 38px; }
+            .modal-title { font-size: 24px; }
+            .modal-body .cta-button { font-size: 14px; padding: 10px 20px; margin-right: 10px; margin-top: 15px;}
         }
     </style>
 </head>
 <body>
     <header class="header">
         <div class="container header-content">
-            <a href="../index.html"><img src="https://cdn.mescius.io/umb/media/pujnxfci/mescuis-logo-horiz.svg" alt="Mescius Europe Logo" class="logo"></a>
-            <nav class="main-nav">
+            <a href="../index.html" aria-label="Mescius Europe Home" class="logo-link"><img src="https://cdn.mescius.io/umb/media/pujnxfci/mescuis-logo-horiz.svg" alt="Mescius Europe Logo" class="logo"></a>
+            <nav class="main-nav" id="main-nav">
                 <a href="../index.html#case-studies" class="nav-link active">Solutions</a>
                 <a href="../pricing/index.html" class="nav-link">Pricing</a>
                 <a href="../bundles/index.html" class="nav-link">Bundles</a>
             </nav>
-            <div class="nav-toggle" id="nav-toggle"><span></span></div>
+            <div class="menu-toggle" id="menu-toggle" aria-controls="main-nav" aria-expanded="false" role="button" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </header>
     <main>
@@ -347,7 +856,7 @@
 
     <div id="product-info-modal" class="modal-overlay">
         <div class="modal-container">
-            <button id="modal-close" class="modal-close-btn">&times;</button>
+            <button id="modal-close" class="modal-close-btn">×</button>
             <div id="modal-body-content" class="modal-body">
                 </div>
         </div>
@@ -355,7 +864,6 @@
     
     <footer class="footer">
         <div class="container footer-content">
-            <!-- First Column: Logo, Copyright, Phone, Trademarks -->
             <div class="footer-col footer-col-left">
                 <img src="https://cdn.mescius.io/umb/media/pujnxfci/mescuis-logo-horiz.svg" alt="Mescius Europe Logo" class="footer-logo">
                 <p class="footer-text">© 2025 Mescius Europe GmbH | All Rights Reserved</p>
@@ -363,7 +871,6 @@
                 <p class="footer-text">All product and company names herein may be trademarks of their respective owners.</p>
             </div>
 
-            <!-- Second Column: Company Links -->
             <div class="footer-col">
                 <h4 class="footer-heading">COMPANY</h4>
                 <ul class="footer-links">
@@ -375,7 +882,6 @@
                 </ul>
             </div>
 
-            <!-- Third Column: Follow Us -->
             <div class="footer-col">
                 <h4 class="footer-heading">FOLLOW US</h4>
                 <div class="social-icons">
@@ -387,7 +893,6 @@
                 </div>
             </div>
 
-            <!-- Fourth Column: Get the Latest News -->
             <div class="footer-col">
                 <h4 class="footer-heading">GET THE LATEST NEWS</h4>
                 <p class="news-signup-text">Stay up to date with blogs, eBooks, events, and whitepapers.</p>
@@ -398,6 +903,26 @@
     
     <script>
     document.addEventListener('DOMContentLoaded', () => {
+        // --- Mobile menu toggle functionality ---
+        const menuToggle = document.getElementById('menu-toggle');
+        const mainNav = document.getElementById('main-nav');
+        if (menuToggle && mainNav) {
+            menuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('is-open');
+                menuToggle.classList.toggle('is-active');
+                this.setAttribute('aria-expanded', mainNav.classList.contains('is-open'));
+            });
+
+            // Close menu when a navigation link is clicked (for smoother mobile experience)
+            mainNav.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mainNav.classList.remove('is-open');
+                    menuToggle.classList.remove('is-active');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                });
+            });
+        }
+
         // --- Expandable Card Logic ---
         const card = document.getElementById('expandable-card');
         const toggle = document.getElementById('card-toggle');
@@ -427,7 +952,7 @@
                 modalHTML += description; 
 
                 const trialLink = trigger.parentElement.querySelector('a[target="_blank"]').href;
-                const productLink = 'https://developer.mescius.com/wijmo';
+                const productLink = 'https://developer.mescius.com/wijmo'; // Static link for Wijmo product page
 
                 modalHTML += `<a href="${trialLink}" target="_blank" class="cta-button cta-primary">Download Trial</a>`;
                 modalHTML += `<a href="${productLink}" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>`;
