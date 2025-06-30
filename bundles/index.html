@@ -180,6 +180,7 @@
             padding: 100px 20px; 
             position: relative;
             overflow: hidden;
+            z-index: 1; /* Ensures content inside .hero is above its pseudo-element */
         }
         .hero::before { 
             content: '';
@@ -191,6 +192,7 @@
             background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%239C92AC" fill-opacity="0.03"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 20v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 46v-4H4v4H0v2h4v4h2v-4h4v-2H6zm0-20v-4H4v4H0v2h4v4h2v-4h4v-2H6zM42 0v4h2v-4h4V0h-4V-4h-2v4h4v2h-4zm0 20v4h2v-4h4V20h-4v-4h-2v4h4v2h-4zm12 7H46v-2h8v-4h2v4h4v2h-4v4h-2v-4zm0-20H46v-2h8v-4h2v4h4v2h-4v4h-2v-4zM24 2v4h-2V2h-4V0h4V-4h2v4h4v2h-4zm0 20v4h-2v-4h-4V20h4v-4h2v4h4v2h-4zm-6-2v2H2v-2h-4v-2h4v-4h2v4h4v2h-4zm0 20v2H2v-2h-4v-2h4v-4h2v4h4v2h-4zM22 36v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 20v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM36 0v4h-2V0h-4V-4h4V-8h2v4h4v2h-4zm0 20v4h-2v-4h-4V20h4v-4h2v4h4v2h-4zM0 34v-4H-4v4h-4v2h4v4h4v-4h4v-2H0zm0-20v-4H-4v4h-4v2h4v4h4v-4h4v-2H0zm54 0v-4H50v4h-4v2h4v4h4v-4h4v-2h-4zm0 20v-4H50v4h-4v2h4v4h4v-4h4v-2h-4zM42 36v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 20v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM24 42v4h-2v-4h-4v-2h4v-4h2v4h4v2h-4zm0 20v4h-2v-4h-4v-2h4v-4h2v4h4v2h-4zM60 6v4h-2V6h-4V4h4V0h2v4h4v2h-4zm0 20v4h-2v-4h-4V20h4v-4h2v4h4v2h-4zm-6 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-20v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM36 42v4h-2v-4h-4v-2h4v-4h2v4h4v2h-4zM0 6v4H-4V6h-4V4h4V0h2v4h4v2h-4z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
             background-size: 60px 60px;
             opacity: 0.03; 
+            pointer-events: none; /* ADDED THIS LINE */
         }
         .hero-title { 
             font-size: 48px; 
@@ -288,10 +290,10 @@
             box-shadow: 0 12px 30px var(--color-shadow-medium);
         }
         .pricing-card.highlight {
-            border-top: 6px solid var(--brand-net); /* Red highlight for Enterprise */
+            border-top: 6px solid var(--brand-net); 
         }
         .pricing-card.highlight-blue {
-            border-top: 6px solid var(--brand-ds); /* Blue-grey highlight for team bundles */
+            border-top: 6px solid var(--brand-ds); 
         }
 
         .pricing-card .card-subtitle {
@@ -338,10 +340,10 @@
 
         .total-price-subtle {
             display: block;
-            font-size: 15px; /* Slightly smaller for subtlety */
-            font-weight: 500; /* Less bold */
-            color: var(--color-text-subtle); /* More subtle color */
-            margin-top: 5px; /* Small margin from per dev price */
+            font-size: 15px; 
+            font-weight: 500; 
+            color: var(--color-text-subtle); 
+            margin-top: 5px; 
         }
         
         .savings-badge {
@@ -364,8 +366,7 @@
             font-size: 16px;
             line-height: 1.8;
             flex-grow: 1; 
-            /* NEW/ADJUSTED: Set a minimum height to ensure consistent vertical alignment for the total-value */
-            min-height: 200px; /* You may need to adjust this value based on the tallest list */
+            min-height: 200px; 
         }
         .inclusions-list li {
             display: flex;
@@ -393,38 +394,37 @@
             gap: 10px 1.5rem; 
             padding-top: 10px;
             min-height: 250px; 
-            /* NEW/MODIFIED for better visual separation and readability */
-            background-color: var(--color-neutral-light); /* Light background for the list area */
-            border-radius: 8px; /* Match card border-radius */
-            padding: 15px 20px; /* Add some padding around the entire grid */
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); /* Subtle inner shadow */
+            background-color: var(--color-neutral-light); 
+            border-radius: 8px; 
+            padding: 15px 20px; 
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); 
         }
         .inclusions-list.multi-column li {
-            display: flex; /* Changed from block to flex to align name and price */
-            justify-content: space-between; /* Push name to left, price to right */
-            align-items: baseline; /* Align text baselines */
-            border-bottom: 1px dashed rgba(0,0,0,0.1); /* Subtle separator for items */
-            padding: 8px 0; /* Add vertical padding for each item */
-            margin-bottom: 0; /* Remove previous margin-bottom */
+            display: flex; 
+            justify-content: space-between; 
+            align-items: baseline; 
+            border-bottom: 1px dashed rgba(0,0,0,0.1); 
+            padding: 8px 0; 
+            margin-bottom: 0; 
             font-size: 15px; 
-            line-height: 1.4; /* Improve line spacing */
+            line-height: 1.4; 
         }
         .inclusions-list.multi-column li:last-of-type {
-            border-bottom: none; /* No border for the last item in each column */
+            border-bottom: none; 
         }
         .inclusions-list.multi-column li span:first-child {
             font-weight: 500;
-            color: var(--brand-body); /* Ensure main text color */
+            color: var(--brand-body); 
             text-align: left; 
-            flex-grow: 1; /* Allow it to take up space */
-            padding-right: 10px; /* Space between name and price */
+            flex-grow: 1; 
+            padding-right: 10px; 
         }
         .inclusions-list.multi-column li span:last-child {
-            font-weight: 600; /* Make price slightly bolder */
-            color: var(--brand-heading); /* Make price stand out more */
+            font-weight: 600; 
+            color: var(--brand-heading); 
             font-size: 15px; 
             text-align: right; 
-            white-space: nowrap; /* Prevent price from wrapping */
+            white-space: nowrap; 
         }
 
 
@@ -437,7 +437,6 @@
             font-weight: 700;
             font-size: 17px;
             color: var(--brand-heading);
-            /* Ensure it visually separates from the list above */
             padding-bottom: 0; 
             margin-bottom: 0;
         }
@@ -550,7 +549,7 @@
             display: none; 
         }
         .multi-year-options label {
-            padding: 8px 18px; /* Adjusted horizontal padding to 18px */
+            padding: 8px 18px; 
             border: 1px solid var(--color-border-light);
             border-radius: 20px;
             cursor: pointer;
@@ -1134,7 +1133,7 @@
             <div class="footer-col footer-col-left">
                 <img src="https://cdn.mescius.io/umb/media/pujnxfci/mescuis-logo-horiz.svg" alt="Mescius Europe Logo" class="footer-logo">
                 <p class="footer-text">© 2025 Mescius Europe GmbH | All Rights Reserved</p>
-                <p class="footer-text">1.800.858.2739</p>
+                <p class="footer-text">+49 211 87975544</p>
                 <p class="footer-text">All product and company names herein may be trademarks of their respective owners.</p>
             </div>
 
@@ -1366,6 +1365,23 @@
             });
         }
 
+        // --- ADDED: Smooth scroll for hero CTA button ---
+        const heroCtaButton = document.querySelector('.hero-cta-button');
+        if (heroCtaButton) {
+            heroCtaButton.addEventListener('click', function(e) {
+                e.preventDefault(); // Prevent the default jump
+                const targetId = this.getAttribute('href'); // Get the href value, which is '#popular-bundles-section'
+                const targetElement = document.querySelector(targetId); // Select the target element by its ID
+
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth' // This makes the scroll smooth
+                    });
+                }
+            });
+        }
+        // --- END ADDED CODE ---
+
         // --- Discount Calculator Logic ---
         const discountCards = document.querySelectorAll('.pricing-card[data-base-price]');
 
@@ -1467,24 +1483,24 @@
 
                 if (isUserInteraction && (volumeDiscountChanged || yearsChanged || quantityCrossedThreshold)) {
                     priceEl.classList.add('price-updated');
-                    totalActualCostEl.classList.add('price-updated'); // Apply flash to new total cost
-                    totalPriceSubtleEl.classList.add('price-updated'); // Apply flash to subtle total (total for years)
-                    totalListValueElement.classList.add('price-updated'); // Apply flash to the total list value
+                    totalActualCostEl.classList.add('price-updated'); 
+                    totalPriceSubtleEl.classList.add('price-updated'); 
+                    totalListValueElement.classList.add('price-updated');
                     if (savingsEl) savingsEl.classList.add('savings-updated');
 
                     setTimeout(() => {
                         priceEl.classList.remove('price-updated');
-                        totalActualCostEl.classList.remove('price-updated'); // Remove flash
-                        totalPriceSubtleEl.classList.remove('price-updated'); // Remove flash
+                        totalActualCostEl.classList.remove('price-updated'); 
+                        totalPriceSubtleEl.classList.remove('price-updated'); 
                         totalListValueElement.classList.remove('price-updated');
                         if (savingsEl) savingsEl.classList.remove('savings-updated');
-                    }, 600); // Match animation duration
+                    }, 600); 
                 }
                 
                 // Update previous states for next comparison
                 previousVolumeDiscountPercentage = currentVolumeDiscountPercentage;
                 previousYearsSelected = years;
-                previousQuantity = quantity; // Update previous quantity
+                previousQuantity = quantity; 
 
 
                 // Determine CTA button behavior
@@ -1495,7 +1511,6 @@
                     const subject = encodeURIComponent(`Inquiry for ${years}-Year Subscription, ${quantity} Licenses: ${card.querySelector('.card-title').textContent.trim()} (Product ID: ${productId})`);
                     ctaButton.href = `mailto:sales.eu@mescius.com?subject=${subject}`;
                     ctaButton.classList.add('contact-sales');
-                    // Remove other highlight classes if present from 'Buy Now' state
                     ctaButton.classList.remove('highlight-btn', 'highlight-btn-blue'); 
                 } else { // years === 1
                     ctaButton.textContent = 'Buy Now';
@@ -1503,17 +1518,16 @@
                     const cartString = `cart=i${productId}`;
                     const quantityString = `quantity_i${productId}=${quantity}`;
                     ctaButton.href = `${baseURL}?${cartString}&${quantityString}`;
-                    ctaButton.classList.remove('contact-sales'); // Ensure contact-sales is removed
+                    ctaButton.classList.remove('contact-sales'); 
 
                     // Re-apply specific highlight based on the card itself for 'Buy Now' state
                     if (card.classList.contains('highlight')) {
                         ctaButton.classList.add('highlight-btn');
-                        ctaButton.classList.remove('highlight-btn-blue'); // Ensure exclusivity
+                        ctaButton.classList.remove('highlight-btn-blue'); 
                     } else if (card.classList.contains('highlight-blue')) {
                         ctaButton.classList.add('highlight-btn-blue');
-                        ctaButton.classList.remove('highlight-btn'); // Ensure exclusivity
+                        ctaButton.classList.remove('highlight-btn'); 
                     } else {
-                        // For cards that don't have special highlights when buying now
                         ctaButton.classList.remove('highlight-btn', 'highlight-btn-blue');
                     }
                 }
@@ -1538,13 +1552,13 @@
             // Apply specific highlight class based on the card itself
             if (card.classList.contains('highlight')) {
                 button.classList.add('highlight-btn'); 
-                button.classList.remove('contact-sales', 'highlight-btn-blue'); // Ensure exclusivity
+                button.classList.remove('contact-sales', 'highlight-btn-blue'); 
             } else if (card.classList.contains('highlight-blue')) {
                 button.classList.add('highlight-btn-blue'); 
-                button.classList.remove('contact-sales', 'highlight-btn'); // Ensure exclusivity
+                button.classList.remove('contact-sales', 'highlight-btn'); 
             } else {
-                button.classList.add('contact-sales'); // Default orange for other contact buttons
-                button.classList.remove('highlight-btn', 'highlight-btn-blue'); // Ensure exclusivity
+                button.classList.add('contact-sales'); 
+                button.classList.remove('highlight-btn', 'highlight-btn-blue'); 
             }
         });
     });

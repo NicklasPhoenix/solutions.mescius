@@ -168,6 +168,8 @@
             padding: 100px 20px; 
             position: relative;
             overflow: hidden;
+            /* Ensure hero content is above the pseudo-element if z-index is used */
+            z-index: 1; /* Added to ensure content is above pseudo-element */
         }
         .hero::before { /* Subtle background pattern/texture */
             content: '';
@@ -179,6 +181,7 @@
             background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%239C92AC" fill-opacity="0.03"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 20v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 46v-4H4v4H0v2h4v4h2v-4h4v-2H6zm0-20v-4H4v4H0v2h4v4h2v-4h4v-2H6zM42 0v4h2v-4h4V0h-4V-4h-2v4h-4v2h4zm0 20v4h2v-4h4V20h-4v-4h-2v4h4v2h-4zm12 7H46v-2h8v-4h2v4h4v2h-4v4h-2v-4zm0-20H46v-2h8v-4h2v4h4v2h-4v4h-2v-4zM24 2v4h-2V2h-4V0h4V-4h2v4h4v2h-4zm0 20v4h-2v-4h-4V20h4v-4h2v4h4v2h-4zm-6-2v2H2v-2h-4v-2h4v-4h2v4h4v2h-4zm0 20v2H2v-2h-4v-2h4v-4h2v4h4v2h-4zM22 36v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 20v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM36 0v4h-2V0h-4V-4h4V-8h2v4h4v2h-4zm0 20v4h-2v-4h-4V20h4v-4h2v4h4v2h-4zM0 34v-4H-4v4h-4v2h4v4h4v-4h4v-2H0zm0-20v-4H-4v4h-4v2h4v4h4v-4h4v-2H0zm54 0v-4H50v4h-4v2h4v4h4v-4h4v-2h-4zm0 20v-4H50v4h-4v2h4v4h4v-4h4v-2h-4zM42 36v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 20v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM24 42v4h-2v-4h-4v-2h4v-4h2v4h4v2h-4zm0 20v4h-2v-4h-4v-2h4v-4h2v4h4v2h-4zM60 6v4h-2V6h-4V4h4V0h2v4h4v2h-4zm0 20v4h-2v-4h-4V20h4v-4h2v4h4v2h-4zm-6 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-20v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM36 42v4h-2v-4h-4v-2h4v-4h2v4h4v2h-4zM0 6v4H-4V6h-4V4h4V0h2v4h4v2h-4z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
             background-size: 60px 60px;
             opacity: 0.03; /* Reduced opacity for subtlety */
+            pointer-events: none; /* ADDED THIS LINE */
         }
         .hero-title { 
             font-size: 48px; 
@@ -832,7 +835,7 @@
             <div class="footer-col footer-col-left">
                 <img src="https://cdn.mescius.io/umb/media/pujnxfci/mescuis-logo-horiz.svg" alt="Mescius Europe Logo" class="footer-logo">
                 <p class="footer-text">© 2025 Mescius Europe GmbH | All Rights Reserved</p>
-                <p class="footer-text">1.800.858.2739</p>
+                <p class="footer-text">+49 211 87975544</p>
                 <p class="footer-text">All product and company names herein may be trademarks of their respective owners.</p>
             </div>
 
@@ -876,6 +879,23 @@
             const mainNav = document.getElementById('main-nav');
             const appliedFiltersContainer = document.getElementById('applied-filters-container');
 
+            // --- ADDED: Smooth scroll for hero CTA button ---
+            const heroCtaButton = document.querySelector('.hero-cta-button');
+            if (heroCtaButton) {
+                heroCtaButton.addEventListener('click', function(e) {
+                    e.preventDefault(); // Prevent the default jump
+                    const targetId = this.getAttribute('href'); // Get the href value, which is '#case-studies'
+                    const targetElement = document.querySelector(targetId); // Select the target element by its ID
+
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth' // This makes the scroll smooth
+                        });
+                    }
+                });
+            }
+            // --- END ADDED CODE ---
+
             const currentFilters = {
                 industry: 'all',
                 product: 'all'
@@ -914,7 +934,7 @@
                         chip.setAttribute('data-filter-type', type);
                         chip.setAttribute('data-filter-value', value);
                         chip.innerHTML = `<span class="filter-chip-text">${filterLabels[value] || value}</span>
-                                          <button class="filter-chip-remove" aria-label="Remove filter ${filterLabels[value] || value}">&times;</button>`;
+                                          <button class="filter-chip-remove" aria-label="Remove filter ${filterLabels[value] || value}">×</button>`;
                         
                         appliedFiltersContainer.appendChild(chip);
 
@@ -934,7 +954,7 @@
                     const clearAllChip = document.createElement('button');
                     clearAllChip.classList.add('filter-chip', 'clear-all-chip');
                     clearAllChip.innerHTML = `<span class="filter-chip-text">Clear All Filters</span>
-                                              <span class="filter-chip-remove" aria-label="Clear all filters">&times;</span>`;
+                                              <span class="filter-chip-remove" aria-label="Clear all filters">×</span>`;
                     clearAllChip.addEventListener('click', clearAllFilters);
                     appliedFiltersContainer.appendChild(clearAllChip);
                 }
