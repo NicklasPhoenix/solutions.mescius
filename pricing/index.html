@@ -552,13 +552,76 @@
             margin-bottom: 0;
             white-space: nowrap;
         }
-
         .renewal-form .cta-button { width: auto; padding: 12px 30px; }
         .renewal-form .form-feedback { margin-top: 15px; font-weight: 500; font-size: 14px; }
         .renewal-type-options { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 10px; }
         .renewal-type-options div { display: flex; align-items: center; gap: 8px; }
         .renewal-type-options input[type="radio"] { width: 16px; height: 16px; accent-color: var(--accent-color); }
         .renewal-type-options label { margin-bottom: 0; font-weight: normal; }
+
+        /* Perpetual License Support Info */
+        .support-info-block {
+            background-color: var(--color-neutral-light);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 30px;
+            border: 1px solid var(--color-border-light);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            box-shadow: 0 4px 15px var(--color-shadow-subtle);
+        }
+        .support-info-block h4 {
+            color: var(--brand-heading);
+            font-size: 20px;
+            margin: 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--color-border-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .support-info-block h4 .icon {
+            color: var(--accent-color); /* Uses product's accent color */
+            font-size: 24px;
+        }
+        .support-info-block p {
+            margin: 0;
+            font-size: 15px;
+            color: var(--brand-body);
+        }
+        .support-info-block ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+        .support-info-block li {
+            margin-bottom: 8px;
+            padding-left: 25px;
+            position: relative;
+            font-size: 15px;
+            color: var(--brand-body);
+        }
+        .support-info-block li::before {
+            content: '•'; /* Bullet point */
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 1;
+            top: 2px;
+        }
+        .support-info-block a.cta-button {
+            margin-top: 15px;
+            width: fit-content;
+            align-self: flex-start;
+            background-color: var(--brand-heading); /* Neutral dark for generic info CTA */
+        }
+        .support-info-block a.cta-button:hover {
+            background-color: var(--brand-body); /* Slightly lighter on hover */
+        }
+
 
         /* Floating Cart Container */
         .floating-cart {
@@ -985,7 +1048,7 @@
                                         <li>Includes Unlimited distributions</li>
                                         <li>Annual subscription</li>
                                     </ul>
-                                    <a href="#contact-sales" class="cta-button">Contact Sales</a>
+                                    <a href="mailto:eu.sales@mescius.com" class="cta-button">Contact Sales</a>
                                 </div>
                             </div>
                         </section>
@@ -1047,7 +1110,7 @@
                                     <h4 id="sjs-perp-hostname-title">Perpetual Hostname</h4>
                                     <div class="price">Contact Us</div><p class="price-term">Internal & Free Apps</p>
                                     <ul><li>One-Time Licensing Fee</li></ul>
-                                    <a href="#contact-sales" class="cta-button">Contact Sales</a>
+                                    <a href="mailto:eu.sales@mescius.com" class="cta-button">Contact Sales</a>
                                 </div>
                                 <div class="price-card" aria-labelledby="sjs-limited-perp-title">
                                     <h4 id="sjs-limited-perp-title">Limited Perpetual Deployment</h4>
@@ -1056,7 +1119,7 @@
                                         <li>One-Time Fee</li>
                                         <li>Single Domain or 5 Hostnames</li>
                                     </ul>
-                                    <a href="#contact-sales" class="cta-button">Contact Sales</a>
+                                    <a href="mailto:eu.sales@mescius.com" class="cta-button">Contact Sales</a>
                                 </div>
                                 <div class="price-card" aria-labelledby="sjs-unlimited-perp-title">
                                     <h4 id="sjs-unlimited-perp-title">Unlimited Perpetual Deployment</h4>
@@ -1065,8 +1128,17 @@
                                         <li>One-Time Fee</li>
                                         <li>Unlimited distributions</li>
                                     </ul>
-                                    <a href="#contact-sales" class="cta-button">Contact Sales</a>
+                                    <a href="mailto:eu.sales@mescius.com" class="cta-button">Contact Sales</a>
                                 </div>
+                            </div>
+                            <div class="support-info-block" style="--accent-color: var(--brand-spread);">
+                                <h4><i class="fas fa-tools icon"></i> Enhance Your Perpetual License</h4>
+                                <p>While perpetual licenses provide indefinite use of the version purchased, staying up-to-date and securing expert assistance is crucial for long-term success.</p>
+                                <ul>
+                                    <li><strong>Maintenance Add-on:</strong> Includes all major and minor updates for a year, along with priority technical support. Essential for keeping your applications current and secure.</li>
+                                    <li><strong>Mission Critical Support:</strong> For the most demanding environments, this premium support tier offers faster response times, dedicated resources, and direct access to senior engineers for urgent issues.</li>
+                                </ul>
+                                <a href="https://www.mescius.eu/en/support-plans" target="_blank" class="cta-button">Explore Support Options</a>
                             </div>
                         </section>
                     </div>
@@ -1226,6 +1298,20 @@
                                     <ul><li>Unlimited hostnames on *.domain</li></ul>
                                     <button class="add-to-cart-btn" data-product-id="62783" data-product-name="ARJS Single Domain" data-price="3715">Add to Cart</button>
                                 </div>
+                                <div class="price-card" aria-labelledby="arjs-unlimited-domain-title">
+                                    <h4 id="arjs-unlimited-domain-title">Unlimited Domain License</h4>
+                                    <p class="price-term">Annual - Commercial & SaaS Apps</p>
+                                    <ul>
+                                        <li>1 Product Key</li>
+                                        <li>1 Designer Key</li>
+                                        <li>Deployment Key(s): Unlimited</li>
+                                        <li>Unlimited support phone calls</li>
+                                        <li>Major and minor releases</li>
+                                        <li>Screensharing support</li>
+                                    </ul>
+                                    
+                                    <a href="mailto:eu.sales@mescius.com" class="cta-button">Contact Sales</a>
+                                </div>
                             </div>
                         </section>
                         <section class="tab-pane" id="arjs-perp-pane" role="tabpanel" hidden>
@@ -1235,14 +1321,23 @@
                                     <h4 id="arjs-single-perp-title">Single Deployment</h4>
                                     <div class="price">Contact Us</div><p class="price-term">Perpetual - Internal & Free Apps</p>
                                     <ul><li>One-Time Fee</li><li>Deploy licensed version forever</li></ul>
-                                    <a href="#contact-sales" class="cta-button">Contact Sales</a>
+                                    <a href="mailto:eu.sales@mescius.com" class="cta-button">Contact Sales</a>
                                 </div>
                                 <div class="price-card" aria-labelledby="arjs-domain-perp-title">
                                     <h4 id="arjs-domain-perp-title">Single / Unlimited Domain</h4>
                                     <div class="price">Contact Us</div><p class="price-term">Perpetual - Paid & SaaS Apps</p>
                                     <ul><li>One-Time Fee</li><li>Deploy licensed version forever</li></ul>
-                                    <a href="#contact-sales" class="cta-button">Contact Sales</a>
+                                    <a href="mailto:eu.sales@mescius.com" class="cta-button">Contact Sales</a>
                                 </div>
+                            </div>
+                            <div class="support-info-block" style="--accent-color: var(--brand-ar);">
+                                <h4><i class="fas fa-tools icon"></i> Enhance Your Perpetual License</h4>
+                                <p>While perpetual licenses provide indefinite use of the version purchased, staying up-to-date and securing expert assistance is crucial for long-term success.</p>
+                                <ul>
+                                    <li><strong>Maintenance Add-on:</strong> Includes all major and minor updates for a year, along with priority technical support. Essential for keeping your applications current and secure.</li>
+                                    <li><strong>Mission Critical Support:</strong> For the most demanding environments, this premium support tier offers faster response times, dedicated resources, and direct access to senior engineers for urgent issues.</li>
+                                </ul>
+                                <a href="https://www.mescius.eu/en/support-plans" target="_blank" class="cta-button">Explore Support Options</a>
                             </div>
                         </section>
                     </div>
@@ -1646,6 +1741,20 @@
             "availability": "https://schema.org/InStock",
             "url": "https://checkout.mescius.eu/1878/purl-shop?cart=i62879"
           }
+        },
+        {
+          "@type": "Product",
+          "name": "ActiveReportsJS Unlimited Domain License",
+          "description": "Integrate fast, feature-rich reporting into your client-side web applications with ActiveReportsJS, including unlimited domain deployment for commercial and SaaS use.",
+          "sku": "NEW_ARJS_UNLIMITED_SKU",
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "EUR",
+            "price": "Contact Us",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "url": "https://www.mescius.eu/en/pricingmailto:eu.sales@mescius.com"
+          }
         }
       ]
     }
@@ -1788,7 +1897,9 @@
             };
 
             const generateCleverbridgeRenewalLink = (productId, quantity, oldKeys) => {
+                // Base URL for Cleverbridge renewal process. Confirm this with Cleverbridge support if needed.
                 const baseURL = 'https://checkout.mescius.eu/1878/purl-shop'; 
+                // The x-oldkeys parameter expects a comma-separated list of keys.
                 return `${baseURL}?cart=i${productId}&quantity_i${productId}=${quantity}&x-oldkeys_i${productId}=${encodeURIComponent(oldKeys)}`;
             };
             
