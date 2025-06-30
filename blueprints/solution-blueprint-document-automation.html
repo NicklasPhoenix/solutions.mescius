@@ -89,7 +89,17 @@
         .modal-title { font-size: 26px; color: var(--brand-heading); margin-top: 0; margin-bottom: 15px; }
         .modal-body p { margin-bottom: 20px; }
         .modal-body ul { padding-left: 20px; margin-bottom: 20px;}
-        .modal-body .cta-button { display: inline-block; width: auto; padding: 12px 30px; margin-top: 15px; margin-right: 10px; border-radius: 8px; font-weight: 600; color: #fff; text-decoration: none; }
+        .modal-body .cta-button { 
+            display: inline-block; 
+            width: auto; 
+            padding: 12px 30px; 
+            margin-top: 15px; 
+            margin-right: 10px; 
+            border-radius: 8px; 
+            font-weight: 600; 
+            color: #fff; 
+            text-decoration: none; 
+        }
         .modal-body .cta-button.cta-primary { background-color: var(--brand-ds); }
         .modal-body .cta-button.cta-secondary { background-color: #80B1A0; }
         .modal-body .cta-button:hover { filter: brightness(90%); }
@@ -101,7 +111,7 @@
             padding: 50px 0;
             margin-top: 50px;
             font-size: 14px;
-            text-align: left; /* Changed from center to left */
+            text-align: left; 
         }
         .footer-content {
             display: flex;
@@ -159,7 +169,7 @@
             align-items: center;
             width: 36px;
             height: 36px;
-            background-color: #5a626a; /* Darker gray for icons */
+            background-color: #5a626a; 
             border-radius: 8px;
             color: #ffffff;
             font-size: 18px;
@@ -168,14 +178,14 @@
         }
         .social-icon:hover {
             background-color: #ffffff;
-            color: var(--brand-header); /* Icon color becomes header color on hover */
+            color: var(--brand-header); 
         }
         .news-signup-text {
             line-height: 1.6;
             margin-bottom: 20px;
         }
         .join-now-btn {
-            background-color: #a0a0a0; /* Light gray from screenshot */
+            background-color: #a0a0a0; 
             color: var(--brand-header);
             padding: 12px 25px;
             border: none;
@@ -202,27 +212,6 @@
         }
 
         /* Responsive adjustments for footer */
-        @media (max-width: 768px) {
-            .footer-content {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-            .footer-col {
-                min-width: unset;
-                width: 100%;
-            }
-            .footer-col-left {
-                min-width: unset;
-                width: 100%;
-            }
-            .social-icons {
-                justify-content: center;
-            }
-            .copyright-section {
-                text-align: center;
-            }
-        }
         @media (max-width: 992px) { .bundle-card { grid-template-columns: 1fr; } .bundle-purchase, .bundle-price { text-align: center; } }
         @media (max-width: 768px) { .case-study-title { font-size: 32px; } }
         @media (max-width: 480px) {
@@ -244,6 +233,8 @@
             </nav>
             <div class="nav-toggle" id="nav-toggle">
                 <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
     </header>
@@ -252,7 +243,7 @@
         <section class="case-study-header">
             <p class="case-study-tag">Insurance & Financial Services</p>
             <h1 class="case-study-title">Blueprint: Automate Secure Document Generation</h1>
-            <p class="case-study-subtitle">A guide to replacing manual, error-prone workflows with a high-performance .NET Document API to eliminate errors and ensure compliance.</p>
+            <p class="case-study-subtitle">A guide to replacing manual, error-prone workflows with a high-performance .NET Document API to eliminate errors, ensure compliance, and reduce operational costs.</p>
         </section>
 
         <div class="container">
@@ -345,8 +336,7 @@
                             <h2>Automated Reporting & Document Generation</h2>
                         </div>
                         <ul class="bundle-inclusions">
-                            <li>
-                                <div class="product-name">
+                            <li data-product-page="https://developer.mescius.com/document-solutions"> <div class="product-name">
                                     <span class="checkmark">✓</span>
                                     Document Solutions for .NET
                                 </div>
@@ -356,12 +346,11 @@
                                     <a href="#" class="action-link product-info-trigger"
                                        data-title="Document Solutions for .NET"
                                        data-description='<strong>Supercharge your document processing</strong> with Document Solutions, a suite of <strong>high-speed, dependency-free APIs</strong> for .NET and Java.<p>Key features allow you to:</p><ul><li>Programmatically create, load, and save <strong>Excel, PDF, & Word</strong> documents.</li><li>Deploy on any server (<strong>Windows, Linux, & macOS</strong>) with zero server-side dependencies on MS Office or Acrobat.</li><li>Automate common tasks like <strong>generating invoices and creating reports from templates.</strong></li></ul>'>
-                                            Info
+                                        Info
                                     </a>
                                 </div>
                             </li>
-                            <li>
-                                <div class="product-name">
+                            <li data-product-page="https://developer.mescius.com/activereportsnet"> <div class="product-name">
                                     <span class="checkmark">✓</span>
                                     ActiveReports.NET
                                 </div>
@@ -371,14 +360,14 @@
                                     <a href="#" class="action-link product-info-trigger"
                                        data-title="ActiveReports.NET"
                                        data-description="<strong>Add powerful, interactive reporting</strong> to your <strong>WinForms, WPF, and ASP.NET</strong> applications with ActiveReports.NET.<p>This complete .NET reporting toolkit <strong>seamlessly integrates with Visual Studio</strong>, allowing developers to create everything from simple to complex reports.</p><p>Key capabilities include:</p><ul><li>Embeddable end-user report designers.</li><li>Extensive data-binding to any .NET data source.</li><li>Support for multiple report types, including <strong>RDL and Page reports</strong>.</li><li>Rich data visualization and export to popular formats like <strong>PDF, Excel, and Word</strong>.</li></ul>">
-                                            Info
+                                        Info
                                     </a>
                                 </div>
                             </li>
                         </ul>
                     </div>
                     <div class="bundle-purchase">
-                           <div class="bundle-price">
+                            <div class="bundle-price">
                                 <span class="price">€1,665</span>
                                 <span class="term">per developer / year</span>
                             </div>
@@ -393,7 +382,7 @@
 
     <div id="product-info-modal" class="modal-overlay">
         <div class="modal-container">
-            <button id="modal-close" class="modal-close-btn">&times;</button>
+            <button id="modal-close" class="modal-close-btn">×</button>
             <div id="modal-body-content" class="modal-body">
                 </div>
         </div>
@@ -464,15 +453,15 @@
             const openModal = (trigger) => {
                 const title = trigger.dataset.title || 'Product Details';
                 const description = trigger.dataset.description || 'No description available.';
-                
+                const trialLink = trigger.parentElement.querySelector('a[target="_blank"]').href;
+                // Get the specific product page link from the data-product-page attribute of the parent li
+                const productLink = trigger.closest('li').dataset.productPage || 'https://developer.mescius.com/'; // Fallback to generic
+
                 let modalHTML = `<h2 class="modal-title">${title}</h2>`;
                 modalHTML += description; 
 
-                const trialLink = trigger.parentElement.querySelector('a[target="_blank"]').href;
-                const productLink = 'https://developer.mescius.com/'; // Generic fallback
-
                 modalHTML += `<a href="${trialLink}" target="_blank" class="cta-button cta-primary">Download Trial</a>`;
-                modalHTML += `<a href="${productLink}" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>`;
+                modalHTML += `<a href="${productLink}" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>`; // Use specific productLink
 
                 modalBody.innerHTML = modalHTML;
                 modalOverlay.style.display = 'flex';

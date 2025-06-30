@@ -8,7 +8,6 @@
     <meta name="keywords" content="blazor hybrid, .net maui, cross-platform development, wpf modernization, unify desktop and web, componentone, activereperts.net blazor, fintech software, financial technology, mescius, roi">
     
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome for social icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
@@ -90,7 +89,17 @@
         .modal-title { font-size: 26px; color: var(--brand-heading); margin-top: 0; margin-bottom: 15px; }
         .modal-body p { margin-bottom: 20px; }
         .modal-body ul { padding-left: 20px; margin-bottom: 20px;}
-        .modal-body .cta-button { display: inline-block; width: auto; padding: 12px 30px; margin-top: 15px; margin-right: 10px; border-radius: 8px; font-weight: 600; color: #fff; text-decoration: none; }
+        .modal-body .cta-button { 
+            display: inline-block; 
+            width: auto; 
+            padding: 12px 30px; 
+            margin-top: 15px; /* Added margin-top */
+            margin-right: 10px; 
+            border-radius: 8px; 
+            font-weight: 600; 
+            color: #fff; 
+            text-decoration: none; 
+        }
         .modal-body .cta-button.cta-primary { background-color: var(--brand-net); }
         .modal-body .cta-button.cta-secondary { background-color: #80B1A0; }
         .modal-body .cta-button:hover { filter: brightness(90%); }
@@ -243,6 +252,8 @@
             </nav>
             <div class="nav-toggle" id="nav-toggle">
                 <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
     </header>
@@ -344,8 +355,7 @@
                             <h2>Blazor Hybrid Power Pack</h2>
                         </div>
                         <ul class="bundle-inclusions">
-                            <li>
-                                <div class="product-name">
+                            <li data-product-page="https://developer.mescius.com/componentone"> <div class="product-name">
                                     <span class="checkmark">✓</span>
                                     ComponentOne
                                 </div>
@@ -354,13 +364,12 @@
                                     <span class="action-divider">|</span>
                                     <a href="#" class="action-link product-info-trigger"
                                         data-title="ComponentOne"
-                                        data-description='<strong>The complete UI toolkit for .NET developers.</strong><br>ComponentOne provides the native controls (like MAUI and WinForms) that can host your Blazor Hybrid content and build out the native portions of your desktop application shell.'>
-                                            Info
+                                        data-description='<strong>The complete UI toolkit for .NET developers.</strong><br>ComponentOne provides the native controls (like MAUI and WinForms) that can host your Blazor Hybrid content and build out the native portions of your desktop application shell.<br>'>
+                                        Info
                                     </a>
                                 </div>
                             </li>
-                            <li>
-                                <div class="product-name">
+                            <li data-product-page="https://developer.mescius.com/wijmo"> <div class="product-name">
                                     <span class="checkmark">✓</span>
                                     Wijmo Enterprise
                                 </div>
@@ -370,12 +379,11 @@
                                     <a href="#" class="action-link product-info-trigger"
                                         data-title="Wijmo Enterprise"
                                         data-description="<strong>High-performance JavaScript UI components for your Blazor UI.</strong><p>While Blazor provides the framework, Wijmo delivers fast, lightweight datagrids, charts, and input controls needed for the rich, data-heavy user interface inside your Blazor views.</p>">
-                                            Info
+                                        Info
                                     </a>
                                 </div>
                             </li>
-                            <li>
-                                <div class="product-name">
+                            <li data-product-page="https://developer.mescius.com/activereportsnet"> <div class="product-name">
                                     <span class="checkmark">✓</span>
                                     ActiveReports.NET
                                 </div>
@@ -385,7 +393,7 @@
                                     <a href="#" class="action-link product-info-trigger"
                                         data-title="ActiveReports.NET"
                                         data-description="<strong>Embed powerful reporting directly into your application.</strong><p>ActiveReports.NET allows you to generate, view, and export complex financial reports and documents from your unified application, backed by your .NET business logic.</p>">
-                                            Info
+                                        Info
                                     </a>
                                 </div>
                             </li>
@@ -407,7 +415,7 @@
 
     <div id="product-info-modal" class="modal-overlay">
         <div class="modal-container">
-            <button id="modal-close" class="modal-close-btn">&times;</button>
+            <button id="modal-close" class="modal-close-btn">×</button>
             <div id="modal-body-content" class="modal-body">
                 </div>
         </div>
@@ -415,7 +423,6 @@
     
     <footer class="footer">
         <div class="container footer-content">
-            <!-- First Column: Logo, Copyright, Phone, Trademarks -->
             <div class="footer-col footer-col-left">
                 <img src="https://cdn.mescius.io/umb/media/pujnxfci/mescuis-logo-horiz.svg" alt="Mescius Europe Logo" class="footer-logo">
                 <p class="footer-text">© 2025 Mescius Europe GmbH | All Rights Reserved</p>
@@ -423,7 +430,6 @@
                 <p class="footer-text">All product and company names herein may be trademarks of their respective owners.</p>
             </div>
 
-            <!-- Second Column: Company Links -->
             <div class="footer-col">
                 <h4 class="footer-heading">COMPANY</h4>
                 <ul class="footer-links">
@@ -435,7 +441,6 @@
                 </ul>
             </div>
 
-            <!-- Third Column: Follow Us -->
             <div class="footer-col">
                 <h4 class="footer-heading">FOLLOW US</h4>
                 <div class="social-icons">
@@ -447,7 +452,6 @@
                 </div>
             </div>
 
-            <!-- Fourth Column: Get the Latest News -->
             <div class="footer-col">
                 <h4 class="footer-heading">GET THE LATEST NEWS</h4>
                 <p class="news-signup-text">Stay up to date with blogs, eBooks, events, and whitepapers.</p>
@@ -482,15 +486,15 @@
             const openModal = (trigger) => {
                 const title = trigger.dataset.title || 'Product Details';
                 const description = trigger.dataset.description || 'No description available.';
-                
+                const trialLink = trigger.parentElement.querySelector('a[target="_blank"]').href;
+                // Get the specific product page link from the data-product-page attribute of the parent li
+                const productLink = trigger.closest('li').dataset.productPage || 'https://developer.mescius.com/'; // Fallback to generic
+
                 let modalHTML = `<h2 class="modal-title">${title}</h2>`;
                 modalHTML += description; 
 
-                const trialLink = trigger.parentElement.querySelector('a[target="_blank"]').href;
-                const productLink = 'https://developer.mescius.com/'; // Generic fallback
-
                 modalHTML += `<a href="${trialLink}" target="_blank" class="cta-button cta-primary">Download Trial</a>`;
-                modalHTML += `<a href="${productLink}" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>`;
+                modalHTML += `<a href="${productLink}" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>`; // Use specific productLink
 
                 modalBody.innerHTML = modalHTML;
                 modalOverlay.style.display = 'flex';

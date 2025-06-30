@@ -192,7 +192,7 @@
             background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%239C92AC" fill-opacity="0.03"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 20v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 46v-4H4v4H0v2h4v4h2v-4h4v-2H6zm0-20v-4H4v4H0v2h4v4h2v-4h4v-2H6zM42 0v4h2v-4h4V0h-4V-4h-2v4h4v2h-4zm0 20v4h2v-4h4V20h-4v-4h-2v4h4v2h-4zm12 7H46v-2h8v-4h2v4h4v2h-4v4h-2v-4zm0-20H46v-2h8v-4h2v4h4v2h-4v4h-2v-4zM24 2v4h-2V2h-4V0h4V-4h2v4h4v2h-4zm0 20v4h-2v-4h-4V20h4v-4h2v4h4v2h-4zm-6-2v2H2v-2h-4v-2h4v-4h2v4h4v2h-4zm0 20v2H2v-2h-4v-2h4v-4h2v4h4v2h-4zM22 36v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 20v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM36 0v4h-2V0h-4V-4h4V-8h2v4h4v2h-4zm0 20v4h-2v-4h-4V20h4v-4h2v4h4v2h-4zM0 34v-4H-4v4h-4v2h4v4h4v-4h4v-2H0zm0-20v-4H-4v4h-4v2h4v4h4v-4h4v-2H0zm54 0v-4H50v4h-4v2h4v4h4v-4h4v-2h-4zm0 20v-4H50v4h-4v2h4v4h4v-4h4v-2h-4zM42 36v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 20v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM24 42v4h-2v-4h-4v-2h4v-4h2v4h4v2h-4zm0 20v4h-2v-4h-4v-2h4v-4h2v4h4v2h-4zM60 6v4h-2V6h-4V4h4V0h2v4h4v2h-4zm0 20v4h-2v-4h-4V20h4v-4h2v4h4v2h-4zm-6 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-20v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM36 42v4h-2v-4h-4v-2h4v-4h2v4h4v2h-4zM0 6v4H-4V6h-4V4h4V0h2v4h4v2h-4z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
             background-size: 60px 60px;
             opacity: 0.03; 
-            pointer-events: none; /* ADDED THIS LINE */
+            pointer-events: none; /* Allows clicks to pass through the pattern */
         }
         .hero-title { 
             font-size: 48px; 
@@ -318,6 +318,9 @@
             color: var(--brand-heading);
             margin-bottom: 5px;
             line-height: 1;
+            display: flex; 
+            flex-direction: column; 
+            align-items: flex-start; 
         }
         .price .price-term {
             display: block;
@@ -327,23 +330,17 @@
             margin-top: 5px;
         }
         
-        /* NEW STYLE FOR ACTUAL TOTAL COST */
-        .total-actual-cost {
-            display: block;
-            font-size: 16px; 
-            font-weight: 600; 
-            color: var(--brand-heading); 
-            margin-top: 10px; 
-            border-top: 1px solid var(--color-border-light); 
-            padding-top: 10px;
+        /* Hidden from original location */
+        .total-actual-cost, .total-price-subtle {
+            display: none; 
         }
 
-        .total-price-subtle {
+        .discount-per-dev {
             display: block;
-            font-size: 15px; 
-            font-weight: 500; 
-            color: var(--color-text-subtle); 
-            margin-top: 5px; 
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--brand-spread); 
+            margin-top: 5px;
         }
         
         .savings-badge {
@@ -387,7 +384,7 @@
             color: var(--brand-heading);
         }
 
-        /* ADJUSTED: Styling for multi-column lists (specifically for SpreadJS OEM) */
+        /* Adjusted styling for multi-column lists */
         .inclusions-list.multi-column {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -447,12 +444,43 @@
             text-decoration: line-through;
         }
 
+        /* New container for total prices */
+        .price-summary-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end; 
+            margin-top: auto; 
+            padding-top: 15px;
+            border-top: 1px solid var(--color-border-light);
+            width: 100%;
+            margin-bottom: 20px; /* Added space to the button */
+        }
+
+        .price-summary-container .total-actual-cost,
+        .price-summary-container .total-price-subtle {
+            display: block; 
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--brand-heading);
+            margin-bottom: 5px; 
+            text-align: right;
+            width: 100%; 
+        }
+        .price-summary-container .total-price-subtle {
+            font-size: 15px; 
+            color: var(--color-text-subtle);
+        }
+        .price-summary-container .total-price-subtle strong {
+            color: var(--brand-heading); 
+        }
+
+
         .cta-button {
             display: block; width: 100%; text-align: center; padding: 16px; border-radius: 8px;
             background-color: #474D57; color: #ffffff; text-decoration: none; font-weight: 600;
             transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
             border: none; font-family: 'Montserrat', sans-serif; font-size: 16px; cursor: pointer;
-            margin-top: 25px; 
+            margin-top: 0; /* Adjusted to rely on .price-summary-container margin */
             box-shadow: 0 2px 5px rgba(0,0,0,0.15);
         }
         .cta-button:hover {
@@ -515,8 +543,9 @@
             margin-bottom: 20px; 
             font-size: 15px;
         }
-        .discount-option:last-child {
-            margin-bottom: 0;
+        /* Added space to the last discount option before price summary */
+        .discount-calculator .discount-option:last-of-type {
+             margin-bottom: 30px; /* Increased space before price-summary-container */
         }
         .discount-option label {
             font-weight: 600;
@@ -831,21 +860,21 @@
                     <p class="section-subtitle">Our most common bundles for building powerful internal applications.</p>
                 </div>
                 <div class="pricing-grid">
-                    <div class="pricing-card" data-product-id="285847" data-base-price="3491" data-list-price="5370" id="card-net">
+                    <div class="pricing-card" data-product-id="285847" data-base-price="2772" data-list-price="4265" id="card-net">
                         <div class="card-tag net-tag">.NET Suite</div>
                         <h3 class="card-title">.NET Professional Suite</h3>
                         <p class="card-subtitle">The complete toolkit for professional .NET desktop and web developers.</p>
                         <p class="price" id="price-net">
                             €3,491<span class="price-term">per developer / year</span>
-                            <span class="total-actual-cost">Total Cost: €3,491</span> <span class="total-price-subtle">Total: €3,491</span>
+                            <span class="discount-per-dev"></span> 
                         </p>
-                        <div class="savings-badge" id="savings-net">You Save €1,879</div>
+                        <div class="savings-badge" id="savings-net">You Save €774</div>
                         <ul class="inclusions-list">
                             <li><span>ComponentOne Studio</span><span>€1,385</span></li>
-                            <li><span>Wijmo Enterprise</span><span>€1,105</span></li>
+                            <li><span>Wijmo Enterprise</span><span>€0,00</span></li>
                             <li><span>ActiveReports.NET (Prof.)</span><span>€1,485</span></li>
                             <li><span>Spread.NET</span><span>€1,395</span></li>
-                            <li class="total-value"><span>Total List Value:</span> <span id="total-list-value-net"><del>€5,370</del></span></li>
+                            <li class="total-value"><span>Total List Value:</span> <span id="total-list-value-net"><del>€4,265</del></span></li>
                         </ul>
                         <div class="discount-calculator">
                             <div class="discount-option">
@@ -865,15 +894,19 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="price-summary-container" id="price-summary-net">
+                            <span class="total-actual-cost">Total Cost: €3,491</span>
+                            <span class="total-price-subtle">Grand Total: €3,491</span>
+                        </div>
                         <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285847" class="cta-button" id="cta-net">Buy Now</a>
                     </div>
                     <div class="pricing-card" data-product-id="285849" data-base-price="1203" data-list-price="1850" id="card-js">
                         <div class="card-tag js-tag">Web Excel Apps</div>
-                        <h3 class="card-title">SpreadJS + Documents</h3>
+                        <h3 class="card-title">SpreadJS+Documents</h3>
                         <p class="card-subtitle">The essential toolkit for web-based financial reporting and spreadsheet apps.</p>
                         <p class="price" id="price-js">
                             €1,203<span class="price-term">per developer / year</span>
-                            <span class="total-actual-cost">Total Cost: €1,203</span> <span class="total-price-subtle">Total: €1,203</span>
+                            <span class="discount-per-dev"></span> 
                         </p>
                         <div class="savings-badge" id="savings-js">You Save €647</div>
                         <ul class="inclusions-list">
@@ -899,6 +932,10 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="price-summary-container" id="price-summary-js">
+                            <span class="total-actual-cost">Total Cost: €1,203</span>
+                            <span class="total-price-subtle">Grand Total: €1,203</span>
+                        </div>
                         <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285849" class="cta-button" id="cta-js">Buy Now</a>
                     </div>
                     <div class="pricing-card" data-product-id="285851" data-base-price="1508" data-list-price="2320" id="card-desktop">
@@ -907,7 +944,7 @@
                         <p class="card-subtitle">The essential toolkit for .NET desktop financial reporting and spreadsheet apps.</p>
                         <p class="price" id="price-desktop">
                             €1,508<span class="price-term">per developer / year</span>
-                            <span class="total-actual-cost">Total Cost: €1,508</span> <span class="total-price-subtle">Total: €1,508</span>
+                            <span class="discount-per-dev"></span> 
                         </p>
                         <div class="savings-badge" id="savings-desktop">You Save €812</div>
                         <ul class="inclusions-list">
@@ -933,6 +970,10 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="price-summary-container" id="price-summary-desktop">
+                            <span class="total-actual-cost">Total Cost: €1,508</span>
+                            <span class="total-price-subtle">Grand Total: €1,508</span>
+                        </div>
                         <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285851" class="cta-button" id="cta-desktop">Buy Now</a>
                     </div>
                     <div class="pricing-card" data-product-id="285868" data-base-price="1649" data-list-price="2870" id="card-analytics">
@@ -941,7 +982,7 @@
                         <p class="card-subtitle">A powerful suite for embedding analytics and reporting into your .NET applications.</p>
                         <p class="price" id="price-analytics">
                             €1,649<span class="price-term">per developer / year</span>
-                            <span class="total-actual-cost">Total Cost: €1,649</span> <span class="total-price-subtle">Total: €1,649</span>
+                            <span class="discount-per-dev"></span> 
                         </p>
                         <div class="savings-badge" id="savings-analytics">You Save €1,221</div>
                         <ul class="inclusions-list">
@@ -967,6 +1008,10 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="price-summary-container" id="price-summary-analytics">
+                            <span class="total-actual-cost">Total Cost: €1,649</span>
+                            <span class="total-price-subtle">Grand Total: €1,649</span>
+                        </div>
                         <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285868" class="cta-button" id="cta-analytics">Buy Now</a>
                     </div>
                     <div class="pricing-card" data-product-id="285867" data-base-price="1555" data-list-price="2410" id="card-autoreport">
@@ -975,7 +1020,7 @@
                         <p class="card-subtitle">Generate complex reports and Excel documents on the server-side.</p>
                         <p class="price" id="price-autoreport">
                             €1,555<span class="price-term">per developer / year</span>
-                            <span class="total-actual-cost">Total Cost: €1,555</span> <span class="total-price-subtle">Total: €1,555</span>
+                            <span class="discount-per-dev"></span> 
                         </p>
                         <div class="savings-badge" id="savings-autoreport">You Save €855</div>
                         <ul class="inclusions-list">
@@ -1001,6 +1046,10 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="price-summary-container" id="price-summary-autoreport">
+                            <span class="total-actual-cost">Total Cost: €1,555</span>
+                            <span class="total-price-subtle">Grand Total: €1,555</span>
+                        </div>
                         <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285867" class="cta-button" id="cta-autoreport">Buy Now</a>
                     </div>
                     <div class="pricing-card" data-product-id="285848" data-base-price="2658" data-list-price="3415" id="card-blazor">
@@ -1009,7 +1058,7 @@
                         <p class="card-subtitle">Everything you need for building data-centric Blazor Hybrid applications.</p>
                         <p class="price" id="price-blazor">
                             €2,658<span class="price-term">per developer / year</span>
-                            <span class="total-actual-cost">Total Cost: €2,658</span> <span class="total-price-subtle">Total: €2,658</span>
+                            <span class="discount-per-dev"></span> 
                         </p>
                         <div class="savings-badge" id="savings-blazor">You Save €757</div>
                         <ul class="inclusions-list">
@@ -1036,6 +1085,10 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="price-summary-container" id="price-summary-blazor">
+                            <span class="total-actual-cost">Total Cost: €2,658</span>
+                            <span class="total-price-subtle">Grand Total: €2,658</span>
+                        </div>
                         <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285848" class="cta-button" id="cta-blazor">Buy Now</a>
                     </div>
                 </div>
@@ -1056,7 +1109,7 @@
                             <li><span>For web, desktop, and mobile apps</span></li>
                             <li><span>Volume & revenue-share models available</span></li>
                         </ul>
-                        <a href="mailto:sales.eu@mescius.com?subject=Inquiry%20about%20OEM%20%26%20SaaS%20Distribution%20License" class="cta-button contact-sales">Contact for OEM Quote</a>
+                        <a href="mailto:eu.sales@mescius.com?subject=Inquiry%20about%20OEM%20%26%20SaaS%20Distribution%20License" class="cta-button contact-sales">Contact for OEM Quote</a>
                     </div>
                     <div class="pricing-card">
                         <div class="card-tag js-tag">Full Excel Experience</div>
@@ -1074,7 +1127,7 @@
                             <li><span>DataCharts Add-On</span><span style="font-size: 15px;">€4,199</span></li>
                             <li class="total-value"><span>Total List Value:</span> <span><del>€36,825</del></span></li>
                         </ul>
-                        <a href="mailto:sales.eu@mescius.com?subject=Inquiry%20about%20SpreadJS%20SaaS%20%26%20OEM%20Edition" class="cta-button contact-sales">Contact for OEM Quote</a>
+                        <a href="mailto:eu.sales@mescius.com?subject=Inquiry%20about%20SpreadJS%20SaaS%20%26%20OEM%20Edition" class="cta-button contact-sales">Contact for OEM Quote</a>
                     </div>
                 </div>
 
@@ -1094,7 +1147,7 @@
                             <li><span>All Reporting & Document APIs</span></li>
                             <li><span>Centralized License Management</span></li>
                         </ul>
-                        <a href="mailto:sales.eu@mescius.com?subject=Inquiry%20about%20Small%20Team%20Universal%20Bundle" class="cta-button highlight-btn-blue">Contact Sales</a>
+                        <a href="mailto:eu.sales@mescius.com?subject=Inquiry%20about%20Small%20Team%20Universal%20Bundle" class="cta-button highlight-btn-blue">Contact Sales</a>
                     </div>
                     <div class="pricing-card highlight-blue">
                         <div class="card-tag ds-tag">For Growing Businesses</div>
@@ -1107,7 +1160,7 @@
                             <li><span>Up to 10 Developers</span></li>
                             <li><span>Priority Support Queue</span></li>
                         </ul>
-                        <a href="mailto:sales.eu@mescius.com?subject=Inquiry%20about%20Business%20Universal%20Bundle" class="cta-button highlight-btn-blue">Contact Sales</a>
+                        <a href="mailto:eu.sales@mescius.com?subject=Inquiry%20about%20Business%20Universal%20Bundle" class="cta-button highlight-btn-blue">Contact Sales</a>
                     </div>
                     <div class="pricing-card highlight">
                         <div class="card-tag net-tag">For Large Organizations</div>
@@ -1120,7 +1173,7 @@
                             <li><span>Unlimited Deployments & End-Users</span></li>
                             <li><span>Source Code & Premium Support</span></li>
                         </ul>
-                        <a href="mailto:sales.eu@mescius.com?subject=Inquiry%20about%20Enterprise%20Universal%20Bundle" class="cta-button highlight-btn">Contact Sales</a>
+                        <a href="mailto:eu.sales@mescius.com?subject=Inquiry%20about%20Enterprise%20Universal%20Bundle" class="cta-button highlight-btn">Contact Sales</a>
                     </div>
                 </div>
 
@@ -1273,7 +1326,7 @@
             },
             "itemCondition": "https://schema.org/NewCondition",
             "availability": "https://schema.org/InStock",
-            "url": "mailto:sales.eu@mescius.com?subject=Inquiry%20about%20OEM%20%26%20SaaS%20Distribution%20License"
+            "url": "mailto:eu.sales@mescius.com?subject=Inquiry%20about%20OEM%20%26%20SaaS%20Distribution%20License"
           }
         },
         {
@@ -1286,7 +1339,7 @@
             "price": "29995",
             "itemCondition": "https://schema.org/NewCondition",
             "availability": "https://schema.org/InStock",
-            "url": "mailto:sales.eu@mescius.com?subject=Inquiry%20about%20SpreadJS%20SaaS%20%26%20OEM%20Edition"
+            "url": "mailto:eu.sales@mescius.com?subject=Inquiry%20about%20SpreadJS%20SaaS%20%26%20OEM%20Edition"
           }
         },
         {
@@ -1303,7 +1356,7 @@
             },
             "itemCondition": "https://schema.org/NewCondition",
             "availability": "https://schema.org/InStock",
-            "url": "mailto:sales.eu@mescius.com?subject=Inquiry%20about%20Small%20Team%20Universal%20Bundle"
+            "url": "mailto:eu.sales@mescius.com?subject=Inquiry%20about%20Small%20Team%20Universal%20Bundle"
           }
         },
         {
@@ -1320,7 +1373,7 @@
             },
             "itemCondition": "https://schema.org/NewCondition",
             "availability": "https://schema.org/InStock",
-            "url": "mailto:sales.eu@mescius.com?subject=Inquiry%20about%20Business%20Universal%20Bundle"
+            "url": "mailto:eu.sales@mescius.com?subject=Inquiry%20about%20Business%20Universal%20Bundle"
           }
         },
         {
@@ -1337,7 +1390,7 @@
             },
             "itemCondition": "https://schema.org/NewCondition",
             "availability": "https://schema.org/InStock",
-            "url": "mailto:sales.eu@mescius.com?subject=Inquiry%20about%20Enterprise%20Universal%20Bundle"
+            "url": "mailto:eu.sales@mescius.com?subject=Inquiry%20about%20Enterprise%20Universal%20Bundle"
           }
         }
       ]
@@ -1365,72 +1418,66 @@
             });
         }
 
-        // --- ADDED: Smooth scroll for hero CTA button ---
+        // --- Smooth scroll for hero CTA button ---
         const heroCtaButton = document.querySelector('.hero-cta-button');
         if (heroCtaButton) {
             heroCtaButton.addEventListener('click', function(e) {
-                e.preventDefault(); // Prevent the default jump
-                const targetId = this.getAttribute('href'); // Get the href value, which is '#popular-bundles-section'
-                const targetElement = document.querySelector(targetId); // Select the target element by its ID
+                e.preventDefault(); 
+                const targetId = this.getAttribute('href'); 
+                const targetElement = document.querySelector(targetId); 
 
                 if (targetElement) {
                     targetElement.scrollIntoView({
-                        behavior: 'smooth' // This makes the scroll smooth
+                        behavior: 'smooth' 
                     });
                 }
             });
         }
-        // --- END ADDED CODE ---
 
         // --- Discount Calculator Logic ---
         const discountCards = document.querySelectorAll('.pricing-card[data-base-price]');
 
         discountCards.forEach(card => {
-            // Get a unique ID from the card element itself to derive element IDs
             const cardId = card.id.replace('card-', ''); 
-
             const productId = card.dataset.productId;
             const basePrice = parseFloat(card.dataset.basePrice);
-            const listPrice = parseFloat(card.dataset.listPrice); // Retrieve listPrice
+            const listPrice = parseFloat(card.dataset.listPrice); 
             const quantityInput = card.querySelector('.quantity-input');
-            const yearRadios = card.querySelectorAll(`input[type="radio"][name="years-${cardId}"]`); // Use cardId for specific radio group
-            const priceEl = card.querySelector(`#price-${cardId}`); // Use cardId for specific price element
-            const savingsEl = card.querySelector(`#savings-${cardId}`); // Use cardId for specific savings element
-            const ctaButton = card.querySelector(`#cta-${cardId}`); // Use cardId for specific CTA button
+            // FIX: Use unique name attribute for each set of radio buttons
+            const yearRadios = card.querySelectorAll(`input[type="radio"][name="years-${cardId}"]`); 
+            const priceEl = card.querySelector(`#price-${cardId}`); 
+            const savingsEl = card.querySelector(`#savings-${cardId}`); 
+            const ctaButton = card.querySelector(`#cta-${cardId}`); 
             
-            // NEW: Reference to the total actual cost element (per dev price * quantity)
-            const totalActualCostEl = priceEl.querySelector('.total-actual-cost'); 
-            // Updated: Reference to the total calculated price (per dev price * quantity * years)
-            const totalPriceSubtleEl = priceEl.querySelector('.total-price-subtle'); 
+            const priceSummaryContainer = card.querySelector(`#price-summary-${cardId}`);
+            const totalActualCostEl = priceSummaryContainer.querySelector('.total-actual-cost'); 
+            const totalPriceSubtleEl = priceSummaryContainer.querySelector('.total-price-subtle'); 
+            const discountPerDevEl = priceEl.querySelector('.discount-per-dev'); 
 
-            // Reference to the total list value element (del tag)
             const totalListValueElement = card.querySelector(`#total-list-value-${cardId}`); 
 
-            // Store previous states to trigger flash only on relevant changes
             let previousVolumeDiscountPercentage = 0;
-            let previousYearsSelected = 1; // Default to 1 year
-            let previousQuantity = 1; // Store previous quantity to detect threshold changes
+            let previousYearsSelected = 1; 
+            let previousQuantity = 1; 
 
-            // Ensure all necessary elements are found before proceeding
-            if (!quantityInput || !yearRadios.length || !priceEl || !ctaButton || !totalPriceSubtleEl || !totalListValueElement || !totalActualCostEl) {
+            if (!quantityInput || !yearRadios.length || !priceEl || !ctaButton || !totalPriceSubtleEl || !totalListValueElement || !totalActualCostEl || !priceSummaryContainer || !discountPerDevEl) {
                 console.warn(`Missing elements for pricing card with product ID: ${productId}. Skipping calculator for this card.`);
-                return; // Skip this card if it's not a calculator card or missing elements
+                return; 
             }
 
             const recalculate = (isUserInteraction) => {
                 const quantity = parseInt(quantityInput.value) || 1;
+                // FIX: Use unique name attribute for each set of radio buttons
                 const selectedYearRadio = card.querySelector(`input[type="radio"][name="years-${cardId}"]:checked`);
                 const years = parseInt(selectedYearRadio ? selectedYearRadio.value : '1');
 
-                // Determine current volume discount percentage based on thresholds
                 let currentVolumeDiscountPercentage = 0;
                 if (quantity >= 10) {
-                    currentVolumeDiscountPercentage = 0.10; // 10%
+                    currentVolumeDiscountPercentage = 0.10; 
                 } else if (quantity >= 5) {
-                    currentVolumeDiscountPercentage = 0.05; // 5%
+                    currentVolumeDiscountPercentage = 0.05; 
                 }
 
-                // Determine multi-year discount
                 let yearDiscount = 0;
                 if (years === 2) {
                     yearDiscount = 0.10;
@@ -1441,37 +1488,29 @@
                 const priceAfterVolumePerDev = basePrice * (1 - currentVolumeDiscountPercentage);
                 const finalPricePerDev = priceAfterVolumePerDev * (1 - yearDiscount);
                 
-                // Calculate actual total cost for the current quantity of developers (per year)
+                const discountPerDevAmount = basePrice - finalPricePerDev; 
+                
                 const totalActualCost = finalPricePerDev * quantity;
-
-                // Calculate total price for all developers, for all selected years (total shown on card)
                 const totalCurrentPriceForYears = totalActualCost * years; 
-                
-                // Calculate total list price for all developers, for all selected years
                 const totalListPriceRaw = listPrice * quantity * years; 
-                
                 const totalSavingsAmount = totalListPriceRaw - totalCurrentPriceForYears;
 
-                // Update display elements
-                // Per developer price remains as is, but we'll re-populate the content of priceEl
                 priceEl.innerHTML = `€${Math.round(finalPricePerDev).toLocaleString('de-DE')}<span class="price-term">per developer / year</span>`;
-                
-                // Re-append the totalActualCostEl and totalPriceSubtleEl to priceEl. This ensures order.
-                priceEl.appendChild(totalActualCostEl);
-                priceEl.appendChild(totalPriceSubtleEl);
+                if (discountPerDevAmount > 0) {
+                    discountPerDevEl.textContent = `You save €${Math.round(discountPerDevAmount).toLocaleString('de-DE')} per dev!`;
+                    discountPerDevEl.style.display = 'block';
+                } else {
+                    discountPerDevEl.style.display = 'none';
+                }
+                priceEl.appendChild(discountPerDevEl); 
 
-                totalActualCostEl.textContent = `Total Cost: €${Math.round(totalActualCost).toLocaleString('de-DE')} (for ${quantity} dev${quantity > 1 ? 's' : ''})`;
-                totalPriceSubtleEl.textContent = `Grand Total: €${Math.round(totalCurrentPriceForYears).toLocaleString('de-DE')} (for ${years} year${years > 1 ? 's' : ''})`;
-                
-                // Update the total list price within the inclusions list
-                totalListValueElement.innerHTML = `<del>€${Math.round(totalListPriceRaw).toLocaleString('de-DE')}</del>`;
+                totalActualCostEl.innerHTML = `Total Cost: <strong>€${Math.round(totalActualCost).toLocaleString('de-DE')}</strong> (for ${quantity} dev${quantity > 1 ? 's' : ''})`;
+                totalPriceSubtleEl.innerHTML = `Grand Total: <strong>€${Math.round(totalCurrentPriceForYears).toLocaleString('de-DE')}</strong> (for ${years} year${years > 1 ? 's' : ''})`;
                 
                 if(savingsEl) {
                     savingsEl.textContent = `You Save €${Math.round(totalSavingsAmount).toLocaleString('de-DE')}`;
                 }
                 
-                // Only trigger flash effect on user interaction AND if a discount threshold was hit (or left)
-                // or if the number of years changed. This also covers initial volume/year change.
                 const volumeDiscountChanged = currentVolumeDiscountPercentage !== previousVolumeDiscountPercentage;
                 const yearsChanged = years !== previousYearsSelected;
                 
@@ -1481,8 +1520,9 @@
                                                  (previousQuantity >= 10 && quantity < 10);
 
 
-                if (isUserInteraction && (volumeDiscountChanged || yearsChanged || quantityCrossedThreshold)) {
+                if (isUserInteraction && (volumeDiscountChanged || yearsChanged || quantityCrossedThreshold || (discountPerDevAmount > 0 && priceEl.classList.contains('price-updated')))) {
                     priceEl.classList.add('price-updated');
+                    discountPerDevEl.classList.add('price-updated');
                     totalActualCostEl.classList.add('price-updated'); 
                     totalPriceSubtleEl.classList.add('price-updated'); 
                     totalListValueElement.classList.add('price-updated');
@@ -1490,6 +1530,7 @@
 
                     setTimeout(() => {
                         priceEl.classList.remove('price-updated');
+                        discountPerDevEl.classList.remove('price-updated');
                         totalActualCostEl.classList.remove('price-updated'); 
                         totalPriceSubtleEl.classList.remove('price-updated'); 
                         totalListValueElement.classList.remove('price-updated');
@@ -1497,22 +1538,18 @@
                     }, 600); 
                 }
                 
-                // Update previous states for next comparison
                 previousVolumeDiscountPercentage = currentVolumeDiscountPercentage;
                 previousYearsSelected = years;
                 previousQuantity = quantity; 
 
 
-                // Determine CTA button behavior
-                // The CTA button should be "Contact Sales" ONLY if a multi-year subscription is selected (years > 1)
-                // Otherwise, it should be "Buy Now". Volume changes do not trigger "Contact Sales".
                 if (years > 1) { 
                     ctaButton.textContent = 'Contact Sales';
                     const subject = encodeURIComponent(`Inquiry for ${years}-Year Subscription, ${quantity} Licenses: ${card.querySelector('.card-title').textContent.trim()} (Product ID: ${productId})`);
-                    ctaButton.href = `mailto:sales.eu@mescius.com?subject=${subject}`;
+                    ctaButton.href = `mailto:eu.sales@mescius.com?subject=${subject}`;
                     ctaButton.classList.add('contact-sales');
                     ctaButton.classList.remove('highlight-btn', 'highlight-btn-blue'); 
-                } else { // years === 1
+                } else { 
                     ctaButton.textContent = 'Buy Now';
                     const baseURL = 'https://checkout.mescius.eu/1878/purl-shop';
                     const cartString = `cart=i${productId}`;
@@ -1520,7 +1557,6 @@
                     ctaButton.href = `${baseURL}?${cartString}&${quantityString}`;
                     ctaButton.classList.remove('contact-sales'); 
 
-                    // Re-apply specific highlight based on the card itself for 'Buy Now' state
                     if (card.classList.contains('highlight')) {
                         ctaButton.classList.add('highlight-btn');
                         ctaButton.classList.remove('highlight-btn-blue'); 
@@ -1537,19 +1573,16 @@
             quantityInput.addEventListener('input', () => recalculate(true));
             yearRadios.forEach(radio => radio.addEventListener('change', () => recalculate(true)));
             
-            recalculate(false); // Initial calculation without flash
+            recalculate(false); 
         });
 
         // --- Mailto links for Custom Pricing Cards (non-calculator) ---
-        // This block handles cards like "OEM & SaaS Distribution" and "Universal Subscriptions"
-        // that inherently require contacting sales, regardless of quantity/years.
         document.querySelectorAll('.pricing-card:not([data-base-price]) .cta-button').forEach(button => {
             const card = button.closest('.pricing-card');
             const cardTitle = card.querySelector('.card-title').textContent.trim();
             const subject = encodeURIComponent(`Inquiry about ${cardTitle}`);
-            button.href = `mailto:sales.eu@mescius.com?subject=${subject}`;
+            button.href = `mailto:eu.sales@mescius.com?subject=${subject}`;
             
-            // Apply specific highlight class based on the card itself
             if (card.classList.contains('highlight')) {
                 button.classList.add('highlight-btn'); 
                 button.classList.remove('contact-sales', 'highlight-btn-blue'); 
