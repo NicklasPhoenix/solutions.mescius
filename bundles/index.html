@@ -24,7 +24,7 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://cdn.mescius.io">
     <link rel="preconnect" href="https://developer.mescius.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
@@ -526,7 +526,7 @@
         .reporting-tag { background-color: var(--brand-ar); } 
         .blazor-tag { background-color: #512BD4; } 
         .ds-tag { background-color: var(--brand-ds); }
-    
+        
 
         /* Discount Calculator Styles */
         .discount-calculator {
@@ -682,7 +682,7 @@
             100% { color: inherit; transform: scale(1); }
         }
 
-        /* --- Footer Styles (Copied for consistency) --- */
+        /* Footer Styles (DO NOT CHANGE) */
         .footer {
             background-color: var(--brand-header);
             color: #cccccc;
@@ -762,8 +762,9 @@
             line-height: 1.6;
             margin-bottom: 20px;
         }
-        .join-now-btn {
-            background-color: #a0a0a0; 
+        /* Style for the subscribe button that opens the modal */
+        .subscribe-btn-footer {
+            background-color: #a0a0a0;
             color: var(--brand-header);
             padding: 12px 25px;
             border: none;
@@ -773,9 +774,67 @@
             text-decoration: none;
             display: inline-block;
             transition: background-color 0.2s ease;
+            margin-top: 10px; /* Space from the text above */
         }
-        .join-now-btn:hover {
+        .subscribe-btn-footer:hover {
             background-color: #bebebe;
+        }
+
+        /* MODAL STYLES (from index.html for newsletter) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 2000; /* Sit on top, higher than header */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+            display: none; /* Hidden by default */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            padding: 20px; /* Add some padding around the modal on smaller screens */
+        }
+
+        .modal-content {
+            background-color: var(--color-background-white);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative; /* Needed for close button positioning */
+            max-width: 600px; /* Max width for the content to hold 600px iframe + 2*20px padding */
+            width: 90%; /* Responsive width */
+            box-sizing: border-box; /* Include padding in width */
+        }
+
+        .modal-close-btn {
+            color: var(--brand-heading);
+            font-size: 30px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .modal-close-btn:hover,
+        .modal-close-btn:focus {
+            color: var(--color-text-subtle);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-iframe {
+            width: 100%; /* Fill the modal content area */
+            height: 400px; /* Updated height */
+            border: none;
+            display: block; /* Remove extra space below iframe */
+            margin: 0; /* Remove default iframe margin */
+            max-width: 600px; /* Set max width for the iframe */
+            margin-left: auto; /* Center iframe horizontally within modal-content */
+            margin-right: auto; /* Center iframe horizontally within modal-content */
         }
         .copyright-section {
             width: 100%;
@@ -821,6 +880,17 @@
             .inclusions-list.multi-column { grid-template-columns: 1fr; }
             .multi-year-options label { padding: 6px 10px; font-size: 13px; }
             .cta-button { padding: 14px; font-size: 15px; }
+            /* Adjust modal for very small screens if necessary */
+            .modal-content {
+                width: 95%; /* Make modal content even narrower if needed */
+                padding: 15px;
+            }
+            .modal-close-btn {
+                right: 15px;
+            }
+            .modal-iframe {
+                height: 350px; /* Adjust iframe height for very small screens if it overflows */
+            }
         }
     </style>
 </head>
@@ -877,9 +947,9 @@
                         <div class="discount-calculator">
                             <div class="discount-option">
                                 <label for="quantity-net">Volume
-                                    <span class="tooltip-icon" role="tooltip" aria-describedby="tooltip-net-volume">?
-                                        <span class="tooltip-text" id="tooltip-net-volume">5-9 licenses: 5% off<br>10+ licenses: 10% off</span>
-                                    </span>
+                                        <span class="tooltip-icon" role="tooltip" aria-describedby="tooltip-net-volume">?
+                                            <span class="tooltip-text" id="tooltip-net-volume">5-9 licenses: 5% off<br>10+ licenses: 10% off</span>
+                                        </span>
                                 </label>
                                 <input type="number" id="quantity-net" class="quantity-input" value="1" min="1" aria-label="Number of licenses for .NET Professional Suite">
                             </div>
@@ -915,9 +985,9 @@
                         <div class="discount-calculator">
                             <div class="discount-option">
                                 <label for="quantity-js">Volume
-                                    <span class="tooltip-icon" role="tooltip" aria-describedby="tooltip-js-volume">?
-                                        <span class="tooltip-text" id="tooltip-js-volume">5-9 licenses: 5% off<br>10+ licenses: 10% off</span>
-                                    </span>
+                                        <span class="tooltip-icon" role="tooltip" aria-describedby="tooltip-js-volume">?
+                                            <span class="tooltip-text" id="tooltip-js-volume">5-9 licenses: 5% off<br>10+ licenses: 10% off</span>
+                                        </span>
                                 </label>
                                 <input type="number" id="quantity-js" class="quantity-input" value="1" min="1" aria-label="Number of licenses for SpreadJS + Documents">
                             </div>
@@ -953,9 +1023,9 @@
                         <div class="discount-calculator">
                             <div class="discount-option">
                                 <label for="quantity-desktop">Volume
-                                    <span class="tooltip-icon" role="tooltip" aria-describedby="tooltip-desktop-volume">?
-                                        <span class="tooltip-text" id="tooltip-desktop-volume">5-9 licenses: 5% off<br>10+ licenses: 10% off</span>
-                                    </span>
+                                        <span class="tooltip-icon" role="tooltip" aria-describedby="tooltip-desktop-volume">?
+                                            <span class="tooltip-text" id="tooltip-desktop-volume">5-9 licenses: 5% off<br>10+ licenses: 10% off</span>
+                                        </span>
                                 </label>
                                 <input type="number" id="quantity-desktop" class="quantity-input" value="1" min="1" aria-label="Number of licenses for Spread.NET + Documents">
                             </div>
@@ -991,9 +1061,9 @@
                         <div class="discount-calculator">
                             <div class="discount-option">
                                 <label for="quantity-analytics">Volume
-                                    <span class="tooltip-icon" role="tooltip" aria-describedby="tooltip-analytics-volume">?
-                                        <span class="tooltip-text" id="tooltip-analytics-volume">5-9 licenses: 5% off<br>10+ licenses: 10% off</span>
-                                    </span>
+                                        <span class="tooltip-icon" role="tooltip" aria-describedby="tooltip-analytics-volume">?
+                                            <span class="tooltip-text" id="tooltip-analytics-volume">5-9 licenses: 5% off<br>10+ licenses: 10% off</span>
+                                        </span>
                                 </label>
                                 <input type="number" id="quantity-analytics" class="quantity-input" value="1" min="1" aria-label="Number of licenses for Real-Time Analytics & Reporting">
                             </div>
@@ -1029,9 +1099,9 @@
                         <div class="discount-calculator">
                             <div class="discount-option">
                                 <label for="quantity-autoreport">Volume
-                                    <span class="tooltip-icon" role="tooltip" aria-describedby="tooltip-autoreport-volume">?
-                                        <span class="tooltip-text" id="tooltip-autoreport-volume">5-9 licenses: 5% off<br>10+ licenses: 10% off</span>
-                                    </span>
+                                        <span class="tooltip-icon" role="tooltip" aria-describedby="tooltip-autoreport-volume">?
+                                            <span class="tooltip-text" id="tooltip-autoreport-volume">5-9 licenses: 5% off<br>10+ licenses: 10% off</span>
+                                        </span>
                                 </label>
                                 <input type="number" id="quantity-autoreport" class="quantity-input" value="1" min="1" aria-label="Number of licenses for Automated Reporting & Document Generation">
                             </div>
@@ -1068,9 +1138,9 @@
                         <div class="discount-calculator">
                             <div class="discount-option">
                                 <label for="quantity-blazor">Volume
-                                    <span class="tooltip-icon" role="tooltip" aria-describedby="tooltip-blazor-volume">?
-                                        <span class="tooltip-text" id="tooltip-blazor-volume">5-9 licenses: 5% off<br>10+ licenses: 10% off</span>
-                                    </span>
+                                        <span class="tooltip-icon" role="tooltip" aria-describedby="tooltip-blazor-volume">?
+                                            <span class="tooltip-text" id="tooltip-blazor-volume">5-9 licenses: 5% off<br>10+ licenses: 10% off</span>
+                                        </span>
                                 </label>
                                 <input type="number" id="quantity-blazor" class="quantity-input" value="1" min="1" aria-label="Number of licenses for Blazor Hybrid Power Pack">
                             </div>
@@ -1191,8 +1261,8 @@
             <div class="footer-col">
                 <h4 class="footer-heading">COMPANY</h4>
                 <ul class="footer-links">
-                    <li><a href="https://www.mescius.eu/en/about" target="_blank">About Us</a></li>
-                    <li><a href="https://www.mescius.eu/en/contact" target="_blank">Contact Us</a></li>
+                    <li><a href="https://www.mescius.eu/en/about" target="_blank">About</a></li>
+                    <li><a href="https://www.mescius.eu/en/contact" target="_blank">Contact</a></li>
                     <li><a href="https://developer.mescius.com/about/media-center" target="_blank">Media Center</a></li>
                     <li><a href="https://www.mescius.eu/en/legal.html" target="_blank">Legal Page</a></li>
                     <li><a href="https://www.mescius.eu/en/legal/eula" target="_blank">EULA</a></li>
@@ -1202,22 +1272,32 @@
             <div class="footer-col">
                 <h4 class="footer-heading">FOLLOW US</h4>
                 <div class="social-icons">
-                    <a href="https://www.facebook.com/mescius" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.twitter.com/mescius" target="_blank" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.linkedin.com/company/mescius" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://www.youtube.com/user/mescius" target="_blank" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                    <a href="https://mescius.eu/rss" target="_blank" class="social-icon" aria-label="RSS"><i class="fa fa-rss"></i></a>
+                    <a href="https://www.facebook.com/MESCIUSinc" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/MESCIUS_inc/" target="_blank" class="social-icon" aria-label="X (formerly Twitter)"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://www.linkedin.com/company/mescius-eu" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.youtube.com/@MESCIUSinc" target="_blank" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
 
             <div class="footer-col">
                 <h4 class="footer-heading">GET THE LATEST NEWS</h4>
                 <p class="news-signup-text">Stay up to date with blogs, eBooks, events, and whitepapers.</p>
-                <a href="https://mescius.eu/newsletter-signup" target="_blank" class="join-now-btn">JOIN NOW</a>
+                <button class="subscribe-btn-footer" id="open-newsletter-modal">SUBSCRIBE</button>
             </div>
+        </div>
+        <div class="container copyright-section">
+            <p>© 2025 Mescius Europe GmbH | All Rights Reserved</p>
         </div>
     </footer>
 
+    <div id="newsletter-modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+        <div class="modal-content">
+            <span class="modal-close-btn" id="close-newsletter-modal" aria-label="Close newsletter signup">×</span>
+            <h4 id="modal-title" style="color: var(--brand-heading); margin-top: 0;">Subscribe to Our Newsletter</h4>
+            <p>Enter your details below to receive our latest updates:</p>
+            <iframe src="https://cdn.forms-content-1.sg-form.com/9014fa9b-5676-11f0-8629-2654e584e0ad" class="modal-iframe" frameborder="0"></iframe>
+        </div>
+    </div>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -1592,9 +1672,9 @@
                 const yearsChanged = years !== previousYearsSelected;
                 
                 const quantityCrossedThreshold = (previousQuantity < 5 && quantity >= 5) ||
-                                                 (previousQuantity >= 5 && quantity < 5) ||
-                                                 (previousQuantity < 10 && quantity >= 10) ||
-                                                 (previousQuantity >= 10 && quantity < 10);
+                                                (previousQuantity >= 5 && quantity < 5) ||
+                                                (previousQuantity < 10 && quantity >= 10) ||
+                                                (previousQuantity >= 10 && quantity < 10);
 
 
                 if (isUserInteraction && (volumeDiscountChanged || yearsChanged || quantityCrossedThreshold || (discountPerDevAmount > 0 && priceEl.classList.contains('price-updated')))) {
@@ -1661,6 +1741,39 @@
             button.style.backgroundColor = cardAccentColor;
             button.style.color = 'white'; 
         });
+
+        // Newsletter Modal Logic (Copied from index.html)
+        const newsletterModal = document.getElementById('newsletter-modal');
+        const openNewsletterModalBtn = document.getElementById('open-newsletter-modal');
+        const closeNewsletterModalBtn = document.getElementById('close-newsletter-modal');
+
+        if (openNewsletterModalBtn && newsletterModal && closeNewsletterModalBtn) {
+            openNewsletterModalBtn.addEventListener('click', () => {
+                newsletterModal.style.display = 'flex'; // Use 'flex' to enable centering
+                document.body.style.overflow = 'hidden'; // Prevent scrolling background
+            });
+
+            closeNewsletterModalBtn.addEventListener('click', () => {
+                newsletterModal.style.display = 'none';
+                document.body.style.overflow = ''; // Restore scrolling
+            });
+
+            // Close modal if user clicks outside of modal content
+            window.addEventListener('click', (event) => {
+                if (event.target === newsletterModal) {
+                    newsletterModal.style.display = 'none';
+                    document.body.style.overflow = ''; // Restore scrolling
+                }
+            });
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && newsletterModal.style.display === 'flex') {
+                    newsletterModal.style.display = 'none';
+                    document.body.style.overflow = ''; // Restore scrolling
+                }
+            });
+        }
     });
     </script>
 </body>

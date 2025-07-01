@@ -8,7 +8,7 @@
     <meta name="keywords" content="healthcare reporting, client-side reports, web reporting, ActiveReportsJS, patient data, clinician productivity, healthcare IT solution">
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <style>
         /* All necessary styles are contained in this file */
@@ -739,7 +739,8 @@
             line-height: 1.6;
             margin-bottom: 20px;
         }
-        .join-now-btn {
+        /* Style for the subscribe button that opens the modal */
+        .subscribe-btn-footer {
             background-color: #a0a0a0;
             color: var(--brand-header);
             padding: 12px 25px;
@@ -750,9 +751,67 @@
             text-decoration: none;
             display: inline-block;
             transition: background-color 0.2s ease;
+            margin-top: 10px; /* Space from the text above */
         }
-        .join-now-btn:hover {
+        .subscribe-btn-footer:hover {
             background-color: #bebebe;
+        }
+
+        /* MODAL STYLES (from index.html for newsletter) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 2000; /* Sit on top, higher than header */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+            display: none; /* Hidden by default */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            padding: 20px; /* Add some padding around the modal on smaller screens */
+        }
+
+        .modal-content {
+            background-color: var(--color-background-white);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative; /* Needed for close button positioning */
+            max-width: 600px; /* Max width for the content to hold 600px iframe + 2*20px padding */
+            width: 90%; /* Responsive width */
+            box-sizing: border-box; /* Include padding in width */
+        }
+
+        .modal-close-btn {
+            color: var(--brand-heading);
+            font-size: 30px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .modal-close-btn:hover,
+        .modal-close-btn:focus {
+            color: var(--color-text-subtle);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-iframe {
+            width: 100%; /* Fill the modal content area */
+            height: 400px; /* Updated height */
+            border: none;
+            display: block; /* Remove extra space below iframe */
+            margin: 0; /* Remove default iframe margin */
+            max-width: 600px; /* Set max width for the iframe */
+            margin-left: auto; /* Center iframe horizontally within modal-content */
+            margin-right: auto; /* Center iframe horizontally within modal-content */
         }
         .copyright-section {
             width: 100%;
@@ -795,9 +854,9 @@
         @media (max-width: 768px) { 
             .case-study-title { font-size: 32px; } 
             .case-study-subtitle { font-size: 18px; }
-            .profile-item h3 { font-size: 16px; } /* Changed from h4 to h3 for consistency */
+            .profile-item h3 { font-size: 16px; } 
             .profile-item p { font-size: 15px; }
-            .results-heading h3 { font-size: 20px; } /* Changed from h4 to h3 for consistency */
+            .results-heading h3 { font-size: 20px; } 
             .metric-value { font-size: 34px; }
             .main-story h2 { font-size: 26px; }
             .main-story { padding: 30px; font-size: 16px; }
@@ -805,14 +864,15 @@
             .bundle-cta .cta-button { width: 100%; max-width: 300px; }
             .modal-container { padding: 30px; }
             .modal-title { font-size: 28px; }
+            .modal-body .cta-button { font-size: 14px; padding: 10px 20px; margin-right: 10px; margin-top: 15px;}
             .key-elements-section { padding: 30px; font-size: 16px; }
             .key-elements-section h3 { font-size: 22px; }
-
+            
             /* Responsive adjustments for the profile grid */
             .solution-profile-grid {
                 grid-template-columns: 1fr; /* Stack columns on smaller screens */
             }
-            .profile-item:first-child h3, .profile-item h3 { /* Changed from h4 to h3 */
+            .profile-item:first-child h3, .profile-item h3 { 
                 width: 100%; /* Make borders full width on smaller screens */
                 text-align: center; /* Center headings on smaller screens */
             }
@@ -1058,22 +1118,30 @@
             <div class="footer-col">
                 <h4 class="footer-heading">FOLLOW US</h4>
                 <div class="social-icons">
-                    <a href="https://www.facebook.com/mescius" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.twitter.com/mescius" target="_blank" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.linkedin.com/company/mescius" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://www.youtube.com/user/mescius" target="_blank" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                    <a href="https://mescius.eu/rss" target="_blank" class="social-icon" aria-label="RSS"><i class="fa fa-rss"></i></a>
+                    <a href="https://www.facebook.com/MESCIUSinc" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/MESCIUS_inc/" target="_blank" class="social-icon" aria-label="X (formerly Twitter)"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://www.linkedin.com/company/mescius-eu" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.youtube.com/@MESCIUSinc" target="_blank" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
 
             <div class="footer-col">
                 <h4 class="footer-heading">GET THE LATEST NEWS</h4>
                 <p class="news-signup-text">Stay up to date with blogs, eBooks, events, and whitepapers.</p>
-                <a href="https://mescius.eu/newsletter-signup" target="_blank" class="join-now-btn">JOIN NOW</a>
+                <button class="subscribe-btn-footer" id="open-newsletter-modal">SUBSCRIBE</button>
             </div>
         </div>
+
     </footer>
     
+    <div id="newsletter-modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+        <div class="modal-content">
+            <span class="modal-close-btn" id="close-newsletter-modal" aria-label="Close newsletter signup">×</span>
+            <h4 id="modal-title" style="color: var(--brand-heading); margin-top: 0;">Subscribe to Our Newsletter</h4>
+            <p>Enter your details below to receive our latest updates:</p>
+            <iframe src="https://cdn.forms-content-1.sg-form.com/9014fa9b-5676-11f0-8629-2654e584e0ad" class="modal-iframe" frameborder="0"></iframe>
+        </div>
+    </div>
     <script>
     document.addEventListener('DOMContentLoaded', () => {
         // --- Mobile menu toggle functionality ---
@@ -1115,7 +1183,7 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const valueSpan = entry.target.querySelector('.metric-value');
-                    const targetValue = parseInt(valueSpan.dataset.target); 
+                    const targetValue = valueSpan.dataset.target; // Get as string
                     let currentValue = 0;
                     const duration = 1500; // ms
                     const startTime = performance.now();
@@ -1123,11 +1191,26 @@
                     const updateCount = (timestamp) => {
                         const progress = (timestamp - startTime) / duration;
                         if (progress < 1) {
-                            currentValue = Math.min(targetValue, Math.floor(progress * targetValue));
-                            valueSpan.textContent = currentValue + '%'; // All metrics here are percentages
+                            if (targetValue.includes('k')) { // Handle 'k' for thousands
+                                const numericTarget = parseFloat(targetValue.replace('k', '')) * 1000;
+                                currentValue = Math.min(numericTarget, Math.floor(progress * numericTarget));
+                                valueSpan.textContent = (currentValue / 1000).toFixed(0) + 'k';
+                            } else if (targetValue.includes('%')) { // Handle '%'
+                                const numericTarget = parseInt(targetValue.replace('%', ''));
+                                currentValue = Math.min(numericTarget, Math.floor(progress * numericTarget));
+                                valueSpan.textContent = currentValue + '%';
+                            } else if (targetValue.includes('<')) { // Handle '<' for "less than"
+                                // For "<12", just display it directly at the end or animate to 11 and then change to "<12"
+                                currentValue = Math.min(11, Math.floor(progress * 11)); // Animate to 11 first
+                                valueSpan.textContent = currentValue;
+                            } else { // Assume integer if no special chars
+                                currentValue = Math.min(parseInt(targetValue), Math.floor(progress * parseInt(targetValue)));
+                                valueSpan.textContent = currentValue;
+                            }
                             requestAnimationFrame(updateCount);
                         } else {
-                            valueSpan.textContent = targetValue + '%';
+                            // Ensure final value is accurate
+                            valueSpan.textContent = targetValue;
                         }
                     };
                     requestAnimationFrame(updateCount);
@@ -1145,6 +1228,7 @@
         metricItems.forEach(item => {
             metricObserver.observe(item);
         });
+
 
         // --- Product Info Modal Logic ---
         const modalOverlay = document.getElementById('product-info-modal');
@@ -1185,6 +1269,39 @@
             });
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape' && modalOverlay.style.display === 'flex') closeModal();
+            });
+        }
+
+        // Newsletter Modal Logic (Copied from index.html)
+        const newsletterModal = document.getElementById('newsletter-modal');
+        const openNewsletterModalBtn = document.getElementById('open-newsletter-modal');
+        const closeNewsletterModalBtn = document.getElementById('close-newsletter-modal');
+
+        if (openNewsletterModalBtn && newsletterModal && closeNewsletterModalBtn) {
+            openNewsletterModalBtn.addEventListener('click', () => {
+                newsletterModal.style.display = 'flex'; // Use 'flex' to enable centering
+                document.body.style.overflow = 'hidden'; // Prevent scrolling background
+            });
+
+            closeNewsletterModalBtn.addEventListener('click', () => {
+                newsletterModal.style.display = 'none';
+                document.body.style.overflow = ''; // Restore scrolling
+            });
+
+            // Close modal if user clicks outside of modal content
+            window.addEventListener('click', (event) => {
+                if (event.target === newsletterModal) {
+                    newsletterModal.style.display = 'none';
+                    document.body.style.overflow = ''; // Restore scrolling
+                }
+            });
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && newsletterModal.style.display === 'flex') {
+                    newsletterModal.style.display = 'none';
+                    document.body.style.overflow = ''; // Restore scrolling
+                }
             });
         }
     });
