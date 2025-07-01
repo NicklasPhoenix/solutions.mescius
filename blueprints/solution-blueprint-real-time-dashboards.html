@@ -203,17 +203,41 @@
         }
         .solution-profile-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            grid-template-columns: 0.8fr repeat(2, 1fr); /* Adjusted grid columns */
             gap: 30px; 
             margin-bottom: 40px; 
+            align-items: stretch; /* Ensure grid items stretch to fill height */
         }
-        .profile-item h4 { 
+        .profile-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Align content to the top */
+        }
+        /* Style for the "Industry" column header */
+        .profile-item:first-child h3 { /* Changed from h4 to h3 */
             font-size: 18px; 
             font-weight: 700; 
             color: var(--brand-heading); 
             margin: 0 0 10px 0; 
             padding-bottom: 10px; 
             border-bottom: 3px solid var(--accent-color); 
+            width: fit-content; /* Make border fit content */
+        }
+        /* Style for the "Industry" column text */
+        .profile-item:first-child p {
+            font-size: 16px; 
+            line-height: 1.7; 
+            color: var(--brand-body); 
+            margin: 0; 
+        }
+        .profile-item h3 { /* Changed from h4 to h3 */
+            font-size: 18px; 
+            font-weight: 700; 
+            color: var(--brand-heading); 
+            margin: 0 0 10px 0; 
+            padding-bottom: 10px; 
+            border-bottom: 3px solid var(--accent-color); 
+            width: fit-content; 
         }
         .profile-item p { 
             font-size: 16px; 
@@ -226,7 +250,7 @@
             margin-bottom: 25px; 
             position: relative;
         }
-        .results-heading h4 { 
+        .results-heading h3 { /* Changed from h4 to h3 */
             display: inline-block; 
             position: relative; 
             margin: 0; 
@@ -235,7 +259,7 @@
             color: var(--brand-heading); 
             padding-bottom: 10px; 
         }
-        .results-heading h4::after { 
+        .results-heading h3::after { /* Changed from h4 to h3 */
             content: '';
             position: absolute;
             left: 50%;
@@ -248,8 +272,18 @@
             border-radius: 2px;
             transition: transform 0.3s ease-out; 
         }
-        .results-heading h4::before, .results-heading h4::after { 
+        .results-heading h3::before, .results-heading h3::after { /* Changed from h4 to h3 */
             background-color: transparent; 
+        }
+        /* New: Separator for Potential Outcomes */
+        .results-heading::before {
+            content: '';
+            display: block;
+            width: 60px; 
+            height: 3px;
+            background-color: var(--color-border-light); 
+            margin: 0 auto 20px auto; 
+            border-radius: 2px;
         }
         .results-metrics { 
             display: grid; 
@@ -264,9 +298,16 @@
             border: 1px solid var(--color-border-light); 
             box-shadow: 0 4px 10px var(--color-shadow-subtle); 
             transition: transform 0.2s ease;
+            opacity: 0; /* Added for animation */
+            transform: translateY(20px); /* Added for animation */
         }
         .metric-item:hover {
             transform: translateY(-3px); 
+        }
+        .metric-item.is-visible { /* Added for animation */
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
         .metric-value { 
             display: block; 
@@ -370,6 +411,47 @@
         .main-story li {
             margin-bottom: 10px;
         }
+        /* Styling for the "Key Elements of the Approach" section */
+        .key-elements-section {
+            padding: 40px;
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--brand-body);
+            background-color: var(--color-background-white); 
+            border-radius: 16px; 
+            box-shadow: 0 8px 30px var(--color-shadow-medium); 
+            margin: 50px auto; 
+            max-width: 1280px; 
+        }
+        .key-elements-section h3 {
+            font-size: 24px; 
+            font-weight: 700;
+            color: var(--brand-heading);
+            margin: 0 0 20px 0;
+            padding-bottom: 12px;
+            border-bottom: 4px solid var(--accent-color);
+            display: inline-block;
+        }
+        .key-elements-section ul {
+            list-style: disc;
+            padding-left: 25px;
+            margin-bottom: 0;
+        }
+        .key-elements-section li {
+            margin-bottom: 10px;
+        }
+        /* Improved hyperlink style */
+        .key-elements-section a.internal-link {
+            color: var(--accent-color); 
+            text-decoration: none; 
+            border-bottom: 1px solid rgba(72, 169, 197, 0.5); 
+            transition: border-bottom-color 0.3s ease, color 0.3s ease;
+        }
+        .key-elements-section a.internal-link:hover {
+            color: var(--brand-heading); 
+            border-bottom-color: var(--brand-heading); 
+        }
+
         .implementation-summary { 
             background-color: var(--color-neutral-light); 
             border-left: 5px solid var(--accent-color); 
@@ -464,7 +546,7 @@
         }
         .bundle-inclusions .product-actions .action-divider { 
             opacity: 0.5; 
-            margin: 0 8px; 
+            margin: 0 12px; /* Increased margin */
         }
         .bundle-purchase { 
             text-align: right; 
@@ -486,8 +568,8 @@
             background-color: #ffffff; 
             color: var(--brand-header); 
             text-decoration: none; 
-            padding: 16px 40px; /* More padding */
-            border-radius: 10px; /* More rounded */
+            padding: 16px 40px; 
+            border-radius: 10px; 
             font-weight: 700; 
             font-size: 18px;
             transition: all 0.3s ease; 
@@ -562,7 +644,7 @@
             font-weight: 600; 
             color: #fff; 
             text-decoration: none; 
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; /* Added box-shadow to transition */
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
         .modal-body .cta-button.cta-primary { 
@@ -573,8 +655,8 @@
         }
         .modal-body .cta-button:hover { 
             filter: brightness(110%); 
-            transform: translateY(-1px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+            transform: translateY(-3px); /* Adjusted transform */
+            box-shadow: 0 8px 18px rgba(0,0,0,0.3); /* Adjusted shadow */
         }
         
         /* Footer Styles (DO NOT CHANGE) */
@@ -713,9 +795,9 @@
         @media (max-width: 768px) { 
             .case-study-title { font-size: 32px; } 
             .case-study-subtitle { font-size: 18px; }
-            .profile-item h4 { font-size: 16px; }
+            .profile-item h3 { font-size: 16px; } /* Changed from h4 to h3 for consistency */
             .profile-item p { font-size: 15px; }
-            .results-heading h4 { font-size: 20px; }
+            .results-heading h3 { font-size: 20px; } /* Changed from h4 to h3 for consistency */
             .metric-value { font-size: 34px; }
             .main-story h2 { font-size: 26px; }
             .main-story { padding: 30px; font-size: 16px; }
@@ -723,6 +805,17 @@
             .bundle-cta .cta-button { width: 100%; max-width: 300px; }
             .modal-container { padding: 30px; }
             .modal-title { font-size: 28px; }
+            .key-elements-section { padding: 30px; font-size: 16px; }
+            .key-elements-section h3 { font-size: 22px; }
+
+            /* Responsive adjustments for the profile grid */
+            .solution-profile-grid {
+                grid-template-columns: 1fr; /* Stack columns on smaller screens */
+            }
+            .profile-item:first-child h3, .profile-item h3 { /* Changed from h4 to h3 */
+                width: 100%; /* Make borders full width on smaller screens */
+                text-align: center; /* Center headings on smaller screens */
+            }
         }
         @media (max-width: 480px) {
             .hero-title { font-size: 32px; }
@@ -737,6 +830,8 @@
             .bundle-price .price { font-size: 38px; }
             .modal-title { font-size: 24px; }
             .modal-body .cta-button { font-size: 14px; padding: 10px 20px; margin-right: 10px; margin-top: 15px;}
+            .key-elements-section { padding: 20px; font-size: 15px; }
+            .key-elements-section h3 { font-size: 20px; }
         }
     </style>
 </head>
@@ -771,38 +866,34 @@
                 <div class="card-visible-content">
                     <div class="solution-profile-grid">
                         <div class="profile-item">
-                            <h4>Industry</h4>
-                            <p>Energy & Utilities / IoT</p>
+                            <h3>Industry</h3> <p>Energy & Utilities / IoT</p>
                         </div>
                         <div class="profile-item">
-                            <h4>Common Challenge</h4>
-                            <p>Standard UI components often fail under high-frequency data streams, causing mission-critical dashboards to lag, freeze, and become unresponsive.</p>
+                            <h3>Common Challenge</h3> <p>Standard UI components often fail under high-frequency data streams, causing mission-critical dashboards to lag, freeze, and become unresponsive.</p>
                         </div>
                         <div class="profile-item">
-                            <h4>The Blueprint</h4>
-                            <p>Replace underperforming UI components with a datagrid engineered for performance, capable of processing thousands of real-time updates per second.</p>
+                            <h3>The Blueprint</h3> <p>Replace underperforming UI components with a datagrid engineered for performance, capable of processing thousands of real-time updates per second.</p>
                         </div>
                     </div>
 
                     <div class="results-heading">
-                        <h4>Potential Outcomes</h4>
-                    </div>
+                        <h3>Potential Outcomes</h3> </div>
                     
                     <div class="results-metrics">
                         <div class="metric-item">
-                            <span class="metric-value">99%</span>
+                            <span class="metric-value" data-target="99">0</span>
                             <span class="metric-label">Less UI Lag</span>
                         </div>
                         <div class="metric-item">
-                            <span class="metric-value">80%</span>
+                            <span class="metric-value" data-target="80">0</span>
                             <span class="metric-label">Faster Anomaly Response</span>
                         </div>
                         <div class="metric-item">
-                            <span class="metric-value">5x</span>
+                            <span class="metric-value" data-target="5x">0</span>
                             <span class="metric-label">More Data Handled</span>
                         </div>
                         <div class="metric-item">
-                            <span class="metric-value">€1.5M+</span>
+                            <span class="metric-value" data-target="€1.5M+">0</span>
                             <span class="metric-label">Dev Cost Avoided</span>
                         </div>
                     </div>
@@ -827,7 +918,7 @@
                             <h2>Architectural Approach: A Component Engineered for High-Performance</h2>
                             <p>The solution requires identifying the primary UI bottleneck, which is almost always the datagrid component. A successful implementation depends on choosing a commercial-grade grid specifically built to handle high-frequency data streams.</p>
                             <ul>
-                                <li><strong>Targeted Component Replacement:</strong> Replace the underperforming grid with a component like Wijmo's FlexGrid, which is engineered for "Performance Without Compromise."</li>
+                                <li><strong>Targeted Replacement:</strong> Replace the underperforming grid with a component like Wijmo's FlexGrid, which is engineered for "Performance Without Compromise."</li>
                                 <li><strong>Advanced Virtualization:</strong> The key to performance is a virtualization engine that only renders the DOM elements for visible cells. This drastically reduces the browser's workload and allows for lightning-fast, real-time updates.</li>
                                 <li><strong>Optimized Data Binding:</strong> Ensure the grid can be bound to streaming data sources without triggering a full UI refresh on every update, preventing UI lag.</li>
                             </ul>
@@ -844,6 +935,16 @@
                     </article>
                 </div>
             </div>
+
+            <section class="key-elements-section container">
+                <h3>Key Elements of the Approach:</h3>
+                <ul>
+                    <li><strong>High-Performance DataGrid (e.g., Wijmo FlexGrid):</strong> Replace standard or open-source data grids with a commercial-grade component specifically engineered for extreme performance and real-time data updates.</li>
+                    <li><strong>Efficient Data Streaming:</strong> Implement data streaming protocols (e.g., WebSockets) to deliver high-frequency updates to the client efficiently, minimizing latency and ensuring data freshness.</li>
+                    <li><strong>UI Virtualization:</strong> Utilize UI virtualization techniques within the data grid to render only the visible rows and columns, drastically reducing DOM manipulation and maintaining UI responsiveness under heavy loads.</li>
+                    <li><strong>Optimized Data Binding and State Management:</strong> Ensure the data binding strategy between your real-time data source and the UI components is highly optimized to prevent unnecessary re-renders and performance bottlenecks.</li>
+                </ul>
+            </section>
         </div>
         
         <section class="recommended-bundle-section">
@@ -855,7 +956,7 @@
                             <h2>Real-Time Analytics & Reporting</h2>
                         </div>
                         <ul class="bundle-inclusions">
-                            <li class="interactive">
+                            <li>
                                 <div class="product-name">
                                     <span class="checkmark">✓</span>
                                     Wijmo Enterprise
@@ -864,14 +965,12 @@
                                     <a href="https://developer.mescius.com/wijmo/download" target="_blank" class="action-link">Try</a>
                                     <span class="action-divider">|</span>
                                     <a href="#" class="action-link product-info-trigger"
-                                        data-title="Wijmo Enterprise"
-                                        data-description="<strong>Build high-performance, enterprise-level web applications</strong> with Wijmo's comprehensive library of JavaScript/TypeScript UI components.<p>Key features include:</p><ul><li>A <strong>zero-dependency, small footprint</strong> architecture written for performance.</li><li>The industry's best datagrid, <strong>FlexGrid</strong>, plus 100+ other controls for data visualization and UI.</li><li>Full framework support for <strong>Angular, React, Vue</strong>, and more.</li></ul><p>Wijmo is the premier choice for your most <strong>demanding data-driven applications.</strong></p>"
-                                        data-product-page="https://developer.mescius.com/wijmo">
+                                        data-product-id="wijmo-enterprise">
                                         Info
                                     </a>
                                 </div>
                             </li>
-                            <li class="interactive">
+                            <li>
                                 <div class="product-name">
                                     <span class="checkmark">✓</span>
                                     ActiveReportsJS
@@ -880,9 +979,7 @@
                                     <a href="https://developer.mescius.com/activereportsjs/download" target="_blank" class="action-link">Try</a>
                                     <span class="action-divider">|</span>
                                     <a href="#" class="action-link product-info-trigger"
-                                        data-title="ActiveReportsJS"
-                                        data-description='<strong>Integrate fast, feature-rich reporting</strong> into your client-side web applications with ActiveReportsJS.<p>This complete JavaScript solution provides:</p><ul><li>A powerful, <strong>embeddable report designer and viewer</strong>.</li><li>The ability for your end-users to create and interact with reports on <strong>any platform</strong>.</li><li>Connectivity to local and remote JSON data sources.</li><li>Direct-in-browser export to popular formats like <strong>PDF, Excel (XLSX), and HTML</strong>.</li></ul>'
-                                        data-product-page="https://developer.mescius.com/activereportsjs">
+                                        data-product-id="activereportsjs">
                                         Info
                                     </a>
                                 </div>
@@ -893,6 +990,7 @@
                             <div class="bundle-price">
                                 <span class="price">€1,649</span>
                                 <span class="term">per developer / year</span>
+                            </div>
                             <div class="bundle-cta">
                             <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285868" class="cta-button">Buy Now</a>
                             </div>
@@ -910,6 +1008,33 @@
         </div>
     </div>
     
+    <template id="wijmo-enterprise-modal-content">
+        <h2 class="modal-title">Wijmo Enterprise</h2>
+        <p><strong>Build high-performance, enterprise-level web applications</strong> with Wijmo's comprehensive library of JavaScript/TypeScript UI components.<p>Key features include:</p>
+            <ul>
+                <li>A <strong>zero-dependency, small footprint</strong> architecture written for performance.</li>
+                <li>The industry's best datagrid, <strong>FlexGrid</strong>, plus 100+ other controls for data visualization and UI.</li>
+                <li>Full framework support for <strong>Angular, React, Vue</strong>, and more.</li>
+            </ul>
+        <p>Wijmo is the premier choice for your most <strong>demanding data-driven applications.</strong></p></p>
+        <a href="https://developer.mescius.com/wijmo/download" target="_blank" class="cta-button cta-primary">Download Trial</a>
+        <a href="https://developer.mescius.com/wijmo" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>
+    </template>
+
+    <template id="activereportsjs-modal-content">
+        <h2 class="modal-title">ActiveReportsJS</h2>
+        <p><strong>Integrate fast, feature-rich reporting</strong> into your client-side web applications with ActiveReportsJS.<p>This complete JavaScript solution provides:</p>
+            <ul>
+                <li>A powerful, <strong>embeddable report designer and viewer</strong>.</li>
+                <li>The ability for your end-users to create and interact with reports on <strong>any platform</strong>.</li>
+                <li>Connectivity to local and remote JSON data sources.</li>
+                <li>Direct-in-browser export to popular formats like <strong>PDF, Excel (XLSX), and HTML</strong>.</li>
+            </ul>
+        </p>
+        <a href="https://developer.mescius.com/activereportsjs/download" target="_blank" class="cta-button cta-primary">Download Trial</a>
+        <a href="https://developer.mescius.com/activereportsjs" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>
+    </template>
+
     <footer class="footer">
         <div class="container footer-content">
             <div class="footer-col footer-col-left">
@@ -984,41 +1109,92 @@
             });
         }
 
+        // --- Animate Key Metrics (Intersection Observer for scroll into view) ---
+        const metricItems = document.querySelectorAll('.metric-item');
+        const animateMetrics = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const valueSpan = entry.target.querySelector('.metric-value');
+                    const targetValue = valueSpan.dataset.target; // Get as string
+                    let currentValue = 0;
+                    const duration = 1500; // ms
+                    const startTime = performance.now();
+
+                    const updateCount = (timestamp) => {
+                        const progress = (timestamp - startTime) / duration;
+                        if (progress < 1) {
+                            if (targetValue.includes('%')) {
+                                const numericTarget = parseInt(targetValue.replace('%', ''));
+                                currentValue = Math.min(numericTarget, Math.floor(progress * numericTarget));
+                                valueSpan.textContent = currentValue + '%';
+                            } else if (targetValue.includes('x')) {
+                                const numericTarget = parseInt(targetValue.replace('x', ''));
+                                currentValue = Math.min(numericTarget, Math.floor(progress * numericTarget));
+                                valueSpan.textContent = currentValue + 'x';
+                            } else if (targetValue.includes('M+')) {
+                                const numericTarget = parseFloat(targetValue.replace('€', '').replace('M+', '')) * 1000000;
+                                currentValue = Math.min(numericTarget, Math.floor(progress * numericTarget));
+                                if (currentValue >= 1000000) {
+                                    valueSpan.textContent = '€' + (currentValue / 1000000).toFixed(1) + 'M+';
+                                } else {
+                                    valueSpan.textContent = '€' + (currentValue / 1000).toFixed(0) + 'K+'; // Fallback for smaller values, though unlikely with M+ target
+                                }
+                            } else {
+                                currentValue = Math.min(parseInt(targetValue), Math.floor(progress * parseInt(targetValue)));
+                                valueSpan.textContent = currentValue;
+                            }
+                            requestAnimationFrame(updateCount);
+                        } else {
+                            // Ensure final value is accurate
+                            valueSpan.textContent = targetValue;
+                        }
+                    };
+                    requestAnimationFrame(updateCount);
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        };
+
+        const metricObserver = new IntersectionObserver(animateMetrics, {
+            root: null, // viewport
+            threshold: 0.5 // Trigger when 50% of the item is visible
+        });
+
+        metricItems.forEach(item => {
+            metricObserver.observe(item);
+        });
+
         // --- Product Info Modal Logic ---
         const modalOverlay = document.getElementById('product-info-modal');
         if (modalOverlay) {
-            const modalContainer = document.querySelector('.modal-container');
             const modalBody = document.getElementById('modal-body-content');
             const modalCloseBtn = document.getElementById('modal-close');
             const infoTriggers = document.querySelectorAll('.product-info-trigger');
 
-            const openModal = (trigger) => {
-                const title = trigger.dataset.title || 'Product Details';
-                const description = trigger.dataset.description || 'No description available.';
-                
-                let modalHTML = `<h2 class="modal-title">${title}</h2>`;
-                modalHTML += description;
-
-                const trialLink = trigger.parentElement.querySelector('a[target="_blank"]').href;
-                // Get the specific product page link from the data attribute
-                const productLink = trigger.dataset.productPage || 'https://developer.mescius.com/'; // Generic fallback
-
-                modalHTML += `<a href="${trialLink}" target="_blank" class="cta-button cta-primary">Download Trial</a>`;
-                modalHTML += `<a href="${productLink}" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>`;
-
-                modalBody.innerHTML = modalHTML;
-                modalOverlay.style.display = 'flex';
+            const openModal = (productId) => {
+                const template = document.getElementById(`${productId}-modal-content`);
+                if (template) {
+                    modalBody.innerHTML = ''; // Clear previous content
+                    modalBody.appendChild(template.content.cloneNode(true));
+                    modalOverlay.style.display = 'flex';
+                } else {
+                    console.error(`Template for product ID "${productId}" not found.`);
+                }
             };
             
             const closeModal = () => {
                 modalOverlay.style.display = 'none';
-                modalBody.innerHTML = '';
+                modalBody.innerHTML = ''; // Clear content when closing
             };
 
             infoTriggers.forEach(trigger => {
                 trigger.addEventListener('click', (e) => {
                     e.preventDefault(); 
-                    openModal(trigger);
+                    const productId = trigger.dataset.productId;
+                    if (productId) {
+                        openModal(productId);
+                    }
                 });
             });
 

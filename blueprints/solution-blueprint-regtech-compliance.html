@@ -203,17 +203,41 @@
         }
         .solution-profile-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            grid-template-columns: 0.8fr repeat(2, 1fr); /* Adjusted grid columns */
             gap: 30px; 
             margin-bottom: 40px; 
+            align-items: stretch; /* Ensure grid items stretch to fill height */
         }
-        .profile-item h4 { 
+        .profile-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Align content to the top */
+        }
+        /* Style for the "Industry" column header */
+        .profile-item:first-child h3 { /* Changed from h4 to h3 */
             font-size: 18px; 
             font-weight: 700; 
             color: var(--brand-heading); 
             margin: 0 0 10px 0; 
             padding-bottom: 10px; 
             border-bottom: 3px solid var(--accent-color); 
+            width: fit-content; /* Make border fit content */
+        }
+        /* Style for the "Industry" column text */
+        .profile-item:first-child p {
+            font-size: 16px; 
+            line-height: 1.7; 
+            color: var(--brand-body); 
+            margin: 0; 
+        }
+        .profile-item h3 { /* Changed from h4 to h3 */
+            font-size: 18px; 
+            font-weight: 700; 
+            color: var(--brand-heading); 
+            margin: 0 0 10px 0; 
+            padding-bottom: 10px; 
+            border-bottom: 3px solid var(--accent-color); 
+            width: fit-content; 
         }
         .profile-item p { 
             font-size: 16px; 
@@ -226,7 +250,7 @@
             margin-bottom: 25px; 
             position: relative;
         }
-        .results-heading h4 { 
+        .results-heading h3 { /* Changed from h4 to h3 */
             display: inline-block; 
             position: relative; 
             margin: 0; 
@@ -235,7 +259,7 @@
             color: var(--brand-heading); 
             padding-bottom: 10px; 
         }
-        .results-heading h4::after { 
+        .results-heading h3::after { /* Changed from h4 to h3 */
             content: '';
             position: absolute;
             left: 50%;
@@ -248,8 +272,18 @@
             border-radius: 2px;
             transition: transform 0.3s ease-out; 
         }
-        .results-heading h4::before, .results-heading h4::after { 
+        .results-heading h3::before, .results-heading h3::after { /* Changed from h4 to h3 */
             background-color: transparent; 
+        }
+        /* New: Separator for Potential Outcomes */
+        .results-heading::before {
+            content: '';
+            display: block;
+            width: 60px; 
+            height: 3px;
+            background-color: var(--color-border-light); 
+            margin: 0 auto 20px auto; 
+            border-radius: 2px;
         }
         .results-metrics { 
             display: grid; 
@@ -264,9 +298,16 @@
             border: 1px solid var(--color-border-light); 
             box-shadow: 0 4px 10px var(--color-shadow-subtle); 
             transition: transform 0.2s ease;
+            opacity: 0; /* Added for animation */
+            transform: translateY(20px); /* Added for animation */
         }
         .metric-item:hover {
             transform: translateY(-3px); 
+        }
+        .metric-item.is-visible { /* Added for animation */
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
         .metric-value { 
             display: block; 
@@ -387,6 +428,47 @@
             padding-left: 20px; 
             margin-bottom: 0; 
         }
+
+        /* Styling for the "Key Elements of the Approach" section - Copied from real-time-dashboards.html */
+        .key-elements-section {
+            padding: 40px;
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--brand-body);
+            background-color: var(--color-background-white); 
+            border-radius: 16px; 
+            box-shadow: 0 8px 30px var(--color-shadow-medium); 
+            margin: 50px auto; 
+            max-width: 1280px; 
+        }
+        .key-elements-section h3 {
+            font-size: 24px; 
+            font-weight: 700;
+            color: var(--brand-heading);
+            margin: 0 0 20px 0;
+            padding-bottom: 12px;
+            border-bottom: 4px solid var(--accent-color);
+            display: inline-block;
+        }
+        .key-elements-section ul {
+            list-style: disc;
+            padding-left: 25px;
+            margin-bottom: 0;
+        }
+        .key-elements-section li {
+            margin-bottom: 10px;
+        }
+        /* Improved hyperlink style - Adjusted color for regtech blueprint */
+        .key-elements-section a.internal-link {
+            color: var(--accent-color); 
+            text-decoration: none; 
+            border-bottom: 1px solid rgba(128, 155, 89, 0.5); /* Adjusted from Wijmo's accent to SpreadJS's accent with 0.5 opacity */
+            transition: border-bottom-color 0.3s ease, color 0.3s ease;
+        }
+        .key-elements-section a.internal-link:hover {
+            color: var(--brand-heading); 
+            border-bottom-color: var(--brand-heading); 
+        }
         
         /* Bundle Section */
         .recommended-bundle-section { 
@@ -464,7 +546,7 @@
         }
         .bundle-inclusions .product-actions .action-divider { 
             opacity: 0.5; 
-            margin: 0 8px; 
+            margin: 0 12px; /* Increased margin */
         }
         .bundle-purchase { 
             text-align: right; 
@@ -486,8 +568,8 @@
             background-color: #ffffff; 
             color: var(--brand-header); 
             text-decoration: none; 
-            padding: 16px 40px; /* More padding */
-            border-radius: 10px; /* More rounded */
+            padding: 16px 40px; 
+            border-radius: 10px; 
             font-weight: 700; 
             font-size: 18px;
             transition: all 0.3s ease; 
@@ -562,7 +644,7 @@
             font-weight: 600; 
             color: #fff; 
             text-decoration: none; 
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; /* Added box-shadow to transition */
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
         .modal-body .cta-button.cta-primary { 
@@ -573,8 +655,8 @@
         }
         .modal-body .cta-button:hover { 
             filter: brightness(110%); 
-            transform: translateY(-1px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+            transform: translateY(-3px); /* Adjusted transform based on real-time-dashboards.html */
+            box-shadow: 0 8px 18px rgba(0,0,0,0.3); /* Adjusted shadow based on real-time-dashboards.html */
         }
         
         /* Footer Styles (DO NOT CHANGE) */
@@ -713,9 +795,9 @@
         @media (max-width: 768px) { 
             .case-study-title { font-size: 32px; } 
             .case-study-subtitle { font-size: 18px; }
-            .profile-item h4 { font-size: 16px; }
+            .profile-item h3 { font-size: 16px; } /* Changed from h4 to h3 for consistency */
             .profile-item p { font-size: 15px; }
-            .results-heading h4 { font-size: 20px; }
+            .results-heading h3 { font-size: 20px; } /* Changed from h4 to h3 for consistency */
             .metric-value { font-size: 34px; }
             .main-story h2 { font-size: 26px; }
             .main-story { padding: 30px; font-size: 16px; }
@@ -723,6 +805,17 @@
             .bundle-cta .cta-button { width: 100%; max-width: 300px; }
             .modal-container { padding: 30px; }
             .modal-title { font-size: 28px; }
+            .key-elements-section { padding: 30px; font-size: 16px; }
+            .key-elements-section h3 { font-size: 22px; }
+
+            /* Responsive adjustments for the profile grid */
+            .solution-profile-grid {
+                grid-template-columns: 1fr; /* Stack columns on smaller screens */
+            }
+            .profile-item:first-child h3, .profile-item h3 { /* Changed from h4 to h3 */
+                width: 100%; /* Make borders full width on smaller screens */
+                text-align: center; /* Center headings on smaller screens */
+            }
         }
         @media (max-width: 480px) {
             .hero-title { font-size: 32px; }
@@ -737,6 +830,8 @@
             .bundle-price .price { font-size: 38px; }
             .modal-title { font-size: 24px; }
             .modal-body .cta-button { font-size: 14px; padding: 10px 20px; margin-right: 10px; margin-top: 15px;}
+            .key-elements-section { padding: 20px; font-size: 15px; }
+            .key-elements-section h3 { font-size: 20px; }
         }
     </style>
 </head>
@@ -771,38 +866,34 @@
                 <div class="card-visible-content">
                     <div class="solution-profile-grid">
                         <div class="profile-item">
-                            <h4>Industry</h4>
-                            <p>Regulatory Technology (RegTech)</p>
+                            <h3>Industry</h3> <p>Regulatory Technology (RegTech)</p>
                         </div>
                         <div class="profile-item">
-                            <h4>Common Challenge</h4>
-                            <p>A patchwork of manual processes and legacy spreadsheets creates significant data integrity risks and potential for regulatory non-compliance.</p>
+                            <h3>Common Challenge</h3> <p>A patchwork of manual processes and legacy spreadsheets creates significant data integrity risks and potential for regulatory non-compliance.</p>
                         </div>
                         <div class="profile-item">
-                            <h4>The Blueprint</h4>
-                            <p>Build a unified data pipeline using SpreadJS for front-end validation and Document Solutions for automated, secure back-end report generation.</p>
+                            <h3>The Blueprint</h3> <p>Build a unified data pipeline using SpreadJS for front-end validation and Document Solutions for automated, secure back-end report generation.</p>
                         </div>
                     </div>
 
                     <div class="results-heading">
-                        <h4>Potential Outcomes</h4>
-                    </div>
+                        <h3>Potential Outcomes</h3> </div>
                     
                     <div class="results-metrics">
                         <div class="metric-item">
-                            <span class="metric-value">100%</span>
+                            <span class="metric-value" data-target="100">0</span>
                             <span class="metric-label">Audit Success Rate</span>
                         </div>
                         <div class="metric-item">
-                            <span class="metric-value">60%</span>
+                            <span class="metric-value" data-target="60">0</span>
                             <span class="metric-label">Faster Reporting</span>
                         </div>
                         <div class="metric-item">
-                            <span class="metric-value">€280k</span>
+                            <span class="metric-value" data-target="€280k">0</span>
                             <span class="metric-label">Annual Savings</span>
                         </div>
                         <div class="metric-item">
-                            <span class="metric-value">9</span>
+                            <span class="metric-value" data-target="9">0</span>
                             <span class="metric-label">Months to ROI</span>
                         </div>
                     </div>
@@ -843,6 +934,16 @@
                     </article>
                 </div>
             </div>
+
+            <section class="key-elements-section container">
+                <h3>Key Elements of the Approach:</h3>
+                <ul>
+                    <li><strong>Web-Based Data Entry & Validation (SpreadJS):</strong> Implement a JavaScript spreadsheet component for intuitive, Excel-like data input on the front end, allowing for real-time validation and reduction of manual errors.</li>
+                    <li><strong>Unified Data Model:</strong> Establish a centralized database as the "single source of truth" for all regulatory data, ensuring consistency and accuracy across all reports.</li>
+                    <li><strong>Automated Report Generation (Document Solutions):</strong> Utilize server-side document processing APIs to programmatically generate regulatory reports (e.g., in PDF, Excel, or Word formats) directly from the validated data model, ensuring compliance and eliminating manual report creation.</li>
+                    <li><strong>Audit Trails & Security:</strong> Implement comprehensive logging and security features to track all data modifications and report generations, providing a clear audit trail for regulatory examinations.</li>
+                </ul>
+            </section>
         </div>
         
         <section class="recommended-bundle-section">
@@ -863,9 +964,7 @@
                                     <a href="https://developer.mescius.com/spreadjs/download" target="_blank" class="action-link">Try</a>
                                     <span class="action-divider">|</span>
                                     <a href="#" class="action-link product-info-trigger"
-                                        data-title="SpreadJS"
-                                        data-description="<strong>Empower your web applications with the industry-leading JavaScript spreadsheet solution.</strong><br>SpreadJS provides a complete, Excel-like experience for your users, including:<ul><li>High-speed grids</li><li>Complex calculations & charts</li><li>Pivot tables</li><li>Advanced data analysis tools</li></ul><p>It is ideal for creating financial, scientific, and enterprise resource planning (ERP) applications.</p>"
-                                        data-product-page="https://developer.mescius.com/spreadjs">
+                                        data-product-id="spreadjs">
                                         Info
                                     </a>
                                 </div>
@@ -879,9 +978,7 @@
                                     <a href="https://developer.mescius.com/document-solutions/download-product" target="_blank" class="action-link">Try</a>
                                     <span class="action-divider">|</span>
                                     <a href="#" class="action-link product-info-trigger"
-                                        data-title="Document Solutions for Excel"
-                                        data-description="<strong>Supercharge your document processing</strong> with Document Solutions, a suite of <strong>high-speed, dependency-free APIs</strong> for .NET and Java.<p>Key features allow you to:</p><ul><li>Programmatically create, load, and save <strong>Excel, PDF, & Word</strong> documents.</li><li>Deploy on any server (<strong>Windows, Linux, & macOS</strong>) with zero server-side dependencies on MS Office or Acrobat.</li><li>Automate common tasks like <strong>generating invoices and creating reports from templates.</strong></li></ul>"
-                                        data-product-page="https://developer.mescius.com/documents/excel">
+                                        data-product-id="documentsolutions-excel">
                                         Info
                                     </a>
                                 </div>
@@ -910,6 +1007,20 @@
         </div>
     </div>
     
+    <template id="spreadjs-modal-content">
+        <h2 class="modal-title">SpreadJS</h2>
+        <p><strong>Empower your web applications with the industry-leading JavaScript spreadsheet solution.</strong><br>SpreadJS provides a complete, Excel-like experience for your users, including:<ul><li>High-speed grids</li><li>Complex calculations & charts</li><li>Pivot tables</li><li>Advanced data analysis tools</li></ul><p>It is ideal for creating financial, scientific, and enterprise resource planning (ERP) applications.</p></p>
+        <a href="https://developer.mescius.com/spreadjs/download" target="_blank" class="cta-button cta-primary">Download Trial</a>
+        <a href="https://developer.mescius.com/spreadjs" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>
+    </template>
+
+    <template id="documentsolutions-excel-modal-content">
+        <h2 class="modal-title">Document Solutions for Excel</h2>
+        <p><strong>Supercharge your document processing</strong> with Document Solutions, a suite of <strong>high-speed, dependency-free APIs</strong> for .NET and Java.<p>Key features allow you to:</p><ul><li>Programmatically create, load, and save <strong>Excel, PDF, & Word</strong> documents.</li><li>Deploy on any server (<strong>Windows, Linux, & macOS</strong>) with zero server-side dependencies on MS Office or Acrobat.</li><li>Automate common tasks like <strong>generating invoices and creating reports from templates.</strong></li></ul></p>
+        <a href="https://developer.mescius.com/document-solutions/download-product" target="_blank" class="cta-button cta-primary">Download Trial</a>
+        <a href="https://developer.mescius.com/documents/excel" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>
+    </template>
+
     <footer class="footer">
         <div class="container footer-content">
             <div class="footer-col footer-col-left">
@@ -984,41 +1095,84 @@
             });
         }
 
+        // --- Animate Key Metrics (Intersection Observer for scroll into view) ---
+        const metricItems = document.querySelectorAll('.metric-item');
+        const animateMetrics = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const valueSpan = entry.target.querySelector('.metric-value');
+                    const targetValue = valueSpan.dataset.target; // Get as string
+                    let currentValue = 0;
+                    const duration = 1500; // ms
+                    const startTime = performance.now();
+
+                    const updateCount = (timestamp) => {
+                        const progress = (timestamp - startTime) / duration;
+                        if (progress < 1) {
+                            if (targetValue.includes('%')) {
+                                const numericTarget = parseInt(targetValue.replace('%', ''));
+                                currentValue = Math.min(numericTarget, Math.floor(progress * numericTarget));
+                                valueSpan.textContent = currentValue + '%';
+                            } else if (targetValue.includes('k')) {
+                                const numericTarget = parseFloat(targetValue.replace('€', '').replace('k', '')) * 1000;
+                                currentValue = Math.min(numericTarget, Math.floor(progress * numericTarget));
+                                valueSpan.textContent = '€' + (currentValue / 1000).toFixed(0) + 'k';
+                            } else { // Assume integer for other values like 'Months to ROI'
+                                currentValue = Math.min(parseInt(targetValue), Math.floor(progress * parseInt(targetValue)));
+                                valueSpan.textContent = currentValue;
+                            }
+                            requestAnimationFrame(updateCount);
+                        } else {
+                            // Ensure final value is accurate
+                            valueSpan.textContent = targetValue;
+                        }
+                    };
+                    requestAnimationFrame(updateCount);
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        };
+
+        const metricObserver = new IntersectionObserver(animateMetrics, {
+            root: null, // viewport
+            threshold: 0.5 // Trigger when 50% of the item is visible
+        });
+
+        metricItems.forEach(item => {
+            metricObserver.observe(item);
+        });
+
         // --- Product Info Modal Logic ---
         const modalOverlay = document.getElementById('product-info-modal');
         if (modalOverlay) {
-            const modalContainer = document.querySelector('.modal-container');
             const modalBody = document.getElementById('modal-body-content');
             const modalCloseBtn = document.getElementById('modal-close');
             const infoTriggers = document.querySelectorAll('.product-info-trigger');
 
-            const openModal = (trigger) => {
-                const title = trigger.dataset.title || 'Product Details';
-                const description = trigger.dataset.description || 'No description available.';
-                
-                let modalHTML = `<h2 class="modal-title">${title}</h2>`;
-                modalHTML += description;
-
-                const trialLink = trigger.parentElement.querySelector('a[target="_blank"]').href;
-                // Get the specific product page link from the data attribute
-                const productLink = trigger.dataset.productPage || 'https://developer.mescius.com/'; // Generic fallback
-
-                modalHTML += `<a href="${trialLink}" target="_blank" class="cta-button cta-primary">Download Trial</a>`;
-                modalHTML += `<a href="${productLink}" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>`;
-
-                modalBody.innerHTML = modalHTML;
-                modalOverlay.style.display = 'flex';
+            const openModal = (productId) => {
+                const template = document.getElementById(`${productId}-modal-content`);
+                if (template) {
+                    modalBody.innerHTML = ''; // Clear previous content
+                    modalBody.appendChild(template.content.cloneNode(true));
+                    modalOverlay.style.display = 'flex';
+                } else {
+                    console.error(`Template for product ID "${productId}" not found.`);
+                }
             };
             
             const closeModal = () => {
                 modalOverlay.style.display = 'none';
-                modalBody.innerHTML = '';
+                modalBody.innerHTML = ''; // Clear content when closing
             };
 
             infoTriggers.forEach(trigger => {
                 trigger.addEventListener('click', (e) => {
                     e.preventDefault(); 
-                    openModal(trigger);
+                    const productId = trigger.dataset.productId;
+                    if (productId) {
+                        openModal(productId);
+                    }
                 });
             });
 

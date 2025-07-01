@@ -25,7 +25,7 @@
             --brand-net: #D6564C;
             --brand-wijmo: #48A9C5;
             --brand-ds: #5A7E9E;
-            --brand-arjs: #EA8939;
+            --brand-arjs: #EA8039; /* Changed to EA8039 to match brand-arjs from performance blueprint, assuming consistency */
 
             /* General UI Colors (Selected to harmonize with brand, no bright blue, no red for general accents) */
             --color-neutral-dark: #343a40; /* A dark neutral for some elements */
@@ -203,17 +203,41 @@
         }
         .solution-profile-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            grid-template-columns: 0.8fr repeat(2, 1fr); /* Adjusted grid columns */
             gap: 30px; 
             margin-bottom: 40px; 
+            align-items: stretch; /* Ensure grid items stretch to fill height */
         }
-        .profile-item h4 { 
+        .profile-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Align content to the top */
+        }
+        /* Style for the "Industry" column header */
+        .profile-item:first-child h3 { /* Changed from h4 to h3 */
             font-size: 18px; 
             font-weight: 700; 
             color: var(--brand-heading); 
             margin: 0 0 10px 0; 
             padding-bottom: 10px; 
             border-bottom: 3px solid var(--accent-color); 
+            width: fit-content; /* Make border fit content */
+        }
+        /* Style for the "Industry" column text */
+        .profile-item:first-child p {
+            font-size: 16px; 
+            line-height: 1.7; 
+            color: var(--brand-body); 
+            margin: 0; 
+        }
+        .profile-item h3 { /* Changed from h4 to h3 */
+            font-size: 18px; 
+            font-weight: 700; 
+            color: var(--brand-heading); 
+            margin: 0 0 10px 0; 
+            padding-bottom: 10px; 
+            border-bottom: 3px solid var(--accent-color); 
+            width: fit-content; 
         }
         .profile-item p { 
             font-size: 16px; 
@@ -226,7 +250,7 @@
             margin-bottom: 25px; 
             position: relative;
         }
-        .results-heading h4 { 
+        .results-heading h3 { /* Changed from h4 to h3 */
             display: inline-block; 
             position: relative; 
             margin: 0; 
@@ -235,7 +259,7 @@
             color: var(--brand-heading); 
             padding-bottom: 10px; 
         }
-        .results-heading h4::after { 
+        .results-heading h3::after { /* Changed from h4 to h3 */
             content: '';
             position: absolute;
             left: 50%;
@@ -248,8 +272,18 @@
             border-radius: 2px;
             transition: transform 0.3s ease-out; 
         }
-        .results-heading h4::before, .results-heading h4::after { 
+        .results-heading h3::before, .results-heading h3::after { /* Changed from h4 to h3 */
             background-color: transparent; 
+        }
+        /* New: Separator for Potential Outcomes */
+        .results-heading::before {
+            content: '';
+            display: block;
+            width: 60px; 
+            height: 3px;
+            background-color: var(--color-border-light); 
+            margin: 0 auto 20px auto; 
+            border-radius: 2px;
         }
         .results-metrics { 
             display: grid; 
@@ -264,9 +298,16 @@
             border: 1px solid var(--color-border-light); 
             box-shadow: 0 4px 10px var(--color-shadow-subtle); 
             transition: transform 0.2s ease;
+            opacity: 0; /* Added for animation */
+            transform: translateY(20px); /* Added for animation */
         }
         .metric-item:hover {
             transform: translateY(-3px); 
+        }
+        .metric-item.is-visible { /* Added for animation */
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
         .metric-value { 
             display: block; 
@@ -370,6 +411,47 @@
         .main-story li {
             margin-bottom: 10px;
         }
+        /* Styling for the "Key Elements of the Approach" section */
+        .key-elements-section {
+            padding: 40px;
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--brand-body);
+            background-color: var(--color-background-white); 
+            border-radius: 16px; 
+            box-shadow: 0 8px 30px var(--color-shadow-medium); 
+            margin: 50px auto; 
+            max-width: 1280px; 
+        }
+        .key-elements-section h3 {
+            font-size: 24px; 
+            font-weight: 700;
+            color: var(--brand-heading);
+            margin: 0 0 20px 0;
+            padding-bottom: 12px;
+            border-bottom: 4px solid var(--accent-color);
+            display: inline-block;
+        }
+        .key-elements-section ul {
+            list-style: disc;
+            padding-left: 25px;
+            margin-bottom: 0;
+        }
+        .key-elements-section li {
+            margin-bottom: 10px;
+        }
+        /* Improved hyperlink style */
+        .key-elements-section a.internal-link {
+            color: var(--accent-color); 
+            text-decoration: none; 
+            border-bottom: 1px solid rgba(72, 169, 197, 0.5); 
+            transition: border-bottom-color 0.3s ease, color 0.3s ease;
+        }
+        .key-elements-section a.internal-link:hover {
+            color: var(--brand-heading); 
+            border-bottom-color: var(--brand-heading); 
+        }
+
         .implementation-summary { 
             background-color: var(--color-neutral-light); 
             border-left: 5px solid var(--accent-color); 
@@ -464,7 +546,7 @@
         }
         .bundle-inclusions .product-actions .action-divider { 
             opacity: 0.5; 
-            margin: 0 8px; 
+            margin: 0 12px; /* Increased margin */
         }
         .bundle-purchase { 
             text-align: right; 
@@ -486,8 +568,8 @@
             background-color: #ffffff; 
             color: var(--brand-header); 
             text-decoration: none; 
-            padding: 16px 40px; /* More padding */
-            border-radius: 10px; /* More rounded */
+            padding: 16px 40px; 
+            border-radius: 10px; 
             font-weight: 700; 
             font-size: 18px;
             transition: all 0.3s ease; 
@@ -562,7 +644,7 @@
             font-weight: 600; 
             color: #fff; 
             text-decoration: none; 
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; /* Added box-shadow to transition */
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
         .modal-body .cta-button.cta-primary { 
@@ -573,8 +655,8 @@
         }
         .modal-body .cta-button:hover { 
             filter: brightness(110%); 
-            transform: translateY(-1px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+            transform: translateY(-3px); /* Adjusted transform */
+            box-shadow: 0 8px 18px rgba(0,0,0,0.3); /* Adjusted shadow */
         }
         
         /* Footer Styles (DO NOT CHANGE) */
@@ -713,9 +795,9 @@
         @media (max-width: 768px) { 
             .case-study-title { font-size: 32px; } 
             .case-study-subtitle { font-size: 18px; }
-            .profile-item h4 { font-size: 16px; }
+            .profile-item h3 { font-size: 16px; } /* Changed from h4 to h3 for consistency */
             .profile-item p { font-size: 15px; }
-            .results-heading h4 { font-size: 20px; }
+            .results-heading h3 { font-size: 20px; } /* Changed from h4 to h3 for consistency */
             .metric-value { font-size: 34px; }
             .main-story h2 { font-size: 26px; }
             .main-story { padding: 30px; font-size: 16px; }
@@ -723,6 +805,17 @@
             .bundle-cta .cta-button { width: 100%; max-width: 300px; }
             .modal-container { padding: 30px; }
             .modal-title { font-size: 28px; }
+            .key-elements-section { padding: 30px; font-size: 16px; }
+            .key-elements-section h3 { font-size: 22px; }
+
+            /* Responsive adjustments for the profile grid */
+            .solution-profile-grid {
+                grid-template-columns: 1fr; /* Stack columns on smaller screens */
+            }
+            .profile-item:first-child h3, .profile-item h3 { /* Changed from h4 to h3 */
+                width: 100%; /* Make borders full width on smaller screens */
+                text-align: center; /* Center headings on smaller screens */
+            }
         }
         @media (max-width: 480px) {
             .hero-title { font-size: 32px; }
@@ -737,6 +830,8 @@
             .bundle-price .price { font-size: 38px; }
             .modal-title { font-size: 24px; }
             .modal-body .cta-button { font-size: 14px; padding: 10px 20px; margin-right: 10px; margin-top: 15px;}
+            .key-elements-section { padding: 20px; font-size: 15px; }
+            .key-elements-section h3 { font-size: 20px; }
         }
     </style>
 </head>
@@ -771,38 +866,34 @@
                 <div class="card-visible-content">
                     <div class="solution-profile-grid">
                         <div class="profile-item">
-                            <h4>Industry</h4>
-                            <p>Logistics & Supply Chain</p>
+                            <h3>Industry</h3> <p>Logistics & Supply Chain</p>
                         </div>
                         <div class="profile-item">
-                            <h4>Common Challenge</h4>
-                            <p>Legacy desktop applications with outdated UI controls cause high data entry error rates, slow user workflows, and require extensive employee training.</p>
+                            <h3>Common Challenge</h3> <p>Legacy desktop applications with outdated UI controls cause high data entry error rates, slow user workflows, and require extensive employee training.</p>
                         </div>
                         <div class="profile-item">
-                            <h4>The Blueprint</h4>
-                            <p>Incrementally replace standard UI controls with modern, high-performance components like advanced datagrids and intelligent input controls from a single .NET suite.</p>
+                            <h3>The Blueprint</h3> <p>Incrementally replace standard UI controls with modern, high-performance components like advanced datagrids and intelligent input controls from a single .NET suite.</p>
                         </div>
                     </div>
 
                     <div class="results-heading">
-                        <h4>Potential Outcomes</h4>
-                    </div>
+                        <h3>Potential Outcomes</h3> </div>
                     
                     <div class="results-metrics">
                         <div class="metric-item">
-                            <span class="metric-value">35%</span>
+                            <span class="metric-value" data-target="35">0</span>
                             <span class="metric-label">Fewer Data Errors</span>
                         </div>
                         <div class="metric-item">
-                            <span class="metric-value">40%</span>
+                            <span class="metric-value" data-target="40">0</span>
                             <span class="metric-label">Faster Processing</span>
                         </div>
                         <div class="metric-item">
-                            <span class="metric-value">50%</span>
+                            <span class="metric-value" data-target="50">0</span>
                             <span class="metric-label">Less Training Time</span>
                         </div>
                         <div class="metric-item">
-                            <span class="metric-value"><10</span>
+                            <span class="metric-value" data-target="<10">0</span>
                             <span class="metric-label">Months to ROI</span>
                         </div>
                     </div>
@@ -844,6 +935,16 @@
                     </article>
                 </div>
             </div>
+
+            <section class="key-elements-section container">
+                <h3>Key Elements of the Approach:</h3>
+                <ul>
+                    <li><strong>Targeted UI Component Updates:</strong> Identify specific pain points (e.g., slow data grids, error-prone input fields) in your existing WPF or WinForms application and replace only those outdated UI controls with modern, high-performance .NET components.</li>
+                    <li><strong>Enhanced Data Entry & Validation:</strong> Implement specialized input controls (e.g., masked input, auto-complete, data validation rules) to minimize user errors at the point of entry, improving data accuracy and reducing rework.</li>
+                    <li><strong>Optimized Data Visualization:</strong> Utilize advanced data grids, charts, and dashboards to present complex information clearly and intuitively, enabling users to quickly grasp insights and make informed decisions.</li>
+                    <li><strong>Seamless Integration:</strong> Choose a component suite that offers deep integration with your existing .NET framework, allowing for a smooth, incremental modernization without requiring a full application rewrite.</li>
+                </ul>
+            </section>
         </div>
         
         <section class="recommended-bundle-section">
@@ -855,48 +956,48 @@
                             <h2>.NET Professional Suite</h2>
                         </div>
                         <ul class="bundle-inclusions">
-                            <li class="interactive">
+                            <li>
                                 <div class="product-name"><span class="checkmark">✓</span> ComponentOne Studio</div>
                                 <div class="product-actions">
                                     <a href="https://developer.mescius.com/componentone/download" target="_blank" class="action-link">Try</a>
                                     <span class="action-divider">|</span>
                                     <a href="#" class="action-link product-info-trigger"
-                                        data-title="ComponentOne Studio"
-                                        data-description='<strong>The complete UI toolkit for .NET developers.</strong><br>ComponentOne includes hundreds of controls to solve any business need. Key features include:<ul><li>High-performance DataGrids and Charts</li><li>Full support for WinForms, WPF, Blazor, and MAUI</li><li>Powerful reporting and document generation</li></ul>'
-                                        data-product-page="https://developer.mescius.com/componentone">Info</a>
+                                        data-product-id="componentone-studio">
+                                        Info
+                                    </a>
                                 </div>
                             </li>
-                            <li class="interactive">
+                            <li>
                                 <div class="product-name"><span class="checkmark">✓</span> Wijmo Enterprise</div>
                                 <div class="product-actions">
                                     <a href="https://developer.mescius.com/wijmo/download" target="_blank" class="action-link">Try</a>
                                     <span class="action-divider">|</span>
                                     <a href="#" class="action-link product-info-trigger"
-                                        data-title="Wijmo Enterprise"
-                                        data-description="<strong>Build high-performance, enterprise-level web applications</strong> with Wijmo's comprehensive library of JavaScript/TypeScript UI components.<p>Key features include:</p><ul><li>A <strong>zero-dependency, small footprint</strong> architecture written for performance.</li><li>The industry's best datagrid, <strong>FlexGrid</strong>, plus 100+ other controls for data visualization and UI.</li><li>Full framework support for <strong>Angular, React, Vue</strong>, and more.</li></ul><p>Wijmo is the premier choice for your most <strong>demanding data-driven applications.</strong></p>"
-                                        data-product-page="https://developer.mescius.com/wijmo">Info</a>
+                                        data-product-id="wijmo-enterprise">
+                                        Info
+                                    </a>
                                 </div>
                             </li>
-                            <li class="interactive">
+                            <li>
                                 <div class="product-name"><span class="checkmark">✓</span> ActiveReports.NET</div>
                                 <div class="product-actions">
                                     <a href="https://developer.mescius.com/activereportsnet/download" target="_blank" class="action-link">Try</a>
                                     <span class="action-divider">|</span>
                                     <a href="#" class="action-link product-info-trigger"
-                                        data-title="ActiveReports.NET"
-                                        data-description="<strong>Add powerful, interactive reporting</strong> to your <strong>WinForms, WPF, and ASP.NET</strong> applications with ActiveReports.NET.<p>This complete .NET reporting toolkit <strong>seamlessly integrates with Visual Studio</strong>, allowing developers to create everything from simple to complex reports.</p><p>Key capabilities include:</p><ul><li>Embeddable end-user report designers.</li><li>Extensive data-binding to any .NET data source.</li><li>Support for multiple report types, including <strong>RDL and Page reports</strong>.</li><li>Rich data visualization and export to popular formats like <strong>PDF, Excel, and Word</strong>.</li></ul>"
-                                        data-product-page="https://developer.mescius.com/activereportsnet">Info</a>
+                                        data-product-id="activereports-net">
+                                        Info
+                                    </a>
                                 </div>
                             </li>
-                            <li class="interactive">
+                            <li>
                                 <div class="product-name"><span class="checkmark">✓</span> Spread.NET</div>
                                 <div class="product-actions">
                                     <a href="https://developer.mescius.com/spreadnet/download" target="_blank" class="action-link">Try</a>
                                     <span class="action-divider">|</span>
                                     <a href="#" class="action-link product-info-trigger"
-                                        data-title="Spread.NET"
-                                        data-description="<strong>Deliver the ultimate spreadsheet experience in your .NET desktop and web applications with Spread.NET.</strong><br>This powerful component suite provides high-performance data grids and designers for <strong>WinForms, ASP.NET, and WPF</strong>.<p>Enable advanced features including:</p><ul><li>Complex calculations, charting, and pivot tables</li><li>Seamless Excel (.XLSX) import and export</li></ul><p>The perfect toolset for creating feature-rich <strong>financial and data analysis</strong> applications.</p>"
-                                        data-product-page="https://developer.mescius.com/spreadnet">Info</a>
+                                        data-product-id="spread-net">
+                                        Info
+                                    </a>
                                 </div>
                             </li>
                         </ul>
@@ -923,6 +1024,31 @@
         </div>
     </div>
     
+    <template id="componentone-studio-modal-content">
+        <h2 class="modal-title">ComponentOne Studio</h2>
+        <p><strong>The complete UI toolkit for .NET developers.</strong><br>ComponentOne includes hundreds of controls to solve any business need. Key features include:<ul><li>High-performance DataGrids and Charts</li><li>Full support for WinForms, WPF, Blazor, and MAUI</li><li>Powerful reporting and document generation</li></ul></p>
+        <a href="https://developer.mescius.com/componentone/download" target="_blank" class="cta-button cta-primary">Download Trial</a>
+        <a href="https://developer.mescius.com/componentone" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>
+    </template>
+    <template id="wijmo-enterprise-modal-content">
+        <h2 class="modal-title">Wijmo Enterprise</h2>
+        <p><strong>Build high-performance, enterprise-level web applications</strong> with Wijmo's comprehensive library of JavaScript/TypeScript UI components.<p>Key features include:</p><ul><li>A <strong>zero-dependency, small footprint</strong> architecture written for performance.</li><li>The industry's best datagrid, <strong>FlexGrid</strong>, plus 100+ other controls for data visualization and UI.</li><li>Full framework support for <strong>Angular, React, Vue</strong>, and more.</li></ul><p>Wijmo is the premier choice for your most <strong>demanding data-driven applications.</strong></p></p>
+        <a href="https://developer.mescius.com/wijmo/download" target="_blank" class="cta-button cta-primary">Download Trial</a>
+        <a href="https://developer.mescius.com/wijmo" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>
+    </template>
+    <template id="activereports-net-modal-content">
+        <h2 class="modal-title">ActiveReports.NET</h2>
+        <p><strong>Add powerful, interactive reporting</strong> to your <strong>WinForms, WPF, and ASP.NET</strong> applications with ActiveReports.NET.<p>This complete .NET reporting toolkit <strong>seamlessly integrates with Visual Studio</strong>, allowing developers to create everything from simple to complex reports.</p><p>Key capabilities include:</p><ul><li>Embeddable end-user report designers.</li><li>Extensive data-binding to any .NET data source.</li><li>Support for multiple report types, including <strong>RDL and Page reports</strong>.</li><li>Rich data visualization and export to popular formats like <strong>PDF, Excel, and Word</strong>.</li></ul></p>
+        <a href="https://developer.mescius.com/activereportsnet/download" target="_blank" class="cta-button cta-primary">Download Trial</a>
+        <a href="https://developer.mescius.com/activereportsnet" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>
+    </template>
+    <template id="spread-net-modal-content">
+        <h2 class="modal-title">Spread.NET</h2>
+        <p><strong>Deliver the ultimate spreadsheet experience in your .NET desktop and web applications with Spread.NET.</strong><br>This powerful component suite provides high-performance data grids and designers for <strong>WinForms, ASP.NET, and WPF</strong>.<p>Enable advanced features including:</p><ul><li>Complex calculations, charting, and pivot tables</li><li>Seamless Excel (.XLSX) import and export</li></ul><p>The perfect toolset for creating feature-rich <strong>financial and data analysis</strong> applications.</p></p>
+        <a href="https://developer.mescius.com/spreadnet/download" target="_blank" class="cta-button cta-primary">Download Trial</a>
+        <a href="https://developer.mescius.com/spreadnet" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>
+    </template>
+
     <footer class="footer">
         <div class="container footer-content">
             <div class="footer-col footer-col-left">
@@ -997,41 +1123,79 @@
             });
         }
 
+        // --- Animate Key Metrics (Intersection Observer for scroll into view) ---
+        const metricItems = document.querySelectorAll('.metric-item');
+        const animateMetrics = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const valueSpan = entry.target.querySelector('.metric-value');
+                    const targetValue = valueSpan.dataset.target; // Get as string
+                    let currentValue = 0;
+                    const duration = 1500; // ms
+                    const startTime = performance.now();
+
+                    const updateCount = (timestamp) => {
+                        const progress = (timestamp - startTime) / duration;
+                        if (progress < 1) {
+                            if (targetValue.includes('<')) { // Handle '<' for "less than"
+                                currentValue = Math.min(10, Math.floor(progress * 10)); // Animate to 9 then display <10
+                                valueSpan.textContent = currentValue;
+                            } else {
+                                currentValue = Math.min(parseInt(targetValue), Math.floor(progress * parseInt(targetValue)));
+                                valueSpan.textContent = currentValue + '%';
+                            }
+                            requestAnimationFrame(updateCount);
+                        } else {
+                            // Ensure final value is accurate
+                            valueSpan.textContent = targetValue;
+                        }
+                    };
+                    requestAnimationFrame(updateCount);
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        };
+
+        const metricObserver = new IntersectionObserver(animateMetrics, {
+            root: null, // viewport
+            threshold: 0.5 // Trigger when 50% of the item is visible
+        });
+
+        metricItems.forEach(item => {
+            metricObserver.observe(item);
+        });
+
         // --- Product Info Modal Logic ---
         const modalOverlay = document.getElementById('product-info-modal');
         if (modalOverlay) {
-            const modalContainer = document.querySelector('.modal-container');
             const modalBody = document.getElementById('modal-body-content');
             const modalCloseBtn = document.getElementById('modal-close');
             const infoTriggers = document.querySelectorAll('.product-info-trigger');
 
-            const openModal = (trigger) => {
-                const title = trigger.dataset.title || 'Product Details';
-                const description = trigger.dataset.description || 'No description available.';
-                
-                let modalHTML = `<h2 class="modal-title">${title}</h2>`;
-                modalHTML += description;
-
-                const trialLink = trigger.parentElement.querySelector('a[target="_blank"]').href;
-                // Get the specific product page link from the data attribute
-                const productLink = trigger.dataset.productPage || 'https://developer.mescius.com/'; // Generic fallback
-
-                modalHTML += `<a href="${trialLink}" target="_blank" class="cta-button cta-primary">Download Trial</a>`;
-                modalHTML += `<a href="${productLink}" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>`;
-
-                modalBody.innerHTML = modalHTML;
-                modalOverlay.style.display = 'flex';
+            const openModal = (productId) => {
+                const template = document.getElementById(`${productId}-modal-content`);
+                if (template) {
+                    modalBody.innerHTML = ''; // Clear previous content
+                    modalBody.appendChild(template.content.cloneNode(true));
+                    modalOverlay.style.display = 'flex';
+                } else {
+                    console.error(`Template for product ID "${productId}" not found.`);
+                }
             };
             
             const closeModal = () => {
                 modalOverlay.style.display = 'none';
-                modalBody.innerHTML = '';
+                modalBody.innerHTML = ''; // Clear content when closing
             };
 
             infoTriggers.forEach(trigger => {
                 trigger.addEventListener('click', (e) => {
                     e.preventDefault(); 
-                    openModal(trigger);
+                    const productId = trigger.dataset.productId;
+                    if (productId) {
+                        openModal(productId);
+                    }
                 });
             });
 
