@@ -11,15 +11,8 @@
     <!-- Wijmo CSS - Essential for Wijmo component styling -->
     <link href="https://cdn.grapecity.com/wijmo/5.20232.939/styles/wijmo.min.css" rel="stylesheet" />
 
-    <!-- SystemJS - Using unpkg.com, a generally reliable CDN -->
-    <script src="https://unpkg.com/systemjs@0.21.5/dist/system.src.js"></script>
-    
-    <!-- Babel Standalone for in-browser transpilation - Using unpkg.com -->
-    <script src="https://unpkg.com/@babel/standalone@6/babel.min.js"></script>
-    <!-- SystemJS Babel Plugin to integrate Babel with SystemJS - Using jsDelivr -->
-    <script src="https://cdn.jsdelivr.net/npm/systemjs-plugin-babel@0.0.25/plugin-babel.min.js"></script>
-
     <!-- Wijmo JavaScript files - Core components and specific modules for grid, input, filter, group panel, Excel, and PDF export -->
+    <!-- These are UMD (Universal Module Definition) bundles, which expose global 'wijmo' objects -->
     <script src="https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.min.js"></script>
     <script src="https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.grid.min.js"></script>
     <script src="https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.input.min.js"></script>
@@ -32,83 +25,6 @@
     <!-- Wijmo License Key - MUST be set before any Wijmo components are initialized -->
     <script>
         wijmo.setLicenseKey('579938718425585#B07eYICbuFkI1pjIEJCLi4TPB3SZCllU8BldhlETMZ5UypGb8E5bVdDWF9EOjJUbalEdOJkUNt4TmBXbtNlW7h7bv24ThhmR8t4RTtie9d6QHFHezMnN65ENmNTQulFWIdWdTJHMZplRktmV7g7LmtCcMpkeMdVZ03ETxgzTUdGc74mRqhmUr4kW4V4VxIUVR3EaZFmdZdjVjdFN5IVWZR6c824Uzo4Up5mdqlHdBh6a9h6dCxEdh9WMhRDR53CM5tmYK9GTjZ6LycVbINUQM3kUrtUdWpmWVZWYL5WVkZDWktCTwlnVSVDUEFDehdUarJ4d9E7VzFzL6MkVxVWT6V4Rrc6SrgWeCB7KxFFb9EEWzNUUrMFRaJHTzFjYMZ7bkdTaZNmTHJFdaxEOFxWRVp5U6k4QuJzQ6RnNnN8NDazklc7VGM8AFexomYPh7NSl5Tt9mMrdHS0VzasV6YNdWaGJXRxllZ7lmRiojITJCLiEER9QEOEFUNiojIIJCL7ADNyUDOzEjN0IicfJye=#Qf35VfikEMyIlI0IyQiwiIu3Waz9WZ4hXRgACdlVGaThXZsZEIv5mapdlI0IiTisHL3JSNJ9UUiojIDJCLi86bpNnblRHeFBCIyV6dllmV4J7bwVmUg2Wbql6ViojIOJyes4nILJDOIJiOiMkIsIibvl6cuVGd8VEIgc7bSlGdsVXTg2Wbql6ViojIOJyes4nI4YkNEJiOiMkIsIibvl6cuVGd8VEIgAVQM3EIg2Wbql6ViojIOJyes4nIzMEMCJiOiMkIsISZy36Qg2Wbql6ViojIOJyes4nIVhzNBJiOiMkIsIibvl6cuVGd8VEIgQnchh6QsFWaj9WYulmRg2Wbql6ViojIOJyebpjIkJHUiwiI9QjM5kDMggjM6ATNyAjMiojI4J7QiwiIt36YuMXdpN6cl5GQyVmZlFGajNnLzFGbrNWauJiOiEmTDJCLiUDO5UjM4gTM7gzM9kzN5IiOiQWSiwSfdtlOicGbmJCLiEjd5IDMyIiOiIXZ6JCLlNHbhZmOiIKc6J');
-    </script>
-
-    <!-- SystemJS Configuration - EMBEDDED directly in HTML -->
-    <script>
-    System.config({
-        // Set the base URL for module loading
-        baseURL: './', 
-
-        // Configure the transpiler for ES module syntax.
-        // 'plugin-babel' is the module name SystemJS Babel plugin registers itself as.
-        transpiler: 'plugin-babel', 
-
-        // Map paths for the transpiler and Wijmo modules.
-        // These paths now point to CDN URLs for SystemJS and Babel components.
-        paths: {
-            // CDN paths for SystemJS and Babel
-            'systemjs': 'https://unpkg.com/systemjs@0.21.5/dist/system.src.js',
-            'babel': 'https://unpkg.com/@babel/standalone@6/babel.min.js', 
-            'plugin-babel': 'https://cdn.jsdelivr.net/npm/systemjs-plugin-babel@0.0.25/plugin-babel.min.js',
-            
-            // Wijmo modules (still from CDN)
-            'wijmo': 'https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.min.js',
-            'wijmo.grid': 'https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.grid.min.js',
-            'wijmo.input': 'https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.input.min.js',
-            'wijmo.grid.filter': 'https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.grid.filter.min.js',
-            'wijmo.grid.grouppanel': 'https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.grid.grouppanel.min.js',
-            'wijmo.xlsx': 'https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.xlsx.min.js',
-            'wijmo.pdf': 'https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.pdf.min.js',
-            'wijmo.grid.pdf': 'https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.grid.pdf.min.js'
-        },
-
-        // Define package metadata for Wijmo modules and your local 'src' directory
-        packages: {
-            'wijmo': {
-                defaultExtension: 'js'
-            },
-            'wijmo.grid': {
-                defaultExtension: 'js'
-            },
-            'wijmo.input': {
-                defaultExtension: 'js'
-            },
-            'wijmo.grid.filter': {
-                defaultExtension: 'js'
-            },
-            'wijmo.grid.grouppanel': {
-                defaultExtension: 'js'
-            },
-            'wijmo.xlsx': {
-                defaultExtension: 'js'
-            },
-            'wijmo.pdf': {
-                defaultExtension: 'js'
-            },
-            'wijmo.grid.pdf': {
-                defaultExtension: 'js'
-            },
-            './src': { // This package refers to your local 'src' folder
-                defaultExtension: 'js', // Ensure .js files are recognized as modules
-                // Explicitly tell SystemJS to use the 'plugin-babel' for all .js files in 'src'
-                meta: {
-                    '*.js': {
-                        loader: 'plugin-babel'
-                    }
-                }
-            }
-        },
-        // This setting is often needed for older SystemJS versions to automatically add .js extension
-        // It's deprecated but can resolve issues in direct browser loading scenarios.
-        defaultJSExtensions: true 
-    });
-    </script>
-    
-    <!-- Application Entry Point - This script imports your main application logic, which sets up the Wijmo demo. 
-         You need to ensure 'src/app.js' (or 'src/app.ts' if using TypeScript) exists and contains the demo setup code. -->
-    <script>
-        System.import('./src/app');
     </script>
 
     <!-- Priority 2: Implement Schema Markup (TechArticle, Product, Organization) -->
@@ -1179,8 +1095,7 @@
                 <h2>Experience the Performance Firsthand</h2>
                 <p>The <strong>Wijmo FlexGrid</strong> below is rendering 100,000 rows in real-time. Try sorting, filtering, or scrolling to experience its speed.</p>
                 <div id="wijmo-flexgrid-demo">
-                    <!-- Wijmo FlexGrid Interactive Demo will be rendered here by SystemJS -->
-                    <!-- Content from the provided Wijmo demo's <main> tag -->
+                    <!-- Wijmo FlexGrid Interactive Demo will be rendered here -->
                     <div class="wijmo-toolbar-row">
                         <!-- search box -->
                         <div class="toolbar-item">
@@ -1266,6 +1181,7 @@
                         <div class="bundle-price">
                             <span class="price">€1,105</span>
                             <span class="term">per developer / year</span>
+                        (
                         </div>
                         <div class="bundle-cta">
                             <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285846" class="cta-button">Buy Now</a>
@@ -1453,6 +1369,110 @@
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape' && modalOverlay.style.display === 'flex') closeModal();
             });
+        }
+
+        // --- Wijmo FlexGrid Demo Logic (Self-contained) ---
+        // Function to generate a large dataset for the grid
+        function getData(count) {
+            let data = [];
+            let countries = ['US', 'Germany', 'UK', 'Japan', 'Italy', 'Greece', 'Spain', 'Canada', 'China', 'Brazil'];
+            let products = ['Widget', 'Gadget', 'Doohickey', 'Thingamajig', 'Whatchamacallit'];
+            for (let i = 0; i < count; i++) {
+                data.push({
+                    id: i,
+                    country: countries[i % countries.length],
+                    product: products[i % products.length],
+                    date: new Date(2023, i % 12, i % 28),
+                    amount: Math.random() * 10000,
+                    active: i % 5 === 0
+                });
+            }
+            return data;
+        }
+
+        // Initialize Wijmo components once the DOM is fully loaded
+        // Check if wijmo global object exists before proceeding
+        if (typeof wijmo !== 'undefined' && wijmo.grid && wijmo.input && wijmo.grid.filter && wijmo.grid.grouppanel && wijmo.xlsx && wijmo.grid.pdf) {
+            // Create a CollectionView to manage the data. Default to 100,000 rows as requested.
+            let cv = new wijmo.CollectionView(getData(100000)); 
+
+            // Initialize the FlexGrid component
+            let theGrid = new wijmo.grid.FlexGrid('#theGrid', {
+                autoGenerateColumns: true, // Automatically create columns based on data
+                itemsSource: cv, // Bind the grid to the CollectionView
+                allowSorting: true, // Enable column sorting
+                allowResizing: wijmo.grid.AllowResizing.Columns, // Allow column resizing
+                isReadOnly: false, // Allow editing
+                selectionMode: wijmo.grid.SelectionMode.Row // Select entire rows
+            });
+
+            // Add filtering functionality to the grid
+            let filter = new wijmo.grid.filter.FlexGridFilter(theGrid);
+
+            // Add GroupPanel functionality to allow users to drag columns for grouping
+            let groupPanel = new wijmo.grid.grouppanel.GroupPanel('#theGroupPanel', {
+                grid: theGrid, // Link to the FlexGrid instance
+                placeholder: 'Drag columns here to group by' // Text displayed when no grouping is applied
+            });
+
+            // Initialize the search input control
+            let theSearch = new wijmo.input.InputMask('#theSearch', {
+                placeholder: 'Search grid...', // Placeholder text for the search box
+                // Event handler for when the search input value changes
+                valueChanged: (sender) => {
+                    let search = sender.text.toLowerCase(); // Get search text and convert to lowercase
+                    if (search) {
+                        // Apply a filter to the CollectionView based on the search text
+                        cv.filter = (item) => {
+                            // Iterate through each property of the data item
+                            for (let key in item) {
+                                // Check if the item property exists and contains the search text (case-insensitive)
+                                if (item[key] && item[key].toString().toLowerCase().indexOf(search) > -1) {
+                                    return true; // Include the item if a match is found
+                                }
+                            }
+                            return false; // Exclude the item if no match is found
+                        };
+                    } else {
+                        cv.filter = null; // Remove the filter if search text is empty
+                    }
+                }
+            });
+
+            // Initialize the ComboBox for changing the number of items in the grid
+            let itemsCount = new wijmo.input.ComboBox('#itemsCount', {
+                itemsSource: ['5', '50', '500', '5000', '50000', '100000'], // Available options
+                selectedValue: '100000', // Set initial selected value to 100,000
+                // Event handler for when the selected item count changes
+                selectedIndexChanged: (sender) => {
+                    // Update the grid's data source with a new dataset of the selected size
+                    cv.sourceCollection = getData(parseInt(sender.selectedValue));
+                }
+            });
+
+            // Event listener for the "Export To Excel" button
+            document.getElementById('btnExportToExcel').addEventListener('click', () => {
+                // Use FlexGridXlsxConverter to export grid data to an Excel file
+                wijmo.xlsx.FlexGridXlsxConverter.saveAsync(theGrid, {
+                    includeColumnHeaders: true, // Include column headers in the export
+                    includeRowHeaders: true // Include row headers in the export
+                }, 'FlexGrid.xlsx'); // File name for the exported Excel file
+            });
+
+            // Event listener for the "Export To PDF" button
+            document.getElementById('btnExportToPdf').addEventListener('click', () => {
+                // Use FlexGridPdfConverter to export grid data to a PDF file
+                wijmo.grid.pdf.FlexGridPdfConverter.export(theGrid, 'FlexGrid.pdf', {
+                    maxPages: 10, // Limit the number of pages to export to prevent excessively large PDFs
+                    documentOptions: {
+                        info: {
+                            title: 'FlexGrid Report' // Title for the PDF document
+                        }
+                    }
+                });
+            });
+        } else {
+            console.error("Wijmo global objects not found. Ensure Wijmo scripts are loaded correctly.");
         }
     });
     </script>
