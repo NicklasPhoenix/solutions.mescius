@@ -8,30 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
-    <!-- NEW: Favicon Link -->
-    <link rel="icon" href="https://developer.mescius.com/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="https://developer.mescius.com/favicon.ico" type="image/x-icon">
-
-    <!-- Wijmo CSS - Essential for Wijmo component styling -->
-    <link href="https://cdn.grapecity.com/wijmo/5.20232.939/styles/wijmo.min.css" rel="stylesheet" />
-
-    <!-- Wijmo JavaScript files - Core components and specific modules for grid, input, filter, group panel, Excel, and PDF export -->
-    <!-- These are UMD (Universal Module Definition) bundles, which expose global 'wijmo' objects -->
-    <script src="https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.min.js"></script>
-    <script src="https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.grid.min.js"></script>
-    <script src="https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.input.min.js"></script>
-    <script src="https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.grid.filter.min.js"></script>
-    <script src="https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.grid.grouppanel.min.js"></script>
-    <script src="https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.xlsx.min.js"></script>
-    <script src="https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.pdf.min.js"></script>
-    <script src="https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.grid.pdf.min.js"></script>
-
-    <!-- Wijmo License Key - MUST be set before any Wijmo components are initialized -->
-    <script>
-        wijmo.setLicenseKey('579938718425585#B07eYICbuFkI1pjIEJCLi4TPB3SZCllU8BldhlETMZ5UypGb8E5bVdDWF9EOjJUbalEdOJkUNt4TmBXbtNlW7h7bv24ThhmR8t4RTtie9d6QHFHezMnN65ENmNTQulFWIdWdTJHMZplRktmV7g7LmtCcMpkeMdVZ03ETxgzTUdGc74mRqhmUr4kW4V4VxIUVR3EaZFmdZdjVjdFN5IVWZR6c824Uzo4Up5mdqlHdBh6a9h6dCxEdh9WMhRDR53CM5tmYK9GTjZ6LycVbINUQM3kUrtUdWpmWVZWYL5WVkZDWktCTwlnVSVDUEFDehdUarJ4d9E7VzFzL6MkVxVWT6V4Rrc6SrgWeCB7KxFFb9EEWzNUUrMFRaJHTzFjYMZ7bkdTaZNmTHJFdaxEOFxWRVp5U6k4QuJzQ6RnNnN8NDazklc7VGM8AFexomYPh7NSl5Tt9mMrdHS0VzasV6YNdWaGJXRxllZ7lmRiojITJCLiEER9QEOEFUNiojIIJCL7ADNyUDOzEjN0IicfJye=#Qf35VfikEMyIlI0IyQiwiIu3Waz9WZ4hXRgACdlVGaThXZsZEIv5mapdlI0IiTisHL3JSNJ9UUiojIDJCLi86bpNnblRHeFBCIyV6dllmV4J7bwVmUg2Wbql6ViojIOJyes4nILJDOIJiOiMkIsIibvl6cuVGd8VEIgc7bSlGdsVXTg2Wbql6ViojIOJyes4nI4YkNEJiOiMkIsIibvl6cuVGd8VEIgAVQM3EIg2Wbql6ViojIOJyes4nIzMEMCJiOiMkIsISZy36Qg2Wbql6ViojIOJyes4nIVhzNBJiOiMkIsIibvl6cuVGd8VEIgQnchh6QsFWaj9WYulmRg2Wbql6ViojIOJyebpjIkJHUiwiI9QjM5kDMggjM6ATNyAjMiojI4J7QiwiIt36YuMXdpN6cl5GQyVmZlFGajNnLzFGbrNWauJiOiEmTDJCLiUDO5UjM4gTM7gzM9kzN5IiOiQWSiwSfdtlOicGbmJCLiEjd5IDMyIiOiIXZ6JCLlNHbhZmOiIKc6J');
-    </script>
-
-    <!-- Priority 2: Implement Schema Markup (TechArticle, Product, Organization) -->
+    <link href="https://cdn.mescius.com/wijmo/5.20232.939/styles/wijmo.min.css" rel="stylesheet" />
+    
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -66,12 +44,12 @@
         "@type": "Brand",
         "name": "Wijmo"
       },
-      "url": "https://developer.mescius.com/wijmo/flexgrid-javascript-grid",
-      "logo": "https://cdn.mescius.io/umb/media/wijmo.svg", 
+      "url": "https://developer.mescius.com/wijmo/flexgrid-javascript-data-grid",
+      "logo": "https://cdn.mescius.io/umb/media/wijmo.svg",
       "aggregateRating": {
         "@type": "AggregateRating",
-        "ratingValue": "4.8", 
-        "reviewCount": "250" 
+        "ratingValue": "4.8",
+        "reviewCount": "250"
       }
     }
     </script>
@@ -300,13 +278,13 @@
 
         /* Priority 3: Optimize Heading Structure & Keywords */
         .profile-item h3 { 
-            font-size: 18px; /* Increased font size */
+            font-size: 18px; 
             font-weight: 700; 
             color: var(--brand-heading); 
             margin: 0 0 10px 0; 
             padding-bottom: 10px; 
-            border-bottom: 3px solid var(--accent-color); /* Thicker border */
-            width: fit-content; /* Make border fit content */
+            border-bottom: 3px solid var(--accent-color); 
+            width: fit-content; 
         }
         .profile-item p { 
             font-size: 16px; 
@@ -316,7 +294,7 @@
         }
         .results-heading { 
             text-align: center; 
-            margin-bottom: 25px; /* Adjusted margin */
+            margin-bottom: 25px; 
             position: relative;
         }
         /* Priority 3: Optimize Heading Structure & Keywords */
@@ -324,18 +302,18 @@
             display: inline-block; 
             position: relative; 
             margin: 0; 
-            font-size: 22px; /* Increased font size */
-            font-weight: 700; /* Bolder */
+            font-size: 22px; 
+            font-weight: 700; 
             color: var(--brand-heading); 
-            padding-bottom: 10px; /* Space for underline */
+            padding-bottom: 10px; 
         }
         /* Priority 3: Optimize Heading Structure & Keywords */
-        .results-heading h3::after { /* Animated, colored underline for style */
+        .results-heading h3::after { 
             content: '';
             position: absolute;
             left: 50%;
             bottom: 0;
-            transform: translateX(-50%) scaleX(1); /* Always visible */
+            transform: translateX(-50%) scaleX(1); 
             transform-origin: center;
             width: 80px;
             height: 4px;
@@ -345,49 +323,49 @@
         }
         /* Priority 3: Optimize Heading Structure & Keywords */
         .results-heading h3::before, .results-heading h3::after { 
-            background-color: transparent; /* Remove default lines */
+            background-color: transparent; 
         }
         /* New: Separator for Potential Outcomes */
         .results-heading::before {
             content: '';
             display: block;
-            width: 60px; /* Small separator length */
+            width: 60px; 
             height: 3px;
-            background-color: var(--color-border-light); /* Light gray separator */
-            margin: 0 auto 20px auto; /* Centered, with space above */
+            background-color: var(--color-border-light); 
+            margin: 0 auto 20px auto; 
             border-radius: 2px;
         }
         .results-metrics { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
-            gap: 30px; /* Increased gap */
+            gap: 30px; 
             text-align: center; 
         }
         .metric-item { 
-            background-color: var(--color-neutral-light); /* Light neutral background */
-            padding: 25px; /* Increased padding */
-            border-radius: 10px; /* Rounded corners */
+            background-color: var(--color-neutral-light); 
+            padding: 25px; 
+            border-radius: 10px; 
             border: 1px solid var(--color-border-light); 
-            box-shadow: 0 4px 10px var(--color-shadow-subtle); /* Subtle shadow */
+            box-shadow: 0 4px 10px var(--color-shadow-subtle); 
             transition: transform 0.2s ease;
-            opacity: 0; /* Start hidden for animation */
-            transform: translateY(20px); /* Start slightly below for animation */
+            opacity: 0; 
+            transform: translateY(20px); 
         }
-        .metric-item.is-visible { /* Class to trigger animation */
+        .metric-item.is-visible { 
             opacity: 1;
             transform: translateY(0);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
         .metric-value { 
             display: block; 
-            font-size: 40px; /* Increased font size */
+            font-size: 40px; 
             font-weight: 700; 
             color: var(--accent-color); 
             margin-bottom: 5px;
         }
         .metric-label { 
             display: block; 
-            font-size: 15px; /* Adjusted font size */
+            font-size: 15px; 
             color: var(--brand-body); 
         }
         .profile-cta { 
@@ -398,7 +376,7 @@
         }
         .profile-cta .cta-button { 
             display: inline-block; 
-            background-color: var(--brand-heading); /* Using brand heading color for a neutral, strong CTA */
+            background-color: var(--brand-heading); 
             color: #ffffff;
             padding: 15px 30px;
             font-size: 18px;
@@ -409,7 +387,7 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
         .profile-cta .cta-button:hover {
-            background-color: #3C475B; /* Slightly darker shade for hover */
+            background-color: #3C475B; 
             transform: translateY(-2px);
         }
         .card-toggle-bar { 
@@ -417,16 +395,16 @@
             justify-content: center; 
             align-items: center; 
             gap: 10px; 
-            background-color: var(--color-neutral-light); /* Lighter background */
+            background-color: var(--color-neutral-light); 
             border-top: 1px solid var(--color-border-light); 
-            padding: 20px; /* More padding */
+            padding: 20px; 
             cursor: pointer; 
             transition: background-color 0.2s ease; 
             border-bottom-left-radius: 16px;
             border-bottom-right-radius: 16px;
         }
         .card-toggle-bar:hover { 
-            background-color: #e9ecef; /* Slightly darker light neutral on hover */
+            background-color: #e9ecef; 
         }
         .toggle-text { 
             font-weight: 600; 
@@ -434,7 +412,7 @@
             font-size: 16px;
         }
         .toggle-icon { 
-            width: 18px; /* Slightly larger icon */
+            width: 18px; 
             height: 18px; 
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%232D3748' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E"); 
             background-size: contain; 
@@ -453,19 +431,19 @@
             max-height: 5000px; 
         }
         .main-story { 
-            padding: 40px; /* Consistent padding */
+            padding: 40px; 
             font-size: 17px; 
             line-height: 1.8; 
             color: var(--brand-body);
         }
         .main-story h2 { 
-            font-size: 28px; /* Increased font size */
+            font-size: 28px; 
             font-weight: 700; 
             color: var(--brand-heading); 
             margin: 40px 0 20px 0; 
-            padding-bottom: 12px; /* More padding for underline */
-            border-bottom: 4px solid var(--accent-color); /* Thicker border */
-            display: inline-block; /* For the underline to fit content */
+            padding-bottom: 12px; 
+            border-bottom: 4px solid var(--accent-color); 
+            display: inline-block; 
         }
         .main-story > div:first-of-type h2 { 
             margin-top: 0; 
@@ -474,7 +452,7 @@
             margin-bottom: 20px; 
         }
         .main-story ul {
-            list-style: disc; /* Ensure disc for lists */
+            list-style: disc; 
             padding-left: 25px;
         }
         .main-story li {
@@ -486,14 +464,14 @@
             font-size: 17px;
             line-height: 1.8;
             color: var(--brand-body);
-            background-color: var(--color-background-white); /* Match card background */
-            border-radius: 16px; /* Match card border radius */
-            box-shadow: 0 8px 30px var(--color-shadow-medium); /* Match card shadow */
-            margin: 50px auto; /* Provide margin like other main sections */
-            max-width: 1280px; /* Match container width */
+            background-color: var(--color-background-white); 
+            border-radius: 16px; 
+            box-shadow: 0 8px 30px var(--color-shadow-medium); 
+            margin: 50px auto; 
+            max-width: 1280px; 
         }
         .key-elements-section h3 {
-            font-size: 24px; /* Slightly smaller than h2 but prominent */
+            font-size: 24px; 
             font-weight: 700;
             color: var(--brand-heading);
             margin: 0 0 20px 0;
@@ -511,25 +489,25 @@
         }
         /* Improved hyperlink style */
         .key-elements-section a.internal-link {
-            color: var(--accent-color); /* Use the accent color */
-            text-decoration: none; /* Remove default underline */
-            border-bottom: 1px solid rgba(72, 169, 197, 0.5); /* Subtle accent-colored underline */
+            color: var(--accent-color); 
+            text-decoration: none; 
+            border-bottom: 1px solid rgba(72, 169, 197, 0.5); 
             transition: border-bottom-color 0.3s ease, color 0.3s ease;
         }
         .key-elements-section a.internal-link:hover {
-            color: var(--brand-heading); /* Darker on hover */
-            border-bottom-color: var(--brand-heading); /* Solid underline on hover */
+            color: var(--brand-heading); 
+            border-bottom-color: var(--brand-heading); 
         }
 
         .implementation-summary { 
-            background-color: var(--color-neutral-light); /* Lighter background */
-            border-left: 5px solid var(--accent-color); /* Thicker border */
-            padding: 25px 30px; /* More padding */
+            background-color: var(--color-neutral-light); 
+            border-left: 5px solid var(--accent-color); 
+            padding: 25px 30px; 
             margin: 30px 0; 
-            border-radius: 8px; /* Rounded corners */
+            border-radius: 8px; 
         }
         .implementation-summary h3 { 
-            font-size: 20px; /* Increased font size */
+            font-size: 20px; 
             margin-top: 0; 
             color: var(--brand-heading); 
             margin-bottom: 15px;
@@ -562,113 +540,57 @@
             margin-left: auto;
             margin-right: auto;
         }
-        /* Styles for the Wijmo Demo Toolbar */
-        .wijmo-toolbar-row {
-            display: flex;
-            flex-wrap: wrap; /* Allow items to wrap on smaller screens */
-            gap: 20px; /* Space between toolbar items */
-            margin-bottom: 20px;
-            justify-content: center; /* Center items in the toolbar */
-            align-items: center;
-            padding: 15px;
+        .wijmo-flexgrid-placeholder {
+            height: 400px; /* Fixed height for internal scrolling */
+            width: 100%; /* Ensure the container takes full width */
             background-color: var(--color-neutral-light);
-            border-radius: 8px;
-            box-shadow: 0 2px 5px var(--color-shadow-subtle);
+            border: 1px solid var(--color-border-light); /* Changed to solid border for cleaner look */
+            border-radius: 8px; /* Rounded corners */
+            margin-top: 30px;
+            position: relative;
+            /* Wijmo FlexGrid handles its own internal scrolling */
+            overflow: hidden; /* Added to ensure content doesn't break out of rounded corners */
         }
-        .wijmo-toolbar-row .toolbar-item {
-            flex: 1 1 auto; /* Allow items to grow and shrink */
-            min-width: 150px; /* Minimum width for toolbar items */
-            max-width: 250px; /* Max width to prevent them from getting too wide */
-        }
-        .input-group-custom {
-            display: flex;
-            border: 1px solid var(--color-border-light);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        .input-group-addon-custom {
-            background-color: var(--color-neutral-dark);
-            color: #ffffff;
-            padding: 10px 15px;
-            font-size: 15px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-        }
-        .form-control-custom {
-            flex-grow: 1;
-            padding: 10px 15px;
-            font-size: 15px;
-            border: none;
-            outline: none;
-            background-color: var(--color-background-white);
-            color: var(--brand-body);
-            border-radius: 0 8px 8px 0; /* Rounded only on the right side */
-        }
-        .form-control-custom:focus {
-            box-shadow: 0 0 0 2px var(--accent-color);
-        }
-        .btn-custom {
-            background-color: var(--accent-color);
-            color: #ffffff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 8px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            width: 100%; /* Make buttons fill their container */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .btn-custom:hover {
-            background-color: #3A92B0; /* Slightly darker accent */
-            transform: translateY(-2px);
-        }
-
-        /* Wijmo Grid specific styles */
-        #theGroupPanel, #theGrid {
-            margin-top: 20px;
-            min-height: 300px; /* Ensure grid has some height */
-            border: 1px solid var(--color-border-light);
-            border-radius: 8px;
-            overflow: hidden; /* For rounded corners */
-        }
-        #theGrid {
-            height: 500px; /* Fixed height for the grid, adjust as needed */
+        /* FlexGrid specific styles to ensure it fills its container */
+        .wijmo-flexgrid-placeholder > div { 
             width: 100%;
+            height: 100%;
         }
-
-        /* Remove placeholder styles from .wijmo-flexgrid-placeholder */
-        #wijmo-flexgrid-demo {
-            min-height: auto; /* Reset min-height */
-            background-color: transparent; /* Reset background */
-            border: none; /* Remove dashed border */
-            display: block; /* Change to block display */
-            align-items: unset;
-            justify-content: unset;
-            font-size: unset;
-            color: unset;
-            padding: 0; /* Remove padding */
+        /* Specific Wijmo overrides for header styling to match screenshot visual cues */
+        .wijmo-flexgrid-placeholder .wj-colheaders .wj-cell {
+            background-color: #f0f4f7; /* Light grey background for headers */
+            font-weight: 600; /* Bolder font for headers */
+            color: var(--brand-heading); /* Darker text color */
+            border-right: 1px solid var(--color-border-light); /* Separator between header cells */
+        }
+        .wijmo-flexgrid-placeholder .wj-header-filter {
+            margin-left: 5px; /* Space between text and filter icon */
+        }
+        .wijmo-flexgrid-placeholder .wj-cell {
+            font-size: 15px; /* Slightly smaller font for cell content */
+        }
+        .wijmo-flexgrid-placeholder h3,
+        .wijmo-flexgrid-placeholder p {
+            display: none; 
         }
 
 
         /* Bundle Section */
         .recommended-bundle-section { 
             padding: 60px 0 0 0; 
-            margin-bottom: 60px; /* Space above footer */
+            margin-bottom: 60px; 
         }
         .bundle-card { 
             background-color: var(--brand-header); 
             color: #ffffff; 
-            border-radius: 16px; /* Larger border-radius */
+            border-radius: 16px; 
             padding: 40px; 
             display: grid; 
             grid-template-columns: 1fr 1fr; 
             gap: 30px; 
-            align-items: center; /* Align items vertically */
-            border-top: 6px solid var(--accent-color); /* Thicker border */
-            box-shadow: 0 10px 30px var(--color-shadow-medium); /* Stronger shadow */
+            align-items: center; 
+            border-top: 6px solid var(--accent-color); 
+            box-shadow: 0 10px 30px var(--color-shadow-medium); 
         }
         .bundle-info { 
             display: flex; 
@@ -679,12 +601,12 @@
             font-size: 16px; 
             font-weight: 600; 
             text-transform: uppercase; 
-            letter-spacing: 1.5px; /* More letter spacing */
+            letter-spacing: 1.5px; 
             opacity: 0.8; 
             margin: 0 0 5px 0; 
         }
         .bundle-header h2 { 
-            font-size: 32px; /* Larger font size */
+            font-size: 32px; 
             font-weight: 700; 
             margin: 0; 
             line-height: 1.2; 
@@ -701,9 +623,9 @@
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            background-color: rgba(255,255,255,0.08); /* Slightly more visible background */
-            padding: 12px 18px; /* More padding */
-            border-radius: 8px; /* Rounded corners */
+            background-color: rgba(255,255,255,0.08); 
+            padding: 12px 18px; 
+            border-radius: 8px; 
         }
         .bundle-inclusions .product-name { 
             display: flex; 
@@ -713,7 +635,7 @@
             font-size: 16px;
         }
         .bundle-inclusions .checkmark { 
-            color: var(--accent-color); /* Use accent color for checkmark */
+            color: var(--accent-color); 
             font-size: 1.2em;
         }
         .bundle-inclusions .product-actions .action-link { 
@@ -730,7 +652,7 @@
         /* Priority 3: Increase Spacing on Action Links */
         .bundle-inclusions .product-actions .action-divider { 
             opacity: 0.5; 
-            margin: 0 12px; /* Increased space */
+            margin: 0 12px; 
         }
         .bundle-purchase { 
             text-align: right; 
@@ -739,11 +661,11 @@
             margin-bottom: 20px; 
         }
         .bundle-price .price { 
-            font-size: 44px; /* Larger price */
+            font-size: 44px; 
             font-weight: 700; 
         }
         .bundle-price .term { 
-            font-size: 16px; /* Larger term */
+            font-size: 16px; 
             opacity: 0.7; 
             display: block; 
         }
@@ -752,8 +674,8 @@
             background-color: #ffffff; 
             color: var(--brand-header); 
             text-decoration: none; 
-            padding: 16px 40px; /* More padding */
-            border-radius: 10px; /* More rounded */
+            padding: 16px 40px; 
+            border-radius: 10px; 
             font-weight: 700; 
             font-size: 18px;
             transition: all 0.3s ease; 
@@ -763,7 +685,7 @@
             background-color: var(--brand-light-gray); 
             transform: translateY(-2px); 
             box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-        }
+        } 
 
         /* Modal Styles */
         .modal-overlay { 
@@ -780,14 +702,14 @@
         }
         .modal-container { 
             background: #fff; 
-            padding: 40px; /* More padding */
-            border-radius: 16px; /* Larger border-radius */
+            padding: 40px; 
+            border-radius: 16px; 
             width: 90%; 
             max-width: 700px; 
             max-height: 90vh; 
             overflow-y: auto; 
             position: relative; 
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3); /* Stronger shadow */
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3); 
         }
         .modal-close-btn { 
             position: absolute; 
@@ -795,13 +717,13 @@
             right: 15px; 
             background: transparent; 
             border: none; 
-            font-size: 32px; /* Larger close button */
+            font-size: 32px; 
             color: #718096; 
             cursor: pointer; 
             line-height: 1; 
         }
         .modal-title { 
-            font-size: 30px; /* Larger title */
+            font-size: 30px; 
             color: var(--brand-heading); 
             margin-top: 0; 
             margin-bottom: 20px; 
@@ -821,26 +743,26 @@
         .modal-body .cta-button { 
             display: inline-block; 
             width: auto; 
-            padding: 15px 30px; /* Larger padding */
+            padding: 15px 30px; 
             margin-top: 20px; 
             margin-right: 15px; 
             border-radius: 8px; 
             font-weight: 600; 
             color: #fff; 
             text-decoration: none; 
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; /* Added transform and box-shadow to transition */
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; 
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
         .modal-body .cta-button.cta-primary { 
             background-color: var(--accent-color); 
         }
         .modal-body .cta-button.cta-secondary { 
-            background-color: var(--color-neutral-dark); /* Using neutral dark for secondary */
+            background-color: var(--color-neutral-dark); 
         }
         .modal-body .cta-button:hover { 
             filter: brightness(110%); 
-            transform: translateY(-3px); /* Increased the translateY for a smoother, less 'jumpy' feel */
-            box-shadow: 0 8px 18px rgba(0,0,0,0.3); /* Adjusted shadow for smoother transition */
+            transform: translateY(-3px); 
+            box-shadow: 0 8px 18px rgba(0,0,0,0.3); 
         }
         
         /* Footer Styles (DO NOT CHANGE) */
@@ -1084,58 +1006,20 @@
                 </div>
             </div>
 
-            <!-- Priority 3: Make Critical Content Visible by Default & Styled -->
             <section class="key-elements-section container">
                 <h3>Key Elements of the Approach:</h3>
                 <ul>
-                    <li><strong>Component Swap:</strong> Replace the slow, open-source, or standard datagrid with a high-performance commercial component like <a href="https://developer.mescius.com/wijmo/flexgrid-javascript-grid" class="internal-link">Wijmo's FlexGrid</a>.</li>
+                    <li><strong>Component Swap:</strong> Replace the slow, open-source, or standard datagrid with a high-performance commercial component like <a href="https://developer.mescius.com/wijmo/flexgrid-javascript-data-grid" class="internal-link">Wijmo's FlexGrid</a>.</li>
                     <li><strong>Virtualization:</strong> Ensure the chosen component uses advanced virtualization, rendering only the DOM elements for visible cells. This is the key to handling millions of rows without freezing the browser.</li>
                     <li><strong>Data-Binding:</strong> Integrate the new grid with your existing data sources for seamless, real-time updates without degrading the user experience.</li>
                 </ul>
             </section>
             
-            <!-- Priority 1: Embed an Interactive Live Demo -->
             <section class="live-demo-section container">
                 <h2>Experience the Performance Firsthand</h2>
                 <p>The <strong>Wijmo FlexGrid</strong> below is rendering 100,000 rows in real-time. Try sorting, filtering, or scrolling to experience its speed.</p>
-                <div id="wijmo-flexgrid-demo">
-                    <!-- Wijmo FlexGrid Interactive Demo will be rendered here -->
-                    <div class="wijmo-toolbar-row">
-                        <!-- search box -->
-                        <div class="toolbar-item">
-                            <div id="theSearch"></div>
-                        </div>
-
-                        <!-- data size -->
-                        <div class="toolbar-item">
-                            <div class="input-group-custom">
-                                <span class="input-group-addon-custom">Items:</span>
-                                <select id="itemsCount" class="form-control-custom" aria-label="Data Size">
-                                    <option value="5">5</option>
-                                    <option value="50">50</option>
-                                    <option value="500">500</option>
-                                    <option value="5000">5,000</option>
-                                    <option value="50000">50,000</option>
-                                    <option value="100000" selected>100,000</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <!-- export to Excel -->
-                        <div class="toolbar-item">
-                            <button id="btnExportToExcel" class="btn-custom">Export To Excel</button>
-                        </div>
-
-                        <!-- export to PDF -->
-                        <div class="toolbar-item">
-                            <button id="btnExportToPdf" class="btn-custom">Export To PDF</button>
-                        </div>
+                <div id="wijmo-flexgrid-demo" class="wijmo-flexgrid-placeholder">
                     </div>
-
-                    <!-- the grid -->
-                    <div id="theGroupPanel"></div>
-                    <div id="theGrid"></div>
-                </div>
             </section>
 
             <div class="container">
@@ -1185,7 +1069,6 @@
                         <div class="bundle-price">
                             <span class="price">€1,105</span>
                             <span class="term">per developer / year</span>
-                        (
                         </div>
                         <div class="bundle-cta">
                             <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285846" class="cta-button">Buy Now</a>
@@ -1204,7 +1087,6 @@
         </div>
     </div>
     
-    <!-- Priority 3: Refine the Code for the Modal (using <template> tags) -->
     <template id="wijmo-enterprise-modal-content">
         <h2 class="modal-title">Wijmo Enterprise</h2>
         <p><strong>Build high-performance, enterprise-level web applications</strong> with Wijmo's comprehensive library of JavaScript/TypeScript UI components.</p>
@@ -1261,7 +1143,13 @@
         </div>
     </footer>
     
+    <script src="https://cdn.mescius.com/wijmo/5.20232.939/controls/wijmo.min.js"></script>
+    <script src="https://cdn.mescius.com/wijmo/5.20232.939/controls/wijmo.grid.min.js"></script>
+    <script src="https://cdn.mescius.com/wijmo/5.20232.939/controls/wijmo.grid.filter.min.js"></script>
     <script>
+    // Set the Wijmo license key (This must be called AFTER wijmo.min.js is loaded)
+    wijmo.setLicenseKey('579938718425585#B07eYICbuFkI1pjIEJCLi4TPB3SZCllU8BldhlETMZ5UypGb8E5bVdDWF9EOjJUbalEdOJkUNt4TmBXbtNlW7h7bv24ThhmR8t4RTtie9d6QHFHezMnN65ENmNTQulFWIdWdTJHMZplRktmV7g7LmtCcMpkeMdVZ03ETxgzTUdGc74mRqhmUr4kW4V4VxIUVR3EaZFmdZdjVjdFN5IVWZR6c824Uzo4Up5mdqlHdBh6a9h6dCxEdh9WMhRDR53CM5tmYK9GTjZ6LycVbINUQM3kUrtUdWpmWVZWYL5WVkZDWktCTwlnVSVDUEFDehdUarJ4d9E7VzFzL6MkVxVWT6V4Rrc6SrgWeCB7KxFFb9EEWzNUUrMFRaJHTzFjYMZ7bkdTaZNmTHJFdaxEOFxWRVp5U6k4QuJzQ6RnN8NDazklc7VGM8AFexomYPh7NSl5Tt7mMrdHS0VzasV6YNdWaGJXRxllZ7lmRiojITJCLiEER9QEOEFUNiojIIJCL7ADNyUDOzEjN0IicfJye=#Qf35VfikEMyIlI0IyQiwiIu3Waz9WZ4hXRgACdlVGaThXZsZEIv5mapdlI0IiTisHL3JSNJ9UUiojIDJCLi86bpNnblRHeFBCIyV6dllmV4J7bwVmUg2Wbql6ViojIOJyes4nILdDOIJiOiMkIsIibvl6cuVGd8VEIgc7bSlGdsVXTg2Wbql6ViojIOJyes4nI4YkNEJiOiMkIsIibvl6cuVGd8VEIgAVQM3EIg2Wbql6ViojIOJyes4nIzMEMCJiOiMkIsISZy36Qg2Wbql6ViojIOJyes4nIVhzNBJiOiMkIsIibvl6cuVGd8VEIgQnchh6QsFWaj9WYulmRg2Wbql6ViojIOJyebpjIkJHUiwiI9QjM5kDMggjM6ATNy AjMiojI4J7QiwiIt36YuMXdpN6cl5GQyVmZlFGajNnLzFGbrNWauJiOiEmTDJCLiUDO5UjM4gTM7gzM9kzN5IiOiQWSiwSfdtlOicGbmJCLiEjd5IDMyIiOiIXZ6JCLlNHbhZmOiIKc6J');
+
     document.addEventListener('DOMContentLoaded', () => {
         // --- Mobile menu toggle functionality ---
         const menuToggle = document.getElementById('menu-toggle');
@@ -1333,7 +1221,7 @@
             metricObserver.observe(item);
         });
 
-        // --- Product Info Modal Logic (Priority 3: Refine the Code for the Modal) ---
+        // --- Product Info Modal Logic ---
         const modalOverlay = document.getElementById('product-info-modal');
         if (modalOverlay) {
             const modalBody = document.getElementById('modal-body-content');
@@ -1374,113 +1262,72 @@
                 if (e.key === 'Escape' && modalOverlay.style.display === 'flex') closeModal();
             });
         }
-    });
 
-    // --- Wijmo FlexGrid Demo Logic (Self-contained, wrapped in window.onload for full library readiness) ---
-    window.onload = function() { // IMPORTANT: Ensure all Wijmo components are loaded
-        // Function to generate a large dataset for the grid
-        function getData(count) {
-            let data = [];
-            let countries = ['US', 'Germany', 'UK', 'Japan', 'Italy', 'Greece', 'Spain', 'Canada', 'China', 'Brazil'];
-            let products = ['Widget', 'Gadget', 'Doohickey', 'Thingamajig', 'Whatchamacallit'];
-            for (let i = 0; i < count; i++) {
+        // --- Wijmo FlexGrid Implementation ---
+        const gridHost = document.getElementById('wijmo-flexgrid-demo');
+        if (gridHost && typeof wijmo !== 'undefined' && typeof wijmo.grid !== 'undefined') {
+            // Generate 100,000 rows of data
+            const data = [];
+            const rowCount = 100000;
+
+            // Define richer data for better representation
+            const productAdjectives = ['Super', 'Mega', 'Hyper', 'Turbo', 'Smart', 'Elite', 'Pro', 'Classic'];
+            const productNouns = ['Widget', 'Gadget', 'Doodad', 'Gizmo', 'Appliance', 'Device', 'Unit', 'Tool'];
+            const categories = ['Electronics', 'Clothing', 'Home Goods', 'Food', 'Books', 'Software', 'Automotive', 'Health'];
+            const generateRandomDate = (start, end) => {
+                return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+            };
+
+            for (let i = 0; i < rowCount; i++) {
+                const adj = productAdjectives[Math.floor(Math.random() * productAdjectives.length)];
+                const noun = productNouns[Math.floor(Math.random() * productNouns.length)];
                 data.push({
-                    id: i,
-                    country: countries[i % countries.length],
-                    product: products[i % products.length],
-                    date: new Date(2023, i % 12, i % 28),
-                    amount: Math.random() * 10000,
-                    active: i % 5 === 0
+                    ID: i + 1,
+                    Product: `${adj} ${noun} ${i + 1}`, // More descriptive product names
+                    Category: categories[Math.floor(Math.random() * categories.length)],
+                    Price: (Math.random() * 100 + 1).toFixed(2),
+                    Stock: Math.floor(Math.random() * 1000),
+                    OrderDate: generateRandomDate(new Date(2023, 0, 1), new Date()), // New Date column
+                    Discontinued: Math.random() > 0.9 // 10% chance of being discontinued
                 });
             }
-            return data;
-        }
 
-        // Check if wijmo global object exists before proceeding
-        // This check is a safeguard, but window.onload should ensure readiness
-        if (typeof wijmo !== 'undefined' && wijmo.grid && wijmo.input && wijmo.grid.filter && wijmo.grid.grouppanel && wijmo.xlsx && wijmo.grid.pdf) {
-            // Create a CollectionView to manage the data. Default to 100,000 rows as requested.
-            let cv = new wijmo.CollectionView(getData(100000)); 
-
-            // Initialize the FlexGrid component
-            let theGrid = new wijmo.grid.FlexGrid('#theGrid', {
-                autoGenerateColumns: true, // Automatically create columns based on data
-                itemsSource: cv, // Bind the grid to the CollectionView
-                allowSorting: true, // Enable column sorting
-                allowResizing: wijmo.grid.AllowResizing.Columns, // Allow column resizing
-                isReadOnly: false, // Allow editing
-                selectionMode: wijmo.grid.SelectionMode.Row // Select entire rows
+            // Initialize the FlexGrid
+            const flexGrid = new wijmo.grid.FlexGrid(gridHost, {
+                itemsSource: data,
+                isReadOnly: true,
+                allowResizing: wijmo.grid.AllowResizing.Both,
+                allowSorting: true,
+                // Explicitly define columns to match the screenshot and control widths
+                columns: [
+                    { binding: 'ID', header: 'ID', width: 80 },
+                    { binding: 'Product', header: 'Product', width: '*' }, // Use '*' for auto-sizing to fill space
+                    { binding: 'Category', header: 'Category', width: 120 },
+                    { binding: 'Price', header: 'Price', format: 'c2', width: 100 }, // Currency format
+                    { binding: 'Stock', header: 'Stock', width: 80 },
+                    { binding: 'OrderDate', header: 'Order Date', format: 'MMM dd, yyyy', width: 120 }, // New Date column with format
+                    { binding: 'Discontinued', header: 'Discontinued', width: 120, dataType: wijmo.DataType.Boolean } // Explicitly set boolean type for checkbox
+                ]
             });
 
-            // Add filtering functionality to the grid
-            let filter = new wijmo.grid.filter.FlexGridFilter(theGrid);
+            // Initialize FlexGridFilter to enable filtering
+            new wijmo.grid.filter.FlexGridFilter(flexGrid);
 
-            // Add GroupPanel functionality to allow users to drag columns for grouping
-            let groupPanel = new wijmo.grid.grouppanel.GroupPanel('#theGroupPanel', {
-                grid: theGrid, // Link to the FlexGrid instance
-                placeholder: 'Drag columns here to group by' // Text displayed when no grouping is applied
-            });
+            // No need to call autoSizeColumns if columns are explicitly defined with '*'
+            // If you want all columns to auto-size initially, uncomment:
+            // flexGrid.autoSizeColumns(); 
 
-            // Initialize the search input control
-            let theSearch = new wijmo.input.InputMask('#theSearch', {
-                placeholder: 'Search grid...', // Placeholder text for the search box
-                // Event handler for when the search input value changes
-                valueChanged: (sender) => {
-                    let search = sender.text.toLowerCase(); // Get search text and convert to lowercase
-                    if (search) {
-                        // Apply a filter to the CollectionView based on the search text
-                        cv.filter = (item) => {
-                            // Iterate through each property of the data item
-                            for (let key in item) {
-                                // Check if the item property exists and contains the search text (case-insensitive)
-                                if (item[key] && item[key].toString().toLowerCase().indexOf(search) > -1) {
-                                    return true; // Include the item if a match is found
-                                }
-                            }
-                            return false; // Exclude the item if no match is found
-                        };
-                    } else {
-                        cv.filter = null; // Remove the filter if search text is empty
-                    }
-                }
-            });
+            console.log('Wijmo FlexGrid initialized with 100,000 rows.');
 
-            // Initialize the ComboBox for changing the number of items in the grid
-            let itemsCount = new wijmo.input.ComboBox('#itemsCount', {
-                itemsSource: ['5', '50', '500', '5000', '50000', '100000'], // Available options
-                selectedValue: '100000', // Set initial selected value to 100,000
-                // Event handler for when the selected item count changes
-                selectedIndexChanged: (sender) => {
-                    // Update the grid's data source with a new dataset of the selected size
-                    cv.sourceCollection = getData(parseInt(sender.selectedValue));
-                }
-            });
-
-            // Event listener for the "Export To Excel" button
-            document.getElementById('btnExportToExcel').addEventListener('click', () => {
-                // Use FlexGridXlsxConverter to export grid data to an Excel file
-                wijmo.xlsx.FlexGridXlsxConverter.saveAsync(theGrid, {
-                    includeColumnHeaders: true, // Include column headers in the export
-                    includeRowHeaders: true // Include row headers in the export
-                }, 'FlexGrid.xlsx'); // File name for the exported Excel file
-            });
-
-            // Event listener for the "Export To PDF" button
-            document.getElementById('btnExportToPdf').addEventListener('click', () => {
-                // Use FlexGridPdfConverter to export grid data to a PDF file
-                wijmo.grid.pdf.FlexGridPdfConverter.export(theGrid, 'FlexGrid.pdf', {
-                    maxPages: 10, // Limit the number of pages to export to prevent excessively large PDFs
-                    documentOptions: {
-                        info: {
-                            title: 'FlexGrid Report' // Title for the PDF document
-                        }
-                    }
-                });
-            });
+            // Remove placeholder text once grid is loaded
+            const placeholderH3 = gridHost.querySelector('h3');
+            const placeholderP = gridHost.querySelector('p');
+            if (placeholderH3) placeholderH3.style.display = 'none';
+            if (placeholderP) placeholderP.style.display = 'none';
         } else {
-            console.error("Wijmo global objects not found. Ensure Wijmo scripts are loaded correctly.");
+            console.error('Wijmo FlexGrid host element not found or Wijmo libraries not loaded correctly.');
         }
-    }; // End of window.onload
+    });
     </script>
 </body>
 </html>
