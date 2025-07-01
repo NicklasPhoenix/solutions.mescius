@@ -8,6 +8,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
+    <!-- NEW: Favicon Link -->
+    <link rel="icon" href="https://developer.mescius.com/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://developer.mescius.com/favicon.ico" type="image/x-icon">
+
     <!-- Wijmo CSS - Essential for Wijmo component styling -->
     <link href="https://cdn.grapecity.com/wijmo/5.20232.939/styles/wijmo.min.css" rel="stylesheet" />
 
@@ -1370,8 +1374,10 @@
                 if (e.key === 'Escape' && modalOverlay.style.display === 'flex') closeModal();
             });
         }
+    });
 
-        // --- Wijmo FlexGrid Demo Logic (Self-contained) ---
+    // --- Wijmo FlexGrid Demo Logic (Self-contained, wrapped in window.onload for full library readiness) ---
+    window.onload = function() { // IMPORTANT: Ensure all Wijmo components are loaded
         // Function to generate a large dataset for the grid
         function getData(count) {
             let data = [];
@@ -1390,8 +1396,8 @@
             return data;
         }
 
-        // Initialize Wijmo components once the DOM is fully loaded
         // Check if wijmo global object exists before proceeding
+        // This check is a safeguard, but window.onload should ensure readiness
         if (typeof wijmo !== 'undefined' && wijmo.grid && wijmo.input && wijmo.grid.filter && wijmo.grid.grouppanel && wijmo.xlsx && wijmo.grid.pdf) {
             // Create a CollectionView to manage the data. Default to 100,000 rows as requested.
             let cv = new wijmo.CollectionView(getData(100000)); 
@@ -1474,7 +1480,7 @@
         } else {
             console.error("Wijmo global objects not found. Ensure Wijmo scripts are loaded correctly.");
         }
-    });
+    }; // End of window.onload
     </script>
 </body>
 </html>
