@@ -203,17 +203,41 @@
         }
         .solution-profile-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            grid-template-columns: 0.8fr repeat(2, 1fr); /* Adjusted grid columns */
             gap: 30px; 
             margin-bottom: 40px; 
+            align-items: stretch; /* Ensure grid items stretch to fill height */
         }
-        .profile-item h4 { 
+        .profile-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Align content to the top */
+        }
+        /* Style for the "Industry" column header */
+        .profile-item:first-child h3 { /* Changed from h4 to h3 */
             font-size: 18px; 
             font-weight: 700; 
             color: var(--brand-heading); 
             margin: 0 0 10px 0; 
             padding-bottom: 10px; 
             border-bottom: 3px solid var(--accent-color); 
+            width: fit-content; /* Make border fit content */
+        }
+        /* Style for the "Industry" column text */
+        .profile-item:first-child p {
+            font-size: 16px; 
+            line-height: 1.7; 
+            color: var(--brand-body); 
+            margin: 0; 
+        }
+        .profile-item h3 { /* Changed from h4 to h3 */
+            font-size: 18px; 
+            font-weight: 700; 
+            color: var(--brand-heading); 
+            margin: 0 0 10px 0; 
+            padding-bottom: 10px; 
+            border-bottom: 3px solid var(--accent-color); 
+            width: fit-content; 
         }
         .profile-item p { 
             font-size: 16px; 
@@ -226,7 +250,7 @@
             margin-bottom: 25px; 
             position: relative;
         }
-        .results-heading h4 { 
+        .results-heading h3 { /* Changed from h4 to h3 */
             display: inline-block; 
             position: relative; 
             margin: 0; 
@@ -235,7 +259,7 @@
             color: var(--brand-heading); 
             padding-bottom: 10px; 
         }
-        .results-heading h4::after { 
+        .results-heading h3::after { /* Changed from h4 to h3 */
             content: '';
             position: absolute;
             left: 50%;
@@ -248,8 +272,18 @@
             border-radius: 2px;
             transition: transform 0.3s ease-out; 
         }
-        .results-heading h4::before, .results-heading h4::after { 
+        .results-heading h3::before, .results-heading h3::after { /* Changed from h4 to h3 */
             background-color: transparent; 
+        }
+        /* New: Separator for Potential Outcomes */
+        .results-heading::before {
+            content: '';
+            display: block;
+            width: 60px; 
+            height: 3px;
+            background-color: var(--color-border-light); 
+            margin: 0 auto 20px auto; 
+            border-radius: 2px;
         }
         .results-metrics { 
             display: grid; 
@@ -264,9 +298,16 @@
             border: 1px solid var(--color-border-light); 
             box-shadow: 0 4px 10px var(--color-shadow-subtle); 
             transition: transform 0.2s ease;
+            opacity: 0; /* Added for animation */
+            transform: translateY(20px); /* Added for animation */
         }
         .metric-item:hover {
             transform: translateY(-3px); 
+        }
+        .metric-item.is-visible { /* Added for animation */
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
         .metric-value { 
             display: block; 
@@ -370,6 +411,47 @@
         .main-story li {
             margin-bottom: 10px;
         }
+        /* Styling for the "Key Elements of the Approach" section */
+        .key-elements-section {
+            padding: 40px;
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--brand-body);
+            background-color: var(--color-background-white); 
+            border-radius: 16px; 
+            box-shadow: 0 8px 30px var(--color-shadow-medium); 
+            margin: 50px auto; 
+            max-width: 1280px; 
+        }
+        .key-elements-section h3 {
+            font-size: 24px; 
+            font-weight: 700;
+            color: var(--brand-heading);
+            margin: 0 0 20px 0;
+            padding-bottom: 12px;
+            border-bottom: 4px solid var(--accent-color);
+            display: inline-block;
+        }
+        .key-elements-section ul {
+            list-style: disc;
+            padding-left: 25px;
+            margin-bottom: 0;
+        }
+        .key-elements-section li {
+            margin-bottom: 10px;
+        }
+        /* Improved hyperlink style */
+        .key-elements-section a.internal-link {
+            color: var(--accent-color); 
+            text-decoration: none; 
+            border-bottom: 1px solid rgba(72, 169, 197, 0.5); 
+            transition: border-bottom-color 0.3s ease, color 0.3s ease;
+        }
+        .key-elements-section a.internal-link:hover {
+            color: var(--brand-heading); 
+            border-bottom-color: var(--brand-heading); 
+        }
+
         .implementation-summary { 
             background-color: var(--color-neutral-light); 
             border-left: 5px solid var(--accent-color); 
@@ -464,7 +546,7 @@
         }
         .bundle-inclusions .product-actions .action-divider { 
             opacity: 0.5; 
-            margin: 0 8px; 
+            margin: 0 12px; /* Increased margin */
         }
         .bundle-purchase { 
             text-align: right; 
@@ -562,7 +644,7 @@
             font-weight: 600; 
             color: #fff; 
             text-decoration: none; 
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; /* Added box-shadow to transition */
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
         .modal-body .cta-button.cta-primary { 
@@ -573,8 +655,8 @@
         }
         .modal-body .cta-button:hover { 
             filter: brightness(110%); 
-            transform: translateY(-1px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+            transform: translateY(-3px); /* Adjusted transform */
+            box-shadow: 0 8px 18px rgba(0,0,0,0.3); /* Adjusted shadow */
         }
         
         /* Footer Styles (DO NOT CHANGE) */
@@ -709,9 +791,9 @@
             /* Blueprint page specific adjustments for 768px */
             .case-study-title { font-size: 38px; }
             .case-study-subtitle { font-size: 18px; }
-            .profile-item h4 { font-size: 16px; }
+            .profile-item h3 { font-size: 16px; } /* Changed from h4 to h3 */
             .profile-item p { font-size: 15px; }
-            .results-heading h4 { font-size: 20px; }
+            .results-heading h3 { font-size: 20px; } /* Changed from h4 to h3 */
             .metric-value { font-size: 34px; }
             .main-story h2 { font-size: 26px; }
             .main-story { padding: 30px; font-size: 16px; }
@@ -721,6 +803,18 @@
             .bundle-cta .cta-button { width: 100%; max-width: 300px; }
             .modal-container { padding: 30px; }
             .modal-title { font-size: 28px; }
+            .modal-body .cta-button { font-size: 14px; padding: 10px 20px; margin-right: 10px; margin-top: 15px;}
+            .key-elements-section { padding: 30px; font-size: 16px; }
+            .key-elements-section h3 { font-size: 22px; }
+
+            /* Responsive adjustments for the profile grid */
+            .solution-profile-grid {
+                grid-template-columns: 1fr; /* Stack columns on smaller screens */
+            }
+            .profile-item:first-child h3, .profile-item h3 { /* Changed from h4 to h3 */
+                width: 100%; /* Make borders full width on smaller screens */
+                text-align: center; /* Center headings on smaller screens */
+            }
         }
         @media (max-width: 480px) {
             .case-study-title { font-size: 32px; }
@@ -732,6 +826,8 @@
             .bundle-price .price { font-size: 38px; }
             .modal-title { font-size: 24px; }
             .modal-body .cta-button { font-size: 14px; padding: 10px 20px; margin-right: 10px; margin-top: 15px;}
+            .key-elements-section { padding: 20px; font-size: 15px; }
+            .key-elements-section h3 { font-size: 20px; }
         }
     </style>
 </head>
@@ -766,40 +862,24 @@
                 <div class="card-visible-content">
                     <div class="solution-profile-grid">
                         <div class="profile-item">
-                            <h4>Industry</h4>
-                            <p>Financial Technology (FinTech)</p>
+                            <h3>Industry</h3> <p>Financial Technology (FinTech)</p>
                         </div>
                         <div class="profile-item">
-                            <h4>Common Challenge</h4>
-                            <p>High operational costs and slow innovation due to maintaining separate, legacy desktop and modern web application codebases.</p>
+                            <h3>Common Challenge</h3> <p>High operational costs and slow innovation due to maintaining separate, legacy desktop and modern web application codebases.</p>
                         </div>
                         <div class="profile-item">
-                            <h4>The Blueprint</h4>
-                            <p>Unify platforms into a single, cross-platform application using a Blazor Hybrid architecture to reduce costs and accelerate development.</p>
+                            <h3>The Blueprint</h3> <p>Unify platforms into a single, cross-platform application using a Blazor Hybrid architecture to reduce costs and accelerate development.</p>
                         </div>
                     </div>
 
                     <div class="results-heading">
-                        <h4>Potential Outcomes</h4>
-                    </div>
+                        <h3>Potential Outcomes</h3> </div>
                     
                     <div class="results-metrics">
-                        <div class="metric-item">
-                            <span class="metric-value">45%</span>
-                            <span class="metric-label">Faster Feature Delivery</span>
-                        </div>
-                        <div class="metric-item">
-                            <span class="metric-value">€300k</span>
-                            <span class="metric-label">Annual Savings</span>
-                        </div>
-                        <div class="metric-item">
-                            <span class="metric-value">90%</span>
-                            <span class="metric-label">Code Re-use</span>
-                        </div>
-                        <div class="metric-item">
-                            <span class="metric-value">30%</span>
-                            <span class="metric-label">User Satisfaction Up</span>
-                        </div>
+                        <div class="metric-item" ><span class="metric-value" data-target="45">0</span><span class="metric-label">Faster Feature Delivery</span></div>
+                        <div class="metric-item"><span class="metric-value" data-target="300k">0</span><span class="metric-label">Annual Savings</span></div>
+                        <div class="metric-item"><span class="metric-value" data-target="90">0</span><span class="metric-label">Code Re-use</span></div>
+                        <div class="metric-item"><span class="metric-value" data-target="30">0</span><span class="metric-label">User Satisfaction Up</span></div>
                     </div>
                     
                     <div class="profile-cta">
@@ -839,6 +919,16 @@
                     </article>
                 </div>
             </div>
+            
+            <section class="key-elements-section container">
+                <h3>Key Elements of the Approach:</h3>
+                <ul>
+                    <li><strong>Single Codebase for UI and Logic:</strong> Centralize your development efforts by using Blazor to create UI components and business logic that can be shared across desktop and web applications.</li>
+                    <li><strong>.NET MAUI for Native Desktop:</strong> Leverage .NET MAUI to host your Blazor components, delivering native desktop performance and access to OS features for Windows, macOS, Android, and iOS.</li>
+                    <li><strong>Component Libraries:</strong> Integrate robust UI component libraries like ComponentOne and Wijmo (for Blazor UI) to accelerate development of complex, data-rich user interfaces.</li>
+                    <li><strong>Unified Reporting:</strong> Use tools like ActiveReports.NET to provide consistent, powerful reporting capabilities across both desktop and web, all from your .NET backend.</li>
+                </ul>
+            </section>
         </div>
         
         <section class="recommended-bundle-section">
@@ -859,8 +949,7 @@
                                     <a href="https://developer.mescius.com/componentone/download" target="_blank" class="action-link">Try</a>
                                     <span class="action-divider">|</span>
                                     <a href="#" class="action-link product-info-trigger"
-                                        data-title="ComponentOne"
-                                        data-description='<strong>The complete UI toolkit for .NET developers.</strong><br>ComponentOne provides the native controls (like MAUI and WinForms) that can host your Blazor Hybrid content and build out the native portions of your desktop application shell.<br>'>
+                                        data-product-id="componentone">
                                         Info
                                     </a>
                                 </div>
@@ -874,8 +963,7 @@
                                     <a href="https://developer.mescius.com/wijmo/download" target="_blank" class="action-link">Try</a>
                                     <span class="action-divider">|</span>
                                     <a href="#" class="action-link product-info-trigger"
-                                        data-title="Wijmo Enterprise"
-                                        data-description="<strong>High-performance JavaScript UI components for your Blazor UI.</strong><p>While Blazor provides the framework, Wijmo delivers fast, lightweight datagrids, charts, and input controls needed for the rich, data-heavy user interface inside your Blazor views.</p>">
+                                        data-product-id="wijmo-enterprise">
                                         Info
                                     </a>
                                 </div>
@@ -889,8 +977,7 @@
                                     <a href="https://developer.mescius.com/activereportsnet/download" target="_blank" class="action-link">Try</a>
                                     <span class="action-divider">|</span>
                                     <a href="#" class="action-link product-info-trigger"
-                                        data-title="ActiveReports.NET"
-                                        data-description="<strong>Embed powerful reporting directly into your application.</strong><p>ActiveReports.NET allows you to generate, view, and export complex financial reports and documents from your unified application, backed by your .NET business logic.</p>">
+                                        data-product-id="activereportsnet">
                                         Info
                                     </a>
                                 </div>
@@ -919,6 +1006,27 @@
         </div>
     </div>
     
+    <template id="componentone-modal-content">
+        <h2 class="modal-title">ComponentOne</h2>
+        <p><strong>The complete UI toolkit for .NET developers.</strong><br>ComponentOne provides the native controls (like MAUI and WinForms) that can host your Blazor Hybrid content and build out the native portions of your desktop application shell.<br></p>
+        <a href="https://developer.mescius.com/componentone/download" target="_blank" class="cta-button cta-primary">Download Trial</a>
+        <a href="https://developer.mescius.com/componentone" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>
+    </template>
+
+    <template id="wijmo-enterprise-modal-content">
+        <h2 class="modal-title">Wijmo Enterprise</h2>
+        <p><strong>High-performance JavaScript UI components for your Blazor UI.</strong><p>While Blazor provides the framework, Wijmo delivers fast, lightweight datagrids, charts, and input controls needed for the rich, data-heavy user interface inside your Blazor views.</p></p>
+        <a href="https://developer.mescius.com/wijmo/download" target="_blank" class="cta-button cta-primary">Download Trial</a>
+        <a href="https://developer.mescius.com/wijmo" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>
+    </template>
+
+    <template id="activereportsnet-modal-content">
+        <h2 class="modal-title">ActiveReports.NET</h2>
+        <p><strong>Embed powerful reporting directly into your application.</strong><p>ActiveReports.NET allows you to generate, view, and export complex financial reports and documents from your unified application, backed by your .NET business logic.</p></p>
+        <a href="https://developer.mescius.com/activereportsnet/download" target="_blank" class="cta-button cta-primary">Download Trial</a>
+        <a href="https://developer.mescius.com/activereportsnet" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>
+    </template>
+
     <footer class="footer">
         <div class="container footer-content">
             <div class="footer-col footer-col-left">
@@ -993,40 +1101,79 @@
             });
         }
 
+        // --- Animate Key Metrics (Intersection Observer for scroll into view) ---
+        const metricItems = document.querySelectorAll('.metric-item');
+        const animateMetrics = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const valueSpan = entry.target.querySelector('.metric-value');
+                    const targetValue = valueSpan.dataset.target; // Get as string
+                    let currentValue = 0;
+                    const duration = 1500; // ms
+                    const startTime = performance.now();
+
+                    const updateCount = (timestamp) => {
+                        const progress = (timestamp - startTime) / duration;
+                        if (progress < 1) {
+                            if (targetValue.includes('k')) { // Handle 'k' for thousands
+                                const numericTarget = parseFloat(targetValue.replace('k', '')) * 1000;
+                                currentValue = Math.min(numericTarget, Math.floor(progress * numericTarget));
+                                valueSpan.textContent = (currentValue / 1000).toFixed(0) + 'k';
+                            } else {
+                                currentValue = Math.min(parseInt(targetValue), Math.floor(progress * parseInt(targetValue)));
+                                valueSpan.textContent = currentValue + '%';
+                            }
+                            requestAnimationFrame(updateCount);
+                        } else {
+                            valueSpan.textContent = targetValue.includes('k') ? targetValue : targetValue + '%'; // Ensure 'k' is re-added if present
+                        }
+                    };
+                    requestAnimationFrame(updateCount);
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        };
+
+        const metricObserver = new IntersectionObserver(animateMetrics, {
+            root: null, // viewport
+            threshold: 0.5 // Trigger when 50% of the item is visible
+        });
+
+        metricItems.forEach(item => {
+            metricObserver.observe(item);
+        });
+
         // --- Product Info Modal Logic ---
         const modalOverlay = document.getElementById('product-info-modal');
         if (modalOverlay) {
-            const modalContainer = document.querySelector('.modal-container');
             const modalBody = document.getElementById('modal-body-content');
             const modalCloseBtn = document.getElementById('modal-close');
             const infoTriggers = document.querySelectorAll('.product-info-trigger');
 
-            const openModal = (trigger) => {
-                const title = trigger.dataset.title || 'Product Details';
-                const description = trigger.dataset.description || 'No description available.';
-                const trialLink = trigger.parentElement.querySelector('a[target="_blank"]').href;
-                // Get the specific product page link from the data-product-page attribute of the parent li
-                const productLink = trigger.closest('li').dataset.productPage || 'https://developer.mescius.com/'; // Fallback to generic
-
-                let modalHTML = `<h2 class="modal-title">${title}</h2>`;
-                modalHTML += description; 
-
-                modalHTML += `<a href="${trialLink}" target="_blank" class="cta-button cta-primary">Download Trial</a>`;
-                modalHTML += `<a href="${productLink}" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>`; // Use specific productLink
-
-                modalBody.innerHTML = modalHTML;
-                modalOverlay.style.display = 'flex';
+            const openModal = (productId) => {
+                const template = document.getElementById(`${productId}-modal-content`);
+                if (template) {
+                    modalBody.innerHTML = ''; // Clear previous content
+                    modalBody.appendChild(template.content.cloneNode(true));
+                    modalOverlay.style.display = 'flex';
+                } else {
+                    console.error(`Template for product ID "${productId}" not found.`);
+                }
             };
             
             const closeModal = () => {
                 modalOverlay.style.display = 'none';
-                modalBody.innerHTML = '';
+                modalBody.innerHTML = ''; // Clear content when closing
             };
 
             infoTriggers.forEach(trigger => {
                 trigger.addEventListener('click', (e) => {
                     e.preventDefault(); 
-                    openModal(trigger);
+                    const productId = trigger.dataset.productId;
+                    if (productId) {
+                        openModal(productId);
+                    }
                 });
             });
 
