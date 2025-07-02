@@ -55,6 +55,63 @@
         .nav-link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--brand-accent); transition: width 0.3s ease; }
         .nav-link:hover::after, .nav-link.active::after { width: 100%; }
 
+        /* Mobile Navigation Specific Styles */
+        .hamburger {
+            display: none; /* Hidden by default, shown on mobile */
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--brand-body-text);
+            z-index: 1001; /* Ensure it's above other content when active */
+        }
+
+        .mobile-nav-overlay {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .mobile-nav {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            right: -300px; /* Start off-screen */
+            width: 280px;
+            height: 100%;
+            background-color: var(--ui-white);
+            box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+            padding: 80px 20px 20px; /* Space for header if needed */
+            flex-direction: column;
+            gap: 20px;
+            transition: right 0.3s ease-in-out;
+            z-index: 1000;
+        }
+
+        .mobile-nav.is-active {
+            right: 0;
+        }
+
+        .mobile-nav .nav-link {
+            display: block;
+            width: 100%;
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--ui-border);
+            font-size: 1.1rem;
+            text-align: left;
+            color: var(--brand-heading-text);
+            text-decoration: none;
+        }
+
+        .mobile-nav .nav-link:last-child {
+            border-bottom: none;
+        }
+
         .hero { text-align: center; padding: 100px 20px 80px; background: radial-gradient(circle, #F7FAFC 0%, var(--ui-white) 100%); }
         .hero .tag { font-weight: 700; color: var(--brand-accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
         .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; color: var(--brand-heading-text); margin: 0 auto 20px; max-width: 900px; line-height: 1.1; }
@@ -130,8 +187,18 @@
         .join-now-btn { background-color: #a0a0a0; color: var(--brand-header); padding: 12px 25px; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: background-color 0.2s; }
         .join-now-btn:hover { background-color: #bebebe; }
         
-        @media (max-width: 992px) { .featured-blueprint-card { grid-template-columns: 1fr; gap: 30px; } .live-demo-container { height: 400px; margin-top: 20px; } }
-        @media (max-width: 768px) { .main-nav { display: none; } .footer-content { flex-direction: column; text-align: center; } .footer-col, .footer-col-left { min-width: unset; text-align: center; } .social-icons { justify-content: center; } }
+        @media (max-width: 992px) { 
+            .featured-blueprint-card { grid-template-columns: 1fr; gap: 30px; } 
+            .live-demo-container { height: 400px; margin-top: 20px; } 
+        }
+        @media (max-width: 768px) { 
+            .main-nav { display: none; } 
+            .hamburger { display: block; } /* Show hamburger on mobile */
+            .mobile-nav, .mobile-nav-overlay { display: flex; } /* Control visibility via JS, initially hidden by display:none above */
+            .footer-content { flex-direction: column; text-align: center; } 
+            .footer-col, .footer-col-left { min-width: unset; text-align: center; } 
+            .social-icons { justify-content: center; } 
+        }
 
     </style>
 </head>
@@ -144,8 +211,18 @@
                 <a href="./pricing/index.html" class="nav-link">Pricing</a>
                 <a href="./bundles/index.html" class="nav-link">Bundles</a>
             </nav>
+            <div class="hamburger" id="hamburger-icon">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
     </header>
+
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+    <nav class="mobile-nav" id="mobile-nav">
+        <a href="#explorer" class="nav-link">Solutions</a>
+        <a href="./pricing/index.html" class="nav-link">Pricing</a>
+        <a href="./bundles/index.html" class="nav-link">Bundles</a>
+    </nav>
 
     <main>
         <section class="hero animate-on-scroll">
@@ -204,17 +281,17 @@
                 <div class="controls-toolbar animate-on-scroll">
                     <div class="search-wrapper">
                         <i class="fas fa-search icon"></i>
-                        <input type="text" id="search-input" placeholder="Search by title, technology, etc...">
+                        <input type="text" id="search-input" placeholder="Search by title, technology, etc..." aria-label="Search blueprints">
                     </div>
                     <div class="filter-dropdown">
                         <i class="fas fa-building icon"></i>
-                        <select id="industry-filter">
+                        <select id="industry-filter" aria-label="Filter by industry">
                             <option value="all">All Industries</option>
                         </select>
                     </div>
                      <div class="filter-dropdown">
                         <i class="fas fa-box-open icon"></i>
-                        <select id="product-filter">
+                        <select id="product-filter" aria-label="Filter by product">
                             <option value="all">All Products</option>
                         </select>
                     </div>
@@ -256,7 +333,7 @@
                     <a href="https://www.facebook.com/mescius" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://www.twitter.com/mescius" target="_blank" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                     <a href="https://www.linkedin.com/company/mescius" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://www.youtube.com/user/mescius" target="_blank" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.youtube.com/mescius" target="_blank" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     <a href="https://mescius.eu/rss" target="_blank" class="social-icon" aria-label="RSS"><i class="fa fa-rss"></i></a>
                 </div>
             </div>
@@ -268,10 +345,10 @@
         </div>
     </footer>
 
-    <script src="https://cdn.mescius.com/wijmo/5.20232.939/controls/wijmo.min.js"></script>
-    <script src="https://cdn.mescius.com/wijmo/5.20232.939/controls/wijmo.grid.min.js"></script>
+    <script src="https://cdn.mescius.com/wijmo/5.20232.939/controls/wijmo.min.js" defer></script>
+    <script src="https://cdn.mescius.com/wijmo/5.20232.939/controls/wijmo.grid.min.js" defer></script>
     
-    <script>
+    <script defer>
     document.addEventListener('DOMContentLoaded', () => {
         // IMPORTANT: Wijmo License Key
         wijmo.setLicenseKey("579938718425585#B07eYICbuFkI1pjIEJCLi4TPB3SZCllU8BldhlETMZ5UypGb8E5bVdDWF9EOjJUbalEdOJkUNt4TmBXbtNlW7h7bv24ThhmR8t4RTtie9d6QHFHezMnN65ENmNTQulFWIdWdTJHMZplRktmV7g7LmtCcMpkeMdVZ03ETxgzTUdGc74mRqhmUr4kW4V4VxIUVR3EaZFmdZdjVjdFN5IVWZR6c824Uzo4Up5mdqlHdBh6a9h6dCxEdh9WMhRDR53CM5tmYK9GTjZ6LycVbINUQM3kUrtUdWpmWVZWYL5WVkZDWktCTwlnVSVDUEFDehdUarJ4d9E7VzFzL6MkVxVWT6V4Rrc6SrgWeCB7KxFFb9EEWzNUUrMFRaJHTzFjYMZ7bkdTaZNmTHJFdaxEOFxWRVp5U6k4QuJzQ6RnN8NDazklc7VGM8AFexomYPh7NSl5Tt9mMrdHS0VzasV6YNdWaGJXRxllZ7lmRiojITJCLiEER9QEOEFUNiojIIJCL7ADNyUDOzEjN0IicfJye=#Qf35VfikEMyIlI0IyQiwiIu3Waz9WZ4hXRgACdlVGaThXZsZEIv5mapdlI0IiTisHL3JSNJ9UUiojIDJCLi86bpNnblRHeFBCIyV6dllmV4J7bwVmUg2Wbql6ViojIOJyes4nILdDOIJiOiMkIsIibvl6cuVGd8VEIgc7bSlGdsVXTg2Wbql6ViojIOJyes4nI4YkNEJiOiMkIsIibvl6cuVGd8VEIgAVQM3EIg2Wbql6ViojIOJyes4nIzMEMCJiOiMkIsISZy36Qg2Wbql6ViojIOJyes4nIVhzNBJiOiMkIsIibvl6cuVGd8VEIgQnchh6QsFWaj9WYulmRg2Wbql6ViojIOJyebpjIkJHUiwiI9QjM5kDMggjM6ATNyAjMiojI4J7QiwiIt36YuMXdpN6cl5GQyVmZlFGajNnLzFGbrNWauJiOiEmTDJCLiUDO5UjM4gTM7gzM9kzN5IiOiQWSiwSfdtlOicGbmJCLiEjd5IDMyIiOiIXZ6JCLlNHbhZmOiIKc6JQ");
@@ -293,6 +370,31 @@
         const industryFilter = document.getElementById('industry-filter');
         const productFilter = document.getElementById('product-filter');
         const noResultsMessage = document.getElementById('no-results-message');
+
+        // Mobile menu elements
+        const hamburgerIcon = document.getElementById('hamburger-icon');
+        const mobileNav = document.getElementById('mobile-nav');
+        const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+
+        // Toggle mobile navigation
+        const toggleMobileNav = () => {
+            mobileNav.classList.toggle('is-active');
+            mobileNavOverlay.classList.toggle('is-active');
+            // Animate overlay opacity
+            if (mobileNavOverlay.classList.contains('is-active')) {
+                setTimeout(() => mobileNavOverlay.style.opacity = '1', 10); // Small delay for transition
+            } else {
+                mobileNavOverlay.style.opacity = '0';
+            }
+            document.body.style.overflow = mobileNav.classList.contains('is-active') ? 'hidden' : ''; // Prevent scrolling
+        };
+
+        hamburgerIcon.addEventListener('click', toggleMobileNav);
+        mobileNavOverlay.addEventListener('click', toggleMobileNav); // Close when clicking overlay
+        mobileNav.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', toggleMobileNav); // Close when clicking a nav link
+        });
+
 
         const getGridData = (c) => { const d=[],p=['Widget','Gadget','Doohickey'],co=['USA','Germany','UK','Japan','Italy','Greece']; for(let i=0;i<c;i++)d.push({id:i,country:co[i%co.length],product:p[i%p.length],date:new Date(2025,i%12,i%28+1),sales:Math.random()*10000,expenses:Math.random()*5000,active:i%4==0}); return d; };
         new wijmo.grid.FlexGrid('#theGrid', { itemsSource: getGridData(10000), isReadOnly: true, selectionMode: 'Row', headersVisibility: 'Column', alternatingRowStep: 0, autoGenerateColumns: false, columns: [{binding:'id',header:'ID',width:80},{binding:'country',header:'Country',width:'*'},{binding:'sales',header:'Sales',format:'c2'},{binding:'expenses',header:'Expenses',format:'c2'},{binding:'active',header:'Active',width:100}] });

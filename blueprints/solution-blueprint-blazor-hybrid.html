@@ -3,231 +3,478 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solution Blueprint: Unify Desktop & Web Apps with a Single .NET Codebase</title>
+    <title>Blueprint: Unify Desktop & Web Apps with a Single .NET Codebase | Mescius</title>
     <meta name="description" content="A blueprint for modernizing legacy financial applications by unifying desktop and web development with a Blazor Hybrid architecture powered by Mescius components.">
-    <meta name="keywords" content="blazor hybrid, .net maui, cross-platform development, wpf modernization, unify desktop and web, componentone, activereperts.net blazor, fintech software, financial technology, mescius, roi">
+
+    <meta property="og:title" content="Blueprint: Unify Desktop & Web Apps with Blazor Hybrid | Mescius">
+    <meta property="og:description" content="Learn how to modernize legacy financial applications by unifying desktop and web development with a Blazor Hybrid architecture and Mescius components.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.mescius.eu/blueprints/solution-blueprint-blazor-hybrid.html">
+    <meta property="og:image" content="https://www.mescius.eu/images/blazor-hybrid-blueprint-og.jpg"> <meta property="og:image:alt" content="Screenshot of a Blazor Hybrid application unifying desktop and web interfaces">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@mescius">
+    <meta name="twitter:title" content="Blueprint: Unify Desktop & Web Apps with Blazor Hybrid | Mescius">
+    <meta name="twitter:description" content="Modernize legacy financial applications by unifying desktop and web development with a Blazor Hybrid architecture and Mescius components.">
+    <meta name="twitter:image" content="https://www.mescius.eu/images/blazor-hybrid-blueprint-twitter.jpg"> <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome for social icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.mescius.com/wijmo/5.20232.939/styles/wijmo.min.css" rel="stylesheet" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Unify Desktop & Web Apps with a Single .NET Codebase: Blazor Hybrid Blueprint",
+      "description": "This blueprint guides you through modernizing legacy financial applications by unifying desktop and web development using a Blazor Hybrid architecture and Mescius components, leading to faster feature delivery and significant cost savings.",
+      "image": "https://www.mescius.eu/images/blazor-hybrid-blueprint.jpg",
+      "author": {
+        "@type": "Organization",
+        "name": "Mescius"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Mescius Europe",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://cdn.mescius.io/umb/media/pujnxfci/mescuis-logo-horiz.svg"
+        }
+      },
+      "datePublished": "2024-06-30",
+      "dateModified": "2024-06-30",
+      "articleSection": ["Blazor Hybrid", ".NET MAUI", "Cross-Platform Development", "FinTech", "Application Modernization"],
+      "keywords": "blazor hybrid, .net maui, cross-platform development, wpf modernization, unify desktop and web, componentone, activereperts.net blazor, fintech software, financial technology, mescius, roi",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.mescius.eu/blueprints/solution-blueprint-blazor-hybrid.html"
+      },
+      "mentions": [
+        {
+          "@type": "Product",
+          "name": "ComponentOne",
+          "url": "https://developer.mescius.com/componentone",
+          "description": "A complete UI toolkit for .NET developers, providing native controls for desktop applications."
+        },
+        {
+          "@type": "Product",
+          "name": "Wijmo Enterprise",
+          "url": "https://developer.mescius.com/wijmo",
+          "description": "High-performance JavaScript UI components for building rich, data-heavy user interfaces within Blazor views."
+        },
+        {
+          "@type": "Product",
+          "name": "ActiveReports.NET",
+          "url": "https://developer.mescius.com/activereportsnet",
+          "description": "A powerful reporting solution for generating, viewing, and exporting complex reports directly within .NET applications."
+        }
+      ]
+    }
+    </script>
     
     <style>
         :root {
-            --brand-header: #474D57; --brand-light-gray: #f8f9fa; --brand-heading: #2D3748; --brand-body: #4A5568; --brand-js: #809B59; --brand-net: #D6564C; --brand-wijmo: #48A9C5; --brand-ds: #5A7E9E; --brand-arjs: #EA8939;
-            /* Page-specific accent color */
-            --accent-color: var(--brand-net);
+            /* Core Brand Palette (from bi-performance.html) */
+            --brand-header: #2D3748; 
+            --brand-body-text: #4A5568;
+            --brand-heading-text: #1A202C;
+            --brand-light-bg: #F7FAFC;
+            --brand-accent: #48A9C5; /* Wijmo Blue (general accent) */
+            --brand-accent-dark: #3C8A9E;
+            
+            /* Product-specific colors */
+            --product-js: #809B59;
+            --product-net: #D6564C; /* .NET product family color (red/orange) */
+            --product-wijmo: #48A9C5;
+            --product-ds: #5A7E9E;
+            --product-arjs: #EA8939;
+
+            /* UI Colors (from bi-performance.html) */
+            --ui-white: #FFFFFF;
+            --ui-border: #E2E8F0;
+            --ui-shadow: rgba(45, 55, 72, 0.1);
+            --ui-success: #48BB78;
+
+            /* Page-specific primary accent color, now tied to .NET product family */
+            --page-primary-accent: var(--product-net); 
         }
+
+        /* Essential for preventing horizontal scroll from overflowing content */
+        html, body {
+            overflow-x: hidden;
+        }
+
         *, *::before, *::after { box-sizing: border-box; }
-        body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(--brand-light-gray); color: var(--brand-body); }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .header { background-color: var(--brand-header); padding: 15px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
-        .header-content { display: flex; justify-content: space-between; align-items: center; }
-        .logo { height: 32px; filter: brightness(0) invert(1); }
-        .main-nav { display: flex; gap: 30px; }
-        .nav-link { color: #ffffff; text-decoration: none; font-weight: 600; font-size: 14px; padding-bottom: 5px; border-bottom: 2px solid transparent; }
-        .nav-link:hover, .nav-link.active { border-bottom-color: #ffffff; }
-        .nav-toggle { display: none; }
-        .case-study-header { background-color: #ffffff; text-align: center; padding: 60px 20px; border-bottom: 1px solid #e2e8f0; }
-        .case-study-tag { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-color); }
-        .case-study-title { font-size: 42px; font-weight: 700; color: var(--brand-heading); margin: 10px auto 15px auto; max-width: 900px; }
-        .case-study-subtitle { font-size: 18px; max-width: 700px; margin: 0 auto; line-height: 1.6; }
-        .expandable-card { background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; margin: 50px auto; box-shadow: 0 5px 30px rgba(45, 55, 72, 0.08); overflow: hidden; }
-        .card-visible-content { padding: 40px; }
-        .solution-profile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 40px; }
-        .profile-item h4 { font-size: 16px; font-weight: 700; color: var(--brand-heading); margin: 0 0 10px 0; padding-bottom: 10px; border-bottom: 2px solid var(--accent-color); }
-        .profile-item p { font-size: 16px; line-height: 1.7; color: var(--brand-body); margin: 0; }
-        .results-heading { text-align: center; margin-bottom: 20px; }
-        .results-heading h4 { display: inline-block; position: relative; margin: 0; font-size: 18px; font-weight: 600; color: var(--brand-heading); }
-        .results-heading h4::before, .results-heading h4::after { content: ''; position: absolute; top: 50%; width: 50px; height: 1px; background-color: #e2e8f0; }
-        .results-heading h4::before { left: -60px; }
-        .results-heading h4::after { right: -60px; }
-        .results-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; text-align: center; }
-        .metric-item { background-color: #f8f9fa; padding: 20px; border-radius: 8px; border: 1px solid #e2e8f0; }
-        .metric-value { display: block; font-size: 36px; font-weight: 700; color: var(--accent-color); }
-        .metric-label { display: block; font-size: 14px; color: var(--brand-body); }
-        .profile-cta { text-align: center; margin-top: 40px; padding-top: 30px; border-top: 1px solid #e2e8f0; }
-        .profile-cta .cta-button { display: inline-block; text-decoration: none; padding: 12px 25px; border-radius: 8px; font-weight: 600; font-size: 15px; color: #ffffff; transition: opacity 0.3s ease; background-color: var(--accent-color); }
-        .profile-cta .cta-button:hover { opacity: 0.9; }
-        .card-toggle-bar { display: flex; justify-content: center; align-items: center; gap: 10px; background-color: #f8f9fa; border-top: 1px solid #e2e8f0; padding: 15px; cursor: pointer; transition: background-color 0.2s ease; }
-        .card-toggle-bar:hover { background-color: #f1f3f5; }
-        .toggle-text { font-weight: 600; color: var(--brand-heading); }
-        .toggle-icon { width: 16px; height: 16px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%232D3748' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E"); background-size: contain; background-repeat: no-repeat; transition: transform 0.3s ease-in-out; }
-        .card-collapsible-content { max-height: 0; overflow: hidden; transition: max-height 0.7s ease-in-out; }
-        .expandable-card.is-open .toggle-icon { transform: rotate(180deg); }
-        .expandable-card.is-open .card-collapsible-content { max-height: 5000px; }
-        .main-story { padding: 40px 40px 20px 40px; font-size: 17px; line-height: 1.8; }
-        .main-story h2 { font-size: 24px; font-weight: 700; color: var(--brand-heading); margin: 40px 0 20px 0; padding-bottom: 10px; border-bottom: 3px solid var(--accent-color); }
-        .main-story > div:first-of-type h2 { margin-top: 0; }
-        .main-story p, .main-story ul { margin-bottom: 20px; }
-        .implementation-summary { background-color: #f8f9fa; border-left: 4px solid var(--accent-color); padding: 20px 30px; margin: 30px 0; border-radius: 4px; }
-        .implementation-summary h3 { font-size: 18px; margin-top: 0; color: var(--brand-heading); }
-        .implementation-summary ul { padding-left: 20px; margin-bottom: 0; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        body { 
+            margin: 0; 
+            font-family: 'Montserrat', sans-serif; 
+            background-color: var(--ui-white);
+            color: var(--brand-body-text); 
+            line-height: 1.6;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
         
-        /* Bundle Section */
-        .recommended-bundle-section { padding: 60px 0 0 0; }
-        .bundle-card { background-color: var(--brand-header); color: #ffffff; border-radius: 12px; padding: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start; border-top: 5px solid var(--accent-color); }
-        .bundle-info { display: flex; flex-direction: column; gap: 20px; }
-        .bundle-header h3 { font-size: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; margin: 0 0 5px 0; }
-        .bundle-header h2 { font-size: 28px; font-weight: 700; margin: 0; line-height: 1.2; }
+        /* --- Header --- */
+        .header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--ui-border);
+            padding: 18px 0; 
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { 
+            height: 36px;
+            filter: none;
+        }
+        .main-nav { display: flex; gap: 35px; }
+        .nav-link { 
+            color: var(--brand-body-text); text-decoration: none; font-weight: 600; 
+            font-size: 15px; position: relative; padding: 5px 0;
+        }
+        .nav-link::after {
+            content: ''; position: absolute; bottom: 0; left: 0;
+            width: 0; height: 2px; background-color: var(--brand-accent); /* General accent for nav hover */
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+        /* Mobile Navigation Specific Styles */
+        .hamburger {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--brand-body-text);
+            z-index: 1001;
+        }
+
+        .mobile-nav-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .mobile-nav-overlay.is-active {
+            display: block;
+            opacity: 1;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 280px;
+            height: 100%;
+            background-color: var(--ui-white);
+            box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+            padding: 80px 20px 20px;
+            flex-direction: column;
+            gap: 20px;
+            transition: right 0.3s ease-in-out;
+            z-index: 1000;
+        }
+
+        .mobile-nav.is-active {
+            display: flex;
+            right: 0;
+        }
+
+        .mobile-nav .nav-link {
+            display: block;
+            width: 100%;
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--ui-border);
+            font-size: 1.1rem;
+            text-align: left;
+            color: var(--brand-heading-text);
+            text-decoration: none;
+        }
+
+        .mobile-nav .nav-link:last-child {
+            border-bottom: none;
+        }
+        
+        /* --- General CTA Button Style --- */
+        .cta-button {
+            display: inline-block; 
+            background: var(--page-primary-accent); /* Using page-specific accent */
+            color: var(--ui-white) !important; 
+            padding: 15px 35px;
+            font-size: 18px; font-weight: 700; text-decoration: none;
+            border-radius: 50px; transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(214, 86, 76, 0.25); /* Adjusted shadow to match product-net color */
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(214, 86, 76, 0.35); /* Adjusted shadow to match product-net color */
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            text-align: center; padding: 100px 20px 80px;
+            background: radial-gradient(circle, var(--brand-light-bg) 0%, var(--ui-white) 100%);
+        }
+        .hero .tag {
+            font-weight: 700; color: var(--page-primary-accent); /* Using page-specific accent */
+            text-transform: uppercase; letter-spacing: 1px;
+            margin-bottom: 15px; display: inline-block;
+            animation: fadeInUp 0.5s ease-out 0.2s backwards;
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800;
+            color: var(--brand-heading-text); margin: 0 auto 20px;
+            max-width: 900px; line-height: 1.1;
+            animation: fadeInUp 0.5s ease-out 0.4s backwards;
+        }
+        .hero p {
+            font-size: 1.2rem; max-width: 700px;
+            margin: 0 auto 30px;
+            animation: fadeInUp 0.5s ease-out 0.6s backwards;
+        }
+        .hero .cta-button {
+            animation: fadeInUp 0.5s ease-out 0.8s backwards;
+        }
+
+        /* --- Comparison Section --- */
+        .comparison-section { padding: 80px 0; background-color: var(--brand-light-bg); }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 {
+            font-size: 2.5rem; color: var(--brand-heading-text);
+            margin: 0 0 10px 0; font-weight: 700;
+        }
+        .comparison-grid {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 40px; align-items: stretch;
+        }
+        .comparison-card {
+            background: var(--ui-white); padding: 30px;
+            border-radius: 12px; border: 1px solid var(--ui-border);
+            box-shadow: 0 5px 15px var(--ui-shadow);
+            display: flex; flex-direction: column;
+            min-width: 0;
+        }
+        .comparison-card h3 {
+            font-size: 1.5rem; margin: 0 0 15px 0;
+            display: flex; align-items: center; gap: 10px; flex-shrink: 0;
+            word-break: break-word;
+        }
+        .comparison-card .icon { font-size: 1.2rem; color: var(--ui-white);
+            width: 36px; height: 36px; border-radius: 50%;
+            display: inline-flex; align-items: center; justify-content: center;
+        }
+        .comparison-card.before .icon { background-color: #EF4444; }
+        .comparison-card.after .icon { background-color: var(--ui-success); }
+        .comparison-card ul { 
+            list-style: none; 
+            padding: 0; 
+            margin: 0; 
+            width: 100%;
+        }
+        .comparison-card li { 
+            margin-bottom: 10px; 
+            display: flex; 
+            align-items: flex-start; 
+            gap: 10px; 
+            word-break: break-word;
+        }
+        .comparison-card li i { margin-top: 5px; opacity: 0.7; flex-shrink: 0; }
+        .comparison-card .grid-host { 
+            flex-grow: 1; 
+            height: 250px;
+            overflow: hidden;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        /* --- Wijmo Grid Styling --- */
+        #theGrid { 
+            height: 100%; 
+            width: 100%; 
+            border: 1px solid var(--ui-border);
+            border-radius: 6px; 
+        }
+        .wj-grid { border: none !important; }
+
+        /* --- Metrics Section --- */
+        .metrics-section { padding: 80px 0; }
+        .metrics-grid {
+            display: grid; gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+        .metric-item {
+            text-align: center; padding: 20px;
+            background-color: var(--brand-light-bg); border-radius: 12px;
+        }
+        .metric-value {
+            font-size: 3.5rem; font-weight: 800;
+            color: var(--page-primary-accent); /* Using page-specific accent */
+        }
+        .metric-label { font-size: 1.1rem; font-weight: 600; color: var(--brand-heading-text); }
+        
+        /* --- Implementation Tabs Section --- */
+        .implementation-section { padding: 80px 0; background-color: var(--brand-header); color: var(--ui-white); }
+        .implementation-section h2 { color: var(--ui-white); }
+        .tabs-container {
+            display: flex; gap: 40px;
+            margin-top: 40px;
+        }
+        .tabs-nav { flex: 0 0 250px; }
+        .tabs-nav button {
+            display: block; width: 100%; text-align: left;
+            background: transparent; border: none;
+            color: rgba(255,255,255,0.7); font-size: 1.1rem;
+            font-weight: 600; padding: 15px 20px;
+            border-left: 3px solid transparent;
+            cursor: pointer; transition: all 0.3s ease;
+        }
+        .tabs-nav button.active, .tabs-nav button:hover {
+            background-color: rgba(255,255,255,0.05);
+            color: var(--ui-white);
+            border-left-color: var(--page-primary-accent); /* Using page-specific accent */
+        }
+        .tabs-content .tab-pane { display: none; }
+        .tabs-content .tab-pane.active { display: block; animation: fadeIn 0.4s; }
+        .tabs-content h3 { font-size: 1.8rem; margin-top: 0; margin-bottom: 20px; color: var(--ui-white); }
+        .tabs-content ul { padding-left: 20px; }
+        .tabs-content li { margin-bottom: 10px; }
+        
+        /* --- Solution Spotlight Section --- */
+        .solution-spotlight { padding: 100px 0; }
+        .solution-spotlight-card {
+            background: linear-gradient(135deg, var(--brand-header) 0%, #1A202C 100%);
+            color: var(--ui-white); border-radius: 20px; padding: 50px;
+            display: grid; grid-template-columns: 1fr auto;
+            gap: 50px; align-items: center;
+            border-top: 5px solid var(--page-primary-accent); /* Using page-specific accent */
+        }
+        .solution-info .tag { color: var(--page-primary-accent); } /* Using page-specific accent */
+        .solution-info h2 { font-size: 2.8rem; color: var(--ui-white); line-height: 1.2; margin-top: 5px; }
+        .solution-info p { font-size: 1.1rem; opacity: 0.8; max-width: 450px; margin-top: 20px; }
+        
+        .solution-actions {
+            background-color: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 30px;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 25px;
+            align-items: center;
+        }
+        .price-info { text-align: left; border-right: 1px solid rgba(255,255,255,0.2); padding-right: 25px;}
+        .price-info .price { font-size: 2.5rem; font-weight: 700; line-height: 1; }
+        .price-info .price-term { font-size: 0.9rem; opacity: 0.7; }
+        .action-buttons { text-align: center; }
+        .action-buttons .cta-button { display: block; width: 100%; }
+        .action-buttons .action-links { margin-top: 15px; display: flex; justify-content: center; gap: 20px; }
+        .action-buttons .action-links a {
+            color: rgba(255,255,255,0.8); text-decoration: none;
+            font-weight: 600; position: relative; font-size: 14px;
+        }
+        .action-buttons .action-links a:hover { color: var(--ui-white); }
+        
+        /* Bundle inclusions within Solution Spotlight */
         .bundle-inclusions { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 15px; }
         .bundle-inclusions li { display: flex; justify-content: space-between; align-items: center; background-color: rgba(255,255,255,0.05); padding: 10px 15px; border-radius: 6px; }
         .bundle-inclusions .product-name { display: flex; align-items: center; gap: 10px; font-weight: 500; }
-        .bundle-inclusions .checkmark { color: var(--brand-net); }
+        .bundle-inclusions .checkmark { color: var(--page-primary-accent); } /* Uses page-specific accent */
         .bundle-inclusions .product-actions .action-link { color: #ffffff; text-decoration: none; font-weight: 600; font-size: 14px; opacity: 0.8; transition: opacity 0.2s ease; }
         .bundle-inclusions .product-actions .action-link:hover { opacity: 1; }
         .bundle-inclusions .product-actions .action-divider { opacity: 0.5; margin: 0 5px; }
-        .bundle-purchase { text-align: right; }
-        .bundle-price { margin-bottom: 20px; }
-        .bundle-price .price { font-size: 40px; font-weight: 700; }
-        .bundle-price .term { font-size: 15px; opacity: 0.7; display: block; }
-        .bundle-cta .cta-button { display: inline-block; background-color: #ffffff; color: var(--brand-header); text-decoration: none; padding: 15px 35px; border-radius: 8px; font-weight: 700; transition: all 0.3s ease; }
-        .bundle-cta .cta-button:hover { background-color: var(--brand-light-gray); transform: translateY(-2px); }
+
 
         /* Modal Styles */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 2000; display: none; justify-content: center; align-items: center; }
         .modal-container { background: #fff; padding: 30px; border-radius: 12px; width: 90%; max-width: 700px; max-height: 90vh; overflow-y: auto; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
         .modal-close-btn { position: absolute; top: 15px; right: 15px; background: transparent; border: none; font-size: 28px; color: #718096; cursor: pointer; line-height: 1; }
-        .modal-title { font-size: 26px; color: var(--brand-heading); margin-top: 0; margin-bottom: 15px; }
+        .modal-title { font-size: 26px; color: var(--brand-heading-text); margin-top: 0; margin-bottom: 15px; }
         .modal-body p { margin-bottom: 20px; }
         .modal-body ul { padding-left: 20px; margin-bottom: 20px;}
         .modal-body .cta-button { display: inline-block; width: auto; padding: 12px 30px; margin-top: 15px; margin-right: 10px; border-radius: 8px; font-weight: 600; color: #fff; text-decoration: none; }
-        .modal-body .cta-button.cta-primary { background-color: var(--brand-net); }
+        .modal-body .cta-button.cta-primary { background-color: var(--page-primary-accent); } /* Using page-specific accent */
         .modal-body .cta-button.cta-secondary { background-color: #80B1A0; }
         .modal-body .cta-button:hover { filter: brightness(90%); }
         
-        /* Footer Styles from the previous page, adapted for this one */
+        /* Footer Styles (from bi-performance.html) */
         .footer {
             background-color: var(--brand-header);
             color: #cccccc;
             padding: 50px 0;
-            margin-top: 50px;
+            margin-top: 60px;
             font-size: 14px;
-            text-align: left; /* Changed from center to left */
+            text-align: left;
         }
         .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 30px;
+            display: flex; flex-wrap: wrap;
+            justify-content: space-between; gap: 30px;
         }
-        .footer-col {
-            flex: 1;
-            min-width: 200px;
-            margin-bottom: 20px;
-        }
-        .footer-col-left {
-            min-width: 250px;
-            flex: 1.5;
-        }
-        .footer-logo {
-            height: 38px;
-            filter: brightness(0) invert(1);
-            margin-bottom: 20px;
-        }
-        .footer-text {
-            line-height: 1.6;
-            margin-bottom: 10px;
-        }
-        .footer-heading {
-            color: #ffffff;
-            font-weight: 700;
-            font-size: 16px;
-            margin-bottom: 20px;
-        }
-        .footer-links {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-        .footer-links a {
-            color: #cccccc;
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-        .footer-links a:hover {
-            color: #ffffff;
-        }
-        .social-icons {
-            display: flex;
-            gap: 10px;
-        }
+        .footer-col { flex: 1; min-width: 200px; margin-bottom: 20px; }
+        .footer-col-left { min-width: 250px; flex: 1.5; }
+        .footer-logo { height: 38px; filter: brightness(0) invert(1); margin-bottom: 20px; }
+        .footer-text { line-height: 1.6; margin-bottom: 10px; }
+        .footer-heading { color: #ffffff; font-weight: 700; font-size: 16px; margin-bottom: 20px; }
+        .footer-links { list-style: none; padding: 0; margin: 0; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: #cccccc; text-decoration: none; transition: color 0.2s ease; }
+        .footer-links a:hover { color: #ffffff; }
+        .social-icons { display: flex; gap: 10px; }
         .social-icon {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            width: 36px;
-            height: 36px;
-            background-color: #5a626a; /* Darker gray for icons */
-            border-radius: 8px;
-            color: #ffffff;
-            font-size: 18px;
-            text-decoration: none;
+            display: inline-flex; justify-content: center; align-items: center;
+            width: 36px; height: 36px; background-color: #5a626a;
+            border-radius: 8px; color: #ffffff; font-size: 18px; text-decoration: none;
             transition: background-color 0.2s ease, color 0.2s ease;
         }
-        .social-icon:hover {
-            background-color: #ffffff;
-            color: var(--brand-header); /* Icon color becomes header color on hover */
-        }
-        .news-signup-text {
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
+        .social-icon:hover { background-color: #ffffff; color: var(--brand-header); }
+        .news-signup-text { line-height: 1.6; margin-bottom: 20px; }
         .join-now-btn {
-            background-color: #a0a0a0; /* Light gray from screenshot */
-            color: var(--brand-header);
-            padding: 12px 25px;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: background-color 0.2s ease;
+            background-color: #a0a0a0; color: var(--brand-header);
+            padding: 12px 25px; border: none; border-radius: 8px; font-weight: 600;
+            cursor: pointer; text-decoration: none; display: inline-block; transition: background-color 0.2s ease;
         }
-        .join-now-btn:hover {
-            background-color: #bebebe;
-        }
-        .copyright-section {
-            width: 100%;
-            text-align: left;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .copyright-section p {
-            margin: 0;
-            color: #a0a0a0;
-        }
+        .join-now-btn:hover { background-color: #bebebe; }
 
-        /* Responsive adjustments for footer */
-        @media (max-width: 768px) {
-            .footer-content {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-            .footer-col {
-                min-width: unset;
-                width: 100%;
-            }
-            .footer-col-left {
-                min-width: unset;
-                width: 100%;
-            }
-            .social-icons {
-                justify-content: center;
-            }
-            .copyright-section {
-                text-align: center;
-            }
+        /* Responsive Design (from bi-performance.html, with additions) */
+        @media (max-width: 992px) {
+            .comparison-grid { grid-template-columns: 1fr; }
+            .tabs-container { flex-direction: column; }
+            .solution-spotlight-card { grid-template-columns: 1fr; text-align: center; padding: 30px; }
+            .solution-info p { margin: 20px auto; }
+            .solution-actions { grid-template-columns: 1fr; }
+            .price-info { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding-right: 0; padding-bottom: 25px; text-align: center; }
+            .metrics-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
         }
-        @media (max-width: 480px) {
-            .hero-title { font-size: 32px; }
-            .hero-subtitle { font-size: 16px; }
-            .section-title { font-size: 28px; }
+        @media (max-width: 768px) {
+            .main-nav { display: none; }
+            .hamburger { display: block; }
+            .mobile-nav, .mobile-nav-overlay { display: none; } /* Controlled by JS */
+
+            .footer-content { flex-direction: column; text-align: center; }
+            .footer-col, .footer-col-left { min-width: unset; width: 100%; text-align: center;}
+            .social-icons { justify-content: center; }
+
+            /* Ensure main content doesn't cause horizontal scroll */
+            .hero, .comparison-section, .metrics-section, .implementation-section, .solution-spotlight, .footer {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            .container {
+                padding: 0 15px;
+            }
+            .comparison-card {
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -235,114 +482,132 @@
 
     <header class="header">
         <div class="container header-content">
-            <a href="../index.html"><img src="https://cdn.mescius.io/umb/media/pujnxfci/mescuis-logo-horiz.svg" alt="Mescius Europe Logo" class="logo"></a>
+            <a href="../index.html"><img src="https://cdn.mescius.io/umb/media/pujnxfci/mescuis-logo-horiz.svg" alt="Mescius Europe Logo - Horizontal" class="logo"></a>
             <nav class="main-nav">
-                <a href="../index.html#case-studies" class="nav-link active">Solutions</a>
+                <a href="../index.html#explorer" class="nav-link active">Solutions</a>
                 <a href="../pricing/index.html" class="nav-link">Pricing</a>
                 <a href="../bundles/index.html" class="nav-link">Bundles</a>
             </nav>
-            <div class="nav-toggle" id="nav-toggle">
-                <span></span>
+            <div class="hamburger" id="hamburger-icon" aria-label="Open mobile navigation">
+                <i class="fas fa-bars"></i>
             </div>
         </div>
     </header>
 
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation menu">
+        <a href="../index.html#explorer" class="nav-link">Solutions</a>
+        <a href="../pricing/index.html" class="nav-link">Pricing</a>
+        <a href="../bundles/index.html" class="nav-link">Bundles</a>
+    </nav>
+
     <main>
-        <section class="case-study-header">
-            <p class="case-study-tag">Cross-Platform Modernization</p>
-            <h1 class="case-study-title">Blueprint: Unify Desktop & Web Apps with a Single .NET Codebase</h1>
-            <p class="case-study-subtitle">A guide for modernizing legacy financial applications by unifying desktop and web development with a Blazor Hybrid architecture.</p>
+        <section class="hero">
+            <div class="container">
+                <p class="tag">Solution Blueprint</p>
+                <h1>Unify Desktop & Web Apps with a Single .NET Codebase</h1>
+                <p>A guide for modernizing legacy financial applications by unifying desktop and web development with a Blazor Hybrid architecture.</p>
+                <a href="#solution" class="cta-button">Explore the Solution</a>
+            </div>
         </section>
 
-        <div class="container">
-            <div class="expandable-card" id="expandable-card">
-                
-                <div class="card-visible-content">
-                    <div class="solution-profile-grid">
-                        <div class="profile-item">
-                            <h4>Industry</h4>
-                            <p>Financial Technology (FinTech)</p>
+        <section class="comparison-section">
+            <div class="container">
+                <header class="section-header">
+                    <h2>The Unification Drive</h2>
+                </header>
+                <div class="comparison-grid">
+                    <article class="comparison-card before">
+                        <h3><span class="icon"><i class="fas fa-desktop"></i></span> The Disconnected Way: Legacy & Web Silos</h3>
+                        <ul>
+                            <li><i class="fas fa-times-circle"></i> High maintenance costs for separate desktop (WPF/WinForms) and web codebases.</li>
+                            <li><i class="fas fa-times-circle"></i> Inconsistent user experience across platforms.</li>
+                            <li><i class="fas fa-times-circle"></i> Slow feature delivery due to duplicated development efforts.</li>
+                        </ul>
+                    </article>
+                    <article class="comparison-card after">
+                        <h3><span class="icon"><i class="fas fa-code-branch"></i></span> The Unified Way: Blazor Hybrid in Action</h3>
+                        <p>Experience how Blazor Hybrid enables a single codebase for both desktop and web, showcasing a typical data view for financial applications.</p>
+                        <div class="grid-host">
+                            <div id="theGrid"></div>
                         </div>
-                        <div class="profile-item">
-                            <h4>Common Challenge</h4>
-                            <p>High operational costs and slow innovation due to maintaining separate, legacy desktop and modern web application codebases.</p>
-                        </div>
-                        <div class="profile-item">
-                            <h4>The Blueprint</h4>
-                            <p>Unify platforms into a single, cross-platform application using a Blazor Hybrid architecture to reduce costs and accelerate development.</p>
-                        </div>
-                    </div>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-                    <div class="results-heading">
-                        <h4>Potential Outcomes</h4>
+        <section class="metrics-section">
+            <div class="container">
+                 <header class="section-header">
+                    <h2>Tangible Outcomes</h2>
+                </header>
+                <div class="metrics-grid">
+                    <div class="metric-item">
+                        <p class="metric-value" data-target="45">0%</p>
+                        <p class="metric-label">Faster Feature Delivery</p>
                     </div>
-                    
-                    <div class="results-metrics">
-                        <div class="metric-item">
-                            <span class="metric-value">45%</span>
-                            <span class="metric-label">Faster Feature Delivery</span>
-                        </div>
-                        <div class="metric-item">
-                            <span class="metric-value">€300k</span>
-                            <span class="metric-label">Annual Savings</span>
-                        </div>
-                        <div class="metric-item">
-                            <span class="metric-value">90%</span>
-                            <span class="metric-label">Code Re-use</span>
-                        </div>
-                        <div class="metric-item">
-                            <span class="metric-value">30%</span>
-                            <span class="metric-label">User Satisfaction Up</span>
-                        </div>
+                     <div class="metric-item">
+                        <p class="metric-value" data-target="300">€0k</p>
+                        <p class="metric-label">Annual Savings</p>
                     </div>
-                    
-                    <div class="profile-cta">
-                        <a href="../bundles/index.html" class="cta-button">View Power Pack Pricing</a>
+                     <div class="metric-item">
+                        <p class="metric-value" data-target="90">0%</p>
+                        <p class="metric-label">Code Re-use</p>
+                    </div>
+                    <div class="metric-item">
+                        <p class="metric-value" data-target="30">0%</p>
+                        <p class="metric-label">User Satisfaction Up</p>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="card-toggle-bar" id="card-toggle" role="button" aria-expanded="false" aria-controls="collapsible-story-content">
-                    <span class="toggle-text">View Implementation Details</span>
-                    <span class="toggle-icon"></span>
-                </div>
-
-                <div class="card-collapsible-content" id="collapsible-story-content">
-                    <article class="main-story">
-                        <div>
-                            <h2>The Objective</h2>
+        <section class="implementation-section">
+            <div class="container">
+                <header class="section-header">
+                    <h2>Implementation Details</h2>
+                </header>
+                <div class="tabs-container">
+                    <nav class="tabs-nav" aria-label="Implementation details tabs">
+                        <button class="tab-button active" data-tab="objective">The Objective</button>
+                        <button class="tab-button" data-tab="architecture">Architectural Approach</button>
+                        <button class="tab-button" data-tab="summary">Blueprint Summary</button>
+                    </nav>
+                    <div class="tabs-content">
+                        <div class="tab-pane active" id="objective" role="tabpanel" aria-labelledby="objective-tab">
+                            <h3>Streamline Development, Boost UX</h3>
                             <p>Many organizations, especially in FinTech, face significant operational inefficiencies from maintaining separate legacy desktop (like WPF) and modern web applications. The objective is to unify these development efforts to reduce costs, accelerate new feature delivery, and provide a consistent user experience across platforms.</p>
                         </div>
-                        <div>
-                            <h2>Architectural Approach: Strategic Unification with Blazor Hybrid</h2>
-                            <p>A Blazor Hybrid architecture using .NET MAUI offers a powerful solution. It allows development teams to leverage existing C# and web development talent to build a single application that runs natively on the desktop while sharing UI and logic with a web portal. This eliminates duplicated effort and streamlines release cycles.</p>
+                        <div class="tab-pane" id="architecture" role="tabpanel" aria-labelledby="architecture-tab">
+                            <h3>A Strategic Unification with Blazor Hybrid</h3>
+                             <p>A Blazor Hybrid architecture using .NET MAUI offers a powerful solution. It allows development teams to leverage existing C# and web development talent to build a single application that runs natively on the desktop while sharing UI and logic with a web portal. This eliminates duplicated effort and streamlines release cycles.</p>
                              <ul>
                                 <li><strong>Shared UI Layer:</strong> Build your UI with Blazor Razor components that can be shared between the native desktop app and a web application.</li>
                                 <li><strong>Native Performance:</strong> The Blazor Hybrid app runs as a native desktop application, with full access to the underlying hardware and OS features.</li>
                                 <li><strong>Component-Driven Development:</strong> Use a rich suite of UI components, like the Mescius Blazor Hybrid Power Pack, to quickly build out complex features for both desktop and web targets from a single toolset.</li>
                             </ul>
                         </div>
-                        <div class="implementation-summary">
-                            <h3>Blueprint Summary</h3>
+                         <div class="tab-pane" id="summary" role="tabpanel" aria-labelledby="summary-tab">
+                            <h3>Execution Summary</h3>
                             <ul>
-                                <li>Leverage Blazor Hybrid to share code between desktop and web, reducing development costs.</li>
-                                <li>Use a comprehensive component suite to ensure a consistent, feature-rich UI on all platforms.</li>
-                                <li>Modernize legacy desktop applications without a full rewrite by embedding a web UI.</li>
-                                <li>Accelerate time-to-market by writing features once and deploying them everywhere.</li>
+                                <li>Isolate the performance bottleneck in your UI; don't assume a full rewrite is necessary.</li>
+                                <li>Select a component library specifically engineered for high-volume, real-time data.</li>
+                                <li>Prioritize features like virtualization to ensure a smooth user experience with large datasets.</li>
+                                <li>A targeted component replacement can deliver massive ROI and reduce support costs.</li>
                             </ul>
                         </div>
-                    </article>
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        <section class="recommended-bundle-section">
-            <div class="container">
-                <div class="bundle-card">
-                    <div class="bundle-info">
-                        <div class="bundle-header">
-                            <h3>Recommended Solution</h3>
-                            <h2>Blazor Hybrid Power Pack</h2>
-                        </div>
+        </section>
+
+        <section class="solution-spotlight" id="solution">
+             <div class="container">
+                <div class="solution-spotlight-card">
+                    <div class="solution-info">
+                        <p class="tag">Recommended Solution</p>
+                        <h2>Blazor Hybrid Power Pack</h2>
+                        <p>The definitive toolset for this blueprint. Mescius provides a comprehensive collection of .NET components (ComponentOne, ActiveReports.NET) and JavaScript UI components (Wijmo) designed to seamlessly integrate with your Blazor Hybrid applications.</p>
                         <ul class="bundle-inclusions">
                             <li>
                                 <div class="product-name">
@@ -391,14 +656,18 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="bundle-purchase">
-                            <div class="bundle-price">
-                                <span class="price">€2,658</span>
-                                <span class="term">per developer / year</span>
+                    <div class="solution-actions">
+                        <div class="price-info">
+                            <p class="price">€2,658</p>
+                            <p class="price-term">per developer / year</p>
+                        </div>
+                        <div class="action-buttons">
+                            <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285848" class="cta-button">Buy Now</a>
+                            <div class="action-links">
+                                <a href="../bundles/index.html" target="_blank">View All Bundles</a>
+                                <a href="https://www.mescius.eu/contact" target="_blank">Contact Sales</a>
                             </div>
-                            <div class="bundle-cta">
-                                <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285848" class="cta-button">Buy Now</a>
-                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -407,7 +676,7 @@
 
     <div id="product-info-modal" class="modal-overlay">
         <div class="modal-container">
-            <button id="modal-close" class="modal-close-btn">&times;</button>
+            <button id="modal-close" class="modal-close-btn" aria-label="Close product information modal">×</button>
             <div id="modal-body-content" class="modal-body">
                 </div>
         </div>
@@ -415,15 +684,13 @@
     
     <footer class="footer">
         <div class="container footer-content">
-            <!-- First Column: Logo, Copyright, Phone, Trademarks -->
             <div class="footer-col footer-col-left">
-                <img src="https://cdn.mescius.io/umb/media/pujnxfci/mescuis-logo-horiz.svg" alt="Mescius Europe Logo" class="footer-logo">
+                <img src="https://cdn.mescius.io/umb/media/pujnxfci/mescuis-logo-horiz.svg" alt="Mescius Europe Logo - Horizontal" class="footer-logo">
                 <p class="footer-text">© 2025 Mescius Europe GmbH | All Rights Reserved</p>
                 <p class="footer-text">1.800.858.2739</p>
                 <p class="footer-text">All product and company names herein may be trademarks of their respective owners.</p>
             </div>
 
-            <!-- Second Column: Company Links -->
             <div class="footer-col">
                 <h4 class="footer-heading">COMPANY</h4>
                 <ul class="footer-links">
@@ -435,19 +702,17 @@
                 </ul>
             </div>
 
-            <!-- Third Column: Follow Us -->
             <div class="footer-col">
                 <h4 class="footer-heading">FOLLOW US</h4>
                 <div class="social-icons">
                     <a href="https://www.facebook.com/mescius" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://www.twitter.com/mescius" target="_blank" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                     <a href="https://www.linkedin.com/company/mescius" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://www.youtube.com/user/mescius" target="_blank" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.youtube.com/user/MesciusInc" target="_blank" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     <a href="https://mescius.eu/rss" target="_blank" class="social-icon" aria-label="RSS"><i class="fa fa-rss"></i></a>
                 </div>
             </div>
 
-            <!-- Fourth Column: Get the Latest News -->
             <div class="footer-col">
                 <h4 class="footer-heading">GET THE LATEST NEWS</h4>
                 <p class="news-signup-text">Stay up to date with blogs, eBooks, events, and whitepapers.</p>
@@ -456,25 +721,158 @@
         </div>
     </footer>
     
-    <script>
+    <script src="https://cdn.mescius.com/wijmo/5.20232.939/controls/wijmo.min.js" defer></script>
+    <script src="https://cdn.mescius.com/wijmo/5.20232.939/controls/wijmo.grid.min.js" defer></script>
+    
+    <script defer>
     document.addEventListener('DOMContentLoaded', () => {
-        // --- Expandable Card Logic ---
-        const card = document.getElementById('expandable-card');
-        const toggle = document.getElementById('card-toggle');
-        if (card && toggle) {
-            toggle.addEventListener('click', () => {
-                card.classList.toggle('is-open');
-                const isExpanded = card.classList.contains('is-open');
-                toggle.setAttribute('aria-expanded', isExpanded);
-                // Update button text on toggle
-                toggle.querySelector('.toggle-text').textContent = isExpanded ? 'Hide Implementation Details' : 'View Implementation Details';
+        // Wijmo License Key (copied from bi-performance.html)
+        wijmo.setLicenseKey("579938718425585#B07eYICbuFkI1pjIEJCLi4TPB3SZCllU8BldhlETMZ5UypGb8E5bVdDWF9EOjJUbalEdOJkUNt4TmBXbtNlW7h7bv24ThhmR8t4RTtie9d6QHFHezMnN65ENmNTQulFWIdWdTJHMZplRktmV7g7LmtCcMpkeMdVZ03ETxgzTUdGc74mRqhmUr4kW4V4VxIUVR3EaZFmdZdjVjdFN5IVWZR6c824Uzo4Up5mdqlHdBh6a9h6dCxEdh9WMhRDR53CM5tmYK9GTjZ6LycVbINUQM3kUrtUdWpmWVZWYL5WVkZDWktCTwlnVSVDUEFDehdUarJ4d9E7VzFzL6MkVxVWT6V4Rrc6SrgWeCB7KxFFb9EEWzNUUrMFRaJHTzFjYMZ7bkdTaZNmTHJFdaxEOFxWRVp5U6k4QuJzQ6RnN8NDazklc7VGM8AFexomYPh7NSl5Tt9mMrdHS0VzasV6YNdWaGJXRxllZ7lmRiojITJCLiEER9QEOEFUNiojIIJCL7ADNyUDOzEjN0IicfJye=#Qf35VfikEMyIlI0IyQiwiIu3Waz9WZ4hXRgACdlVGaThXZsZEIv5mapdlI0IiTisHL3JSNJ9UUiojIDJCLi86bpNnblRHeFBCIyV6dllmV4J7bwVmUg2Wbql6ViojIOJyes4nILdDOIJiOiMkIsIibvl6cuVGd8VEIgc7bSlGdsVXTg2Wbql6ViojIOJyes4nI4YkNEJiOiMkIsIibvl6cuVGd8VEIgAVQM3EIg2Wbql6ViojIOJyes4nIzMEMCJiOiMkIsISZy36Qg2Wbql6ViojIOJyes4nIVhzNBJiOiMkIsIibvl6cuVGd8VEIgQnchh6QsFWaj9WYulmRg2Wbql6ViojIOJyebpjIkJHUiwiI9QjM5kDMggjM6ATNyAjMiojI4J7QiwiIt36YuMXdpN6cl5GQyVmZlFGajNnLzFGbrNWauJiOiEmTDJCLiUDO5UjM4gTM7gzM9kzN5IiOiQWSiwSfdtlOicGbmJCLiEjd5IDMyIiOiIXZ6JCLlNHbhZmOiIKc6JQ");
+
+        // Wijmo Financial Grid Demo
+        function getFinancialData(count) {
+            const data = [];
+            const descriptions = [
+                'Salary Deposit', 'Rent Payment', 'Grocery Shopping', 'Utilities Bill',
+                'Restaurant Meal', 'Online Subscription', 'Travel Expense', 'Investment',
+                'Loan Repayment', 'Medical Bill', 'Cash Withdrawal'
+            ];
+            let balance = 50000;
+
+            for (let i = 0; i < count; i++) {
+                const amount = Math.round(Math.random() * 1000) + 10;
+                const type = Math.random() > 0.5 ? 'Credit' : 'Debit';
+                const effectiveAmount = (type === 'Credit' ? amount : -amount);
+                balance += effectiveAmount;
+
+                data.push({
+                    id: i + 1,
+                    date: new Date(2024, Math.floor(i / 28) % 12, i % 28 + 1),
+                    description: descriptions[i % descriptions.length],
+                    type: type,
+                    amount: amount,
+                    balance: balance
+                });
+            }
+            return data;
+        }
+
+        const theGrid = new wijmo.grid.FlexGrid('#theGrid', {
+            itemsSource: getFinancialData(500),
+            isReadOnly: true,
+            selectionMode: 'Row',
+            headersVisibility: 'Column',
+            alternatingRowStep: 0,
+            autoGenerateColumns: false,
+            columns: [
+                { binding: 'id', header: 'ID', width: 60, isReadOnly: true },
+                { binding: 'date', header: 'Date', format: 'MMM dd,YYYY', width: 120 },
+                { binding: 'description', header: 'Description', width: '*' },
+                { binding: 'type', header: 'Type', width: 80 },
+                { binding: 'amount', header: 'Amount', format: 'c2', width: 100 },
+                { binding: 'balance', header: 'Balance', format: 'c2', width: 120 }
+            ],
+            // Conditional formatting for Amount column (e.g., green for credit, red for debit)
+            itemFormatter: (panel, r, c, cell) => {
+                if (panel.cellType === wijmo.grid.CellType.Cell) {
+                    const grid = panel.grid;
+                    const col = grid.columns[c];
+                    if (col.binding === 'amount' && r < grid.rows.length) {
+                        const item = grid.rows[r].dataItem;
+                        if (item.type === 'Debit') {
+                            cell.style.color = 'red';
+                        } else if (item.type === 'Credit') {
+                            cell.style.color = 'green';
+                        }
+                    }
+                }
+            }
+        });
+
+
+        // Animated Counters (from bi-performance.html, with fix for parsing initial value)
+        const counters = document.querySelectorAll('.metric-value');
+        const speed = 200;
+
+        const animateCounter = (counter) => {
+            const target = +counter.getAttribute('data-target');
+            // Extract suffix (%, €k) and initial numeric value
+            const initialText = counter.innerText;
+            const suffixMatch = initialText.match(/[^0-9.]*$/); // Match non-numeric characters at the end
+            const suffix = suffixMatch ? suffixMatch[0] : '';
+            
+            let currentCount = 0; // Start always from 0 for animation
+
+            const updateCount = () => {
+                const increment = target / speed;
+
+                if (currentCount < target) {
+                    currentCount += increment;
+                    counter.innerText = Math.ceil(currentCount) + suffix; // Round up for display
+                    setTimeout(updateCount, 15);
+                } else {
+                    counter.innerText = target + suffix; // Ensure target value is reached exactly
+                }
+            };
+            updateCount();
+        };
+        
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counters.forEach(counter => observer.observe(counter));
+
+        // Tabs (from bi-performance.html)
+        const tabContainer = document.querySelector('.implementation-section .tabs-container');
+        if(tabContainer) {
+            const tabButtons = tabContainer.querySelectorAll('.tabs-nav button');
+            const tabPanes = tabContainer.querySelectorAll('.tabs-content .tab-pane');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    
+                    const targetTab = button.getAttribute('data-tab');
+                    
+                    tabPanes.forEach(pane => {
+                        if (pane.id === targetTab) {
+                            pane.classList.add('active');
+                        } else {
+                            pane.classList.remove('active');
+                        }
+                    });
+                });
             });
         }
 
-        // --- Product Info Modal Logic ---
+        // Mobile menu elements
+        const hamburgerIcon = document.getElementById('hamburger-icon');
+        const mobileNav = document.getElementById('mobile-nav');
+        const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+
+        // Toggle mobile navigation
+        const toggleMobileNav = () => {
+            mobileNav.classList.toggle('is-active');
+            mobileNavOverlay.classList.toggle('is-active');
+            document.body.style.overflow = mobileNav.classList.contains('is-active') ? 'hidden' : '';
+        };
+
+        hamburgerIcon.addEventListener('click', toggleMobileNav);
+        mobileNavOverlay.addEventListener('click', toggleMobileNav);
+        mobileNav.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', toggleMobileNav);
+        });
+
+        // --- Product Info Modal Logic (retained and adapted) ---
         const modalOverlay = document.getElementById('product-info-modal');
         if (modalOverlay) {
-            const modalContainer = document.querySelector('.modal-container');
             const modalBody = document.getElementById('modal-body-content');
             const modalCloseBtn = document.getElementById('modal-close');
             const infoTriggers = document.querySelectorAll('.product-info-trigger');
@@ -484,16 +882,28 @@
                 const description = trigger.dataset.description || 'No description available.';
                 
                 let modalHTML = `<h2 class="modal-title">${title}</h2>`;
-                modalHTML += description; 
-
+                modalHTML += `<p>${description}</p>`;
+                
                 const trialLink = trigger.parentElement.querySelector('a[target="_blank"]').href;
-                const productLink = 'https://developer.mescius.com/'; // Generic fallback
+                const productLinkBase = 'https://developer.mescius.com/';
+
+                let specificProductLink = '';
+                if (title === 'ComponentOne') {
+                    specificProductLink = productLinkBase + 'componentone';
+                } else if (title === 'Wijmo Enterprise') {
+                    specificProductLink = productLinkBase + 'wijmo';
+                } else if (title === 'ActiveReports.NET') {
+                    specificProductLink = productLinkBase + 'activereportsnet';
+                }
 
                 modalHTML += `<a href="${trialLink}" target="_blank" class="cta-button cta-primary">Download Trial</a>`;
-                modalHTML += `<a href="${productLink}" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>`;
+                if (specificProductLink) {
+                    modalHTML += `<a href="${specificProductLink}" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>`;
+                }
 
                 modalBody.innerHTML = modalHTML;
                 modalOverlay.style.display = 'flex';
+                modalCloseBtn.focus();
             };
             
             const closeModal = () => {

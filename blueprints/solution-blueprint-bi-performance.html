@@ -5,13 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blueprint: Building High-Performance, Data-Intensive Applications | Mescius</title>
     <meta name="description" content="Discover the blueprint for transforming slow, data-heavy applications into high-performance powerhouses with a live Wijmo grid demo.">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <meta property="og:title" content="Blueprint: High-Performance, Data-Intensive Applications | Mescius">
+    <meta property="og:description" content="Discover the blueprint for transforming slow, data-heavy applications into high-performance powerhouses with a live Wijmo grid demo.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.mescius.eu/blueprints/solution-blueprint-bi-performance.html">
+    <meta property="og:image" content="https://www.mescius.eu/images/wijmo-performance-blueprint-og.jpg"> <meta property="og:image:alt" content="Screenshot of a high-performance data grid">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@mescius"> <meta name="twitter:title" content="Blueprint: High-Performance, Data-Intensive Applications | Mescius">
+    <meta name="twitter:description" content="Discover the blueprint for transforming slow, data-heavy applications into high-performance powerhouses with a live Wijmo grid demo.">
+    <meta name="twitter:image" content="https://www.mescius.eu/images/wijmo-performance-blueprint-twitter.jpg"> <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
     <link href="https://cdn.mescius.com/wijmo/5.20232.939/styles/wijmo.min.css" rel="stylesheet" />
 
-    <script src="https://cdn.mescius.com/wijmo/5.20232.939/controls/wijmo.min.js"></script>
-    <script src="https://cdn.mescius.com/wijmo/5.20232.939/controls/wijmo.grid.min.js"></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "From Lagging to Leading: A Blueprint for High-Performance Apps",
+      "description": "Unlock superior speed and responsiveness in your data-intensive applications. This guide details the architectural shift required to eliminate UI freezes and delight your users by implementing a high-performance datagrid.",
+      "image": "https://www.mescius.eu/images/wijmo-performance-blueprint.jpg", "author": {
+        "@type": "Organization",
+        "name": "Mescius"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Mescius Europe",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://cdn.mescius.io/umb/media/pujnxfci/mescuis-logo-horiz.svg"
+        }
+      },
+      "datePublished": "2024-06-30",
+      "dateModified": "2024-06-30",
+      "articleSection": ["Performance Optimization", "Data Grid", "UI/UX"],
+      "keywords": "high performance, data-intensive applications, datagrid, UI freeze, Wijmo, business intelligence, enterprise software",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.mescius.eu/blueprints/solution-blueprint-bi-performance.html"
+      },
+      "mentions": [
+        {
+          "@type": "Product",
+          "name": "Wijmo Enterprise",
+          "url": "https://developer.mescius.com/wijmo",
+          "description": "A comprehensive suite of fast, flexible JavaScript UI components, including a high-performance datagrid.",
+          "brand": {
+            "@type": "Organization",
+            "name": "Mescius"
+          }
+        }
+      ]
+    }
+    </script>
     
     <style>
         :root {
@@ -28,6 +76,11 @@
             --ui-border: #E2E8F0;
             --ui-shadow: rgba(45, 55, 72, 0.1);
             --ui-success: #48BB78;
+        }
+
+        /* Essential for preventing horizontal scroll from overflowing content */
+        html, body {
+            overflow-x: hidden;
         }
 
         *, *::before, *::after { box-sizing: border-box; }
@@ -67,6 +120,69 @@
             transition: width 0.3s ease;
         }
         .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+        /* Mobile Navigation Specific Styles */
+        .hamburger {
+            display: none; /* Hidden by default, shown on mobile */
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--brand-body-text);
+            z-index: 1001; /* Ensure it's above other content when active */
+        }
+
+        .mobile-nav-overlay {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .mobile-nav-overlay.is-active {
+            display: block; /* Show overlay when active */
+            opacity: 1; /* Make it visible */
+        }
+
+        .mobile-nav {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            right: -300px; /* Start off-screen */
+            width: 280px;
+            height: 100%;
+            background-color: var(--ui-white);
+            box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+            padding: 80px 20px 20px; /* Space for header if needed */
+            flex-direction: column;
+            gap: 20px;
+            transition: right 0.3s ease-in-out;
+            z-index: 1000;
+        }
+
+        .mobile-nav.is-active {
+            display: flex; /* Show flex when active */
+            right: 0;
+        }
+
+        .mobile-nav .nav-link {
+            display: block;
+            width: 100%;
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--ui-border);
+            font-size: 1.1rem;
+            text-align: left;
+            color: var(--brand-heading-text);
+            text-decoration: none;
+        }
+
+        .mobile-nav .nav-link:last-child {
+            border-bottom: none;
+        }
         
         /* --- General CTA Button Style --- */
         .cta-button {
@@ -123,10 +239,13 @@
             border-radius: 12px; border: 1px solid var(--ui-border);
             box-shadow: 0 5px 15px var(--ui-shadow);
             display: flex; flex-direction: column;
+            /* Ensure content inside doesn't cause overflow */
+            min-width: 0; /* Allow flex/grid items to shrink below their content size */
         }
         .comparison-card h3 {
             font-size: 1.5rem; margin: 0 0 15px 0;
             display: flex; align-items: center; gap: 10px; flex-shrink: 0;
+            word-break: break-word; /* Allow long titles to wrap */
         }
         .comparison-card .icon { font-size: 1.2rem; color: var(--ui-white);
             width: 36px; height: 36px; border-radius: 50%;
@@ -134,12 +253,26 @@
         }
         .comparison-card.before .icon { background-color: #EF4444; }
         .comparison-card.after .icon { background-color: var(--ui-success); }
-        .comparison-card ul { list-style: none; padding: 0; margin: 0; }
-        .comparison-card li { margin-bottom: 10px; display: flex; align-items: flex-start; gap: 10px; }
-        .comparison-card li i { margin-top: 5px; opacity: 0.7; }
+        .comparison-card ul { 
+            list-style: none; 
+            padding: 0; 
+            margin: 0; 
+            /* Ensure list items don't cause overflow */
+            width: 100%; /* Take full available width */
+        }
+        .comparison-card li { 
+            margin-bottom: 10px; 
+            display: flex; 
+            align-items: flex-start; 
+            gap: 10px; 
+            word-break: break-word; /* Allow long text to wrap */
+        }
+        .comparison-card li i { margin-top: 5px; opacity: 0.7; flex-shrink: 0; }
         .comparison-card .grid-host { 
             flex-grow: 1; 
             height: 200px;
+            overflow: hidden; /* Hide any overflow within the grid host */
+            width: 100%; /* Ensure it takes full width of parent */
         }
 
         /* --- Wijmo Grid Styling --- */
@@ -269,16 +402,31 @@
         @media (max-width: 992px) {
             .comparison-grid { grid-template-columns: 1fr; }
             .tabs-container { flex-direction: column; }
-            .solution-spotlight-card { grid-template-columns: 1fr; text-align: center; }
+            .solution-spotlight-card { grid-template-columns: 1fr; text-align: center; padding: 30px; } /* Adjust padding */
             .solution-info p { margin: 20px auto; }
             .solution-actions { grid-template-columns: 1fr; }
             .price-info { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding-right: 0; padding-bottom: 25px; text-align: center; }
+            .metrics-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); } /* Adjust min-width for smaller screens */
         }
         @media (max-width: 768px) {
             .main-nav { display: none; }
+            .hamburger { display: block; } /* Show hamburger on mobile */
+            /* Ensure mobile-nav and overlay are initially hidden but controlled by JS */
+            .mobile-nav, .mobile-nav-overlay {
+                display: none; /* Hide them by default, JS will show/hide by toggling 'is-active' */
+            }
             .footer-content { flex-direction: column; text-align: center; }
             .footer-col, .footer-col-left { min-width: unset; width: 100%; text-align: center;}
             .social-icons { justify-content: center; }
+
+            /* Ensure main content doesn't cause horizontal scroll */
+            .hero, .comparison-section, .metrics-section, .implementation-section, .solution-spotlight, .footer {
+                padding-left: 15px; /* Reduce padding to give more space */
+                padding-right: 15px;
+            }
+            .container {
+                padding: 0 15px; /* Adjust container padding */
+            }
         }
 
     </style>
@@ -286,14 +434,24 @@
 <body>
     <header class="header">
         <div class="container header-content">
-            <a href="../index.html"><img src="https://cdn.mescius.io/umb/media/pujnxfci/mescuis-logo-horiz.svg" alt="Mescius Logo" class="logo"></a>
+            <a href="../index.html"><img src="https://cdn.mescius.io/umb/media/pujnxfci/mescuis-logo-horiz.svg" alt="Mescius Europe Logo - Horizontal" class="logo"></a>
             <nav class="main-nav">
                 <a href="../index.html#case-studies" class="nav-link active">Solutions</a>
                 <a href="../pricing/index.html" class="nav-link">Pricing</a>
                 <a href="../bundles/index.html" class="nav-link">Bundles</a>
             </nav>
+            <div class="hamburger" id="hamburger-icon" aria-label="Open mobile navigation">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
     </header>
+
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation menu">
+        <a href="../index.html#case-studies" class="nav-link">Solutions</a>
+        <a href="../pricing/index.html" class="nav-link">Pricing</a>
+        <a href="../bundles/index.html" class="nav-link">Bundles</a>
+    </nav>
 
     <main>
         <section class="hero">
@@ -361,17 +519,17 @@
                     <h2>Implementation Details</h2>
                 </header>
                 <div class="tabs-container">
-                    <nav class="tabs-nav">
+                    <nav class="tabs-nav" aria-label="Implementation details tabs">
                         <button class="tab-button active" data-tab="objective">The Objective</button>
                         <button class="tab-button" data-tab="architecture">Architecture</button>
                         <button class="tab-button" data-tab="summary">Blueprint Summary</button>
                     </nav>
                     <div class="tabs-content">
-                        <div class="tab-pane active" id="objective">
+                        <div class="tab-pane active" id="objective" role="tabpanel" aria-labelledby="objective-tab">
                             <h3>Redefine Responsiveness</h3>
                             <p>For any SaaS platform in the manufacturing or BI space, performance is the core value proposition. The primary objective is to ensure the UI remains fast and fluid, regardless of data volume, to prevent customer churn and reduce performance-related support costs.</p>
                         </div>
-                        <div class="tab-pane" id="architecture">
+                        <div class="tab-pane" id="architecture" role="tabpanel" aria-labelledby="architecture-tab">
                             <h3>A Performance-First Strategy</h3>
                              <p>A successful implementation requires identifying the primary UI bottleneck—often the datagrid—and replacing it with a component specifically engineered for performance. This avoids a costly, full-application rewrite.</p>
                              <ul>
@@ -380,7 +538,7 @@
                                 <li><strong>Data-Binding:</strong> Integrate the new grid with your existing data sources for seamless, real-time updates.</li>
                             </ul>
                         </div>
-                         <div class="tab-pane" id="summary">
+                         <div class="tab-pane" id="summary" role="tabpanel" aria-labelledby="summary-tab">
                             <h3>Execution Summary</h3>
                             <ul>
                                 <li>Isolate the performance bottleneck in your UI; don't assume a full rewrite is necessary.</li>
@@ -423,7 +581,7 @@
     <footer class="footer">
          <div class="container footer-content">
             <div class="footer-col footer-col-left">
-                <img src="https://cdn.mescius.io/umb/media/pujnxfci/mescuis-logo-horiz.svg" alt="Mescius Europe Logo" class="footer-logo">
+                <img src="https://cdn.mescius.io/umb/media/pujnxfci/mescuis-logo-horiz.svg" alt="Mescius Europe Logo - Horizontal" class="footer-logo">
                 <p class="footer-text">© 2025 Mescius Europe GmbH | All Rights Reserved</p>
                 <p class="footer-text">1.800.858.2739</p>
                 <p class="footer-text">All product and company names herein may be trademarks of their respective owners.</p>
@@ -444,7 +602,7 @@
                     <a href="https://www.facebook.com/mescius" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://www.twitter.com/mescius" target="_blank" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                     <a href="https://www.linkedin.com/company/mescius" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://www.youtube.com/user/mescius" target="_blank" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.youtube.com/@mescius" target="_blank" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     <a href="https://mescius.eu/rss" target="_blank" class="social-icon" aria-label="RSS"><i class="fa fa-rss"></i></a>
                 </div>
             </div>
@@ -456,7 +614,10 @@
         </div>
     </footer>
 
-    <script>
+    <script src="https://cdn.mescius.com/wijmo/5.20232.939/controls/wijmo.min.js" defer></script>
+    <script src="https://cdn.mescius.com/wijmo/5.20232.939/controls/wijmo.grid.min.js" defer></script>
+    
+    <script defer>
     document.addEventListener('DOMContentLoaded', () => {
         // Wijmo License Key
         wijmo.setLicenseKey("579938718425585#B07eYICbuFkI1pjIEJCLi4TPB3SZCllU8BldhlETMZ5UypGb8E5bVdDWF9EOjJUbalEdOJkUNt4TmBXbtNlW7h7bv24ThhmR8t4RTtie9d6QHFHezMnN65ENmNTQulFWIdWdTJHMZplRktmV7g7LmtCcMpkeMdVZ03ETxgzTUdGc74mRqhmUr4kW4V4VxIUVR3EaZFmdZdjVjdFN5IVWZR6c824Uzo4Up5mdqlHdBh6a9h6dCxEdh9WMhRDR53CM5tmYK9GTjZ6LycVbINUQM3kUrtUdWpmWVZWYL5WVkZDWktCTwlnVSVDUEFDehdUarJ4d9E7VzFzL6MkVxVWT6V4Rrc6SrgWeCB7KxFFb9EEWzNUUrMFRaJHTzFjYMZ7bkdTaZNmTHJFdaxEOFxWRVp5U6k4QuJzQ6RnN8NDazklc7VGM8AFexomYPh7NSl5Tt9mMrdHS0VzasV6YNdWaGJXRxllZ7lmRiojITJCLiEER9QEOEFUNiojIIJCL7ADNyUDOzEjN0IicfJye=#Qf35VfikEMyIlI0IyQiwiIu3Waz9WZ4hXRgACdlVGaThXZsZEIv5mapdlI0IiTisHL3JSNJ9UUiojIDJCLi86bpNnblRHeFBCIyV6dllmV4J7bwVmUg2Wbql6ViojIOJyes4nILdDOIJiOiMkIsIibvl6cuVGd8VEIgc7bSlGdsVXTg2Wbql6ViojIOJyes4nI4YkNEJiOiMkIsIibvl6cuVGd8VEIgAVQM3EIg2Wbql6ViojIOJyes4nIzMEMCJiOiMkIsISZy36Qg2Wbql6ViojIOJyes4nIVhzNBJiOiMkIsIibvl6cuVGd8VEIgQnchh6QsFWaj9WYulmRg2Wbql6ViojIOJyebpjIkJHUiwiI9QjM5kDMggjM6ATNyAjMiojI4J7QiwiIt36YuMXdpN6cl5GQyVmZlFGajNnLzFGbrNWauJiOiEmTDJCLiUDO5UjM4gTM7gzM9kzN5IiOiQWSiwSfdtlOicGbmJCLiEjd5IDMyIiOiIXZ6JCLlNHbhZmOiIKc6JQ");
@@ -552,6 +713,25 @@
                 });
             });
         }
+
+        // Mobile menu elements
+        const hamburgerIcon = document.getElementById('hamburger-icon');
+        const mobileNav = document.getElementById('mobile-nav');
+        const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+
+        // Toggle mobile navigation
+        const toggleMobileNav = () => {
+            mobileNav.classList.toggle('is-active');
+            mobileNavOverlay.classList.toggle('is-active');
+            // Animate overlay opacity (now handled by CSS transition on .mobile-nav-overlay.is-active)
+            document.body.style.overflow = mobileNav.classList.contains('is-active') ? 'hidden' : ''; // Prevent scrolling
+        };
+
+        hamburgerIcon.addEventListener('click', toggleMobileNav);
+        mobileNavOverlay.addEventListener('click', toggleMobileNav); // Close when clicking overlay
+        mobileNav.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', toggleMobileNav); // Close when clicking a nav link
+        });
     });
     </script>
 </body>
