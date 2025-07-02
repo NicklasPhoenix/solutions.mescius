@@ -11,7 +11,7 @@ export default function Header() {
         {/* Logo */}
         <Link href="/">
           <Image
-            src="https://cdn.mescius.io/umb/media/qpqhzv25/mescius-logo-horiz-white.svg"
+            src="https://cdn.mescius.io/umb/media/pujnxfci/mescuis-logo-horiz.svg"
             alt="Mescius Logo"
             width={150}
             height={36}
@@ -27,7 +27,7 @@ export default function Header() {
         </nav>
 
         {/* V-- AND ESPECIALLY HERE --V */}
-        <Link href="/contact-sales" className={styles.ctaButton}>
+        <Link href="/contact-sales" className="btn btnPrimary">
           Contact Sales
         </Link>
       </div>

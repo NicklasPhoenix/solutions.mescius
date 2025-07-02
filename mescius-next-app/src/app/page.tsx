@@ -1,9 +1,14 @@
-
+// src/app/page.tsx
+import Hero from '@/components/Hero';
+import LogoStrip from '@/components/LogoStrip';
+import FeaturedSolutions from '@/components/FeaturedSolutions'; // Import our new component
 
 export default function Home() {
   return (
-    <main>
-      <h1>My First Next.js Page!</h1>
-    </main>
+    <>
+      <Hero />
+      <LogoStrip />
+      <FeaturedSolutions /> {/* Place the new section here */}
+    </>
   );
 }

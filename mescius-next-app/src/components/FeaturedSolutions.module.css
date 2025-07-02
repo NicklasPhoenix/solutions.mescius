@@ -1,0 +1,47 @@
+/* src/components/FeaturedSolutions.module.css */
+.wrapper {
+  padding: 5rem 0;
+  background-color: var(--background-subtle);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.header h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.header p {
+  font-size: 1.1rem;
+  color: var(--text-light);
+  max-width: 700px;
+  margin: 1rem auto 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+/* THIS IS THE FIX FOR THE BUTTON LAYOUT */
+.ctaContainer {
+  text-align: center;
+  margin-top: 2rem;
+  grid-column: 1 / -1; /* This tells it to span the full grid width */
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

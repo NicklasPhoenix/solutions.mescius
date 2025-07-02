@@ -1,0 +1,56 @@
+[
+  {
+    "id": "logistics-modernization",
+    "href": "/blueprints/logistics-modernization",
+    "industry": "Logistics & Supply Chain",
+    "product": "net",
+    "title": "Modernize Legacy Desktop Applications",
+    "excerpt": "Use ComponentOne controls to update mission-critical WPF and WinForms apps, reducing data entry errors and training time without a costly rewrite.",
+    "frameworks": ["winforms", "wpf"]
+  },
+  {
+    "id": "regtech-compliance",
+    "href": "/blueprints/regtech-compliance",
+    "industry": "Regulatory Technologies",
+    "product": "js",
+    "title": "Ensure Data Integrity for Regulatory Compliance",
+    "excerpt": "Build a unified data pipeline using SpreadJS for front-end validation and Document Solutions for automated, secure back-end report generation.",
+    "frameworks": ["react", "angular", "vue"]
+  },
+  {
+    "id": "bi-performance",
+    "href": "/blueprints/bi-performance",
+    "industry": "BI SaaS for Manufacturing",
+    "product": "wijmo",
+    "title": "Improve Performance in Data-Intensive Apps",
+    "excerpt": "Integrate Wijmo's high-performance components to resolve critical speed issues in BI dashboards and secure major client renewals.",
+    "frameworks": ["react", "angular", "vue"]
+  },
+  {
+    "id": "real-time-dashboards",
+    "href": "/blueprints/real-time-dashboards",
+    "industry": "Energy & Utilities",
+    "product": "wijmo",
+    "title": "Build Real-Time, High-Frequency Dashboards",
+    "excerpt": "Leverage Wijmo's datagrid, engineered to process thousands of real-time IoT data updates per second without freezing or crashing.",
+    "frameworks": ["react", "angular"]
+  },
+  {
+    "id": "financial-modeling",
+    "href": "/blueprints/financial-modeling",
+    "industry": "Financial Services",
+    "product": "js",
+    "title": "Create Interactive Financial Models on the Web",
+    "excerpt": "Use SpreadJS to transform insecure, decentralized Excel models into a secure, collaborative web platform that cuts development time in half.",
+    "frameworks": ["react", "angular", "vue"]
+  },
+  {
+    "id": "document-automation",
+    "href": "/blueprints/document-automation",
+    "industry": "Insurance",
+    "product": "ds",
+    "title": "Automate Secure Document Generation",
+    "excerpt": "Use Document Solutions for .NET to automate secure policy and report generation, ensuring 100% compliance and drastically cutting operational costs.",
+    "frameworks": ["dotnet"]
+  }
+]

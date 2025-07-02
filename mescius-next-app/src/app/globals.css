@@ -58,3 +58,49 @@ a:hover {
   color: var(--brand-primary-dark);
   text-decoration: underline;
 }
+
+/* --- GLOBAL BUTTON SYSTEM --- */
+
+/* Base button style */
+.btn {
+  display: inline-block;
+  padding: 0.85rem 2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Primary Button: Solid, high-contrast */
+.btnPrimary {
+  background-color: var(--text-dark);
+  color: white;
+}
+
+.btnPrimary:hover {
+  background-color: var(--brand-primary); /* Use our blue as a hover accent! */
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Secondary Button: Clean, outline style */
+.btnSecondary {
+  background-color: var(--background-light);
+  color: var(--text-dark);
+  border-color: var(--border-color);
+}
+
+.btnSecondary:hover {
+  border-color: var(--text-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+a.btn:hover,
+a[class*="card"]:hover {
+  text-decoration: none !important;
+}

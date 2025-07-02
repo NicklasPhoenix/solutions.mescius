@@ -1,0 +1,28 @@
+/* src/components/Hero.module.css */
+.hero {
+  background: linear-gradient(135deg, #f7f9fc, #eef2f7); /* Subtle light gradient */
+  text-align: center;
+  padding: 6rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.container {
+  max-width: 900px; /* Constrain width for readability */
+  margin: 0 auto;
+}
+
+.headline {
+  font-size: 3.5rem; /* Large and impactful */
+  font-weight: 800; /* Extra bold */
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+  color: var(--text-dark);
+}
+
+.subheadline {
+  font-size: 1.25rem;
+  color: var(--text-light);
+  max-width: 700px;
+  margin: 1.5rem auto 2.5rem auto; /* Top, horizontal, bottom margin */
+}
+

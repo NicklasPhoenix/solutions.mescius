@@ -1,0 +1,42 @@
+/* src/components/LogoStrip.module.css */
+.logoStrip {
+  background-color: var(--background-subtle);
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  text-align: center;
+}
+
+.heading {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-light);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.logosContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.logoImage {
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: all 0.3s ease-in-out;
+}
+
+.logoImage:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.05);
+}
