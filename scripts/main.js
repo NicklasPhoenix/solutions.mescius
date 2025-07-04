@@ -119,4 +119,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     console.log('Modern JavaScript features loaded. Site is ready.');
+
+    /**
+     * Feature 6: Blueprint Link Handler (Production Fallback)
+     * Ensures blueprint cards work correctly on production servers
+     */
+    const blueprintCards = document.querySelectorAll('.case-study-card[href*="/blueprints/"]');
+    if (blueprintCards.length > 0) {
+        blueprintCards.forEach(card => {
+            card.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                // Ensure we're using clean URLs
+                if (href && href.includes('/blueprints/') && !href.endsWith('.html')) {
+                    // Force navigation to the clean URL
+                    e.preventDefault();
+                    window.location.href = href;
+                }
+            });
+        });
+    }
 });
