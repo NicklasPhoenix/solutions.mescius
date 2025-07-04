@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://solutions.mescius.eu/sitemap.xml
+
+# Block access to unnecessary files
+Disallow: /.git/
+Disallow: /scripts/
+Disallow: /styles/
