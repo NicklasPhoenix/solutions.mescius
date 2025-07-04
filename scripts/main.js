@@ -1048,6 +1048,27 @@ document.addEventListener('DOMContentLoaded', () => {
             if (template) {
                 modalBody.innerHTML = ''; // Clear previous content
                 modalBody.appendChild(template.content.cloneNode(true));
+                
+                // Apply product-specific theming
+                const modalContainer = productModalOverlay.querySelector('.modal-container');
+                if (modalContainer) {
+                    // Remove any existing product classes
+                    modalContainer.classList.remove('product-componentone', 'product-wijmo', 'product-activereports', 'product-spread', 'product-ds');
+                    
+                    // Add the appropriate product class based on productId
+                    if (productId.includes('componentone-studio')) {
+                        modalContainer.classList.add('product-componentone');
+                    } else if (productId.includes('wijmo')) {
+                        modalContainer.classList.add('product-wijmo');
+                    } else if (productId.includes('activereports')) {
+                        modalContainer.classList.add('product-activereports');
+                    } else if (productId.includes('spread')) {
+                        modalContainer.classList.add('product-spread');
+                    } else if (productId.includes('ds') || productId.includes('document')) {
+                        modalContainer.classList.add('product-ds');
+                    }
+                }
+                
                 productModalOverlay.style.display = 'flex';
             } else {
                 console.error(`Template for product ID "${productId}" not found.`);
@@ -1057,6 +1078,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const closeModal = () => {
             productModalOverlay.style.display = 'none';
             modalBody.innerHTML = ''; // Clear content when closing
+            
+            // Remove product classes when closing
+            const modalContainer = productModalOverlay.querySelector('.modal-container');
+            if (modalContainer) {
+                modalContainer.classList.remove('product-componentone', 'product-wijmo', 'product-activereports', 'product-spread', 'product-ds');
+            }
         };
 
         infoTriggers.forEach(trigger => {
