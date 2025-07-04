@@ -1,6 +1,50 @@
 // Comprehensive JavaScript for solutions.mescius.eu
 // Unified script for all pages: home, blueprints, pricing, bundles, cookie-policy
 
+// =========================================================
+// IMMEDIATE BLUEPRINT THEMING - PREVENT FOUC
+// =========================================================
+// This runs immediately to prevent Flash of Unstyled Content
+(function() {
+    // Only apply on blueprint pages
+    if (!window.location.pathname.includes('/blueprints/')) return;
+    
+    const root = document.documentElement;
+    const pageContent = document.documentElement.innerHTML.toLowerCase();
+    
+    // Detect product from page content (same logic as main theming)
+    let detectedProduct = 'wijmo'; // default
+    
+    if (pageContent.includes('componentone') || pageContent.includes('winforms') || pageContent.includes('wpf') || pageContent.includes('blazor')) {
+        detectedProduct = 'net';
+    } else if (pageContent.includes('spreadjs') || pageContent.includes('spread.net')) {
+        detectedProduct = 'js';
+    } else if (pageContent.includes('activereports')) {
+        detectedProduct = 'arjs';
+    } else if (pageContent.includes('document solutions') || pageContent.includes('documents for')) {
+        detectedProduct = 'ds';
+    }
+    
+    // Apply theming immediately
+    switch (detectedProduct) {
+        case 'wijmo':
+            root.style.setProperty('--accent-color', '#48A9C5');
+            break;
+        case 'js':
+            root.style.setProperty('--accent-color', '#809B59');
+            break;
+        case 'net':
+            root.style.setProperty('--accent-color', '#D6564C');
+            break;
+        case 'arjs':
+            root.style.setProperty('--accent-color', '#EA8939');
+            break;
+        case 'ds':
+            root.style.setProperty('--accent-color', '#5A7E9E');
+            break;
+    }
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
     
     // =========================================================
