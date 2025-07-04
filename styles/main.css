@@ -1822,182 +1822,254 @@ body {
     margin-bottom: 10px;
 }
 
-/* Bundle Section Styles */
+/* Bundle Section Styles - Redesigned Recommended Solution Card */
 .bundle-card {
     background: var(--color-background-white);
-    border: 1px solid #f1f5f9;
-    border-radius: 16px;
-    padding: 32px;
+    border: 2px solid transparent;
+    background-image: linear-gradient(var(--color-background-white), var(--color-background-white)), 
+                      linear-gradient(135deg, var(--accent-color), var(--brand-heading));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    border-radius: 20px;
+    padding: 0;
     position: relative;
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     height: 100%;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    background: linear-gradient(135deg, #ffffff 0%, #fafbfc 100%);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
-}
-
-.bundle-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(71, 77, 87, 0.02) 0%, rgba(71, 77, 87, 0.05) 100%);
-    opacity: 0;
-    transition: opacity 0.4s ease;
+    box-shadow: 0 8px 32px rgba(71, 77, 87, 0.08), 0 4px 16px rgba(0, 0, 0, 0.04);
 }
 
 .bundle-card:hover {
-    border-color: rgba(71, 77, 87, 0.2);
-    box-shadow: 0 8px 32px rgba(71, 77, 87, 0.12), 0 4px 16px rgba(0, 0, 0, 0.06);
-    transform: translateY(-4px);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(71, 77, 87, 0.15), 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
-.bundle-card:hover::before {
-    opacity: 1;
-}
-
-.bundle-card > * {
+/* New Bundle Card Header Section */
+.bundle-header {
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--brand-heading) 100%);
+    color: white;
+    padding: 32px;
+    text-align: center;
     position: relative;
-    z-index: 2;
+    overflow: hidden;
 }
 
-.bundle-card .card-title {
-    font-size: 24px;
+.bundle-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: shimmer 8s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+    50% { transform: translate(-50%, -50%) rotate(180deg); }
+}
+
+.bundle-header h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.9;
+}
+
+.bundle-header h2 {
+    font-size: 32px;
     font-weight: 700;
-    color: var(--brand-heading);
-    margin: 0 0 12px 0;
-    transition: color 0.3s ease;
+    margin: 0;
+    position: relative;
+    z-index: 1;
 }
 
-.bundle-card:hover .card-title {
-    color: var(--brand-header);
-}
-
-.bundle-card .card-subtitle {
-    font-size: 15px;
-    color: var(--color-text-subtle);
-    margin-bottom: 20px;
-    line-height: 1.5;
-}
-
-.bundle-card .price {
-    font-size: 36px;
-    font-weight: 800;
-    color: var(--brand-header);
-    margin: 20px 0 8px 0;
-    line-height: 1;
+/* Bundle Info Section */
+.bundle-info {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
 }
 
-.bundle-card:hover .price {
-    transform: scale(1.02);
-}
-
-.bundle-card .price-term {
-    font-size: 14px;
-    color: var(--color-text-subtle);
-    font-weight: 500;
-    margin-top: 5px;
-    display: block;
-}
-
-.bundle-card .inclusions-list {
+/* Products Section */
+.bundle-inclusions {
     list-style: none;
-    padding: 0;
-    margin: 0 0 25px 0;
+    padding: 40px 32px 32px 32px;
+    margin: 0;
     flex-grow: 1;
-    font-size: 16px;
-    line-height: 1.8;
+    background: linear-gradient(180deg, #fafbfc 0%, #ffffff 100%);
 }
 
-.bundle-card .inclusions-list li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 0;
-    border-bottom: 1px dashed var(--color-border-light);
-    color: var(--brand-body);
-}
-
-.bundle-card .inclusions-list li:last-of-type {
-    border-bottom: none;
-}
-
-.bundle-card .inclusions-list li span:first-child {
-    font-weight: 500;
-}
-
-.bundle-card .inclusions-list li span:last-child {
-    font-weight: 600;
+.bundle-inclusions::before {
+    content: 'What\'s Included';
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
     color: var(--brand-heading);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 3px solid var(--accent-color);
+    width: fit-content;
+}
+
+.bundle-inclusions li {
+    background: white;
+    border: 1px solid var(--color-border-light);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.bundle-inclusions li:hover {
+    transform: translateX(8px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border-color: var(--accent-color);
+}
+
+.bundle-inclusions li:last-child {
+    margin-bottom: 0;
 }
 
 .bundle-inclusions .product-name {
-    font-weight: 600;
-    color: var(--brand-body);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--brand-heading);
     display: flex;
     align-items: center;
+    margin-bottom: 8px;
 }
+
 .bundle-inclusions .checkmark {
-    color: var(--accent-color);
-    font-size: 18px;
-    margin-right: 8px;
+    background: linear-gradient(135deg, var(--accent-color), var(--brand-heading));
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
+
+.bundle-inclusions .product-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
 .bundle-inclusions .product-actions .action-link {
-    color: var(--accent-color);
+    background: var(--accent-color);
+    color: white;
     text-decoration: none;
     font-weight: 600;
-    margin-left: 8px;
-    margin-right: 8px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 .bundle-inclusions .product-actions .action-link:hover {
-    text-decoration: underline;
+    background: var(--brand-heading);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
+
 .bundle-inclusions .action-divider {
-    color: #bbb;
-    margin: 0 4px;
+    color: var(--color-text-subtle);
+    font-weight: 600;
 }
+/* Enhanced Bundle Purchase Section */
 .bundle-purchase {
-    flex: 1 1 220px;
-    background: #f4f6f8;
+    background: linear-gradient(135deg, var(--brand-heading) 0%, #2d3748 100%);
+    color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 40px 30px;
-    border-left: 1px solid var(--color-border-light);
+    padding: 40px 32px;
+    position: relative;
+    overflow: hidden;
 }
+
+.bundle-purchase::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-color), transparent);
+}
+
+.bundle-purchase::after {
+    content: 'RECOMMENDED';
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: var(--accent-color);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
 .bundle-price {
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--brand-heading);
-    margin-bottom: 10px;
+    text-align: center;
+    margin-bottom: 24px;
 }
+
 .bundle-price .price {
-    font-size: 32px;
-    color: var(--accent-color);
-    font-weight: 700;
+    font-size: 48px;
+    font-weight: 800;
+    color: white;
+    line-height: 1;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    display: block;
+    margin-bottom: 8px;
 }
+
 .bundle-price .term {
-    font-size: 15px;
-    color: var(--brand-body);
-    font-weight: 400;
-    margin-left: 8px;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+    display: block;
 }
+
 .bundle-cta .cta-button {
     display: inline-block;
-    background-color: var(--brand-heading);
-    color: #fff;
-    padding: 14px 32px;
+    background: linear-gradient(135deg, var(--accent-color) 0%, #3db3d3 100%);
+    color: white;
+    padding: 16px 32px;
     font-size: 18px;
-    font-weight: 600;
-    border-radius: 8px;
+    font-weight: 700;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.bundle-cta .cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #3db3d3 0%, var(--accent-color) 100%);
+}
     text-decoration: none;
     margin-top: 18px;
     transition: background-color 0.3s ease, transform 0.2s ease;
@@ -2007,6 +2079,7 @@ body {
     background-color: #3C475B;
     transform: translateY(-2px);
 }
+/* Responsive Design for Bundle Cards */
 @media (max-width: 900px) {
     .solution-profile-grid {
         grid-template-columns: 1fr;
@@ -2014,8 +2087,20 @@ body {
     .bundle-card {
         flex-direction: column;
     }
-    .bundle-info, .bundle-purchase {
-        padding: 30px 20px;
+    .bundle-header {
+        padding: 24px;
+    }
+    .bundle-header h2 {
+        font-size: 28px;
+    }
+    .bundle-inclusions {
+        padding: 32px 24px 24px 24px;
+    }
+    .bundle-purchase {
+        padding: 32px 24px;
+    }
+    .bundle-price .price {
+        font-size: 40px;
     }
     .main-story, .key-elements-section {
         padding: 24px;
@@ -2025,8 +2110,30 @@ body {
     .case-study-header {
         padding: 40px 8px;
     }
-    .bundle-info, .bundle-purchase {
-        padding: 18px 8px;
+    .bundle-header {
+        padding: 20px;
+    }
+    .bundle-header h2 {
+        font-size: 24px;
+    }
+    .bundle-inclusions {
+        padding: 24px 16px 16px 16px;
+    }
+    .bundle-inclusions li {
+        padding: 16px;
+    }
+    .bundle-inclusions .product-name {
+        font-size: 16px;
+    }
+    .bundle-purchase {
+        padding: 24px 16px;
+    }
+    .bundle-price .price {
+        font-size: 36px;
+    }
+    .bundle-cta .cta-button {
+        padding: 14px 24px;
+        font-size: 16px;
     }
     .main-story, .key-elements-section {
         padding: 10px;
