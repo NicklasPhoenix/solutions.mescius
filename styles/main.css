@@ -1434,19 +1434,30 @@ body {
 }
 
 .modal-close-btn {
-    color: var(--brand-heading);
-    font-size: 30px;
-    font-weight: bold;
+    color: var(--color-text-subtle);
+    font-size: 24px;
+    font-weight: normal;
     position: absolute;
-    top: 10px;
-    right: 20px;
+    top: 15px;
+    right: 15px;
     cursor: pointer;
-    transition: color 0.2s ease;
+    transition: all 0.3s ease;
+    background: rgba(0, 0, 0, 0.05);
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
 }
 
 .modal-close-btn:hover,
 .modal-close-btn:focus {
-    color: var(--color-text-subtle);
+    background: rgba(0, 0, 0, 0.1);
+    color: var(--brand-heading);
+    transform: scale(1.1);
 }
 
 .newsletter-iframe {
@@ -1485,6 +1496,68 @@ body {
 
 .modal-body {
     /* Container for modal content */
+}
+
+/* Modal CTA Button Styling and Spacing */
+.modal-body .cta-button {
+    display: block;
+    width: 100%;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.modal-body .cta-button:last-child {
+    margin-bottom: 0;
+}
+
+.modal-body .cta-primary {
+    background: var(--accent-color, var(--color-primary));
+    border-color: var(--accent-color, var(--color-primary));
+}
+
+.modal-body .cta-primary:hover {
+    background: var(--accent-color, var(--color-primary));
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.modal-body .cta-secondary {
+    background: transparent;
+    color: var(--accent-color, var(--color-primary));
+    border: 2px solid var(--accent-color, var(--color-primary));
+}
+
+.modal-body .cta-secondary:hover {
+    background: var(--accent-color, var(--color-primary));
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Product-specific modal theming */
+.modal-container.product-componentone {
+    --accent-color: var(--brand-net);
+}
+
+.modal-container.product-wijmo {
+    --accent-color: var(--brand-wijmo);
+}
+
+.modal-container.product-activereports {
+    --accent-color: var(--brand-arjs);
+}
+
+.modal-container.product-spread {
+    --accent-color: var(--brand-js);
+}
+
+.modal-container.product-ds {
+    --accent-color: var(--brand-ds);
+}
+
+/* Modal title theming */
+.modal-container .modal-title {
+    color: var(--accent-color, var(--brand-heading));
+    margin-bottom: 16px;
 }
 
 /* Responsive adjustments */
