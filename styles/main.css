@@ -1456,6 +1456,37 @@ body {
     border-radius: 8px;
 }
 
+/* Modal overlay styles for product info modals */
+.modal-overlay {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 2000; /* Sit on top, higher than header */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    padding: 20px; /* Add some padding around the modal on smaller screens */
+}
+
+.modal-container {
+    background-color: var(--color-background-white);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    position: relative; /* Needed for close button positioning */
+    max-width: 600px; /* Max width for the content */
+    width: 90%; /* Responsive width */
+    box-sizing: border-box; /* Include padding in width */
+}
+
+.modal-body {
+    /* Container for modal content */
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     /* Footer adjustments */
