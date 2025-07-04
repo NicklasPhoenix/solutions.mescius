@@ -2,17 +2,27 @@
 // Unified script for all pages: home, blueprints, pricing, bundles, cookie-policy
 
 // =========================================================
-// IMMEDIATE BLUEPRINT THEMING - PREVENT FOUC
+// IMMEDIATE THEMING - PREVENT FOUC FOR ALL THEMED PAGES
 // =========================================================
 // This runs immediately to prevent Flash of Unstyled Content
 (function() {
-    // Only apply on blueprint pages
-    if (!window.location.pathname.includes('/blueprints/')) return;
-    
     const root = document.documentElement;
     const pageContent = document.documentElement.innerHTML.toLowerCase();
     
-    // Detect product from page content (same logic as main theming)
+    // Detect if this page has theming elements (tags, product content)
+    const hasThemeElements = 
+        pageContent.includes('net-tag') || 
+        pageContent.includes('js-tag') || 
+        pageContent.includes('ar-tag') || 
+        pageContent.includes('ds-tag') || 
+        pageContent.includes('wijmo-tag') ||
+        pageContent.includes('blazor-tag') ||
+        window.location.pathname.includes('/blueprints/');
+    
+    // Only apply theming if this page has theme-able content
+    if (!hasThemeElements) return;
+    
+    // Detect product from page content
     let detectedProduct = 'wijmo'; // default
     
     if (pageContent.includes('componentone') || pageContent.includes('winforms') || pageContent.includes('wpf') || pageContent.includes('blazor')) {
@@ -25,7 +35,7 @@
         detectedProduct = 'ds';
     }
     
-    // Apply theming immediately
+    // Apply theming immediately using actual CSS custom property values
     switch (detectedProduct) {
         case 'wijmo':
             root.style.setProperty('--accent-color', '#48A9C5');
