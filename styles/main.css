@@ -51,10 +51,8 @@
     --color-header-nav-link: #ffffff; 
     --color-header-nav-link-hover: #D0D5DD; /* Light gray for hover, clearly visible */
     --color-header-nav-link-active: #ffffff; /* White for active for clarity */
-}
-
-/* Set accent color for blueprints - this needs to be defined for blueprint styles to work */
-:root {
+    
+    /* Blueprint accent color */
     --accent-color: var(--brand-wijmo); /* Using wijmo color as default accent */
 }
 
@@ -1458,8 +1456,9 @@ body {
     border-radius: 8px;
 }
 
-/* Responsive adjustments for footer */
+/* Responsive adjustments */
 @media (max-width: 768px) {
+    /* Footer adjustments */
     .footer-content {
         flex-direction: column;
         gap: 20px;
@@ -1470,22 +1469,8 @@ body {
     .social-icons {
         justify-content: center;
     }
-}
-
-@media (max-width: 480px) {
-    .footer {
-        padding: 30px 0;
-    }
-    .footer-content {
-        gap: 15px;
-    }
-}
-
-/* ===============================================
-    ADDITIONAL RESPONSIVE STYLES
-    =============================================== */
-
-@media (max-width: 768px) {
+    
+    /* Typography and layout adjustments */
     .hero-title { 
         font-size: 36px; 
     }
@@ -1502,6 +1487,15 @@ body {
 }
 
 @media (max-width: 480px) {
+    /* Footer adjustments */
+    .footer {
+        padding: 30px 0;
+    }
+    .footer-content {
+        gap: 15px;
+    }
+    
+    /* Layout and typography adjustments */
     .hero {
         padding: 60px 20px;
     }

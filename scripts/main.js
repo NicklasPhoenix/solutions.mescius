@@ -1081,6 +1081,4 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.key === 'Escape' && productModalOverlay.style.display === 'flex') closeModal();
         });
     }
-
-    console.log('Comprehensive JavaScript features loaded. Site is ready for production.');
 });
