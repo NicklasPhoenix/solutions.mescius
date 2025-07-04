@@ -3052,9 +3052,13 @@ body {
     color: var(--brand-heading);
 }
 
-/* Hide redundant Grand Total */
+/* Grand Total - Multi-year total display */
 .price-summary-container .total-price-subtle {
-    display: none;
+    display: block;
+    font-size: 13px;
+    color: var(--color-text-subtle);
+    margin-top: 4px;
+    font-weight: 500;
 }
 
 /* Tooltip Styles */
