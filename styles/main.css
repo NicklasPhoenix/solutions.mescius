@@ -440,7 +440,8 @@ body {
 .case-study-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
-    gap: 30px; 
+    gap: 30px;
+    margin: 20px 0 40px 0; /* Added top margin for external tags */
 }
 .case-study-card {
     background-color: var(--color-background-white);
@@ -495,20 +496,24 @@ body {
     display: flex; 
     flex-direction: column; 
 }
-.card-tag {
-    font-size: 13px;
+/* Case Study Card Tags - Positioned Outside and On Top of Card Border */
+.case-study-card .card-tag {
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-bottom: 15px;
     /* Enhanced readability with semi-transparent background */
     background: rgba(255, 255, 255, 0.95);
     padding: 6px 12px;
     border-radius: 6px;
-    position: relative;
     z-index: 10;
     backdrop-filter: blur(2px);
     border: 1px solid rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
 }
 
 /* Product-specific tag text colors (DO NOT CHANGE) */
@@ -910,7 +915,8 @@ body {
 .case-study-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
-    gap: 30px; 
+    gap: 30px;
+    margin: 20px 0 40px 0; /* Added top margin for external tags */
 }
 .case-study-card {
     background-color: var(--color-background-white);
@@ -3706,8 +3712,8 @@ body {
     z-index: 2;
 }
 
-/* Card Tags - Positioned Outside and On Top of Card Border */
-.card-tag {
+/* Pricing and Bundle Card Tags - Positioned Outside and On Top of Card Border */
+.pricing-card .card-tag, .bundle-card .card-tag {
     position: absolute;
     top: -12px;
     left: 50%;
@@ -3723,28 +3729,28 @@ body {
     white-space: nowrap;
 }
 
-.card-tag.net-tag {
+.pricing-card .card-tag.net-tag, .bundle-card .card-tag.net-tag {
     background: linear-gradient(135deg, var(--brand-net), #4c7c9b);
     color: white;
 }
 
-.card-tag.js-tag {
+.pricing-card .card-tag.js-tag, .bundle-card .card-tag.js-tag {
     background: linear-gradient(135deg, var(--brand-js), #f39c12);
     color: white;
 }
 
-.card-tag.reporting-tag,
-.card-tag.ar-tag {
+.pricing-card .card-tag.reporting-tag, .bundle-card .card-tag.reporting-tag,
+.pricing-card .card-tag.ar-tag, .bundle-card .card-tag.ar-tag {
     background: linear-gradient(135deg, var(--brand-ar), #27ae60);
     color: white;
 }
 
-.card-tag.ds-tag {
+.pricing-card .card-tag.ds-tag, .bundle-card .card-tag.ds-tag {
     background: linear-gradient(135deg, var(--brand-ds), #3498db);
     color: white;
 }
 
-.card-tag.blazor-tag {
+.pricing-card .card-tag.blazor-tag, .bundle-card .card-tag.blazor-tag {
     background: linear-gradient(135deg, #512BD4, #6a4bdb);
     color: white;
 }
