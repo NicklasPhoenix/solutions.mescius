@@ -1209,12 +1209,13 @@ body {
     margin-top: 80px;
     font-size: 15px;
     text-align: left;
+    border-top: 1px solid var(--color-border-light); /* Add clean separation from main content */
 }
 
 .footer-content {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 60px;
+    gap: 80px; /* Increased from 60px for better breathing room */
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -1244,10 +1245,23 @@ body {
 .footer-heading {
     color: #ffffff;
     font-size: 14px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    letter-spacing: 1px;
+    font-weight: 800; /* Enhanced weight for better hierarchy */
+    margin-bottom: 24px; /* Increased from 20px for better spacing */
+    letter-spacing: 1.2px; /* Slightly increased for better readability */
     text-transform: uppercase;
+    position: relative;
+}
+
+/* Add subtle underline to headings for enhanced visual hierarchy */
+.footer-heading::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
 }
 
 .footer-links {
@@ -1374,7 +1388,7 @@ body {
     padding: 30px 0;
     border-top: 1px solid rgba(255, 255, 255, 0.2);
     text-align: center;
-    margin-top: 40px;
+    margin-top: 60px; /* Increased from 40px for significant separation */
 }
 
 .copyright-section p {
@@ -1386,7 +1400,7 @@ body {
 @media (max-width: 1024px) {
     .footer-content {
         grid-template-columns: 1fr 1fr;
-        gap: 40px;
+        gap: 50px; /* Increased from 40px to maintain breathing room */
         padding: 0 20px;
     }
     
@@ -1399,9 +1413,10 @@ body {
 }
 
 @media (max-width: 768px) {
+    /* Footer adjustments */
     .footer-content {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 35px; /* Increased from 30px to maintain visual balance */
         padding: 0 20px;
         text-align: center;
     }
