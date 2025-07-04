@@ -2931,21 +2931,26 @@ body {
     box-shadow: none;
 }
 
+/* Modern Volume Control */
 .quantity-input {
-    width: 70px; 
-    padding: 8px 5px;
+    width: 60px; 
+    padding: 8px 10px;
     text-align: center;
     border: 1px solid var(--color-border-light);
     border-radius: 6px;
+    background: var(--color-background-white);
     font-family: 'Montserrat', sans-serif;
-    font-size: 15px;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--brand-heading);
+    transition: all 0.2s ease;
 }
 
 .quantity-input:focus {
     outline: none;
-    border-color: var(--accent-color); 
-    box-shadow: 0 0 0 3px rgba(116, 125, 135, 0.2);
+    border-color: var(--color-primary); 
+    box-shadow: 0 0 0 3px rgba(100, 116, 139, 0.1);
+    background: var(--color-background-white);
 }
 
 /* Streamlined Discount Calculator */
@@ -2978,8 +2983,12 @@ body {
 /* Modern Term Selection - Cleaner Design */
 .multi-year-options {
     display: flex;
-    gap: 8px; 
+    gap: 6px; 
     margin-top: 8px;
+    padding: 4px;
+    background: var(--color-background-light);
+    border-radius: 8px;
+    border: 1px solid var(--color-border-light);
 }
 
 .multi-year-options input[type="radio"] {
@@ -2987,34 +2996,50 @@ body {
 }
 
 .multi-year-options label {
-    padding: 10px 16px; 
-    border: 1px solid var(--color-border-light);
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
     font-size: 13px;
     font-weight: 600;
-    margin: 0;
+    color: var(--color-text-subtle);
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    min-width: 48px;
     display: flex;
     align-items: center;
-    gap: 6px;
-    background-color: var(--color-background-white);
-    color: var(--brand-body);
+    justify-content: center;
     position: relative;
-    overflow: hidden;
+    margin: 0;
+    gap: 4px;
 }
 
 .multi-year-options input[type="radio"]:checked + label {
-    background-color: var(--color-primary);
+    background: var(--color-primary);
     color: white;
-    border-color: var(--color-primary);
-    box-shadow: 0 4px 12px rgba(100, 116, 139, 0.3);
+    box-shadow: 0 2px 4px rgba(100, 116, 139, 0.2);
 }
 
 .multi-year-options input[type="radio"]:hover + label {
-    border-color: var(--color-primary);
-    background-color: rgba(100, 116, 139, 0.05);
-    transform: translateY(-1px);
+    background: rgba(100, 116, 139, 0.1);
+    color: var(--brand-heading);
+}
+
+.multi-year-options input[type="radio"]:checked + label:hover {
+    background: #475569;
+    color: white;
+}
+
+.multi-year-options .discount-tag {
+    background: rgba(16, 185, 129, 0.9);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 10px;
+    margin-left: 2px;
+    letter-spacing: 0.3px;
 }
 
 .multi-year-options input[type="radio"]:checked + label:hover {
@@ -3660,20 +3685,42 @@ body {
     color: var(--brand-body);
 }
 
-/* Savings Badge - Unified Styling */
+/* Professional Pricing Section */
+.pricing-card .price, .bundle-card .price {
+    font-size: 36px;
+    font-weight: 800;
+    margin: 16px 24px 4px 24px;
+    line-height: 1;
+    text-align: center;
+    color: var(--brand-heading);
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+/* Compact per-dev discount styling */
+.discount-per-dev {
+    font-size: 12px;
+    color: var(--color-success);
+    font-weight: 600;
+    margin-top: 4px;
+    display: block;
+    text-align: center;
+    font-style: italic;
+}
+
+/* Redesigned Savings Badge - More Subtle and Professional */
 .savings-badge {
     background: linear-gradient(135deg, var(--color-success), #16a085);
     color: white;
-    padding: 8px 20px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: 700;
-    margin: 0 24px 20px 24px;
+    padding: 6px 16px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 12px 24px 20px 24px;
     display: inline-block;
     text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    letter-spacing: 0.3px;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
     transition: all 0.3s ease;
 }
 
