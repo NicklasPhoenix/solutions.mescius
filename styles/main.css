@@ -266,6 +266,87 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(-
 }
 
 /* ===============================================
+   COOKIEBOT DECLARATION STYLING
+   =============================================== */
+#CookieDeclaration {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 30px auto;
+    max-width: 1200px;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--brand-body);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+#CookieDeclaration h2 {
+    color: var(--brand-heading);
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+#CookieDeclaration h3 {
+    color: var(--brand-heading);
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+#CookieDeclaration p {
+    margin-bottom: 10px;
+}
+
+#CookieDeclaration table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+#CookieDeclaration th,
+#CookieDeclaration td {
+    border: 1px solid #e2e8f0;
+    padding: 8px 12px;
+    text-align: left;
+}
+
+#CookieDeclaration th {
+    background-color: var(--brand-light-gray);
+    font-weight: 600;
+    color: var(--brand-heading);
+}
+
+#CookieDeclaration tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+/* Cookie declaration wrapper for better layout */
+.cookie-declaration-wrapper {
+    background-color: var(--brand-light-gray);
+    padding: 40px 0;
+    margin-top: 50px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.cookie-declaration-wrapper .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.cookie-declaration-wrapper h2 {
+    text-align: center;
+    color: var(--brand-heading);
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+/* ===============================================
    RESPONSIVE ADJUSTMENTS
    =============================================== */
 @media (max-width: 992px) {

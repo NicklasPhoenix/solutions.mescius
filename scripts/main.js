@@ -140,10 +140,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * Directory Index Fallback Handler
-     * Handles cases where the server doesn't automatically serve index.html for directories
+     * NEW Feature 4: Directory Index Fallback Handler for S3/CloudFront
+     * S3/CloudFront doesn't automatically serve index.html for directories
      */
     function handleDirectoryIndexFallback() {
+        // Immediately redirect directory URLs to include index.html for S3/CloudFront
+        const currentPath = window.location.pathname;
+        
+        // If current URL ends with / and we're not on the root, redirect to index.html
+        if (currentPath.endsWith('/') && currentPath !== '/') {
+            window.location.href = window.location.protocol + '//' + window.location.host + currentPath + 'index.html';
+            return;
+        }
+        
         // Add click handlers to navigation and blueprint links
         const navigationLinks = document.querySelectorAll('a[href$="/"]');
         
@@ -151,31 +160,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const href = link.getAttribute('href');
             
             // Skip external links, anchors, and root path
-            if (href.startsWith('http') || href.startsWith('#') || href === '/') return;
+            if (href.startsWith('http') || href.startsWith('#') || href === '/' || href === './') return;
             
             link.addEventListener('click', function(e) {
+                e.preventDefault();
                 const targetPath = this.getAttribute('href');
                 
-                // If it's a directory path (ends with /), add fallback behavior
-                if (targetPath.endsWith('/')) {
-                    e.preventDefault();
-                    
-                    // Try the clean URL first
-                    fetch(targetPath, { method: 'HEAD' })
-                        .then(response => {
-                            if (response.ok) {
-                                // Clean URL works, navigate normally
-                                window.location.href = targetPath;
-                            } else {
-                                // Clean URL doesn't work, try with index.html
-                                window.location.href = targetPath + 'index.html';
-                            }
-                        })
-                        .catch(() => {
-                            // If fetch fails, try with index.html as fallback
-                            window.location.href = targetPath + 'index.html';
-                        });
-                }
+                // For S3/CloudFront, always append index.html to directory URLs
+                window.location.href = targetPath + 'index.html';
             });
         });
     }
