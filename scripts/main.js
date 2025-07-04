@@ -145,19 +145,19 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     function handleDirectoryIndexFallback() {
         // Add click handlers to navigation and blueprint links
-        const navigationLinks = document.querySelectorAll('a[href^="/"]');
+        const navigationLinks = document.querySelectorAll('a[href$="/"]');
         
         navigationLinks.forEach(link => {
             const href = link.getAttribute('href');
             
-            // Skip external links and anchors
-            if (href.startsWith('http') || href.startsWith('#')) return;
+            // Skip external links, anchors, and root path
+            if (href.startsWith('http') || href.startsWith('#') || href === '/') return;
             
             link.addEventListener('click', function(e) {
                 const targetPath = this.getAttribute('href');
                 
                 // If it's a directory path (ends with /), add fallback behavior
-                if (targetPath.endsWith('/') && targetPath !== '/') {
+                if (targetPath.endsWith('/')) {
                     e.preventDefault();
                     
                     // Try the clean URL first
