@@ -1981,21 +1981,36 @@ body {
     color: white;
 }
 
-/* Bundle Info Section */
+/* Bundle Info Section - New Two-Column Layout */
 .bundle-info {
     flex: 1;
     display: flex;
     flex-direction: column;
 }
 
-/* Professional Products Section */
+/* Bundle Content - Two Column Layout */
+.bundle-content {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 0;
+    flex: 1;
+}
+
+/* Responsive: Stack columns on mobile */
+@media (max-width: 768px) {
+    .bundle-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Professional Products Section - Updated for Two-Column Layout */
 .bundle-inclusions {
     list-style: none;
     padding: 32px;
     margin: 0;
     flex-grow: 1;
     background: var(--color-background-white);
-    border-bottom: 1px solid var(--color-border-light);
+    /* Removed border-bottom since now adjacent to purchase section */
 }
 
 .bundle-inclusions::before {
@@ -2087,10 +2102,10 @@ body {
 .bundle-inclusions .action-divider {
     display: none; /* Hide the pipe divider since we're using buttons */
 }
-/* Professional Bundle Purchase Section */
+/* Professional Bundle Purchase Section - Updated for Two-Column Layout */
 .bundle-purchase {
     background: var(--color-background-white);
-    border-top: 1px solid var(--color-border-light);
+    border-left: 1px solid var(--color-border-light);
     color: var(--brand-heading);
     display: flex;
     flex-direction: column;
@@ -2098,6 +2113,14 @@ body {
     justify-content: center;
     padding: 40px 32px 32px 32px;
     position: relative;
+}
+
+/* Mobile: Remove left border and add top border when stacked */
+@media (max-width: 768px) {
+    .bundle-purchase {
+        border-left: none;
+        border-top: 1px solid var(--color-border-light);
+    }
 }
 
 .bundle-price {
