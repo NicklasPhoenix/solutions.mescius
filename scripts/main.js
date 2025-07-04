@@ -803,19 +803,21 @@ document.addEventListener('DOMContentLoaded', () => {
             const totalSavingsAmount = currentTotalListPriceRaw - totalCurrentPriceForYears;
 
             priceEl.innerHTML = `${formatCurrency(finalPricePerDev)}<span class="price-term">per developer / year</span>`;
+            
+            // Only show the small per-dev discount as a subtle note, not the large text
             if (discountPerDevAmount > 0) {
-                discountPerDevEl.textContent = `You save ${formatCurrency(discountPerDevAmount)} per dev!`;
+                discountPerDevEl.textContent = `Save ${formatCurrency(discountPerDevAmount)} per dev`;
                 discountPerDevEl.style.display = 'block';
             } else {
                 discountPerDevEl.style.display = 'none';
             }
-            priceEl.appendChild(discountPerDevEl); 
+            priceEl.appendChild(discountPerDevEl);
 
             totalActualCostEl.innerHTML = `Total Cost: <strong>${formatCurrency(totalActualCost)}</strong> (for ${quantity} dev${quantity > 1 ? 's' : ''})`;
             totalPriceSubtleEl.innerHTML = `Grand Total: <strong>${formatCurrency(totalCurrentPriceForYears)}</strong> (for ${years} year${years > 1 ? 's' : ''})`;
             
             if(savingsEl) {
-                savingsEl.textContent = `You Save ${formatCurrency(totalSavingsAmount)}`;
+                savingsEl.textContent = `Save ${formatCurrency(totalSavingsAmount)}`;
             }
 
             // Update individual component names and prices
