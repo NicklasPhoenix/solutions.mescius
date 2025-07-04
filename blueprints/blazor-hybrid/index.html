@@ -1305,6 +1305,50 @@
                 }
             });
         }
+
+        /**
+         * Directory Index Fallback Handler
+         * Handles cases where the server doesn't automatically serve index.html for directories
+         */
+        function handleDirectoryIndexFallback() {
+            // Add click handlers to navigation and blueprint links
+            const navigationLinks = document.querySelectorAll('a[href^="/"]');
+            
+            navigationLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                
+                // Skip external links and anchors
+                if (href.startsWith('http') || href.startsWith('#')) return;
+                
+                link.addEventListener('click', function(e) {
+                    const targetPath = this.getAttribute('href');
+                    
+                    // If it's a directory path (ends with /), add fallback behavior
+                    if (targetPath.endsWith('/') && targetPath !== '/') {
+                        e.preventDefault();
+                        
+                        // Try the clean URL first
+                        fetch(targetPath, { method: 'HEAD' })
+                            .then(response => {
+                                if (response.ok) {
+                                    // Clean URL works, navigate normally
+                                    window.location.href = targetPath;
+                                } else {
+                                    // Clean URL doesn't work, try with index.html
+                                    window.location.href = targetPath + 'index.html';
+                                }
+                            })
+                            .catch(() => {
+                                // If fetch fails, try with index.html as fallback
+                                window.location.href = targetPath + 'index.html';
+                            });
+                    }
+                });
+            });
+        }
+
+        // Initialize the fallback handler
+        handleDirectoryIndexFallback();
     });
     </script>
 </body>
