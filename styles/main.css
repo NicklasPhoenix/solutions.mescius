@@ -3284,13 +3284,6 @@ body {
         color: var(--brand-heading);
     }
 }
-    font-size: 18px;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
 
 .hero-cta-button:hover {
     background-color: #3C475B; 
@@ -3705,10 +3698,12 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    overflow: visible; /* Changed from hidden to visible to allow tags to show */
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
     /* Ensure consistent internal spacing using 8px grid */
     --card-padding: var(--spacing-lg); /* 24px base padding */
+    /* Add top margin to accommodate tags positioned outside */
+    margin-top: 16px;
 }
 
 .pricing-card:hover, .bundle-card:hover {
@@ -3725,7 +3720,7 @@ body {
 /* Pricing and Bundle Card Tags - Positioned Outside and On Top of Card Border */
 .pricing-card .card-tag, .bundle-card .card-tag {
     position: absolute;
-    top: -12px;
+    top: -16px; /* Increased from -12px to position fully outside */
     left: 50%;
     transform: translateX(-50%);
     padding: 8px 16px;
@@ -3737,6 +3732,8 @@ body {
     z-index: 10;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     white-space: nowrap;
+    /* Ensure tag is never clipped */
+    min-width: max-content;
 }
 
 .pricing-card .card-tag.net-tag, .bundle-card .card-tag.net-tag {
@@ -4126,9 +4123,12 @@ body {
         font-size: 15px;
     }
 
-    .card-tag {
+    /* On mobile, position card tags inside the card for better layout */
+    .pricing-card .card-tag, .bundle-card .card-tag {
         top: 16px;
         right: 16px;
+        left: auto;
+        transform: none;
         padding: 6px 12px;
         font-size: 11px;
     }
