@@ -81,13 +81,43 @@ document.addEventListener('DOMContentLoaded', () => {
     if (expandableCard && cardToggle) {
         cardToggle.addEventListener('click', () => {
             const isOpening = !expandableCard.classList.contains('is-open');
-            expandableCard.classList.toggle('is-open');
+            const collapsibleContent = expandableCard.querySelector('.card-collapsible-content');
+            
+            if (isOpening) {
+                // Opening: First set max-height to auto to measure, then animate
+                collapsibleContent.style.maxHeight = 'auto';
+                const contentHeight = collapsibleContent.scrollHeight;
+                collapsibleContent.style.maxHeight = '0';
+                
+                // Force reflow, then set the target height
+                requestAnimationFrame(() => {
+                    collapsibleContent.style.maxHeight = contentHeight + 'px';
+                    expandableCard.classList.add('is-open');
+                });
+                
+                // Clean up after animation
+                setTimeout(() => {
+                    if (expandableCard.classList.contains('is-open')) {
+                        collapsibleContent.style.maxHeight = 'none';
+                    }
+                }, 300);
+            } else {
+                // Closing: Set current height then animate to 0
+                const contentHeight = collapsibleContent.scrollHeight;
+                collapsibleContent.style.maxHeight = contentHeight + 'px';
+                
+                requestAnimationFrame(() => {
+                    collapsibleContent.style.maxHeight = '0';
+                    expandableCard.classList.remove('is-open');
+                });
+            }
+            
             cardToggle.setAttribute('aria-expanded', isOpening);
             const toggleText = cardToggle.querySelector('.toggle-text');
             if (isOpening) {
-                toggleText.textContent = 'Hide Full Case Study';
+                toggleText.textContent = 'Hide Implementation Details';
             } else {
-                toggleText.textContent = 'Read Full Case Study';
+                toggleText.textContent = 'View Implementation Details';
             }
         });
     }
@@ -977,6 +1007,73 @@ document.addEventListener('DOMContentLoaded', () => {
     handleDirectoryIndexFallback();
 
     // =========================================================
+    // BLUEPRINT PAGES: DYNAMIC THEMING
+    // =========================================================
+    
+    const applyBlueprintTheming = () => {
+        // Only apply theming on blueprint pages
+        if (!window.location.pathname.includes('/blueprints/')) return;
+        
+        const body = document.body;
+        const pageContent = document.documentElement.innerHTML.toLowerCase();
+        
+        // Define product detection patterns
+        const productPatterns = {
+            'wijmo': /wijmo|flexgrid/,
+            'js': /spreadjs|spread js/,
+            'net': /componentone|\.net suite/,
+            'arjs': /activereports|active reports/,
+            'ds': /document solutions|docio|gcpdf/
+        };
+        
+        // Detect primary product based on content frequency
+        let productScores = {};
+        let detectedProduct = 'wijmo'; // default fallback
+        
+        for (const [product, pattern] of Object.entries(productPatterns)) {
+            const matches = pageContent.match(pattern) || [];
+            productScores[product] = matches.length;
+        }
+        
+        // Find the product with the highest score
+        const maxScore = Math.max(...Object.values(productScores));
+        if (maxScore > 0) {
+            detectedProduct = Object.keys(productScores).find(key => productScores[key] === maxScore);
+        }
+        
+        // Apply the theme by setting CSS custom properties
+        const root = document.documentElement;
+        
+        switch (detectedProduct) {
+            case 'wijmo':
+                root.style.setProperty('--accent-color', 'var(--brand-wijmo)');
+                body.classList.add('theme-wijmo');
+                break;
+            case 'js':
+                root.style.setProperty('--accent-color', 'var(--brand-js)');
+                body.classList.add('theme-js');
+                break;
+            case 'net':
+                root.style.setProperty('--accent-color', 'var(--brand-net)');
+                body.classList.add('theme-net');
+                break;
+            case 'arjs':
+                root.style.setProperty('--accent-color', 'var(--brand-arjs)');
+                body.classList.add('theme-arjs');
+                break;
+            case 'ds':
+                root.style.setProperty('--accent-color', 'var(--brand-ds)');
+                body.classList.add('theme-ds');
+                break;
+        }
+        
+        console.log(`Applied ${detectedProduct} theme to blueprint page`);
+    };
+    
+    // Apply theming on page load
+    applyBlueprintTheming();
+    
+    // =========================================================
     // BLUEPRINT PAGES: METRIC ANIMATION
     // =========================================================
     
@@ -987,6 +1084,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (entry.isIntersecting) {
                     const valueSpan = entry.target.querySelector('.metric-value');
                     const targetValue = valueSpan.dataset.target; // Get as string
+                    
+                    // Validate targetValue exists
+                    if (!targetValue) {
+                        console.warn('No target value found for metric animation');
+                        return;
+                    }
+                    
                     let currentValue = 0;
                     const duration = 1500; // ms
                     const startTime = performance.now();
@@ -995,19 +1099,41 @@ document.addEventListener('DOMContentLoaded', () => {
                         const progress = (timestamp - startTime) / duration;
                         if (progress < 1) {
                             if (targetValue.includes('k')) { // Handle 'k' for thousands
-                                const numericTarget = parseFloat(targetValue.replace('k', '')) * 1000;
-                                currentValue = Math.min(numericTarget, Math.floor(progress * numericTarget));
+                                const numericTarget = parseFloat(targetValue.replace('k', ''));
+                                if (isNaN(numericTarget)) {
+                                    valueSpan.textContent = targetValue;
+                                    return;
+                                }
+                                const targetNum = numericTarget * 1000;
+                                currentValue = Math.min(targetNum, Math.floor(progress * targetNum));
                                 valueSpan.textContent = (currentValue / 1000).toFixed(0) + 'k';
                             } else if (targetValue.includes('%')) { // Handle '%'
                                 const numericTarget = parseInt(targetValue.replace('%', ''));
+                                if (isNaN(numericTarget)) {
+                                    valueSpan.textContent = targetValue;
+                                    return;
+                                }
                                 currentValue = Math.min(numericTarget, Math.floor(progress * numericTarget));
                                 valueSpan.textContent = currentValue + '%';
                             } else if (targetValue.includes('<')) { // Handle '<' for "less than"
-                                // For "<12", just display it directly at the end or animate to 11 and then change to "<12"
-                                currentValue = Math.min(11, Math.floor(progress * 11)); // Animate to 11 first
-                                valueSpan.textContent = currentValue;
+                                // Extract the number after '<' - e.g., "<8" becomes 8
+                                const numericPart = targetValue.replace('<', '');
+                                const numericTarget = parseInt(numericPart);
+                                if (isNaN(numericTarget)) {
+                                    valueSpan.textContent = targetValue;
+                                    return;
+                                }
+                                // Animate to the number minus 1, then show final value
+                                const animateTarget = Math.max(1, numericTarget - 1);
+                                currentValue = Math.min(animateTarget, Math.floor(progress * animateTarget));
+                                valueSpan.textContent = progress < 0.9 ? currentValue : targetValue;
                             } else { // Assume integer if no special chars
-                                currentValue = Math.min(parseInt(targetValue), Math.floor(progress * parseInt(targetValue)));
+                                const numericTarget = parseInt(targetValue);
+                                if (isNaN(numericTarget)) {
+                                    valueSpan.textContent = targetValue;
+                                    return;
+                                }
+                                currentValue = Math.min(numericTarget, Math.floor(progress * numericTarget));
                                 valueSpan.textContent = currentValue;
                             }
                             requestAnimationFrame(updateCount);
