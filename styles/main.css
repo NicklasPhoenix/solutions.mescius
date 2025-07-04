@@ -2487,12 +2487,13 @@ body {
     margin-bottom: 25px;
 }
 
-/* Pricing Grid */
+/* Pricing Grid - Updated to accommodate external tags */
 .pricing-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 40px;
-    margin-bottom: 80px;
+    margin: 24px 0 80px 0; /* Added top margin for external tags */
+    align-items: stretch; /* Ensure equal height cards */
 }
 
 /* Price Cards */
@@ -2939,7 +2940,63 @@ body {
     box-shadow: none;
 }
 
-/* Modern Volume Control */
+/* Professional Volume Control with Stepper Buttons */
+.volume-control-wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    background: rgba(0, 0, 0, 0.03);
+    border-radius: 8px;
+    padding: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.quantity-btn {
+    width: 32px;
+    height: 32px;
+    border: 2px solid var(--accent-color);
+    background: white;
+    color: var(--accent-color);
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    line-height: 1;
+    padding: 0;
+    box-shadow: 0 2px 8px rgba(var(--accent-color), 0.1);
+    opacity: 1;
+    visibility: visible;
+}
+
+.quantity-btn:hover {
+    background: var(--accent-color);
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 2px 8px rgba(var(--accent-color), 0.3);
+}
+
+.quantity-btn:active {
+    transform: scale(0.95);
+}
+
+.quantity-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    border-color: var(--color-text-subtle);
+    color: var(--color-text-subtle);
+}
+
+.quantity-btn:disabled:hover {
+    background: white;
+    color: var(--color-text-subtle);
+    transform: none;
+    box-shadow: none;
+}
+
 .quantity-input {
     width: 60px; 
     padding: 8px 10px;
@@ -2952,6 +3009,39 @@ body {
     font-weight: 600;
     color: var(--brand-heading);
     transition: all 0.2s ease;
+}
+
+/* Total List Value Section - Outside Component List */
+.total-list-value-section {
+    margin: var(--spacing-md) var(--card-padding) 0 var(--card-padding);
+}
+
+.total-list-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-border-light), transparent);
+    margin: 0 0 var(--spacing-md) 0;
+}
+
+.total-list-value {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: linear-gradient(135deg, rgba(100, 116, 139, 0.05), rgba(100, 116, 139, 0.08));
+    border: 1px solid var(--color-primary);
+    border-radius: 8px;
+    font-weight: 700;
+    color: var(--brand-heading);
+    font-size: 15px;
+}
+
+.total-list-value span:first-child {
+    color: var(--brand-heading);
+}
+
+.total-list-value span:last-child {
+    color: var(--color-text-subtle);
+    font-weight: 600;
 }
 
 .quantity-input:focus {
@@ -3147,22 +3237,19 @@ body {
     border-color: var(--brand-heading) transparent transparent transparent;
 }
 
-/* Subtle Price Update Animation - Replace Jarring Yellow Flash */
+/* Subtle Price Update Animation - Replace Jarring Flash with Color Cross-Fade */
 .price-updated, .savings-updated {
-    animation: subtlePriceUpdate 0.6s ease-out;
+    animation: subtlePriceColorFade 300ms ease-out;
 }
 
-@keyframes subtlePriceUpdate {
+@keyframes subtlePriceColorFade {
     0% { 
-        transform: scale(1);
         color: var(--brand-heading);
     }
-    30% { 
-        transform: scale(1.02);
+    50% { 
         color: var(--color-primary);
     }
     100% { 
-        transform: scale(1);
         color: var(--brand-heading);
     }
 }
@@ -3604,19 +3691,21 @@ body {
     z-index: 2;
 }
 
-/* Card Tags */
+/* Card Tags - Positioned Outside and On Top of Card Border */
 .card-tag {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
     padding: 8px 16px;
     border-radius: 25px;
     font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    z-index: 3;
+    z-index: 10;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    white-space: nowrap;
 }
 
 .card-tag.net-tag {
