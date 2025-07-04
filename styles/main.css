@@ -1841,9 +1841,13 @@ body {
 }
 
 .card-collapsible-content {
-    max-height: 0;
     overflow: hidden;
-    transition: max-height 0.7s ease-in-out;
+    max-height: 0;
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s ease,
+                transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(-10px);
 }
 
 .expandable-card.is-open .toggle-icon {
@@ -1851,7 +1855,8 @@ body {
 }
 
 .expandable-card.is-open .card-collapsible-content {
-    max-height: 5000px;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .main-story {
@@ -3887,4 +3892,9 @@ body {
         padding: 6px 16px;
         font-size: 13px;
     }
+}
+
+/* Ensure card tags remain fully opaque on hover for readability */
+.case-study-card:hover .card-tag {
+    opacity: 1 !important;
 }
