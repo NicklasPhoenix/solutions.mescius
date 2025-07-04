@@ -2212,36 +2212,66 @@ body {
     =============================================== */
 
 .pricing-section {
-    padding: 80px 0;
-    background: var(--brand-light-gray);
+    padding: 100px 0;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
     min-height: 100vh;
+    position: relative;
+}
+
+.pricing-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23cbd5e1" fill-opacity="0.02"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E') repeat;
+    pointer-events: none;
 }
 
 .pricing-section .container {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 20px;
+    position: relative;
+    z-index: 1;
 }
 
 .pricing-section .section-header {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 80px;
+    position: relative;
 }
 
 .pricing-section .section-title {
-    font-size: 42px;
-    font-weight: 700;
+    font-size: 48px;
+    font-weight: 800;
     color: var(--brand-heading);
-    margin-bottom: 20px;
-    line-height: 1.2;
+    margin-bottom: 24px;
+    line-height: 1.1;
+    position: relative;
+    display: inline-block;
+}
+
+.pricing-section .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--brand-ds), var(--brand-net));
+    border-radius: 2px;
 }
 
 .pricing-section .section-subtitle {
-    font-size: 20px;
+    font-size: 22px;
     color: var(--color-text-subtle);
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
-    line-height: 1.6;
+    line-height: 1.7;
+    font-weight: 400;
 }
 
 /* Product Grid Layout */
@@ -2424,161 +2454,369 @@ body {
 /* Pricing Grid */
 .pricing-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-bottom: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 40px;
+    margin-bottom: 80px;
+    position: relative;
+    z-index: 1;
 }
 
-/* Price Cards */
-.price-card {
+/* Modern Bundle Cards & Pricing Cards */
+.bundle-card, .pricing-card {
     background: var(--color-background-white);
-    border: 1px solid #f1f5f9; /* Subtle light gray border for definition */
-    border-radius: 16px;
-    padding: 32px;
-    text-align: center;
+    border: 1px solid rgba(148, 163, 184, 0.1);
+    border-radius: 24px;
+    padding: 0;
+    text-align: left;
     position: relative;
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     height: 100%;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    background: linear-gradient(135deg, #ffffff 0%, #fafbfc 100%);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02); /* Very subtle shadow */
+    background: linear-gradient(135deg, #ffffff 0%, #fefefe 100%);
+    box-shadow: 
+        0 4px 20px rgba(148, 163, 184, 0.08),
+        0 1px 3px rgba(148, 163, 184, 0.06);
 }
 
-.price-card::before {
+.bundle-card::before, .pricing-card::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(var(--accent-color), 0.02) 0%, rgba(var(--accent-color), 0.05) 100%);
+    background: linear-gradient(135deg, rgba(100, 116, 139, 0.02) 0%, rgba(148, 163, 184, 0.04) 100%);
     opacity: 0;
     transition: opacity 0.4s ease;
+    pointer-events: none;
 }
 
-.price-card:hover {
-    border-color: rgba(var(--accent-color), 0.2); /* Show accent color border on hover */
-    box-shadow: 0 8px 32px rgba(var(--accent-color), 0.12), 0 4px 16px rgba(0, 0, 0, 0.06);
-    transform: translateY(-4px);
+.bundle-card:hover, .pricing-card:hover {
+    border-color: rgba(100, 116, 139, 0.2);
+    box-shadow: 
+        0 20px 40px rgba(148, 163, 184, 0.15),
+        0 8px 24px rgba(148, 163, 184, 0.1),
+        0 2px 8px rgba(148, 163, 184, 0.08);
+    transform: translateY(-8px);
 }
 
-.price-card:hover::before {
+.bundle-card:hover::before, .pricing-card:hover::before {
     opacity: 1;
 }
 
-.price-card > * {
+.bundle-card > *, .pricing-card > * {
     position: relative;
     z-index: 2;
 }
 
-.price-card[data-badge]::after {
-    content: attr(data-badge);
+/* Modern Card Tags */
+.card-tag {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    background: var(--accent-color);
-    color: white;
-    padding: 6px 12px;
+    top: 24px;
+    right: 24px;
+    padding: 8px 16px;
     border-radius: 20px;
     font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.8px;
     z-index: 3;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.price-card h3 {
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--brand-heading);
-    margin: 0 0 12px 0;
-    transition: color 0.3s ease;
+/* Brand-specific tag colors */
+.net-tag {
+    background: linear-gradient(135deg, var(--brand-net), #c53030);
+    color: white;
 }
 
-.price-card:hover h3 {
-    color: var(--accent-color);
+.js-tag {
+    background: linear-gradient(135deg, var(--brand-spread), #38a169);
+    color: white;
 }
 
-.price-card .price {
-    font-size: 36px;
+.ds-tag {
+    background: linear-gradient(135deg, var(--brand-ds), #2b6cb0);
+    color: white;
+}
+
+.ar-tag, .reporting-tag {
+    background: linear-gradient(135deg, var(--brand-ar), #d69e2e);
+    color: white;
+}
+
+.blazor-tag {
+    background: linear-gradient(135deg, #512BD4, #7c3aed);
+    color: white;
+}
+
+/* Card Title */
+.bundle-card .card-title, .pricing-card .card-title {
+    font-size: 28px;
     font-weight: 800;
-    color: var(--accent-color);
-    margin: 20px 0 8px 0;
+    color: var(--brand-heading);
+    margin: 32px 32px 16px 32px;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    padding-right: 80px; /* Space for tag */
+}
+
+/* Card Subtitle */
+.bundle-card .card-subtitle, .pricing-card .card-subtitle {
+    font-size: 17px;
+    color: var(--color-text-subtle);
+    margin: 0 32px 32px 32px;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+/* Price Display */
+.bundle-card .price, .pricing-card .price {
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--brand-heading);
+    margin: 0 32px 8px 32px;
     line-height: 1;
+    letter-spacing: -1px;
 }
 
-.price-card:hover .price {
-    transform: scale(1.05);
-}
-
-.price-card .price-term {
+.bundle-card .price-term, .pricing-card .price-term {
     font-size: 14px;
     color: var(--color-text-subtle);
     font-weight: 500;
-    margin-bottom: 20px;
+    margin: 0 32px 24px 32px;
     display: block;
 }
 
-.price-card:hover .price-term {
-    color: var(--brand-body);
+.custom-pricing {
+    background: linear-gradient(135deg, var(--brand-ds), var(--brand-net));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 32px;
+    font-weight: 800;
 }
 
-.price-card ul {
+/* Savings Badge */
+.savings-badge {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 16px;
+    font-size: 13px;
+    font-weight: 700;
+    margin: 0 32px 24px 32px;
+    display: inline-block;
+    width: fit-content;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
+}
+
+/* Inclusions List */
+.inclusions-list {
     list-style: none;
-    padding: 0;
-    margin: 0 0 30px 0;
+    padding: 0 32px;
+    margin: 0 0 32px 0;
     flex-grow: 1;
 }
 
-.price-card li {
-    padding: 10px 0;
-    font-size: 15px;
-    color: var(--brand-body);
-    line-height: 1.6;
-    transition: all 0.3s ease;
-}
-
-.price-card:hover li {
-    padding-left: 3px;
-}
-
-.price-card li::before {
-    content: '✓';
-    color: var(--accent-color);
-    font-weight: 700;
-    margin-right: 12px;
-    transition: all 0.3s ease;
-}
-
-.price-card:hover li::before {
-    transform: scale(1.2);
-}
-
-/* Add to Cart Button */
-.add-to-cart-btn, .cta-button {
-    background: var(--color-primary);
-    color: white;
-    border: 2px solid var(--color-primary);
-    padding: 16px 32px;
+.inclusions-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    margin-bottom: 8px;
+    background: rgba(248, 250, 252, 0.8);
+    border: 1px solid rgba(148, 163, 184, 0.1);
     border-radius: 12px;
     font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin-top: auto;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(100, 116, 139, 0.2);
+    font-weight: 500;
+    color: var(--brand-body);
+    transition: all 0.3s ease;
 }
 
-.add-to-cart-btn::before, .cta-button::before {
+.inclusions-list li:hover {
+    background: rgba(100, 116, 139, 0.05);
+    border-color: rgba(100, 116, 139, 0.2);
+    transform: translateX(4px);
+}
+
+.inclusions-list li:last-child {
+    margin-bottom: 0;
+}
+
+.inclusions-list li span:first-child {
+    color: var(--brand-heading);
+    font-weight: 600;
+}
+
+.inclusions-list li span:last-child {
+    font-weight: 700;
+    color: var(--brand-ds);
+}
+
+.inclusions-list .total-value {
+    background: linear-gradient(135deg, rgba(100, 116, 139, 0.1), rgba(148, 163, 184, 0.1));
+    border-color: rgba(100, 116, 139, 0.2);
+    font-weight: 700;
+    margin-top: 16px;
+}
+
+.inclusions-list .total-value span {
+    font-weight: 700;
+}
+
+/* Multi-column for large lists */
+.inclusions-list.multi-column {
+    columns: 2;
+    column-gap: 20px;
+}
+
+.inclusions-list.multi-column li {
+    break-inside: avoid;
+    margin-bottom: 12px;
+}
+
+/* Discount Calculator */
+.discount-calculator {
+    padding: 24px 32px;
+    background: rgba(248, 250, 252, 0.5);
+    border-top: 1px solid rgba(148, 163, 184, 0.1);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+    margin: 0;
+}
+
+.discount-option {
+    margin-bottom: 20px;
+}
+
+.discount-option:last-child {
+    margin-bottom: 0;
+}
+
+.discount-option label {
+    display: block;
+    font-weight: 600;
+    color: var(--brand-heading);
+    margin-bottom: 12px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.quantity-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid rgba(148, 163, 184, 0.2);
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.quantity-input:focus {
+    outline: none;
+    border-color: var(--brand-ds);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.multi-year-options {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.multi-year-options label {
+    background: white;
+    border: 2px solid rgba(148, 163, 184, 0.2);
+    border-radius: 12px;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: none;
+    letter-spacing: normal;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.multi-year-options input[type="radio"] {
+    display: none;
+}
+
+.multi-year-options input[type="radio"]:checked + label {
+    background: var(--brand-ds);
+    border-color: var(--brand-ds);
+    color: white;
+}
+
+.discount-tag {
+    background: rgba(16, 185, 129, 0.2);
+    color: #059669;
+    padding: 2px 6px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.multi-year-options input[type="radio"]:checked + label .discount-tag {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+/* Price Summary */
+.price-summary-container {
+    padding: 24px 32px;
+    background: rgba(248, 250, 252, 0.8);
+    border-top: 1px solid rgba(148, 163, 184, 0.1);
+    margin: 0;
+    text-align: center;
+}
+
+.total-actual-cost, .total-price-subtle {
+    display: block;
+    font-weight: 700;
+    color: var(--brand-heading);
+    margin-bottom: 8px;
+}
+
+.total-actual-cost strong, .total-price-subtle strong {
+    color: var(--brand-ds);
+    font-size: 18px;
+}
+
+/* CTA Buttons */
+.cta-button, .add-to-cart-btn {
+    background: linear-gradient(135deg, var(--brand-ds) 0%, var(--brand-net) 100%);
+    color: white;
+    border: none;
+    padding: 18px 32px;
+    border-radius: 16px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    margin: 24px 32px 32px 32px;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    box-shadow: 
+        0 4px 16px rgba(59, 130, 246, 0.3),
+        0 2px 8px rgba(59, 130, 246, 0.2);
+}
+
+.cta-button::before, .add-to-cart-btn::before {
     content: '';
     position: absolute;
     top: 0;
@@ -2589,15 +2827,37 @@ body {
     transition: left 0.6s ease;
 }
 
-.add-to-cart-btn:hover, .cta-button:hover {
-    background: #475569; /* Darker shade of slate gray */
+.cta-button:hover, .add-to-cart-btn:hover {
+    background: linear-gradient(135deg, var(--brand-net) 0%, var(--brand-ds) 100%);
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(100, 116, 139, 0.3);
-    border-color: #475569;
+    box-shadow: 
+        0 8px 32px rgba(59, 130, 246, 0.4),
+        0 4px 16px rgba(59, 130, 246, 0.3);
 }
 
-.add-to-cart-btn:hover::before, .cta-button:hover::before {
+.cta-button:hover::before, .add-to-cart-btn:hover::before {
     left: 100%;
+}
+
+/* Highlight variations */
+.pricing-card.highlight .cta-button,
+.pricing-card.highlight-blue .cta-button {
+    background: linear-gradient(135deg, var(--brand-net) 0%, #c53030 100%);
+}
+
+.pricing-card.highlight .cta-button:hover,
+.pricing-card.highlight-blue .cta-button:hover {
+    background: linear-gradient(135deg, #c53030 0%, var(--brand-net) 100%);
+}
+
+/* Contact Sales buttons */
+.contact-sales {
+    background: linear-gradient(135deg, var(--color-text-subtle) 0%, var(--brand-heading) 100%);
+}
+
+.contact-sales:hover {
+    background: linear-gradient(135deg, var(--brand-heading) 0%, var(--color-text-subtle) 100%);
+}
 }
 
 .add-to-cart-btn:active, .cta-button:active {
@@ -3473,5 +3733,180 @@ body {
         width: 28px;
         height: 28px;
         font-size: 14px;
+    }
+}
+
+/* Bundle Page Responsive Design Improvements */
+@media (max-width: 1200px) {
+    .pricing-grid {
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        gap: 32px;
+    }
+}
+
+@media (max-width: 900px) {
+    .pricing-section {
+        padding: 60px 0;
+    }
+    
+    .pricing-section .section-title {
+        font-size: 36px;
+    }
+    
+    .pricing-section .section-subtitle {
+        font-size: 18px;
+    }
+    
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        margin-bottom: 60px;
+    }
+    
+    .bundle-card .card-title, .pricing-card .card-title {
+        font-size: 24px;
+        margin: 24px 24px 12px 24px;
+        padding-right: 60px;
+    }
+    
+    .bundle-card .card-subtitle, .pricing-card .card-subtitle {
+        font-size: 16px;
+        margin: 0 24px 24px 24px;
+    }
+    
+    .bundle-card .price, .pricing-card .price {
+        font-size: 32px;
+        margin: 0 24px 8px 24px;
+    }
+    
+    .bundle-card .price-term, .pricing-card .price-term {
+        margin: 0 24px 20px 24px;
+    }
+    
+    .savings-badge {
+        margin: 0 24px 20px 24px;
+    }
+    
+    .inclusions-list {
+        padding: 0 24px;
+        margin: 0 0 24px 0;
+    }
+    
+    .inclusions-list.multi-column {
+        columns: 1;
+    }
+    
+    .discount-calculator {
+        padding: 20px 24px;
+    }
+    
+    .price-summary-container {
+        padding: 20px 24px;
+    }
+    
+    .cta-button, .add-to-cart-btn {
+        margin: 20px 24px 24px 24px;
+        padding: 16px 24px;
+        font-size: 14px;
+    }
+    
+    .card-tag {
+        top: 16px;
+        right: 16px;
+        padding: 6px 12px;
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 600px) {
+    .pricing-section {
+        padding: 40px 0;
+    }
+    
+    .pricing-section .section-header {
+        margin-bottom: 40px;
+    }
+    
+    .pricing-section .section-title {
+        font-size: 28px;
+        margin-bottom: 16px;
+    }
+    
+    .pricing-section .section-subtitle {
+        font-size: 16px;
+    }
+    
+    .bundle-card, .pricing-card {
+        border-radius: 16px;
+    }
+    
+    .bundle-card .card-title, .pricing-card .card-title {
+        font-size: 20px;
+        margin: 20px 20px 12px 20px;
+        padding-right: 50px;
+    }
+    
+    .bundle-card .card-subtitle, .pricing-card .card-subtitle {
+        font-size: 15px;
+        margin: 0 20px 20px 20px;
+    }
+    
+    .bundle-card .price, .pricing-card .price {
+        font-size: 28px;
+        margin: 0 20px 8px 20px;
+    }
+    
+    .bundle-card .price-term, .pricing-card .price-term {
+        margin: 0 20px 16px 20px;
+        font-size: 13px;
+    }
+    
+    .savings-badge {
+        margin: 0 20px 16px 20px;
+        font-size: 12px;
+    }
+    
+    .inclusions-list {
+        padding: 0 20px;
+        margin: 0 0 20px 0;
+    }
+    
+    .inclusions-list li {
+        padding: 12px 16px;
+        font-size: 14px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    
+    .discount-calculator {
+        padding: 16px 20px;
+    }
+    
+    .multi-year-options {
+        flex-direction: column;
+    }
+    
+    .multi-year-options label {
+        padding: 10px 12px;
+        justify-content: center;
+    }
+    
+    .price-summary-container {
+        padding: 16px 20px;
+    }
+    
+    .cta-button, .add-to-cart-btn {
+        margin: 16px 20px 20px 20px;
+        padding: 14px 20px;
+        font-size: 13px;
+        border-radius: 12px;
+    }
+    
+    .card-tag {
+        top: 12px;
+        right: 12px;
+        padding: 4px 8px;
+        font-size: 10px;
     }
 }
