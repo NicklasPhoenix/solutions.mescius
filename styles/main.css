@@ -264,10 +264,10 @@ body {
 /* --- Filter Controls: Intuitive and visually responsive --- */
 .filter-toolbar {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+    flex-direction: column;
+    align-items: stretch;
     justify-content: center; 
-    gap: 25px; 
+    gap: 20px; 
     padding: 25px; 
     margin-bottom: 30px; /* Reduced margin to make space for chips */
     background-color: var(--color-background-white);
@@ -283,19 +283,25 @@ body {
 .filter-set {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 12px; 
+    flex-wrap: nowrap; /* Prevent wrapping to maintain alignment */
+    gap: 15px; 
+    width: 100%;
+    justify-content: flex-start;
 }
 .filter-set-label {
     font-weight: 700; 
     font-size: 16px; 
     color: var(--brand-heading);
-    margin-right: 15px; 
+    margin: 0; /* Remove margin to rely on gap */
+    flex-shrink: 0; /* Prevent label from shrinking */
+    min-width: 180px; /* Ensure consistent label width for alignment */
+    text-align: left;
 }
 .filter-pills {
     display: flex;
     flex-wrap: wrap;
     gap: 8px; 
+    flex-grow: 1;
 }
 .filter-btn {
     padding: 10px 22px; 
@@ -353,28 +359,34 @@ body {
     .filter-toolbar {
         gap: 20px;
         padding: 20px;
-        flex-direction: column;
     }
     .filter-set {
-        width: 100%;
-        justify-content: center;
+        flex-direction: column;
+        align-items: flex-start;
         gap: 10px;
     }
     .filter-set-label {
-        margin-bottom: 8px;
-        margin-right: 0;
+        min-width: auto;
         width: 100%;
         text-align: center;
+        margin-bottom: 8px;
+    }
+    .filter-pills {
+        justify-content: center;
+        width: 100%;
     }
     .clear-filters-btn {
         margin-left: 0;
         margin-top: 10px;
+        align-self: center;
     }
 }
 @media (max-width: 768px) {
     .filter-toolbar {
         position: static; /* Disable sticky on mobile to save vertical space */
         top: auto;
+        padding: 18px;
+        gap: 16px;
     }
     .filter-set {
         flex-direction: column;
@@ -384,6 +396,7 @@ body {
     .filter-set-label {
         font-size: 14px;
         margin-bottom: 8px;
+        text-align: center;
     }
     .filter-pills {
         justify-content: center;
