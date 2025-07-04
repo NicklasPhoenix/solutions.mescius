@@ -233,8 +233,13 @@ main {
 
 /* --- Section Headers: Clear and elegant --- */
 .section-header { 
-    text-align: center; 
-    margin-bottom: 60px; 
+    text-align: center;
+    margin-bottom: 60px;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
 }
 .section-title { 
     font-size: 40px; 
@@ -262,10 +267,15 @@ main {
     transform: translateX(-50%) scaleX(1);
 }
 .section-subtitle { 
-    font-size: 19px; 
+    font-size: 19px;
     max-width: 700px;
     margin: 0 auto;
     color: var(--color-text-subtle);
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
 }
 
 /* --- Filter Controls: Intuitive and visually responsive --- */
