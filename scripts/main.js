@@ -243,14 +243,31 @@ document.addEventListener('DOMContentLoaded', () => {
             const filterType = filterSet.dataset.filterType;
             const filterValue = btn.dataset.filter;
 
-            // Update current filters
-            currentFilters[filterType] = filterValue;
+            // Check if this button is already active and not the "all" button
+            const isAlreadyActive = btn.classList.contains('is-active');
+            const isAllButton = filterValue === 'all';
 
-            // Update button states within the same filter set
-            filterSet.querySelectorAll('.filter-btn').forEach(b => {
-                b.classList.remove('is-active');
-            });
-            btn.classList.add('is-active');
+            // If clicking an already active non-"all" button, deselect it (toggle to "all")
+            if (isAlreadyActive && !isAllButton) {
+                currentFilters[filterType] = 'all';
+                
+                // Update button states - activate "all" button
+                filterSet.querySelectorAll('.filter-btn').forEach(b => {
+                    b.classList.remove('is-active');
+                    if (b.dataset.filter === 'all') {
+                        b.classList.add('is-active');
+                    }
+                });
+            } else {
+                // Normal filter selection
+                currentFilters[filterType] = filterValue;
+
+                // Update button states within the same filter set
+                filterSet.querySelectorAll('.filter-btn').forEach(b => {
+                    b.classList.remove('is-active');
+                });
+                btn.classList.add('is-active');
+            }
 
             // Apply filters and render chips
             applyFilters();
@@ -1101,14 +1118,18 @@ document.addEventListener('DOMContentLoaded', () => {
                         const progress = (timestamp - startTime) / duration;
                         if (progress < 1) {
                             if (targetValue.includes('k')) { // Handle 'k' for thousands
-                                const numericTarget = parseFloat(targetValue.replace('k', ''));
+                                // Check if it has a currency symbol
+                                const currencyMatch = targetValue.match(/^([€$£¥])/);
+                                const currencySymbol = currencyMatch ? currencyMatch[1] : '';
+                                const numericPart = targetValue.replace(/[€$£¥]/, '').replace('k', '');
+                                const numericTarget = parseFloat(numericPart);
                                 if (isNaN(numericTarget)) {
                                     valueSpan.textContent = targetValue;
                                     return;
                                 }
                                 const targetNum = numericTarget * 1000;
                                 currentValue = Math.min(targetNum, Math.floor(progress * targetNum));
-                                valueSpan.textContent = (currentValue / 1000).toFixed(0) + 'k';
+                                valueSpan.textContent = currencySymbol + (currentValue / 1000).toFixed(0) + 'k';
                             } else if (targetValue.includes('%')) { // Handle '%'
                                 const numericTarget = parseInt(targetValue.replace('%', ''));
                                 if (isNaN(numericTarget)) {
