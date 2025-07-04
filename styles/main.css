@@ -1816,71 +1816,65 @@ body {
     margin-bottom: 10px;
 }
 
-/* Bundle Section Styles - Redesigned Recommended Solution Card */
+/* Bundle Section Styles - Professional Redesigned Recommended Solution Card */
 .bundle-card {
     background: var(--color-background-white);
-    border: 2px solid transparent;
-    background-image: linear-gradient(var(--color-background-white), var(--color-background-white)), 
-                      linear-gradient(135deg, var(--accent-color), var(--brand-heading));
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
-    border-radius: 20px;
+    border: 1px solid var(--color-border-light);
+    border-radius: 16px;
     padding: 0;
     position: relative;
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.3s ease;
     height: 100%;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    box-shadow: 0 8px 32px rgba(71, 77, 87, 0.08), 0 4px 16px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .bundle-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(71, 77, 87, 0.15), 0 8px 24px rgba(0, 0, 0, 0.08);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(0, 0, 0, 0.08);
+    border-color: var(--color-primary);
 }
 
-/* New Bundle Card Header Section */
+/* Professional Bundle Card Header Section */
 .bundle-header {
-    background: linear-gradient(135deg, var(--accent-color) 0%, var(--brand-heading) 100%);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--brand-heading) 100%);
     color: white;
     padding: 32px;
     text-align: center;
     position: relative;
-    overflow: hidden;
+    border-bottom: 1px solid var(--color-border-light);
 }
 
-.bundle-header::before {
+.bundle-header::after {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-    animation: shimmer 8s ease-in-out infinite;
-}
-
-@keyframes shimmer {
-    0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
-    50% { transform: translate(-50%, -50%) rotate(180deg); }
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--accent-color);
 }
 
 .bundle-header h3 {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
     margin: 0 0 8px 0;
     text-transform: uppercase;
     letter-spacing: 1px;
     opacity: 0.9;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .bundle-header h2 {
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 700;
     margin: 0;
     position: relative;
     z-index: 1;
+    color: white;
 }
 
 /* Bundle Info Section */
@@ -1890,13 +1884,14 @@ body {
     flex-direction: column;
 }
 
-/* Products Section */
+/* Professional Products Section */
 .bundle-inclusions {
     list-style: none;
-    padding: 40px 32px 32px 32px;
+    padding: 32px;
     margin: 0;
     flex-grow: 1;
-    background: linear-gradient(180deg, #fafbfc 0%, #ffffff 100%);
+    background: var(--color-background-white);
+    border-bottom: 1px solid var(--color-border-light);
 }
 
 .bundle-inclusions::before {
@@ -1907,24 +1902,25 @@ body {
     color: var(--brand-heading);
     margin-bottom: 24px;
     padding-bottom: 12px;
-    border-bottom: 3px solid var(--accent-color);
+    border-bottom: 2px solid var(--accent-color);
     width: fit-content;
 }
 
 .bundle-inclusions li {
-    background: white;
+    background: var(--color-background-white);
     border: 1px solid var(--color-border-light);
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 16px;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .bundle-inclusions li:hover {
-    transform: translateX(8px);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-    border-color: var(--accent-color);
+    border-color: var(--color-primary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .bundle-inclusions li:last-child {
@@ -1932,27 +1928,26 @@ body {
 }
 
 .bundle-inclusions .product-name {
-    font-weight: 700;
-    font-size: 18px;
+    font-weight: 600;
+    font-size: 16px;
     color: var(--brand-heading);
     display: flex;
     align-items: center;
-    margin-bottom: 8px;
+    flex: 1;
 }
 
 .bundle-inclusions .checkmark {
-    background: linear-gradient(135deg, var(--accent-color), var(--brand-heading));
+    background: var(--color-success);
     color: white;
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-right: 12px;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 700;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .bundle-inclusions .product-actions {
@@ -1962,62 +1957,53 @@ body {
 }
 
 .bundle-inclusions .product-actions .action-link {
-    background: var(--accent-color);
+    background: var(--color-primary);
     color: white;
     text-decoration: none;
     font-weight: 600;
-    padding: 8px 16px;
+    padding: 6px 12px;
     border-radius: 6px;
-    font-size: 14px;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 13px;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
 }
 
 .bundle-inclusions .product-actions .action-link:hover {
     background: var(--brand-heading);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
 }
 
 .bundle-inclusions .action-divider {
-    color: var(--color-text-subtle);
-    font-weight: 600;
+    display: none; /* Hide the pipe divider since we're using buttons */
 }
-/* Enhanced Bundle Purchase Section */
+/* Professional Bundle Purchase Section */
 .bundle-purchase {
-    background: linear-gradient(135deg, var(--brand-heading) 0%, #2d3748 100%);
-    color: white;
+    background: var(--color-background-white);
+    border-top: 1px solid var(--color-border-light);
+    color: var(--brand-heading);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 40px 32px;
+    padding: 32px;
     position: relative;
-    overflow: hidden;
 }
 
 .bundle-purchase::before {
-    content: '';
+    content: 'RECOMMENDED SOLUTION';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent-color), transparent);
-}
-
-.bundle-purchase::after {
-    content: 'RECOMMENDED';
-    position: absolute;
-    top: 16px;
-    right: 16px;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
     background: var(--accent-color);
     color: white;
-    padding: 4px 12px;
+    padding: 4px 16px;
     border-radius: 12px;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.5px;
+    text-transform: uppercase;
 }
 
 .bundle-price {
@@ -2026,52 +2012,42 @@ body {
 }
 
 .bundle-price .price {
-    font-size: 48px;
+    font-size: 36px;
     font-weight: 800;
-    color: white;
+    color: var(--brand-heading);
     line-height: 1;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .bundle-price .term {
-    font-size: 16px;
-    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    color: var(--color-text-subtle);
     font-weight: 500;
     display: block;
 }
 
 .bundle-cta .cta-button {
     display: inline-block;
-    background: linear-gradient(135deg, var(--accent-color) 0%, #3db3d3 100%);
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--brand-heading) 100%);
     color: white;
-    padding: 16px 32px;
-    font-size: 18px;
+    padding: 14px 28px;
+    font-size: 16px;
     font-weight: 700;
-    border-radius: 12px;
+    border-radius: 8px;
     text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
     border: none;
     cursor: pointer;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    margin-top: 16px;
 }
 
 .bundle-cta .cta-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(135deg, #3db3d3 0%, var(--accent-color) 100%);
-}
-    text-decoration: none;
-    margin-top: 18px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-.bundle-cta .cta-button:hover {
-    background-color: #3C475B;
     transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, var(--brand-heading) 0%, var(--accent-color) 100%);
 }
 /* Responsive Design for Bundle Cards */
 @media (max-width: 900px) {
@@ -2085,13 +2061,13 @@ body {
         padding: 24px;
     }
     .bundle-header h2 {
-        font-size: 28px;
+        font-size: 24px;
     }
     .bundle-inclusions {
-        padding: 32px 24px 24px 24px;
+        padding: 24px;
     }
     .bundle-purchase {
-        padding: 32px 24px;
+        padding: 24px;
     }
     .bundle-price .price {
         font-size: 40px;
@@ -2111,19 +2087,22 @@ body {
         font-size: 24px;
     }
     .bundle-inclusions {
-        padding: 24px 16px 16px 16px;
+        padding: 20px;
     }
     .bundle-inclusions li {
-        padding: 16px;
+        padding: 12px 16px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
     }
-    .bundle-inclusions .product-name {
-        font-size: 16px;
+    .bundle-inclusions .product-actions {
+        align-self: flex-end;
     }
     .bundle-purchase {
-        padding: 24px 16px;
+        padding: 20px;
     }
     .bundle-price .price {
-        font-size: 36px;
+        font-size: 32px;
     }
     .bundle-cta .cta-button {
         padding: 14px 24px;
