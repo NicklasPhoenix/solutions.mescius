@@ -1984,7 +1984,7 @@ body {
 .bundle-inclusions .product-actions {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
 }
 
 .bundle-inclusions .product-actions .action-link {
@@ -1998,6 +1998,12 @@ body {
     transition: all 0.2s ease;
     border: none;
     cursor: pointer;
+    width: 50px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .bundle-inclusions .product-actions .action-link:hover {
@@ -2017,29 +2023,13 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 32px;
+    padding: 40px 32px 32px 32px;
     position: relative;
-}
-
-.bundle-purchase::before {
-    content: 'RECOMMENDED SOLUTION';
-    position: absolute;
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--accent-color);
-    color: white;
-    padding: 4px 16px;
-    border-radius: 12px;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
 }
 
 .bundle-price {
     text-align: center;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
 }
 
 .bundle-price .price {
