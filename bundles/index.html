@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Cookiebot Banner Script -->
@@ -39,872 +39,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <style>
-        /* All necessary styles are contained in this file */
-        *, *::before, *::after { box-sizing: border-box; }
-        :root {
-            /* Brand Colors (DO NOT CHANGE) */
-            --brand-header: #474D57; /* Dark header color */
-            --brand-light-gray: #f8f9fa; /* Light page background */
-            --brand-heading: #2D3748; /* Dark text for headings */
-            --brand-body: #4A5568; /* Standard body text color */
-            
-            /* Product-specific colors (DO NOT CHANGE THESE) */
-            --brand-c1: #D6564C;      /* ComponentOne (Red) */
-            --brand-spread: #809B59; /* SpreadJS & Spread.NET (Green) */
-            --brand-ar: #EA8939;      /* ActiveReportsJS & ActiveReports.NET (Orange) */
-            --brand-wijmo: #48A9C5;    /* Wijmo (Blue) */
-            --brand-ds: #5A7E9E;      /* Document Solutions (Blue-Grey) */
-            --brand-net: #D6564C; /* Defined for Enterprise Universal highlight */
-
-            /* General UI Colors (Selected to harmonize with brand, no bright blue, no red for general accents) */
-            --color-neutral-dark: #343a40; /* A dark neutral for some elements */
-            --color-neutral-light: #f1f3f5; /* A light neutral for background accents */
-            --color-border-light: #dee2e6; /* A very light border color */
-            --color-background-white: #ffffff;
-            --color-text-subtle: #6c757d; /* Softer text color for secondary info */
-            --color-shadow-subtle: rgba(0, 0, 0, 0.05); /* Very light shadow */
-            --color-shadow-medium: rgba(0, 0, 0, 0.1); /* Medium shadow for depth */
-            --color-shadow-strong: rgba(0, 0, 0, 0.15); /* Stronger shadow for active states */
-            
-            /* Header Navigation Specific Colors (Ensuring good contrast on dark header) */
-            --color-header-nav-link: #ffffff; 
-            --color-header-nav-link-hover: #D0D5DD; /* Light gray for hover, clearly visible */
-            --color-header-nav-link-active: #ffffff; /* White for active for clarity */
-
-            /* Default accent for bundles if not product-specific */
-            --accent-color: var(--brand-header); 
-        }
-
-        body { 
-            margin: 0; 
-            font-family: 'Montserrat', sans-serif; 
-            background-color: var(--brand-light-gray); 
-            color: var(--brand-body); 
-            line-height: 1.6;
-        }
-        .container { 
-            max-width: 1280px; 
-            margin: 0 auto; 
-            padding: 0 24px; 
-        }
-        
-        /* --- Header: Clean, clickable, and visually clear --- */
-        .header { 
-            background-color: var(--brand-header); 
-            padding: 18px 0; 
-            box-shadow: 0 4px 12px var(--color-shadow-medium); 
-            position: sticky; 
-            top: 0;
-            z-index: 1000; 
-            transition: all 0.3s ease;
-        }
-        .header-content { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-        }
-        .logo-link { 
-            display: block; 
-            line-height: 0; 
-            transition: opacity 0.3s ease;
-        }
-        .logo-link:hover {
-            opacity: 0.8; 
-        }
-        .logo { 
-            height: 36px; 
-            filter: brightness(0) invert(1); 
-        }
-        .main-nav { 
-            display: flex; 
-            gap: 35px; 
-        }
-        .nav-link { 
-            color: var(--color-header-nav-link); 
-            text-decoration: none; 
-            font-weight: 500; 
-            font-size: 15px; 
-            padding-bottom: 8px; 
-            border-bottom: 3px solid transparent; 
-            transition: all 0.3s ease;
-            background-color: transparent; 
-            border-radius: 0; 
-            padding: 0 5px 8px; 
-        }
-        .nav-link.active, .nav-link:hover { 
-            border-bottom-color: var(--color-header-nav-link-hover); 
-            color: var(--color-header-nav-link-hover); 
-        }
-        
-        /* Mobile Navigation (Hamburger) */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 30px;
-            height: 22px;
-            cursor: pointer;
-            z-index: 1001;
-        }
-        .menu-toggle span {
-            display: block;
-            width: 100%;
-            height: 3px;
-            background-color: var(--color-header-nav-link); 
-            transition: all 0.3s ease-in-out;
-        }
-        .menu-toggle.is-active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-        .menu-toggle.is-active span:nth-child(2) { opacity: 0; }
-        .menu-toggle.is-active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
-        @media (max-width: 768px) {
-            .main-nav {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 70px; 
-                left: 0;
-                width: 100%;
-                background-color: var(--brand-header);
-                box-shadow: 0 4px 12px var(--color-shadow-medium);
-                padding: 20px 0;
-                border-top: 1px solid rgba(255,255,255,0.1);
-            }
-            .main-nav.is-open { display: flex; }
-            .main-nav .nav-link {
-                padding: 15px 24px;
-                width: 100%;
-                text-align: center;
-                border-bottom: none; 
-            }
-            .main-nav .nav-link:hover {
-                background-color: rgba(255,255,255,0.1); 
-            }
-            .menu-toggle { display: flex; }
-        }
-
-        /* --- Hero Section: Impactful and brand-aligned --- */
-        .hero { 
-            background: linear-gradient(135deg, var(--brand-header) 0%, #3C475B 100%); 
-            color: #ffffff; 
-            text-align: center; 
-            padding: 100px 20px; 
-            position: relative;
-            overflow: hidden;
-            z-index: 1; /* Ensures content inside .hero is above its pseudo-element */
-        }
-        .hero::before { 
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%239C92AC" fill-opacity="0.03"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 20v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 46v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6-20v-4H4v4H0v2h4v4h2v-4h4v-2H6zM42 0v4h2v-4h4V0h-4V-4h-2v4h4v2h-4zm0 20v4h2v-4h4V20h-4v-4h-2v4h4v2h-4zm12 7H46v-2h8v-4h2v4h4v2h-4v4h-2v-4zm0-20H46v-2h8v-4h2v4h4v2h-4v4h-2v-4zM24 2v4h-2V2h-4V0h4V-4h2v4h4v2h-4zm0 20v4h-2v-4h-4V20h4v-4h2v4h4v2h-4zm-6-2v2H2v-2h-4v-2h4v-4h2v4h4v2h-4zm0 20v2H2v-2h-4v-2h4v-4h2v4h4v2h-4zM22 36v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 20v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM36 0v4h-2V0h-4V-4h4V-8h2v4h4v2h-4zm0 20v4h-2v-4h-4V20h4v-4h2v4h4v2h-4zM0 34v-4H-4v4h-4v2h4v4h4v-4h4v-2H0zm0-20v-4H-4v4h-4v2h4v4h4v-4h4v-2H0zm54 0v-4H50v4h-4v2h4v4h4v-4h4v-2h-4zm0 20v-4H50v4h-4v2h4v4h4v-4h4v-2h-4zM42 36v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 20v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM24 42v4h-2v-4h-4v-2h4v-4h2v4h4v2h-4zm0 20v4h-2v-4h-4v-2h4v-4h2v4h4v2h-4zM60 6v4h-2V6h-4V4h4V0h2v4h4v2h-4zm0 20v4h-2v-4h-4V20h4v-4h2v4h4v2h-4zm-6 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-20v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM36 42v4h-2v-4h-4v-2h4v-4h2v4h4v2h-4zM0 6v4H-4V6h-4V4h4V0h2v4h4v2h-4z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
-            background-size: 60px 60px;
-            opacity: 0.03; 
-            pointer-events: none; /* Allows clicks to pass through the pattern */
-        }
-        .hero-title { 
-            font-size: 48px; 
-            font-weight: 700; 
-            color: #ffffff; 
-            margin-bottom: 20px;
-            letter-spacing: -1px; 
-        }
-        .hero-subtitle { 
-            font-size: 20px; 
-            max-width: 800px; 
-            margin: 0 auto 40px; 
-            line-height: 1.8;
-            color: rgba(255, 255, 255, 0.9);
-        }
-        .hero-cta-button {
-            display: inline-block;
-            background-color: var(--brand-heading); 
-            color: #ffffff;
-            padding: 15px 30px;
-            font-size: 18px;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-        .hero-cta-button:hover {
-            background-color: #3C475B; 
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-
-        /* --- Section Headers: Clear and elegant --- */
-        .section-header { 
-            text-align: center; 
-            margin-bottom: 60px; 
-        }
-        .section-title { 
-            font-size: 40px; 
-            font-weight: 700; 
-            color: var(--brand-heading); 
-            margin-bottom: 15px; 
-            position: relative;
-            display: inline-block; 
-            padding-bottom: 10px;
-        }
-        .section-title::after { 
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: 0;
-            transform: translateX(-50%) scaleX(0); 
-            transform-origin: center;
-            width: 80px;
-            height: 4px;
-            background-color: var(--brand-ds); 
-            border-radius: 2px;
-            transition: transform 0.3s ease-out; 
-        }
-        .section-header:hover .section-title::after { 
-            transform: translateX(-50%) scaleX(1);
-        }
-        .section-subtitle { 
-            font-size: 19px; 
-            max-width: 700px;
-            margin: 0 auto;
-            color: var(--color-text-subtle);
-        }
-
-        /* --- Pricing Section Specific Styles --- */
-        .pricing-section { 
-            padding: 60px 0; 
-        }
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            align-items: stretch; 
-        }
-        .pricing-card {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            background-color: var(--color-background-white);
-            border-radius: 12px;
-            box-shadow: 0 8px 25px var(--color-shadow-subtle); 
-            border: 1px solid var(--color-border-light);
-            padding: 30px;
-            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
-            position: relative; 
-            overflow: hidden;
-        }
-        .pricing-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px var(--color-shadow-medium);
-        }
-        .pricing-card.highlight {
-            border-top: 6px solid var(--brand-net); 
-        }
-        .pricing-card.highlight-blue {
-            border-top: 6px solid var(--brand-ds); 
-        }
-
-        .pricing-card .card-subtitle {
-            min-height: 50px; 
-            font-size: 15px;
-            color: var(--color-text-subtle);
-            margin-bottom: 20px;
-        }
-
-        .pricing-card .card-title {
-            font-size: 26px;
-            font-weight: 700;
-            color: var(--brand-heading);
-            margin-top: 0;
-            margin-bottom: 10px;
-            line-height: 1.3;
-        }
-
-        .price {
-            font-size: 42px; 
-            font-weight: 700;
-            color: var(--brand-heading);
-            margin-bottom: 5px;
-            line-height: 1;
-            display: flex; 
-            flex-direction: column; 
-            align-items: flex-start; 
-        }
-        .price .price-term {
-            display: block;
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--color-text-subtle);
-            margin-top: 5px;
-        }
-        
-        /* Hidden from original location */
-        .total-actual-cost, .total-price-subtle {
-            display: none; 
-        }
-
-        .discount-per-dev {
-            display: block;
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--brand-spread); 
-            margin-top: 5px;
-        }
-        
-        .savings-badge {
-            background-color: var(--brand-spread); 
-            color: white;
-            padding: 8px 15px;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 600;
-            margin-top: 15px;
-            margin-bottom: 25px;
-            width: fit-content;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .inclusions-list {
-            list-style: none;
-            padding-left: 0;
-            margin: 0 0 25px 0;
-            font-size: 16px;
-            line-height: 1.8;
-            flex-grow: 1; 
-            min-height: 200px; 
-        }
-        .inclusions-list li {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 8px 0;
-            border-bottom: 1px dashed var(--color-border-light);
-            color: var(--brand-body);
-        }
-        .inclusions-list li:last-of-type {
-            border-bottom: none;
-        }
-        .inclusions-list li span:first-child {
-            font-weight: 500;
-        }
-        .inclusions-list li span:last-child {
-            font-weight: 600;
-            color: var(--brand-heading);
-        }
-        /* New styling for multiplier */
-        .inclusions-list .item-quantity-multiplier {
-            font-size: 0.9em; /* Slightly smaller than main text */
-            font-weight: 400; /* Regular weight */
-            color: var(--color-text-subtle); /* Subtler color */
-            margin-right: 5px; /* Space between multiplier and name */
-        }
-
-
-        /* Adjusted styling for multi-column lists */
-        .inclusions-list.multi-column {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px 1.5rem; 
-            padding-top: 10px;
-            min-height: 250px; 
-            background-color: var(--color-neutral-light); 
-            border-radius: 8px; 
-            padding: 15px 20px; 
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); 
-        }
-        .inclusions-list.multi-column li {
-            display: flex; 
-            justify-content: space-between; 
-            align-items: baseline; 
-            border-bottom: 1px dashed rgba(0,0,0,0.1); 
-            padding: 8px 0; 
-            margin-bottom: 0; 
-            font-size: 15px; 
-            line-height: 1.4; 
-        }
-        .inclusions-list.multi-column li:last-of-type {
-            border-bottom: none; 
-        }
-        .inclusions-list.multi-column li span:first-child {
-            font-weight: 500;
-            color: var(--brand-body); 
-            text-align: left; 
-            flex-grow: 1; 
-            padding-right: 10px; 
-        }
-        .inclusions-list.multi-column li span:last-child {
-            font-weight: 600; 
-            color: var(--brand-heading); 
-            font-size: 15px; 
-            text-align: right; 
-            white-space: nowrap; 
-        }
-
-
-        .inclusions-list .total-value {
-            margin-top: auto;
-            grid-column: 1 / -1; 
-            border-top: 2px solid var(--color-border-light);
-            padding-top: 15px;
-            margin-top: 25px; 
-            font-weight: 700;
-            font-size: 17px;
-            color: var(--brand-heading);
-            padding-bottom: 0; 
-            margin-bottom: 0;
-        }
-        .inclusions-list .total-value span:last-child {
-            color: var(--brand-c1); 
-        }
-        .inclusions-list .total-value span:last-child del {
-            text-decoration: line-through;
-        }
-
-        /* New container for total prices */
-        .price-summary-container {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end; 
-            margin-top: auto; 
-            padding-top: 15px;
-            border-top: 1px solid var(--color-border-light);
-            width: 100%;
-            margin-bottom: 20px; /* Added space to the button */
-        }
-
-        .price-summary-container .total-actual-cost,
-        .price-summary-container .total-price-subtle {
-            display: block; 
-            font-size: 17px;
-            font-weight: 600;
-            color: var(--brand-heading);
-            margin-bottom: 5px; 
-            text-align: right;
-            width: 100%; 
-        }
-        .price-summary-container .total-price-subtle {
-            font-size: 15px; 
-            color: var(--color-text-subtle);
-        }
-        .price-summary-container .total-price-subtle strong {
-            color: var(--brand-heading); 
-        }
-
-
-        .cta-button {
-            display: block; width: 100%; text-align: center; padding: 16px; border-radius: 8px;
-            background-color: #474D57; color: #ffffff; text-decoration: none; font-weight: 600;
-            transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-            border: none; font-family: 'Montserrat', sans-serif; font-size: 16px; cursor: pointer;
-            margin-top: 0; /* Adjusted to rely on .price-summary-container margin */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-        }
-        .cta-button:hover {
-            background-color: var(--brand-header); 
-            filter: brightness(115%);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-        /* Specific hover state for buttons that are initially orange */
-        .cta-button.contact-sales:hover {
-            filter: brightness(115%);
-        }
-        /* Specific highlight button style for Enterprise Universal */
-        .cta-button.highlight-btn:hover {
-            filter: brightness(115%);
-        }
-        .cta-button.highlight-btn-blue:hover {
-            filter: brightness(115%);
-        }
-
-        /* Card Tag Styles */
-        .card-tag {
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: white;
-            margin-bottom: 1rem;
-            width: fit-content;
-        }
-        .net-tag { background-color: var(--brand-net); }
-        .ar-tag { background-color: var(--brand-ar); }
-        .js-tag { background-color: var(--brand-spread); } 
-        .reporting-tag { background-color: var(--brand-ar); } 
-        .blazor-tag { background-color: #512BD4; } 
-        .ds-tag { background-color: var(--brand-ds); }
-        
-
-        /* Discount Calculator Styles */
-        .discount-calculator {
-            margin-top: 25px; 
-            padding-top: 20px;
-            border-top: 1px solid var(--color-border-light);
-        }
-        .discount-option {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px; 
-            font-size: 15px;
-        }
-        /* Added space to the last discount option before price summary */
-        .discount-calculator .discount-option:last-of-type {
-             margin-bottom: 30px; /* Increased space before price-summary-container */
-        }
-        .discount-option label {
-            font-weight: 600;
-            color: var(--brand-heading);
-            display: flex;
-            align-items: center;
-        }
-        .quantity-input {
-            width: 70px; 
-            padding: 8px 5px;
-            text-align: center;
-            border: 1px solid var(--color-border-light);
-            border-radius: 6px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 15px;
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
-        }
-        .quantity-input:focus {
-            outline: none;
-            border-color: var(--accent-color); 
-            box-shadow: 0 0 0 3px rgba(var(--accent-color-rgb, 0,0,0), 0.2); 
-            box-shadow: 0 0 0 3px rgba(var(--accent-color), 0.2);
-        }
-        
-        .multi-year-options {
-            display: flex;
-            gap: 10px; 
-        }
-        .multi-year-options input[type="radio"] {
-            display: none; 
-        }
-        .multi-year-options label {
-            padding: 8px 18px; 
-            border: 1px solid var(--color-border-light);
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-size: 14px;
-            font-weight: 600;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            line-height: 1;
-            white-space: nowrap; 
-        }
-        .multi-year-options input[type="radio"]:checked + label {
-            background-color: var(--accent-color);
-            color: white;
-            border-color: var(--accent-color);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .multi-year-options input[type="radio"]:hover + label {
-            background-color: var(--color-neutral-light);
-            color: var(--brand-heading);
-        }
-        .multi-year-options input[type="radio"]:checked + label:hover {
-            background-color: var(--accent-color); 
-            color: white;
-        }
-
-        .multi-year-options .discount-tag {
-            background-color: #28a745; 
-            color: white;
-            padding: 3px 8px;
-            font-size: 11px;
-            border-radius: 12px;
-            font-weight: bold;
-        }
-        .multi-year-options input[type="radio"]:checked + label .discount-tag {
-            background-color: white;
-            color: #28a745; 
-        }
-        
-        /* Tooltip Styles */
-        .tooltip-icon {
-            position: relative;
-            display: inline-block;
-            width: 18px;
-            height: 18px;
-            background-color: var(--color-text-subtle);
-            color: white;
-            border-radius: 50%;
-            text-align: center;
-            font-size: 12px;
-            line-height: 18px;
-            cursor: help;
-            margin-left: 8px;
-            transition: background-color 0.2s ease;
-        }
-        .tooltip-icon:hover {
-            background-color: var(--brand-heading);
-        }
-        .tooltip-icon .tooltip-text {
-            visibility: hidden;
-            width: 180px; 
-            background-color: var(--color-neutral-dark);
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 10px;
-            position: absolute;
-            z-index: 10; 
-            bottom: 125%;
-            left: 50%;
-            margin-left: -90px;
-            opacity: 0;
-            transition: opacity 0.3s;
-            font-size: 13px;
-            font-weight: normal;
-            line-height: 1.5;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        .tooltip-icon:hover .tooltip-text {
-            visibility: visible;
-            opacity: 1;
-        }
-        .tooltip-icon .tooltip-text::after {
-            content: "";
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-left: -5px;
-            border-width: 5px;
-            border-style: solid;
-            border-color: var(--color-neutral-dark) transparent transparent transparent;
-        }
-        
-        /* Price/Savings Update Flash Effect */
-        .price-updated, .savings-updated {
-            animation: priceFlash 0.6s ease-in-out;
-        }
-        @keyframes priceFlash {
-            0% { color: inherit; }
-            50% { color: #28a745; transform: scale(1.02); } 
-            100% { color: inherit; transform: scale(1); }
-        }
-
-        /* Footer Styles (DO NOT CHANGE) */
-        .footer {
-            background-color: var(--brand-header);
-            color: #cccccc;
-            padding: 50px 0;
-            margin-top: 80px; 
-            font-size: 14px;
-            text-align: left;
-        }
-        .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 30px;
-        }
-        .footer-col {
-            flex: 1;
-            min-width: 200px;
-            margin-bottom: 20px;
-        }
-        .footer-col-left {
-            min-width: 250px;
-            flex: 1.5;
-        }
-        .footer-logo {
-            height: 38px;
-            filter: brightness(0) invert(1);
-            margin-bottom: 20px;
-        }
-        .footer-text {
-            line-height: 1.6;
-            margin-bottom: 10px;
-        }
-        .footer-heading {
-            color: #ffffff;
-            font-weight: 700;
-            font-size: 16px;
-            margin-bottom: 20px;
-        }
-        .footer-links {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-        .footer-links a {
-            color: #cccccc;
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-        .footer-links a:hover {
-            color: #ffffff;
-        }
-        .social-icons {
-            display: flex;
-            gap: 10px;
-        }
-        .social-icon {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            width: 36px;
-            height: 36px;
-            background-color: #5a626a; 
-            border-radius: 8px;
-            color: #ffffff;
-            font-size: 18px;
-            text-decoration: none;
-            transition: background-color 0.2s ease, color 0.2s ease;
-        }
-        .social-icon:hover {
-            background-color: #ffffff;
-            color: var(--brand-header); 
-        }
-        .news-signup-text {
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-        /* Style for the subscribe button that opens the modal */
-        .subscribe-btn-footer {
-            background-color: #a0a0a0;
-            color: var(--brand-header);
-            padding: 12px 25px;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: background-color 0.2s ease;
-            margin-top: 10px; /* Space from the text above */
-        }
-        .subscribe-btn-footer:hover {
-            background-color: #bebebe;
-        }
-
-        /* MODAL STYLES (from index.html for newsletter) */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 2000; /* Sit on top, higher than header */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
-            display: none; /* Hidden by default */
-            justify-content: center; /* Center horizontally */
-            align-items: center; /* Center vertically */
-            padding: 20px; /* Add some padding around the modal on smaller screens */
-        }
-
-        .modal-content {
-            background-color: var(--color-background-white);
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            position: relative; /* Needed for close button positioning */
-            max-width: 600px; /* Max width for the content to hold 600px iframe + 2*20px padding */
-            width: 90%; /* Responsive width */
-            box-sizing: border-box; /* Include padding in width */
-        }
-
-        .modal-close-btn {
-            color: var(--brand-heading);
-            font-size: 30px;
-            font-weight: bold;
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            cursor: pointer;
-            transition: color 0.2s ease;
-        }
-
-        .modal-close-btn:hover,
-        .modal-close-btn:focus {
-            color: var(--color-text-subtle);
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .modal-iframe {
-            width: 100%; /* Fill the modal content area */
-            height: 400px; /* Updated height */
-            border: none;
-            display: block; /* Remove extra space below iframe */
-            margin: 0; /* Remove default iframe margin */
-            max-width: 600px; /* Set max width for the iframe */
-            margin-left: auto; /* Center iframe horizontally within modal-content */
-            margin-right: auto; /* Center iframe horizontally within modal-content */
-        }
-        .copyright-section {
-            width: 100%;
-            text-align: left;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .copyright-section p {
-            margin: 0;
-            color: #a0a0a0;
-        }
-
-        /* Responsive adjustments for footer */
-        @media (max-width: 768px) {
-            .footer-content {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-            .footer-col {
-                min-width: unset;
-                width: 100%;
-            }
-            .footer-col-left {
-                min-width: unset;
-                width: 100%;
-            }
-            .social-icons {
-                justify-content: center;
-            }
-            .copyright-section {
-                text-align: center;
-            }
-        }
-        @media (max-width: 480px) {
-            .hero-title { font-size: 36px; }
-            .hero-subtitle { font-size: 17px; }
-            .section-title { font-size: 32px; }
-            .pricing-card { padding: 20px; }
-            .pricing-card .card-title { font-size: 22px; }
-            .price { font-size: 38px; }
-            .inclusions-list.multi-column { grid-template-columns: 1fr; }
-            .multi-year-options label { padding: 6px 10px; font-size: 13px; }
-            .cta-button { padding: 14px; font-size: 15px; }
-            /* Adjust modal for very small screens if necessary */
-            .modal-content {
-                width: 95%; /* Make modal content even narrower if needed */
-                padding: 15px;
-            }
-            .modal-close-btn {
-                right: 15px;
-            }
-            .modal-iframe {
-                height: 350px; /* Adjust iframe height for very small screens if it overflows */
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../styles/main.css">
 </head>
 <body>
 
@@ -929,7 +64,7 @@
             <div class="container">
                 <h1 class="hero-title">Unlock More with Mescius Bundles</h1>
                 <p class="hero-subtitle">Discover powerful tool suites and flexible licensing options designed to accelerate your development and maximize value for your team.</p>
-                <a href="#popular-bundles-section" class="hero-cta-button">Explore Bundles <i class="fas fa-arrow-down" style="margin-left: 8px;"></i></a>
+                <a href="#popular-bundles-section" class="hero-cta-button">Explore Bundles <i class="fas fa-arrow-down"></i></a>
             </div>
         </section>
 
@@ -940,15 +75,15 @@
                     <p class="section-subtitle">Our most common bundles for building powerful internal applications.</p>
                 </div>
                 <div class="pricing-grid">
-                    <div class="pricing-card" data-product-id="285847" data-base-price="2772" data-list-price="4265" id="card-net">
+                    <div class="bundle-card" data-product-id="285847" data-base-price="2772" data-list-price="4265" id="card-net">
                         <div class="card-tag net-tag">.NET Suite</div>
                         <h3 class="card-title">.NET Professional Suite</h3>
                         <p class="card-subtitle">The complete toolkit for professional .NET desktop and web developers.</p>
                         <p class="price" id="price-net">
-                            €3,491<span class="price-term">per developer / year</span>
+                            €2,772<span class="price-term">per developer / year</span>
                             <span class="discount-per-dev"></span> 
                         </p>
-                        <div class="savings-badge" id="savings-net">You Save €774</div>
+                        <div class="savings-badge" id="savings-net">You Save €1,493</div>
                         <ul class="inclusions-list">
                             <li data-original-price="1385"><span>ComponentOne Studio</span><span>€1,385</span></li>
                             <li data-original-price="0"><span>Wijmo Enterprise</span><span>€0,00</span></li>
@@ -980,7 +115,7 @@
                         </div>
                         <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285847" class="cta-button" id="cta-net">Buy Now</a>
                     </div>
-                    <div class="pricing-card" data-product-id="285849" data-base-price="1203" data-list-price="1850" id="card-js">
+                    <div class="bundle-card" data-product-id="285849" data-base-price="1203" data-list-price="1850" id="card-js">
                         <div class="card-tag js-tag">Web Excel Apps</div>
                         <h3 class="card-title">SpreadJS+Documents</h3>
                         <p class="card-subtitle">The essential toolkit for web-based financial reporting and spreadsheet apps.</p>
@@ -1018,7 +153,7 @@
                         </div>
                         <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285849" class="cta-button" id="cta-js">Buy Now</a>
                     </div>
-                    <div class="pricing-card" data-product-id="285851" data-base-price="1508" data-list-price="2320" id="card-desktop">
+                    <div class="bundle-card" data-product-id="285851" data-base-price="1508" data-list-price="2320" id="card-desktop">
                         <div class="card-tag net-tag">Desktop Excel Apps</div>
                         <h3 class="card-title">Spread.NET+Documents</h3>
                         <p class="card-subtitle">The essential toolkit for .NET desktop financial reporting and spreadsheet apps.</p>
@@ -1056,7 +191,7 @@
                         </div>
                         <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285851" class="cta-button" id="cta-desktop">Buy Now</a>
                     </div>
-                    <div class="pricing-card" data-product-id="285868" data-base-price="1649" data-list-price="2870" id="card-analytics">
+                    <div class="bundle-card" data-product-id="285868" data-base-price="1649" data-list-price="2870" id="card-analytics">
                         <div class="card-tag reporting-tag">Reporting</div>
                         <h3 class="card-title">Real-Time Analytics & Reporting</h3>
                         <p class="card-subtitle">A powerful suite for embedding analytics and reporting into your .NET applications.</p>
@@ -1094,7 +229,7 @@
                         </div>
                         <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285868" class="cta-button" id="cta-analytics">Buy Now</a>
                     </div>
-                    <div class="pricing-card" data-product-id="285867" data-base-price="1555" data-list-price="2410" id="card-autoreport">
+                    <div class="bundle-card" data-product-id="285867" data-base-price="1555" data-list-price="2410" id="card-autoreport">
                         <div class="card-tag ar-tag">Reporting & Docs</div>
                         <h3 class="card-title">Automated Reporting & Document Generation</h3>
                         <p class="card-subtitle">Generate complex reports and Excel documents on the server-side.</p>
@@ -1132,7 +267,7 @@
                         </div>
                         <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285867" class="cta-button" id="cta-autoreport">Buy Now</a>
                     </div>
-                    <div class="pricing-card" data-product-id="285848" data-base-price="2658" data-list-price="3415" id="card-blazor">
+                    <div class="bundle-card" data-product-id="285848" data-base-price="2658" data-list-price="3415" id="card-blazor">
                         <div class="card-tag blazor-tag">Blazor Suite</div>
                         <h3 class="card-title">Blazor Hybrid Power Pack</h3>
                         <p class="card-subtitle">Everything you need for building data-centric Blazor Hybrid applications.</p>
@@ -1182,8 +317,8 @@
                         <div class="card-tag ds-tag">General Purpose</div>
                         <h3 class="card-title">OEM & SaaS Distribution</h3>
                         <p class="card-subtitle">A general license for distributing any of our components in your commercial software.</p>
-                        <p class="price" style="font-size: 32px; padding-top: 10px;">Custom Pricing</p>
-                        <p class="price-term" style="min-height: 24px;"></p>
+                        <p class="price custom-pricing">Custom Pricing</p>
+                        <p class="price-term empty"></p>
                         <ul class="inclusions-list">
                             <li><span>General Redistribution Rights</span></li>
                             <li><span>For web, desktop, and mobile apps</span></li>
@@ -1198,13 +333,13 @@
                         <p class="price">€29,995<span class="price-term">per app / year</span></p>
                         <div class="savings-badge">You Save €6,830</div>
                         <ul class="inclusions-list multi-column">
-                            <li><span>1 SpreadJS Dev License</span><span style="font-size: 15px;">€925</span></li>
-                            <li><span>Single Domain</span><span style="font-size: 15px;">€11,605</span></li>
-                            <li><span>PivotTable Add-On</span><span style="font-size: 15px;">€7,799</span></li>
-                            <li><span>Designer Add-On</span><span style="font-size: 15px;">€3,899</span></li>
-                            <li><span>ReportSheet Add-On</span><span style="font-size: 15px;">€4,199</span></li>
-                            <li><span>GanttSheet Add-On</span><span style="font-size: 15px;">€4,199</span></li>
-                            <li><span>DataCharts Add-On</span><span style="font-size: 15px;">€4,199</span></li>
+                            <li><span>1 SpreadJS Dev License</span><span class="bundle-item-price">€925</span></li>
+                            <li><span>Single Domain</span><span class="bundle-item-price">€11,605</span></li>
+                            <li><span>PivotTable Add-On</span><span class="bundle-item-price">€7,799</span></li>
+                            <li><span>Designer Add-On</span><span class="bundle-item-price">€3,899</span></li>
+                            <li><span>ReportSheet Add-On</span><span class="bundle-item-price">€4,199</span></li>
+                            <li><span>GanttSheet Add-On</span><span class="bundle-item-price">€4,199</span></li>
+                            <li><span>DataCharts Add-On</span><span class="bundle-item-price">€4,199</span></li>
                             <li class="total-value"><span>Total List Value:</span> <span><del>€36,825</del></span></li>
                         </ul>
                         <a href="mailto:eu.sales@mescius.com?subject=Inquiry%20about%20SpreadJS%20SaaS%20%26%20OEM%20Edition" class="cta-button contact-sales">Contact for OEM Quote</a>
@@ -1220,8 +355,8 @@
                         <div class="card-tag ds-tag">For Core Teams</div>
                         <h3 class="card-title">Small Team Universal <br>(1-5)</h3>
                         <p class="card-subtitle">Full access to all products for teams of up to 5 developers.</p>
-                        <p class="price" style="font-size: 32px; padding-top: 10px;">Custom Pricing</p>
-                        <p class="price-term" style="min-height: 24px;"></p>
+                        <p class="price custom-pricing">Custom Pricing</p>
+                        <p class="price-term empty"></p>
                         <ul class="inclusions-list">
                             <li><span>All .NET & JavaScript Products</span></li>
                             <li><span>All Reporting & Document APIs</span></li>
@@ -1233,8 +368,8 @@
                         <div class="card-tag ds-tag">For Growing Businesses</div>
                         <h3 class="card-title">Business Universal <br>(5-10)</h3>
                         <p class="card-subtitle">The best value for growing teams that need the full toolset.</p>
-                        <p class="price" style="font-size: 32px; padding-top: 10px;">Custom Pricing</p>
-                        <p class="price-term" style="min-height: 24px;"></p>
+                        <p class="price custom-pricing">Custom Pricing</p>
+                        <p class="price-term empty"></p>
                         <ul class="inclusions-list">
                             <li><span>All Products Included</span></li>
                             <li><span>Up to 10 Developers</span></li>
@@ -1246,8 +381,8 @@
                         <div class="card-tag net-tag">For Large Organizations</div>
                         <h3 class="card-title">Enterprise Universal <br>(10+)</h3>
                         <p class="card-subtitle">A custom-built subscription for organizations with 10+ developers.</p>
-                        <p class="price" style="font-size: 32px; padding-top: 10px;">Custom Pricing</p>
-                        <p class="price-term" style="min-height: 24px;"></p>
+                        <p class="price custom-pricing">Custom Pricing</p>
+                        <p class="price-term empty"></p>
                         <ul class="inclusions-list">
                             <li><span>Company-wide Site License</span></li>
                             <li><span>Unlimited Deployments & End-Users</span></li>
@@ -1265,13 +400,12 @@
         <div class="container footer-content">
             <div class="footer-col footer-col-left">
                 <img src="https://cdn.mescius.io/umb/media/pujnxfci/mescuis-logo-horiz.svg" alt="Mescius Europe Logo" class="footer-logo">
-                <p class="footer-text">© 2025 Mescius Europe GmbH | All Rights Reserved</p>
                 <p class="footer-text">+49 211 87975544</p>
                 <p class="footer-text">All product and company names herein may be trademarks of their respective owners.</p>
             </div>
 
             <div class="footer-col">
-                <h4 class="footer-heading">COMPANY</h4>
+                <h4 class="footer-heading">Company</h4>
                 <ul class="footer-links">
                     <li><a href="https://www.mescius.eu/en/about" target="_blank">About</a></li>
                     <li><a href="https://www.mescius.eu/en/contact" target="_blank">Contact</a></li>
@@ -1282,17 +416,20 @@
             </div>
 
             <div class="footer-col">
-                <h4 class="footer-heading">FOLLOW US</h4>
+                <h4 class="footer-heading">Follow Us</h4>
                 <div class="social-icons">
                     <a href="https://www.facebook.com/MESCIUSinc" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://x.com/MESCIUS_inc/" target="_blank" class="social-icon" aria-label="X (formerly Twitter)"><i class="fab fa-x-twitter"></i></a>
                     <a href="https://www.linkedin.com/company/mescius-eu" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     <a href="https://www.youtube.com/@MESCIUSinc" target="_blank" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                 </div>
+                <button id="open-newsletter-modal" class="newsletter-signup-btn">
+                    <i class="fas fa-envelope"></i> Subscribe to Newsletter
+                </button>
             </div>
 
             <div class="footer-col">
-                <h4 class="footer-heading">LEGAL</h4>
+                <h4 class="footer-heading">Legal</h4>
                 <ul class="footer-links">
                     <li><a href="../cookie-policy/">Cookie Policy</a></li>
                     <li><a href="https://www.mescius.eu/en/legal/privacy-policy" target="_blank">Privacy Policy</a></li>
@@ -1309,9 +446,9 @@
     <div id="newsletter-modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-modal="true">
         <div class="modal-content">
             <span class="modal-close-btn" id="close-newsletter-modal" aria-label="Close newsletter signup">×</span>
-            <h4 id="modal-title" style="color: var(--brand-heading); margin-top: 0;">Subscribe to Our Newsletter</h4>
+            <h4 id="modal-title">Subscribe to Our Newsletter</h4>
             <p>Enter your details below to receive our latest updates:</p>
-            <iframe allowtransparency="true" scrolling="yes" style="width:100%; height:800px; filter: chroma(color='#FFFFFF'); border: 0;" frameborder="no" src="https://ea.sendcockpit.com/_s.php?&fid=54549&fpw=c56634faa8b744830aab22f73eabb0d3"></iframe>
+            <iframe allowtransparency="true" scrolling="yes" class="newsletter-iframe" frameborder="no" src="https://ea.sendcockpit.com/_s.php?&fid=54549&fpw=c56634faa8b744830aab22f73eabb0d3"></iframe>
         </div>
     </div>
     <script type="application/ld+json">
@@ -1490,343 +627,9 @@
       ]
     }
     </script>
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // --- Mobile Menu Toggle Logic ---
-        const menuToggle = document.getElementById('menu-toggle');
-        const mainNav = document.getElementById('main-nav');
-
-        if (menuToggle && mainNav) {
-            menuToggle.addEventListener('click', function() {
-                mainNav.classList.toggle('is-open');
-                menuToggle.classList.toggle('is-active');
-                this.setAttribute('aria-expanded', mainNav.classList.contains('is-open'));
-            });
-
-            mainNav.querySelectorAll('.nav-link').forEach(link => {
-                link.addEventListener('click', () => {
-                    mainNav.classList.remove('is-open');
-                    menuToggle.classList.remove('is-active');
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                });
-            });
-        }
-
-        // --- Smooth scroll for hero CTA button ---
-        const heroCtaButton = document.querySelector('.hero-cta-button');
-        if (heroCtaButton) {
-            heroCtaButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        }
-
-        // Helper function to get the correct accent color for a card based on its tags/IDs
-        const getCardAccentColor = (card) => {
-            if (card.classList.contains('highlight')) {
-                return 'var(--brand-net)';
-            } else if (card.classList.contains('highlight-blue')) {
-                return 'var(--brand-ds)';
-            } else if (card.querySelector('.net-tag')) {
-                return 'var(--brand-net)';
-            } else if (card.querySelector('.js-tag')) {
-                return 'var(--brand-spread)';
-            } else if (card.querySelector('.ar-tag') || card.querySelector('.reporting-tag')) {
-                return 'var(--brand-ar)';
-            } else if (card.querySelector('.ds-tag')) {
-                return 'var(--brand-ds)';
-            } else if (card.querySelector('.blazor-tag')) {
-                return '#512BD4';
-            }
-            return 'var(--brand-header)';
-        };
-
-        // Helper function for consistent currency formatting
-        const formatCurrency = (value) => {
-            return `€${Math.round(value).toLocaleString('de-DE')}`;
-        };
-
-        // --- Discount Calculator Logic ---
-        const discountCards = document.querySelectorAll('.pricing-card[data-base-price]');
-
-        discountCards.forEach(card => {
-            const cardId = card.id.replace('card-', '');
-            const productId = card.dataset.productId;
-            const basePrice = parseFloat(card.dataset.basePrice);
-            const listPrice = parseFloat(card.dataset.listPrice);
-            const quantityInput = card.querySelector('.quantity-input');
-            // Corrected name attribute selector for year radios
-            const yearRadios = card.querySelectorAll(`input[type="radio"][name="years-${cardId}"]`); 
-            const priceEl = card.querySelector(`#price-${cardId}`);
-            const savingsEl = card.querySelector(`#savings-${cardId}`);
-            const ctaButton = card.querySelector(`#cta-${cardId}`);
-
-            const priceSummaryContainer = card.querySelector(`#price-summary-${cardId}`);
-            const totalActualCostEl = priceSummaryContainer.querySelector('.total-actual-cost');
-            const totalPriceSubtleEl = priceSummaryContainer.querySelector('.total-price-subtle');
-            const discountPerDevEl = priceEl.querySelector('.discount-per-dev');
-
-            const totalListValueElement = card.querySelector(`#total-list-value-${cardId}`);
-            const inclusionItems = card.querySelectorAll('.inclusions-list li:not(.total-value)');
-
-            let previousVolumeDiscountPercentage = 0;
-            let previousYearsSelected = 1;
-            let previousQuantity = 1;
-
-            if (!quantityInput || !yearRadios.length || !priceEl || !ctaButton || !totalPriceSubtleEl || !totalListValueElement || !totalActualCostEl || !priceSummaryContainer || !discountPerDevEl) {
-                console.warn(`Missing elements for pricing card with product ID: ${productId}. Skipping calculator for this card.`);
-                return;
-            }
-
-            // Initialize original names and prices for inclusion items on first load
-            inclusionItems.forEach(item => {
-                const itemNameSpan = item.querySelector('span:first-child');
-                const itemPriceSpan = item.querySelector('span:last-child');
-                
-                // Store the original component name cleanly
-                item.dataset.originalName = itemNameSpan.textContent.trim();
-                
-                // Store the original single-unit price
-                if (!item.dataset.originalPrice) {
-                    item.dataset.originalPrice = parseFloat(itemPriceSpan.textContent.replace(/[^0-9,-]+/g, '').replace(',', '.'));
-                }
-            });
-
-
-            const recalculate = (isUserInteraction) => {
-                const quantity = parseInt(quantityInput.value) || 1;
-                const selectedYearRadio = card.querySelector(`input[type="radio"][name="years-${cardId}"]:checked`);
-                const years = parseInt(selectedYearRadio ? selectedYearRadio.value : '1');
-
-                let currentVolumeDiscountPercentage = 0;
-                if (quantity >= 10) {
-                    currentVolumeDiscountPercentage = 0.10;
-                } else if (quantity >= 5) {
-                    currentVolumeDiscountPercentage = 0.05;
-                }
-
-                let yearDiscount = 0;
-                if (years === 2) {
-                    yearDiscount = 0.10;
-                } else if (years === 3) {
-                    yearDiscount = 0.15;
-                }
-
-                const priceAfterVolumePerDev = basePrice * (1 - currentVolumeDiscountPercentage);
-                const finalPricePerDev = priceAfterVolumePerDev * (1 - yearDiscount);
-                
-                const discountPerDevAmount = basePrice - finalPricePerDev;
-                
-                const totalActualCost = finalPricePerDev * quantity;
-                const totalCurrentPriceForYears = totalActualCost * years; // Total cost includes both quantity and years
-                
-                // Calculate total list price for the current quantity and years
-                let currentTotalListPriceRaw = 0;
-                inclusionItems.forEach(item => {
-                    const originalItemPrice = parseFloat(item.dataset.originalPrice);
-                    if (!isNaN(originalItemPrice)) {
-                        currentTotalListPriceRaw += originalItemPrice;
-                    }
-                });
-                currentTotalListPriceRaw = currentTotalListPriceRaw * quantity * years; // Total list price also includes both quantity and years
-
-                const totalSavingsAmount = currentTotalListPriceRaw - totalCurrentPriceForYears;
-
-                priceEl.innerHTML = `${formatCurrency(finalPricePerDev)}<span class="price-term">per developer / year</span>`;
-                if (discountPerDevAmount > 0) {
-                    discountPerDevEl.textContent = `You save ${formatCurrency(discountPerDevAmount)} per dev!`;
-                    discountPerDevEl.style.display = 'block';
-                } else {
-                    discountPerDevEl.style.display = 'none';
-                }
-                priceEl.appendChild(discountPerDevEl); 
-
-                totalActualCostEl.innerHTML = `Total Cost: <strong>${formatCurrency(totalActualCost)}</strong> (for ${quantity} dev${quantity > 1 ? 's' : ''})`;
-                totalPriceSubtleEl.innerHTML = `Grand Total: <strong>${formatCurrency(totalCurrentPriceForYears)}</strong> (for ${years} year${years > 1 ? 's' : ''})`;
-                
-                if(savingsEl) {
-                    savingsEl.textContent = `You Save ${formatCurrency(totalSavingsAmount)}`;
-                }
-
-                // Update individual component names and prices
-                inclusionItems.forEach(item => {
-                    const originalItemName = item.dataset.originalName;
-                    const originalItemPrice = parseFloat(item.dataset.originalPrice);
-                    const itemNameSpan = item.querySelector('span:first-child');
-                    const itemPriceSpan = item.querySelector('span:last-child');
-
-                    if (isNaN(originalItemPrice) || originalItemPrice === 0) { 
-                        itemNameSpan.textContent = originalItemName; 
-                        itemPriceSpan.textContent = `€0,00`; 
-                    } else {
-                        // CRUCIAL: Multiplied price now also accounts for years
-                        const multipliedPrice = originalItemPrice * quantity * years; 
-                        
-                        // Update the text content of the name span with the multiplier
-                        if (quantity > 1) {
-                            itemNameSpan.textContent = `${quantity}x ${originalItemName}`;
-                        } else {
-                            itemNameSpan.textContent = originalItemName;
-                        }
-                        
-                        // Always update the price span with the calculated multiplied price
-                        itemPriceSpan.textContent = formatCurrency(multipliedPrice);
-                    }
-                });
-                // Update total list value with quantity and years
-                totalListValueElement.innerHTML = `<del>${formatCurrency(currentTotalListPriceRaw)}</del>`;
-
-
-                const volumeDiscountChanged = currentVolumeDiscountPercentage !== previousVolumeDiscountPercentage;
-                const yearsChanged = years !== previousYearsSelected;
-                
-                const quantityCrossedThreshold = (previousQuantity < 5 && quantity >= 5) ||
-                                                (previousQuantity >= 5 && quantity < 5) ||
-                                                (previousQuantity < 10 && quantity >= 10) ||
-                                                (previousQuantity >= 10 && quantity < 10);
-
-
-                if (isUserInteraction && (volumeDiscountChanged || yearsChanged || quantityCrossedThreshold || (discountPerDevAmount > 0 && priceEl.classList.contains('price-updated')))) {
-                    priceEl.classList.add('price-updated');
-                    discountPerDevEl.classList.add('price-updated');
-                    totalActualCostEl.classList.add('price-updated'); 
-                    totalPriceSubtleEl.classList.add('price-updated'); 
-                    totalListValueElement.classList.add('price-updated');
-                    if (savingsEl) savingsEl.classList.add('savings-updated');
-
-                    setTimeout(() => {
-                        priceEl.classList.remove('price-updated');
-                        discountPerDevEl.classList.remove('price-updated');
-                        totalActualCostEl.classList.remove('price-updated'); 
-                        totalPriceSubtleEl.classList.remove('price-updated'); 
-                        totalListValueElement.classList.remove('price-updated');
-                        if (savingsEl) savingsEl.classList.remove('savings-updated');
-                    }, 600); 
-                }
-                
-                previousVolumeDiscountPercentage = currentVolumeDiscountPercentage;
-                previousYearsSelected = years;
-                previousQuantity = quantity; 
-
-                // CORRECTED LOGIC FOR CONTACT SALES / BUY NOW BUTTON
-                if (years > 1) { // Only contact sales if term is greater than 1 year
-                    ctaButton.textContent = 'Contact Sales';
-                    const subject = encodeURIComponent(`Inquiry for ${years}-Year Subscription, ${quantity} Licenses: ${card.querySelector('.card-title').textContent.trim()} (Product ID: ${productId})`);
-                    ctaButton.href = `mailto:eu.sales@mescius.com?subject=${subject}`;
-                    ctaButton.classList.add('contact-sales'); 
-                    ctaButton.style.backgroundColor = getCardAccentColor(card); 
-                    ctaButton.style.color = 'white'; 
-                } else { // Otherwise, it's always "Buy Now" for 1-year term (regardless of quantity)
-                    ctaButton.textContent = 'Buy Now';
-                    const baseURL = 'https://checkout.mescius.eu/1878/purl-shop';
-                    const cartString = `cart=i${productId}`;
-                    const quantityString = `quantity_i${productId}=${quantity}`;
-                    ctaButton.href = `${baseURL}?${cartString}&${quantityString}`;
-                    ctaButton.classList.remove('contact-sales'); 
-
-                    // Set background color for 'Buy Now' buttons based on card type
-                    ctaButton.style.backgroundColor = getCardAccentColor(card);
-                    ctaButton.style.color = 'white'; 
-                }
-            };
-
-            // Event listeners
-            quantityInput.addEventListener('input', () => recalculate(true));
-            yearRadios.forEach(radio => radio.addEventListener('change', () => recalculate(true)));
-            
-            // Initial recalculation on page load
-            recalculate(false); 
-        });
-
-        // --- Mailto links for Custom Pricing Cards (non-calculator) ---
-        document.querySelectorAll('.pricing-card:not([data-base-price]) .cta-button').forEach(button => {
-            const card = button.closest('.pricing-card');
-            const cardTitle = card.querySelector('.card-title').textContent.trim();
-            const subject = encodeURIComponent(`Inquiry about ${cardTitle}`);
-            button.href = `mailto:eu.sales@mescius.com?subject=${subject}`;
-            
-            // Set background color for these buttons based on their highlight class or product tag
-            const cardAccentColor = getCardAccentColor(card);
-            button.style.backgroundColor = cardAccentColor;
-            button.style.color = 'white'; 
-        });
-
-        // Newsletter Modal Logic (Copied from index.html)
-        const newsletterModal = document.getElementById('newsletter-modal');
-        const openNewsletterModalBtn = document.getElementById('open-newsletter-modal');
-        const closeNewsletterModalBtn = document.getElementById('close-newsletter-modal');
-
-        if (openNewsletterModalBtn && newsletterModal && closeNewsletterModalBtn) {
-            openNewsletterModalBtn.addEventListener('click', () => {
-                newsletterModal.style.display = 'flex'; // Use 'flex' to enable centering
-                document.body.style.overflow = 'hidden'; // Prevent scrolling background
-            });
-
-            closeNewsletterModalBtn.addEventListener('click', () => {
-                newsletterModal.style.display = 'none';
-                document.body.style.overflow = ''; // Restore scrolling
-            });
-
-            // Close modal if user clicks outside of modal content
-            window.addEventListener('click', (event) => {
-                if (event.target === newsletterModal) {
-                    newsletterModal.style.display = 'none';
-                    document.body.style.overflow = ''; // Restore scrolling
-                }
-            });
-
-            // Close modal with Escape key
-            document.addEventListener('keydown', (event) => {
-                if (event.key === 'Escape' && newsletterModal.style.display === 'flex') {
-                    newsletterModal.style.display = 'none';
-                    document.body.style.overflow = ''; // Restore scrolling
-                }
-            });
-        }
-
-        /**
-         * Directory Index Fallback Handler for S3/CloudFront
-         * S3/CloudFront doesn't automatically serve index.html for directories
-         */
-        function handleDirectoryIndexFallback() {
-            // Immediately redirect directory URLs to include index.html for S3/CloudFront
-            const currentPath = window.location.pathname;
-            
-            // If current URL ends with / and we're not on the root, redirect to index.html
-            if (currentPath.endsWith('/') && currentPath !== '/') {
-                window.location.href = window.location.protocol + '//' + window.location.host + currentPath + 'index.html';
-                return;
-            }
-            
-            // Add click handlers to navigation and blueprint links
-            const navigationLinks = document.querySelectorAll('a[href$="/"]');
-            
-            navigationLinks.forEach(link => {
-                const href = link.getAttribute('href');
-                
-                // Skip external links, anchors, and root path
-                if (href.startsWith('http') || href.startsWith('#') || href === '/' || href === './') return;
-                
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetPath = this.getAttribute('href');
-                    
-                    // For S3/CloudFront, always append index.html to directory URLs
-                    window.location.href = targetPath + 'index.html';
-                });
-            });
-        }
-
-        // Initialize the fallback handler
-        handleDirectoryIndexFallback();
-    });
-    </script>
+    <script src="../scripts/main.js"></script>
 </body>
 </html>
+
+
+

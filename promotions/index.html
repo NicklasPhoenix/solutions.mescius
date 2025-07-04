@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Cookiebot Banner Script -->
@@ -19,8 +19,6 @@
                 <a href="../#case-studies" class="nav-link">Case Studies</a>
                 <a href="../pricing/" class="nav-link">Pricing</a>
                 <a href="../bundles/" class="nav-link">Bundles</a>
-                <a href="../promotions/" class="nav-link active">Promotions</a>
-                <a href="../benchmarks/" class="nav-link">Benchmarks</a>
             </nav>
         </div>
     </header>
@@ -37,7 +35,7 @@
             <div class="promo-grid">
 
                 <div class="promo-card">
-                    <div class="promo-highlight" style="background-color: var(--brand-net);">
+                    <div class="promo-highlight net-brand">
                         <p class="promo-save-title">LIMITED TIME</p>
                         <h3 class="promo-save-amount">40% OFF</h3>
                         <p class="promo-save-percentage">To Modernize Your Apps</p>
@@ -56,7 +54,7 @@
                 </div>
 
                 <div class="promo-card">
-                    <div class="promo-highlight" style="background-color: var(--brand-ds);">
+                    <div class="promo-highlight ds-brand">
                         <p class="promo-save-title">SWITCH & SAVE</p>
                         <h3 class="promo-save-amount">€500</h3>
                         <p class="promo-save-percentage">Trade-In Credit</p>
@@ -70,12 +68,12 @@
                             <li>Benefit from our dedicated expert support</li>
                             <li>Future-proof your applications with a trusted partner</li>
                         </ul>
-                        <a href="#" class="promo-cta" style="background-color: var(--brand-ds);">Request Upgrade Offer</a>
+                        <a href="#" class="promo-cta ds-brand">Request Upgrade Offer</a>
                     </div>
                 </div>
 
                 <div class="promo-card">
-                    <div class="promo-highlight" style="background-color: var(--brand-js);">
+                    <div class="promo-highlight js-brand">
                         <p class="promo-save-title">NEW PROJECT</p>
                         <h3 class="promo-save-amount">Free</h3>
                         <p class="promo-save-percentage">With Team Pack Purchase</p>
@@ -89,7 +87,7 @@
                             <li>Ensure best-practice implementation from day one</li>
                             <li>Maximize your team's productivity and ROI</li>
                         </ul>
-                        <a href="../pricing/" class="promo-cta" style="background-color: var(--brand-js);">Learn More</a>
+                        <a href="../pricing/" class="promo-cta js-brand">Learn More</a>
                     </div>
                 </div>
 
@@ -98,16 +96,58 @@
     </main>
 
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Mescius Europe GmbH | All Rights Reserved</p>
+        <div class="container footer-content">
+            <div class="footer-col footer-col-left">
+                <img src="https://cdn.mescius.io/umb/media/pujnxfci/mescuis-logo-horiz.svg" alt="Mescius Europe Logo" class="footer-logo">
+                <p class="footer-text">+49 211 87975544</p>
+                <p class="footer-text">All product and company names herein may be trademarks of their respective owners.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">Company</h4>
+                <ul class="footer-links">
+                    <li><a href="https://www.mescius.eu/en/about" target="_blank">About</a></li>
+                    <li><a href="https://www.mescius.eu/en/contact" target="_blank">Contact</a></li>
+                    <li><a href="https://developer.mescius.com/about/media-center" target="_blank">Media Center</a></li>
+                    <li><a href="https://www.mescius.eu/en/legal.html" target="_blank">Legal Page</a></li>
+                    <li><a href="https://www.mescius.eu/en/legal/eula" target="_blank">EULA</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">Follow Us</h4>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/MESCIUSinc" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/MESCIUS_inc/" target="_blank" class="social-icon" aria-label="X (formerly Twitter)"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://www.linkedin.com/company/mescius-eu" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.youtube.com/@MESCIUSinc" target="_blank" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+                <button id="open-newsletter-modal" class="newsletter-signup-btn">
+                    <i class="fas fa-envelope"></i> Subscribe to Newsletter
+                </button>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="../cookie-policy/">Cookie Policy</a></li>
+                    <li><a href="https://www.mescius.eu/en/legal/privacy-policy" target="_blank">Privacy Policy</a></li>
+                    <li><a href="https://www.mescius.eu/en/legal.html" target="_blank">Terms of Use</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="container copyright-section">
+            <p>© 2025 Mescius Europe GmbH | All Rights Reserved</p>
         </div>
     </footer>
 
-    <!-- Cookie Declaration with styling wrapper -->
-    <div class="cookie-declaration-wrapper">
-        <div class="container">
-            <h2>Cookie Policy</h2>
-            <script id="CookieDeclaration" src="https://consent.cookiebot.com/81408810-9aa2-4043-920a-cf2e5c5d40f0/cd.js" type="text/javascript" async></script>
+    <div id="newsletter-modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+        <div class="modal-content">
+            <span class="modal-close-btn" id="close-newsletter-modal" aria-label="Close newsletter signup">×</span>
+            <h4 id="modal-title">Subscribe to Our Newsletter</h4>
+            <p>Enter your details below to receive our latest updates:</p>
+            <iframe allowtransparency="true" scrolling="yes" class="newsletter-iframe" frameborder="no" src="https://ea.sendcockpit.com/_s.php?&fid=54549&fpw=c56634faa8b744830aab22f73eabb0d3"></iframe>
         </div>
     </div>
 
