@@ -63,6 +63,24 @@ body {
     color: var(--brand-body); 
     line-height: 1.6;
 }
+
+/* General hyperlink styling */
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--brand-heading);
+    text-decoration: underline;
+}
+
+a:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
 .container { 
     max-width: 1280px; 
     margin: 0 auto; 
