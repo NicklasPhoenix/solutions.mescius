@@ -1185,8 +1185,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 body.classList.add('theme-ds');
                 break;
         }
-        
-        console.log(`Applied ${detectedProduct} theme to blueprint page`);
     };
     
     // Apply theming on page load
