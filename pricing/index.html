@@ -90,13 +90,26 @@
                         <button class="filter-btn" data-filter="js" role="tab" aria-selected="false" aria-controls="product-grid">JavaScript</button>
                     </div>
                 </div>
+                <div class="filter-set" data-filter-type="product">
+                    <p class="filter-set-label">Filter by Product Family:</p>
+                    <div class="filter-pills">
+                        <button class="filter-btn is-active" data-filter="all" role="tab" aria-selected="true" aria-controls="product-grid">All Products</button>
+                        <button class="filter-btn" data-filter="componentone" role="tab" aria-selected="false" aria-controls="product-grid">ComponentOne</button>
+                        <button class="filter-btn" data-filter="spreadjs" role="tab" aria-selected="false" aria-controls="product-grid">SpreadJS</button>
+                        <button class="filter-btn" data-filter="spread-net" role="tab" aria-selected="false" aria-controls="product-grid">Spread.NET</button>
+                        <button class="filter-btn" data-filter="wijmo" role="tab" aria-selected="false" aria-controls="product-grid">Wijmo</button>
+                        <button class="filter-btn" data-filter="activereports-js" role="tab" aria-selected="false" aria-controls="product-grid">ActiveReportsJS</button>
+                        <button class="filter-btn" data-filter="activereports-net" role="tab" aria-selected="false" aria-controls="product-grid">ActiveReports.NET</button>
+                        <button class="filter-btn" data-filter="document-solutions" role="tab" aria-selected="false" aria-controls="product-grid">Document Solutions</button>
+                    </div>
+                </div>
             </div>
 
             <div class="applied-filters-container" id="applied-filters-container" role="status" aria-live="polite">
             </div>
 
             <div id="product-grid">
-                <article class="product-pricing-section product-c1" data-platform="net">
+                <article class="product-pricing-section product-c1" data-platform="net" data-product-family="componentone">
                     <div class="product-header">
                         <h2>ComponentOne</h2>
                         <span class="product-info-trigger" role="button" aria-label="More information about ComponentOne"
@@ -199,7 +212,7 @@
                     </div>
                 </article>
 
-                <article class="product-pricing-section product-spread" data-platform="js">
+                <article class="product-pricing-section product-spread" data-platform="js" data-product-family="spreadjs">
                     <div class="product-header">
                         <h2>SpreadJS</h2>
                         <span class="product-info-trigger" role="button" aria-label="More information about SpreadJS"
@@ -345,7 +358,7 @@
                     </div>
                 </article>
 
-                <article class="product-pricing-section product-spread" data-platform="net">
+                <article class="product-pricing-section product-spread" data-platform="net" data-product-family="spread-net">
                     <div class="product-header">
                         <h2>Spread.NET</h2>
                         <span class="product-info-trigger" role="button" aria-label="More information about Spread.NET"
@@ -401,7 +414,7 @@
                     </div>
                 </article>
 
-                <article class="product-pricing-section product-wijmo" data-platform="js">
+                <article class="product-pricing-section product-wijmo" data-platform="js" data-product-family="wijmo">
                     <div class="product-header">
                         <h2>Wijmo</h2>
                         <span class="product-info-trigger" role="button" aria-label="More information about Wijmo"
@@ -465,7 +478,7 @@
                     </div>
                 </article>
 
-                <article class="product-pricing-section product-ar" data-platform="js" id="activereportsjs">
+                <article class="product-pricing-section product-ar" data-platform="js" data-product-family="activereports-js" id="activereportsjs">
                     <div class="product-header">
                         <h2>ActiveReportsJS</h2>
                         <span class="product-info-trigger" role="button" aria-label="More information about ActiveReportsJS"
@@ -548,7 +561,7 @@
                     </div>
                 </article>
 
-                <article class="product-pricing-section product-ar" data-platform="net">
+                <article class="product-pricing-section product-ar" data-platform="net" data-product-family="activereports-net">
                     <div class="product-header">
                         <h2>ActiveReports.NET</h2>
                         <span class="product-info-trigger" role="button" aria-label="More information about ActiveReports.NET"
@@ -612,7 +625,7 @@
                     </div>
                 </article>
 
-                <article class="product-pricing-section product-ds" data-platform="net" id="documents">
+                <article class="product-pricing-section product-ds" data-platform="net" data-product-family="document-solutions" id="documents">
                     <div class="product-header">
                         <h2>Document Solutions</h2>
                         <span class="product-info-trigger" role="button" aria-label="More information about Document Solutions"

@@ -2514,7 +2514,7 @@ body {
 /* Price Cards */
 .price-card {
     background: var(--color-background-white);
-    border: 1px solid #f1f5f9; /* Subtle light gray border for definition */
+    border: 1px solid #e2e8f0; /* Light grey border for better definition */
     border-radius: 16px;
     padding: 32px;
     text-align: center;
@@ -2525,7 +2525,7 @@ body {
     flex-direction: column;
     overflow: hidden;
     background: linear-gradient(135deg, #ffffff 0%, #fafbfc 100%);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02); /* Very subtle shadow */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04); /* Subtle but visible shadow */
 }
 
 .price-card::before {

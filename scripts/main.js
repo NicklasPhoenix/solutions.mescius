@@ -370,14 +370,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // Pricing page state
     let cart = JSON.parse(localStorage.getItem('mesciusCart')) || [];
     const currentFilters = {
-        platform: 'all'
+        platform: 'all',
+        product: 'all'
     };
 
     // Map data-filter values to human-readable labels for chips
     const filterLabels = {
         'all': 'All Products',
         'net': '.NET',
-        'js': 'JavaScript'
+        'js': 'JavaScript',
+        'componentone': 'ComponentOne',
+        'spreadjs': 'SpreadJS',
+        'spread-net': 'Spread.NET',
+        'wijmo': 'Wijmo',
+        'activereports-js': 'ActiveReportsJS',
+        'activereports-net': 'ActiveReports.NET',
+        'document-solutions': 'Document Solutions'
     };
 
     // Cart logic functions
@@ -585,8 +593,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Pricing page filtering logic
     const renderFilterChips = () => {
-        if (!appliedFiltersContainer) return;
-        appliedFiltersContainer.innerHTML = '';
+        if (!pricingAppliedFiltersContainer) return;
+        pricingAppliedFiltersContainer.innerHTML = '';
 
         Object.entries(currentFilters).forEach(([filterType, filterValue]) => {
             if (filterValue !== 'all') {
@@ -596,18 +604,34 @@ document.addEventListener('DOMContentLoaded', () => {
                     ${filterLabels[filterValue] || filterValue}
                     <button class="chip-remove-btn" data-filter-type="${filterType}" aria-label="Remove ${filterLabels[filterValue] || filterValue} filter">×</button>
                 `;
-                appliedFiltersContainer.appendChild(chip);
+                pricingAppliedFiltersContainer.appendChild(chip);
             }
         });
 
-        appliedFiltersContainer.addEventListener('click', (e) => {
-            if (e.target.matches('.chip-remove-btn')) {
+        // Remove existing event listeners to prevent duplicates
+        const existingChips = pricingAppliedFiltersContainer.querySelectorAll('.chip-remove-btn');
+        existingChips.forEach(chip => {
+            chip.addEventListener('click', (e) => {
                 const filterType = e.target.dataset.filterType;
                 currentFilters[filterType] = 'all';
                 
-                const correspondingBtn = document.querySelector(`[data-filter-group="${filterType}"][data-filter="all"]`);
-                if (correspondingBtn) correspondingBtn.click();
-            }
+                // Reset the corresponding filter button to "all"
+                const filterSet = document.querySelector(`[data-filter-type="${filterType}"]`);
+                if (filterSet) {
+                    filterSet.querySelectorAll('.filter-btn').forEach(btn => {
+                        btn.classList.remove('is-active');
+                        btn.setAttribute('aria-selected', 'false');
+                    });
+                    const allBtn = filterSet.querySelector('[data-filter="all"]');
+                    if (allBtn) {
+                        allBtn.classList.add('is-active');
+                        allBtn.setAttribute('aria-selected', 'true');
+                    }
+                }
+                
+                applyFilters();
+                renderFilterChips();
+            });
         });
     };
 
@@ -635,7 +659,12 @@ document.addEventListener('DOMContentLoaded', () => {
         
         productSections.forEach(section => {
             const sectionPlatform = section.dataset.platform;
-            const shouldShow = currentFilters.platform === 'all' || currentFilters.platform === sectionPlatform;
+            const sectionProduct = section.dataset.productFamily;
+            
+            const platformMatch = currentFilters.platform === 'all' || currentFilters.platform === sectionPlatform;
+            const productMatch = currentFilters.product === 'all' || currentFilters.product === sectionProduct;
+            
+            const shouldShow = platformMatch && productMatch;
             section.style.display = shouldShow ? 'block' : 'none';
         });
     };
