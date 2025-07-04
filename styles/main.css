@@ -56,6 +56,7 @@
     --accent-color: var(--brand-net); /* Using .NET red as default accent to minimize FOUC */
 }
 
+
 body { 
     margin: 0; 
     font-family: 'Montserrat', sans-serif; /* Kept Montserrat as requested */
@@ -75,14 +76,18 @@ a {
     text-decoration: none;
     transition: color 0.2s ease;
 }
+
+
 a:hover {
     color: var(--brand-heading);
     text-decoration: underline;
 }
+
 a:focus {
     outline: 2px solid var(--color-primary);
     outline-offset: 2px;
 }
+
 
 /* --- Header: Clean, clickable, and visually clear --- */
 .header { 
