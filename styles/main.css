@@ -1534,10 +1534,6 @@ main {
     box-sizing: border-box; /* Include padding in width */
 }
 
-.modal-body {
-    /* Container for modal content */
-}
-
 /* Modal CTA Button Styling and Spacing */
 .modal-body .cta-button {
     display: block;
