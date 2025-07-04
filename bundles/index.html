@@ -89,8 +89,14 @@
                             <li data-original-price="0"><span>Wijmo Enterprise</span><span>€0,00</span></li>
                             <li data-original-price="1485"><span>ActiveReports.NET (Prof.)</span><span>€1,485</span></li>
                             <li data-original-price="1395"><span>Spread.NET</span><span>€1,395</span></li>
-                            <li class="total-value"><span>Total List Value:</span> <span id="total-list-value-net"><del>€4,265</del></span></li>
                         </ul>
+                        <div class="total-list-value-section">
+                            <div class="total-list-divider"></div>
+                            <div class="total-list-value">
+                                <span>Total List Value:</span> 
+                                <span id="total-list-value-net"><del>€4,265</del></span>
+                            </div>
+                        </div>
                         <div class="discount-calculator">
                             <div class="discount-option">
                                 <label for="quantity-net">Volume
@@ -98,7 +104,11 @@
                                             <span class="tooltip-text" id="tooltip-net-volume">5-9 licenses: 5% off<br>10+ licenses: 10% off</span>
                                         </span>
                                 </label>
-                                <input type="number" id="quantity-net" class="quantity-input" value="1" min="1" aria-label="Number of licenses for .NET Professional Suite">
+                                <div class="volume-control-wrapper">
+                                    <button type="button" class="quantity-btn" data-action="decrease" aria-label="Decrease quantity">−</button>
+                                    <input type="number" id="quantity-net" class="quantity-input" value="1" min="1" aria-label="Number of licenses for .NET Professional Suite">
+                                    <button type="button" class="quantity-btn" data-action="increase" aria-label="Increase quantity">+</button>
+                                </div>
                             </div>
                             <div class="discount-option">
                                 <label>Term</label>
@@ -127,8 +137,14 @@
                         <ul class="inclusions-list">
                             <li data-original-price="925"><span>SpreadJS</span><span>€925</span></li>
                             <li data-original-price="925"><span>Documents for Excel (JS)</span><span>€925</span></li>
-                            <li class="total-value"><span>Total List Price:</span> <span id="total-list-value-js"><del>€1,850</del></span></li>
                         </ul>
+                        <div class="total-list-value-section">
+                            <div class="total-list-divider"></div>
+                            <div class="total-list-value">
+                                <span>Total List Price:</span> 
+                                <span id="total-list-value-js"><del>€1,850</del></span>
+                            </div>
+                        </div>
                         <div class="discount-calculator">
                             <div class="discount-option">
                                 <label for="quantity-js">Volume
@@ -136,7 +152,11 @@
                                             <span class="tooltip-text" id="tooltip-js-volume">5-9 licenses: 5% off<br>10+ licenses: 10% off</span>
                                         </span>
                                 </label>
-                                <input type="number" id="quantity-js" class="quantity-input" value="1" min="1" aria-label="Number of licenses for SpreadJS + Documents">
+                                <div class="volume-control-wrapper">
+                                    <button type="button" class="quantity-btn" data-action="decrease" aria-label="Decrease quantity">−</button>
+                                    <input type="number" id="quantity-js" class="quantity-input" value="1" min="1" aria-label="Number of licenses for SpreadJS + Documents">
+                                    <button type="button" class="quantity-btn" data-action="increase" aria-label="Increase quantity">+</button>
+                                </div>
                             </div>
                             <div class="discount-option">
                                 <label>Term</label>
@@ -165,8 +185,14 @@
                         <ul class="inclusions-list">
                             <li data-original-price="1395"><span>Spread.NET</span><span>€1,395</span></li>
                             <li data-original-price="925"><span>Documents for Excel (.NET)</span><span>€925</span></li>
-                            <li class="total-value"><span>Total List Value:</span> <span id="total-list-value-desktop"><del>€2,320</del></span></li>
                         </ul>
+                        <div class="total-list-value-section">
+                            <div class="total-list-divider"></div>
+                            <div class="total-list-value">
+                                <span>Total List Value:</span> 
+                                <span id="total-list-value-desktop"><del>€2,320</del></span>
+                            </div>
+                        </div>
                         <div class="discount-calculator">
                             <div class="discount-option">
                                 <label for="quantity-desktop">Volume
@@ -174,7 +200,11 @@
                                             <span class="tooltip-text" id="tooltip-desktop-volume">5-9 licenses: 5% off<br>10+ licenses: 10% off</span>
                                         </span>
                                 </label>
-                                <input type="number" id="quantity-desktop" class="quantity-input" value="1" min="1" aria-label="Number of licenses for Spread.NET + Documents">
+                                <div class="volume-control-wrapper">
+                                    <button type="button" class="quantity-btn" data-action="decrease" aria-label="Decrease quantity">−</button>
+                                    <input type="number" id="quantity-desktop" class="quantity-input" value="1" min="1" aria-label="Number of licenses for Spread.NET + Documents">
+                                    <button type="button" class="quantity-btn" data-action="increase" aria-label="Increase quantity">+</button>
+                                </div>
                             </div>
                             <div class="discount-option">
                                 <label>Term</label>
@@ -203,8 +233,14 @@
                         <ul class="inclusions-list">
                             <li data-original-price="1485"><span>ActiveReportsJS Single Domain</span><span>€1,485</span></li>
                             <li data-original-price="1385"><span>Wijmo Enterprise</span><span>€1,385</span></li>
-                            <li class="total-value"><span>Total List Value:</span> <span id="total-list-value-analytics"><del>€2,870</del></span></li>
                         </ul>
+                        <div class="total-list-value-section">
+                            <div class="total-list-divider"></div>
+                            <div class="total-list-value">
+                                <span>Total List Value:</span> 
+                                <span id="total-list-value-analytics"><del>€2,870</del></span>
+                            </div>
+                        </div>
                         <div class="discount-calculator">
                             <div class="discount-option">
                                 <label for="quantity-analytics">Volume
@@ -212,7 +248,11 @@
                                             <span class="tooltip-text" id="tooltip-analytics-volume">5-9 licenses: 5% off<br>10+ licenses: 10% off</span>
                                         </span>
                                 </label>
-                                <input type="number" id="quantity-analytics" class="quantity-input" value="1" min="1" aria-label="Number of licenses for Real-Time Analytics & Reporting">
+                                <div class="volume-control-wrapper">
+                                    <button type="button" class="quantity-btn" data-action="decrease" aria-label="Decrease quantity">−</button>
+                                    <input type="number" id="quantity-analytics" class="quantity-input" value="1" min="1" aria-label="Number of licenses for Real-Time Analytics & Reporting">
+                                    <button type="button" class="quantity-btn" data-action="increase" aria-label="Increase quantity">+</button>
+                                </div>
                             </div>
                             <div class="discount-option">
                                 <label>Term</label>
@@ -241,8 +281,14 @@
                         <ul class="inclusions-list">
                             <li data-original-price="1485"><span>ActiveReports.NET Standard</span><span>€1,485</span></li>
                             <li data-original-price="925"><span>Documents for Excel (.NET)</span><span>€925</span></li>
-                            <li class="total-value"><span>Total List Value:</span> <span id="total-list-value-autoreport"><del>€2,410</del></span></li>
                         </ul>
+                        <div class="total-list-value-section">
+                            <div class="total-list-divider"></div>
+                            <div class="total-list-value">
+                                <span>Total List Value:</span> 
+                                <span id="total-list-value-autoreport"><del>€2,410</del></span>
+                            </div>
+                        </div>
                         <div class="discount-calculator">
                             <div class="discount-option">
                                 <label for="quantity-autoreport">Volume
@@ -250,7 +296,11 @@
                                             <span class="tooltip-text" id="tooltip-autoreport-volume">5-9 licenses: 5% off<br>10+ licenses: 10% off</span>
                                         </span>
                                 </label>
-                                <input type="number" id="quantity-autoreport" class="quantity-input" value="1" min="1" aria-label="Number of licenses for Automated Reporting & Document Generation">
+                                <div class="volume-control-wrapper">
+                                    <button type="button" class="quantity-btn" data-action="decrease" aria-label="Decrease quantity">−</button>
+                                    <input type="number" id="quantity-autoreport" class="quantity-input" value="1" min="1" aria-label="Number of licenses for Automated Reporting & Document Generation">
+                                    <button type="button" class="quantity-btn" data-action="increase" aria-label="Increase quantity">+</button>
+                                </div>
                             </div>
                             <div class="discount-option">
                                 <label>Term</label>
@@ -280,8 +330,14 @@
                             <li data-original-price="1385"><span>ComponentOne Studio</span><span>€1,385</span></li>
                             <li data-original-price="1105"><span>Wijmo Enterprise</span><span>€1,105</span></li>
                             <li data-original-price="925"><span>Documents for Excel (.NET)</span><span>€925</span></li>
-                            <li class="total-value"><span>Total List Value:</span> <span id="total-list-value-blazor"><del>€3,415</del></span></li>
                         </ul>
+                        <div class="total-list-value-section">
+                            <div class="total-list-divider"></div>
+                            <div class="total-list-value">
+                                <span>Total List Value:</span> 
+                                <span id="total-list-value-blazor"><del>€3,415</del></span>
+                            </div>
+                        </div>
                         <div class="discount-calculator">
                             <div class="discount-option">
                                 <label for="quantity-blazor">Volume
@@ -289,7 +345,11 @@
                                             <span class="tooltip-text" id="tooltip-blazor-volume">5-9 licenses: 5% off<br>10+ licenses: 10% off</span>
                                         </span>
                                 </label>
-                                <input type="number" id="quantity-blazor" class="quantity-input" value="1" min="1" aria-label="Number of licenses for Blazor Hybrid Power Pack">
+                                <div class="volume-control-wrapper">
+                                    <button type="button" class="quantity-btn" data-action="decrease" aria-label="Decrease quantity">−</button>
+                                    <input type="number" id="quantity-blazor" class="quantity-input" value="1" min="1" aria-label="Number of licenses for Blazor Hybrid Power Pack">
+                                    <button type="button" class="quantity-btn" data-action="increase" aria-label="Increase quantity">+</button>
+                                </div>
                             </div>
                             <div class="discount-option">
                                 <label>Term</label>

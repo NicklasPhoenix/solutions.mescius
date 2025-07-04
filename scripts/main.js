@@ -824,6 +824,33 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // Add stepper button functionality for volume control
+        const stepperButtons = card.querySelectorAll('.quantity-btn');
+        stepperButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const action = button.dataset.action;
+                const currentValue = parseInt(quantityInput.value) || 1;
+                
+                if (action === 'increase') {
+                    quantityInput.value = currentValue + 1;
+                } else if (action === 'decrease' && currentValue > 1) {
+                    quantityInput.value = currentValue - 1;
+                }
+                
+                // Update button states
+                const decreaseBtn = card.querySelector('.quantity-btn[data-action="decrease"]');
+                const newValue = parseInt(quantityInput.value);
+                decreaseBtn.disabled = newValue <= 1;
+                
+                // Trigger recalculation
+                recalculate(true);
+            });
+        });
+
+        // Update stepper button states initially
+        const decreaseBtn = card.querySelector('.quantity-btn[data-action="decrease"]');
+        decreaseBtn.disabled = parseInt(quantityInput.value) <= 1;
+
         const recalculate = (isUserInteraction) => {
             const quantity = parseInt(quantityInput.value) || 1;
             const selectedYearRadio = card.querySelector(`input[type="radio"][name="years-${cardId}"]:checked`);
@@ -932,7 +959,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     totalPriceSubtleEl.classList.remove('price-updated'); 
                     totalListValueElement.classList.remove('price-updated');
                     if (savingsEl) savingsEl.classList.remove('savings-updated');
-                }, 600); 
+                }, 300); // Reduced from 600ms to match new animation duration
             }
             
             previousVolumeDiscountPercentage = currentVolumeDiscountPercentage;
