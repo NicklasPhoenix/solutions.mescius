@@ -3636,3 +3636,26 @@ main {
 .case-study-card:hover .card-tag {
     opacity: 1 !important;
 }
+
+/* Force border-radius for recommended solution cards */
+.bundle-card,
+.bundle-card *,
+.recommended-bundle-section .bundle-card,
+.recommended-bundle-section .bundle-card * {
+    border-radius: 16px !important;
+}
+
+/* Override for specific elements that shouldn't be rounded */
+.bundle-card .bundle-header::after,
+.bundle-card .checkmark,
+.bundle-card .action-link {
+    border-radius: 0 !important;
+}
+
+.bundle-card .checkmark {
+    border-radius: 50% !important;
+}
+
+.bundle-card .action-link {
+    border-radius: 6px !important;
+}
