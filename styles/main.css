@@ -1,13 +1,13 @@
 /* --- Global Link Styling: Professional, visible, and accessible --- */
 a, a:visited {
     color: var(--brand-heading);
-    text-decoration: underline;
+    text-decoration: none;
     transition: color 0.2s;
     outline: none;
 }
 a:hover, a:focus {
     color: var(--color-primary);
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 /* Remove underline for nav links, buttons, and cards (handled by their own classes) */
@@ -27,7 +27,7 @@ a:hover, a:focus {
 .footer-links a:hover, .footer-links a:focus {
     color: #fff;
     opacity: 1;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 /* Remove underline from card-link, even on hover */
