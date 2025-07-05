@@ -2364,7 +2364,7 @@ main {
 .hero-subtitle a {
 	color: #fff;
 	/* or a lighter accent color of your choice */
-	text-decoration: underline;
+	text-decoration: NONE;
 	/* optional, for visibility */
 	font-weight: 500;
 	/* optional, for emphasis */
@@ -3037,7 +3037,7 @@ main {
 .hero-subtitle a {
 	color: #fff;
 	/* or a lighter accent color of your choice */
-	text-decoration: underline;
+	text-decoration: none;
 	/* optional, for visibility */
 	font-weight: 500;
 	/* optional, for emphasis */
@@ -3710,7 +3710,7 @@ main {
 .hero-subtitle a {
 	color: #fff;
 	/* or a lighter accent color of your choice */
-	text-decoration: underline;
+	text-decoration: none;
 	/* optional, for visibility */
 	font-weight: 500;
 	/* optional, for emphasis */
