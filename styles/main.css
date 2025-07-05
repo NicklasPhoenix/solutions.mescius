@@ -1264,7 +1264,7 @@ main {
     Footer Styles - Using Existing Color Scheme
     =============================================== */
 .footer {
-    background-color: var(--brand-header);
+    background-color: var(--color-primary); /* Use neutral professional color */
     color: #ffffff;
     padding: 60px 0 30px 0;
     margin-top: 80px;
