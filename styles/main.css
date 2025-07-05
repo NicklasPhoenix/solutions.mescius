@@ -1528,7 +1528,7 @@ main {
 .bundle-card {
     background: var(--color-background-white);
     border: 1px solid var(--color-border-light);
-    border-radius: 16px;
+    border-radius: 16px !important;
     padding: 0;
     position: relative;
     transition: all 0.3s ease;
