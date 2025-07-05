@@ -95,6 +95,8 @@ a:hover, a:focus {
     --color-header-nav-link-hover: #D0D5DD; /* Light gray for hover, clearly visible */
     --color-header-nav-link-active: #ffffff; /* White for active for clarity */
     
+    /* Blueprint accent color */
+    --accent-color: var(--brand-color); /* Using wijmo color as default accent */
 }
 
 body { 
