@@ -1088,49 +1088,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    /**
-     * Blueprint Link Handler (Production Fallback)
-     * Ensures blueprint cards work correctly on production servers
-     */
-    const blueprintCards = document.querySelectorAll('.case-study-card[href*="/blueprints/"]');
-    if (blueprintCards.length > 0) {
-        blueprintCards.forEach(card => {
-            card.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href && href.includes('/blueprints/') && !href.endsWith('.html')) {
-                    e.preventDefault();
-                    window.location.href = href;
-                }
-            });
-        });
-    }
-
-    /**
-     * Directory Index Fallback Handler for S3/CloudFront
-     * S3/CloudFront doesn't automatically serve index.html for directories
-     */
-    function handleDirectoryIndexFallback() {
-        const currentPath = window.location.pathname;
-        
-        if (currentPath.endsWith('/') && currentPath !== '/') {
-            window.location.href = window.location.protocol + '//' + window.location.host + currentPath + 'index.html';
-            return;
-        }
-        
-        const navigationLinks = document.querySelectorAll('a[href$="/"]');
-        
-        navigationLinks.forEach(link => {
-            const href = link.getAttribute('href');
-            
-            if (href.startsWith('http') || href.startsWith('#') || href === '/' || href === './') return;
-            
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetPath = this.getAttribute('href');
-                window.location.href = targetPath + 'index.html';
-            });
-        });
-    }
 
     // Initialize the fallback handler
     handleDirectoryIndexFallback();
