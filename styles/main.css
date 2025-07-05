@@ -1,3 +1,45 @@
+/* --- Global Link Styling: Professional, visible, and accessible --- */
+a, a:visited {
+    color: var(--brand-heading);
+    text-decoration: underline;
+    transition: color 0.2s;
+    outline: none;
+}
+a:hover, a:focus {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+/* Remove underline for nav links, buttons, and cards (handled by their own classes) */
+.nav-link,
+.cta-button,
+.case-study-card .card-link,
+.footer-links a,
+.newsletter-signup-btn {
+    text-decoration: none !important;
+}
+
+.footer-links a {
+    color: #fff;
+    opacity: 0.92;
+    transition: color 0.2s, opacity 0.2s;
+}
+.footer-links a:hover, .footer-links a:focus {
+    color: #fff;
+    opacity: 1;
+    text-decoration: underline;
+}
+
+.case-study-card .card-link {
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.case-study-card:hover .card-link {
+    color: var(--brand-heading);
+    text-decoration: none;
+}
 /* ===============================================
     COMPREHENSIVE MESCIUS SOLUTIONS STYLESHEET
     All necessary styles for consistent site-wide design
