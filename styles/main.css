@@ -146,6 +146,7 @@ main {
     max-width: 1280px; 
     margin: 0 auto; 
     padding: 0 24px; 
+    border-radius: 16px; /* Added border-radius for consistent design */
 }
 
 /* --- Header: Clean, clickable, and visually clear --- */
