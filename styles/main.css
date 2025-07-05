@@ -4147,6 +4147,40 @@ main {
     }
 }
 
+.accent-documents {
+  --accent-color: #5A7E9E;
+}
+.accent-bi {
+  --accent-color: #3B6BA5;
+}
+.accent-blazor {
+  --accent-color: #7B3FA0;
+}
+.accent-excel {
+  --accent-color: #217346;
+}
+.accent-financial {
+  --accent-color: #B76E00;
+}
+.accent-healthcare {
+  --accent-color: #D72660;
+}
+.accent-logistics {
+  --accent-color: #00838F;
+}
+.accent-dashboards {
+  --accent-color: #2E7D32;
+}
+.accent-regtech {
+  --accent-color: #5C2D91;
+}
+.accent-universal {
+  --accent-color: #1A237E;
+}
+.accent-oem {
+  --accent-color: #C62828;
+}
+
 /* Ensure card tags remain fully opaque on hover for readability */
 .case-study-card:hover .card-tag {
     opacity: 1 !important;
