@@ -99,6 +99,35 @@ a:hover, a:focus {
     --accent-color: var(--brand-wijmo); /* Using wijmo color as default accent */
 }
 
+/* Per-product accent color overrides */
+body.product-net {
+    --accent-color: var(--brand-net);
+}
+
+body.product-js {
+    --accent-color: var(--brand-js);
+}
+
+body.product-wijmo {
+    --accent-color: var(--brand-wijmo);
+}
+
+body.product-ds {
+    --accent-color: var(--brand-ds);
+}
+
+body.product-arjs, body.product-ar {
+    --accent-color: var(--brand-arjs);
+}
+
+body.product-spread {
+    --accent-color: var(--brand-spread);
+}
+
+body.product-c1 {
+    --accent-color: var(--brand-c1);
+}
+
 body { 
     margin: 0; 
     font-family: 'Montserrat', sans-serif; /* Kept Montserrat as requested */
