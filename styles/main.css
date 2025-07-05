@@ -924,20 +924,7 @@ main {
     transform: translateX(-50%) scaleX(1);
 }
 
-.section-subtitle { 
-    font-size: 19px; 
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center; 
-    gap: 25px; 
-    padding: 25px; 
-    margin-bottom: 30px; /* Reduced margin to make space for chips */
-    background-color: var(--color-background-white);
-    border: 1px solid var(--color-border-light);
-    border-radius: 16px; 
-    box-shadow: 0 6px 20px var(--color-shadow-medium); 
-}
+
 .filter-set {
     display: flex;
     align-items: center;
