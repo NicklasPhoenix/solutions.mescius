@@ -1580,36 +1580,8 @@ main {
 	--accent-color: #5a7e9e;
 }
 
-.accent-bi {
-	--accent-color: #3b6ba5;
-}
-
 .accent-blazor {
 	--accent-color: #7b3fa0;
-}
-
-.accent-excel {
-	--accent-color: #217346;
-}
-
-.accent-financial {
-	--accent-color: #b76e00;
-}
-
-.accent-healthcare {
-	--accent-color: #d72660;
-}
-
-.accent-logistics {
-	--accent-color: #00838f;
-}
-
-.accent-dashboards {
-	--accent-color: #2e7d32;
-}
-
-.accent-regtech {
-	--accent-color: #5c2d91;
 }
 
 .accent-universal {
