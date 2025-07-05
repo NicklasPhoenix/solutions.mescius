@@ -1590,6 +1590,7 @@ main {
     flex: 1;
     display: flex;
     flex-direction: column;
+    border-radius: 16px;
 }
 
 /* Bundle Content - Two Column Layout */
