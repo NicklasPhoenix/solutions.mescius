@@ -337,8 +337,22 @@ main {
     border: 1px solid var(--color-border-light);
     border-radius: 18px;
     box-shadow: 0 6px 24px var(--color-shadow-medium);
-    position: relative;
+    position: static;
+    top: auto;
+    z-index: 1;
     max-width: 100%;
+}
+
+@media (min-width: 900px) {
+  .filter-toolbar {
+    position: sticky;
+    top: 72px;
+    z-index: 20;
+    background: var(--brand-bg, #fff);
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.04);
+    margin-bottom: 2rem;
+    transition: box-shadow 0.2s;
+  }
 }
 
 @media (max-width: 1100px) {
