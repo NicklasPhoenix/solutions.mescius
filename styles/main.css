@@ -1591,7 +1591,8 @@ main {
     flex: 1;
     display: flex;
     flex-direction: column;
-    border-radius: 16px;
+    border-radius: 16px !important;
+    overflow: hidden;
 }
 
 /* Bundle Content - Two Column Layout */
