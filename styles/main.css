@@ -30,15 +30,16 @@ a:hover, a:focus {
     text-decoration: underline;
 }
 
+/* Remove underline from card-link, even on hover */
 .case-study-card .card-link {
     color: var(--color-primary);
     font-weight: 600;
-    text-decoration: none;
+    text-decoration: none !important;
     transition: color 0.2s;
 }
 .case-study-card:hover .card-link {
     color: var(--brand-heading);
-    text-decoration: none;
+    text-decoration: none !important;
 }
 /* ===============================================
     COMPREHENSIVE MESCIUS SOLUTIONS STYLESHEET
