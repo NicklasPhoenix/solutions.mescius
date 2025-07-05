@@ -169,9 +169,10 @@ main {
     box-shadow: none !important;
     transition: none !important;
 }
-.nav-link.active, .nav-link:hover { 
+.nav-link.active, .nav-link:hover {
     border-bottom-color: var(--color-header-nav-link-hover); /* Clear light gray underline on hover/active */
     color: var(--color-header-nav-link-hover); /* Text color changes for emphasis */
+    text-decoration: none !important;
 }
 
 /* Mobile Navigation (Hamburger) */
