@@ -1088,10 +1088,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-
-    // Initialize the fallback handler
-    handleDirectoryIndexFallback();
-
     // =========================================================
     // BLUEPRINT PAGES: DYNAMIC THEMING
     // =========================================================
