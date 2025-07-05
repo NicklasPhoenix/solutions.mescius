@@ -765,7 +765,7 @@ main {
 
 .hero a, .hero-subtitle a {
 	color: #fff;
-	text-decoration: underline;
+	text-decoration: NONE;
 	font-weight: 500;
 	transition: color 0.2s;
 }
