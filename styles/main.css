@@ -290,6 +290,18 @@ main {
     color: #fff;
     text-shadow: 0 1px 4px rgba(0,0,0,0.10);
 }
+
+.hero-subtitle a {
+    color: #ffe066;
+    text-decoration: underline;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.hero-subtitle a:hover, .hero-subtitle a:focus {
+    color: #fff;
+    text-decoration: none;
+}
 .hero-cta-button {
     display: inline-block;
     background: var(--brand-js);
@@ -358,6 +370,19 @@ main {
     box-shadow: none !important;
     padding: 0 !important;
     border-radius: 0 !important;
+    line-height: 1.6;
+}
+
+.section-subtitle a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.section-subtitle a:hover, .section-subtitle a:focus {
+    color: var(--accent-color);
+    text-decoration: none;
 }
 
 /* --- Filter Controls: Intuitive and visually responsive --- */
