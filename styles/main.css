@@ -430,7 +430,7 @@ main {
   .filter-toolbar {
     position: sticky;
     top: 72px;
-    z-index: 1 !important;
+    z-index: 100 !important;
     background: var(--brand-bg, #fff);
     box-shadow: 0 2px 8px 0 rgba(0,0,0,0.04);
     margin-bottom: 2rem;
