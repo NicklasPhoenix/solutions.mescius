@@ -275,8 +275,7 @@ main {
     padding: 100px 20px; 
     position: relative;
     overflow: hidden;
-    /* Ensure hero content is above the pseudo-element if z-index is used */
-    z-index: 1; /* Added to ensure content is above pseudo-element */
+    z-index: 100;
 }
 .hero::before { /* Subtle background pattern/texture */
     content: '';
@@ -429,7 +428,7 @@ main {
   .filter-toolbar {
     position: sticky;
     top: 72px;
-    z-index: 20;
+    z-index: 1 !important;
     background: var(--brand-bg, #fff);
     box-shadow: 0 2px 8px 0 rgba(0,0,0,0.04);
     margin-bottom: 2rem;
@@ -598,7 +597,7 @@ main {
     align-items: center;
     padding: 0 24px; /* Align with container padding */
     position: relative;
-    z-index: 2;
+    z-index: 1 !important;
     pointer-events: auto;
 }
 
