@@ -1,3 +1,50 @@
+// =============================
+// PRODUCT LOGO INJECTION
+// =============================
+document.addEventListener('DOMContentLoaded', function() {
+    // This map connects the data-attribute to the correct SVG file name.
+    const logoFileMap = {
+        'componentone': 'C1_prod_logo_full_2023',
+        'spreadjs': 'SP_prod_logo_full_2023',
+        'spread-net': 'SP_prod_logo_full_2023',
+        'wijmo': 'WJ_prod_logo_full_2023',
+        'activereports-js': 'AR_prod_logo_full_2023',
+        'activereports-net': 'AR_prod_logo_full_2023',
+        'document-solutions': 'DS_prod_logo_full_2023'
+    };
+
+    // Find all product sections that have a logo name.
+    const products = document.querySelectorAll('[data-logo-name]');
+
+    products.forEach(product => {
+        const logoName = product.dataset.logoName;
+        const header = product.querySelector('.product-header');
+
+        // Find the info button to get the proper title for the alt text.
+        const infoTrigger = product.querySelector('.product-info-trigger');
+        const altText = infoTrigger ? infoTrigger.dataset.title : 'Product Logo';
+
+        if (logoName && logoFileMap[logoName] && header) {
+            // 1. Create the link (<a>) element
+            const logoLink = document.createElement('a');
+            logoLink.href = infoTrigger && infoTrigger.dataset.productlink ? infoTrigger.dataset.productlink : '#'; // Link to the product page
+            logoLink.tabIndex = 0;
+            logoLink.setAttribute('aria-label', altText);
+
+            // 2. Create the image (<img>) element
+            const logoImg = document.createElement('img');
+            logoImg.className = 'product-logo';
+            logoImg.src = `../logos/${logoFileMap[logoName]}.svg`;
+            logoImg.alt = altText;
+
+            // 3. Put the image inside the link
+            logoLink.appendChild(logoImg);
+
+            // 4. Put the complete link into the header
+            header.prepend(logoLink);
+        }
+    });
+});
 // Comprehensive JavaScript for solutions.mescius.eu
 // Unified script for all pages: home, blueprints, pricing, bundles, cookie-policy
 

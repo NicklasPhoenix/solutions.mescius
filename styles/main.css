@@ -1,3 +1,20 @@
+/* Product header and logo styling */
+.product-header {
+    /* 1. Make the header a flex container */
+    display: flex;
+    /* 2. Vertically align the logo and text to the center */
+    align-items: center;
+    /* 3. Add a nice gap between the logo and the text */
+    gap: 15px;
+}
+
+.product-logo {
+    /* 4. Set the logo's height (adjust the value as needed) */
+    height: 32px;
+    /* 5. Let the width adjust automatically to maintain the aspect ratio */
+    width: auto;
+    display: block;
+}
 /* --- Global Link Styling: Professional, visible, and accessible --- */
 a, a:visited {
     color: var(--brand-heading);
