@@ -1,0 +1,386 @@
+/* ========================================================================
+   Global Styles & Variables
+   ======================================================================== */
+:root {
+    --primary-dark: #1a2632;
+    --secondary-dark: #2c3e50;
+    --primary-accent: #EF5350; /* Mescius Red */
+    --primary-blue: #007bff;
+    --light-gray: #f8f9fa;
+    --text-primary: #333;
+    --text-secondary: #555;
+    --white: #ffffff;
+    --border-color: #dee2e6;
+    --font-family: 'Montserrat', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--text-primary);
+    background-color: var(--white);
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ========================================================================
+   Header
+   ======================================================================== */
+.header {
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    height: 35px;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--primary-accent);
+}
+
+.nav-link.cta-contact {
+    background-color: var(--primary-accent);
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-link.cta-contact:hover {
+    background-color: #d32f2f;
+    color: var(--white);
+}
+
+.menu-toggle { display: none; } /* For later mobile use */
+
+
+/* ========================================================================
+   Hero Section
+   ======================================================================== */
+.hero-section {
+    background-color: var(--primary-dark);
+    color: var(--white);
+    padding: 8rem 0;
+    text-align: center;
+    background-image: linear-gradient(rgba(26, 38, 50, 0.95), rgba(26, 38, 50, 0.95)), url('https://www.mescius.com/images/backgrounds/blazor-background-v2.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    font-weight: 400;
+    max-width: 750px;
+    margin: 0 auto 2.5rem;
+    opacity: 0.9;
+}
+
+.hero-cta-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.hero-cta-button {
+    text-decoration: none;
+    padding: 1rem 2.5rem;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.hero-cta-button.primary {
+    background-color: var(--primary-accent);
+    color: var(--white);
+}
+
+.hero-cta-button.primary:hover {
+    background-color: #d32f2f;
+    transform: translateY(-3px);
+}
+
+.hero-cta-button.secondary {
+    background-color: transparent;
+    color: var(--white);
+    border-color: var(--white);
+}
+
+.hero-cta-button.secondary:hover {
+    background-color: var(--white);
+    color: var(--primary-dark);
+    transform: translateY(-3px);
+}
+
+.hero-cta-button i {
+    margin-left: 0.5rem;
+}
+
+/* ========================================================================
+   Pillars Section
+   ======================================================================== */
+.pillars-section {
+    padding: 5rem 0;
+    background-color: var(--light-gray);
+}
+
+.pillars-section .container {
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+.pillar {
+    flex-basis: 300px;
+}
+
+.pillar i {
+    font-size: 2.5rem;
+    color: var(--primary-accent);
+    margin-bottom: 1.5rem;
+}
+
+.pillar h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* ========================================================================
+   Ecosystem Section
+   ======================================================================== */
+.ecosystem-section {
+    padding: 6rem 0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.section-header p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.product-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tab-link {
+    padding: 1rem 2rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.tab-link:hover {
+    color: var(--text-primary);
+}
+
+.tab-link.active {
+    color: var(--primary-accent);
+}
+
+.tab-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-accent);
+}
+
+.tab-link i {
+    margin-right: 0.75rem;
+}
+
+.product-grid {
+    display: none; /* Hidden by default */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.product-grid.active {
+    display: grid; /* Shown when active */
+}
+
+.product-card {
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+.product-logo {
+    height: 40px;
+    margin-bottom: 1.5rem;
+}
+
+.product-card h4 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.product-card p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.product-card-link {
+    text-decoration: none;
+    color: var(--primary-blue);
+    font-weight: 600;
+}
+
+.product-card-link:hover {
+    text-decoration: underline;
+}
+
+/* ========================================================================
+   Solutions Teaser Section
+   ======================================================================== */
+.solutions-teaser-section {
+    padding: 6rem 0;
+    background-color: var(--secondary-dark);
+    color: var(--white);
+}
+
+.solutions-teaser-section .section-header p {
+    color: rgba(255,255,255,0.8);
+}
+
+.blueprint-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.blueprint-card {
+    background-color: var(--primary-dark);
+    padding: 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.blueprint-card:hover {
+    background-color: #384b5f;
+    transform: translateY(-5px);
+}
+
+.blueprint-card h4 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.blueprint-card p {
+    opacity: 0.8;
+    flex-grow: 1;
+    margin-bottom: 1.5rem;
+}
+
+.blueprint-card span {
+    font-weight: 600;
+    color: var(--primary-accent);
+}
+
+.blueprint-card span i {
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.blueprint-card:hover span i {
+    transform: translateX(5px);
+}
+
+
+/* ========================================================================
+   Responsive Design
+   ======================================================================== */
+@media (max-width: 992px) {
+    .hero-title { font-size: 2.8rem; }
+}
+
+@media (max-width: 768px) {
+    .main-nav { display: none; } /* Basic mobile menu handling */
+    .menu-toggle { display: block; } /* Show hamburger icon */
+
+    .hero-title { font-size: 2.2rem; }
+    .hero-section { padding: 6rem 0; }
+    .hero-cta-group { flex-direction: column; }
+    .pillars-section .container, .blueprint-cards { grid-template-columns: 1fr; }
+    .tab-link { font-size: 1rem; padding: 1rem; }
+}
