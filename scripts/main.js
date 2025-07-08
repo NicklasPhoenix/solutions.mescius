@@ -1,3 +1,19 @@
+// Inject product logos into .product-logo spans based on data-logo attribute
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.product-card[data-logo] .product-logo').forEach(function (el) {
+    var card = el.closest('.product-card');
+    var logo = card.getAttribute('data-logo');
+    if (logo) {
+      el.style.backgroundImage = 'url(\'logos/' + logo + '.svg\')';
+      el.style.backgroundSize = 'contain';
+      el.style.backgroundRepeat = 'no-repeat';
+      el.style.backgroundPosition = 'center';
+      el.style.display = 'inline-block';
+      el.style.width = '40px';
+      el.style.height = '40px';
+    }
+  });
+});
 // =============================
 // PRODUCT LOGO INJECTION
 // =============================

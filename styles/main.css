@@ -1,3 +1,104 @@
+/* === Unified Product Grid for Homepage === */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 36px;
+    margin: 48px 0 0 0;
+}
+
+.product-card {
+    background: var(--color-background-white);
+    border-radius: 18px;
+    box-shadow: 0 4px 18px var(--color-shadow-medium);
+    border: 1px solid var(--color-border-light);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 36px 28px 32px 28px;
+    transition: box-shadow 0.3s, transform 0.3s;
+    position: relative;
+    min-height: 320px;
+}
+.product-card:hover {
+    box-shadow: 0 12px 36px var(--color-shadow-strong);
+    transform: translateY(-6px) scale(1.02);
+    border-color: var(--accent-color, var(--color-primary));
+}
+.product-card .product-header {
+    width: 100%;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.product-card .product-logo {
+    height: 40px;
+    width: auto;
+    display: block;
+    flex-shrink: 0;
+}
+.product-card .product-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--brand-heading);
+    margin: 0;
+}
+.product-card .product-desc {
+    font-size: 15px;
+    color: var(--color-text-subtle);
+    margin: 0 0 18px 0;
+    line-height: 1.6;
+}
+.product-card .product-list {
+    font-size: 14px;
+    color: var(--brand-body);
+    margin: 0 0 18px 18px;
+    padding: 0 0 0 18px;
+    list-style: disc;
+}
+.product-card .product-link {
+    margin-top: auto;
+    font-weight: 600;
+    color: var(--accent-color, var(--color-primary));
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.2s;
+}
+.product-card .product-link:hover {
+    color: var(--brand-heading);
+    text-decoration: underline;
+}
+
+/* Platform accent borders */
+.product-card[data-platform="net"] {
+    border-top: 5px solid var(--brand-net);
+}
+.product-card[data-platform="js"] {
+    border-top: 5px solid var(--brand-js);
+}
+
+@media (max-width: 900px) {
+    .product-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+}
+@media (max-width: 600px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .product-card {
+        padding: 22px 12px 18px 12px;
+        min-height: 0;
+    }
+    .product-card .product-logo {
+        height: 32px;
+    }
+    .product-card .product-title {
+        font-size: 18px;
+    }
+}
 /* Product header and logo styling */
 .product-header {
     /* 1. Make the header a flex container */

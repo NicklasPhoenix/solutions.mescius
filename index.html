@@ -108,11 +108,12 @@
     <main class="product-overview-section">
         <div class="container">
             <h2 class="section-title">Our Product Families</h2>
-            <div id="product-grid">
-                <article class="product-pricing-section product-c1" data-platform="net" data-product-family="componentone" data-logo-name="componentone">
+            <div class="product-grid">
+                <!-- .NET Product Families -->
+                <div class="product-card" data-platform="net" data-logo="componentone">
                     <div class="product-header">
-                        <img src="logos/componentone.svg" alt="ComponentOne Logo" class="product-logo">
-                        <h3 class="product-title">ComponentOne</h3>
+                        <span class="product-logo"></span>
+                        <span class="product-title">ComponentOne</span>
                     </div>
                     <p class="product-desc">Comprehensive .NET UI controls for WinForms, WPF, Blazor, and ASP.NET. Build modern, high-performance business applications for desktop and web.</p>
                     <ul class="product-list">
@@ -121,11 +122,11 @@
                         <li>Fast, flexible, and feature-rich</li>
                     </ul>
                     <a href="solutions/#blueprints" class="product-link">See Use Cases</a>
-                </article>
-                <article class="product-pricing-section product-spreadnet" data-platform="net" data-product-family="spreadnet" data-logo-name="spreadnet">
+                </div>
+                <div class="product-card" data-platform="net" data-logo="spreadnet">
                     <div class="product-header">
-                        <img src="logos/spreadnet.svg" alt="Spread.NET Logo" class="product-logo">
-                        <h3 class="product-title">Spread.NET</h3>
+                        <span class="product-logo"></span>
+                        <span class="product-title">Spread.NET</span>
                     </div>
                     <p class="product-desc">The industry-leading spreadsheet solution for .NET. Deliver Excel-like experiences in your WinForms, WPF, and ASP.NET applications.</p>
                     <ul class="product-list">
@@ -134,11 +135,11 @@
                         <li>Enterprise-grade performance and compatibility</li>
                     </ul>
                     <a href="solutions/#blueprints" class="product-link">See Use Cases</a>
-                </article>
-                <article class="product-pricing-section product-activereportsnet" data-platform="net" data-product-family="activereportsnet" data-logo-name="activereportsnet">
+                </div>
+                <div class="product-card" data-platform="net" data-logo="activereportsnet">
                     <div class="product-header">
-                        <img src="logos/activereportsnet.svg" alt="ActiveReports.NET Logo" class="product-logo">
-                        <h3 class="product-title">ActiveReports.NET</h3>
+                        <span class="product-logo"></span>
+                        <span class="product-title">ActiveReports.NET</span>
                     </div>
                     <p class="product-desc">Flexible .NET reporting tools for developers. Create, view, and export interactive reports for web and desktop apps.</p>
                     <ul class="product-list">
@@ -147,11 +148,11 @@
                         <li>PDF, Excel, Word, HTML export</li>
                     </ul>
                     <a href="solutions/#blueprints" class="product-link">See Use Cases</a>
-                </article>
-                <article class="product-pricing-section product-documentsolutionsnet" data-platform="net" data-product-family="documentsolutionsnet" data-logo-name="documentsolutionsnet">
+                </div>
+                <div class="product-card" data-platform="net" data-logo="documentsolutionsnet">
                     <div class="product-header">
-                        <img src="logos/documentsolutionsnet.svg" alt="Document Solutions for .NET Logo" class="product-logo">
-                        <h3 class="product-title">Document Solutions for .NET</h3>
+                        <span class="product-logo"></span>
+                        <span class="product-title">Document Solutions for .NET</span>
                     </div>
                     <p class="product-desc">Powerful APIs for PDF, Excel, Word, and barcode processing in .NET. Automate document workflows and integrate with your business apps.</p>
                     <ul class="product-list">
@@ -160,28 +161,34 @@
                         <li>Server and desktop support</li>
                     </ul>
                     <a href="solutions/#blueprints" class="product-link">See Use Cases</a>
-                </article>
-            </div>
-            <div class="product-family-grid">
-                <!-- JavaScript Product Families (teaser) -->
-                <div class="product-card js-teaser">
-                    <img src="logos/spreadjs.svg" alt="SpreadJS Logo" class="product-logo">
-                    <h3 class="product-title">SpreadJS</h3>
+                </div>
+                <!-- JavaScript Product Families -->
+                <div class="product-card" data-platform="js" data-logo="spreadjs">
+                    <div class="product-header">
+                        <span class="product-logo"></span>
+                        <span class="product-title">SpreadJS</span>
+                    </div>
                     <p class="product-desc">JavaScript spreadsheet and data visualization for modern web apps.</p>
                 </div>
-                <div class="product-card js-teaser">
-                    <img src="logos/activereportsjs.svg" alt="ActiveReportsJS Logo" class="product-logo">
-                    <h3 class="product-title">ActiveReportsJS</h3>
+                <div class="product-card" data-platform="js" data-logo="activereportsjs">
+                    <div class="product-header">
+                        <span class="product-logo"></span>
+                        <span class="product-title">ActiveReportsJS</span>
+                    </div>
                     <p class="product-desc">Client-side reporting for JavaScript and TypeScript applications.</p>
                 </div>
-                <div class="product-card js-teaser">
-                    <img src="logos/wijmo.svg" alt="Wijmo Logo" class="product-logo">
-                    <h3 class="product-title">Wijmo</h3>
+                <div class="product-card" data-platform="js" data-logo="wijmo">
+                    <div class="product-header">
+                        <span class="product-logo"></span>
+                        <span class="product-title">Wijmo</span>
+                    </div>
                     <p class="product-desc">High-performance JavaScript UI controls for enterprise web development.</p>
                 </div>
-                <div class="product-card js-teaser">
-                    <img src="logos/documentsolutionsjs.svg" alt="Document Solutions for JS Logo" class="product-logo">
-                    <h3 class="product-title">Document Solutions for JS</h3>
+                <div class="product-card" data-platform="js" data-logo="documentsolutionsjs">
+                    <div class="product-header">
+                        <span class="product-logo"></span>
+                        <span class="product-title">Document Solutions for JS</span>
+                    </div>
                     <p class="product-desc">APIs for PDF, Excel, and barcode processing in JavaScript.</p>
                 </div>
             </div>
