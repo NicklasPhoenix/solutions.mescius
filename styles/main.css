@@ -1,3 +1,88 @@
+/* =============================
+   Homepage Product Overview
+   ============================= */
+.product-overview-section {
+    padding: 60px 0;
+    background-color: #f8f9fa;
+}
+
+.product-families-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.product-family {
+    flex: 1;
+    min-width: 300px; /* Ensures wrapping on smaller screens */
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.family-title {
+    font-size: 1.8em;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 25px 0;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.net-family .family-title {
+    color: #007bff; /* .NET Blue */
+}
+
+.js-family .family-title {
+    color: #f0db4f; /* JavaScript Yellow */
+    text-shadow: -1px -1px 0 #333, 1px -1px 0 #333, -1px 1px 0 #333, 1px 1px 0 #333; /* For readability */
+}
+
+.product-card {
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    margin-bottom: 25px;
+    border-top: 1px solid #e9ecef;
+    padding-top: 25px;
+}
+
+.product-family .product-card:first-of-type {
+    border-top: none;
+    padding-top: 0;
+}
+
+.product-card-header {
+    min-height: 40px; /* Space for the logo */
+    margin-bottom: 10px;
+}
+
+.product-card-header .product-logo {
+    height: 35px;
+    width: auto;
+    max-width: 200px;
+}
+
+.product-desc {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.product-link {
+    display: inline-block;
+    margin-top: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #007bff;
+}
+
+.product-link:hover {
+    text-decoration: underline;
+}
+
 /* === Unified Product Grid for Homepage === */
 .product-grid {
     display: grid;
