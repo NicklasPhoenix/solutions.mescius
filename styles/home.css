@@ -3,19 +3,6 @@
    This file ONLY styles the new sections and does not affect the footer.
    ======================================================================== */
 
-/* --- Homepage Header Tweaks --- */
-.header .nav-link.cta-contact {
-    background-color: #EF5350;
-    color: #ffffff;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-.header .nav-link.cta-contact:hover {
-    background-color: #d32f2f;
-    color: #ffffff;
-}
-
 /* --- Hero Section --- */
 .hero-section {
     background-color: #1a2632;
