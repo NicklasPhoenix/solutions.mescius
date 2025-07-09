@@ -119,3 +119,69 @@ document.addEventListener('DOMContentLoaded', function () {
     // --- Initial render of the cards on page load ---
     renderProductCards();
 });
+// =========================================================
+// STATS SECTION: METRIC ANIMATION
+// =========================================================
+
+const statItems = document.querySelectorAll('.stat-item');
+if (statItems.length > 0) {
+    const animateStats = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const valueDiv = entry.target.querySelector('.stat-number');
+                const targetString = valueDiv.dataset.target; // e.g., "250K+", "1.2M+"
+
+                if (!targetString) {
+                    console.warn('No data-target found for stat animation');
+                    return;
+                }
+
+                // 1. Parse the target number and identify suffixes (K, M)
+                let numericTarget = parseFloat(targetString); // Extracts 40, 250, 1.2, 175
+                if (targetString.toLowerCase().includes('k')) {
+                    numericTarget *= 1000;
+                }
+                if (targetString.toLowerCase().includes('m')) {
+                    numericTarget *= 1000000;
+                }
+                
+                // If parsing fails, just set the text and exit
+                if (isNaN(numericTarget)) {
+                    valueDiv.textContent = targetString;
+                    return;
+                }
+
+                const duration = 1500; // ms
+                const startTime = performance.now();
+
+                const updateCount = (timestamp) => {
+                    const elapsedTime = timestamp - startTime;
+                    const progress = Math.min(elapsedTime / duration, 1);
+                    
+                    if (progress < 1) {
+                        const currentCount = Math.floor(progress * numericTarget);
+                        // Use toLocaleString() to add commas automatically
+                        valueDiv.textContent = currentCount.toLocaleString('en-US');
+                        requestAnimationFrame(updateCount);
+                    } else {
+                        // Once animation is done, set the final text to the original target string
+                        // This ensures "250K+", "1.2M+", etc., are displayed correctly.
+                        valueDiv.textContent = targetString;
+                    }
+                };
+                
+                requestAnimationFrame(updateCount);
+                observer.unobserve(entry.target); // Stop observing once animated
+            }
+        });
+    };
+
+    const statObserver = new IntersectionObserver(animateStats, {
+        root: null,
+        threshold: 0.5 // Trigger when 50% of the item is visible
+    });
+
+    statItems.forEach(item => {
+        statObserver.observe(item);
+    });
+}
