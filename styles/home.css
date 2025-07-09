@@ -56,7 +56,7 @@
     border-color: #ffffff;
 }
 .hero-cta-button.secondary:hover {
-    background-color: #ffffff;
+    background-color: #EF5350;
     color: #1a2632;
     transform: translateY(-3px);
 }
