@@ -151,7 +151,7 @@ if (statItems.length > 0) {
                     return;
                 }
 
-                const duration = 1500; // ms
+                const duration = 3500; // ms
                 const startTime = performance.now();
 
                 const updateCount = (timestamp) => {
