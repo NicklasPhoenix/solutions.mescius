@@ -120,10 +120,13 @@
 }
 
 .pillars-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2.5rem;
-    margin-top: 3rem;
+  display: grid;
+  /* This creates 4 equal-width columns */
+  grid-template-columns: repeat(4, 1fr);
+  /* This defines 2 rows with automatic height */
+  grid-template-rows: repeat(2, auto);
+  gap: 2.5rem;
+  margin-top: 3rem;
 }
 
 .pillar {
