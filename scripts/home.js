@@ -10,19 +10,19 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             {
                 logo: 'SP_prod_logo_full_2023',
-                name: 'Spread.NET',
+                name: 'Spread',
                 description: 'The industry-leading spreadsheet solution to create Excel-like experiences in desktop and web apps.',
                 link: 'pricing/'
             },
             {
                 logo: 'AR_prod_logo_full_2023',
-                name: 'ActiveReports.NET',
+                name: 'ActiveReports',
                 description: 'Flexible reporting tools for developers to create, view, and export interactive reports.',
                 link: 'pricing/'
             },
             {
                 logo: 'DS_prod_logo_full_2023',
-                name: 'Document Solutions for .NET',
+                name: 'Document Solutions',
                 description: 'A suite of powerful APIs for PDF, Excel, and Word processing to automate document workflows.',
                 link: 'pricing/'
             }
@@ -30,13 +30,13 @@ document.addEventListener('DOMContentLoaded', function () {
         js: [
             {
                 logo: 'SP_prod_logo_full_2023',
-                name: 'SpreadJS',
+                name: 'Spread',
                 description: 'High-performance JavaScript spreadsheets and data visualization for modern, Excel-like web apps.',
                 link: 'pricing/'
             },
             {
                 logo: 'AR_prod_logo_full_2023',
-                name: 'ActiveReportsJS',
+                name: 'ActiveReports',
                 description: 'A fast, lightweight, and powerful client-side reporting solution for modern web applications.',
                 link: 'pricing/'
             },
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             {
                 logo: 'DS_prod_logo_full_2023',
-                name: 'Document Solutions for JS',
+                name: 'Document Solutions',
                 description: 'Server-side and client-side APIs for PDF, Excel, and barcode processing in JavaScript.',
                 link: 'pricing/'
             }
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <img src="${logoPath}" alt="${product.name} Logo" class="product-logo">
                     <h4>${product.name}</h4>
                     <p>${product.description}</p>
-                    <a href="${product.link}" class="product-card-link">Learn More</a>
+                    <a href="${product.link}" class="product-cta-button">Learn More</a>
                 </div>
             `;
             netGrid.innerHTML += cardHTML;
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <img src="${logoPath}" alt="${product.name} Logo" class="product-logo">
                     <h4>${product.name}</h4>
                     <p>${product.description}</p>
-                    <a href="${product.link}" class="product-card-link">Learn More</a>
+                    <a href="${product.link}" class="product-cta-button">Learn More</a>
                 </div>
             `;
             jsGrid.innerHTML += cardHTML;
