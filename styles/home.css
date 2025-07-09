@@ -62,21 +62,161 @@
 }
 .hero-cta-button i { margin-left: 0.5rem; }
 
-/* --- Pillars Section --- */
-.pillars-section {
-    padding: 5rem 0;
+/* --- Stats Section --- */
+.stats-section {
+    padding: 4rem 0;
     background-color: #f8f9fa;
 }
-.pillars-section .container {
-    display: flex;
-    justify-content: space-around;
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     text-align: center;
-    flex-wrap: wrap;
 }
-.pillar { flex-basis: 300px; }
-.pillar i { font-size: 2.5rem; color: #EF5350; margin-bottom: 1.5rem; }
-.pillar h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+
+.stat-item {
+    padding: 1.5rem;
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #2d5a87;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 1.1rem;
+    color: #666;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* --- Updated Pillars Section --- */
+.pillars-section {
+    padding: 6rem 0;
+    background-color: #ffffff;
+}
+
+.pillars-section .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.pillars-section .section-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.pillars-section .section-header p {
+    font-size: 1.2rem;
+    color: #666;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.pillar {
+    text-align: center;
+    padding: 2rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pillar:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.pillar-icon {
+    margin-bottom: 1.5rem;
+}
+
+.pillar-icon i {
+    font-size: 3rem;
+    color: #2d5a87;
+    padding: 1rem;
+    background-color: #e8f4f8;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pillar h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: #333;
+    font-weight: 600;
+}
+
+.pillar p {
+    color: #666;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* --- Logo Strip Section --- */
+.logo-strip-section {
+    padding: 4rem 0;
+    background-color: #f8f9fa;
+}
+
+.logo-strip-section .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.logo-strip-section .section-header h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.logo-strip {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    opacity: 0.7;
+}
+
+.logo-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    transition: opacity 0.3s ease;
+}
+
+.logo-item:hover {
+    opacity: 1;
+}
+
+.logo-item img {
+    max-height: 40px;
+    max-width: 120px;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+.logo-item:hover img {
+    filter: grayscale(0%);
+}
 
 /* --- Ecosystem Showcase Section --- */
 .ecosystem-section { padding: 6rem 0; }
@@ -190,17 +330,34 @@
     .product-grid {
         grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */
     }
+    .pillars-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 @media (max-width: 992px) {
     .hero-title { font-size: 2.8rem; }
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 @media (max-width: 768px) {
     .hero-title { font-size: 2.2rem; }
     .hero-section { padding: 6rem 0; }
     .hero-cta-group { flex-direction: column; }
-    .pillars-section .container, .challenge-cards-container { grid-template-columns: 1fr; }
+    .pillars-grid, .challenge-cards-container {
+        grid-template-columns: 1fr;
+    }
     .tab-link { font-size: 1rem; padding: 1rem; }
     .product-grid {
         grid-template-columns: 1fr; /* 1 column on mobile */
+    }
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    .logo-strip {
+        gap: 2rem;
+    }
+    .stat-number {
+        font-size: 2.5rem;
     }
 }
