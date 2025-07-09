@@ -3887,3 +3887,15 @@ main {
 .bundle-card .action-link {
     border-radius: 6px !important;
 }
+
+/* For Webkit-based browsers (Chrome, Safari, Edge) */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* For Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
