@@ -119,59 +119,6 @@
     letter-spacing: 1px;
 }
 
-.pillars-grid {
-  display: grid;
-  /* This creates 4 equal-width columns */
-  grid-template-columns: repeat(4, 1fr);
-  /* This defines 2 rows with automatic height */
-  grid-template-rows: repeat(2, auto);
-  gap: 2.5rem;
-  margin-top: 3rem;
-}
-
-.pillar {
-    text-align: center;
-    padding: 2rem;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.pillar:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-.pillar-icon {
-    margin-bottom: 1.5rem;
-}
-
-.pillar-icon i {
-    font-size: 3rem;
-    color: #2d5a87;
-    padding: 1rem;
-    background-color: #e8f4f8;
-    border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.pillar h3 {
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
-    color: #333;
-    font-weight: 600;
-}
-
-.pillar p {
-    color: #666;
-    line-height: 1.6;
-    font-size: 0.95rem;
-}
-
 /* --- Logo Strip Section --- */
 .logo-strip-section {
     padding: 4rem 0;
@@ -195,30 +142,72 @@
     justify-content: center;
     align-items: center;
     gap: 3rem;
-    opacity: 0.7;
+    opacity: 0.8;
+    min-height: 120px;
+    padding: 2rem 0;
 }
 
 .logo-item {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 60px;
-    transition: opacity 0.3s ease;
+    height: 80px;
+    width: 140px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    position: relative;
 }
 
 .logo-item:hover {
     opacity: 1;
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.logo-item img {
-    max-height: 40px;
+.logo-item img,
+.logo-item svg {
+    max-height: 50px;
     max-width: 120px;
+    height: auto;
+    width: auto;
     filter: grayscale(100%);
-    transition: filter 0.3s ease;
+    transition: all 0.3s ease;
+    object-fit: contain;
+    display: block;
 }
 
-.logo-item:hover img {
+.logo-item:hover img,
+.logo-item:hover svg {
     filter: grayscale(0%);
+    transform: scale(1.05);
+}
+
+/* Ensure consistent sizing for all logo types */
+.logo-item svg {
+    height: 50px !important;
+    width: auto !important;
+    max-width: 120px !important;
+}
+
+/* Specific adjustments for known logo types */
+.logo-item img[alt="Microsoft"] {
+    max-height: 45px;
+}
+
+.logo-item img[alt="Tesla"] {
+    max-height: 45px;
+}
+
+.logo-item img[alt="Classmethod"] {
+    max-height: 40px;
+}
+
+.logo-item img[alt="Calsoft"] {
+    max-height: 35px;
 }
 
 /* --- Ecosystem Showcase Section --- */
@@ -250,53 +239,320 @@
     background-color: #EF5350;
 }
 .tab-link i { margin-right: 0.75rem; }
+
+/* ========================================================================
+   PROPERLY FIXED CARD DESIGN
+   ======================================================================== */
+
+/* Product Grid */
 .product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.product-grid:not(.active) {
     display: none;
-    grid-template-columns: repeat(4, 1fr); /* 4 columns on desktop */
-    gap: 2rem;
-    align-items: stretch; /* Ensures equal height cards */
 }
-.product-grid.active { 
-    display: grid; 
+
+.product-grid.active {
+    display: grid;
 }
+
+/* Product Cards - Enhanced Hover Effects */
 .product-card {
-    background-color: #ffffff;
-    border: 1px solid #dee2e6;
+    background: #ffffff;
+    border: 1px solid #e1e5e9;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.2s ease-in-out; /* Smooth hover transition */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    height: 350px; /* Fixed height for all cards */
+    min-height: 350px;
+}
+
+.product-card:hover {
+    transform: translateY(-4px); /* Subtle lift effect */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
+    border-color: var(--product-color); /* Product-specific border color */
+}
+
+/* Logo Section - Fixed Height */
+.logo-section {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+    background: #ffffff;
+    flex-shrink: 0; /* Don't shrink */
+}
+
+.product-logo {
+    height: 60px;
+    width: auto;
+    max-width: 180px;
+    object-fit: contain;
+}
+
+/* Title Section - Flexible Middle */
+.title-section {
+    padding: 1rem 1.5rem;
+    text-align: center;
+    flex-grow: 1; /* This grows to fill available space */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.product-tagline {
+    font-size: 1.1rem;
+    color: #2c3e50;
+    margin: 0;
+    line-height: 1.3;
+    font-weight: 600;
+}
+
+/* Remove product title completely */
+.product-title {
+    display: none;
+}
+
+/* Remove description section completely */
+.description-section {
+    display: none;
+}
+
+/* Action Button - Fixed at Bottom */
+.action-section {
+    padding: 1.5rem;
+    flex-shrink: 0; /* Don't shrink */
+}
+
+.product-cta {
+    display: block;
+    background: var(--product-color);
+    color: #ffffff !important;
+    text-decoration: none;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 44px; /* Consistent button height */
+    line-height: 1.2;
+}
+
+.product-cta:hover {
+    background: var(--product-color);
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+    color: #ffffff !important;
+    text-decoration: none;
+}
+
+/* Pillar Cards */
+.pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+/* Pillar Cards - Clean & Minimal with Hover Effects */
+.pillar {
+    background: #ffffff;
+    border: 1px solid #e1e5e9;
     border-radius: 8px;
     padding: 2rem;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.2s ease-in-out; /* Smooth hover transition */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: 420px; /* Fixed height for all pillars */
+    min-height: 420px;
 }
-.product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+
+.pillar:hover {
+    transform: translateY(-4px); /* Subtle lift effect */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
+    border-color: #2d5a87; /* Accent border color */
 }
-.product-logo { height: 40px; margin-bottom: 1.5rem; }
-.product-card h4 { font-size: 1.3rem; margin-bottom: 1rem; }
-.product-card p { 
-    color: #555; 
-    margin-bottom: 1.5rem; 
-    flex-grow: 1; /* This makes the description take up available space */
+
+/* Icon Section - Fixed Height */
+.pillar-icon {
+    margin-bottom: 1.5rem;
+    flex-shrink: 0; /* Don't shrink */
 }
-.product-cta-button { 
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none; 
-    font-weight: 600;
-    border-radius: 6px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    margin-top: auto; /* This pushes the button to the bottom */
+
+.pillar-icon i {
+    font-size: 2.5rem;
+    color: #ffffff;
+    background: #2d5a87;
+    padding: 1rem;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
-.product-cta-button:hover { 
-    background-color: #0056b3;
-    transform: translateY(-2px);
-    text-decoration: none;
-    color: white;
+
+/* Title Section - Fixed Height */
+.pillar h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+    font-weight: 700;
+    flex-shrink: 0; /* Don't shrink */
+    min-height: 2.6rem; /* Two lines of text */
+    line-height: 1.2;
+}
+
+/* Description - Clean Text on White Background */
+.pillar p {
+    color: #495057;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin: 0;
+    margin-top: 1rem; /* Consistent spacing from title */
+    text-align: left;
+    flex-grow: 1; /* Fill remaining space */
+    display: flex;
+    align-items: flex-start;
+    /* Removed gray background box completely */
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+/* Responsive Design */
+/* Responsive Design - Clean & Minimal */
+@media (max-width: 1200px) {
+    .product-grid,
+    .pillars-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .pillars-grid {
+        grid-template-rows: repeat(4, 1fr);
+    }
+    
+    .product-card {
+        height: 330px; /* Adjust for tablet */
+        min-height: 330px;
+    }
+    
+    .pillar {
+        height: 400px; /* Adjust for tablet */
+        min-height: 400px;
+        padding: 1.75rem;
+    }
+    
+    .pillar h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .pillar p {
+        font-size: 0.9rem;
+        margin-top: 0.75rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-grid,
+    .pillars-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .pillars-grid {
+        grid-template-rows: repeat(8, 1fr);
+    }
+    
+    .product-card {
+        height: 320px; /* Adjust for mobile */
+        min-height: 320px;
+    }
+    
+    .pillar {
+        height: 380px; /* Adjust for mobile */
+        min-height: 380px;
+        padding: 1.5rem;
+    }
+    
+    .pillar h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .pillar p {
+        font-size: 0.85rem;
+        margin-top: 0.75rem;
+    }
+    
+    .logo-section {
+        height: 100px; /* Smaller logo area on mobile */
+        padding: 1.5rem;
+    }
+    
+    .product-logo {
+        height: 50px; /* Smaller logo on mobile */
+    }
+}
+    
+    .logo-section {
+        height: 70px;
+    }
+    
+    .product-logo {
+        height: 35px;
+    }
+    
+    .title-section {
+        padding: 0.75rem;
+    }
+    
+    .product-title {
+        font-size: 1rem;
+    }
+    
+    .description-section {
+        padding: 0 0.75rem;
+    }
+    
+    .product-description {
+        font-size: 0.8rem;
+    }
+    
+    .action-section {
+        padding: 0.75rem;
+    }
+    
+    .pillar-icon i {
+        font-size: 2rem;
+        width: 60px;
+        height: 60px;
+        padding: 0.75rem;
+    }
+    
+    .pillar h3 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+    .pillar p {
+        font-size: 0.85rem;
+        margin-top: 0.75rem;
+    }
 }
 
 /* --- Solutions Teaser Section (Renamed to Challenge Section) --- */
@@ -353,35 +609,45 @@
 
 /* --- Responsive Design For New Sections --- */
 @media (max-width: 1100px) {
-    .product-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */
-    }
-    .pillars-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    /* handled in main responsive section above */
 }
 @media (max-width: 992px) {
     .hero-title { font-size: 2.8rem; }
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+    .logo-strip {
+        gap: 2rem;
+    }
+    .logo-item {
+        width: 130px;
+        height: 75px;
+    }
 }
 @media (max-width: 768px) {
     .hero-title { font-size: 2.2rem; }
     .hero-section { padding: 6rem 0; }
     .hero-cta-group { flex-direction: column; }
-    .pillars-grid, .challenge-cards-container {
+    .challenge-cards-container {
         grid-template-columns: 1fr;
     }
     .tab-link { font-size: 1rem; padding: 1rem; }
-    .product-grid {
-        grid-template-columns: 1fr; /* 1 column on mobile */
-    }
     .stats-grid {
         grid-template-columns: 1fr;
     }
     .logo-strip {
-        gap: 2rem;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+    }
+    .logo-item {
+        width: 120px;
+        height: 70px;
+        padding: 0.75rem;
+    }
+    .logo-item img,
+    .logo-item svg {
+        max-height: 40px;
+        max-width: 100px;
     }
     .stat-number {
         font-size: 2.5rem;

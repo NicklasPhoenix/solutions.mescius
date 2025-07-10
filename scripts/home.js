@@ -5,92 +5,98 @@ document.addEventListener('DOMContentLoaded', function () {
             {
                 logo: 'C1_prod_logo_full_2023',
                 name: 'ComponentOne',
-                description: 'The most comprehensive UI toolkit for .NET, with controls for WinForms, WPF, Blazor, and more.',
-                link: 'pricing/'
+                tagline: 'Complete .NET UI Toolkit',
+                description: 'Comprehensive UI controls for WinForms, WPF, and Blazor development.',
+                link: 'pricing/',
+                color: '#D93E3A' // ComponentOne Red
             },
             {
                 logo: 'SP_prod_logo_full_2023',
                 name: 'Spread',
-                description: 'The industry-leading spreadsheet solution to create Excel-like experiences in desktop and web apps.',
-                link: 'pricing/'
+                tagline: 'Excel-like .NET Controls',
+                description: 'Industry-leading spreadsheet controls for desktop and web applications.',
+                link: 'pricing/',
+                color: '#6F9E42' // Spread Green
             },
             {
                 logo: 'AR_prod_logo_full_2023',
                 name: 'ActiveReports',
-                description: 'Flexible reporting tools for developers to create, view, and export interactive reports.',
-                link: 'pricing/'
+                tagline: 'Enterprise .NET Reporting',
+                description: 'Flexible reporting tools for creating interactive business reports.',
+                link: 'pricing/',
+                color: '#F4812F' // ActiveReports Orange
             },
             {
                 logo: 'DS_prod_logo_full_2023',
                 name: 'Document Solutions',
-                description: 'A suite of powerful APIs for PDF, Excel, and Word processing to automate document workflows.',
-                link: 'pricing/'
+                tagline: 'Document Automation APIs',
+                description: 'Powerful APIs for PDF, Excel, and Word document processing.',
+                link: 'pricing/',
+                color: '#0083B6' // Document Solutions Blue
             }
         ],
         js: [
             {
                 logo: 'SP_prod_logo_full_2023',
                 name: 'Spread',
-                description: 'High-performance JavaScript spreadsheets and data visualization for modern, Excel-like web apps.',
-                link: 'pricing/'
+                tagline: 'Excel-like Web Controls',
+                description: 'High-performance JavaScript spreadsheets for modern web applications.',
+                link: 'pricing/',
+                color: '#6F9E42' // Spread Green
             },
             {
                 logo: 'AR_prod_logo_full_2023',
                 name: 'ActiveReports',
-                description: 'A fast, lightweight, and powerful client-side reporting solution for modern web applications.',
-                link: 'pricing/'
+                tagline: 'Client-Side Reporting',
+                description: 'Fast, lightweight reporting solution for modern web applications.',
+                link: 'pricing/',
+                color: '#F4812F' // ActiveReports Orange
             },
             {
                 logo: 'WJ_prod_logo_full_2023',
                 name: 'Wijmo',
-                description: 'A complete library of fast, flexible, and lightweight JavaScript UI components for the enterprise.',
-                link: 'pricing/'
+                tagline: 'Enterprise JavaScript UI Library',
+                description: 'Complete library of fast, flexible JavaScript UI components.',
+                link: 'pricing/',
+                color: '#0084C3' // Wijmo Blue
             },
             {
                 logo: 'DS_prod_logo_full_2023',
                 name: 'Document Solutions',
-                description: 'Server-side and client-side APIs for PDF, Excel, and barcode processing in JavaScript.',
-                link: 'pricing/'
+                tagline: 'Document APIs for JavaScript',
+                description: 'Server-side and client-side APIs for PDF, Excel, and barcode processing.',
+                link: 'pricing/',
+                color: '#0083B6' // Document Solutions Blue
             }
         ]
     };
 
     // --- Function to create and inject product cards ---
-    function renderProductCards() {
-        const netGrid = document.getElementById('net-products');
-        const jsGrid = document.getElementById('js-products');
+    function renderProductCards(platform = 'net') {
+        const activeGrid = document.getElementById(`${platform}-products`);
+        const inactiveGrid = document.getElementById(platform === 'net' ? 'js-products' : 'net-products');
 
-        // Clear existing cards
-        netGrid.innerHTML = '';
-        jsGrid.innerHTML = '';
+        // Clear both grids
+        activeGrid.innerHTML = '';
+        inactiveGrid.innerHTML = '';
 
-        // Create .NET cards
-        products.net.forEach(product => {
-            // IMPORTANT: Adjust this path to where your logos are stored
+        // Create cards for the active platform only
+        products[platform].forEach(product => {
             const logoPath = `logos/${product.logo}.svg`;
             const cardHTML = `
-                <div class="product-card">
-                    <img src="${logoPath}" alt="${product.name} Logo" class="product-logo">
-                    <h4>${product.name}</h4>
-                    <p>${product.description}</p>
-                    <a href="${product.link}" class="product-cta-button">Learn More</a>
+                <div class="product-card" style="--product-color: ${product.color};">
+                    <div class="logo-section">
+                        <img src="${logoPath}" alt="${product.name} Logo" class="product-logo">
+                    </div>
+                    <div class="title-section">
+                        <p class="product-tagline">${product.tagline}</p>
+                    </div>
+                    <div class="action-section">
+                        <a href="${product.link}" class="product-cta">Learn More</a>
+                    </div>
                 </div>
             `;
-            netGrid.innerHTML += cardHTML;
-        });
-
-        // Create JavaScript cards
-        products.js.forEach(product => {
-            const logoPath = `logos/${product.logo}.svg`;
-            const cardHTML = `
-                <div class="product-card">
-                    <img src="${logoPath}" alt="${product.name} Logo" class="product-logo">
-                    <h4>${product.name}</h4>
-                    <p>${product.description}</p>
-                    <a href="${product.link}" class="product-cta-button">Learn More</a>
-                </div>
-            `;
-            jsGrid.innerHTML += cardHTML;
+            activeGrid.innerHTML += cardHTML;
         });
     }
     
@@ -113,11 +119,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     grid.classList.add('active');
                 }
             });
+
+            // Re-render cards for the selected platform
+            renderProductCards(platform);
         });
     });
 
     // --- Initial render of the cards on page load ---
-    renderProductCards();
+    renderProductCards('net'); // Start with .NET products
 });
 // =========================================================
 // STATS SECTION: METRIC ANIMATION
