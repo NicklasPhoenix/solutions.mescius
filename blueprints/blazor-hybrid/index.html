@@ -31,22 +31,52 @@
     
     <link rel="stylesheet" href="../../styles/main.css?v=2025070403">
 
-    <!-- Product Schema Markup -->
+    <!-- HowTo Schema Markup -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Product",
-      "name": "Blazor Hybrid Modernization Blueprint",
-      "description": "A blueprint for modernizing legacy financial applications by unifying desktop and web development with a Blazor Hybrid architecture powered by Mescius components.",
-      "brand": {
-        "@type": "Brand",
-        "name": "Mescius"
-      },
-      "category": "Software Development Blueprint",
-      "provider": {
+      "@type": "HowTo",
+      "name": "Blueprint: How to Build a Blazor Hybrid Application",
+      "description": "A comprehensive guide to modernizing legacy financial applications by unifying desktop and web development with a Blazor Hybrid architecture powered by Mescius components.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Assess and Design Your Hybrid Architecture",
+          "text": "Evaluate your existing desktop application and plan the unified Blazor Hybrid architecture that will support both desktop and web deployment."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Implement Core Components and Data Grids",
+          "text": "Integrate high-performance data grids, UI controls, and chart components to create a modern, responsive user interface."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Deploy and Modernize for Business Impact",
+          "text": "Deploy the unified application to improve development efficiency, user experience, and reduce maintenance overhead across platforms."
+        }
+      ],
+      "tool": [
+        {
+          "@type": "Product",
+          "name": "Recommended Solution: Blazor Hybrid Power Pack",
+          "image": "https://solutions.mescius.eu/logos/Blazor-Hybrid-Power-Pack.png",
+          "description": "Everything you need for building data-centric Blazor Hybrid applications, including ComponentOne Studio, Wijmo Enterprise, and Documents for Excel (.NET).",
+          "brand": {
+            "@type": "Brand",
+            "name": "Mescius"
+          },
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "EUR",
+            "price": "2658",
+            "availability": "https://schema.org/InStock",
+            "url": "https://checkout.mescius.eu/1878/purl-shop?cart=i285848"
+          }
+        }
+      ],
+      "author": {
         "@type": "Organization",
-        "name": "Mescius Europe",
-        "url": "https://solutions.mescius.eu"
+        "name": "Mescius Europe"
       }
     }
     </script>

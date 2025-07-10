@@ -31,22 +31,52 @@
     
     <link rel="stylesheet" href="../../styles/main.css?v=2025070403">
 
-    <!-- Product Schema Markup -->
+    <!-- HowTo Schema Markup -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Product",
-      "name": "Healthcare Reporting Blueprint",
-      "description": "A guide to resolving client-side reporting failures in EHR systems and improving data availability by implementing ActiveReportsJS.",
-      "brand": {
-        "@type": "Brand",
-        "name": "Mescius"
-      },
-      "category": "Software Development Blueprint",
-      "provider": {
+      "@type": "HowTo",
+      "name": "Blueprint: How to Build Reliable Healthcare Reporting Systems",
+      "description": "A comprehensive guide to resolving client-side reporting failures in EHR systems and improving data availability by implementing ActiveReportsJS.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Assess Current EHR Reporting Issues",
+          "text": "Analyze your existing healthcare reporting system to identify failure points and data availability issues in your EHR environment."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Implement Reliable Client-Side Reporting",
+          "text": "Deploy ActiveReportsJS to create robust, client-side reporting that eliminates failures and improves data accessibility for healthcare professionals."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Deploy and Monitor for Healthcare Excellence",
+          "text": "Deploy the improved reporting system to enhance clinical decision-making, ensure data reliability, and improve patient care outcomes."
+        }
+      ],
+      "tool": [
+        {
+          "@type": "Product",
+          "name": "Recommended Solution: Real-Time Analytics & Reporting Bundle",
+          "image": "https://solutions.mescius.eu/logos/Real-Time-Analytics-Reporting-Bundle.png",
+          "description": "A powerful suite for embedding analytics and reporting into your .NET applications, including ActiveReportsJS Deployment License and Wijmo Enterprise.",
+          "brand": {
+            "@type": "Brand",
+            "name": "Mescius"
+          },
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "EUR",
+            "price": "1649",
+            "availability": "https://schema.org/InStock",
+            "url": "https://checkout.mescius.eu/1878/purl-shop?cart=i285868"
+          }
+        }
+      ],
+      "author": {
         "@type": "Organization",
-        "name": "Mescius Europe",
-        "url": "https://solutions.mescius.eu"
+        "name": "Mescius Europe"
       }
     }
     </script>

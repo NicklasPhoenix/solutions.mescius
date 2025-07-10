@@ -31,22 +31,52 @@
     
     <link rel="stylesheet" href="../../styles/main.css?v=2025070403">
 
-    <!-- Product Schema Markup -->
+    <!-- HowTo Schema Markup -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Product",
-      "name": "Financial Modeling Blueprint",
-      "description": "A guide for migrating complex Excel models to a secure, collaborative web application using the SpreadJS high-performance spreadsheet component.",
-      "brand": {
-        "@type": "Brand",
-        "name": "Mescius"
-      },
-      "category": "Software Development Blueprint",
-      "provider": {
+      "@type": "HowTo",
+      "name": "Blueprint: How to Build Secure Financial Modeling Applications",
+      "description": "A comprehensive guide for migrating complex Excel models to a secure, collaborative web application using the SpreadJS high-performance spreadsheet component.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Assess and Design Your Financial Models",
+          "text": "Evaluate your existing Excel models and design a secure, web-based architecture for collaborative financial modeling."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Implement High-Performance Spreadsheet Components",
+          "text": "Integrate SpreadJS components to replicate Excel functionality while adding security, collaboration features, and web accessibility."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Deploy and Scale for Team Collaboration",
+          "text": "Deploy the secure financial modeling platform to improve team collaboration, data security, and model accuracy."
+        }
+      ],
+      "tool": [
+        {
+          "@type": "Product",
+          "name": "Recommended Solution: SpreadJS + Documents Bundle",
+          "image": "https://solutions.mescius.eu/logos/SpreadJS-Documents.png",
+          "description": "The essential toolkit for web-based financial reporting and spreadsheet applications, combining SpreadJS and Documents for Excel (JS).",
+          "brand": {
+            "@type": "Brand",
+            "name": "Mescius"
+          },
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "EUR",
+            "price": "1203",
+            "availability": "https://schema.org/InStock",
+            "url": "https://checkout.mescius.eu/1878/purl-shop?cart=i285849"
+          }
+        }
+      ],
+      "author": {
         "@type": "Organization",
-        "name": "Mescius Europe",
-        "url": "https://solutions.mescius.eu"
+        "name": "Mescius Europe"
       }
     }
     </script>
