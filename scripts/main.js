@@ -829,7 +829,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const quantityInput = card.querySelector('.quantity-input');
         const yearRadios = card.querySelectorAll(`input[type="radio"][name="years-${cardId}"]`); 
         const priceEl = card.querySelector(`#price-${cardId}`);
-        const savingsEl = card.querySelector(`#savings-${cardId}`);
+        const savingsEl = card.querySelector(`#savings-${cardId}-inline`) || card.querySelector(`#savings-${cardId}`);
         const ctaButton = card.querySelector(`#cta-${cardId}`);
 
         const priceSummaryContainer = card.querySelector(`#price-summary-${cardId}`);
@@ -837,17 +837,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const totalPriceSubtleEl = priceSummaryContainer ? priceSummaryContainer.querySelector('.total-price-subtle') : null;
         const discountPerDevEl = priceEl ? priceEl.querySelector('.discount-per-dev') : null;
 
-        const totalListValueElement = card.querySelector(`#total-list-value-${cardId}`);
+        const totalListValueElement = card.querySelector(`#total-list-value-${cardId}`) || card.querySelector(`#total-list-value-${cardId}-inline`);
         const inclusionItems = card.querySelectorAll('.inclusions-list li:not(.total-value)');
 
         let previousVolumeDiscountPercentage = 0;
         let previousYearsSelected = 1;
         let previousQuantity = 1;
 
-        if (!quantityInput || !yearRadios.length || !priceEl || !ctaButton || !totalPriceSubtleEl || !totalListValueElement || !totalActualCostEl || !priceSummaryContainer || !discountPerDevEl) {
+        if (!quantityInput || !yearRadios.length || !priceEl || !ctaButton || !priceSummaryContainer) {
             console.warn(`Missing elements for pricing card with product ID: ${productId}. Skipping calculator for this card.`);
             return;
         }
+
+        // Get optional elements that may exist
+        const totalActualCostEl = priceSummaryContainer.querySelector('.total-actual-cost');
+        const totalPriceSubtleEl = priceSummaryContainer.querySelector('.total-price-subtle');
+        const discountPerDevEl = priceEl.querySelector('.discount-per-dev');
 
         // Initialize original names and prices for inclusion items on first load
         inclusionItems.forEach(item => {
@@ -929,16 +934,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const totalSavingsAmount = currentTotalListPriceRaw - totalCurrentPriceForYears;
 
-            priceEl.innerHTML = `${formatCurrency(finalPricePerDev)}<span class="price-term">per developer / year</span>`;
+            priceEl.textContent = formatCurrency(finalPricePerDev);
             
             // Only show the small per-dev discount as a subtle note, not the large text
-            if (discountPerDevAmount > 0) {
-                discountPerDevEl.textContent = `Save ${formatCurrency(discountPerDevAmount)} per dev`;
-                discountPerDevEl.style.display = 'block';
-            } else {
-                discountPerDevEl.style.display = 'none';
+            if (discountPerDevEl) {
+                if (discountPerDevAmount > 0) {
+                    discountPerDevEl.textContent = `Save ${formatCurrency(discountPerDevAmount)} per dev`;
+                    discountPerDevEl.style.display = 'block';
+                } else {
+                    discountPerDevEl.style.display = 'none';
+                }
             }
-            priceEl.appendChild(discountPerDevEl);
+
+            if (totalActualCostEl) {
+                totalActualCostEl.innerHTML = `Total Cost: <strong>${formatCurrency(totalActualCost)}</strong> (for ${quantity} dev${quantity > 1 ? 's' : ''})`;
+            }
+            if (totalPriceSubtleEl) {
+                totalPriceSubtleEl.innerHTML = `Grand Total: <strong>${formatCurrency(totalCurrentPriceForYears)}</strong> (for ${years} year${years > 1 ? 's' : ''})`;
+            }
+            
+            if(savingsEl) {
+                savingsEl.textContent = `Save ${formatCurrency(totalSavingsAmount)}`;
+            }
+
+            // Update the inline list price as well
+            const inlineListPrice = card.querySelector(`#total-list-value-${cardId}-inline`);
+            if (inlineListPrice) {
+                inlineListPrice.textContent = formatCurrency(currentTotalListPriceRaw);
+            }
 
             totalActualCostEl.innerHTML = `Total Cost: <strong>${formatCurrency(totalActualCost)}</strong> (for ${quantity} dev${quantity > 1 ? 's' : ''})`;
             totalPriceSubtleEl.innerHTML = `Grand Total: <strong>${formatCurrency(totalCurrentPriceForYears)}</strong> (for ${years} year${years > 1 ? 's' : ''})`;
@@ -985,18 +1008,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (isUserInteraction && (volumeDiscountChanged || yearsChanged || quantityCrossedThreshold || (discountPerDevAmount > 0 && priceEl.classList.contains('price-updated')))) {
                 priceEl.classList.add('price-updated');
-                discountPerDevEl.classList.add('price-updated');
-                totalActualCostEl.classList.add('price-updated'); 
-                totalPriceSubtleEl.classList.add('price-updated'); 
-                totalListValueElement.classList.add('price-updated');
+                if (discountPerDevEl) discountPerDevEl.classList.add('price-updated');
+                if (totalActualCostEl) totalActualCostEl.classList.add('price-updated'); 
+                if (totalPriceSubtleEl) totalPriceSubtleEl.classList.add('price-updated'); 
+                if (totalListValueElement) totalListValueElement.classList.add('price-updated');
                 if (savingsEl) savingsEl.classList.add('savings-updated');
 
                 setTimeout(() => {
                     priceEl.classList.remove('price-updated');
-                    discountPerDevEl.classList.remove('price-updated');
-                    totalActualCostEl.classList.remove('price-updated'); 
-                    totalPriceSubtleEl.classList.remove('price-updated'); 
-                    totalListValueElement.classList.remove('price-updated');
+                    if (discountPerDevEl) discountPerDevEl.classList.remove('price-updated');
+                    if (totalActualCostEl) totalActualCostEl.classList.remove('price-updated'); 
+                    if (totalPriceSubtleEl) totalPriceSubtleEl.classList.remove('price-updated'); 
+                    if (totalListValueElement) totalListValueElement.classList.remove('price-updated');
                     if (savingsEl) savingsEl.classList.remove('savings-updated');
                 }, 300); // Reduced from 600ms to match new animation duration
             }
