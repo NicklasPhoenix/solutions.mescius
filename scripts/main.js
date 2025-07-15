@@ -1318,4 +1318,46 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.key === 'Escape' && productModalOverlay.style.display === 'flex') closeModal();
         });
     }
+
+    // =========================================================
+    // SMART FILTER TOOLBAR - PROGRESSIVE DISCLOSURE
+    // =========================================================
+    
+    const smartFilterToolbar = document.querySelector('.filter-toolbar');
+    if (smartFilterToolbar && window.innerWidth >= 900) {
+        let lastScrollY = window.scrollY;
+        let scrollDirection = 'up';
+        
+        const handleSmartCollapse = () => {
+            const currentScrollY = window.scrollY;
+            
+            // Determine scroll direction
+            if (currentScrollY > lastScrollY) {
+                scrollDirection = 'down';
+            } else if (currentScrollY < lastScrollY) {
+                scrollDirection = 'up';
+            }
+            
+            // Apply collapsed state based on scroll direction and position
+            if (scrollDirection === 'down' && currentScrollY > 150) {
+                smartFilterToolbar.classList.add('collapsed');
+            } else if (scrollDirection === 'up' || currentScrollY <= 100) {
+                smartFilterToolbar.classList.remove('collapsed');
+            }
+            
+            lastScrollY = currentScrollY;
+        };
+        
+        // Throttle scroll events for better performance
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            if (scrollTimeout) {
+                clearTimeout(scrollTimeout);
+            }
+            scrollTimeout = setTimeout(handleSmartCollapse, 10);
+        });
+        
+        // Initial state
+        handleSmartCollapse();
+    }
 });
