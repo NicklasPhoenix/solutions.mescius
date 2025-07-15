@@ -2088,7 +2088,7 @@ main {
     font-weight: 600;
 }
 
-/* Bundle Section Styles - Professional Redesigned Recommended Solution Card */
+/* Bundle Section Styles - Professional Redesigned Recommended Solution Card - OPTIMIZED */
 .bundle-card {
     background: var(--color-background-white);
     border: 1px solid var(--color-border-light);
@@ -2101,19 +2101,20 @@ main {
     flex-direction: column;
     overflow: hidden;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.04);
+    max-height: none; /* Remove any height restrictions for better optimization */
 }
 
 .bundle-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px); /* Reduced from -4px */
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1), 0 3px 12px rgba(0, 0, 0, 0.06);
     border-color: var(--color-primary);
 }
 
-/* Professional Bundle Card Header Section */
+/* Professional Bundle Card Header Section - OPTIMIZED */
 .bundle-header {
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--brand-heading) 100%);
     color: white;
-    padding: 32px;
+    padding: 20px 24px; /* Reduced from 32px to 20px/24px */
     text-align: center;
     position: relative;
     border-bottom: 1px solid var(--color-border-light);
@@ -2125,28 +2126,29 @@ main {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 60px;
-    height: 3px;
+    width: 40px; /* Reduced from 60px */
+    height: 2px; /* Reduced from 3px */
     background: var(--accent-color);
 }
 
 .bundle-header h3 {
-    font-size: 14px;
+    font-size: 12px; /* Reduced from 14px */
     font-weight: 600;
-    margin: 0 0 8px 0;
+    margin: 0 0 6px 0; /* Reduced from 8px */
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.8px; /* Reduced from 1px */
     opacity: 0.9;
     color: rgba(255, 255, 255, 0.9);
 }
 
 .bundle-header h2 {
-    font-size: 28px;
+    font-size: 24px; /* Reduced from 28px */
     font-weight: 700;
     margin: 0;
     position: relative;
     z-index: 1;
     color: white;
+    line-height: 1.2; /* Better line height for smaller text */
 }
 
 /* Bundle Info Section - New Two-Column Layout */
@@ -2173,10 +2175,10 @@ main {
     }
 }
 
-/* Professional Products Section - Updated for Two-Column Layout */
+/* Professional Products Section - Updated for Two-Column Layout - OPTIMIZED */
 .bundle-inclusions {
     list-style: none;
-    padding: 32px;
+    padding: 20px 24px; /* Reduced from 32px */
     margin: 0;
     flex-grow: 1;
     background: var(--color-background-white);
@@ -2186,11 +2188,11 @@ main {
 .bundle-inclusions::before {
     content: 'What\'s Included';
     display: block;
-    font-size: 18px;
+    font-size: 16px; /* Reduced from 18px */
     font-weight: 700;
     color: var(--brand-heading);
-    margin-bottom: 24px;
-    padding-bottom: 12px;
+    margin-bottom: 16px; /* Reduced from 24px */
+    padding-bottom: 8px; /* Reduced from 12px */
     border-bottom: 2px solid var(--accent-color);
     width: fit-content;
 }
@@ -2199,8 +2201,8 @@ main {
     background: var(--color-background-white);
     border: 1px solid var(--color-border-light);
     border-radius: 8px;
-    padding: 16px 20px;
-    margin-bottom: 12px;
+    padding: 12px 16px; /* Reduced from 16px 20px */
+    margin-bottom: 8px; /* Reduced from 12px */
     transition: all 0.2s ease;
     display: flex;
     justify-content: space-between;
@@ -2218,7 +2220,7 @@ main {
 
 .bundle-inclusions .product-name {
     font-weight: 600;
-    font-size: 16px;
+    font-size: 14px; /* Reduced from 16px */
     color: var(--brand-heading);
     display: flex;
     align-items: center;
@@ -2228,14 +2230,14 @@ main {
 .bundle-inclusions .checkmark {
     background: var(--color-success);
     color: white;
-    width: 20px;
-    height: 20px;
+    width: 18px; /* Reduced from 20px */
+    height: 18px; /* Reduced from 20px */
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 12px;
-    font-size: 12px;
+    margin-right: 10px; /* Reduced from 12px */
+    font-size: 11px; /* Reduced from 12px */
     font-weight: 700;
 }
 
@@ -2281,7 +2283,7 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 40px 32px 32px 32px;
+    padding: 24px 20px 20px 20px; /* Reduced from 40px 32px 32px 32px */
     position: relative;
 }
 
@@ -2295,16 +2297,16 @@ main {
 
 .bundle-price {
     text-align: center;
-    margin-bottom: 28px;
+    margin-bottom: 20px; /* Reduced from 28px */
 }
 
 .bundle-price .price {
-    font-size: 36px;
+    font-size: 32px; /* Reduced from 36px */
     font-weight: 800;
     color: var(--brand-heading);
     line-height: 1;
     display: block;
-    margin-bottom: 6px;
+    margin-bottom: 4px; /* Reduced from 6px */
 }
 
 .bundle-price .term {
@@ -2345,22 +2347,22 @@ main {
         flex-direction: column;
     }
     .bundle-header {
-        padding: 24px;
+        padding: 18px 20px; /* Reduced from 24px */
     }
     .bundle-header h2 {
-        font-size: 24px;
+        font-size: 22px; /* Reduced from 24px */
     }
     .bundle-inclusions {
-        padding: 24px;
+        padding: 18px 20px; /* Reduced from 24px */
     }
     .bundle-purchase {
-        padding: 24px;
+        padding: 18px 20px; /* Reduced from 24px */
     }
     .bundle-price .price {
-        font-size: 40px;
+        font-size: 28px; /* Reduced from 40px */
     }
     .main-story, .key-elements-section {
-        padding: 24px;
+        padding: 20px; /* Reduced from 24px */
     }
 }
 @media (max-width: 600px) {
@@ -2368,35 +2370,35 @@ main {
         padding: 40px 8px;
     }
     .bundle-header {
-        padding: 20px;
+        padding: 16px 18px; /* Reduced from 20px */
     }
     .bundle-header h2 {
-        font-size: 24px;
+        font-size: 20px; /* Reduced from 24px */
     }
     .bundle-inclusions {
-        padding: 20px;
+        padding: 16px 18px; /* Reduced from 20px */
     }
     .bundle-inclusions li {
-        padding: 12px 16px;
+        padding: 10px 14px; /* Reduced from 12px 16px */
         flex-direction: column;
         align-items: flex-start;
-        gap: 8px;
+        gap: 6px; /* Reduced from 8px */
     }
     .bundle-inclusions .product-actions {
         align-self: flex-end;
     }
     .bundle-purchase {
-        padding: 20px;
+        padding: 16px 18px; /* Reduced from 20px */
     }
     .bundle-price .price {
-        font-size: 32px;
+        font-size: 26px; /* Reduced from 32px */
     }
     .bundle-cta .cta-button {
-        padding: 14px 24px;
-        font-size: 16px;
+        padding: 12px 20px; /* Reduced from 14px 24px */
+        font-size: 14px; /* Reduced from 16px */
     }
     .main-story, .key-elements-section {
-        padding: 10px;
+        padding: 8px; /* Reduced from 10px */
     }
 }
 
