@@ -833,10 +833,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const ctaButton = card.querySelector(`#cta-${cardId}`);
 
         const priceSummaryContainer = card.querySelector(`#price-summary-${cardId}`);
-        const totalActualCostEl = priceSummaryContainer ? priceSummaryContainer.querySelector('.total-actual-cost') : null;
-        const totalPriceSubtleEl = priceSummaryContainer ? priceSummaryContainer.querySelector('.total-price-subtle') : null;
-        const discountPerDevEl = priceEl ? priceEl.querySelector('.discount-per-dev') : null;
-
         const totalListValueElement = card.querySelector(`#total-list-value-${cardId}`) || card.querySelector(`#total-list-value-${cardId}-inline`);
         const inclusionItems = card.querySelectorAll('.inclusions-list li:not(.total-value)');
 
@@ -963,11 +959,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 inlineListPrice.textContent = formatCurrency(currentTotalListPriceRaw);
             }
 
-            totalActualCostEl.innerHTML = `Total Cost: <strong>${formatCurrency(totalActualCost)}</strong> (for ${quantity} dev${quantity > 1 ? 's' : ''})`;
-            totalPriceSubtleEl.innerHTML = `Grand Total: <strong>${formatCurrency(totalCurrentPriceForYears)}</strong> (for ${years} year${years > 1 ? 's' : ''})`;
-            
-            if(savingsEl) {
-                savingsEl.textContent = `Save ${formatCurrency(totalSavingsAmount)}`;
+            // Update total list value with quantity and years (the hidden section)
+            if (totalListValueElement) {
+                totalListValueElement.innerHTML = `<del>${formatCurrency(currentTotalListPriceRaw)}</del>`;
             }
 
             // Update individual component names and prices
@@ -995,9 +989,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     itemPriceSpan.textContent = formatCurrency(multipliedPrice);
                 }
             });
-            // Update total list value with quantity and years
-            totalListValueElement.innerHTML = `<del>${formatCurrency(currentTotalListPriceRaw)}</del>`;
-
+            
             const volumeDiscountChanged = currentVolumeDiscountPercentage !== previousVolumeDiscountPercentage;
             const yearsChanged = years !== previousYearsSelected;
             
