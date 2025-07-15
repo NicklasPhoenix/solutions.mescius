@@ -1825,6 +1825,206 @@ main {
     margin-bottom: 10px;
 }
 
+/* New Compact Pricing Layout */
+.price-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    margin: 16px var(--card-padding) 12px var(--card-padding);
+    text-align: center;
+}
+
+.main-price {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    line-height: 1.1;
+}
+
+.price-details {
+    display: flex;
+    gap: 12px;
+    font-size: 0.875rem;
+    color: var(--color-text-subtle);
+    align-items: center;
+    justify-content: center;
+}
+
+.list-price {
+    text-decoration: line-through;
+    color: var(--color-text-muted);
+}
+
+.savings {
+    color: var(--color-success, #22c55e);
+    font-weight: 500;
+}
+
+.price-term {
+    font-size: 0.875rem;
+    color: var(--color-text-subtle);
+    margin-top: 2px;
+}
+
+/* Compact Calculator Controls */
+.discount-calculator {
+    background: var(--color-background-subtle, #f8f9fa);
+    border-radius: 8px;
+    padding: 12px;
+    margin: 12px var(--card-padding) 16px var(--card-padding);
+}
+
+.discount-option {
+    margin-bottom: 8px;
+}
+
+.discount-option:last-child {
+    margin-bottom: 0;
+}
+
+.discount-option label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    margin-bottom: 6px;
+    display: block;
+}
+
+.volume-control-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+}
+
+.quantity-btn {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--color-border-medium);
+    background: white;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.quantity-btn:hover:not(:disabled) {
+    background: var(--color-background-hover);
+    border-color: var(--color-primary);
+}
+
+.quantity-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.quantity-input {
+    width: 60px;
+    height: 32px;
+    text-align: center;
+    border: 1px solid var(--color-border-medium);
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.multi-year-options {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 6px;
+}
+
+.multi-year-options label {
+    background: white;
+    border: 1px solid var(--color-border-medium);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 0;
+}
+
+.multi-year-options input[type="radio"] {
+    display: none;
+}
+
+.multi-year-options input[type="radio"]:checked + label {
+    background: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+}
+
+.discount-tag {
+    background: var(--color-success, #22c55e);
+    color: white;
+    font-size: 0.75rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+/* Compact Price Summary */
+.price-summary-container {
+    background: var(--color-background-subtle, #f8f9fa);
+    border-radius: 8px;
+    padding: 12px;
+    margin: 12px var(--card-padding) 16px var(--card-padding);
+    text-align: center;
+}
+
+.total-actual-cost {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.total-price-subtle {
+    font-size: 0.875rem;
+    color: var(--color-text-subtle);
+    display: block;
+}
+
+/* Compact Inclusions List */
+.inclusions-list {
+    margin: 12px var(--card-padding) 16px var(--card-padding);
+    padding: 0;
+    list-style: none;
+}
+
+.inclusions-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--color-border-light);
+    font-size: 0.875rem;
+}
+
+.inclusions-list li:last-child {
+    border-bottom: none;
+}
+
+.inclusions-list li span:first-child {
+    color: var(--color-text-primary);
+}
+
+.inclusions-list li span:last-child {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
 /* Bundle Section Styles - Professional Redesigned Recommended Solution Card */
 .bundle-card {
     background: var(--color-background-white);
@@ -3505,7 +3705,7 @@ main {
     padding: 0;
     position: relative;
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    height: 100%;
+    min-height: auto; /* Remove fixed heights for compactness */
     display: flex;
     flex-direction: column;
     overflow: visible; /* Changed from hidden to visible to allow tags to show */
@@ -3577,7 +3777,7 @@ main {
     font-size: 22px;
     font-weight: 700;
     color: var(--brand-heading);
-    margin: var(--spacing-huge) var(--card-padding) var(--spacing-md) var(--card-padding);
+    margin: 32px var(--card-padding) 8px var(--card-padding); /* Reduced top margin */
     line-height: 1.3;
     text-align: center;
     transition: color 0.3s ease;
@@ -3599,7 +3799,7 @@ main {
 .pricing-card .card-subtitle, .bundle-card .card-subtitle {
     font-size: 15px;
     color: var(--color-text-subtle);
-    margin: 0 var(--card-padding) var(--spacing-lg) var(--card-padding);
+    margin: 0 var(--card-padding) 12px var(--card-padding); /* Reduced bottom margin */
     line-height: 1.5;
     text-align: center;
     transition: color 0.3s ease;
