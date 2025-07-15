@@ -659,17 +659,18 @@ main {
     flex-wrap: wrap;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: 32px 48px;
-    padding: 32px 40px 24px 40px;
-    margin-bottom: 36px;
+    gap: 16px 24px;
+    padding: 12px 16px;
+    margin-bottom: 24px;
     background-color: var(--color-background-white);
-    border: 1px solid var(--color-border-light);
-    border-radius: 18px;
-    box-shadow: 0 6px 24px var(--color-shadow-medium);
-    position: relative; /* was static, now relative to avoid overlaying hero */
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    position: relative;
     top: auto;
     z-index: 1;
     max-width: 100%;
+    transition: all 0.2s ease;
 }
 
 @media (min-width: 900px) {
@@ -678,10 +679,33 @@ main {
     top: 72px;
     z-index: 100 !important;
     background: var(--brand-bg, #fff);
-    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.04);
-    margin-bottom: 2rem;
-    transition: box-shadow 0.2s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    margin-bottom: 1.5rem;
+    transition: all 0.2s ease;
     pointer-events: auto;
+  }
+  
+  .filter-toolbar.collapsed {
+    padding: 8px 16px;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    border-color: rgba(0,0,0,0.06);
+    box-shadow: 0 1px 8px rgba(0,0,0,0.12);
+  }
+  
+  .filter-toolbar.collapsed .filter-set {
+    gap: 4px 0;
+  }
+  
+  .filter-toolbar.collapsed .filter-set-label {
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  
+  .filter-toolbar.collapsed .filter-btn {
+    padding: 6px 12px;
+    font-size: 13px;
+    min-width: 80px;
   }
 }
 
@@ -711,17 +735,17 @@ main {
     margin-bottom: 0;
 }
 .filter-set-label {
-    font-weight: 700;
-    font-size: 15px;
+    font-weight: 600;
+    font-size: 14px;
     color: var(--brand-heading);
-    margin-bottom: 6px;
+    margin-bottom: 4px;
     margin-right: 0;
     letter-spacing: 0.01em;
 }
 .filter-pills {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 6px;
 }
 .filter-set-label {
     font-weight: 700; 
@@ -735,32 +759,32 @@ main {
     gap: 8px; 
 }
 .filter-btn {
-    padding: 10px 22px;
-    font-size: 15px;
-    font-weight: 600;
-    border: 1px solid var(--color-border-light);
-    border-radius: 30px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid rgba(0,0,0,0.12);
+    border-radius: 20px;
     background-color: var(--color-background-white);
     color: var(--brand-body);
     cursor: pointer;
     transition: all 0.2s cubic-bezier(.4,0,.2,1);
-    box-shadow: 0 1px 2px var(--color-shadow-subtle);
-    min-width: 110px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    min-width: 100px;
     text-align: center;
     outline: none;
 }
 .filter-btn:hover:not(.is-active), .filter-btn:focus-visible:not(.is-active) {
     border-color: var(--brand-heading);
-    background-color: var(--color-neutral-light);
+    background-color: rgba(0,0,0,0.02);
     color: var(--brand-heading);
-    box-shadow: 0 2px 8px var(--color-shadow-medium);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
     z-index: 1;
 }
 .filter-btn.is-active {
     color: #fff;
     border-color: var(--brand-heading);
     background-color: var(--brand-heading);
-    box-shadow: 0 0 0 2px var(--color-header-nav-link-hover), 0 1px 2px var(--color-shadow-subtle);
+    box-shadow: 0 0 0 1px var(--color-header-nav-link-hover), 0 2px 4px rgba(0,0,0,0.1);
     position: relative;
     z-index: 2;
 }
@@ -790,48 +814,53 @@ main {
 }
 @media (max-width: 1100px) {
     .filter-toolbar {
-        gap: 20px;
-        padding: 20px;
         flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        padding: 16px 12px;
     }
     .filter-set {
         width: 100%;
         justify-content: center;
-        gap: 10px;
+        gap: 6px;
     }
     .filter-set-label {
-        margin-bottom: 8px;
+        margin-bottom: 6px;
         margin-right: 0;
         width: 100%;
         text-align: center;
+        font-size: 14px;
     }
     .clear-filters-btn {
         margin-left: 0;
-        margin-top: 10px;
+        margin-top: 8px;
     }
 }
 @media (max-width: 768px) {
     .filter-toolbar {
         position: static; /* Disable sticky on mobile to save vertical space */
         top: auto;
+        padding: 12px 8px;
+        margin-bottom: 16px;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.08);
     }
     .filter-set {
         flex-direction: column;
         align-items: center;
-        gap: 8px;
+        gap: 6px;
     }
     .filter-set-label {
-        font-size: 14px;
-        margin-bottom: 8px;
+        font-size: 13px;
+        margin-bottom: 6px;
     }
     .filter-pills {
         justify-content: center;
-        gap: 6px;
+        gap: 4px;
     }
     .filter-btn {
-        font-size: 14px;
-        padding: 8px 18px;
-        min-width: 90px;
+        font-size: 13px;
+        padding: 6px 14px;
+        min-width: 80px;
     }
 }
 
