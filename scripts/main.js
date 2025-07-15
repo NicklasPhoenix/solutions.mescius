@@ -1052,6 +1052,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Event listeners
         quantityInput.addEventListener('input', () => recalculate(true));
+        quantityInput.addEventListener('change', () => recalculate(true));
         yearRadios.forEach(radio => radio.addEventListener('change', () => recalculate(true)));
         
         // Initial recalculation on page load
