@@ -1344,41 +1344,92 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =========================================================
-    // SMART FILTER TOOLBAR - PROGRESSIVE DISCLOSURE
+    // ADAPTIVE SMART FILTER SYSTEM - INTELLIGENT BEHAVIOR
     // =========================================================
     
     const smartFilterToolbar = document.querySelector('.filter-toolbar');
     if (smartFilterToolbar && window.innerWidth >= 900) {
         let lastScrollY = window.scrollY;
         let scrollDirection = 'up';
+        let isUserInteracting = false;
+        let interactionTimeout;
+        
+        // Track user interaction with filters
+        smartFilterToolbar.addEventListener('mouseenter', () => {
+            isUserInteracting = true;
+            clearTimeout(interactionTimeout);
+        });
+        
+        smartFilterToolbar.addEventListener('mouseleave', () => {
+            interactionTimeout = setTimeout(() => {
+                isUserInteracting = false;
+            }, 2000); // 2 second grace period
+        });
         
         const handleSmartCollapse = () => {
             const currentScrollY = window.scrollY;
             
-            // Determine scroll direction
-            if (currentScrollY > lastScrollY) {
-                scrollDirection = 'down';
-            } else if (currentScrollY < lastScrollY) {
-                scrollDirection = 'up';
+            // Don't collapse if user is interacting with filters
+            if (isUserInteracting) {
+                lastScrollY = currentScrollY;
+                return;
             }
             
-            // Apply collapsed state based on scroll direction and position
-            if (scrollDirection === 'down' && currentScrollY > 150) {
-                smartFilterToolbar.classList.add('collapsed');
-            } else if (scrollDirection === 'up' || currentScrollY <= 100) {
-                smartFilterToolbar.classList.remove('collapsed');
+            // Determine scroll direction
+            const scrollDiff = currentScrollY - lastScrollY;
+            if (Math.abs(scrollDiff) > 5) { // Minimum scroll threshold
+                scrollDirection = scrollDiff > 0 ? 'down' : 'up';
+            }
+            
+            // Check if filters are currently active (not all set to 'all')
+            const hasActiveFilters = smartFilterToolbar.querySelectorAll('.filter-btn.is-active:not([data-filter="all"])').length > 0;
+            
+            // Apply intelligent collapse/expand behavior
+            if (scrollDirection === 'down' && currentScrollY > 100) {
+                // Collapse on scroll down
+                smartFilterToolbar.classList.add('filter-toolbar--collapsed');
+                smartFilterToolbar.classList.remove('filter-toolbar--expanded');
+            } else if (scrollDirection === 'up' || currentScrollY <= 50) {
+                // Expand on scroll up or near top
+                smartFilterToolbar.classList.remove('filter-toolbar--collapsed');
+                if (hasActiveFilters) {
+                    smartFilterToolbar.classList.add('filter-toolbar--expanded');
+                } else {
+                    smartFilterToolbar.classList.remove('filter-toolbar--expanded');
+                }
             }
             
             lastScrollY = currentScrollY;
         };
         
-        // Throttle scroll events for better performance
-        let scrollTimeout;
-        window.addEventListener('scroll', () => {
-            if (scrollTimeout) {
-                clearTimeout(scrollTimeout);
+        // Throttle scroll events for 60fps performance
+        let ticking = false;
+        const throttledScrollHandler = () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    handleSmartCollapse();
+                    ticking = false;
+                });
+                ticking = true;
             }
-            scrollTimeout = setTimeout(handleSmartCollapse, 10);
+        };
+        
+        window.addEventListener('scroll', throttledScrollHandler, { passive: true });
+        
+        // Handle filter interactions to trigger expanded state
+        smartFilterToolbar.addEventListener('click', (e) => {
+            if (e.target.closest('.filter-btn')) {
+                // Small delay to allow filter state to update
+                setTimeout(() => {
+                    const hasActiveFilters = smartFilterToolbar.querySelectorAll('.filter-btn.is-active:not([data-filter="all"])').length > 0;
+                    if (hasActiveFilters) {
+                        smartFilterToolbar.classList.add('filter-toolbar--expanded');
+                        smartFilterToolbar.classList.remove('filter-toolbar--collapsed');
+                    } else {
+                        smartFilterToolbar.classList.remove('filter-toolbar--expanded');
+                    }
+                }, 100);
+            }
         });
         
         // Initial state
