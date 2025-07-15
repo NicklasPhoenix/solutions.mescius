@@ -651,7 +651,7 @@ main {
 }
 
 /* --- Filter Controls: Intuitive and visually responsive --- */
-/* Modern, clean, and consistent filter toolbar */
+/* Modern Adaptive Smart Filter System */
 
 .filter-toolbar {
     display: flex;
@@ -659,18 +659,20 @@ main {
     flex-wrap: wrap;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: 16px 24px;
-    padding: 12px 16px;
+    gap: 12px 20px;
+    padding: 16px 24px;
     margin-bottom: 24px;
-    background-color: var(--color-background-white);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
     border: 1px solid rgba(0,0,0,0.08);
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
     position: relative;
     top: auto;
     z-index: 1;
     max-width: 100%;
-    transition: all 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, padding, background, box-shadow;
 }
 
 @media (min-width: 900px) {
@@ -678,34 +680,50 @@ main {
     position: sticky;
     top: 72px;
     z-index: 100 !important;
-    background: var(--brand-bg, #fff);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
     margin-bottom: 1.5rem;
-    transition: all 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     pointer-events: auto;
   }
   
-  .filter-toolbar.collapsed {
-    padding: 8px 16px;
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(8px);
-    border-color: rgba(0,0,0,0.06);
-    box-shadow: 0 1px 8px rgba(0,0,0,0.12);
+  /* Ultra-compact collapsed state */
+  .filter-toolbar--collapsed {
+    padding: 8px 16px !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(8px) !important;
+    border-color: rgba(0,0,0,0.06) !important;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.12) !important;
+    transform: translateY(-2px);
   }
   
-  .filter-toolbar.collapsed .filter-set {
-    gap: 4px 0;
+  .filter-toolbar--collapsed .filter-set {
+    gap: 6px 8px !important;
+    flex: 0 1 auto !important;
+    min-width: 200px !important;
   }
   
-  .filter-toolbar.collapsed .filter-set-label {
-    font-size: 14px;
-    margin-bottom: 4px;
+  .filter-toolbar--collapsed .filter-set-label {
+    font-size: 13px !important;
+    margin-bottom: 4px !important;
+    font-weight: 500 !important;
   }
   
-  .filter-toolbar.collapsed .filter-btn {
-    padding: 6px 12px;
-    font-size: 13px;
-    min-width: 80px;
+  .filter-toolbar--collapsed .filter-btn {
+    padding: 6px 12px !important;
+    font-size: 13px !important;
+    min-width: 70px !important;
+    border-radius: 16px !important;
+  }
+  
+  /* Expanded state for active filtering */
+  .filter-toolbar--expanded {
+    padding: 20px 28px !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(16px) !important;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12) !important;
+    border-radius: 16px !important;
   }
 }
 
@@ -764,29 +782,33 @@ main {
     font-weight: 500;
     border: 1px solid rgba(0,0,0,0.12);
     border-radius: 20px;
-    background-color: var(--color-background-white);
+    background-color: rgba(255, 255, 255, 0.9);
     color: var(--brand-body);
     cursor: pointer;
-    transition: all 0.2s cubic-bezier(.4,0,.2,1);
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-    min-width: 100px;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+    min-width: 90px;
     text-align: center;
     outline: none;
+    backdrop-filter: blur(4px);
+    will-change: transform, box-shadow, background-color;
 }
 .filter-btn:hover:not(.is-active), .filter-btn:focus-visible:not(.is-active) {
     border-color: var(--brand-heading);
-    background-color: rgba(0,0,0,0.02);
+    background-color: rgba(0,0,0,0.04);
     color: var(--brand-heading);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-1px);
     z-index: 1;
 }
 .filter-btn.is-active {
     color: #fff;
     border-color: var(--brand-heading);
     background-color: var(--brand-heading);
-    box-shadow: 0 0 0 1px var(--color-header-nav-link-hover), 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
     position: relative;
     z-index: 2;
+    transform: translateY(-1px);
 }
 /* Product-specific border colors (DO NOT CHANGE) */
 .filter-set[data-filter-type="product"] .filter-btn[data-filter="net"].is-active { background-color: var(--brand-net); border-color: var(--brand-net); }
@@ -840,37 +862,57 @@ main {
     .filter-toolbar {
         position: static; /* Disable sticky on mobile to save vertical space */
         top: auto;
-        padding: 12px 8px;
-        margin-bottom: 16px;
-        box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+        padding: 16px 12px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(8px);
     }
+    
     .filter-set {
         flex-direction: column;
         align-items: center;
-        gap: 6px;
+        gap: 8px;
+        width: 100%;
     }
+    
     .filter-set-label {
-        font-size: 13px;
-        margin-bottom: 6px;
+        font-size: 14px;
+        margin-bottom: 8px;
+        font-weight: 600;
+        text-align: center;
+        width: 100%;
     }
+    
     .filter-pills {
         justify-content: center;
-        gap: 4px;
+        gap: 6px;
+        flex-wrap: wrap;
+        width: 100%;
     }
+    
     .filter-btn {
         font-size: 13px;
-        padding: 6px 14px;
-        min-width: 80px;
+        padding: 8px 14px;
+        min-width: 75px;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* Enhanced mobile interactions */
+    .filter-btn:active {
+        transform: scale(0.95);
     }
 }
 
-/* --- Applied Filter Chips: Clear and actionable --- */
+/* --- Applied Filter Chips: Modern and actionable --- */
 .applied-filters-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 40px; /* Space between chips and grid */
-    min-height: 40px; /* Give it some height even when empty */
+    gap: 12px;
+    margin-bottom: 32px; /* Space between chips and grid */
+    min-height: 36px; /* Give it some height even when empty */
     align-items: center;
     padding: 0 24px; /* Align with container padding */
     position: relative;
@@ -881,33 +923,54 @@ main {
 .filter-chip {
     display: inline-flex;
     align-items: center;
-    background-color: var(--color-neutral-dark); /* Dark chip background */
+    background: linear-gradient(135deg, var(--color-neutral-dark) 0%, rgba(0,0,0,0.8) 100%);
     color: #ffffff;
-    padding: 8px 12px;
-    border-radius: 20px; /* Pill shape */
+    padding: 8px 16px;
+    border-radius: 18px; /* More rounded pill shape */
     font-size: 14px;
     font-weight: 500;
-    gap: 8px;
-    transition: background-color 0.2s ease;
-    box-shadow: 0 2px 5px var(--color-shadow-subtle);
+    gap: 10px;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,0.1);
 }
+
+.filter-chip:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 100%);
+}
+
 .filter-chip-text {
     white-space: nowrap; /* Prevent text wrapping */
+    font-weight: 500;
 }
+
 .filter-chip-remove {
-    background: none;
+    background: rgba(255,255,255,0.15);
     border: none;
-    color: rgba(255, 255, 255, 0.7); /* Lighter 'x' for contrast */
+    color: rgba(255, 255, 255, 0.9);
     cursor: pointer;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1;
-    padding: 0;
+    padding: 4px;
     margin-left: 4px;
-    transition: color 0.2s ease;
+    transition: all 0.2s ease;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
 .filter-chip-remove:hover {
-    color: #ffffff; /* White 'x' on hover */
+    background: rgba(255,255,255,0.25);
+    color: #ffffff;
+    transform: scale(1.1);
 }
+
 /* Hide if no filters are applied */
 .applied-filters-container:empty {
     display: none;
