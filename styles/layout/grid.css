@@ -1,0 +1,162 @@
+/* ===============================================
+    Layout Components
+    Grid systems, page layout, and structural elements
+    =============================================== */
+
+/* Hero Section */
+.hero { 
+  background: linear-gradient(135deg, var(--brand-header) 0%, #3C475B 100%);
+  color: #ffffff;
+  overflow: hidden; 
+  padding: 100px 20px; 
+  position: relative; 
+  text-align: center;
+  z-index: 100;
+}
+
+.hero::before {
+  background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%239C92AC" fill-opacity="0.03"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 20v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 46v-4H4v4H0v2h4v4h2v-4h4v-2H6zm0-20v-4H4v4H0v2h4v4h2v-4h4v-2H6zM42 0v4h-2v-4h4V0h-4V-4h-2v4h-4v2h4zm0 20v4h-2v-4h4V20h-4v-4h-2v4h4v2h-4zm12 7H46v-2h8v-4h2v4h4v2h-4v4h-2v-4zm0-20H46v-2h8v-4h2v4h4v2h-4v4h-2v-4zM24 2v4h-2V2h-4V0h4V-4h2v4h4v2h-4zm0 20v4h-2v-4h-4V20h4v-4h2v4h4v2h-4zm-6-2v2H2v-2h-4v-2h4v-4h2v4h4v2h-4zm0 20v2H2v-2h-4v-2h4v-4h2v4h4v2h-4zM22 36v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 20v-4h-2v4h-4v2h4v-4h2v-4h4v-2h-4zM36 0v4h-2V0h-4V-4h4V-8h2v4h4v2h-4zm0 20v4h-2v-4h-4V20h4v-4h2v4h4v2h-4zM0 34v-4H-4v4h-4v2h4v4h4v-4h4v-2H0zm0-20v-4H-4v4h-4v2h4v4h4v-4h4v-2H0zm54 0v-4H50v4h-4v2h4v4h4v-4h4v-2h-4zm0 20v-4H50v4h-4v2h4v4h4v-4h4v-2h-4zM42 36v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 20v-4h-2v4h-4v2h4v-4h2v-4h4v-2h-4zM24 42v4h-2v-4h-4v-2h4v-4h2v4h4v2h-4zm0 20v4h-2v-4h-4v-2h4v-4h2v4h4v2h-4zM60 6v4h-2V6h-4V4h4V0h2v4h4v2h-4zm0 20v4h-2v-4h-4V20h4v-4h2v4h4v2h-4zm-6 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-20v-4h-2v4h-4v2h4v-4h2v-4h4v-2h-4zM36 42v4h-2v-4h-4v-2h4v-4h2v4h4v2h-4zM0 6v4H-4V6h-4V4h4V0h2v4h4v2h-4z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+  background-size: 60px 60px;
+  content: '';
+  height: 100%;
+  left: 0;
+  opacity: 0.03;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.hero-title { 
+  color: #ffffff; 
+  font-size: 48px; 
+  font-weight: 800;
+  letter-spacing: -1px; 
+  margin-bottom: 20px; 
+  text-shadow: 0 2px 8px rgb(0 0 0 / 18%);
+}
+
+.hero-subtitle { 
+  font-size: 22px;
+  line-height: 1.8;
+  margin: 0 auto 40px;
+  max-width: 800px;
+  opacity: 0.95;
+}
+
+/* Product Overview Section */
+.product-overview-section {
+  background-color: #f8f9fa;
+  padding: 60px 0;
+}
+
+.product-families-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.product-family {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgb(0 0 0 / 5%);
+  flex: 1;
+  min-width: 300px;
+  padding: 30px;
+}
+
+/* Grid Systems */
+.case-study-grid {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  margin-top: 40px;
+}
+
+.solution-profile-grid {
+  display: grid;
+  gap: 40px;
+  grid-template-columns: 1fr;
+  margin: 40px 0;
+}
+
+.pricing-grid {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  margin: 32px 0 60px;
+  padding: 0 24px;
+}
+
+/* Blueprint and Case Study Headers */
+.blueprint-hero, .case-study-header {
+  background: linear-gradient(135deg, var(--brand-header) 0%, #3C475B 100%);
+  color: #ffffff;
+  overflow: hidden;
+  padding: 80px 20px;
+  position: relative;
+  text-align: center;
+}
+
+.blueprint-hero::before, .case-study-header::before {
+  background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%239C92AC" fill-opacity="0.02"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 20v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 46v-4H4v4H0v2h4v4h2v-4h4v-2H6zm0-20v-4H4v4H0v2h4v4h2v-4h4v-2H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+  background-size: 60px 60px;
+  content: '';
+  height: 100%;
+  left: 0;
+  opacity: 0.05;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+/* Responsive Layout */
+@media (width <= 768px) {
+  .hero {
+    padding: 60px 20px;
+  }
+    
+  .hero-title { 
+    font-size: 36px; 
+  }
+    
+  .hero-subtitle { 
+    font-size: 18px; 
+  }
+    
+  .case-study-grid {
+    gap: 20px;
+    grid-template-columns: 1fr;
+  }
+    
+  .pricing-grid {
+    gap: 20px;
+    grid-template-columns: 1fr;
+    margin: 16px 0 40px;
+    padding: 0 16px;
+  }
+    
+  .product-card {
+    margin-bottom: 16px;
+  }
+}
+
+@media (width <= 480px) {
+  .hero-title { 
+    font-size: 28px; 
+  }
+    
+  .hero-subtitle { 
+    font-size: 16px; 
+  }
+    
+  .container {
+    padding: 0 16px;
+  }
+    
+  .case-study-header {
+    padding: 40px 8px;
+  }
+}
