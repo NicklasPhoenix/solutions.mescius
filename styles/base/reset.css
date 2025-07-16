@@ -5,63 +5,65 @@
 
 /* Box-sizing reset */
 *, *::before, *::after { 
-    box-sizing: border-box; 
+  box-sizing: border-box; 
 }
 
 /* Base body and html styling */
-body { 
-    margin: 0; 
-    font-family: 'Montserrat', sans-serif;
-    background-color: var(--brand-light-gray); 
-    color: var(--brand-body); 
-    line-height: 1.6;
-    /* Ensure footer is always visible and not overlapped by content */
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+body {
+  background-color: var(--brand-light-gray); 
+  color: var(--brand-body);
+  display: flex;
+  flex-direction: column; 
+  font-family: Montserrat, sans-serif; 
+  line-height: 1.6; 
+  margin: 0;
+
+  /* Ensure footer is always visible and not overlapped by content */
+  min-height: 100vh;
 }
 
 main {
-    flex: 1 0 auto;
+  flex: 1 0 auto;
 }
 
 /* Container reset */
 .container { 
-    max-width: 1280px; 
-    margin: 0 auto; 
-    padding: 0 24px; 
-    border-radius: 16px;
+  border-radius: 16px; 
+  margin: 0 auto; 
+  max-width: 1280px; 
+  padding: 0 24px;
 }
 
 /* Link reset */
 a {
-    text-decoration: none;
-    color: inherit;
+  color: inherit;
+  text-decoration: none;
 }
 
 /* Form elements reset */
 input, button, textarea, select {
-    font-family: inherit;
-    font-size: inherit;
+  font-family: inherit;
+  font-size: inherit;
 }
 
 /* Remove default button styling */
 button {
-    border: none;
-    background: none;
-    cursor: pointer;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 /* Hide number input spinners */
+
 /* For Webkit-based browsers (Chrome, Safari, Edge) */
-input[type=number]::-webkit-outer-spin-button,
-input[type=number]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  appearance: none;
   margin: 0;
 }
 
 /* For Firefox */
-input[type=number] {
+input[type='number'] {
   appearance: textfield;
-  -moz-appearance: textfield;
+  appearance: textfield;
 }

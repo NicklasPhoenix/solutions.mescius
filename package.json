@@ -5,20 +5,12 @@
   "scripts": {
     "lint:css": "stylelint 'styles/**/*.css'",
     "lint:css:fix": "stylelint 'styles/**/*.css' --fix",
-    "check:duplicates": "csscss styles/ --ignore-properties=border-radius",
-    "build:css": "postcss styles/main-new.css -o styles/main.min.css",
-    "watch:css": "chokidar 'styles/**/*.css' -c 'npm run lint:css'",
     "serve": "python3 -m http.server 8000"
   },
   "devDependencies": {
     "stylelint": "^15.11.0",
     "stylelint-config-standard": "^34.0.0",
-    "stylelint-order": "^6.0.3",
-    "csscss": "^1.3.3",
-    "parker": "^1.0.0",
-    "postcss": "^8.4.31",
-    "postcss-cli": "^10.1.0",
-    "chokidar-cli": "^3.0.0"
+    "stylelint-order": "^6.0.3"
   },
   "author": "Mescius Solutions Team",
   "license": "MIT"

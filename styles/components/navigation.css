@@ -5,181 +5,181 @@
 
 /* Header */
 .header {
-    background-color: var(--brand-header);
-    color: #fff !important;
-    padding: 18px 0;
-    box-shadow: 0 4px 12px var(--color-shadow-medium);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    transition: all 0.3s ease;
+  background-color: var(--brand-header);
+  box-shadow: 0 4px 12px var(--color-shadow-medium);
+  color: #ffffff !important;
+  padding: 18px 0;
+  position: sticky;
+  top: 0;
+  transition: all 0.3s ease;
+  z-index: 1000;
 }
 
 .header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #fff !important;
+  align-items: center;
+  color: #ffffff !important;
+  display: flex;
+  justify-content: space-between;
 }
 
 /* Logo */
 .logo-link {
-    display: block; 
-    line-height: 0;
-    transition: opacity 0.3s ease;
+  display: block; 
+  line-height: 0;
+  transition: opacity 0.3s ease;
 }
 
 .logo-link:hover {
-    opacity: 0.8;
+  opacity: 0.8;
 }
 
 .logo { 
-    height: 36px; 
-    filter: brightness(0) invert(1); 
+  filter: brightness(0) invert(1); 
+  height: 36px; 
 }
 
 /* Main Navigation */
 .main-nav { 
-    display: flex; 
-    gap: 35px; 
-    align-items: center; 
+  align-items: center; 
+  display: flex; 
+  gap: 35px; 
 }
 
 .nav-link {
-    color: #fff !important;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 15px;
-    padding-bottom: 8px;
-    border-bottom: 3px solid transparent;
-    transition: none !important;
-    background-color: transparent;
-    border-radius: 0;
-    padding: 0 5px 8px;
+  background-color: transparent;
+  border-bottom: 3px solid transparent;
+  border-radius: 0;
+  color: #ffffff !important;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 0 5px 8px;
+  padding-bottom: 8px;
+  text-decoration: none;
+  transition: none !important;
 }
 
 .nav-link:focus {
-    outline: none;
-    outline-offset: 0;
-    box-shadow: none !important;
-    transition: none !important;
+  box-shadow: none !important;
+  outline: none;
+  outline-offset: 0;
+  transition: none !important;
 }
 
 .nav-link.active, .nav-link:hover {
-    border-bottom-color: #fff !important;
-    color: #fff !important;
-    text-decoration: NONE !important;
+  border-bottom-color: #ffffff !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
 }
 
 /* Contact Button */
 .contact-btn {
-    color: var(--brand-header) !important;
-    background-color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 15px;
-    padding: 10px 20px;
-    border-radius: 25px;
-    transition: all 0.3s ease;
-    border: 2px solid #fff;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    position: relative;
-    overflow: hidden;
+  background-color: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: 25px;
+  color: var(--brand-header) !important;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  overflow: hidden;
+  padding: 10px 20px;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
 }
 
 .contact-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-    transition: left 0.5s ease;
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 40%), transparent);
+  content: '';
+  height: 100%;
+  left: -100%;
+  position: absolute;
+  top: 0;
+  transition: left 0.5s ease;
+  width: 100%;
 }
 
 .contact-btn:hover::before {
-    left: 100%;
+  left: 100%;
 }
 
 .contact-btn:hover {
-    background-color: #f0f0f0;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
-    border-color: #f0f0f0;
+  background-color: #f0f0f0;
+  border-color: #f0f0f0;
+  box-shadow: 0 6px 20px rgb(255 255 255 / 30%);
+  transform: translateY(-2px);
 }
 
 /* Mobile Navigation Toggle */
 .menu-toggle {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 22px;
-    cursor: pointer;
-    z-index: 1001;
+  cursor: pointer;
+  display: none;
+  flex-direction: column;
+  height: 22px;
+  justify-content: space-between;
+  width: 30px;
+  z-index: 1001;
 }
 
 .menu-toggle span {
-    display: block;
-    width: 100%;
-    height: 3px;
-    background-color: var(--color-header-nav-link); 
-    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+  background-color: var(--color-header-nav-link);
+  display: block;
+  height: 3px; 
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+  width: 100%;
 }
 
 .menu-toggle.is-active span:nth-child(1) { 
-    transform: rotate(45deg) translate(5px, 5px); 
+  transform: rotate(45deg) translate(5px, 5px); 
 }
 
 .menu-toggle.is-active span:nth-child(2) { 
-    opacity: 0; 
+  opacity: 0; 
 }
 
 .menu-toggle.is-active span:nth-child(3) { 
-    transform: rotate(-45deg) translate(5px, -5px); 
+  transform: rotate(-45deg) translate(5px, -5px); 
 }
 
 /* Mobile Navigation Styles */
-@media (max-width: 768px) {
-    .main-nav {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: var(--brand-header);
-        flex-direction: column;
-        padding: 20px 24px;
-        display: none;
-        box-shadow: 0 4px 12px var(--color-shadow-medium);
-    }
+@media (width <= 768px) {
+  .main-nav {
+    background-color: var(--brand-header);
+    box-shadow: 0 4px 12px var(--color-shadow-medium);
+    display: none;
+    flex-direction: column;
+    left: 0;
+    padding: 20px 24px;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+  }
     
-    .main-nav.is-open { 
-        display: flex; 
-    }
+  .main-nav.is-open { 
+    display: flex; 
+  }
     
-    .main-nav .nav-link {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 12px 0;
-        margin-bottom: 8px;
-    }
+  .main-nav .nav-link {
+    border-bottom: 1px solid rgb(255 255 255 / 10%);
+    margin-bottom: 8px;
+    padding: 12px 0;
+  }
     
-    .main-nav .nav-link:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-        padding-left: 10px;
-    }
+  .main-nav .nav-link:hover {
+    background-color: rgb(255 255 255 / 10%);
+    padding-left: 10px;
+  }
     
-    .main-nav .contact-btn {
-        margin-top: 10px;
-        text-align: center;
-        border-radius: 25px;
-        padding: 12px 24px;
-        align-self: center;
-        max-width: 200px;
-    }
+  .main-nav .contact-btn {
+    align-self: center;
+    border-radius: 25px;
+    margin-top: 10px;
+    max-width: 200px;
+    padding: 12px 24px;
+    text-align: center;
+  }
     
-    .menu-toggle { 
-        display: flex; 
-    }
+  .menu-toggle { 
+    display: flex; 
+  }
 }
