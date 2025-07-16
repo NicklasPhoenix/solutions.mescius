@@ -1,0 +1,102 @@
+/* ===============================================
+    HEADER.CSS - Global Header & Navigation Styles
+    Reusable header component for all pages
+    =============================================== */
+
+/* ===============================================
+    HEADER & NAVIGATION
+    =============================================== */
+.header {
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-gray-200);
+  height: var(--header-height);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.header-content {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.logo-link {
+  text-decoration: none;
+}
+
+.logo {
+  height: 40px;
+  width: auto;
+}
+
+.main-nav {
+  align-items: center;
+  display: none;
+  gap: var(--space-8);
+}
+
+.nav-link {
+  color: var(--color-gray-700);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: var(--color-primary);
+}
+
+.contact-btn {
+  background-color: var(--color-primary);
+  border-radius: 0.5rem;
+  color: var(--color-white);
+  font-weight: var(--font-weight-semibold);
+  padding: var(--space-3) var(--space-6);
+  text-decoration: none;
+  transition: background-color var(--transition);
+}
+
+.contact-btn:hover,
+.contact-btn:focus {
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  height: 24px;
+  justify-content: space-between;
+  width: 24px;
+}
+
+.menu-toggle span {
+  background-color: var(--color-gray-700);
+  height: 2px;
+  transition: all var(--transition);
+  width: 100%;
+}
+
+/* ===============================================
+    RESPONSIVE HEADER
+    =============================================== */
+
+/* Tablet and up */
+@media (width >= 768px) {
+  .main-nav {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+}
