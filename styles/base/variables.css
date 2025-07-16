@@ -1,0 +1,133 @@
+/* ===============================================
+    CSS Variables & Color System
+    Contains all design tokens and color definitions
+    =============================================== */
+
+:root {
+  /* Brand Colors (DO NOT CHANGE) */
+  --brand-header: #474D57; /* Dark header color */
+  --brand-light-gray: #f8f9fa; /* Light page background */
+  --brand-heading: #2D3748; /* Dark text for headings */
+  --brand-body: #4A5568; /* Standard body text color */
+    
+  /* Product-specific colors (DO NOT CHANGE THESE) */
+  --brand-js: #809B59;
+  --brand-net: #D6564C;
+  --brand-wijmo: #48A9C5;
+  --brand-ds: #5A7E9E;
+  --brand-arjs: #EA8939;
+  --brand-ar: #EA8939;
+  --brand-spread: #809B59;
+    
+  /* Backup compatibility variables */
+  --brand-c1: #D6564C;     /* ComponentOne (Red) */
+
+  /* Default UI Colors - Professional neutral palette */
+  --color-primary: #64748B; /* Slate gray - professional and neutral */
+  --color-primary-light: rgb(100 116 139 / 10%);
+  --color-primary-medium: rgb(100 116 139 / 20%);
+  --color-success: #10B981; /* Modern green */
+  --color-danger: #EF4444; /* Modern red */
+  --color-warning: #F59E0B; /* Modern amber */
+
+  /* General UI Colors (Selected to harmonize with brand, no bright blue, no red for general accents) */
+  --color-neutral-dark: #343a40; /* A dark neutral for some elements */
+  --color-neutral-light: #f1f3f5; /* A light neutral for background accents */
+  --color-border-light: #dee2e6; /* A very light border color */
+  --color-background-white: #ffffff;
+  --color-text-subtle: #6c757d; /* Softer text color for secondary info */
+  --color-shadow-subtle: rgb(0 0 0 / 5%); /* Very light shadow */
+  --color-shadow-medium: rgb(0 0 0 / 10%); /* Medium shadow for depth */
+  --color-shadow-strong: rgb(0 0 0 / 15%); /* Stronger shadow for active states */
+    
+  /* Header Navigation Specific Colors (Ensuring good contrast on dark header) */
+  --color-header-nav-link: #ffffff; 
+  --color-header-nav-link-hover: #D0D5DD; /* Light gray for hover, clearly visible */
+  --color-header-nav-link-active: #ffffff; /* White for active for clarity */
+    
+  /* Blueprint accent color */
+  --accent-color: var(--brand-wijmo); /* Using wijmo color as default accent */
+
+  /* 8px Grid System Variables */
+  --spacing-xs: 4px;   /* 0.5 grid units */
+  --spacing-sm: 8px;   /* 1 grid unit */
+  --spacing-md: 16px;  /* 2 grid units */
+  --spacing-lg: 24px;  /* 3 grid units */
+  --spacing-xl: 32px;  /* 4 grid units */
+  --spacing-xxl: 40px; /* 5 grid units */
+  --spacing-huge: 48px; /* 6 grid units */
+}
+
+/* Per-product accent color overrides */
+body.product-net {
+  --accent-color: var(--brand-net);
+}
+
+body.product-js {
+  --accent-color: var(--brand-js);
+}
+
+body.product-wijmo {
+  --accent-color: var(--brand-wijmo);
+}
+
+body.product-ds {
+  --accent-color: var(--brand-ds);
+}
+
+body.product-arjs, body.product-ar {
+  --accent-color: var(--brand-arjs);
+}
+
+body.product-spread {
+  --accent-color: var(--brand-spread);
+}
+
+body.product-c1 {
+  --accent-color: var(--brand-c1);
+}
+
+/* Accent color classes for specific components */
+.accent-documents {
+  --accent-color: #5A7E9E;
+}
+
+.accent-bi {
+  --accent-color: #3B6BA5;
+}
+
+.accent-blazor {
+  --accent-color: #7B3FA0;
+}
+
+.accent-excel {
+  --accent-color: #217346;
+}
+
+.accent-financial {
+  --accent-color: #B76E00;
+}
+
+.accent-healthcare {
+  --accent-color: #D72660;
+}
+
+.accent-logistics {
+  --accent-color: #00838F;
+}
+
+.accent-dashboards {
+  --accent-color: #2E7D32;
+}
+
+.accent-regtech {
+  --accent-color: #5C2D91;
+}
+
+.accent-universal {
+  --accent-color: #1A237E;
+}
+
+.accent-oem {
+  --accent-color: #C62828;
+}
