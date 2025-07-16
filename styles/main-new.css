@@ -16,6 +16,9 @@
 @import url('./components/navigation.css');
 @import url('./components/buttons.css');
 @import url('./components/cards.css');
+@import url('./components/filters.css');
+@import url('./components/modals.css');
+@import url('./components/forms.css');
 
 /* Utility classes and global link styling */
 .nav-link,

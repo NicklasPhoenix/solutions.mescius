@@ -1,0 +1,30 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "plugins": ["stylelint-order"],
+  "rules": {
+    "no-duplicate-selectors": true,
+    "declaration-block-no-duplicate-properties": true,
+    "no-duplicate-at-import-rules": true,
+    "selector-class-pattern": "^[a-z]([a-z0-9-]+)?(__([a-z0-9]+-?)+)?(--([a-z0-9]+-?)+){0,2}$",
+    "max-nesting-depth": 3,
+    "order/properties-alphabetical-order": true,
+    "color-hex-length": "long",
+    "declaration-colon-space-after": "always",
+    "declaration-colon-space-before": "never",
+    "indentation": 2,
+    "string-quotes": "single",
+    "selector-pseudo-element-colon-notation": "double",
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": ["import"]
+      }
+    ]
+  },
+  "ignoreFiles": [
+    "styles/main.css",
+    "styles/home.css",
+    "styles/main.css.backup",
+    "node_modules/**/*"
+  ]
+}

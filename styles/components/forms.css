@@ -1,0 +1,234 @@
+/* ===============================================
+    Form Components
+    Input fields, pricing calculator, and form styling
+    =============================================== */
+
+/* Input fields and form controls */
+input, textarea, select {
+    font-family: inherit;
+    font-size: inherit;
+    border: 1px solid var(--color-border-light);
+    border-radius: 6px;
+    padding: 8px 12px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    background: var(--color-background-white);
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(100, 116, 139, 0.1);
+}
+
+/* Newsletter signup form */
+.newsletter-form {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.newsletter-email {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 14px;
+}
+
+.newsletter-email::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.newsletter-email:focus {
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Pricing Calculator */
+.pricing-calculator {
+    background: var(--color-background-white);
+    border: 1px solid var(--color-border-light);
+    border-radius: 12px;
+    padding: 24px;
+    margin: 24px 0;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.calculator-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.calculator-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--brand-heading);
+    margin: 0 0 8px 0;
+}
+
+.calculator-subtitle {
+    font-size: 16px;
+    color: var(--color-text-subtle);
+    margin: 0;
+}
+
+.calculator-controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.control-label {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--brand-heading);
+}
+
+.control-input {
+    padding: 12px 16px;
+    border: 2px solid var(--color-border-light);
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    background: var(--color-background-white);
+    transition: all 0.2s ease;
+}
+
+.control-input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(100, 116, 139, 0.1);
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    border: 2px solid var(--color-border-light);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--color-background-white);
+}
+
+.quantity-btn {
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 12px 16px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    transition: background-color 0.2s ease;
+}
+
+.quantity-btn:hover {
+    background: var(--brand-heading);
+}
+
+.quantity-input {
+    border: none;
+    padding: 12px 16px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    width: 80px;
+    background: transparent;
+}
+
+.quantity-input:focus {
+    outline: none;
+    background: var(--color-neutral-light);
+}
+
+/* Price Summary */
+.price-summary {
+    background: linear-gradient(135deg, var(--color-neutral-light) 0%, #f8fafc 100%);
+    border: 1px solid var(--color-border-light);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+}
+
+.price-breakdown {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--color-border-light);
+    font-size: 16px;
+}
+
+.price-breakdown:last-of-type {
+    border-bottom: 2px solid var(--color-primary);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--brand-heading);
+}
+
+.price-breakdown .price-label {
+    color: var(--brand-body);
+}
+
+.price-breakdown .price-value {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.final-price {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin: 16px 0;
+}
+
+/* Savings Badge */
+.savings-badge {
+    background: linear-gradient(135deg, var(--color-success) 0%, #16a085 100%);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    margin: 16px auto 24px auto;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+}
+
+/* Responsive Form Design */
+@media (max-width: 768px) {
+    .pricing-calculator {
+        padding: 16px;
+        margin: 16px 0;
+    }
+    
+    .calculator-controls {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .calculator-title {
+        font-size: 20px;
+    }
+    
+    .newsletter-form {
+        flex-direction: column;
+    }
+    
+    .quantity-controls {
+        justify-content: center;
+    }
+    
+    .final-price {
+        font-size: 24px;
+    }
+}
