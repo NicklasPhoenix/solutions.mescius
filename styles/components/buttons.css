@@ -1,0 +1,204 @@
+/* ===============================================
+    Button Components
+    All button styles and variations
+    =============================================== */
+
+/* Primary CTA Buttons */
+.cta-button {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--brand-heading) 100%);
+    color: white;
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, var(--brand-heading) 0%, var(--color-primary) 100%);
+}
+
+/* Hero CTA Buttons */
+.hero-cta-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.hero-cta-button {
+    text-decoration: none;
+    padding: 1rem 2.5rem;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.hero-cta-button.primary {
+    background-color: #EF5350;
+    color: #ffffff;
+}
+
+.hero-cta-button.primary:hover {
+    background-color: #d32f2f;
+}
+
+.hero-cta-button.secondary {
+    background-color: transparent;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+.hero-cta-button.secondary:hover {
+    background-color: #ffffff;
+    color: var(--brand-header);
+}
+
+/* Add to Cart Button */
+.add-to-cart-btn {
+    background: linear-gradient(135deg, var(--color-success) 0%, #16a085 100%);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.add-to-cart-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
+    background: linear-gradient(135deg, #16a085 0%, var(--color-success) 100%);
+}
+
+.add-to-cart-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Newsletter Signup Button */
+.newsletter-signup-btn {
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.newsletter-signup-btn:hover {
+    background: var(--brand-heading);
+    transform: translateY(-1px);
+}
+
+/* Action Links (small buttons) */
+.action-link {
+    background: var(--color-primary);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.action-link:hover {
+    background: var(--brand-heading);
+    transform: translateY(-1px);
+}
+
+/* Contact Button in Header */
+.contact-btn {
+    color: var(--brand-header) !important;
+    background-color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    border: 2px solid #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.5s ease;
+}
+
+.contact-btn:hover::before {
+    left: 100%;
+}
+
+.contact-btn:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+    border-color: #f0f0f0;
+}
+
+/* Remove text decoration from all buttons */
+.cta-button,
+.hero-cta-button,
+.add-to-cart-btn,
+.newsletter-signup-btn,
+.action-link,
+.contact-btn {
+    text-decoration: none !important;
+}
+
+/* Responsive Button Adjustments */
+@media (max-width: 768px) {
+    .cta-button {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+    
+    .add-to-cart-btn {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+    
+    .hero-cta-button {
+        padding: 0.8rem 2rem;
+        font-size: 0.9rem;
+    }
+}

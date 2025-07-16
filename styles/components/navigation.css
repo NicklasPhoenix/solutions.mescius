@@ -1,0 +1,185 @@
+/* ===============================================
+    Navigation and Header Components
+    Site navigation, mobile menu, and header styling
+    =============================================== */
+
+/* Header */
+.header {
+    background-color: var(--brand-header);
+    color: #fff !important;
+    padding: 18px 0;
+    box-shadow: 0 4px 12px var(--color-shadow-medium);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff !important;
+}
+
+/* Logo */
+.logo-link {
+    display: block; 
+    line-height: 0;
+    transition: opacity 0.3s ease;
+}
+
+.logo-link:hover {
+    opacity: 0.8;
+}
+
+.logo { 
+    height: 36px; 
+    filter: brightness(0) invert(1); 
+}
+
+/* Main Navigation */
+.main-nav { 
+    display: flex; 
+    gap: 35px; 
+    align-items: center; 
+}
+
+.nav-link {
+    color: #fff !important;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid transparent;
+    transition: none !important;
+    background-color: transparent;
+    border-radius: 0;
+    padding: 0 5px 8px;
+}
+
+.nav-link:focus {
+    outline: none;
+    outline-offset: 0;
+    box-shadow: none !important;
+    transition: none !important;
+}
+
+.nav-link.active, .nav-link:hover {
+    border-bottom-color: #fff !important;
+    color: #fff !important;
+    text-decoration: NONE !important;
+}
+
+/* Contact Button */
+.contact-btn {
+    color: var(--brand-header) !important;
+    background-color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    border: 2px solid #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.5s ease;
+}
+
+.contact-btn:hover::before {
+    left: 100%;
+}
+
+.contact-btn:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+    border-color: #f0f0f0;
+}
+
+/* Mobile Navigation Toggle */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-header-nav-link); 
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+}
+
+.menu-toggle.is-active span:nth-child(1) { 
+    transform: rotate(45deg) translate(5px, 5px); 
+}
+
+.menu-toggle.is-active span:nth-child(2) { 
+    opacity: 0; 
+}
+
+.menu-toggle.is-active span:nth-child(3) { 
+    transform: rotate(-45deg) translate(5px, -5px); 
+}
+
+/* Mobile Navigation Styles */
+@media (max-width: 768px) {
+    .main-nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--brand-header);
+        flex-direction: column;
+        padding: 20px 24px;
+        display: none;
+        box-shadow: 0 4px 12px var(--color-shadow-medium);
+    }
+    
+    .main-nav.is-open { 
+        display: flex; 
+    }
+    
+    .main-nav .nav-link {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 12px 0;
+        margin-bottom: 8px;
+    }
+    
+    .main-nav .nav-link:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        padding-left: 10px;
+    }
+    
+    .main-nav .contact-btn {
+        margin-top: 10px;
+        text-align: center;
+        border-radius: 25px;
+        padding: 12px 24px;
+        align-self: center;
+        max-width: 200px;
+    }
+    
+    .menu-toggle { 
+        display: flex; 
+    }
+}

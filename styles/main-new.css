@@ -1,0 +1,67 @@
+/* ===============================================
+    MESCIUS SOLUTIONS - MODULAR CSS ARCHITECTURE
+    Main stylesheet that imports all component modules
+    =============================================== */
+
+/* Base Styles - Foundation */
+@import url('./base/variables.css');
+@import url('./base/reset.css');
+@import url('./base/typography.css');
+
+/* Layout Components */
+@import url('./layout/grid.css');
+@import url('./layout/footer.css');
+
+/* UI Components */
+@import url('./components/navigation.css');
+@import url('./components/buttons.css');
+@import url('./components/cards.css');
+
+/* Utility classes and global link styling */
+.nav-link,
+.cta-button,
+.case-study-card .card-link,
+.footer-links a,
+.newsletter-signup-btn {
+    text-decoration: none !important;
+}
+
+/* Global link styling - Professional, visible, and accessible */
+a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+a:hover, a:focus {
+    color: var(--accent-color, var(--brand-heading));
+    text-decoration: none;
+}
+
+/* Remove underline from card-link, even on hover */
+.case-study-card .card-link {
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration: none !important;
+    transition: color 0.5s;
+    position: relative;
+    transform: translateY(5px);
+    transition: transform 0.3s ease-in-out;
+}
+
+.case-study-card:hover .card-link {
+    color: var(--brand-heading);
+    text-decoration: none !important;
+    transition: color 0.5s ease-in-out;
+    transition: transform 0.3s ease-in-out;
+}
+
+.case-study-card .card-title a::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+}

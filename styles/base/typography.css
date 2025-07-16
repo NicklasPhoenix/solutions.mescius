@@ -1,0 +1,115 @@
+/* ===============================================
+    Typography System
+    Font imports and text styling
+    =============================================== */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+/* Section Headers */
+.section-header { 
+    text-align: center;
+    margin-bottom: 60px;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    position: relative;
+    z-index: 10;
+}
+
+.section-title { 
+    font-size: 40px; 
+    font-weight: 700; 
+    color: var(--brand-heading); 
+    margin-bottom: 15px; 
+    position: relative;
+    display: inline-block; 
+    padding-bottom: 10px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%) scaleX(0);
+    transform-origin: center;
+    width: 80px;
+    height: 4px;
+    background-color: var(--brand-ds);
+    border-radius: 2px;
+    transition: transform 0.3s ease-out;
+}
+
+.section-header:hover .section-title::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
+.section-subtitle { 
+    font-size: 19px;
+    max-width: 700px;
+    margin: 0 auto;
+    color: var(--color-text-subtle);
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    line-height: 1.6;
+}
+
+.section-subtitle a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.section-subtitle a:hover, .section-subtitle a:focus {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+/* Family and product titles */
+.family-title {
+    font-size: 1.8em;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 25px 0;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.net-family .family-title {
+    color: #007bff;
+}
+
+.js-family .family-title {
+    color: #f0db4f;
+    text-shadow: -1px -1px 0 #333, 1px -1px 0 #333, -1px 1px 0 #333, 1px 1px 0 #333;
+}
+
+/* Product titles and descriptions */
+.product-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--brand-heading);
+}
+
+.product-desc {
+    font-size: 15px;
+    color: var(--color-text-subtle);
+}
+
+.product-list {
+    font-size: 14px;
+    color: var(--brand-body);
+}
+
+.product-link {
+    font-weight: 600;
+    color: var(--accent-color, var(--color-primary));
+    font-size: 15px;
+}
