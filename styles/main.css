@@ -20,15 +20,6 @@
 @import url('./components/modals.css');
 @import url('./components/forms.css');
 
-/* Utility classes and global link styling */
-.nav-link,
-.cta-button,
-.case-study-card .card-link,
-.footer-links a,
-.newsletter-signup-btn {
-  text-decoration: none !important;
-}
-
 /* Global link styling - Professional, visible, and accessible */
 a {
   color: var(--color-primary);
@@ -39,6 +30,18 @@ a {
 a:hover, a:focus {
   color: var(--accent-color, var(--brand-heading));
   text-decoration: none;
+}
+
+.footer-links a {
+  text-decoration: none !important;
+}
+
+/* Utility classes and global link styling */
+.nav-link,
+.cta-button,
+.case-study-card .card-link,
+.newsletter-signup-btn {
+  text-decoration: none !important;
 }
 
 /* Remove underline from card-link, even on hover */
