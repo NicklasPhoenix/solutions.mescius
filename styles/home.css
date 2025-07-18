@@ -4,8 +4,10 @@
     =============================================== */
 
 /* Import Component Styles */
-@import 'header.css';
-@import 'footer.css';
+@import url('header.css');
+@import url('footer.css');
+@import url('pillar.css');
+@import url('product-cards.css');
 
 /* ===============================================
     CSS VARIABLES & FOUNDATIONS
@@ -31,13 +33,14 @@
   --color-gray-900: #111827;
 
   /* Typography */
-  --font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family: 'Montserrat', -apple-system, blinkmacsystemfont, 'Segoe UI', roboto, sans-serif;
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
   /* Spacing Scale */
+  --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
   --space-4: 1rem;
@@ -53,10 +56,10 @@
   --header-height: 80px;
 
   /* Effects */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 5%);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 10%), 0 2px 4px -2px rgb(0 0 0 / 10%);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -4px rgb(0 0 0 / 10%);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 10%), 0 8px 10px -6px rgb(0 0 0 / 10%);
   --transition: 0.2s ease-in-out;
 }
 
@@ -256,192 +259,6 @@ main {
   filter: grayscale(0%) opacity(100%);
 }
 
-/* Pillars Section */
-.pillars-section {
-  background-color: var(--color-gray-50);
-  padding: var(--space-24) 0;
-}
-
-.pillars-grid {
-  display: grid;
-  gap: var(--space-8);
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
-
-.pillar {
-  background-color: var(--color-white);
-  border-radius: 0.75rem;
-  box-shadow: var(--shadow-sm);
-  padding: var(--space-8);
-  text-align: center;
-  transition: box-shadow var(--transition);
-}
-
-.pillar:hover {
-  box-shadow: var(--shadow-lg);
-}
-
-.pillar-icon {
-  color: var(--color-primary);
-  font-size: 2.25rem;
-  margin-bottom: var(--space-4);
-}
-
-.pillar h3 {
-  color: var(--color-gray-900);
-  font-size: 1.25rem;
-  font-weight: var(--font-weight-bold);
-  margin-bottom: var(--space-4);
-}
-
-.pillar p {
-  color: var(--color-gray-600);
-  margin: 0;
-}
-
-/* Product Ecosystem Section */
-#product-ecosystem {
-  padding: var(--space-24) 0;
-}
-
-.ecosystem-section {
-  padding: var(--space-24) 0;
-}
-
-.product-tabs {
-  display: flex;
-  gap: var(--space-4);
-  justify-content: center;
-  margin-bottom: var(--space-16);
-}
-
-.tab-link {
-  align-items: center;
-  background-color: transparent;
-  border: 2px solid var(--color-gray-300);
-  border-radius: 0.5rem;
-  color: var(--color-gray-600);
-  cursor: pointer;
-  display: flex;
-  font-size: 1.125rem;
-  font-weight: var(--font-weight-semibold);
-  gap: var(--space-3);
-  padding: var(--space-4) var(--space-6);
-  transition: all var(--transition);
-}
-
-.tab-link:hover,
-.tab-link.active {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
-  color: var(--color-white);
-}
-
-/* Product Grid - for dynamically loaded content */
-#net-products,
-#js-products {
-  display: none;
-  gap: var(--space-8);
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
-
-#net-products.active,
-#js-products.active {
-  display: grid;
-}
-
-.product-grid {
-  display: none;
-  gap: var(--space-8);
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
-
-.product-grid.active {
-  display: grid;
-}
-
-/* Product Cards */
-.product-card,
-.ecosystem-card,
-.product-item {
-  background-color: var(--color-white);
-  border-radius: 1rem;
-  box-shadow: var(--shadow-md);
-  overflow: hidden;
-  padding: var(--space-8);
-  text-align: center;
-  transition: all var(--transition);
-}
-
-.product-card:hover,
-.ecosystem-card:hover,
-.product-item:hover {
-  box-shadow: var(--shadow-xl);
-  transform: translateY(-4px);
-}
-
-.product-logo,
-.ecosystem-logo {
-  height: 80px;
-  margin: 0 auto var(--space-6);
-  width: auto;
-}
-
-.product-card h3,
-.ecosystem-card h3,
-.product-item h3 {
-  color: var(--color-gray-900);
-  font-size: 1.5rem;
-  font-weight: var(--font-weight-bold);
-  margin-bottom: var(--space-3);
-}
-
-.product-card .product-subtitle,
-.ecosystem-card .product-subtitle,
-.product-item .product-description {
-  color: var(--color-gray-600);
-  font-size: 1rem;
-  line-height: 1.5;
-  margin-bottom: var(--space-6);
-}
-
-.product-cta,
-.learn-more-btn {
-  background-color: var(--color-primary);
-  border-radius: 0.5rem;
-  color: var(--color-white);
-  display: inline-block;
-  font-weight: var(--font-weight-semibold);
-  padding: var(--space-3) var(--space-6);
-  text-decoration: none;
-  transition: background-color var(--transition);
-}
-
-.product-cta:hover,
-.product-cta:focus,
-.learn-more-btn:hover,
-.learn-more-btn:focus {
-  background-color: var(--color-secondary);
-  color: var(--color-white);
-}
-
-/* Enhanced grid for any dynamically loaded content */
-#net-products > *,
-#js-products > * {
-  background-color: var(--color-white);
-  border-radius: 1rem;
-  box-shadow: var(--shadow-md);
-  padding: var(--space-8);
-  text-align: center;
-  transition: all var(--transition);
-}
-
-#net-products > *:hover,
-#js-products > *:hover {
-  box-shadow: var(--shadow-xl);
-  transform: translateY(-4px);
-}
-
 /* Solutions Teaser Section */
 .solutions-teaser-section {
   background-color: var(--color-gray-50);
@@ -459,7 +276,8 @@ main {
   border-radius: 0.75rem;
   box-shadow: var(--shadow-sm);
   color: var(--color-gray-800);
-  display: block;
+  display: flex;
+  flex-direction: column;
   padding: var(--space-8);
   text-decoration: none;
   transition: all var(--transition);
@@ -481,6 +299,7 @@ main {
 
 .challenge-card p {
   color: var(--color-gray-600);
+  flex-grow: 1;
   margin-bottom: var(--space-6);
 }
 
@@ -490,6 +309,7 @@ main {
   display: inline-flex;
   font-weight: var(--font-weight-semibold);
   gap: var(--space-2);
+  margin-top: auto;
   transition: color var(--transition);
 }
 
@@ -519,20 +339,12 @@ main {
   .stats-grid {
     grid-template-columns: repeat(4, 1fr);
   }
-
-  .pillars-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 /* Desktop and up */
 @media (min-width: 1024px) {
   .container {
     padding: 0 var(--space-8);
-  }
-
-  .pillars-grid {
-    grid-template-columns: repeat(4, 1fr);
   }
 
   .logo-strip {
