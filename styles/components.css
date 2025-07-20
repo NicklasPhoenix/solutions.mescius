@@ -1,0 +1,312 @@
+/* Shopping Cart Styles */
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #d93e3a;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.floating-cart.active {
+    transform: translateX(0);
+}
+
+.cart-item {
+    border-bottom: 1px solid #eee;
+    padding: 12px 0;
+}
+
+.cart-item-info {
+    margin-bottom: 8px;
+}
+
+.cart-item-name {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+}
+
+.cart-item-price {
+    font-size: 12px;
+    color: #666;
+}
+
+.cart-item-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.quantity-controls .quantity-btn {
+    width: 24px;
+    height: 24px;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.quantity-controls .quantity-btn:hover {
+    background: #f5f5f5;
+}
+
+.quantity-controls .quantity {
+    font-weight: 600;
+    min-width: 20px;
+    text-align: center;
+}
+
+.remove-item-btn {
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: #ff4444;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.remove-item-btn:hover {
+    background: #cc0000;
+}
+
+.cart-item-total {
+    font-weight: 600;
+    color: #d93e3a;
+    margin-top: 8px;
+    text-align: right;
+}
+
+.cart-empty {
+    text-align: center;
+    color: #666;
+    padding: 20px;
+    font-style: italic;
+}
+
+.add-to-cart-btn.success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+/* Bundle Calculator Styles */
+.tooltip-popup {
+    position: absolute;
+    background: #333;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    line-height: 1.4;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+    max-width: 200px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.tooltip-popup.visible {
+    opacity: 1;
+}
+
+.tooltip-popup::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: #333;
+}
+
+.tooltip-popup.below::before {
+    top: -10px;
+    border-top-color: transparent;
+    border-bottom-color: #333;
+}
+
+.discount-tag {
+    background: #28a745;
+    color: white;
+    font-size: 10px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    font-weight: 600;
+    margin-left: 4px;
+}
+
+.volume-discount-tag,
+.year-discount-tag {
+    display: inline-block;
+    background: #ff6b35;
+    color: white;
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: 600;
+    margin: 4px 2px;
+}
+
+.price-summary-container {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #eee;
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    font-size: 14px;
+}
+
+.summary-line.discount {
+    color: #28a745;
+    font-weight: 600;
+}
+
+.summary-line.total {
+    font-weight: 700;
+    border-top: 1px solid #ddd;
+    padding-top: 8px;
+    margin-top: 8px;
+    font-size: 16px;
+    color: #d93e3a;
+}
+
+/* Form Validation Styles */
+.field-error {
+    color: #dc3545;
+    font-size: 12px;
+    margin-top: 4px;
+    display: block;
+}
+
+.renewal-email-input.error,
+.renewal-keys-textarea.error {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+.form-feedback {
+    padding: 12px;
+    border-radius: 4px;
+    margin-top: 16px;
+    font-size: 14px;
+}
+
+.form-feedback.success {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
+
+.form-feedback.error {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+
+/* Applied Filters */
+.applied-filters-container {
+    margin: 16px 0;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 6px;
+}
+
+.applied-filter {
+    display: inline-flex;
+    align-items: center;
+    background: #007bff;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin: 4px 8px 4px 0;
+    font-size: 12px;
+}
+
+.remove-filter {
+    background: none;
+    border: none;
+    color: white;
+    margin-left: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.remove-filter:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.filter-count {
+    color: #666;
+    font-weight: normal;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.scroll-animate.in-view {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .cart-badge {
+        width: 18px;
+        height: 18px;
+        font-size: 11px;
+    }
+    
+    .tooltip-popup {
+        max-width: 150px;
+        font-size: 11px;
+    }
+    
+    .applied-filter {
+        font-size: 11px;
+        padding: 3px 6px;
+    }
+}
