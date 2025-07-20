@@ -29,6 +29,7 @@
 @import url('04-pages/pricing.css');
 @import url('04-pages/solutions.css');
 @import url('04-pages/blueprints.css');
+@import url('04-pages/bundles.css');
 
 /* 6. THEMES - Light/Dark mode support */
 @import url('05-themes/light.css');
