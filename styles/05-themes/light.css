@@ -27,8 +27,8 @@
 }
 
 [data-theme="light"] .footer {
-  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-  color: #e2e8f0;
+  background: var(--bg-primary);
+  color: var(--text-primary);
 }
 
 [data-theme="light"] .hero-section {

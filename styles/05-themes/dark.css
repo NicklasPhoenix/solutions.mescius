@@ -55,9 +55,53 @@
   background: rgba(17, 24, 39, 0.98);
 }
 
+/* Dark theme logo styling */
+[data-theme="dark"] .logo {
+  filter: brightness(0) invert(1);
+}
+
+/* Dark theme mobile navigation */
+[data-theme="dark"] .main-nav {
+  background: rgba(17, 24, 39, 0.98);
+  backdrop-filter: blur(20px);
+}
+
+[data-theme="dark"] .nav-link {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .nav-link:hover {
+  color: var(--primary);
+}
+
+[data-theme="dark"] .nav-link.active {
+  color: var(--primary);
+}
+
+[data-theme="dark"] .contact-btn {
+  color: var(--text-primary);
+  border-color: var(--primary);
+}
+
+[data-theme="dark"] .menu-toggle span {
+  background: var(--text-primary);
+}
+
+[data-theme="dark"] .theme-toggle .theme-icon-dark {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .theme-toggle .theme-icon-light {
+  color: var(--text-primary);
+}
+
 [data-theme="dark"] .footer {
   background: linear-gradient(135deg, #0f172a 0%, #020617 100%);
   color: #e2e8f0;
+}
+
+[data-theme="dark"] .footer-logo {
+  filter: brightness(0) invert(1);
 }
 
 [data-theme="dark"] .hero-section {

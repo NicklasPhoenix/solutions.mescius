@@ -54,7 +54,6 @@
 .theme-toggle.dark .theme-icon-dark {
   opacity: 1;
   transform: rotate(0deg) scale(1);
-  color: var(--primary);
 }
 
 /* Mobile adjustments */
