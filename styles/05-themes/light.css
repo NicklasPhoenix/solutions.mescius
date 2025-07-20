@@ -1,0 +1,53 @@
+/* Light Theme - Default Theme */
+
+:root[data-theme="light"] {
+  /* Override any dark theme values if needed */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F9FAFB;
+  --bg-tertiary: #F3F4F6;
+  --bg-overlay: rgba(0, 0, 0, 0.5);
+  
+  --text-primary: #1F2937;
+  --text-secondary: #4B5563;
+  --text-muted: #6B7280;
+  --text-on-primary: #FFFFFF;
+  --text-hover: #2E5984;
+  
+  /* Light theme specific overrides */
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --border-color: #E5E7EB;
+  --input-bg: #FFFFFF;
+  --card-bg: #FFFFFF;
+}
+
+/* Light theme component overrides */
+[data-theme="light"] .header {
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="light"] .footer {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  color: #e2e8f0;
+}
+
+[data-theme="light"] .hero-section {
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(46, 89, 132, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+[data-theme="light"] .glass-card,
+[data-theme="light"] .card-glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="light"] .btn-glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-primary);
+}
