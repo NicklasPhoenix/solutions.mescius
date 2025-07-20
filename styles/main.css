@@ -1,0 +1,79 @@
+/* MESCIUS Modern Design System - Main Entry Point */
+
+/* 1. TOKENS - Design system foundations */
+@import url('00-tokens/colors.css');
+@import url('00-tokens/typography.css');
+@import url('00-tokens/spacing.css');
+@import url('00-tokens/shadows.css');
+
+/* 2. BASE - Reset and fundamental styles */
+@import url('01-base/reset.css');
+@import url('01-base/typography.css');
+@import url('01-base/utilities.css');
+
+/* 3. LAYOUT - Grid systems and containers */
+@import url('02-layout/containers.css');
+@import url('02-layout/grid.css');
+@import url('02-layout/sections.css');
+
+/* 4. COMPONENTS - Reusable UI components */
+@import url('03-components/buttons.css');
+@import url('03-components/cards.css');
+@import url('03-components/navigation.css');
+@import url('03-components/footer.css');
+@import url('03-components/forms.css');
+@import url('03-components/animations.css');
+
+/* 5. PAGES - Page-specific styles */
+@import url('04-pages/home.css');
+@import url('04-pages/pricing.css');
+@import url('04-pages/solutions.css');
+@import url('04-pages/blueprints.css');
+
+/* 6. THEMES - Light/Dark mode support */
+@import url('05-themes/light.css');
+@import url('05-themes/dark.css');
+
+/* Global page setup */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  padding-top: 80px; /* Account for fixed header */
+  overflow-x: hidden;
+}
+
+/* Ensure proper stacking context */
+main {
+  position: relative;
+  z-index: 1;
+}
+
+/* Print styles */
+@media print {
+  .header,
+  .footer,
+  .btn,
+  .modal {
+    display: none !important;
+  }
+  
+  body {
+    padding-top: 0;
+    font-size: 12pt;
+    line-height: 1.4;
+    color: black;
+    background: white;
+  }
+  
+  a {
+    color: black;
+    text-decoration: underline;
+  }
+  
+  .container {
+    max-width: none;
+    padding: 0;
+  }
+}
