@@ -2,6 +2,7 @@
   /* PRIMARY INTERACTION COLORS */
   --primary: #2E5984;
   --primary-hover: #1E3A56;
+  --primary-dark: #1E3A56;
   --primary-active: #4A7BA7;
   --primary-light: #E6EDF5;
   
@@ -33,6 +34,7 @@
   /* STATUS COLORS */
   --success: #22C55E;
   --warning: #F59E0B;
+  --warning-dark: #D97706;
   --error: #DC2626;
   --info: #3B82F6;
   
