@@ -400,7 +400,7 @@
 .floating-cart {
   position: fixed;
   top: 80px;
-  right: 24px;
+  right: -400px;
   width: 380px;
   max-height: calc(100vh - 120px);
   background: rgba(255, 255, 255, 0.98);
@@ -410,7 +410,6 @@
   box-shadow: var(--shadow-2xl);
   z-index: 1000;
   overflow: hidden;
-  transform: translateX(100%);
   transition: all var(--transition-base) var(--ease-out);
   display: flex;
   flex-direction: column;
@@ -418,7 +417,7 @@
 
 .floating-cart.is-open,
 .floating-cart.active {
-  transform: translateX(0);
+  right: 24px;
 }
 
 .cart-header {
@@ -488,53 +487,6 @@
   color: var(--primary);
   text-align: center;
   margin-bottom: var(--space-4);
-}
-
-/* Header Cart Toggle Button */
-.cart-toggle-header-btn {
-  position: relative;
-  background: transparent;
-  border: 2px solid var(--primary);
-  color: var(--primary);
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radius-full);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all var(--transition-base) var(--ease-out);
-  margin-left: var(--space-3);
-  font-size: var(--text-lg);
-}
-
-.cart-toggle-header-btn:hover {
-  background: var(--primary);
-  color: white;
-  transform: scale(1.05);
-}
-
-.cart-toggle-header-btn .cart-badge {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  background: var(--error);
-  color: white;
-  border-radius: var(--radius-full);
-  width: 20px;
-  height: 20px;
-  font-size: var(--text-xs);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: var(--font-weight-bold);
-  line-height: 1;
-  border: 2px solid var(--bg-primary);
-}
-
-.cart-toggle-header-btn .cart-badge:empty,
-.cart-toggle-header-btn .cart-badge[data-count="0"] {
-  display: none;
 }
 
 /* Filter Toolbar */
@@ -817,10 +769,15 @@
 /* Responsive Design for Pricing Enhancements */
 @media (max-width: 768px) {
   .floating-cart {
-    width: calc(100vw - var(--space-4));
-    right: var(--space-2);
+    width: calc(100vw - 48px);
+    right: -100vw;
     top: 70px;
     max-height: calc(100vh - 90px);
+  }
+  
+  .floating-cart.is-open,
+  .floating-cart.active {
+    right: 24px;
   }
   
   .filter-toolbar {
@@ -850,11 +807,5 @@
   
   .product-selector-group {
     grid-template-columns: 1fr;
-  }
-  
-  .cart-toggle-header-btn {
-    width: 40px;
-    height: 40px;
-    font-size: var(--text-base);
   }
 }

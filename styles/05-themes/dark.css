@@ -332,22 +332,6 @@
   color: var(--primary);
 }
 
-/* Dark theme header cart button */
-[data-theme="dark"] .cart-toggle-header-btn {
-  border-color: var(--primary);
-  color: var(--primary);
-}
-
-[data-theme="dark"] .cart-toggle-header-btn:hover {
-  background: var(--primary);
-  color: white;
-}
-
-[data-theme="dark"] .cart-toggle-header-btn .cart-badge {
-  background: var(--error);
-  border-color: var(--bg-primary);
-}
-
 /* Dark theme filter toolbar */
 [data-theme="dark"] .filter-toolbar {
   background: rgba(31, 41, 55, 0.9);
