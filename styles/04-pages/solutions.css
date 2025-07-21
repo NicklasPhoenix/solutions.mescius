@@ -23,6 +23,66 @@
   margin: 0 auto;
 }
 
+/* Filter System */
+.filter-toolbar {
+  margin-bottom: var(--space-12);
+  padding: var(--space-6);
+  background: var(--bg-primary);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.filter-set {
+  margin-bottom: var(--space-6);
+}
+
+.filter-set:last-child {
+  margin-bottom: 0;
+}
+
+.filter-set-label {
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-3);
+}
+
+.filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.filter-btn {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-base);
+  cursor: pointer;
+}
+
+.filter-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--primary-400);
+  transform: translateY(-1px);
+}
+
+.filter-btn.is-active {
+  color: var(--white);
+  background: var(--primary-600);
+  border-color: var(--primary-600);
+}
+
+.filter-btn:focus {
+  outline: 2px solid var(--primary-300);
+  outline-offset: 2px;
+}
+
 /* Solution Categories */
 .solution-categories {
   padding: var(--space-32) 0;

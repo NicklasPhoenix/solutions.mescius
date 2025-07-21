@@ -137,6 +137,98 @@
   display: none;
 }
 
+/* Shopping Cart Additional Styles */
+.cart-item {
+  border-bottom: 1px solid var(--border-color);
+  padding: var(--space-3) 0;
+}
+
+.cart-item-info {
+  margin-bottom: var(--space-2);
+}
+
+.cart-item-name {
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  margin: 0 0 var(--space-1) 0;
+  color: var(--text-primary);
+}
+
+.cart-item-price {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+}
+
+.cart-item-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.quantity-controls .quantity-btn {
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  transition: all var(--transition-base) var(--ease-out);
+}
+
+.quantity-controls .quantity-btn:hover {
+  background: var(--bg-secondary);
+}
+
+.quantity-controls .quantity {
+  font-weight: var(--font-weight-semibold);
+  min-width: 20px;
+  text-align: center;
+  color: var(--text-primary);
+}
+
+.remove-item-btn {
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: var(--error);
+  color: white;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--text-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-base) var(--ease-out);
+}
+
+.remove-item-btn:hover {
+  background: var(--error-dark, #cc0000);
+}
+
+.cart-item-total {
+  font-weight: var(--font-weight-semibold);
+  color: var(--primary);
+  margin-top: var(--space-2);
+  text-align: right;
+}
+
+.add-to-cart-btn.success {
+  background-color: var(--success);
+  border-color: var(--success);
+}
+
 /* Dark theme cart button */
 [data-theme="dark"] .cart-btn {
   background: var(--bg-tertiary);

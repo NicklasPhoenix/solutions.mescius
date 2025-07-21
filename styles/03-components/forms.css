@@ -48,6 +48,31 @@
   appearance: none;
 }
 
+/* Form validation */
+.form-input.error,
+.form-textarea.error,
+.form-select.error {
+  border-color: var(--error);
+}
+
+.form-input.success,
+.form-textarea.success,
+.form-select.success {
+  border-color: var(--success);
+}
+
+.form-error {
+  font-size: var(--text-xs);
+  color: var(--error);
+  margin-top: var(--space-1);
+}
+
+.form-success {
+  font-size: var(--text-xs);
+  color: var(--success);
+  margin-top: var(--space-1);
+}
+
 .form-input:focus,
 .form-textarea:focus,
 .form-select:focus {
