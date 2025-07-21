@@ -18,10 +18,14 @@ document.addEventListener('DOMContentLoaded', function() {
  * Initialize shopping cart
  */
 function initializeCart() {
-    // Only initialize cart if ShoppingCart class is available
-    if (typeof ShoppingCart !== 'undefined') {
+    // Use the global cart instance if it exists, otherwise create a new one
+    if (window.cart) {
+        cart = window.cart;
+        console.log('Using global cart instance');
+    } else if (typeof ShoppingCart !== 'undefined') {
         cart = new ShoppingCart();
-        window.pricingCart = cart; // Make available globally
+        window.cart = cart; // Make available globally
+        console.log('Created new cart instance');
     } else {
         console.warn('ShoppingCart class not loaded. Please include cart.js');
     }

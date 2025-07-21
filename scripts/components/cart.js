@@ -72,17 +72,46 @@ class ShoppingCart {
             this.cartToggleBtn.addEventListener('click', () => this.toggleCart());
         }
 
-        // Cart close and minimize buttons
+        // Cart close, minimize buttons, and header clicks
         document.addEventListener('click', (e) => {
+            // Close button clicked
             if (e.target.id === 'cart-close-btn' || e.target.classList.contains('cart-close')) {
+                e.stopPropagation();
                 this.hideCart();
-            } else if (e.target.id === 'cart-minimize-btn') {
+                return;
+            }
+            
+            // Minimize button clicked
+            if (e.target.id === 'cart-minimize-btn') {
+                e.stopPropagation();
                 this.minimizeCart();
-            } else if (e.target.closest('.cart-header') && !e.target.closest('.cart-header-actions')) {
-                // Click on header (but not buttons) to toggle minimize
-                this.toggleMinimize();
+                return;
+            }
+            
+            // Header clicked (but not action buttons)
+            const cartHeader = e.target.closest('.cart-header');
+            if (cartHeader && this.isVisible) {
+                const headerActions = e.target.closest('.cart-header-actions');
+                if (!headerActions) {
+                    e.stopPropagation();
+                    this.toggleMinimize();
+                }
             }
         });
+
+        // Add direct event listener to cart header for more reliable toggling
+        if (this.cartElement) {
+            const cartHeader = this.cartElement.querySelector('.cart-header');
+            if (cartHeader) {
+                cartHeader.addEventListener('click', (e) => {
+                    // Only toggle if not clicking on action buttons and cart is visible
+                    if (!e.target.closest('.cart-header-actions') && this.isVisible) {
+                        e.stopPropagation();
+                        this.toggleMinimize();
+                    }
+                });
+            }
+        }
 
         // Add to cart buttons
         document.addEventListener('click', (e) => {
