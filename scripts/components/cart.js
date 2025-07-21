@@ -355,14 +355,12 @@ class ShoppingCart {
     setupFloatingCart() {
         if (!this.cartToggleBtn) return;
         
-        // Add floating cart styles for purchase pages
+        // Add floating cart class and essential positioning styles
+        this.cartToggleBtn.classList.add('cart-btn-floating');
         this.cartToggleBtn.style.position = 'fixed';
         this.cartToggleBtn.style.bottom = '20px';
         this.cartToggleBtn.style.right = '20px';
         this.cartToggleBtn.style.zIndex = '1000';
-        this.cartToggleBtn.style.width = '60px';
-        this.cartToggleBtn.style.height = '60px';
-        this.cartToggleBtn.style.boxShadow = 'var(--shadow-xl)';
         
         // Hide on scroll down, show on scroll up
         let lastScrollY = window.scrollY;

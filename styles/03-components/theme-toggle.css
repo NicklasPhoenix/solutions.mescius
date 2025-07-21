@@ -107,8 +107,8 @@
   font-size: inherit;
 }
 
-/* Floating cart styles - when positioned fixed by JavaScript */
-.cart-btn[style*="position: fixed"] {
+/* Floating cart styles - applied via JavaScript class */
+.cart-btn-floating {
   width: 60px !important;
   height: 60px !important;
   border-radius: var(--radius-full) !important;
@@ -119,12 +119,12 @@
   font-size: 20px !important;
 }
 
-.cart-btn[style*="position: fixed"]:hover {
+.cart-btn-floating:hover {
   background: var(--primary-700) !important;
   transform: scale(1.05) !important;
 }
 
-.cart-btn[style*="position: fixed"] .cart-count {
+.cart-btn-floating .cart-count {
   background: var(--error) !important;
   color: var(--white) !important;
   border: 2px solid var(--white) !important;
@@ -355,17 +355,17 @@
 }
 
 /* Dark theme floating cart styles */
-[data-theme="dark"] .cart-btn[style*="position: fixed"] {
+[data-theme="dark"] .cart-btn-floating {
   background: var(--primary-600) !important;
   color: var(--white) !important;
   border: 3px solid var(--gray-800) !important;
 }
 
-[data-theme="dark"] .cart-btn[style*="position: fixed"]:hover {
+[data-theme="dark"] .cart-btn-floating:hover {
   background: var(--primary-700) !important;
 }
 
-[data-theme="dark"] .cart-btn[style*="position: fixed"] .cart-count {
+[data-theme="dark"] .cart-btn-floating .cart-count {
   background: var(--error) !important;
   color: var(--white) !important;
   border: 2px solid var(--gray-800) !important;
