@@ -150,11 +150,6 @@
   background: var(--accent);
 }
 
-.price-card[data-badge="Popular"]::after {
-  background: var(--warning);
-  color: var(--warning-dark);
-}
-
 .price-card[data-badge="Recommended"]::after {
   background: var(--primary);
 }
