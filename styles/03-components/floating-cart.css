@@ -1,36 +1,5 @@
 /* Floating Cart Component */
 
-/* Cart Button */
-.cart-btn {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 40px;
-  min-height: 40px;
-  border: none;
-  border-radius: var(--radius-full);
-  background: var(--bg-secondary);
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: all var(--transition-base) var(--ease-out);
-  box-shadow: var(--shadow-sm);
-  font-size: 18px;
-}
-
-.cart-btn:hover {
-  background: var(--bg-tertiary);
-  transform: scale(1.05);
-  box-shadow: var(--shadow-md);
-}
-
-.cart-btn:active {
-  transform: scale(0.95);
-}
-
-.cart-btn i {
-  font-size: inherit;
-}
 
 /* Floating cart button styles */
 .cart-btn-floating {
