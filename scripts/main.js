@@ -3,6 +3,12 @@
  * Core functionality for the modern design system
  */
 
+// Initialize theme immediately to prevent flash (before DOM ready)
+(function() {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+})();
+
 // Initialize the application when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     initializeNavigation();
@@ -113,21 +119,10 @@ function initializeAnimations() {
         });
     }
 
-    // Counter animations
+    // Counter animations - just set the final values, no animation
     const counters = document.querySelectorAll('[data-target]');
     counters.forEach(counter => {
-        const target = parseInt(counter.getAttribute('data-target').replace(/[^\d]/g, ''));
-        const suffix = counter.getAttribute('data-target').replace(/[\d]/g, '');
-        let current = 0;
-        const increment = target / 100;
-        const timer = setInterval(() => {
-            current += increment;
-            if (current >= target) {
-                current = target;
-                clearInterval(timer);
-            }
-            counter.textContent = Math.floor(current) + suffix;
-        }, 20);
+        counter.textContent = counter.getAttribute('data-target');
     });
 }
 
@@ -226,9 +221,8 @@ function initializeScrollEffects() {
  * Theme management
  */
 function initializeTheme() {
-    // Get saved theme preference or default to light
+    // Theme is already set in head to prevent flash, just get the current value
     const savedTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
     
     // Theme toggle functionality (if theme switcher exists)
     const themeToggle = document.querySelector('.theme-toggle');
@@ -263,6 +257,7 @@ function initializeTheme() {
         }
     });
 }
+
 
 /**
  * Utility functions

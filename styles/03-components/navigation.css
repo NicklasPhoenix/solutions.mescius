@@ -27,7 +27,14 @@
   gap: var(--space-4);
 }
 
-/* Desktop layout: logo | nav | theme-toggle | hamburger */
+/* Header actions group */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* Desktop layout: logo | nav | actions | hamburger */
 @media (min-width: 1024px) {
   .header-content {
     grid-template-columns: auto 1fr auto auto;
@@ -41,8 +48,9 @@
     justify-self: center;
   }
   
-  .theme-toggle {
+  .header-actions {
     justify-self: end;
+    gap: var(--space-4);
   }
   
   .menu-toggle {
@@ -50,7 +58,7 @@
   }
 }
 
-/* Mobile layout: logo | theme-toggle | hamburger */
+/* Mobile layout: logo | header-actions | hamburger */
 @media (max-width: 1023px) {
   .header-content {
     display: flex;
@@ -62,8 +70,9 @@
     order: 4; /* Ensure nav is handled separately in mobile overlay */
   }
   
-  .theme-toggle {
+  .header-actions {
     order: 2;
+    gap: var(--space-2);
   }
   
   .menu-toggle {

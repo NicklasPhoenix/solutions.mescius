@@ -124,12 +124,18 @@
                 <a href="../../solutions/" class="nav-link active">Solutions</a>
                 <a href="../../pricing/" class="nav-link">Pricing</a>
                 <a href="../../bundles/" class="nav-link">Bundles</a>
-                <a href="https://www.mescius.eu/contact" class="contact-btn" target="_blank" rel="noopener">Contact Us</a>
             </nav>
-            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode">
-                <i class="fa-solid fa-sun theme-icon-light"></i>
-                <i class="fa-solid fa-moon theme-icon-dark"></i>
-            </button>
+            <div class="header-actions">
+                <a href="https://www.mescius.eu/contact" class="contact-btn" target="_blank" rel="noopener">Contact Us</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode">
+                    <i class="fa-solid fa-sun theme-icon-light"></i>
+                    <i class="fa-solid fa-moon theme-icon-dark"></i>
+                </button>
+                <button class="cart-btn" id="cart-btn" aria-label="Shopping cart">
+                    <i class="fa-solid fa-shopping-cart"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </button>
+            </div>
             <div class="menu-toggle" id="menu-toggle" aria-controls="main-nav" aria-expanded="false" role="button" aria-label="Toggle navigation">
                 <span></span>
                 <span></span>
@@ -166,19 +172,19 @@
                     
                     <div class="results-metrics">
                         <div class="metric-item">
-                            <span class="metric-value" data-target="50">0</span>
+                            <span class="blueprint-metric-value" data-target="50">0</span>
                             <span class="metric-label">Faster Model Development</span>
                         </div>
                         <div class="metric-item">
-                            <span class="metric-value" data-target="40">0</span>
+                            <span class="blueprint-metric-value" data-target="40">0</span>
                             <span class="metric-label">Productivity Increase</span>
                         </div>
                         <div class="metric-item">
-                            <span class="metric-value" data-target="250k">0</span>
+                            <span class="blueprint-metric-value" data-target="250k">0</span>
                             <span class="metric-label">Annual Savings</span>
                         </div>
                         <div class="metric-item">
-                            <span class="metric-value" data-target="<12">0</span>
+                            <span class="blueprint-metric-value" data-target="<12">0</span>
                             <span class="metric-label">Months to ROI</span>
                         </div>
                     </div>
@@ -383,6 +389,7 @@
         </div>
     </div>
     <script src="../../scripts/main.js"></script>
+    <script src="../../scripts/components/cart.js"></script>
 </body>
 </html>
 

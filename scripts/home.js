@@ -196,45 +196,49 @@ function initializeHeroAnimations() {
     const heroSubtitle = document.querySelector('.hero-subtitle');
     const heroButtons = document.querySelectorAll('.hero-cta-button');
 
-    // Stagger animations for hero elements
-    if (heroTitle) {
-        heroTitle.style.opacity = '0';
-        heroTitle.style.transform = 'translateY(30px)';
-        
-        setTimeout(() => {
-            heroTitle.style.transition = 'all 0.8s ease-out';
-            heroTitle.style.opacity = '1';
-            heroTitle.style.transform = 'translateY(0)';
-        }, 200);
-    }
+    // Start animations after a brief delay to ensure page is stable
+    setTimeout(() => {
+        // Stagger animations for hero elements
+        if (heroTitle) {
+            heroTitle.style.opacity = '0';
+            heroTitle.style.transform = 'translateY(30px)';
+            
+            setTimeout(() => {
+                heroTitle.style.transition = 'all 0.8s ease-out';
+                heroTitle.style.opacity = '1';
+                heroTitle.style.transform = 'translateY(0)';
+            }, 200);
+        }
 
-    if (heroSubtitle) {
-        heroSubtitle.style.opacity = '0';
-        heroSubtitle.style.transform = 'translateY(30px)';
-        
-        setTimeout(() => {
-            heroSubtitle.style.transition = 'all 0.8s ease-out';
-            heroSubtitle.style.opacity = '1';
-            heroSubtitle.style.transform = 'translateY(0)';
-        }, 400);
-    }
+        if (heroSubtitle) {
+            heroSubtitle.style.opacity = '0';
+            heroSubtitle.style.transform = 'translateY(30px)';
+            
+            setTimeout(() => {
+                heroSubtitle.style.transition = 'all 0.8s ease-out';
+                heroSubtitle.style.opacity = '1';
+                heroSubtitle.style.transform = 'translateY(0)';
+            }, 400);
+        }
 
-    heroButtons.forEach((button, index) => {
-        button.style.opacity = '0';
-        button.style.transform = 'translateY(30px)';
-        
-        setTimeout(() => {
-            button.style.transition = 'all 0.8s ease-out';
-            button.style.opacity = '1';
-            button.style.transform = 'translateY(0)';
-        }, 600 + (index * 100));
-    });
+        heroButtons.forEach((button, index) => {
+            button.style.opacity = '0';
+            button.style.transform = 'translateY(30px)';
+            
+            setTimeout(() => {
+                button.style.transition = 'all 0.8s ease-out';
+                button.style.opacity = '1';
+                button.style.transform = 'translateY(0)';
+            }, 600 + (index * 100));
+        });
 
-    // Add floating animation to hero elements
-    if (heroTitle) {
-        heroTitle.classList.add('animate-float');
-        heroTitle.style.animationDelay = '1s';
-    }
+        // Add floating animation to hero elements
+        if (heroTitle) {
+            setTimeout(() => {
+                heroTitle.classList.add('animate-float');
+            }, 1000);
+        }
+    }, 500); // Wait 500ms after DOM ready
 }
 
 /**

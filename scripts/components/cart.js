@@ -38,11 +38,17 @@ class ShoppingCart {
         this.cartElement = document.getElementById('floating-cart');
         this.cartItemsElement = document.getElementById('cart-items');
         this.cartTotalElement = document.getElementById('cart-total-price');
-        this.cartToggleBtn = document.getElementById('cart-toggle-btn');
+        this.cartToggleBtn = document.getElementById('cart-btn');
         this.checkoutLink = document.getElementById('checkout-link');
+        this.cartCount = document.getElementById('cart-count');
         
         // Create cart badge if it doesn't exist
         this.createCartBadge();
+        
+        // Set up floating cart behavior on purchase pages
+        if (this.isPurchasePage()) {
+            this.setupFloatingCart();
+        }
     }
 
     createCartBadge() {
@@ -216,11 +222,18 @@ class ShoppingCart {
     }
 
     updateCartBadge() {
-        if (!this.cartBadge) return;
-
-        const totalItems = this.items.reduce((sum, item) => sum + item.quantity, 0);
-        this.cartBadge.textContent = totalItems;
-        this.cartBadge.style.display = totalItems > 0 ? 'block' : 'none';
+        // Update both cart badge and cart count
+        if (this.cartBadge) {
+            const totalItems = this.items.reduce((sum, item) => sum + item.quantity, 0);
+            this.cartBadge.textContent = totalItems;
+            this.cartBadge.style.display = totalItems > 0 ? 'block' : 'none';
+        }
+        
+        if (this.cartCount) {
+            const totalItems = this.items.reduce((sum, item) => sum + item.quantity, 0);
+            this.cartCount.textContent = totalItems;
+            this.cartCount.classList.toggle('empty', totalItems === 0);
+        }
     }
 
     updateCheckoutLink() {
@@ -247,11 +260,18 @@ class ShoppingCart {
     }
 
     toggleCart() {
-        if (this.isVisible) {
-            this.hideCart();
-        } else {
-            this.showCart();
+        // Create or toggle cart panel
+        let cartPanel = document.getElementById('cart-panel');
+        
+        if (!cartPanel) {
+            cartPanel = this.createCartPanel();
+            document.body.appendChild(cartPanel);
         }
+        
+        cartPanel.classList.toggle('active');
+        document.body.classList.toggle('cart-open');
+        
+        this.isVisible = !this.isVisible;
     }
 
     showCart() {
@@ -315,6 +335,201 @@ class ShoppingCart {
         }
     }
 
+    // Purchase page detection and floating cart setup
+    isPurchasePage() {
+        // Don't float cart on blueprint pages - they're informational, not purchase pages
+        if (window.location.pathname.includes('/blueprints/')) {
+            return false;
+        }
+        
+        const buyButtons = document.querySelectorAll('.bundle-purchase, [href*="checkout"]');
+        const pricingElements = document.querySelectorAll('.price, .bundle-price, .pricing');
+        const bundlePages = window.location.pathname.includes('/bundles/') || 
+                           window.location.pathname.includes('/pricing/') ||
+                           document.body.classList.contains('pricing-page') ||
+                           document.body.classList.contains('bundles-page');
+        
+        return buyButtons.length > 0 || pricingElements.length > 0 || bundlePages;
+    }
+
+    setupFloatingCart() {
+        if (!this.cartToggleBtn) return;
+        
+        // Add floating cart styles for purchase pages
+        this.cartToggleBtn.style.position = 'fixed';
+        this.cartToggleBtn.style.bottom = '20px';
+        this.cartToggleBtn.style.right = '20px';
+        this.cartToggleBtn.style.zIndex = '1000';
+        this.cartToggleBtn.style.width = '60px';
+        this.cartToggleBtn.style.height = '60px';
+        this.cartToggleBtn.style.boxShadow = 'var(--shadow-xl)';
+        
+        // Hide on scroll down, show on scroll up
+        let lastScrollY = window.scrollY;
+        let ticking = false;
+
+        const updateCartVisibility = () => {
+            const currentScrollY = window.scrollY;
+            
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                // Scrolling down - hide cart
+                this.cartToggleBtn.style.transform = 'translateY(100px)';
+            } else if (currentScrollY < lastScrollY) {
+                // Scrolling up - show cart
+                this.cartToggleBtn.style.transform = 'translateY(0)';
+            }
+            
+            lastScrollY = currentScrollY;
+            ticking = false;
+        };
+
+        const requestTick = () => {
+            if (!ticking) {
+                requestAnimationFrame(updateCartVisibility);
+                ticking = true;
+            }
+        };
+
+        window.addEventListener('scroll', requestTick, { passive: true });
+    }
+
+    createCartPanel() {
+        const panel = document.createElement('div');
+        panel.id = 'cart-panel';
+        panel.className = 'cart-panel';
+        
+        panel.innerHTML = `
+            <div class="cart-panel-content">
+                <div class="cart-header">
+                    <h3>Shopping Cart</h3>
+                    <button class="cart-close" onclick="this.closest('.cart-panel').classList.remove('active'); document.body.classList.remove('cart-open');">×</button>
+                </div>
+                <div class="cart-items" id="cart-items-list">
+                    ${this.items.length === 0 ? '<p class="empty-cart">Your cart is empty</p>' : this.renderCartItems()}
+                </div>
+                <div class="cart-footer">
+                    <div class="cart-total">
+                        <strong>Total: €${this.formatPrice(this.getTotal())}</strong>
+                    </div>
+                    <button class="checkout-btn" ${this.items.length === 0 ? 'disabled' : ''} onclick="window.cart.proceedToCheckout()">
+                        Proceed to Checkout
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        return panel;
+    }
+
+    renderCartItems() {
+        return this.items.map(item => `
+            <div class="cart-item">
+                <div class="item-details">
+                    <h4>${this.escapeHtml(item.name)}</h4>
+                    <p>€${this.formatPrice(item.price)} per license</p>
+                </div>
+                <div class="item-quantity">
+                    <button onclick="window.cart.updateQuantity('${item.id}', ${item.quantity - 1})">-</button>
+                    <span>${item.quantity}</span>
+                    <button onclick="window.cart.updateQuantity('${item.id}', ${item.quantity + 1})">+</button>
+                </div>
+                <button class="remove-item" onclick="window.cart.removeFromCart('${item.id}')">Remove</button>
+            </div>
+        `).join('');
+    }
+
+    proceedToCheckout() {
+        if (this.items.length === 0) return;
+        
+        // For now, redirect to a generic checkout URL
+        window.location.href = 'https://checkout.mescius.eu/';
+    }
+
+    updateCartPanel() {
+        const cartPanel = document.getElementById('cart-panel');
+        if (cartPanel) {
+            const itemsList = cartPanel.querySelector('#cart-items-list');
+            const total = cartPanel.querySelector('.cart-total strong');
+            const checkoutBtn = cartPanel.querySelector('.checkout-btn');
+            
+            if (itemsList) {
+                itemsList.innerHTML = this.items.length === 0 ? '<p class="empty-cart">Your cart is empty</p>' : this.renderCartItems();
+            }
+            if (total) {
+                total.textContent = `Total: €${this.formatPrice(this.getTotal())}`;
+            }
+            if (checkoutBtn) {
+                checkoutBtn.disabled = this.items.length === 0;
+            }
+        }
+    }
+
+    showCartNotification(message) {
+        const notification = document.createElement('div');
+        notification.className = 'cart-notification';
+        notification.textContent = message;
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.classList.add('show');
+        }, 10);
+        
+        setTimeout(() => {
+            notification.classList.remove('show');
+            setTimeout(() => {
+                document.body.removeChild(notification);
+            }, 300);
+        }, 2000);
+    }
+
+    // Override the addToCart method to include notification
+    addToCart(productId, name, price) {
+        // Check if item already exists
+        const existingItem = this.items.find(item => item.id === productId);
+        
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            this.items.push({
+                id: productId,
+                name: name,
+                price: price,
+                quantity: 1
+            });
+        }
+
+        this.saveCart();
+        this.updateCartDisplay();
+        this.updateCartPanel();
+        
+        // Show notification
+        this.showCartNotification(`${name} added to cart!`);
+    }
+
+    // Override updateQuantity to update panel
+    updateQuantity(itemId, quantity) {
+        const item = this.items.find(item => item.id === itemId);
+        if (item) {
+            if (quantity <= 0) {
+                this.removeFromCart(itemId);
+            } else {
+                item.quantity = quantity;
+                this.saveCart();
+                this.updateCartDisplay();
+                this.updateCartPanel();
+            }
+        }
+    }
+
+    // Override removeFromCart to update panel
+    removeFromCart(itemId) {
+        this.items = this.items.filter(item => item.id !== itemId);
+        this.saveCart();
+        this.updateCartDisplay();
+        this.updateCartPanel();
+    }
+
     // Utility methods
     formatPrice(price) {
         return price.toLocaleString('de-DE', {
@@ -345,3 +560,8 @@ class ShoppingCart {
 
 // Export for use in other scripts
 window.ShoppingCart = ShoppingCart;
+
+// Initialize cart when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    window.cart = new ShoppingCart();
+});

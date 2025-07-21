@@ -56,10 +56,7 @@
 /* Stats Section */
 .stats-section {
   padding: var(--space-20) 0;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(20px);
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background: #f8fafc;
 }
 
 .stats-grid {
@@ -103,7 +100,7 @@
 /* Logo Strip Section */
 .logo-strip-section {
   padding: var(--space-16) 0;
-  background: var(--bg-secondary);
+  background: #f8fafc;
 }
 
 .logo-strip {
@@ -135,9 +132,7 @@
 /* Pillars Section */
 .pillars-section {
   padding: var(--space-32) 0;
-  background: 
-    linear-gradient(135deg, rgba(46, 89, 132, 0.03) 0%, rgba(34, 197, 94, 0.02) 100%),
-    var(--bg-primary);
+  background: #f8fafc;
 }
 
 .pillars-grid {
@@ -148,126 +143,98 @@
 }
 
 .pillar {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: var(--radius-2xl);
-  padding: var(--space-8);
-  position: relative;
-  overflow: hidden;
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
   transition: all var(--transition-base) var(--ease-out);
 }
 
-.pillar::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, var(--primary-10) 0%, var(--accent-10) 100%);
-  opacity: 0;
-  transition: opacity var(--transition-base) var(--ease-out);
-}
-
-.pillar:hover::before {
-  opacity: 1;
-}
-
 .pillar:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-2xl);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
 }
 
 .pillar-icon {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   background: var(--primary-10);
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-lg);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--primary);
-  font-size: var(--text-3xl);
-  margin-bottom: var(--space-6);
-  position: relative;
-  z-index: 1;
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-4);
   transition: all var(--transition-base) var(--ease-out);
 }
 
 .pillar:hover .pillar-icon {
   background: var(--primary);
   color: white;
-  transform: scale(1.1);
 }
 
 .pillar h3 {
-  font-size: var(--text-xl);
+  font-size: var(--text-lg);
   font-weight: var(--font-weight-semibold);
   color: var(--text-primary);
-  margin-bottom: var(--space-4);
-  position: relative;
-  z-index: 1;
+  margin-bottom: var(--space-3);
 }
 
 .pillar-metrics {
-  margin-bottom: var(--space-6);
-  position: relative;
-  z-index: 1;
+  margin-bottom: var(--space-4);
 }
 
-.metric-row {
+.pillars-section .metric-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: var(--space-2);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--gray-100);
 }
 
-.metric-label {
+.pillars-section .metric-row:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+/* Hide any remaining progress bars in pillars section */
+.pillars-section .progress-bar {
+  display: none;
+}
+
+.pillars-section .metric-label {
   color: var(--text-secondary);
   font-size: var(--text-sm);
 }
 
-.metric-value {
+.pillars-section .metric-value {
   color: var(--text-primary);
   font-weight: var(--font-weight-semibold);
   font-size: var(--text-sm);
-}
-
-.progress-bar {
-  width: 100%;
-  height: 8px;
-  background: var(--gray-200);
-  border-radius: var(--radius-full);
-  overflow: hidden;
-  margin: var(--space-3) 0;
-}
-
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--primary), var(--accent));
-  border-radius: var(--radius-full);
-  width: var(--progress-width, 0%);
-  transition: width 2s var(--ease-out);
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: initial !important;
 }
 
 .pillar-badge {
   position: absolute;
-  top: var(--space-4);
-  right: var(--space-4);
-  background: var(--accent);
+  top: var(--space-3);
+  right: var(--space-3);
+  background: var(--primary);
   color: white;
-  padding: var(--space-1) var(--space-3);
-  border-radius: var(--radius-full);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-md);
   font-size: var(--text-xs);
-  font-weight: var(--font-weight-semibold);
-  z-index: 2;
+  font-weight: var(--font-weight-medium);
 }
 
 /* Ecosystem Section */
 .ecosystem-section {
   padding: var(--space-32) 0;
-  background: var(--bg-primary);
+  background: #f8fafc;
 }
 
 .product-grid {
@@ -285,23 +252,7 @@
 /* Solutions Teaser Section */
 .solutions-teaser-section {
   padding: var(--space-32) 0;
-  background: 
-    linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-  color: white;
-  position: relative;
-  overflow: hidden;
-}
-
-.solutions-teaser-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: 
-    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23475569' fill-opacity='0.2'%3E%3Ccircle cx='7' cy='7' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  pointer-events: none;
+  background: #f8fafc;
 }
 
 .solutions-teaser-section .section-header {
@@ -310,11 +261,11 @@
 }
 
 .solutions-teaser-section .section-header h2 {
-  color: white;
+  color: var(--text-primary);
 }
 
 .solutions-teaser-section .section-header p {
-  color: #94a3b8;
+  color: var(--text-secondary);
 }
 
 .challenge-cards-container {
@@ -327,13 +278,13 @@
 }
 
 .challenge-card {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: var(--radius-2xl);
   padding: var(--space-8);
   text-decoration: none;
-  color: inherit;
+  color: var(--text-primary);
   display: block;
   transition: all var(--transition-base) var(--ease-out);
   position: relative;
@@ -347,7 +298,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  background: linear-gradient(135deg, var(--primary-10) 0%, var(--accent-10) 100%);
   opacity: 0;
   transition: opacity var(--transition-base) var(--ease-out);
 }
@@ -358,21 +309,21 @@
 
 .challenge-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
-  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: var(--shadow-2xl);
+  border-color: var(--primary);
 }
 
 .challenge-card h4 {
   font-size: var(--text-xl);
   font-weight: var(--font-weight-semibold);
-  color: white;
+  color: var(--text-primary);
   margin-bottom: var(--space-4);
   position: relative;
   z-index: 1;
 }
 
 .challenge-card p {
-  color: #cbd5e1;
+  color: var(--text-secondary);
   line-height: var(--leading-relaxed);
   margin-bottom: var(--space-6);
   position: relative;

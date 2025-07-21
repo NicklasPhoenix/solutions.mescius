@@ -243,3 +243,14 @@
   clip: auto;
   white-space: normal;
 }
+
+/* FOUC Prevention - Flash of Unstyled Content fixes */
+.cart-count.empty {
+  display: none !important;
+}
+
+/* Hide product grids until JavaScript populates them */
+#net-products:empty,
+#js-products:empty {
+  display: none;
+}

@@ -651,17 +651,12 @@
   transform: translateY(-2px);
 }
 
-.metric-value {
-  font-size: var(--text-4xl);
-  font-weight: var(--font-weight-black);
+.results-metrics .blueprint-metric-value {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-bold);
   color: var(--primary);
   margin-bottom: var(--space-2);
   font-variant-numeric: tabular-nums;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: countUp 2s ease-out;
 }
 
 @keyframes countUp {
@@ -936,8 +931,8 @@
     font-size: var(--text-2xl);
   }
   
-  .metric-value {
-    font-size: var(--text-3xl);
+  .blueprint-metric-value {
+    font-size: var(--text-xl);
   }
   
   .bundle-info {
