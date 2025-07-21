@@ -114,6 +114,10 @@
   cursor: pointer;
 }
 
+.cart-header:hover {
+  background: var(--primary-700);
+}
+
 .cart-header h3 {
   margin: 0;
   font-size: var(--text-lg);
