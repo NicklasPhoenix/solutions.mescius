@@ -260,7 +260,7 @@
 
 [data-theme="dark"] .price-card[data-badge="Popular"]::after {
   background: var(--warning);
-  color: var(--warning-dark);
+  color: white;
 }
 
 [data-theme="dark"] .price-card[data-badge="Recommended"]::after {
@@ -315,9 +315,21 @@
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
 }
 
+[data-theme="dark"] #cart-items {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] #cart-items p {
+  color: var(--text-secondary);
+}
+
 [data-theme="dark"] .cart-footer {
   background: var(--bg-tertiary);
   border-top-color: var(--border-color);
+}
+
+[data-theme="dark"] .cart-total {
+  color: var(--primary);
 }
 
 /* Dark theme filter toolbar */
