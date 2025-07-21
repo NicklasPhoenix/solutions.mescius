@@ -83,6 +83,8 @@ class ShoppingCart {
         document.addEventListener('click', (e) => {
             if (this.isVisible && this.cartElement && 
                 !this.cartElement.contains(e.target) && 
+                !this.cartToggleBtn?.contains(e.target) &&
+                !this.floatingCartBtn?.contains(e.target) &&
                 !e.target.classList.contains('add-to-cart-btn')) {
                 this.hideCart();
             }
@@ -196,6 +198,9 @@ class ShoppingCart {
         if (!this.cartItemsElement) return;
 
         this.cartItemsElement.addEventListener('click', (e) => {
+            // Prevent event bubbling to document
+            e.stopPropagation();
+            
             const cartItem = e.target.closest('.cart-item');
             if (!cartItem) return;
 
@@ -222,17 +227,24 @@ class ShoppingCart {
     }
 
     updateCartBadge() {
-        // Update both cart badge and cart count
+        const totalItems = this.items.reduce((sum, item) => sum + item.quantity, 0);
+        
+        // Update header cart badge
         if (this.cartBadge) {
-            const totalItems = this.items.reduce((sum, item) => sum + item.quantity, 0);
             this.cartBadge.textContent = totalItems;
             this.cartBadge.style.display = totalItems > 0 ? 'block' : 'none';
         }
         
+        // Update header cart count
         if (this.cartCount) {
-            const totalItems = this.items.reduce((sum, item) => sum + item.quantity, 0);
             this.cartCount.textContent = totalItems;
             this.cartCount.classList.toggle('empty', totalItems === 0);
+        }
+        
+        // Update floating cart count
+        if (this.floatingCartCount) {
+            this.floatingCartCount.textContent = totalItems;
+            this.floatingCartCount.classList.toggle('empty', totalItems === 0);
         }
     }
 
@@ -355,12 +367,31 @@ class ShoppingCart {
     setupFloatingCart() {
         if (!this.cartToggleBtn) return;
         
-        // Add floating cart class and essential positioning styles
-        this.cartToggleBtn.classList.add('cart-btn-floating');
-        this.cartToggleBtn.style.position = 'fixed';
-        this.cartToggleBtn.style.bottom = '20px';
-        this.cartToggleBtn.style.right = '20px';
-        this.cartToggleBtn.style.zIndex = '1000';
+        // Create a separate floating cart button (don't modify the header button)
+        const floatingCartBtn = document.createElement('button');
+        floatingCartBtn.id = 'floating-cart-btn';
+        floatingCartBtn.className = 'cart-btn cart-btn-floating';
+        floatingCartBtn.innerHTML = `
+            <i class="fa-solid fa-shopping-cart"></i>
+            <span class="cart-count" id="floating-cart-count">0</span>
+        `;
+        floatingCartBtn.setAttribute('aria-label', 'Floating shopping cart');
+        
+        // Style the floating cart button
+        floatingCartBtn.style.position = 'fixed';
+        floatingCartBtn.style.bottom = '20px';
+        floatingCartBtn.style.right = '20px';
+        floatingCartBtn.style.zIndex = '1000';
+        
+        // Add to page
+        document.body.appendChild(floatingCartBtn);
+        
+        // Connect to cart functionality
+        floatingCartBtn.addEventListener('click', () => this.toggleCart());
+        
+        // Store reference for updates
+        this.floatingCartBtn = floatingCartBtn;
+        this.floatingCartCount = floatingCartBtn.querySelector('.cart-count');
         
         // Hide on scroll down, show on scroll up
         let lastScrollY = window.scrollY;
@@ -370,11 +401,11 @@ class ShoppingCart {
             const currentScrollY = window.scrollY;
             
             if (currentScrollY > lastScrollY && currentScrollY > 100) {
-                // Scrolling down - hide cart
-                this.cartToggleBtn.style.transform = 'translateY(100px)';
+                // Scrolling down - hide floating cart
+                floatingCartBtn.style.transform = 'translateY(100px)';
             } else if (currentScrollY < lastScrollY) {
-                // Scrolling up - show cart
-                this.cartToggleBtn.style.transform = 'translateY(0)';
+                // Scrolling up - show floating cart
+                floatingCartBtn.style.transform = 'translateY(0)';
             }
             
             lastScrollY = currentScrollY;
@@ -396,11 +427,16 @@ class ShoppingCart {
         panel.id = 'cart-panel';
         panel.className = 'cart-panel';
         
+        // Prevent clicks inside the panel from closing it
+        panel.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+        
         panel.innerHTML = `
             <div class="cart-panel-content">
                 <div class="cart-header">
                     <h3>Shopping Cart</h3>
-                    <button class="cart-close" onclick="this.closest('.cart-panel').classList.remove('active'); document.body.classList.remove('cart-open');">×</button>
+                    <button class="cart-close" onclick="this.closest('.cart-panel').classList.remove('active'); document.body.classList.remove('cart-open'); window.cart.isVisible = false;">×</button>
                 </div>
                 <div class="cart-items" id="cart-items-list">
                     ${this.items.length === 0 ? '<p class="empty-cart">Your cart is empty</p>' : this.renderCartItems()}
