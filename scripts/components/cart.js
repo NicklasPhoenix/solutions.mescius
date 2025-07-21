@@ -57,7 +57,8 @@ class ShoppingCart {
         // Check if badge already exists
         this.cartBadge = this.cartToggleBtn.querySelector('.cart-badge');
         
-        if (!this.cartBadge) {
+        // Don't create if cart-count already exists
+        if (!this.cartBadge && !this.cartToggleBtn.querySelector('.cart-count')) {
             this.cartBadge = document.createElement('span');
             this.cartBadge.className = 'cart-badge';
             this.cartBadge.textContent = '0';
@@ -229,16 +230,13 @@ class ShoppingCart {
     updateCartBadge() {
         const totalItems = this.items.reduce((sum, item) => sum + item.quantity, 0);
         
-        // Update header cart badge
-        if (this.cartBadge) {
-            this.cartBadge.textContent = totalItems;
-            this.cartBadge.style.display = totalItems > 0 ? 'block' : 'none';
-        }
-        
-        // Update header cart count
+        // Update header cart count (prefer cart-count over cart-badge)
         if (this.cartCount) {
             this.cartCount.textContent = totalItems;
             this.cartCount.classList.toggle('empty', totalItems === 0);
+        } else if (this.cartBadge) {
+            this.cartBadge.textContent = totalItems;
+            this.cartBadge.style.display = totalItems > 0 ? 'block' : 'none';
         }
         
         // Update floating cart count
@@ -272,41 +270,51 @@ class ShoppingCart {
     }
 
     toggleCart() {
-        // Create or toggle cart panel
-        let cartPanel = document.getElementById('cart-panel');
-        
-        if (!cartPanel) {
-            cartPanel = this.createCartPanel();
-            document.body.appendChild(cartPanel);
+        // Toggle the floating cart visibility
+        if (!this.cartElement) {
+            console.error('Cart element not found');
+            return;
         }
         
-        cartPanel.classList.toggle('active');
-        document.body.classList.toggle('cart-open');
-        
         this.isVisible = !this.isVisible;
+        this.cartElement.classList.toggle('is-open', this.isVisible);
+        
+        // Update aria-expanded for accessibility
+        if (this.cartToggleBtn) {
+            this.cartToggleBtn.setAttribute('aria-expanded', this.isVisible.toString());
+        }
+        if (this.floatingCartBtn) {
+            this.floatingCartBtn.setAttribute('aria-expanded', this.isVisible.toString());
+        }
     }
 
     showCart() {
         if (!this.cartElement) return;
 
-        this.cartElement.classList.add('active');
+        this.cartElement.classList.add('is-open');
         this.isVisible = true;
         
         // Update aria-expanded for accessibility
         if (this.cartToggleBtn) {
             this.cartToggleBtn.setAttribute('aria-expanded', 'true');
         }
+        if (this.floatingCartBtn) {
+            this.floatingCartBtn.setAttribute('aria-expanded', 'true');
+        }
     }
 
     hideCart() {
         if (!this.cartElement) return;
 
-        this.cartElement.classList.remove('active');
+        this.cartElement.classList.remove('is-open');
         this.isVisible = false;
         
         // Update aria-expanded for accessibility
         if (this.cartToggleBtn) {
             this.cartToggleBtn.setAttribute('aria-expanded', 'false');
+        }
+        if (this.floatingCartBtn) {
+            this.floatingCartBtn.setAttribute('aria-expanded', 'false');
         }
     }
 

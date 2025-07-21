@@ -30,6 +30,19 @@
   --input-bg: #1F2937;
   --card-bg: #1F2937;
   
+  /* Cart specific colors for dark theme */
+  --cart-bg: #111827;
+  --cart-text: #F9FAFB;
+  --cart-muted: #9CA3AF;
+  --cart-border: #374151;
+  --cart-header-bg: #1F2937;
+  --cart-item-bg: #1F2937;
+  --cart-control-bg: #374151;
+  --cart-btn-bg: #4B5563;
+  --cart-btn-hover: #6B7280;
+  --cart-close-bg: #374151;
+  --cart-close-hover: #4B5563;
+  
   /* Update shadows for dark theme */
   --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.2);
   --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.3), 0 1px 2px -1px rgb(0 0 0 / 0.3);
