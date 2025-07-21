@@ -72,6 +72,18 @@ class ShoppingCart {
             this.cartToggleBtn.addEventListener('click', () => this.toggleCart());
         }
 
+        // Cart close and minimize buttons
+        document.addEventListener('click', (e) => {
+            if (e.target.id === 'cart-close-btn' || e.target.classList.contains('cart-close')) {
+                this.hideCart();
+            } else if (e.target.id === 'cart-minimize-btn') {
+                this.minimizeCart();
+            } else if (e.target.closest('.cart-header') && !e.target.closest('.cart-header-actions')) {
+                // Click on header (but not buttons) to toggle minimize
+                this.toggleMinimize();
+            }
+        });
+
         // Add to cart buttons
         document.addEventListener('click', (e) => {
             if (e.target.classList.contains('add-to-cart-btn')) {
@@ -198,7 +210,14 @@ class ShoppingCart {
     addCartItemListeners() {
         if (!this.cartItemsElement) return;
 
-        this.cartItemsElement.addEventListener('click', (e) => {
+        // Remove existing event listeners to prevent duplicates
+        const existingListener = this.cartItemsElement._cartListener;
+        if (existingListener) {
+            this.cartItemsElement.removeEventListener('click', existingListener);
+        }
+
+        // Create new event listener
+        const newListener = (e) => {
             // Prevent event bubbling to document
             e.stopPropagation();
             
@@ -217,7 +236,30 @@ class ShoppingCart {
                     this.updateQuantity(itemId, newQuantity);
                 }
             }
-        });
+        };
+
+        // Store reference to listener for cleanup
+        this.cartItemsElement._cartListener = newListener;
+        this.cartItemsElement.addEventListener('click', newListener);
+    }
+
+    minimizeCart() {
+        if (!this.cartElement) return;
+        this.cartElement.classList.add('is-minimized');
+    }
+
+    expandCart() {
+        if (!this.cartElement) return;
+        this.cartElement.classList.remove('is-minimized');
+    }
+
+    toggleMinimize() {
+        if (!this.cartElement) return;
+        if (this.cartElement.classList.contains('is-minimized')) {
+            this.expandCart();
+        } else {
+            this.minimizeCart();
+        }
     }
 
     updateCartTotal() {

@@ -31,13 +31,13 @@
   --cart-text: #1F2937;
   --cart-muted: #6B7280;
   --cart-border: #E5E7EB;
-  --cart-header-bg: #F9FAFB;
+  --cart-header-bg: #F8FAFC;
   --cart-item-bg: #F9FAFB;
   --cart-control-bg: #F3F4F6;
   --cart-btn-bg: #E5E7EB;
   --cart-btn-hover: #D1D5DB;
-  --cart-close-bg: #E5E7EB;
-  --cart-close-hover: #D1D5DB;
+  --cart-close-bg: #F3F4F6;
+  --cart-close-hover: #E5E7EB;
 }
 
 /* Light theme component overrides */

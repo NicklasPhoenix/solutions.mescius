@@ -132,10 +132,15 @@
     <div id="floating-cart" class="floating-cart" aria-live="polite" aria-atomic="true">
         <div class="cart-header">
             <h3>Your Cart</h3>
-            <button id="cart-toggle-btn" class="cart-toggle-btn" title="Toggle Cart"></button>
+            <div class="cart-header-actions">
+                <button id="cart-minimize-btn" class="cart-minimize-btn" title="Minimize Cart" aria-label="Minimize cart">−</button>
+                <button id="cart-close-btn" class="cart-close" title="Close Cart" aria-label="Close cart">×</button>
+            </div>
         </div>
-        <div id="cart-items">
-            <p>Your cart is empty.</p>
+        <div id="cart-content" class="cart-content">
+            <div id="cart-items">
+                <p>Your cart is empty.</p>
+            </div>
         </div>
         <div class="cart-footer">
             <div class="cart-total">

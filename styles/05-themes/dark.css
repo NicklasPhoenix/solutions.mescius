@@ -31,17 +31,17 @@
   --card-bg: #1F2937;
   
   /* Cart specific colors for dark theme */
-  --cart-bg: #111827;
+  --cart-bg: #1F2937;
   --cart-text: #F9FAFB;
   --cart-muted: #9CA3AF;
   --cart-border: #374151;
-  --cart-header-bg: #1F2937;
-  --cart-item-bg: #1F2937;
-  --cart-control-bg: #374151;
-  --cart-btn-bg: #4B5563;
-  --cart-btn-hover: #6B7280;
-  --cart-close-bg: #374151;
-  --cart-close-hover: #4B5563;
+  --cart-header-bg: #111827;
+  --cart-item-bg: #374151;
+  --cart-control-bg: #4B5563;
+  --cart-btn-bg: #6B7280;
+  --cart-btn-hover: #9CA3AF;
+  --cart-close-bg: #4B5563;
+  --cart-close-hover: #6B7280;
   
   /* Update shadows for dark theme */
   --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.2);
