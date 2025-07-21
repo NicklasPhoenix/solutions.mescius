@@ -109,7 +109,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--cart-header-bg);
+  background: var(--primary-600);
   border-radius: var(--radius-xl) var(--radius-xl) 0 0;
   cursor: pointer;
 }
@@ -118,7 +118,7 @@
   margin: 0;
   font-size: var(--text-lg);
   font-weight: var(--font-weight-semibold);
-  color: var(--cart-text);
+  color: var(--white);
 }
 
 .cart-header-actions {
@@ -132,9 +132,9 @@
   width: 28px;
   height: 28px;
   border: none;
-  background: var(--cart-close-bg);
+  background: rgba(255, 255, 255, 0.2);
   border-radius: var(--radius-lg);
-  color: var(--cart-text);
+  color: var(--white);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -146,7 +146,7 @@
 
 .cart-minimize-btn:hover,
 .cart-close:hover {
-  background: var(--cart-close-hover);
+  background: rgba(255, 255, 255, 0.3);
 }
 
 /* Minimized state */
@@ -157,6 +157,21 @@
 
 #floating-cart.is-minimized {
   max-height: auto;
+}
+
+#floating-cart.is-minimized .cart-header {
+  cursor: pointer;
+}
+
+#floating-cart.is-minimized .cart-header:hover {
+  background: var(--primary-700);
+}
+
+#floating-cart.is-minimized .cart-header::after {
+  content: " (click to expand)";
+  font-size: var(--text-xs);
+  opacity: 0.8;
+  margin-left: var(--space-2);
 }
 
 .cart-content {
@@ -267,23 +282,27 @@
 
 .remove-item-btn,
 .remove-item {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   border: none;
   background: var(--error);
   color: white;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-full);
   cursor: pointer;
-  font-size: 12px;
+  font-size: 14px;
+  font-weight: bold;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all var(--transition-base) var(--ease-out);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .remove-item-btn:hover,
 .remove-item:hover {
-  background: var(--error-dark, #cc0000);
+  background: var(--error-dark, #dc2626);
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .cart-item-total {
