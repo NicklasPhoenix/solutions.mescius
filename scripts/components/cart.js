@@ -212,9 +212,12 @@ class ShoppingCart {
 
         const itemsHTML = this.items.map(item => `
             <div class="cart-item" data-item-id="${item.id}">
-                <div class="cart-item-info">
-                    <h4 class="cart-item-name">${this.escapeHtml(item.name)}</h4>
-                    <div class="cart-item-price">€${this.formatPrice(item.price)}</div>
+                <div class="cart-item-header">
+                    <div class="cart-item-details">
+                        <h4>${this.escapeHtml(item.name)}</h4>
+                        ${item.quantity > 1 ? `<p class="item-unit-price">€${this.formatPrice(item.price)} each</p>` : ''}
+                    </div>
+                    <div class="cart-item-price">€${this.formatPrice(item.price * item.quantity)}</div>
                 </div>
                 <div class="cart-item-controls">
                     <div class="quantity-controls">
@@ -224,7 +227,6 @@ class ShoppingCart {
                     </div>
                     <button class="remove-item-btn" aria-label="Remove from cart">×</button>
                 </div>
-                <div class="cart-item-total">€${this.formatPrice(item.price * item.quantity)}</div>
             </div>
         `).join('');
 
