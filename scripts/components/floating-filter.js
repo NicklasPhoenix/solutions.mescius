@@ -67,9 +67,9 @@ class FloatingFilter {
             const options = section.options.map(option => {
                 const isActive = this.activeFilters[section.type] === option.value;
                 return `
-                    <button class="filter-option ${isActive ? 'active' : ''}" 
-                            data-type="${section.type}" 
-                            data-value="${option.value}"
+                    <button class="filter-option ${isActive ? 'active' : ''}"
+                            data-filter="${option.value}"
+                            data-section="${section.type}"
                             aria-pressed="${isActive}">
                         <span class="filter-option-icon">
                             <i class="${option.icon || 'fas fa-circle'}"></i>
@@ -81,12 +81,12 @@ class FloatingFilter {
             }).join('');
             
             return `
-                <div class="filter-section">
+                <div class="filter-section" data-filter-type="${section.type}">
                     <h4 class="filter-section-title">
                         <i class="${section.icon || 'fas fa-filter'}"></i>
                         ${section.title}
                     </h4>
-                    <div class="filter-options">
+                    <div class="filter-options-grid">
                         ${options}
                     </div>
                 </div>
@@ -98,10 +98,11 @@ class FloatingFilter {
         // Toggle button
         this.toggleBtn.addEventListener('click', () => this.toggle());
         
-        // Filter options
+        // Filter options - use event delegation for better performance
         this.filterElement.addEventListener('click', (e) => {
-            if (e.target.classList.contains('filter-option')) {
-                this.handleFilterClick(e.target);
+            const filterOption = e.target.closest('.filter-option');
+            if (filterOption) {
+                this.handleFilterClick(filterOption);
             }
         });
         
@@ -110,8 +111,8 @@ class FloatingFilter {
         
         // Close on outside click (desktop only)
         document.addEventListener('click', (e) => {
-            if (window.innerWidth > 1024 && 
-                this.isOpen && 
+            if (window.innerWidth > 1024 &&
+                this.isOpen &&
                 !this.filterElement.contains(e.target)) {
                 this.close();
             }
@@ -139,10 +140,14 @@ class FloatingFilter {
         
         // Remove active class from siblings
         const siblings = optionElement.parentElement.querySelectorAll('.filter-option');
-        siblings.forEach(sibling => sibling.classList.remove('is-active'));
+        siblings.forEach(sibling => {
+            sibling.classList.remove('active');
+            sibling.setAttribute('aria-pressed', 'false');
+        });
         
         // Add active class to clicked option
-        optionElement.classList.add('is-active');
+        optionElement.classList.add('active');
+        optionElement.setAttribute('aria-pressed', 'true');
         
         // Update active filters
         this.activeFilters[sectionType] = filterValue;
@@ -195,10 +200,8 @@ class FloatingFilter {
     }
     
     toggle() {
-        if (this.isCollapsed) {
-            this.expand();
-        } else if (this.isOpen) {
-            this.collapse();
+        if (this.isOpen) {
+            this.close();
         } else {
             this.open();
         }
@@ -206,42 +209,18 @@ class FloatingFilter {
     
     open() {
         this.isOpen = true;
-        this.isCollapsed = false;
         this.filterElement.classList.add('is-open');
         this.filterElement.classList.remove('is-collapsed');
         this.toggleBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+        this.toggleBtn.setAttribute('aria-label', 'Close filters');
     }
     
     close() {
         this.isOpen = false;
-        this.isCollapsed = false;
         this.filterElement.classList.remove('is-open');
-        this.filterElement.classList.remove('is-collapsed');
-        this.toggleBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
-    }
-    
-    collapse() {
-        this.isOpen = false;
-        this.isCollapsed = true;
         this.filterElement.classList.add('is-collapsed');
-        this.filterElement.classList.remove('is-open');
-        
-        // Update toggle button icon for collapsed state
-        const toggleBtn = this.filterElement.querySelector('.filter-toggle');
-        toggleBtn.innerHTML = '<i class="fas fa-filter"></i>';
-        toggleBtn.setAttribute('aria-label', 'Expand filters');
-    }
-    
-    expand() {
-        this.isOpen = true;
-        this.isCollapsed = false;
-        this.filterElement.classList.add('is-open');
-        this.filterElement.classList.remove('is-collapsed');
-        
-        // Update toggle button icon for expanded state
-        const toggleBtn = this.filterElement.querySelector('.filter-toggle');
-        toggleBtn.innerHTML = '<i class="fas fa-times"></i>';
-        toggleBtn.setAttribute('aria-label', 'Collapse filters');
+        this.toggleBtn.innerHTML = '<i class="fas fa-filter"></i>';
+        this.toggleBtn.setAttribute('aria-label', 'Open filters');
     }
     
     // Public methods for external control
@@ -255,13 +234,14 @@ class FloatingFilter {
             
             // Update UI
             const sectionElement = this.filterElement.querySelector(`[data-filter-type="${sectionType}"]`);
-            const options = sectionElement.querySelectorAll('.filter-option');
-            options.forEach(option => {
-                option.classList.remove('is-active');
-                if (option.getAttribute('data-filter') === value) {
-                    option.classList.add('is-active');
-                }
-            });
+            if (sectionElement) {
+                const options = sectionElement.querySelectorAll('.filter-option');
+                options.forEach(option => {
+                    const isActive = option.getAttribute('data-filter') === value;
+                    option.classList.toggle('active', isActive);
+                    option.setAttribute('aria-pressed', isActive.toString());
+                });
+            }
             
             this.updateUI();
             this.triggerFilterChange();
