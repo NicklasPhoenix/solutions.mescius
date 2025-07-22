@@ -55,11 +55,22 @@ class FloatingFilter {
         // Insert into DOM
         document.body.insertAdjacentHTML('beforeend', filterHTML);
         
-        // Store references
+        // Store references with validation
         this.filterElement = document.getElementById(this.config.containerId);
-        this.toggleBtn = this.filterElement.querySelector('.filter-toggle');
-        this.clearBtn = this.filterElement.querySelector('.filter-clear-btn');
-        this.badge = this.filterElement.querySelector('.active-filters-badge');
+        this.toggleBtn = this.filterElement?.querySelector('.filter-toggle');
+        this.clearBtn = this.filterElement?.querySelector('.filter-clear-btn');
+        this.badge = this.filterElement?.querySelector('.active-filters-badge');
+        
+        console.log('[FloatingFilter] DOM elements created and referenced', {
+            timestamp: new Date().toISOString(),
+            filterElement: !!this.filterElement,
+            toggleBtn: !!this.toggleBtn,
+            clearBtn: !!this.clearBtn,
+            badge: !!this.badge,
+            filterElementConnected: this.filterElement?.isConnected,
+            toggleBtnConnected: this.toggleBtn?.isConnected,
+            toggleBtnBounds: this.toggleBtn?.getBoundingClientRect()
+        });
     }
     
     renderFilterSections() {
@@ -95,8 +106,36 @@ class FloatingFilter {
     }
     
     setupEventListeners() {
-        // Toggle button
-        this.toggleBtn.addEventListener('click', () => this.toggle());
+        // Toggle button with enhanced debugging
+        this.toggleBtn.addEventListener('click', (e) => {
+            console.log('[FloatingFilter] Toggle button clicked', {
+                timestamp: new Date().toISOString(),
+                target: e.target,
+                currentTarget: e.currentTarget,
+                isOpen: this.isOpen,
+                isCollapsed: this.isCollapsed,
+                buttonElement: this.toggleBtn,
+                buttonExists: !!this.toggleBtn,
+                buttonConnected: this.toggleBtn?.isConnected,
+                filterElement: this.filterElement,
+                filterClasses: this.filterElement?.className
+            });
+            this.toggle();
+        });
+        
+        // Add additional click debugging for the entire filter element
+        this.filterElement.addEventListener('click', (e) => {
+            if (e.target.closest('.filter-toggle')) {
+                console.log('[FloatingFilter] Click detected on toggle area', {
+                    timestamp: new Date().toISOString(),
+                    clickX: e.clientX,
+                    clickY: e.clientY,
+                    target: e.target,
+                    toggleBounds: this.toggleBtn?.getBoundingClientRect(),
+                    computedStyle: window.getComputedStyle(this.toggleBtn || {})
+                });
+            }
+        });
         
         // Filter options - use event delegation for better performance
         this.filterElement.addEventListener('click', (e) => {
@@ -200,6 +239,15 @@ class FloatingFilter {
     }
     
     toggle() {
+        console.log('[FloatingFilter] Toggle method called', {
+            timestamp: new Date().toISOString(),
+            currentState: { isOpen: this.isOpen, isCollapsed: this.isCollapsed },
+            toggleBtnExists: !!this.toggleBtn,
+            toggleBtnConnected: this.toggleBtn?.isConnected,
+            filterElementExists: !!this.filterElement,
+            filterElementConnected: this.filterElement?.isConnected
+        });
+        
         if (this.isOpen) {
             this.close();
         } else {
@@ -208,19 +256,45 @@ class FloatingFilter {
     }
     
     open() {
+        console.log('[FloatingFilter] Opening filter', {
+            timestamp: new Date().toISOString(),
+            beforeState: { isOpen: this.isOpen, isCollapsed: this.isCollapsed },
+            filterClasses: this.filterElement?.className
+        });
+        
         this.isOpen = true;
+        this.isCollapsed = false;
         this.filterElement.classList.add('is-open');
         this.filterElement.classList.remove('is-collapsed');
         this.toggleBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
         this.toggleBtn.setAttribute('aria-label', 'Close filters');
+        
+        console.log('[FloatingFilter] Filter opened', {
+            timestamp: new Date().toISOString(),
+            afterState: { isOpen: this.isOpen, isCollapsed: this.isCollapsed },
+            filterClasses: this.filterElement?.className
+        });
     }
     
     close() {
+        console.log('[FloatingFilter] Closing filter', {
+            timestamp: new Date().toISOString(),
+            beforeState: { isOpen: this.isOpen, isCollapsed: this.isCollapsed },
+            filterClasses: this.filterElement?.className
+        });
+        
         this.isOpen = false;
+        this.isCollapsed = true;
         this.filterElement.classList.remove('is-open');
         this.filterElement.classList.add('is-collapsed');
         this.toggleBtn.innerHTML = '<i class="fas fa-filter"></i>';
         this.toggleBtn.setAttribute('aria-label', 'Open filters');
+        
+        console.log('[FloatingFilter] Filter closed', {
+            timestamp: new Date().toISOString(),
+            afterState: { isOpen: this.isOpen, isCollapsed: this.isCollapsed },
+            filterClasses: this.filterElement?.className
+        });
     }
     
     // Public methods for external control

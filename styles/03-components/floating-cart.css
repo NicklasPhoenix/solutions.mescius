@@ -16,14 +16,14 @@
   display: flex;
   flex-direction: column;
   transition: all var(--transition-base) var(--ease-out);
-  backdrop-filter: blur(20px);
   overflow: hidden;
+  opacity: 1 !important;
 }
 
 /* Dark mode adjustments */
 [data-theme="dark"] #floating-cart {
-  background: rgba(30, 41, 59, 0.95);
-  border-color: rgba(255, 255, 255, 0.1);
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
@@ -310,7 +310,7 @@
 .checkout-btn,
 .proceed-btn {
   width: 100%;
-  padding: var(--space-4);
+  padding: var(--space-4) var(--space-6);
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-600) 100%);
   color: white;
   border: none;
@@ -322,6 +322,11 @@
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 48px;
 }
 
 .checkout-btn::before,
@@ -337,6 +342,13 @@
 .proceed-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
+  background: linear-gradient(135deg, var(--primary-hover) 0%, var(--primary-700) 100%);
+}
+
+.checkout-btn:active,
+.proceed-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
 .clear-cart-btn {

@@ -467,6 +467,7 @@
   background: var(--bg-tertiary);
   transform: scale(1.05);
   box-shadow: var(--shadow-md);
+  color: var(--text-primary);
 }
 
 .header-actions .cart-btn:active {

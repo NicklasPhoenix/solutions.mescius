@@ -263,21 +263,6 @@
   cursor: pointer;
 }
 
-.hero-cta-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.6s ease;
-}
-
-.hero-cta-button:hover::before {
-  left: 100%;
-}
-
 .hero-cta-button i {
   transition: transform 0.3s ease;
 }
@@ -327,7 +312,7 @@
 /* Contact button */
 .contact-btn {
   background: var(--accent);
-  color: white;
+  color: white !important;
   padding: var(--space-3) var(--space-6);
   border-radius: var(--radius-lg);
   font-weight: var(--font-weight-medium);
@@ -339,6 +324,7 @@
 
 .contact-btn:hover {
   background: var(--accent-hover);
+  color: white !important;
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
 }
