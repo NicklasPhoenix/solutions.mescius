@@ -7,7 +7,7 @@
 .inline-block { display: inline-block; }
 .flex { display: flex; }
 .inline-flex { display: inline-flex; }
-.grid { display: grid; }
+.grid-basic { display: grid; }
 .inline-grid { display: inline-grid; }
 
 /* Flexbox Utilities */

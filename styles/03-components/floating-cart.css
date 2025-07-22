@@ -466,25 +466,8 @@
   opacity: 1 !important;
 }
 
-/* Fix for header cart button */
-.header .cart-btn {
-  position: relative;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  color: var(--text-primary);
-  padding: var(--space-2);
-  border-radius: var(--radius-md);
-  transition: all var(--transition-base);
-}
-
-.header .cart-btn:hover {
-  background: var(--bg-tertiary);
-  transform: translateY(-1px);
-}
-
-.header .cart-btn i {
-  font-size: var(--text-base);
-}
+/* Header cart button styles moved to 03-components/navigation.css for better organization */
+/* This prevents conflicts with the more comprehensive cart button styling */
 
 /* Responsive design */
 @media (max-width: 768px) {
