@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeModals();
     initializeScrollEffects();
     initializeTheme();
+    initializeCart();
 });
 
 /**
@@ -313,6 +314,68 @@ function initializeLazyLoading() {
 // Initialize lazy loading
 document.addEventListener('DOMContentLoaded', initializeLazyLoading);
 
+/**
+ * Initialize shopping cart
+ */
+function initializeCart() {
+    // Create floating cart HTML if it doesn't exist
+    if (!document.getElementById('floating-cart')) {
+        createFloatingCartHTML();
+    }
+    
+    // Initialize cart only if ShoppingCart class is available
+    if (typeof ShoppingCart !== 'undefined') {
+        // Check if global cart instance already exists (from pricing.js)
+        if (!window.cart) {
+            window.cart = new ShoppingCart();
+            console.log('Cart initialized globally');
+        }
+    }
+}
+
+/**
+ * Create floating cart HTML structure
+ */
+function createFloatingCartHTML() {
+    const cartHTML = `
+        <div id="floating-cart" class="floating-cart" aria-live="polite" aria-atomic="true">
+            <div class="cart-header">
+                <h3 class="cart-title">
+                    <i class="fa-solid fa-shopping-cart cart-icon"></i>
+                    Shopping Cart
+                </h3>
+                <div class="cart-header-actions">
+                    <button class="cart-minimize-btn" id="cart-minimize-btn" aria-label="Minimize cart">
+                        <i class="fa-solid fa-minus"></i>
+                    </button>
+                    <button class="cart-close-btn" id="cart-close-btn" aria-label="Close cart">
+                        <i class="fa-solid fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="cart-content">
+                <div class="cart-items" id="cart-items">
+                    <div class="cart-empty-message">
+                        <i class="fa-solid fa-shopping-cart"></i>
+                        <p>Your cart is empty</p>
+                        <a href="../pricing/" class="btn btn-primary">Browse Products</a>
+                    </div>
+                </div>
+                <div class="cart-footer" id="cart-footer" style="display: none;">
+                    <div class="cart-total">
+                        <span class="total-label">Total:</span>
+                        <span class="total-price" id="cart-total-price">€0</span>
+                    </div>
+                    <a href="#" class="btn btn-primary checkout-btn" id="checkout-link">Proceed to Checkout</a>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // Insert cart HTML at the end of body
+    document.body.insertAdjacentHTML('beforeend', cartHTML);
+}
+
 // Export functions for use in other scripts
 window.MesciusDesignSystem = {
     initializeNavigation,
@@ -320,6 +383,7 @@ window.MesciusDesignSystem = {
     initializeModals,
     initializeScrollEffects,
     initializeTheme,
+    initializeCart,
     debounce,
     throttle
 };

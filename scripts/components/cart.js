@@ -45,10 +45,8 @@ class ShoppingCart {
         // Create cart badge if it doesn't exist
         this.createCartBadge();
         
-        // Set up floating cart behavior on purchase pages
-        if (this.isPurchasePage()) {
-            this.setupFloatingCart();
-        }
+        // Always set up floating cart functionality
+        this.setupFloatingCart();
     }
 
     createCartBadge() {
@@ -444,61 +442,9 @@ class ShoppingCart {
     }
 
     setupFloatingCart() {
-        if (!this.cartToggleBtn) return;
-        
-        // Create a separate floating cart button (don't modify the header button)
-        const floatingCartBtn = document.createElement('button');
-        floatingCartBtn.id = 'floating-cart-btn';
-        floatingCartBtn.className = 'cart-btn cart-btn-floating';
-        floatingCartBtn.innerHTML = `
-            <i class="fa-solid fa-shopping-cart"></i>
-            <span class="cart-count" id="floating-cart-count">0</span>
-        `;
-        floatingCartBtn.setAttribute('aria-label', 'Floating shopping cart');
-        
-        // Style the floating cart button
-        floatingCartBtn.style.position = 'fixed';
-        floatingCartBtn.style.bottom = '20px';
-        floatingCartBtn.style.right = '20px';
-        floatingCartBtn.style.zIndex = '1000';
-        
-        // Add to page
-        document.body.appendChild(floatingCartBtn);
-        
-        // Connect to cart functionality
-        floatingCartBtn.addEventListener('click', () => this.toggleCart());
-        
-        // Store reference for updates
-        this.floatingCartBtn = floatingCartBtn;
-        this.floatingCartCount = floatingCartBtn.querySelector('.cart-count');
-        
-        // Hide on scroll down, show on scroll up
-        let lastScrollY = window.scrollY;
-        let ticking = false;
-
-        const updateCartVisibility = () => {
-            const currentScrollY = window.scrollY;
-            
-            if (currentScrollY > lastScrollY && currentScrollY > 100) {
-                // Scrolling down - hide floating cart
-                floatingCartBtn.style.transform = 'translateY(100px)';
-            } else if (currentScrollY < lastScrollY) {
-                // Scrolling up - show floating cart
-                floatingCartBtn.style.transform = 'translateY(0)';
-            }
-            
-            lastScrollY = currentScrollY;
-            ticking = false;
-        };
-
-        const requestTick = () => {
-            if (!ticking) {
-                requestAnimationFrame(updateCartVisibility);
-                ticking = true;
-            }
-        };
-
-        window.addEventListener('scroll', requestTick, { passive: true });
+        // No need to create separate floating button - use header button
+        // Just ensure cart functionality is ready
+        console.log('Floating cart functionality enabled for header button');
     }
 
     createCartPanel() {
