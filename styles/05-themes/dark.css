@@ -131,6 +131,41 @@
   background: #111827;
 }
 
+[data-theme="dark"] .hero {
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(34, 197, 94, 0.15) 0%, transparent 50%),
+    linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+[data-theme="dark"] .hero-title {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .hero-subtitle {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .hero-subtitle a {
+  color: var(--primary-300);
+  text-decoration: underline;
+  text-decoration-color: var(--primary-400);
+}
+
+[data-theme="dark"] .hero-subtitle a:hover {
+  color: var(--primary-200);
+  text-decoration-color: var(--primary-300);
+}
+
+[data-theme="dark"] .hero-cta-button {
+  background: var(--primary);
+  color: white;
+}
+
+[data-theme="dark"] .hero-cta-button:hover {
+  background: var(--primary-hover);
+}
+
 [data-theme="dark"] .card,
 [data-theme="dark"] .product-card,
 [data-theme="dark"] .feature-card,
