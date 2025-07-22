@@ -5,70 +5,31 @@
 
 // Initialize solutions page functionality
 document.addEventListener('DOMContentLoaded', function() {
-    initializeCaseStudyFilters();
+    initializeFloatingFilter();
     initializeIntersectionObserver();
 });
 
 /**
- * Initialize case study filtering system
+ * Initialize floating filter system
  */
-function initializeCaseStudyFilters() {
-    // Configuration for the filter system
-    const filterConfig = {
-        filterContainer: '.filter-toolbar',
-        itemsContainer: '.case-studies-grid, .solutions-grid',
-        itemSelector: '.case-study-card, .solution-card',
-        appliedFiltersContainer: '.applied-filters-container',
-        noResultsSelector: '.no-results-message',
-        animationDuration: 400
-    };
-
-    // Create filter system instance
-    window.solutionsFilterSystem = createFilterSystem(filterConfig);
-
-    // Load filters from URL on page load
-    window.solutionsFilterSystem.loadFiltersFromURL();
-
-    // Listen for filter events
-    document.addEventListener('filtersApplied', function(event) {
-        updateFilterMetrics(event.detail);
-    });
-
-    // Initialize any additional solutions-specific filtering
-    initializeAdvancedFilters();
+function initializeFloatingFilter() {
+    if (typeof FloatingFilter !== 'undefined') {
+        const filterConfig = {
+            filterMapping: {
+                'industry': 'data-industry',
+                'product': 'data-product'
+            },
+            itemSelector: '.case-study-card'
+        };
+        
+        new FloatingFilter('floating-filter', filterConfig);
+        console.log('Floating filter initialized for solutions page');
+    } else {
+        console.warn('FloatingFilter class not loaded. Please include floating-filter.js');
+    }
 }
 
 /**
- * Initialize advanced filtering features specific to solutions page
- */
-function initializeAdvancedFilters() {
-    // Industry filter buttons
-    const industryFilters = document.querySelectorAll('[data-filter="industry"]');
-    industryFilters.forEach(button => {
-        button.addEventListener('click', function() {
-            trackFilterUsage('industry', this.getAttribute('data-value'));
-        });
-    });
-
-    // Product filter buttons
-    const productFilters = document.querySelectorAll('[data-filter="product"]');
-    productFilters.forEach(button => {
-        button.addEventListener('click', function() {
-            trackFilterUsage('product', this.getAttribute('data-value'));
-        });
-    });
-
-    // Complexity filter if it exists
-    const complexityFilters = document.querySelectorAll('[data-filter="complexity"]');
-    complexityFilters.forEach(button => {
-        button.addEventListener('click', function() {
-            trackFilterUsage('complexity', this.getAttribute('data-value'));
-        });
-    });
-
-    // Search functionality if present
-    initializeSearchFilter();
-}
 
 /**
  * Initialize search filter functionality
@@ -412,8 +373,6 @@ document.addEventListener('DOMContentLoaded', initializeAllSolutionsFeatures);
 
 // Export functions for global use
 window.SolutionsPage = {
-    initializeCaseStudyFilters,
     performSearch,
-    trackFilterUsage,
-    filterSystem: () => window.solutionsFilterSystem
+    trackFilterUsage
 };

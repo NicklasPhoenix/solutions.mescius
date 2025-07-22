@@ -118,36 +118,96 @@
 
     <main class="case-study-section" id="blueprints">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Solution Blueprints</h2>
-                <p class="section-subtitle">Practical guides on how our components solve common development challenges. Check our <a href="../pricing/">pricing options</a> to get started.</p>
+                    <div class="section-header">
+            <h2 class="section-title">Solution Blueprints</h2>
+            <p class="section-subtitle">Practical guides on how our components solve common development challenges. Check our <a href="../pricing/">pricing options</a> to get started.</p>
+        </div>
+
+        <!-- Floating Filter -->
+        <div class="floating-filter" id="floating-filter">
+            <div class="floating-filter-header">
+                <h3>Filters</h3>
+                <button class="floating-filter-toggle" aria-label="Toggle filters">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
             </div>
-            
-            <div class="filter-toolbar">
-                <div class="filter-set" data-filter-type="industry">
-                    <p class="filter-set-label">Filter by Industry:</p>
-                    <div class="filter-pills">
-                        <button class="filter-btn is-active" data-filter="all">All Industries</button>
-                        <button class="filter-btn" data-filter="finance">Finance</button>
-                        <button class="filter-btn" data-filter="logistics">Logistics</button>
-                        <button class="filter-btn" data-filter="healthcare">Healthcare</button>
-                        <button class="filter-btn" data-filter="energy">Energy</button>
-                        <button class="filter-btn" data-filter="insurance">Insurance</button>
-                        <button class="filter-btn" data-filter="bi">BI SaaS</button>
+            <div class="floating-filter-content">
+                <div class="floating-filter-section">
+                    <h4 class="floating-filter-section-title">Industry</h4>
+                    <div class="floating-filter-options">
+                        <label class="floating-filter-option">
+                            <input type="checkbox" value="finance" data-category="industry">
+                            <span class="checkmark"></span>
+                            Finance
+                        </label>
+                        <label class="floating-filter-option">
+                            <input type="checkbox" value="logistics" data-category="industry">
+                            <span class="checkmark"></span>
+                            Logistics
+                        </label>
+                        <label class="floating-filter-option">
+                            <input type="checkbox" value="healthcare" data-category="industry">
+                            <span class="checkmark"></span>
+                            Healthcare
+                        </label>
+                        <label class="floating-filter-option">
+                            <input type="checkbox" value="energy" data-category="industry">
+                            <span class="checkmark"></span>
+                            Energy
+                        </label>
+                        <label class="floating-filter-option">
+                            <input type="checkbox" value="insurance" data-category="industry">
+                            <span class="checkmark"></span>
+                            Insurance
+                        </label>
+                        <label class="floating-filter-option">
+                            <input type="checkbox" value="bi" data-category="industry">
+                            <span class="checkmark"></span>
+                            BI SaaS
+                        </label>
                     </div>
                 </div>
-                <div class="filter-set" data-filter-type="product">
-                    <p class="filter-set-label">Filter by Product:</p>
-                    <div class="filter-pills">
-                        <button class="filter-btn is-active" data-filter="all">All Products</button>
-                        <button class="filter-btn" data-filter="net">.NET Suite</button>
-                        <button class="filter-btn" data-filter="js">SpreadJS</button>
-                        <button class="filter-btn" data-filter="wijmo">Wijmo</button>
-                        <button class="filter-btn" data-filter="arjs">ActiveReports</button>
-                        <button class="filter-btn" data-filter="ds">Document Solutions</button>
+
+                <div class="floating-filter-section">
+                    <h4 class="floating-filter-section-title">Product</h4>
+                    <div class="floating-filter-options">
+                        <label class="floating-filter-option">
+                            <input type="checkbox" value="net" data-category="product">
+                            <span class="checkmark"></span>
+                            .NET Suite
+                        </label>
+                        <label class="floating-filter-option">
+                            <input type="checkbox" value="js" data-category="product">
+                            <span class="checkmark"></span>
+                            SpreadJS
+                        </label>
+                        <label class="floating-filter-option">
+                            <input type="checkbox" value="wijmo" data-category="product">
+                            <span class="checkmark"></span>
+                            Wijmo
+                        </label>
+                        <label class="floating-filter-option">
+                            <input type="checkbox" value="arjs" data-category="product">
+                            <span class="checkmark"></span>
+                            ActiveReports
+                        </label>
+                        <label class="floating-filter-option">
+                            <input type="checkbox" value="ds" data-category="product">
+                            <span class="checkmark"></span>
+                            Document Solutions
+                        </label>
                     </div>
                 </div>
+
+                <div class="floating-filter-actions">
+                    <button class="floating-filter-clear">Clear All</button>
+                </div>
             </div>
+        </div>
+
+        <div class="case-study-grid" id="case-study-grid">
 
             <div class="applied-filters-container" id="applied-filters-container" role="status" aria-live="polite">
             </div>
@@ -317,7 +377,7 @@
 
     <script src="../scripts/main.js"></script>
     <script src="../scripts/components/cart.js"></script>
-    <script src="../scripts/components/filters.js"></script>
+    <script src="../scripts/components/floating-filter.js"></script>
     <script src="../scripts/solutions.js"></script>
 </body>
 </html>

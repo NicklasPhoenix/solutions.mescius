@@ -159,31 +159,78 @@
                 <p class="section-subtitle">Find the right flexible licensing plan for your development needs, from individual projects to large enterprise solutions. We offer comprehensive options for both .NET and JavaScript components.</p>
             </section>
 
-            <div class="filter-toolbar" id="pricing-filter-controls">
-                <div class="filter-set" data-filter-type="platform">
-                    <p class="filter-set-label">Filter by Platform:</p>
-                    <div class="filter-pills">
-                        <button class="filter-btn is-active" data-filter="all" role="tab" aria-selected="true" aria-controls="product-grid">All Products</button>
-                        <button class="filter-btn" data-filter="net" role="tab" aria-selected="false" aria-controls="product-grid">.NET</button>
-                        <button class="filter-btn" data-filter="js" role="tab" aria-selected="false" aria-controls="product-grid">JavaScript</button>
-                    </div>
+            <!-- Floating Filter -->
+            <div class="floating-filter" id="floating-filter">
+                <div class="floating-filter-header">
+                    <h3>Filters</h3>
+                    <button class="floating-filter-toggle" aria-label="Toggle filters">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
                 </div>
-                <div class="filter-set" data-filter-type="product">
-                    <p class="filter-set-label">Filter by Product Family:</p>
-                    <div class="filter-pills">
-                        <button class="filter-btn is-active" data-filter="all" role="tab" aria-selected="true" aria-controls="product-grid">All Products</button>
-                        <button class="filter-btn" data-filter="componentone" role="tab" aria-selected="false" aria-controls="product-grid">ComponentOne</button>
-                        <button class="filter-btn" data-filter="spreadjs" role="tab" aria-selected="false" aria-controls="product-grid">SpreadJS</button>
-                        <button class="filter-btn" data-filter="spread-net" role="tab" aria-selected="false" aria-controls="product-grid">Spread.NET</button>
-                        <button class="filter-btn" data-filter="wijmo" role="tab" aria-selected="false" aria-controls="product-grid">Wijmo</button>
-                        <button class="filter-btn" data-filter="activereports-js" role="tab" aria-selected="false" aria-controls="product-grid">ActiveReportsJS</button>
-                        <button class="filter-btn" data-filter="activereports-net" role="tab" aria-selected="false" aria-controls="product-grid">ActiveReports.NET</button>
-                        <button class="filter-btn" data-filter="document-solutions" role="tab" aria-selected="false" aria-controls="product-grid">Document Solutions</button>
+                <div class="floating-filter-content">
+                    <div class="floating-filter-section">
+                        <h4 class="floating-filter-section-title">Platform</h4>
+                        <div class="floating-filter-options">
+                            <label class="floating-filter-option">
+                                <input type="checkbox" value="net" data-category="platform">
+                                <span class="checkmark"></span>
+                                .NET
+                            </label>
+                            <label class="floating-filter-option">
+                                <input type="checkbox" value="js" data-category="platform">
+                                <span class="checkmark"></span>
+                                JavaScript
+                            </label>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="applied-filters-container" id="applied-filters-container" role="status" aria-live="polite">
+                    <div class="floating-filter-section">
+                        <h4 class="floating-filter-section-title">Product Family</h4>
+                        <div class="floating-filter-options">
+                            <label class="floating-filter-option">
+                                <input type="checkbox" value="componentone" data-category="product">
+                                <span class="checkmark"></span>
+                                ComponentOne
+                            </label>
+                            <label class="floating-filter-option">
+                                <input type="checkbox" value="spreadjs" data-category="product">
+                                <span class="checkmark"></span>
+                                SpreadJS
+                            </label>
+                            <label class="floating-filter-option">
+                                <input type="checkbox" value="spread-net" data-category="product">
+                                <span class="checkmark"></span>
+                                Spread.NET
+                            </label>
+                            <label class="floating-filter-option">
+                                <input type="checkbox" value="wijmo" data-category="product">
+                                <span class="checkmark"></span>
+                                Wijmo
+                            </label>
+                            <label class="floating-filter-option">
+                                <input type="checkbox" value="activereports-js" data-category="product">
+                                <span class="checkmark"></span>
+                                ActiveReportsJS
+                            </label>
+                            <label class="floating-filter-option">
+                                <input type="checkbox" value="activereports-net" data-category="product">
+                                <span class="checkmark"></span>
+                                ActiveReports.NET
+                            </label>
+                            <label class="floating-filter-option">
+                                <input type="checkbox" value="document-solutions" data-category="product">
+                                <span class="checkmark"></span>
+                                Document Solutions
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="floating-filter-actions">
+                        <button class="floating-filter-clear">Clear All</button>
+                    </div>
+                </div>
             </div>
 
             <div id="product-grid">
@@ -1298,6 +1345,7 @@
 </script>
     <script src="../scripts/main.js"></script>
     <script src="../scripts/components/cart.js"></script>
+    <script src="../scripts/components/floating-filter.js"></script>
     <script src="../scripts/pricing.js"></script>
 </body>
 </html>

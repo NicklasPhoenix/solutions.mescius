@@ -9,7 +9,7 @@ let cart = null;
 // Initialize pricing page functionality
 document.addEventListener('DOMContentLoaded', function() {
     initializeCart();
-    initializeProductFilters();
+    initializeFloatingFilter();
     initializeProductTabs();
     initializeRenewalForms();
 });
@@ -32,44 +32,25 @@ function initializeCart() {
 }
 
 /**
- * Product filtering system
+ * Initialize floating filter system
  */
-function initializeProductFilters() {
-    const filterButtons = document.querySelectorAll('.filter-btn[data-filter]');
-    const productSections = document.querySelectorAll('.product-pricing-section');
-    const appliedFiltersContainer = document.getElementById('applied-filters-container');
-    const clearFiltersBtn = document.getElementById('clear-filters-btn');
-    
-    let activeFilters = {
-        platform: 'all',
-        productFamily: 'all'
-    };
-
-    // Filter button event listeners
-    filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const filterType = this.getAttribute('data-filter');
-            const filterValue = this.getAttribute('data-value') || 
-                              this.textContent.toLowerCase().replace(/[^a-z0-9]/g, '');
-            
-            // Update active filters
-            if (filterType === 'platform' || filterType === 'product-family') {
-                activeFilters[filterType.replace('-', '')] = filterValue;
-            }
-            
-            // Update UI
-            updateActiveFilters();
-            filterProducts();
-            updateFilterCounts();
-        });
-    });
-
-    // Clear filters button
-    if (clearFiltersBtn) {
-        clearFiltersBtn.addEventListener('click', function() {
-            clearAllFilters();
-        });
+function initializeFloatingFilter() {
+    if (typeof FloatingFilter !== 'undefined') {
+        const filterConfig = {
+            filterMapping: {
+                'platform': 'data-platform',
+                'product': 'data-product-family'
+            },
+            itemSelector: '.product-pricing-section'
+        };
+        
+        new FloatingFilter('floating-filter', filterConfig);
+        console.log('Floating filter initialized');
+    } else {
+        console.warn('FloatingFilter class not loaded. Please include floating-filter.js');
     }
+}
+        /**
 
     function updateActiveFilters() {
         // Update button states

@@ -3,12 +3,6 @@
  * Core functionality for the modern design system
  */
 
-// Initialize theme immediately to prevent flash (before DOM ready)
-(function() {
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-})();
-
 // Initialize the application when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     initializeNavigation();
