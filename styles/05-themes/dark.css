@@ -108,6 +108,16 @@
   color: var(--text-primary);
 }
 
+/* Header Cart Button Dark Theme */
+[data-theme="dark"] .header-actions .cart-btn {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .header-actions .cart-btn:hover {
+  background: var(--bg-quaternary);
+}
+
 [data-theme="dark"] .footer {
   background: linear-gradient(135deg, #0f172a 0%, #020617 100%);
   color: #e2e8f0;

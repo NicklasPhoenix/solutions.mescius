@@ -446,6 +446,70 @@
   color: var(--primary);
 }
 
+/* Header Cart Button */
+.header-actions .cart-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: var(--radius-full);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-base) var(--ease-out);
+  position: relative;
+  box-shadow: var(--shadow-sm);
+}
+
+.header-actions .cart-btn:hover {
+  background: var(--bg-tertiary);
+  transform: scale(1.05);
+  box-shadow: var(--shadow-md);
+}
+
+.header-actions .cart-btn:active {
+  transform: scale(0.95);
+}
+
+.header-actions .cart-btn i {
+  font-size: 16px;
+}
+
+.header-actions .cart-count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: var(--accent);
+  color: white;
+  border-radius: var(--radius-full);
+  padding: 2px 6px;
+  font-size: 10px;
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  min-width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-base) var(--ease-out);
+}
+
+.header-actions .cart-count.empty {
+  display: none;
+}
+
+/* Focus styles for accessibility */
+.header-actions .cart-btn:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.header-actions .cart-btn:focus:not(:focus-visible) {
+  outline: none;
+}
+
 /* Skip Links */
 .skip-link {
   position: absolute;
