@@ -63,20 +63,35 @@ class FloatingFilter {
     }
     
     renderFilterSections() {
-        return this.config.filters.map(section => `
-            <div class="filter-section" data-filter-type="${section.type}">
-                <div class="filter-section-title">${section.title}</div>
-                <div class="filter-options">
-                    ${section.options.map(option => `
-                        <button class="filter-option ${option.value === 'all' ? 'is-active' : ''}" 
-                                data-filter="${option.value}" 
-                                data-section="${section.type}">
-                            ${option.label}
-                        </button>
-                    `).join('')}
+        return this.config.filters.map(section => {
+            const options = section.options.map(option => {
+                const isActive = this.activeFilters[section.type] === option.value;
+                return `
+                    <button class="filter-option ${isActive ? 'active' : ''}" 
+                            data-type="${section.type}" 
+                            data-value="${option.value}"
+                            aria-pressed="${isActive}">
+                        <span class="filter-option-icon">
+                            <i class="${option.icon || 'fas fa-circle'}"></i>
+                        </span>
+                        <span class="filter-option-text">${option.label}</span>
+                        ${isActive ? '<i class="filter-option-check fas fa-check"></i>' : ''}
+                    </button>
+                `;
+            }).join('');
+            
+            return `
+                <div class="filter-section">
+                    <h4 class="filter-section-title">
+                        <i class="${section.icon || 'fas fa-filter'}"></i>
+                        ${section.title}
+                    </h4>
+                    <div class="filter-options">
+                        ${options}
+                    </div>
                 </div>
-            </div>
-        `).join('');
+            `;
+        }).join('');
     }
     
     setupEventListeners() {
@@ -208,9 +223,13 @@ class FloatingFilter {
     collapse() {
         this.isOpen = false;
         this.isCollapsed = true;
-        this.filterElement.classList.remove('is-open');
         this.filterElement.classList.add('is-collapsed');
-        this.toggleBtn.innerHTML = '<i class="fas fa-filter"></i>';
+        this.filterElement.classList.remove('is-open');
+        
+        // Update toggle button icon for collapsed state
+        const toggleBtn = this.filterElement.querySelector('.filter-toggle');
+        toggleBtn.innerHTML = '<i class="fas fa-filter"></i>';
+        toggleBtn.setAttribute('aria-label', 'Expand filters');
     }
     
     expand() {
@@ -218,7 +237,11 @@ class FloatingFilter {
         this.isCollapsed = false;
         this.filterElement.classList.add('is-open');
         this.filterElement.classList.remove('is-collapsed');
-        this.toggleBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+        
+        // Update toggle button icon for expanded state
+        const toggleBtn = this.filterElement.querySelector('.filter-toggle');
+        toggleBtn.innerHTML = '<i class="fas fa-times"></i>';
+        toggleBtn.setAttribute('aria-label', 'Collapse filters');
     }
     
     // Public methods for external control

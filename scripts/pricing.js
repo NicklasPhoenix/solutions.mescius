@@ -37,17 +37,116 @@ function initializeCart() {
 function initializeFloatingFilter() {
     if (typeof FloatingFilter !== 'undefined') {
         const filterConfig = {
-            filterMapping: {
-                'platform': 'data-platform',
-                'product': 'data-product-family'
-            },
-            itemSelector: '.product-pricing-section'
+            containerId: 'floating-filter',
+            targetGridId: 'pricing-content',
+            filters: [
+                {
+                    type: 'platform',
+                    title: 'Platform',
+                    icon: 'fas fa-desktop',
+                    options: [
+                        { value: 'all', label: 'All Platforms', icon: 'fas fa-globe' },
+                        { value: 'net', label: '.NET Framework', icon: 'fab fa-microsoft' },
+                        { value: 'web', label: 'Web / JavaScript', icon: 'fab fa-js-square' },
+                        { value: 'mobile', label: 'Mobile Apps', icon: 'fas fa-mobile-alt' }
+                    ]
+                },
+                {
+                    type: 'product',
+                    title: 'Product Family',
+                    icon: 'fas fa-th-large',
+                    options: [
+                        { value: 'all', label: 'All Products', icon: 'fas fa-layer-group' },
+                        { value: 'spreadjs', label: 'SpreadJS', icon: 'fas fa-table' },
+                        { value: 'wijmo', label: 'Wijmo', icon: 'fas fa-chart-area' },
+                        { value: 'componentone', label: 'ComponentOne', icon: 'fas fa-cube' },
+                        { value: 'documents', label: 'Documents API', icon: 'fas fa-file-alt' },
+                        { value: 'activereports', label: 'ActiveReports', icon: 'fas fa-chart-bar' }
+                    ]
+                }
+            ],
+            onFilterChange: handlePricingFilterChange
         };
         
-        new FloatingFilter('floating-filter', filterConfig);
+        new FloatingFilter(filterConfig);
         console.log('Floating filter initialized');
     } else {
         console.warn('FloatingFilter class not loaded. Please include floating-filter.js');
+    }
+}
+
+/**
+ * Handle filter changes for pricing products
+ */
+function handlePricingFilterChange(activeFilters) {
+    const products = document.querySelectorAll('.product-pricing-section');
+    let visibleCount = 0;
+    
+    products.forEach(product => {
+        let isVisible = true;
+        
+        // Check platform filter
+        if (activeFilters.platform && activeFilters.platform !== 'all') {
+            const productPlatform = product.getAttribute('data-platform');
+            if (!productPlatform || !productPlatform.includes(activeFilters.platform)) {
+                isVisible = false;
+            }
+        }
+        
+        // Check product filter
+        if (activeFilters.product && activeFilters.product !== 'all') {
+            const productFamily = product.getAttribute('data-product-family');
+            if (!productFamily || !productFamily.includes(activeFilters.product)) {
+                isVisible = false;
+            }
+        }
+        
+        // Apply visibility
+        if (isVisible) {
+            product.style.display = 'block';
+            visibleCount++;
+        } else {
+            product.style.display = 'none';
+        }
+    });
+    
+    // Update no results message if needed
+    updatePricingNoResultsMessage(visibleCount, activeFilters);
+}
+
+/**
+ * Update no results message for pricing
+ */
+function updatePricingNoResultsMessage(visibleCount, activeFilters) {
+    let noResultsMessage = document.getElementById('pricing-no-results-message');
+    
+    // Create no results message if it doesn't exist
+    if (!noResultsMessage) {
+        const pricingContent = document.getElementById('pricing-content') || document.querySelector('.pricing-container');
+        if (pricingContent) {
+            noResultsMessage = document.createElement('div');
+            noResultsMessage.id = 'pricing-no-results-message';
+            noResultsMessage.className = 'no-results-message';
+            noResultsMessage.innerHTML = `
+                <div class="no-results-content">
+                    <i class="fas fa-search"></i>
+                    <h3>No products found</h3>
+                    <p>No products match your current filter selections. Try adjusting your filters or <button class="clear-filters-link" type="button">clear all filters</button> to see more options.</p>
+                </div>
+            `;
+            pricingContent.appendChild(noResultsMessage);
+        }
+    }
+    
+    // Show/hide based on visible count and active filters
+    const hasActiveFilters = Object.values(activeFilters).some(value => value && value !== 'all');
+    
+    if (noResultsMessage) {
+        if (visibleCount === 0 && hasActiveFilters) {
+            noResultsMessage.style.display = 'block';
+        } else {
+            noResultsMessage.style.display = 'none';
+        }
     }
 }
         /**

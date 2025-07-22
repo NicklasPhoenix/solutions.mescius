@@ -123,96 +123,7 @@
             <p class="section-subtitle">Practical guides on how our components solve common development challenges. Check our <a href="../pricing/">pricing options</a> to get started.</p>
         </div>
 
-        <!-- Floating Filter -->
-        <div class="floating-filter" id="floating-filter">
-            <div class="floating-filter-header">
-                <h3>Filters</h3>
-                <button class="floating-filter-toggle" aria-label="Toggle filters">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg>
-                </button>
-            </div>
-            <div class="floating-filter-content">
-                <div class="floating-filter-section">
-                    <h4 class="floating-filter-section-title">Industry</h4>
-                    <div class="floating-filter-options">
-                        <label class="floating-filter-option">
-                            <input type="checkbox" value="finance" data-category="industry">
-                            <span class="checkmark"></span>
-                            Finance
-                        </label>
-                        <label class="floating-filter-option">
-                            <input type="checkbox" value="logistics" data-category="industry">
-                            <span class="checkmark"></span>
-                            Logistics
-                        </label>
-                        <label class="floating-filter-option">
-                            <input type="checkbox" value="healthcare" data-category="industry">
-                            <span class="checkmark"></span>
-                            Healthcare
-                        </label>
-                        <label class="floating-filter-option">
-                            <input type="checkbox" value="energy" data-category="industry">
-                            <span class="checkmark"></span>
-                            Energy
-                        </label>
-                        <label class="floating-filter-option">
-                            <input type="checkbox" value="insurance" data-category="industry">
-                            <span class="checkmark"></span>
-                            Insurance
-                        </label>
-                        <label class="floating-filter-option">
-                            <input type="checkbox" value="bi" data-category="industry">
-                            <span class="checkmark"></span>
-                            BI SaaS
-                        </label>
-                    </div>
-                </div>
-
-                <div class="floating-filter-section">
-                    <h4 class="floating-filter-section-title">Product</h4>
-                    <div class="floating-filter-options">
-                        <label class="floating-filter-option">
-                            <input type="checkbox" value="net" data-category="product">
-                            <span class="checkmark"></span>
-                            .NET Suite
-                        </label>
-                        <label class="floating-filter-option">
-                            <input type="checkbox" value="js" data-category="product">
-                            <span class="checkmark"></span>
-                            SpreadJS
-                        </label>
-                        <label class="floating-filter-option">
-                            <input type="checkbox" value="wijmo" data-category="product">
-                            <span class="checkmark"></span>
-                            Wijmo
-                        </label>
-                        <label class="floating-filter-option">
-                            <input type="checkbox" value="arjs" data-category="product">
-                            <span class="checkmark"></span>
-                            ActiveReports
-                        </label>
-                        <label class="floating-filter-option">
-                            <input type="checkbox" value="ds" data-category="product">
-                            <span class="checkmark"></span>
-                            Document Solutions
-                        </label>
-                    </div>
-                </div>
-
-                <div class="floating-filter-actions">
-                    <button class="floating-filter-clear">Clear All</button>
-                </div>
-            </div>
-        </div>
-
         <div class="case-study-grid" id="case-study-grid">
-
-            <div class="applied-filters-container" id="applied-filters-container" role="status" aria-live="polite">
-            </div>
-
-            <div class="case-study-grid" id="case-study-grid">
                 <div class="case-study-card product-net" data-industry="logistics" data-product="net">
                     <div class="card-content">
                         <h3 class="card-title">
@@ -313,10 +224,12 @@
                     </div>
                 </div>
             </div>
-            <div class="no-results-message" id="no-results-message">
-                <i class="fas fa-exclamation-circle icon"></i>
-                <p>Oops! No solution blueprints match your current selections.</p>
-                <p>Try adjusting your filters or <button class="clear-filters-btn">Clear All Filters</button> to see more options.</p>
+            <div class="no-results-message" id="no-results-message" style="display: none;">
+                <div class="no-results-content">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <h3>No matches found</h3>
+                    <p>Oops! No solution blueprints match your current selections. Try adjusting your filters or <button class="clear-filters-link" id="clear-filters-btn">clear all filters</button> to see more options.</p>
+                </div>
             </div>
         </div>
     </main>

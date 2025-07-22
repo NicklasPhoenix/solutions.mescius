@@ -15,18 +15,137 @@ document.addEventListener('DOMContentLoaded', function() {
 function initializeFloatingFilter() {
     if (typeof FloatingFilter !== 'undefined') {
         const filterConfig = {
-            filterMapping: {
-                'industry': 'data-industry',
-                'product': 'data-product'
-            },
-            itemSelector: '.case-study-card'
+            containerId: 'floating-filter',
+            targetGridId: 'case-study-grid',
+            filters: [
+                {
+                    type: 'industry',
+                    title: 'Industry',
+                    icon: 'fas fa-building',
+                    options: [
+                        { value: 'all', label: 'All Industries', icon: 'fas fa-globe' },
+                        { value: 'finance', label: 'Finance', icon: 'fas fa-chart-line' },
+                        { value: 'logistics', label: 'Logistics', icon: 'fas fa-truck' },
+                        { value: 'healthcare', label: 'Healthcare', icon: 'fas fa-heartbeat' },
+                        { value: 'energy', label: 'Energy', icon: 'fas fa-bolt' },
+                        { value: 'insurance', label: 'Insurance', icon: 'fas fa-shield-alt' },
+                        { value: 'bi', label: 'BI SaaS', icon: 'fas fa-chart-bar' }
+                    ]
+                },
+                {
+                    type: 'product',
+                    title: 'Technology Stack',
+                    icon: 'fas fa-code',
+                    options: [
+                        { value: 'all', label: 'All Technologies', icon: 'fas fa-layer-group' },
+                        { value: 'net', label: '.NET Suite', icon: 'fab fa-microsoft' },
+                        { value: 'js', label: 'SpreadJS', icon: 'fab fa-js-square' },
+                        { value: 'wijmo', label: 'Wijmo', icon: 'fas fa-chart-area' },
+                        { value: 'arjs', label: 'ActiveReports', icon: 'fas fa-file-alt' },
+                        { value: 'ds', label: 'Document Solutions', icon: 'fas fa-file-pdf' }
+                    ]
+                }
+            ],
+            onFilterChange: handleFilterChange
         };
         
-        new FloatingFilter('floating-filter', filterConfig);
+        new FloatingFilter(filterConfig);
         console.log('Floating filter initialized for solutions page');
     } else {
         console.warn('FloatingFilter class not loaded. Please include floating-filter.js');
     }
+}
+
+/**
+ * Handle filter changes from floating filter
+ */
+function handleFilterChange(activeFilters) {
+    const items = document.querySelectorAll('.case-study-card');
+    let visibleCount = 0;
+    
+    items.forEach(item => {
+        let shouldShow = true;
+        
+        // Check each active filter
+        Object.entries(activeFilters).forEach(([filterType, filterValue]) => {
+            if (filterValue !== 'all') {
+                const itemValue = item.getAttribute(`data-${filterType}`);
+                if (itemValue !== filterValue) {
+                    shouldShow = false;
+                }
+            }
+        });
+        
+        if (shouldShow) {
+            item.style.display = '';
+            item.classList.remove('filtered-out');
+            visibleCount++;
+        } else {
+            item.style.display = 'none';
+            item.classList.add('filtered-out');
+        }
+    });
+    
+    // Show/hide no results message
+    updateNoResultsMessage(visibleCount === 0, activeFilters);
+    
+    // Animate visible items
+    animateFilterResults();
+}
+
+/**
+ * Update no results message
+ */
+    function updateNoResultsMessage() {
+        const visibleCards = document.querySelectorAll('.case-study-card:not([style*="display: none"])');
+        const noResultsMessage = document.getElementById('no-results-message');
+        const activeFilters = document.querySelectorAll('.floating-filter .filter-option.active');
+        
+        if (visibleCards.length === 0 && activeFilters.length > 0) {
+            noResultsMessage.style.display = 'block';
+        } else {
+            noResultsMessage.style.display = 'none';
+        }
+    }
+
+    // Clear filters functionality
+    document.addEventListener('click', function(e) {
+        if (e.target.matches('#clear-filters-btn, .clear-filters-link')) {
+            if (floatingFilterInstance) {
+                // Clear all active filters
+                const activeFilters = document.querySelectorAll('.floating-filter .filter-option.active');
+                activeFilters.forEach(filter => {
+                    filter.classList.remove('active');
+                });
+                
+                // Show all cards
+                const allCards = document.querySelectorAll('.case-study-card');
+                allCards.forEach(card => {
+                    card.style.display = 'block';
+                });
+                
+                // Hide no results message
+                document.getElementById('no-results-message').style.display = 'none';
+            }
+        }
+    });
+
+/**
+ * Animate filter results
+ */
+function animateFilterResults() {
+    const visibleItems = document.querySelectorAll('.case-study-card:not([style*="display: none"])');
+    
+    visibleItems.forEach((item, index) => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+            item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
+        }, index * 50);
+    });
 }
 
 /**
