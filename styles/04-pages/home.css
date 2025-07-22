@@ -5,10 +5,6 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: 
-    radial-gradient(circle at 20% 80%, rgba(46, 89, 132, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
-    linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
   position: relative;
   overflow: hidden;
   padding-top: 80px; /* Account for fixed header */

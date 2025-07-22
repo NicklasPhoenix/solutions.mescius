@@ -133,9 +133,33 @@
 
 [data-theme="dark"] .hero {
   background: 
-    radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.2) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(34, 197, 94, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 25% 75%, rgba(59, 130, 246, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 75% 25%, rgba(34, 197, 94, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.1) 0%, transparent 70%),
     linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+[data-theme="dark"] .hero::before {
+  background: conic-gradient(from 0deg at 50% 50%, 
+    rgba(59, 130, 246, 0.08) 0deg,
+    rgba(34, 197, 94, 0.08) 120deg,
+    rgba(168, 85, 247, 0.08) 240deg,
+    rgba(59, 130, 246, 0.08) 360deg);
+  opacity: 0.8;
+}
+
+[data-theme="dark"] .hero::after {
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.15) 0%, transparent 70%);
+}
+
+[data-theme="dark"] .hero .container::before {
+  background: var(--primary-300);
+  box-shadow: 0 0 25px rgba(96, 165, 250, 0.6);
+}
+
+[data-theme="dark"] .hero .container::after {
+  background: var(--accent-300);
+  box-shadow: 0 0 30px rgba(34, 197, 94, 0.6);
 }
 
 [data-theme="dark"] .hero-title {
