@@ -619,8 +619,3 @@ class ShoppingCart {
 
 // Export for use in other scripts
 window.ShoppingCart = ShoppingCart;
-
-// Initialize cart when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-    window.cart = new ShoppingCart();
-});

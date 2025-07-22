@@ -340,34 +340,22 @@ function createFloatingCartHTML() {
     const cartHTML = `
         <div id="floating-cart" class="floating-cart" aria-live="polite" aria-atomic="true">
             <div class="cart-header">
-                <h3 class="cart-title">
-                    <i class="fa-solid fa-shopping-cart cart-icon"></i>
-                    Shopping Cart
-                </h3>
+                <h3>Your Cart</h3>
                 <div class="cart-header-actions">
-                    <button class="cart-minimize-btn" id="cart-minimize-btn" aria-label="Minimize cart">
-                        <i class="fa-solid fa-minus"></i>
-                    </button>
-                    <button class="cart-close-btn" id="cart-close-btn" aria-label="Close cart">
-                        <i class="fa-solid fa-times"></i>
-                    </button>
+                    <button id="cart-minimize-btn" class="cart-minimize-btn" title="Minimize Cart" aria-label="Minimize cart">−</button>
+                    <button id="cart-close-btn" class="cart-close" title="Close Cart" aria-label="Close cart">×</button>
                 </div>
             </div>
-            <div class="cart-content">
-                <div class="cart-items" id="cart-items">
-                    <div class="cart-empty-message">
-                        <i class="fa-solid fa-shopping-cart"></i>
-                        <p>Your cart is empty</p>
-                        <a href="../pricing/" class="btn btn-primary">Browse Products</a>
-                    </div>
+            <div id="cart-content" class="cart-content">
+                <div id="cart-items">
+                    <p>Your cart is empty.</p>
                 </div>
-                <div class="cart-footer" id="cart-footer" style="display: none;">
-                    <div class="cart-total">
-                        <span class="total-label">Total:</span>
-                        <span class="total-price" id="cart-total-price">€0</span>
-                    </div>
-                    <a href="#" class="btn btn-primary checkout-btn" id="checkout-link">Proceed to Checkout</a>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <strong>Total:</strong> <span id="cart-total-price">€0.00</span>
                 </div>
+                <a id="checkout-link" class="cta-button is-disabled" href="#">Proceed to Checkout</a>
             </div>
         </div>
     `;
