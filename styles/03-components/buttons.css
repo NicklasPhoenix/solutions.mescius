@@ -256,34 +256,74 @@
   font-weight: var(--font-weight-semibold);
   text-decoration: none;
   border-radius: var(--radius-xl);
-  transition: all var(--transition-base) var(--ease-out);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
+  border: none;
+  cursor: pointer;
+}
+
+.hero-cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-cta-button:hover::before {
+  left: 100%;
+}
+
+.hero-cta-button i {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-cta-button:hover i {
+  transform: translateX(4px);
 }
 
 .hero-cta-button.primary {
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
-  color: white;
-  box-shadow: var(--shadow-xl);
+  color: white !important;
+  box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
 }
 
 .hero-cta-button.primary:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-2xl);
+  transform: perspective(1000px) rotateX(-10deg) rotateY(5deg) translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.4), 0 10px 20px -5px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, var(--primary-hover) 0%, var(--primary-active) 100%);
+  color: white !important;
+}
+
+.hero-cta-button.primary:active {
+  transform: perspective(1000px) rotateX(-5deg) rotateY(2deg) translateY(-4px) scale(0.98);
+  transition: transform 0.15s ease-out;
 }
 
 .hero-cta-button.secondary {
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(10px);
-  color: var(--primary);
+  color: var(--primary) !important;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
 }
 
 .hero-cta-button.secondary:hover {
-  background: white;
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-xl);
+  background: rgba(255, 255, 255, 1);
+  transform: perspective(1000px) rotateX(-8deg) rotateY(-3deg) translateY(-6px) scale(1.02);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15), 0 8px 16px -4px rgba(0, 0, 0, 0.1);
+  color: var(--primary) !important;
+}
+
+.hero-cta-button.secondary:active {
+  transform: perspective(1000px) rotateX(-4deg) rotateY(-1deg) translateY(-3px) scale(0.98);
+  transition: transform 0.15s ease-out;
 }
 
 /* Contact button */
