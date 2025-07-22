@@ -184,13 +184,14 @@
 [data-theme="dark"] .hero-cta-button {
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
   color: white !important;
-  box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.3);
 }
 
 [data-theme="dark"] .hero-cta-button:hover {
   background: linear-gradient(135deg, var(--primary-hover) 0%, var(--primary-active) 100%);
   color: white !important;
-  box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.5), 0 10px 20px -5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 25px 0 rgba(59, 130, 246, 0.4);
+  transform: translateY(-4px);
 }
 
 [data-theme="dark"] .hero-cta-button.secondary {
@@ -198,14 +199,15 @@
   backdrop-filter: blur(10px);
   color: white !important;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.2);
 }
 
 [data-theme="dark"] .hero-cta-button.secondary:hover {
   background: rgba(30, 41, 59, 0.9);
   color: white !important;
   border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4), 0 8px 16px -4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 25px 0 rgba(0, 0, 0, 0.3);
+  transform: translateY(-4px);
 }
 
 [data-theme="dark"] .card,

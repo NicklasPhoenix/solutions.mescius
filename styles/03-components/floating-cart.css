@@ -55,8 +55,8 @@
   right: -400px;
   width: 380px;
   max-height: 600px;
-  background: var(--cart-bg);
-  color: var(--cart-text);
+  background: var(--cart-bg) !important;
+  color: var(--cart-text) !important;
   border: 1px solid var(--cart-border);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-2xl);
@@ -66,6 +66,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  opacity: 1 !important;
 }
 
 #floating-cart.is-open {

@@ -256,7 +256,7 @@
   font-weight: var(--font-weight-semibold);
   text-decoration: none;
   border-radius: var(--radius-xl);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
   border: none;
@@ -271,7 +271,7 @@
   width: 100%;
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: left 0.6s ease;
 }
 
 .hero-cta-button:hover::before {
@@ -279,29 +279,28 @@
 }
 
 .hero-cta-button i {
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s ease;
 }
 
 .hero-cta-button:hover i {
-  transform: translateX(4px);
+  transform: translateX(2px);
 }
 
 .hero-cta-button.primary {
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
   color: white !important;
-  box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.2);
 }
 
 .hero-cta-button.primary:hover {
-  transform: perspective(1000px) rotateX(-10deg) rotateY(5deg) translateY(-8px) scale(1.02);
-  box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.4), 0 10px 20px -5px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px 0 rgba(59, 130, 246, 0.3);
   background: linear-gradient(135deg, var(--primary-hover) 0%, var(--primary-active) 100%);
   color: white !important;
 }
 
 .hero-cta-button.primary:active {
-  transform: perspective(1000px) rotateX(-5deg) rotateY(2deg) translateY(-4px) scale(0.98);
+  transform: translateY(-2px);
   transition: transform 0.15s ease-out;
 }
 
@@ -310,19 +309,18 @@
   backdrop-filter: blur(10px);
   color: var(--primary) !important;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.1);
 }
 
 .hero-cta-button.secondary:hover {
   background: rgba(255, 255, 255, 1);
-  transform: perspective(1000px) rotateX(-8deg) rotateY(-3deg) translateY(-6px) scale(1.02);
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15), 0 8px 16px -4px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px 0 rgba(0, 0, 0, 0.15);
   color: var(--primary) !important;
 }
 
 .hero-cta-button.secondary:active {
-  transform: perspective(1000px) rotateX(-4deg) rotateY(-1deg) translateY(-3px) scale(0.98);
+  transform: translateY(-2px);
   transition: transform 0.15s ease-out;
 }
 
