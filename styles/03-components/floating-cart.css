@@ -59,7 +59,7 @@
   margin: 0;
   font-size: var(--text-lg);
   font-weight: var(--font-weight-semibold);
-  color: var(--text-on-primary);
+  color: white;
   display: flex;
   align-items: center;
   gap: var(--space-2);
