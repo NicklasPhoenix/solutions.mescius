@@ -213,50 +213,73 @@ function initializeScrollEffects() {
 }
 
 /**
- * Theme management
+ * Theme management - 2-mode system: default (light) and dark
  */
 function initializeTheme() {
-    // Get saved theme or default to light
-    const savedTheme = localStorage.getItem('theme') || 'light';
+    // Get saved theme - only 'dark' is stored, default (no attribute) is light
+    const savedTheme = localStorage.getItem('theme');
     
-    // Apply saved theme immediately
-    document.documentElement.setAttribute('data-theme', savedTheme);
+    // Apply saved theme immediately - only set attribute for dark mode
+    if (savedTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+        // For light mode, remove any theme attribute to use default styles
+        document.documentElement.removeAttribute('data-theme');
+    }
     
     // Theme toggle functionality (if theme switcher exists)
     const themeToggle = document.querySelector('.theme-toggle');
     if (themeToggle) {
         themeToggle.addEventListener('click', function() {
-            const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            const currentTheme = document.documentElement.getAttribute('data-theme');
             
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            
-            // Update toggle button state - fix icon logic
-            updateThemeToggleIcons(newTheme);
+            if (currentTheme === 'dark') {
+                // Switch to light mode (remove attribute)
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                updateThemeToggleIcons('light');
+            } else {
+                // Switch to dark mode (set attribute)
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                updateThemeToggleIcons('dark');
+            }
         });
         
         // Set initial toggle state
-        updateThemeToggleIcons(savedTheme);
+        const currentTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+        updateThemeToggleIcons(currentTheme);
     }
 
     // Respect system preference only if no saved theme
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     if (!localStorage.getItem('theme')) {
-        const systemTheme = mediaQuery.matches ? 'dark' : 'light';
-        document.documentElement.setAttribute('data-theme', systemTheme);
-        if (themeToggle) {
-            updateThemeToggleIcons(systemTheme);
+        if (mediaQuery.matches) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            if (themeToggle) {
+                updateThemeToggleIcons('dark');
+            }
+        } else {
+            document.documentElement.removeAttribute('data-theme');
+            if (themeToggle) {
+                updateThemeToggleIcons('light');
+            }
         }
     }
     
     // Listen for system theme changes
     mediaQuery.addEventListener('change', function(e) {
         if (!localStorage.getItem('theme')) {
-            const systemTheme = e.matches ? 'dark' : 'light';
-            document.documentElement.setAttribute('data-theme', systemTheme);
-            if (themeToggle) {
-                updateThemeToggleIcons(systemTheme);
+            if (e.matches) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                if (themeToggle) {
+                    updateThemeToggleIcons('dark');
+                }
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+                if (themeToggle) {
+                    updateThemeToggleIcons('light');
+                }
             }
         }
     });
