@@ -147,6 +147,11 @@
   filter: brightness(0) invert(1);
 }
 
+/* Dark theme footer link hover fix */
+[data-theme="dark"] .footer-links a:hover {
+  color: var(--primary-300);
+}
+
 [data-theme="dark"] .hero-section {
   background: #111827;
 }
@@ -378,6 +383,27 @@
   z-index: 2;
 }
 
+/* Dark theme pricing text elements */
+[data-theme="dark"] .price-card .price {
+  color: var(--primary-300);
+}
+
+[data-theme="dark"] .comparison-table .plan-header {
+  color: var(--primary-300);
+}
+
+[data-theme="dark"] .faq-question:hover {
+  color: var(--primary-300);
+}
+
+[data-theme="dark"] .support-info-block .icon {
+  color: var(--primary-300);
+}
+
+[data-theme="dark"] .support-info-block ul li::before {
+  color: var(--primary-300);
+}
+
 [data-theme="dark"] .price-card[data-badge="Best Value"]::after {
   background: var(--accent);
 }
@@ -485,7 +511,7 @@
 }
 
 [data-theme="dark"] .cart-total {
-  color: var(--primary);
+  color: var(--text-primary);
 }
 
 /* Dark theme cart buttons */
@@ -681,6 +707,22 @@
 [data-theme="dark"] .bundle-info {
   background: rgba(31, 41, 55, 0.95);
   border-color: var(--border-color);
+}
+
+/* Dark theme bundle cards */
+[data-theme="dark"] .bundle-card {
+  background: rgba(31, 41, 55, 0.95);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .bundle-card:hover {
+  border-color: var(--primary-300);
+}
+
+/* Dark theme custom pricing text */
+[data-theme="dark"] .price.custom-pricing {
+  color: var(--primary-300);
 }
 
 [data-theme="dark"] .architecture-diagram {
