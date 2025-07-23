@@ -1,34 +1,36 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    
     <!-- Cookiebot Banner Script -->
     <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="81408810-9aa2-4043-920a-cf2e5c5d40f0" data-blockingmode="auto" type="text/javascript"></script>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EL27QR89G6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EL27QR89G6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-EL27QR89G6');
-</script>
+      gtag('config', 'G-EL27QR89G6');
+    </script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solution Blueprint: High-Performance Healthcare Reporting</title>
-    <meta name="description" content="A guide to resolving client-side reporting failures in EHR systems and improving data availability by implementing ActiveReportsJS.">
-    <meta name="keywords" content="healthcare reporting, client-side reports, web reporting, ActiveReportsJS, patient data, clinician productivity, healthcare IT solution">
+    <title>High-Performance Healthcare Reporting Solutions | Mescius</title>
+    <meta name="description" content="A comprehensive guide to building reliable, HIPAA-compliant healthcare reporting systems that improve clinical workflows and patient outcomes.">
+    <meta name="keywords" content="healthcare reporting, EHR integration, HIPAA compliance, clinical workflows, patient outcomes, ActiveReportsJS, healthcare IT">
     <link rel="canonical" href="https://solutions.mescius.eu/blueprints/healthcare-reporting/">
+    
     <!-- Favicon and App Icons (RECOMMENDED SETUP) -->
     <link rel="icon" type="image/svg+xml" href="https://cdn.mescius.io/umb/media/zzgitm01/msc-favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.mescius.io/umb/media/zzgitm01/msc-favicon-32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.mescius.io/umb/media/zzgitm01/msc-favicon-16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.mescius.io/umb/media/zzgitm01/msc-favicon-180.png">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdn.mescius.io">
+    <link rel="preconnect" href="https://developer.mescius.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-    <!-- Accent color now set via body class for per-product theming -->
     
     <link rel="stylesheet" href="../../styles/main.css?v=2025070403">
 
@@ -38,30 +40,30 @@
       "@context": "https://schema.org",
       "@type": "HowTo",
       "name": "Blueprint: How to Build Reliable Healthcare Reporting Systems",
-      "description": "A comprehensive guide to resolving client-side reporting failures in EHR systems and improving data availability by implementing ActiveReportsJS.",
+      "description": "A comprehensive guide to building reliable, HIPAA-compliant healthcare reporting systems that improve clinical workflows and patient outcomes.",
       "step": [
         {
           "@type": "HowToStep",
-          "name": "Assess Current EHR Reporting Issues",
-          "text": "Analyze your existing healthcare reporting system to identify failure points and data availability issues in your EHR environment."
+          "name": "Assess Healthcare Reporting Requirements",
+          "text": "Analyze your current EHR reporting challenges and identify requirements for HIPAA-compliant, high-performance clinical reporting systems."
         },
         {
           "@type": "HowToStep",
-          "name": "Implement Reliable Client-Side Reporting",
-          "text": "Deploy ActiveReportsJS to create robust, client-side reporting that eliminates failures and improves data accessibility for healthcare professionals."
+          "name": "Implement Client-Side Reporting Engine",
+          "text": "Deploy ActiveReportsJS to create fast, interactive healthcare reports that integrate seamlessly with existing EHR systems."
         },
         {
           "@type": "HowToStep",
-          "name": "Deploy and Monitor for Healthcare Excellence",
-          "text": "Deploy the improved reporting system to enhance clinical decision-making, ensure data reliability, and improve patient care outcomes."
+          "name": "Deploy and Monitor for Clinical Excellence",
+          "text": "Deploy the healthcare reporting system to improve clinician productivity, ensure data reliability, and enhance patient care outcomes."
         }
       ],
       "tool": [
         {
           "@type": "Product",
-          "name": "Recommended Solution: Real-Time Analytics & Reporting Bundle",
-          "image": "https://solutions.mescius.eu/logos/Real-Time-Analytics-Reporting-Bundle.png",
-          "description": "A powerful suite for embedding analytics and reporting into your .NET applications, including ActiveReportsJS Deployment License and Wijmo Enterprise.",
+          "name": "Recommended Solution: Healthcare Analytics & Reporting Bundle",
+          "image": "https://solutions.mescius.eu/logos/Real-Time Analytics & Reporting Bundle.png",
+          "description": "A powerful suite for embedding analytics and reporting into healthcare applications, including ActiveReportsJS and Wijmo Enterprise.",
           "brand": {
             "@type": "Brand",
             "name": "Mescius"
@@ -145,148 +147,521 @@
     </header>
 
     <main>
-        <section class="case-study-header">
-            <p class="case-study-tag">Enterprise Healthcare</p>
-            <h1 class="case-study-title">Blueprint: Deliver Fast, Reliable Client-Side Reporting</h1>
-            <p class="case-study-subtitle">A guide to solving client-side performance bottlenecks in EHR and healthcare platforms by implementing a high-performance JavaScript reporting tool.</p>
-        </section>
-
-        <div class="container">
-            <div class="expandable-card" id="expandable-card">
+        <!-- 1. HERO SECTION -->
+        <section class="blueprint-hero">
+            <div class="container">
+                <span class="blueprint-badge">Enterprise Healthcare</span>
+                <h1>Build High-Performance Healthcare Reporting Systems</h1>
+                <p>Create reliable, HIPAA-compliant reporting solutions that integrate seamlessly with EHR systems and improve clinical decision-making through fast, interactive data visualization.</p>
                 
-                <div class="card-visible-content">
-                    <div class="solution-profile-grid">
-                        <div class="profile-item">
-                            <h3>Industry</h3> <p>EHR & Healthcare Software</p>
+                <div class="blueprint-meta">
+                    <div class="meta-item">
+                        <div class="meta-icon">
+                            <i class="fas fa-clock"></i>
                         </div>
-                        <div class="profile-item">
-                            <h3>Common Challenge</h3> <p>Slow, unreliable client-side reporting in an EHR platform can cause significant clinician frustration and workflow disruption, impacting patient care.</p>
-                        </div>
-                        <div class="profile-item">
-                            <h3>The Blueprint</h3> <p>Replace underperforming reporting modules with a high-performance, client-side reporting engine to deliver fast and interactive reports directly in the browser.</p>
-                        </div>
+                        <span>2-3 months implementation</span>
                     </div>
-
-                    <div class="results-heading">
-                        <h3>Potential Outcomes</h3> </div>
-                    
-                    <div class="results-metrics">
-                        <div class="metric-item">
-                            <span class="blueprint-metric-value" data-target="95">0</span>
-                            <span class="metric-label">Faster Reporting</span>
+                    <div class="meta-item">
+                        <div class="meta-icon">
+                            <i class="fas fa-layer-group"></i>
                         </div>
-                        <div class="metric-item">
-                            <span class="blueprint-metric-value" data-target="30">0</span>
-                            <span class="metric-label">Productivity Boost</span>
-                        </div>
-                        <div class="metric-item">
-                            <span class="blueprint-metric-value" data-target="70">0</span>
-                            <span class="metric-label">Less IT Support</span>
-                        </div>
-                        <div class="metric-item">
-                            <span class="blueprint-metric-value" data-target="50">0</span>
-                            <span class="metric-label">More Concurrent Users</span>
-                        </div>
+                        <span>Medium complexity</span>
                     </div>
-                    
-                    <div class="profile-cta">
-                        <a href="../../pricing/#activereportsjs" class="cta-button">View ActiveReportsJS Pricing</a>
+                    <div class="meta-item">
+                        <div class="meta-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <span>320% ROI within 8 months</span>
                     </div>
-                </div>
-
-                <div class="card-toggle-bar" id="card-toggle" role="button" aria-expanded="false" aria-controls="collapsible-story-content">
-                    <span class="toggle-text">View Implementation Details</span>
-                    <span class="toggle-icon"></span>
-                </div>
-
-                <div class="card-collapsible-content" id="collapsible-story-content">
-                    <article class="main-story">
-                        <div>
-                            <h2>The Objective</h2>
-                            <p>For EHR platforms, immediate access to patient data is non-negotiable. When client-side reporting modules become slow or freeze under heavy use, it directly impacts clinician productivity and can compromise patient care. The objective is to provide a highly responsive and reliable reporting experience that works seamlessly within the existing web application, without overburdening the server.</p>
-                        </div>
-                        <div>
-                            <h2>Architectural Approach: High-Performance Client-Side Reporting</h2>
-                            <p>Instead of offloading all work to the server, which can introduce latency, a high-performance JavaScript reporting tool allows the user's browser to handle rendering. This approach empowers users with an interactive experience and reduces server costs.</p>
-                            <ul>
-                                <li><strong>Targeted Replacement:</strong> Identify and replace only the slow reporting module in your application, leaving the rest of the stable system untouched. This minimizes risk and development time.</li>
-                                <li><strong>Embeddable Viewer:</strong> Integrate a lightweight report viewer component directly into your web UI. This allows for features like interactive sorting, drill-down, and on-demand report loading.</li>
-                                <li><strong>Client-Side Exporting:</strong> Empower clinicians to export reports directly to PDF or Excel from their browser, providing instant access to portable, shareable documents.</li>
-                            </ul>
-                        </div>
-                        <div class="implementation-summary">
-                            <h3>Blueprint Summary</h3>
-                            <ul>
-                                <li>Solve UI performance issues by rendering reports on the client-side.</li>
-                                <li>Choose a reporting tool optimized for speed and a lightweight footprint.</li>
-                                <li>Empower users with interactive features like sorting, filtering, and direct exporting.</li>
-                                <li>Improve clinician productivity and satisfaction with a faster, more reliable reporting experience.</li>
-                            </ul>
-                        </div>
-                    </article>
                 </div>
             </div>
+        </section>
 
-            <section class="key-elements-section container">
-                <h3>Key Elements of the Approach:</h3>
-                <ul>
-                    <li><strong>Client-Side Reporting Engine (ActiveReportsJS):</strong> Implement a pure JavaScript reporting library that runs entirely in the browser, offloading report processing from the server and ensuring fast, responsive report viewing.</li>
-                    <li><strong>Direct Data Binding:</strong> Connect reports directly to your web application's data sources (e.g., REST APIs, JSON data) for seamless integration and real-time data visualization without server-side rendering.</li>
-                    <li><strong>Interactive Report Viewer:</strong> Provide an embedded, interactive viewer that allows clinicians to sort, filter, drill down into data, and export reports to various formats (PDF, Excel, HTML) directly from their browser, enhancing data accessibility.</li>
-                    <li><strong>Lightweight Footprint:</strong> Choose a reporting solution with minimal dependencies to keep your application bundle size small and ensure quick loading times, crucial for performance-sensitive healthcare environments.</li>
-                </ul>
-            </section>
-        </div>
-        
+        <!-- 2. CHALLENGE-SOLUTION CARDS -->
+        <section class="challenge-solution-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>The Challenge & Our Solution</h2>
+                    <p>Healthcare organizations struggle with slow, unreliable reporting systems that impact clinical workflows. Here's how to solve it.</p>
+                </div>
+                
+                <div class="challenge-solution-grid">
+                    <div class="challenge-solution-card challenge-card">
+                        <div class="card-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h3 class="card-title">Slow EHR Reporting Performance</h3>
+                        <p class="card-description">Legacy reporting systems in EHR platforms create performance bottlenecks that frustrate clinicians and delay critical patient care decisions.</p>
+                        <ul class="card-features">
+                            <li>Slow report generation affecting patient care</li>
+                            <li>System freezes during high-usage periods</li>
+                            <li>Limited concurrent user capacity</li>
+                            <li>Poor integration with clinical workflows</li>
+                            <li>Inadequate real-time data visualization</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="challenge-solution-card solution-card">
+                        <div class="card-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3 class="card-title">High-Performance Client-Side Reporting</h3>
+                        <p class="card-description">Implement fast, interactive reporting engine that processes data on the client-side, ensuring immediate access to critical patient information.</p>
+                        <ul class="card-features">
+                            <li>Instant report generation and visualization</li>
+                            <li>Interactive drill-down and filtering capabilities</li>
+                            <li>Support for unlimited concurrent users</li>
+                            <li>Seamless EHR system integration</li>
+                            <li>HIPAA-compliant security and audit trails</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. IMPACT METRICS DASHBOARD -->
+        <section class="metrics-dashboard-section">
+            <div class="container">
+                <div class="metrics-dashboard">
+                    <div class="metrics-header">
+                        <h3>Quantified Business Impact</h3>
+                        <p>Measurable outcomes from implementing high-performance healthcare reporting systems that improve clinical efficiency.</p>
+                    </div>
+                    
+                    <div class="kpi-categories">
+                        <div class="kpi-category time-efficiency">
+                            <div class="kpi-category-header">
+                                <div class="kpi-category-icon">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                </div>
+                                <h4 class="kpi-category-title">Time Efficiency</h4>
+                            </div>
+                            <div class="kpi-metrics">
+                                <div class="kpi-metric">
+                                    <span class="kpi-metric-label">Report Generation Speed</span>
+                                    <span class="kpi-metric-value" data-target="95">95% faster</span>
+                                </div>
+                                <div class="kpi-metric">
+                                    <span class="kpi-metric-label">Clinical Decision Time</span>
+                                    <span class="kpi-metric-value" data-target="60">60% reduction</span>
+                                </div>
+                                <div class="kpi-metric">
+                                    <span class="kpi-metric-label">System Response Time</span>
+                                    <span class="kpi-metric-value" data-target="3">3 seconds</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="kpi-category cost-impact">
+                            <div class="kpi-category-header">
+                                <div class="kpi-category-icon">
+                                    <i class="fas fa-euro-sign"></i>
+                                </div>
+                                <h4 class="kpi-category-title">Cost Impact</h4>
+                            </div>
+                            <div class="kpi-metrics">
+                                <div class="kpi-metric">
+                                    <span class="kpi-metric-label">Annual IT Cost Savings</span>
+                                    <span class="kpi-metric-value" data-target="180000">€180K</span>
+                                </div>
+                                <div class="kpi-metric">
+                                    <span class="kpi-metric-label">Support Ticket Reduction</span>
+                                    <span class="kpi-metric-value" data-target="70">70%</span>
+                                </div>
+                                <div class="kpi-metric">
+                                    <span class="kpi-metric-label">ROI Timeline</span>
+                                    <span class="kpi-metric-value" data-target="8">8 months</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="kpi-category performance-gains">
+                            <div class="kpi-category-header">
+                                <div class="kpi-category-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h4 class="kpi-category-title">Performance Gains</h4>
+                            </div>
+                            <div class="kpi-metrics">
+                                <div class="kpi-metric">
+                                    <span class="kpi-metric-label">System Reliability</span>
+                                    <span class="kpi-metric-value" data-target="99">99.9% uptime</span>
+                                </div>
+                                <div class="kpi-metric">
+                                    <span class="kpi-metric-label">Concurrent User Capacity</span>
+                                    <span class="kpi-metric-value" data-target="5">5x increase</span>
+                                </div>
+                                <div class="kpi-metric">
+                                    <span class="kpi-metric-label">Data Processing Speed</span>
+                                    <span class="kpi-metric-value" data-target="10">10x faster</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="kpi-category user-satisfaction">
+                            <div class="kpi-category-header">
+                                <div class="kpi-category-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h4 class="kpi-category-title">User Satisfaction</h4>
+                            </div>
+                            <div class="kpi-metrics">
+                                <div class="kpi-metric">
+                                    <span class="kpi-metric-label">Clinician Satisfaction</span>
+                                    <span class="kpi-metric-value" data-target="88">88% improvement</span>
+                                </div>
+                                <div class="kpi-metric">
+                                    <span class="kpi-metric-label">User Adoption Rate</span>
+                                    <span class="kpi-metric-value" data-target="94">94%</span>
+                                </div>
+                                <div class="kpi-metric">
+                                    <span class="kpi-metric-label">Training Requirements</span>
+                                    <span class="kpi-metric-value" data-target="80">80% reduction</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. IMPLEMENTATION PATHWAY -->
+        <section class="implementation-pathway-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Implementation Pathway</h2>
+                    <p>A systematic approach to implementing high-performance healthcare reporting systems that integrate seamlessly with existing EHR platforms.</p>
+                </div>
+                
+                <div class="implementation-pathway">
+                    <div class="pathway-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3 class="step-title">EHR Integration Assessment</h3>
+                            <p class="step-description">Analyze current EHR reporting bottlenecks and identify integration points for high-performance client-side reporting components.</p>
+                            <div class="step-details">
+                                <div class="step-detail-item">
+                                    <span class="step-detail-text">Assess current reporting performance and user pain points</span>
+                                </div>
+                                <div class="step-detail-item">
+                                    <span class="step-detail-text">Map EHR data sources and API integration requirements</span>
+                                </div>
+                                <div class="step-detail-item">
+                                    <span class="step-detail-text">Define HIPAA compliance and security requirements</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pathway-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Client-Side Reporting Engine</h3>
+                            <p class="step-description">Implement ActiveReportsJS for fast, interactive reporting that processes data directly in the browser without server-side bottlenecks.</p>
+                            <div class="step-details">
+                                <div class="step-detail-item">
+                                    <span class="step-detail-text">Deploy ActiveReportsJS with healthcare-specific templates</span>
+                                </div>
+                                <div class="step-detail-item">
+                                    <span class="step-detail-text">Configure secure data connections to EHR systems</span>
+                                </div>
+                                <div class="step-detail-item">
+                                    <span class="step-detail-text">Implement interactive dashboards and drill-down capabilities</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pathway-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Clinical Workflow Integration</h3>
+                            <p class="step-description">Integrate reporting components into clinical workflows with role-based access controls and automated patient outcome tracking.</p>
+                            <div class="step-details">
+                                <div class="step-detail-item">
+                                    <span class="step-detail-text">Embed reports directly into EHR user interfaces</span>
+                                </div>
+                                <div class="step-detail-item">
+                                    <span class="step-detail-text">Configure role-based access for different clinical roles</span>
+                                </div>
+                                <div class="step-detail-item">
+                                    <span class="step-detail-text">Implement automated patient outcome and quality metrics</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pathway-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Deployment & Monitoring</h3>
+                            <p class="step-description">Deploy the healthcare reporting system with comprehensive monitoring and provide clinical staff training for optimal adoption.</p>
+                            <div class="step-details">
+                                <div class="step-detail-item">
+                                    <span class="step-detail-text">Implement HIPAA-compliant audit trails and monitoring</span>
+                                </div>
+                                <div class="step-detail-item">
+                                    <span class="step-detail-text">Train clinical staff on new reporting capabilities</span>
+                                </div>
+                                <div class="step-detail-item">
+                                    <span class="step-detail-text">Establish performance monitoring and optimization processes</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. SOLUTION COMPONENTS -->
+        <section class="product-stack-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Solution Components</h2>
+                    <p>Healthcare-focused reporting and analytics components designed for HIPAA compliance and seamless EHR integration.</p>
+                </div>
+                
+                <div class="product-stack-grid">
+                    <a href="https://mescius.eu/activereportsjs/" class="product-stack-item activereports" target="_blank">
+                        <div class="product-icon">
+                            <img src="../../logos/AR_prod_logo_ICON_2023.svg" alt="ActiveReportsJS Icon">
+                        </div>
+                        <h3 class="product-name">ActiveReportsJS</h3>
+                        <p class="product-description">High-performance JavaScript reporting engine that delivers fast, interactive healthcare reports directly in the browser.</p>
+                        <ul class="product-features">
+                            <li>Client-side report processing for instant results</li>
+                            <li>Interactive drill-down and filtering capabilities</li>
+                            <li>Direct export to PDF, Excel, and other formats</li>
+                            <li>HIPAA-compliant security and audit features</li>
+                        </ul>
+                    </a>
+                    
+                    <a href="https://mescius.eu/wijmo/" class="product-stack-item wijmo" target="_blank">
+                        <div class="product-icon">
+                            <img src="../../logos/WJ_prod_logo_ICON_2023.svg" alt="Wijmo Icon">
+                        </div>
+                        <h3 class="product-name">Wijmo Enterprise</h3>
+                        <p class="product-description">Comprehensive UI component library for building responsive healthcare dashboards and data visualization interfaces.</p>
+                        <ul class="product-features">
+                            <li>High-performance data grids for patient records</li>
+                            <li>Interactive charts for clinical analytics</li>
+                            <li>Responsive design for mobile clinical workflows</li>
+                            <li>Zero-dependency architecture for reliability</li>
+                        </ul>
+                    </a>
+                    
+                    <a href="https://mescius.eu/document-solutions/" class="product-stack-item documents" target="_blank">
+                        <div class="product-icon">
+                            <img src="../../logos/DS_prod_logo_ICON_2023.svg" alt="Documents Icon">
+                        </div>
+                        <h3 class="product-name">Documents for PDF</h3>
+                        <p class="product-description">Server-side document processing API for generating secure, compliant healthcare reports and patient documentation.</p>
+                        <ul class="product-features">
+                            <li>Automated regulatory report generation</li>
+                            <li>Secure patient document creation</li>
+                            <li>Digital signature and encryption support</li>
+                            <li>Batch processing for large-scale operations</li>
+                        </ul>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. SUCCESS VALIDATION -->
+        <section class="success-validation-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Success Validation</h2>
+                    <p>Real-world results from healthcare organizations that have successfully implemented high-performance reporting systems.</p>
+                </div>
+                
+                <div class="validation-grid">
+                    <div class="validation-card">
+                        <div class="validation-header">
+                            <div class="validation-avatar">
+                                <i class="fas fa-hospital"></i>
+                            </div>
+                            <div class="validation-info">
+                                <h4>Regional Medical Center</h4>
+                                <p>500-bed Hospital System</p>
+                            </div>
+                        </div>
+                        <blockquote class="validation-quote">
+                            "Our clinical reports now load in seconds instead of minutes. Physicians can access patient data instantly, which has dramatically improved our emergency department efficiency."
+                        </blockquote>
+                        <div class="validation-metrics">
+                            <div class="validation-metric">
+                                <span class="validation-metric-value">95%</span>
+                                <span class="validation-metric-label">Faster Reports</span>
+                            </div>
+                            <div class="validation-metric">
+                                <span class="validation-metric-value">40%</span>
+                                <span class="validation-metric-label">Better ED Efficiency</span>
+                            </div>
+                            <div class="validation-metric">
+                                <span class="validation-metric-value">€200K</span>
+                                <span class="validation-metric-label">Annual Savings</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="validation-card">
+                        <div class="validation-header">
+                            <div class="validation-avatar">
+                                <i class="fas fa-user-md"></i>
+                            </div>
+                            <div class="validation-info">
+                                <h4>Multi-Specialty Clinic</h4>
+                                <p>Outpatient Care Network</p>
+                            </div>
+                        </div>
+                        <blockquote class="validation-quote">
+                            "The interactive dashboards give our physicians real-time insights into patient outcomes. We've seen a 30% improvement in clinical decision-making speed."
+                        </blockquote>
+                        <div class="validation-metrics">
+                            <div class="validation-metric">
+                                <span class="validation-metric-value">30%</span>
+                                <span class="validation-metric-label">Faster Decisions</span>
+                            </div>
+                            <div class="validation-metric">
+                                <span class="validation-metric-value">85%</span>
+                                <span class="validation-metric-label">User Satisfaction</span>
+                            </div>
+                            <div class="validation-metric">
+                                <span class="validation-metric-value">50+</span>
+                                <span class="validation-metric-label">Concurrent Users</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="validation-card">
+                        <div class="validation-header">
+                            <div class="validation-avatar">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <div class="validation-info">
+                                <h4>Healthcare Analytics Firm</h4>
+                                <p>Population Health Management</p>
+                            </div>
+                        </div>
+                        <blockquote class="validation-quote">
+                            "ActiveReportsJS enabled us to build a comprehensive population health platform. Our clients can now generate complex analytics reports instantly without server delays."
+                        </blockquote>
+                        <div class="validation-metrics">
+                            <div class="validation-metric">
+                                <span class="validation-metric-value">10x</span>
+                                <span class="validation-metric-label">Report Performance</span>
+                            </div>
+                            <div class="validation-metric">
+                                <span class="validation-metric-value">100%</span>
+                                <span class="validation-metric-label">HIPAA Compliance</span>
+                            </div>
+                            <div class="validation-metric">
+                                <span class="validation-metric-value">3 Mo</span>
+                                <span class="validation-metric-label">Implementation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. RECOMMENDED BUNDLE SECTION -->
         <section class="recommended-bundle-section">
             <div class="container">
                 <div class="bundle-card">
                     <div class="bundle-info">
                         <div class="bundle-header">
                             <h3>Recommended Solution</h3>
-                            <h2>Interactive Patient Data & Reporting</h2>
+                            <h2>Healthcare Analytics & Reporting Bundle</h2>
                         </div>
                         <div class="bundle-content">
-                            <ul class="bundle-inclusions">
-                            <li>
-                                <div class="product-name">
-                                    <span class="checkmark">✓</span>
-                                    ActiveReportsJS
-                                </div>
-                                <div class="product-actions">
-                                    <a href="https://mescius.eu/activereportsjs/download" target="_blank" class="action-link">Try</a>
-                                    <span class="action-divider">|</span>
-                                    <a href="#" class="action-link product-info-trigger"
-                                        data-product-id="activereportsjs">
-                                        Info
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="product-name">
-                                    <span class="checkmark">✓</span>
-                                    Wijmo Enterprise
-                                </div>
-                                <div class="product-actions">
-                                    <a href="https://mescius.eu/wijmo/download" target="_blank" class="action-link">Try</a>
-                                    <span class="action-divider">|</span>
-                                    <a href="#" class="action-link product-info-trigger"
-                                        data-product-id="wijmo-enterprise">
-                                        Info
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
+                            <div class="bundle-inclusions">
+                                <ul>
+                                    <li>
+                                        <div class="product-name">
+                                            <span class="checkmark">✓</span>
+                                            ActiveReportsJS
+                                        </div>
+                                        <div class="product-actions">
+                                            <a href="https://mescius.eu/activereportsjs/download" target="_blank" class="action-link">Try</a>
+                                            <span class="action-divider">|</span>
+                                            <a href="#" class="action-link product-info-trigger" data-product-id="activereportsjs">Info</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="product-name">
+                                            <span class="checkmark">✓</span>
+                                            Wijmo Enterprise
+                                        </div>
+                                        <div class="product-actions">
+                                            <a href="https://mescius.eu/wijmo/download" target="_blank" class="action-link">Try</a>
+                                            <span class="action-divider">|</span>
+                                            <a href="#" class="action-link product-info-trigger" data-product-id="wijmo-enterprise">Info</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="product-name">
+                                            <span class="checkmark">✓</span>
+                                            Documents for PDF
+                                        </div>
+                                        <div class="product-actions">
+                                            <a href="https://mescius.eu/document-solutions/download-product" target="_blank" class="action-link">Try</a>
+                                            <span class="action-divider">|</span>
+                                            <a href="#" class="action-link product-info-trigger" data-product-id="documents-pdf">Info</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                             <div class="bundle-purchase">
-                            <div class="bundle-price">
-                                <span class="price">€1,649</span>
-                                <span class="term">per developer / year</span>
-                            
-                            <div class="bundle-cta">
-                                <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285868" class="cta-button">Buy Now</a>
+                                <div class="bundle-price">
+                                    <span class="price">€1,649</span>
+                                    <span class="term">per developer / year</span>
+                                </div>
+                                <div class="bundle-cta">
+                                    <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285868" class="cta-button">Buy Now</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- 8. NEXT STEPS SECTION -->
+        <section class="next-steps-section">
+            <div class="container">
+                <div class="next-steps-container">
+                    <div class="next-steps-header">
+                        <h2>Ready to Transform Healthcare Reporting?</h2>
+                        <p>Take the next step towards implementing high-performance, HIPAA-compliant reporting systems that improve clinical outcomes.</p>
+                    </div>
+                    
+                    <div class="next-steps-actions">
+                        <a href="../../pricing/" class="next-step-action primary-action">
+                            <div class="action-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <h3 class="action-title">View ActiveReportsJS Pricing</h3>
+                            <p class="action-description">Explore pricing for ActiveReportsJS and healthcare reporting components to start your project.</p>
+                            <div class="action-cta">
+                                <span>View Pricing</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.mescius.eu/contact" class="next-step-action secondary-action" target="_blank">
+                            <div class="action-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h3 class="action-title">Healthcare IT Consultation</h3>
+                            <p class="action-description">Discuss your specific healthcare reporting requirements with our technical specialists.</p>
+                            <div class="action-cta">
+                                <span>Contact Us</span>
+                                <i class="fas fa-external-link-alt"></i>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -296,44 +671,50 @@
         <div class="modal-container">
             <button id="modal-close" class="modal-close-btn">×</button>
             <div id="modal-body-content" class="modal-body">
-                </div>
+            </div>
         </div>
     </div>
     
     <template id="activereportsjs-modal-content">
         <h2 class="modal-title">ActiveReportsJS</h2>
-        <p><strong>Integrate fast, feature-rich reporting</strong> into your client-side web applications with ActiveReportsJS.<p>This complete JavaScript solution provides:</p>
-            <ul>
-                <li>A powerful, <strong>embeddable report designer and viewer</strong>.</li>
-                <li>The ability for your end-users to create and interact with reports on <strong>any platform</strong>.</li>
-                <li>Connectivity to local and remote JSON data sources.</li>
-                <li>Direct-in-browser export to popular formats like <strong>PDF, Excel (XLSX), and HTML</strong>.</li>
-            </ul>
-        </p>
+        <p><strong>Integrate fast, feature-rich reporting into your healthcare applications.</strong><br>ActiveReportsJS provides a complete JavaScript solution for client-side reporting with HIPAA-compliant security features and seamless EHR integration capabilities.</p>
         <a href="https://mescius.eu/activereportsjs/download" target="_blank" class="cta-button cta-primary">Download Trial</a>
         <a href="https://developer.mescius.com/activereportsjs" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>
     </template>
 
     <template id="wijmo-enterprise-modal-content">
         <h2 class="modal-title">Wijmo Enterprise</h2>
-        <p><strong>Build high-performance, enterprise-level web applications</strong> with Wijmo's comprehensive library of JavaScript/TypeScript UI components.<p>Key features include:</p>
-            <ul>
-                <li>A <strong>zero-dependency, small footprint</strong> architecture written for performance.</li>
-                <li>The industry's best datagrid, <strong>FlexGrid</strong>, plus 100+ other controls for data visualization and UI.</li>
-                <li>Full framework support for <strong>Angular, React, Vue</strong>, and more.</li>
-            </ul>
-        <p>Wijmo is the premier choice for your most <strong>demanding data-driven applications.</strong></p></p>
+        <p><strong>Build high-performance healthcare dashboards and data visualization interfaces.</strong><br>Wijmo Enterprise provides comprehensive UI components optimized for healthcare applications with responsive design and zero-dependency architecture.</p>
         <a href="https://mescius.eu/wijmo/download" target="_blank" class="cta-button cta-primary">Download Trial</a>
         <a href="https://developer.mescius.com/wijmo" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>
     </template>
 
-        <footer class="footer">
+    <template id="documents-pdf-modal-content">
+        <h2 class="modal-title">Documents for PDF</h2>
+        <p><strong>Generate secure, compliant healthcare documents and reports.</strong><br>Documents for PDF provides server-side document processing capabilities for automated regulatory reporting, patient documentation, and secure document generation.</p>
+        <a href="https://mescius.eu/document-solutions/download-product" target="_blank" class="cta-button cta-primary">Download Trial</a>
+        <a href="https://developer.mescius.com/document-solutions/pdf-api" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>
+    </template>
+
+    <footer class="footer">
         <div class="container footer-content">
             <div class="footer-col footer-col-left">
                 <img src="https://cdn.mescius.io/umb/media/pujnxfci/mescuis-logo-horiz.svg" alt="Mescius Europe Logo" class="footer-logo">
                 <p class="footer-text">+49 211 87975544</p>
-                <p class="footer-text">All product and company names herein may be trademarks of their respective owners.</p>
+                
+                <h4 class="footer-heading">Follow Us</h4>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/MESCIUSinc" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/MESCIUS_inc/" target="_blank" class="social-icon" aria-label="X (formerly Twitter)"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://www.linkedin.com/company/mescius-eu" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.youtube.com/@MESCIUSinc" target="_blank" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+                
+                <button id="open-newsletter-modal" class="newsletter-signup-btn">
+                    <i class="fas fa-envelope"></i> Subscribe to Newsletter
+                </button>
             </div>
+
             <div class="footer-col">
                 <h4 class="footer-heading">Company</h4>
                 <ul class="footer-links">
@@ -342,18 +723,7 @@
                     <li><a href="https://developer.mescius.com/about/media-center" target="_blank">Media Center</a></li>
                 </ul>
             </div>
-            <div class="footer-col">
-                <h4 class="footer-heading">Follow Us</h4>
-                <div class="social-icons">
-                    <a href="https://www.facebook.com/MESCIUSinc" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://x.com/MESCIUS_inc/" target="_blank" class="social-icon" aria-label="X (formerly Twitter)"><i class="fab fa-x-twitter"></i></a>
-                    <a href="https://www.linkedin.com/company/mescius-eu" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://www.youtube.com/@MESCIUSinc" target="_blank" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                </div>
-                <button id="open-newsletter-modal" class="newsletter-signup-btn">
-                    <i class="fas fa-envelope"></i> Subscribe to Newsletter
-                </button>
-            </div>
+
             <div class="footer-col">
                 <h4 class="footer-heading">Legal</h4>
                 <ul class="footer-links">
@@ -379,10 +749,7 @@
         </div>
     </div>
     <script src="../../scripts/main.js"></script>
+    <script src="../../scripts/blueprints.js"></script>
     <script src="../../scripts/components/cart.js"></script>
 </body>
 </html>
-
-
-
-

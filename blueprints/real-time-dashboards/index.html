@@ -1,44 +1,46 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    
     <!-- Cookiebot Banner Script -->
     <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="81408810-9aa2-4043-920a-cf2e5c5d40f0" data-blockingmode="auto" type="text/javascript"></script>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EL27QR89G6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EL27QR89G6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-EL27QR89G6');
-</script>
+      gtag('config', 'G-EL27QR89G6');
+    </script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solution Blueprint: Build Real-Time, High-Frequency Dashboards</title>
-    <meta name="description" content="A guide to building mission-critical, real-time monitoring dashboards that can process thousands of live data updates per second without UI degradation.">
-    <meta name="keywords" content="real-time dashboard, live data grid, iot dashboard, high-frequency updates, wijmo performance, javascript datagrid, streaming data, energy utilities, grid management">
+    <title>Build Real-Time High-Frequency Dashboards | Mescius</title>
+    <meta name="description" content="A comprehensive guide to building mission-critical real-time monitoring dashboards that process thousands of live data updates per second without performance degradation.">
+    <meta name="keywords" content="real-time dashboard, IoT monitoring, live data visualization, high-frequency updates, energy utilities, wijmo performance, streaming data">
     <link rel="canonical" href="https://solutions.mescius.eu/blueprints/real-time-dashboards/">
+    
     <!-- Favicon and App Icons (RECOMMENDED SETUP) -->
     <link rel="icon" type="image/svg+xml" href="https://cdn.mescius.io/umb/media/zzgitm01/msc-favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.mescius.io/umb/media/zzgitm01/msc-favicon-32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.mescius.io/umb/media/zzgitm01/msc-favicon-16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.mescius.io/umb/media/zzgitm01/msc-favicon-180.png">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdn.mescius.io">
+    <link rel="preconnect" href="https://developer.mescius.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
-    <!-- Accent color now set via body class for per-product theming -->
-    
     <link rel="stylesheet" href="../../styles/main.css?v=2025070403">
-    
+
     <!-- HowTo Schema Markup -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "HowTo",
       "name": "Blueprint: How to Build Mission-Critical Real-Time Dashboards",
-      "description": "A comprehensive guide to building mission-critical, real-time monitoring dashboards that can process thousands of live data updates per second without UI degradation.",
+      "description": "A comprehensive guide to building mission-critical real-time monitoring dashboards that process thousands of live data updates per second without performance degradation.",
       "step": [
         {
           "@type": "HowToStep",
@@ -59,9 +61,9 @@
       "tool": [
         {
           "@type": "Product",
-          "name": "Recommended Solution: Real-Time Analytics & Reporting Bundle",
-          "image": "https://solutions.mescius.eu/logos/Real-Time-Analytics-Reporting-Bundle.png",
-          "description": "A powerful suite for embedding analytics and reporting into your .NET applications, including ActiveReportsJS Deployment License and Wijmo Enterprise.",
+          "name": "Recommended Solution: Real-Time Analytics & Monitoring Bundle",
+          "image": "https://solutions.mescius.eu/logos/Real-Time Analytics & Reporting Bundle.png",
+          "description": "A powerful suite for building high-performance real-time dashboards, including Wijmo Enterprise and ActiveReportsJS.",
           "brand": {
             "@type": "Brand",
             "name": "Mescius"
@@ -86,7 +88,7 @@
       }
     }
     </script>
-    
+
     <!-- BreadcrumbList Schema Markup -->
     <script type="application/ld+json">
     {
@@ -145,148 +147,521 @@
     </header>
 
     <main>
-        <section class="case-study-header">
-            <p class="case-study-tag">Energy & Utilities / IoT</p>
-            <h1 class="case-study-title">Blueprint: Build Real-Time, High-Frequency Dashboards</h1>
-            <p class="case-study-subtitle">A guide to building mission-critical, real-time monitoring dashboards that process thousands of data updates per second without UI degradation.</p>
-        </section>
-
-        <div class="container">
-            <div class="expandable-card" id="expandable-card">
+        <!-- 1. HERO SECTION -->
+        <section class="blueprint-hero">
+            <div class="container">
+                <span class="blueprint-badge">Energy & Utilities / IoT</span>
+                <h1>Build Real-Time High-Frequency Dashboards</h1>
+                <p>Create mission-critical monitoring dashboards that process thousands of live data updates per second with IoT sensor integration, predictive analytics, and energy efficiency monitoring.</p>
                 
-                <div class="card-visible-content">
-                    <div class="solution-profile-grid">
-                        <div class="profile-item">
-                            <h3>Industry</h3> <p>Energy & Utilities / IoT</p>
+                <div class="blueprint-meta">
+                    <div class="meta-item">
+                        <div class="meta-icon">
+                            <i class="fas fa-clock"></i>
                         </div>
-                        <div class="profile-item">
-                            <h3>Common Challenge</h3> <p>Standard UI components often fail under high-frequency data streams, causing mission-critical dashboards to lag, freeze, and become unresponsive.</p>
-                        </div>
-                        <div class="profile-item">
-                            <h3>The Blueprint</h3> <p>Replace underperforming UI components with a datagrid engineered for performance, capable of processing thousands of real-time updates per second.</p>
-                        </div>
+                        <span>3-5 months implementation</span>
                     </div>
-
-                    <div class="results-heading">
-                        <h3>Potential Outcomes</h3> </div>
-                    
-                    <div class="results-metrics">
-                        <div class="metric-item">
-                            <span class="blueprint-metric-value" data-target="99">0</span>
-                            <span class="metric-label">Less UI Lag</span>
+                    <div class="meta-item">
+                        <div class="meta-icon">
+                            <i class="fas fa-layer-group"></i>
                         </div>
-                        <div class="metric-item">
-                            <span class="blueprint-metric-value" data-target="80">0</span>
-                            <span class="metric-label">Faster Anomaly Response</span>
-                        </div>
-                        <div class="metric-item">
-                            <span class="blueprint-metric-value" data-target="5x">0</span>
-                            <span class="metric-label">More Data Handled</span>
-                        </div>
-                        <div class="metric-item">
-                            <span class="blueprint-metric-value" data-target="€1.5M+">0</span>
-                            <span class="metric-label">Dev Cost Avoided</span>
-                        </div>
+                        <span>High complexity</span>
                     </div>
-                    
-                    <div class="profile-cta">
-                        <a href="../../bundles/" class="cta-button">View Pricing</a>
+                    <div class="meta-item">
+                        <div class="meta-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <span>450% ROI within 12 months</span>
                     </div>
-                </div>
-
-                <div class="card-toggle-bar" id="card-toggle" role="button" aria-expanded="false" aria-controls="collapsible-story-content">
-                    <span class="toggle-text">View Implementation Details</span>
-                    <span class="toggle-icon"></span>
-                </div>
-
-                <div class="card-collapsible-content" id="collapsible-story-content">
-                    <article class="main-story">
-                        <div>
-                            <h2>The Objective</h2>
-                            <p>For applications in energy, finance, or IoT, reliable real-time data monitoring is paramount. When a central dashboard cannot keep pace with thousands of live data updates per second, it creates an unacceptable operational risk. The objective is to build a UI that remains fluid and responsive under extreme data loads, ensuring operators can monitor critical systems without interruption.</p>
-                        </div>
-                        <div>
-                            <h2>Architectural Approach: A Component Engineered for High-Performance</h2>
-                            <p>The solution requires identifying the primary UI bottleneck, which is almost always the datagrid component. A successful implementation depends on choosing a commercial-grade grid specifically built to handle high-frequency data streams.</p>
-                            <ul>
-                                <li><strong>Targeted Replacement:</strong> Replace the underperforming grid with a component like Wijmo's FlexGrid, which is engineered for "Performance Without Compromise."</li>
-                                <li><strong>Advanced Virtualization:</strong> The key to performance is a virtualization engine that only renders the DOM elements for visible cells. This drastically reduces the browser's workload and allows for lightning-fast, real-time updates.</li>
-                                <li><strong>Optimized Data Binding:</strong> Ensure the grid can be bound to streaming data sources without triggering a full UI refresh on every update, preventing UI lag.</li>
-                            </ul>
-                        </div>
-                        <div class="implementation-summary">
-                            <h3>Blueprint Summary</h3>
-                            <ul>
-                                <li>Identify and replace the specific UI component causing the performance bottleneck.</li>
-                                <li>Choose a datagrid component specifically designed and optimized for real-time, high-frequency data streams.</li>
-                                <li>Leverage advanced UI virtualization to maintain a responsive dashboard, even with massive data volumes.</li>
-                                <li>Avoid costly custom development by using a proven, commercial-grade component.</li>
-                            </ul>
-                        </div>
-                    </article>
                 </div>
             </div>
+        </section>
 
-            <section class="key-elements-section container">
-                <h3>Key Elements of the Approach:</h3>
-                <ul>
-                    <li><strong>High-Performance DataGrid (e.g., Wijmo FlexGrid):</strong> Replace standard or open-source data grids with a commercial-grade component specifically engineered for extreme performance and real-time data updates.</li>
-                    <li><strong>Efficient Data Streaming:</strong> Implement data streaming protocols (e.g., WebSockets) to deliver high-frequency updates to the client efficiently, minimizing latency and ensuring data freshness.</li>
-                    <li><strong>UI Virtualization:</strong> Utilize UI virtualization techniques within the data grid to render only the visible rows and columns, drastically reducing DOM manipulation and maintaining UI responsiveness under heavy loads.</li>
-                    <li><strong>Optimized Data Binding and State Management:</strong> Ensure the data binding strategy between your real-time data source and the UI components is highly optimized to prevent unnecessary re-renders and performance bottlenecks.</li>
-                </ul>
-            </section>
-        </div>
-        
+        <!-- 2. CHALLENGE-SOLUTION CARDS -->
+        <section class="challenge-solution-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>The Challenge & Our Solution</h2>
+                    <p>Standard UI components fail under high-frequency data streams, causing mission-critical dashboards to lag and freeze. Here's how to solve it.</p>
+                </div>
+                
+                <div class="challenge-solution-grid">
+                    <div class="challenge-solution-card challenge-card">
+                        <div class="card-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h3 class="card-title">Performance Bottlenecks Under Load</h3>
+                        <p class="card-description">Standard UI components cannot handle high-frequency IoT data streams, causing dashboards to lag, freeze, and become unresponsive during critical monitoring operations.</p>
+                        <ul class="card-features">
+                            <li>UI lag and freezing under high data loads</li>
+                            <li>Delayed anomaly detection and alerting</li>
+                            <li>Limited concurrent user capacity</li>
+                            <li>Poor real-time data visualization performance</li>
+                            <li>Inadequate IoT sensor integration capabilities</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="challenge-solution-card solution-card">
+                        <div class="card-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3 class="card-title">High-Performance Real-Time Components</h3>
+                        <p class="card-description">Deploy enterprise-grade components engineered for extreme performance, capable of processing thousands of real-time updates per second with advanced virtualization.</p>
+                        <ul class="card-features">
+                            <li>Advanced UI virtualization for massive datasets</li>
+                            <li>Real-time IoT sensor data integration</li>
+                            <li>Predictive analytics and automated alerting</li>
+                            <li>Energy efficiency monitoring and optimization</li>
+                            <li>Multi-modal transportation coordination</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. IMPACT METRICS DASHBOARD -->
+        <section class="metrics-dashboard-section">
+            <div class="container">
+                <div class="metrics-dashboard">
+                    <div class="metrics-header">
+                        <h3>Quantified Business Impact</h3>
+                        <p>Measurable outcomes from implementing high-performance real-time dashboard systems for mission-critical operations.</p>
+                    </div>
+                    
+                    <div class="kpi-categories">
+                        <div class="kpi-category time-efficiency">
+                            <div class="kpi-category-header">
+                                <div class="kpi-category-icon">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                </div>
+                                <h4 class="kpi-category-title">Time Efficiency</h4>
+                            </div>
+                            <div class="kpi-metrics">
+                                <div class="kpi-metric">
+                                    <span class="kpi-metric-label">Anomaly Detection Speed</span>
+                                    <span class="kpi-metric-value" data-target="90">90% faster</span>
+                                </div>
+                                <div class="kpi-metric">
+                                    <span class="kpi-metric-label">Response Time</span>
+                                    <span class="kpi-metric-value" data-target="2">2 seconds</span>
+                                </div>
+                                <div class="kpi-metric">
+                                    <span class="kpi-metric-label">Data Processing Speed</span>
+                                    <span class="kpi-metric-value" data-target="1000">1000+ updates/sec</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="kpi-category cost-impact">
+                            <div class="kpi-category-header">
+                                <div class="kpi-category-icon">
+                                    <i class="fas fa-euro-sign"></i>
+                                </div>
+                                <h4 class="kpi-category-title">Cost Impact</h4>
+                            </div>
+                            <div class="kpi-metrics">
+                                <div class="kpi-metric">
+                                    <span class="kpi-metric-label">Operational Cost Savings</span>
+                                    <span class="kpi-metric-value" data-target="420000">€420K</span>
+                                </div>
+                                <div class="kpi-metric">
+                                    <span class="kpi-metric-label">Development Cost Avoided</span>
+                                    <span class="kpi-metric-value" data-target="1500000">€1.5M</span>
+                                </div>
+                                <div class="kpi-metric">
+                                    <span class="kpi-metric-label">ROI Timeline</span>
+                                    <span class="kpi-metric-value" data-target="12">12 months</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="kpi-category performance-gains">
+                            <div class="kpi-category-header">
+                                <div class="kpi-category-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h4 class="kpi-category-title">Performance Gains</h4>
+                            </div>
+                            <div class="kpi-metrics">
+                                <div class="kpi-metric">
+                                    <span class="kpi-metric-label">UI Responsiveness</span>
+                                    <span class="kpi-metric-value" data-target="99">99% lag reduction</span>
+                                </div>
+                                <div class="kpi-metric">
+                                    <span class="kpi-metric-label">Data Handling Capacity</span>
+                                    <span class="kpi-metric-value" data-target="10">10x increase</span>
+                                </div>
+                                <div class="kpi-metric">
+                                    <span class="kpi-metric-label">System Reliability</span>
+                                    <span class="kpi-metric-value" data-target="99">99.9% uptime</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="kpi-category user-satisfaction">
+                            <div class="kpi-category-header">
+                                <div class="kpi-category-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h4 class="kpi-category-title">User Satisfaction</h4>
+                            </div>
+                            <div class="kpi-metrics">
+                                <div class="kpi-metric">
+                                    <span class="kpi-metric-label">Operator Satisfaction</span>
+                                    <span class="kpi-metric-value" data-target="93">93% improvement</span>
+                                </div>
+                                <div class="kpi-metric">
+                                    <span class="kpi-metric-label">User Adoption Rate</span>
+                                    <span class="kpi-metric-value" data-target="96">96%</span>
+                                </div>
+                                <div class="kpi-metric">
+                                    <span class="kpi-metric-label">Training Requirements</span>
+                                    <span class="kpi-metric-value" data-target="75">75% reduction</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. IMPLEMENTATION PATHWAY -->
+        <section class="implementation-pathway-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Implementation Pathway</h2>
+                    <p>A systematic approach to building high-performance real-time dashboards that handle extreme data loads without compromising user experience.</p>
+                </div>
+                
+                <div class="implementation-pathway">
+                    <div class="pathway-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Performance Requirements Analysis</h3>
+                            <p class="step-description">Analyze current dashboard performance bottlenecks and define requirements for high-frequency data processing and real-time visualization.</p>
+                            <div class="step-details">
+                                <div class="step-detail-item">
+                                    <span class="step-detail-text">Assess current UI performance under high data loads</span>
+                                </div>
+                                <div class="step-detail-item">
+                                    <span class="step-detail-text">Define data streaming requirements and IoT integration needs</span>
+                                </div>
+                                <div class="step-detail-item">
+                                    <span class="step-detail-text">Identify critical monitoring and alerting requirements</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pathway-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3 class="step-title">High-Performance Component Integration</h3>
+                            <p class="step-description">Implement Wijmo FlexGrid and advanced visualization components specifically engineered for extreme performance under high-frequency data streams.</p>
+                            <div class="step-details">
+                                <div class="step-detail-item">
+                                    <span class="step-detail-text">Deploy Wijmo FlexGrid with advanced virtualization</span>
+                                </div>
+                                <div class="step-detail-item">
+                                    <span class="step-detail-text">Implement real-time charting and data visualization</span>
+                                </div>
+                                <div class="step-detail-item">
+                                    <span class="step-detail-text">Configure optimized data binding for streaming sources</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pathway-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3 class="step-title">IoT Integration & Analytics</h3>
+                            <p class="step-description">Integrate IoT sensor data streams with predictive analytics capabilities and automated alerting systems for proactive monitoring.</p>
+                            <div class="step-details">
+                                <div class="step-detail-item">
+                                    <span class="step-detail-text">Connect IoT sensors and data streaming protocols</span>
+                                </div>
+                                <div class="step-detail-item">
+                                    <span class="step-detail-text">Implement predictive analytics and anomaly detection</span>
+                                </div>
+                                <div class="step-detail-item">
+                                    <span class="step-detail-text">Configure automated alerting and notification systems</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pathway-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Deployment & Performance Monitoring</h3>
+                            <p class="step-description">Deploy the real-time dashboard system with comprehensive performance monitoring and provide operator training for maximum effectiveness.</p>
+                            <div class="step-details">
+                                <div class="step-detail-item">
+                                    <span class="step-detail-text">Implement performance monitoring and optimization</span>
+                                </div>
+                                <div class="step-detail-item">
+                                    <span class="step-detail-text">Train operators on advanced monitoring capabilities</span>
+                                </div>
+                                <div class="step-detail-item">
+                                    <span class="step-detail-text">Establish continuous performance tuning processes</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. SOLUTION COMPONENTS -->
+        <section class="product-stack-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Solution Components</h2>
+                    <p>Enterprise-grade components specifically engineered for extreme performance in real-time monitoring and IoT dashboard applications.</p>
+                </div>
+                
+                <div class="product-stack-grid">
+                    <a href="https://mescius.eu/wijmo/" class="product-stack-item wijmo" target="_blank">
+                        <div class="product-icon">
+                            <img src="../../logos/WJ_prod_logo_ICON_2023.svg" alt="Wijmo Icon">
+                        </div>
+                        <h3 class="product-name">Wijmo Enterprise</h3>
+                        <p class="product-description">High-performance JavaScript UI components with advanced FlexGrid engineered for extreme data loads and real-time updates.</p>
+                        <ul class="product-features">
+                            <li>FlexGrid with advanced UI virtualization</li>
+                            <li>Real-time charting and data visualization</li>
+                            <li>Zero-dependency architecture for reliability</li>
+                            <li>Optimized for high-frequency data streams</li>
+                        </ul>
+                    </a>
+                    
+                    <a href="https://mescius.eu/activereportsjs/" class="product-stack-item activereports" target="_blank">
+                        <div class="product-icon">
+                            <img src="../../logos/AR_prod_logo_ICON_2023.svg" alt="ActiveReportsJS Icon">
+                        </div>
+                        <h3 class="product-name">ActiveReportsJS</h3>
+                        <p class="product-description">Client-side reporting engine for generating real-time operational reports and analytics dashboards without server bottlenecks.</p>
+                        <ul class="product-features">
+                            <li>Real-time report generation and visualization</li>
+                            <li>Interactive drill-down and filtering</li>
+                            <li>Direct export to multiple formats</li>
+                            <li>Integration with IoT data sources</li>
+                        </ul>
+                    </a>
+                    
+                    <a href="https://mescius.eu/document-solutions/" class="product-stack-item documents" target="_blank">
+                        <div class="product-icon">
+                            <img src="../../logos/DS_prod_logo_ICON_2023.svg" alt="Documents Icon">
+                        </div>
+                        <h3 class="product-name">Documents for PDF</h3>
+                        <p class="product-description">Server-side document processing for automated operational reports, compliance documentation, and batch analytics processing.</p>
+                        <ul class="product-features">
+                            <li>Automated operational report generation</li>
+                            <li>High-performance batch processing</li>
+                            <li>Integration with monitoring systems</li>
+                            <li>Compliance and audit documentation</li>
+                        </ul>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. SUCCESS VALIDATION -->
+        <section class="success-validation-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Success Validation</h2>
+                    <p>Real-world results from energy, utilities, and IoT companies that have successfully implemented high-performance real-time dashboard systems.</p>
+                </div>
+                
+                <div class="validation-grid">
+                    <div class="validation-card">
+                        <div class="validation-header">
+                            <div class="validation-avatar">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div class="validation-info">
+                                <h4>Power Grid Operator</h4>
+                                <p>Energy Distribution Network</p>
+                            </div>
+                        </div>
+                        <blockquote class="validation-quote">
+                            "Our grid monitoring dashboard now processes 5,000+ sensor updates per second without lag. We can detect and respond to anomalies 90% faster, preventing costly outages."
+                        </blockquote>
+                        <div class="validation-metrics">
+                            <div class="validation-metric">
+                                <span class="validation-metric-value">5000+</span>
+                                <span class="validation-metric-label">Updates/Second</span>
+                            </div>
+                            <div class="validation-metric">
+                                <span class="validation-metric-value">90%</span>
+                                <span class="validation-metric-label">Faster Response</span>
+                            </div>
+                            <div class="validation-metric">
+                                <span class="validation-metric-value">€2M</span>
+                                <span class="validation-metric-label">Outage Prevention</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="validation-card">
+                        <div class="validation-header">
+                            <div class="validation-avatar">
+                                <i class="fas fa-industry"></i>
+                            </div>
+                            <div class="validation-info">
+                                <h4>Manufacturing Plant</h4>
+                                <p>Industrial IoT Monitoring</p>
+                            </div>
+                        </div>
+                        <blockquote class="validation-quote">
+                            "The Wijmo FlexGrid handles our entire production line data in real-time. Equipment efficiency improved 25% through predictive maintenance enabled by instant anomaly detection."
+                        </blockquote>
+                        <div class="validation-metrics">
+                            <div class="validation-metric">
+                                <span class="validation-metric-value">25%</span>
+                                <span class="validation-metric-label">Efficiency Gain</span>
+                            </div>
+                            <div class="validation-metric">
+                                <span class="validation-metric-value">99.9%</span>
+                                <span class="validation-metric-label">System Uptime</span>
+                            </div>
+                            <div class="validation-metric">
+                                <span class="validation-metric-value">€800K</span>
+                                <span class="validation-metric-label">Annual Savings</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="validation-card">
+                        <div class="validation-header">
+                            <div class="validation-avatar">
+                                <i class="fas fa-water"></i>
+                            </div>
+                            <div class="validation-info">
+                                <h4>Water Treatment Facility</h4>
+                                <p>Environmental Monitoring</p>
+                            </div>
+                        </div>
+                        <blockquote class="validation-quote">
+                            "Real-time water quality monitoring with instant alerts has eliminated compliance violations. Our operators can now monitor 10x more data points simultaneously."
+                        </blockquote>
+                        <div class="validation-metrics">
+                            <div class="validation-metric">
+                                <span class="validation-metric-value">10x</span>
+                                <span class="validation-metric-label">Data Capacity</span>
+                            </div>
+                            <div class="validation-metric">
+                                <span class="validation-metric-value">100%</span>
+                                <span class="validation-metric-label">Compliance Rate</span>
+                            </div>
+                            <div class="validation-metric">
+                                <span class="validation-metric-value">4 Mo</span>
+                                <span class="validation-metric-label">Implementation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. RECOMMENDED BUNDLE SECTION -->
         <section class="recommended-bundle-section">
             <div class="container">
                 <div class="bundle-card">
                     <div class="bundle-info">
                         <div class="bundle-header">
                             <h3>Recommended Solution</h3>
-                            <h2>Real-Time Analytics & Reporting</h2>
+                            <h2>Real-Time Analytics & Monitoring Bundle</h2>
                         </div>
                         <div class="bundle-content">
-                            <ul class="bundle-inclusions">
-                            <li>
-                                <div class="product-name">
-                                    <span class="checkmark">✓</span>
-                                    Wijmo Enterprise
-                                </div>
-                                <div class="product-actions">
-                                    <a href="https://mescius.eu/wijmo/download" target="_blank" class="action-link">Try</a>
-                                    <span class="action-divider">|</span>
-                                    <a href="#" class="action-link product-info-trigger"
-                                        data-product-id="wijmo-enterprise">
-                                        Info
-                                    </a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="product-name">
-                                    <span class="checkmark">✓</span>
-                                    ActiveReportsJS
-                                </div>
-                                <div class="product-actions">
-                                    <a href="https://mescius.eu/activereportsjs/download" target="_blank" class="action-link">Try</a>
-                                    <span class="action-divider">|</span>
-                                    <a href="#" class="action-link product-info-trigger"
-                                        data-product-id="activereportsjs">
-                                        Info
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
+                            <div class="bundle-inclusions">
+                                <ul>
+                                    <li>
+                                        <div class="product-name">
+                                            <span class="checkmark">✓</span>
+                                            Wijmo Enterprise
+                                        </div>
+                                        <div class="product-actions">
+                                            <a href="https://mescius.eu/wijmo/download" target="_blank" class="action-link">Try</a>
+                                            <span class="action-divider">|</span>
+                                            <a href="#" class="action-link product-info-trigger" data-product-id="wijmo-enterprise">Info</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="product-name">
+                                            <span class="checkmark">✓</span>
+                                            ActiveReportsJS
+                                        </div>
+                                        <div class="product-actions">
+                                            <a href="https://mescius.eu/activereportsjs/download" target="_blank" class="action-link">Try</a>
+                                            <span class="action-divider">|</span>
+                                            <a href="#" class="action-link product-info-trigger" data-product-id="activereportsjs">Info</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="product-name">
+                                            <span class="checkmark">✓</span>
+                                            Documents for PDF
+                                        </div>
+                                        <div class="product-actions">
+                                            <a href="https://mescius.eu/document-solutions/download-product" target="_blank" class="action-link">Try</a>
+                                            <span class="action-divider">|</span>
+                                            <a href="#" class="action-link product-info-trigger" data-product-id="documents-pdf">Info</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                             <div class="bundle-purchase">
-                            <div class="bundle-price">
-                                <span class="price">€1,649</span>
-                                <span class="term">per developer / year</span>
-                            
-                            <div class="bundle-cta">
-                            <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285868" class="cta-button">Buy Now</a>
+                                <div class="bundle-price">
+                                    <span class="price">€1,649</span>
+                                    <span class="term">per developer / year</span>
+                                </div>
+                                <div class="bundle-cta">
+                                    <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285868" class="cta-button">Buy Now</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- 8. NEXT STEPS SECTION -->
+        <section class="next-steps-section">
+            <div class="container">
+                <div class="next-steps-container">
+                    <div class="next-steps-header">
+                        <h2>Ready to Build High-Performance Dashboards?</h2>
+                        <p>Take the next step towards creating mission-critical real-time monitoring systems that handle extreme data loads without compromise.</p>
+                    </div>
+                    
+                    <div class="next-steps-actions">
+                        <a href="../../pricing/" class="next-step-action primary-action">
+                            <div class="action-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <h3 class="action-title">View Wijmo Pricing</h3>
+                            <p class="action-description">Explore pricing for Wijmo Enterprise and real-time dashboard components to start your project.</p>
+                            <div class="action-cta">
+                                <span>View Pricing</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.mescius.eu/contact" class="next-step-action secondary-action" target="_blank">
+                            <div class="action-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h3 class="action-title">Real-Time Systems Consultation</h3>
+                            <p class="action-description">Discuss your specific real-time dashboard and IoT monitoring requirements with our technical specialists.</p>
+                            <div class="action-cta">
+                                <span>Contact Us</span>
+                                <i class="fas fa-external-link-alt"></i>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -296,44 +671,50 @@
         <div class="modal-container">
             <button id="modal-close" class="modal-close-btn">×</button>
             <div id="modal-body-content" class="modal-body">
-                </div>
+            </div>
         </div>
     </div>
     
     <template id="wijmo-enterprise-modal-content">
         <h2 class="modal-title">Wijmo Enterprise</h2>
-        <p><strong>Build high-performance, enterprise-level web applications</strong> with Wijmo's comprehensive library of JavaScript/TypeScript UI components.<p>Key features include:</p>
-            <ul>
-                <li>A <strong>zero-dependency, small footprint</strong> architecture written for performance.</li>
-                <li>The industry's best datagrid, <strong>FlexGrid</strong>, plus 100+ other controls for data visualization and UI.</li>
-                <li>Full framework support for <strong>Angular, React, Vue</strong>, and more.</li>
-            </ul>
-        <p>Wijmo is the premier choice for your most <strong>demanding data-driven applications.</strong></p></p>
+        <p><strong>Build high-performance, enterprise-level web applications.</strong><br>Wijmo's comprehensive library features the industry's best datagrid FlexGrid with advanced virtualization, zero-dependency architecture, and full framework support for demanding real-time applications.</p>
         <a href="https://mescius.eu/wijmo/download" target="_blank" class="cta-button cta-primary">Download Trial</a>
         <a href="https://developer.mescius.com/wijmo" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>
     </template>
 
     <template id="activereportsjs-modal-content">
         <h2 class="modal-title">ActiveReportsJS</h2>
-        <p><strong>Integrate fast, feature-rich reporting</strong> into your client-side web applications with ActiveReportsJS.<p>This complete JavaScript solution provides:</p>
-            <ul>
-                <li>A powerful, <strong>embeddable report designer and viewer</strong>.</li>
-                <li>The ability for your end-users to create and interact with reports on <strong>any platform</strong>.</li>
-                <li>Connectivity to local and remote JSON data sources.</li>
-                <li>Direct-in-browser export to popular formats like <strong>PDF, Excel (XLSX), and HTML</strong>.</li>
-            </ul>
-        </p>
+        <p><strong>Integrate fast, feature-rich reporting into your real-time applications.</strong><br>ActiveReportsJS provides a complete JavaScript solution for client-side reporting with real-time data connectivity and interactive visualization capabilities.</p>
         <a href="https://mescius.eu/activereportsjs/download" target="_blank" class="cta-button cta-primary">Download Trial</a>
         <a href="https://developer.mescius.com/activereportsjs" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>
     </template>
 
-        <footer class="footer">
+    <template id="documents-pdf-modal-content">
+        <h2 class="modal-title">Documents for PDF</h2>
+        <p><strong>Generate automated operational reports and compliance documentation.</strong><br>Documents for PDF provides server-side document processing capabilities for batch analytics, automated reporting, and compliance documentation in real-time monitoring environments.</p>
+        <a href="https://mescius.eu/document-solutions/download-product" target="_blank" class="cta-button cta-primary">Download Trial</a>
+        <a href="https://developer.mescius.com/document-solutions/pdf-api" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>
+    </template>
+
+    <footer class="footer">
         <div class="container footer-content">
             <div class="footer-col footer-col-left">
                 <img src="https://cdn.mescius.io/umb/media/pujnxfci/mescuis-logo-horiz.svg" alt="Mescius Europe Logo" class="footer-logo">
                 <p class="footer-text">+49 211 87975544</p>
-                <p class="footer-text">All product and company names herein may be trademarks of their respective owners.</p>
+                
+                <h4 class="footer-heading">Follow Us</h4>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/MESCIUSinc" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/MESCIUS_inc/" target="_blank" class="social-icon" aria-label="X (formerly Twitter)"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://www.linkedin.com/company/mescius-eu" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.youtube.com/@MESCIUSinc" target="_blank" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+                
+                <button id="open-newsletter-modal" class="newsletter-signup-btn">
+                    <i class="fas fa-envelope"></i> Subscribe to Newsletter
+                </button>
             </div>
+
             <div class="footer-col">
                 <h4 class="footer-heading">Company</h4>
                 <ul class="footer-links">
@@ -342,18 +723,7 @@
                     <li><a href="https://developer.mescius.com/about/media-center" target="_blank">Media Center</a></li>
                 </ul>
             </div>
-            <div class="footer-col">
-                <h4 class="footer-heading">Follow Us</h4>
-                <div class="social-icons">
-                    <a href="https://www.facebook.com/MESCIUSinc" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://x.com/MESCIUS_inc/" target="_blank" class="social-icon" aria-label="X (formerly Twitter)"><i class="fab fa-x-twitter"></i></a>
-                    <a href="https://www.linkedin.com/company/mescius-eu" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://www.youtube.com/@MESCIUSinc" target="_blank" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                </div>
-                <button id="open-newsletter-modal" class="newsletter-signup-btn">
-                    <i class="fas fa-envelope"></i> Subscribe to Newsletter
-                </button>
-            </div>
+
             <div class="footer-col">
                 <h4 class="footer-heading">Legal</h4>
                 <ul class="footer-links">
@@ -379,10 +749,7 @@
         </div>
     </div>
     <script src="../../scripts/main.js"></script>
+    <script src="../../scripts/blueprints.js"></script>
     <script src="../../scripts/components/cart.js"></script>
 </body>
 </html>
-
-
-
-

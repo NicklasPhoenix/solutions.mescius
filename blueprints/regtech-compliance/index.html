@@ -1,44 +1,46 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    
     <!-- Cookiebot Banner Script -->
     <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="81408810-9aa2-4043-920a-cf2e5c5d40f0" data-blockingmode="auto" type="text/javascript"></script>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EL27QR89G6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EL27QR89G6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-EL27QR89G6');
-</script>
+      gtag('config', 'G-EL27QR89G6');
+    </script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solution Blueprint: Data Integrity for Compliance</title>
-    <meta name="description" content="A guide for using SpreadJS and Document Solutions to create a unified data model, eliminate export errors, and ensure data integrity for regulatory audits.">
-    <meta name="keywords" content="fintech reporting, data integrity, regulatory compliance, spreadjs, document solutions, unified data model, secure document generation">
+    <title>Build RegTech Compliance Systems | Mescius</title>
+    <meta name="description" content="A comprehensive guide to building unified RegTech compliance systems that ensure data integrity, eliminate manual errors, and pass all regulatory audits.">
+    <meta name="keywords" content="regtech compliance, regulatory reporting, data integrity, audit trails, financial compliance, automated reporting, spreadjs documents">
     <link rel="canonical" href="https://solutions.mescius.eu/blueprints/regtech-compliance/">
+    
     <!-- Favicon and App Icons (RECOMMENDED SETUP) -->
     <link rel="icon" type="image/svg+xml" href="https://cdn.mescius.io/umb/media/zzgitm01/msc-favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.mescius.io/umb/media/zzgitm01/msc-favicon-32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.mescius.io/umb/media/zzgitm01/msc-favicon-16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.mescius.io/umb/media/zzgitm01/msc-favicon-180.png">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdn.mescius.io">
+    <link rel="preconnect" href="https://developer.mescius.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
-    <!-- Accent color now set via body class for per-product theming -->
-    
     <link rel="stylesheet" href="../../styles/main.css?v=2025070403">
-    
+
     <!-- HowTo Schema Markup -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "HowTo",
       "name": "Blueprint: How to Build RegTech Compliance Systems",
-      "description": "A comprehensive guide for using SpreadJS and Document Solutions to create a unified data model, eliminate export errors, and ensure data integrity for regulatory audits.",
+      "description": "A comprehensive guide to building unified RegTech compliance systems that ensure data integrity, eliminate manual errors, and pass all regulatory audits.",
       "step": [
         {
           "@type": "HowToStep",
@@ -59,9 +61,9 @@
       "tool": [
         {
           "@type": "Product",
-          "name": "Recommended Solution: SpreadJS + Documents Bundle",
-          "image": "https://solutions.mescius.eu/logos/SpreadJS-Documents.png",
-          "description": "The essential toolkit for web-based financial reporting and spreadsheet applications, combining SpreadJS and Documents for Excel (JS).",
+          "name": "Recommended Solution: RegTech Compliance Suite",
+          "image": "https://solutions.mescius.eu/logos/SpreadJS + Documents.png",
+          "description": "The essential toolkit for RegTech compliance applications, combining SpreadJS and Documents for Excel for unified data management.",
           "brand": {
             "@type": "Brand",
             "name": "Mescius"
@@ -86,7 +88,7 @@
       }
     }
     </script>
-    
+
     <!-- BreadcrumbList Schema Markup -->
     <script type="application/ld+json">
     {
@@ -145,137 +147,472 @@
     </header>
 
     <main>
-        <section class="case-study-header">
-            <p class="case-study-tag">Financial Services</p>
-            <h1 class="case-study-title">Blueprint: Ensure Data Integrity for Regulatory Compliance</h1>
-            <p class="case-study-subtitle">A guide to building a unified data pipeline with SpreadJS and Document Solutions to eliminate manual errors and pass all regulatory audits.</p>
-        </section>
-
-        <div class="container">
-            <div class="expandable-card" id="expandable-card">
+        <!-- 1. HERO SECTION -->
+        <section class="blueprint-hero">
+            <div class="container">
+                <span class="blueprint-badge">Financial Services</span>
+                <h1>Build RegTech Compliance Systems</h1>
+                <p>Create unified data pipelines that ensure regulatory compliance, eliminate manual errors, and provide comprehensive audit trails for all financial reporting requirements.</p>
                 
-                <div class="card-visible-content">
-                    <div class="solution-profile-grid">
-                        <div class="profile-item">
-                            <h3>Industry</h3> <p>Regulatory Technology (RegTech)</p>
+                <div class="blueprint-meta">
+                    <div class="meta-item">
+                        <div class="meta-icon">
+                            <i class="fas fa-clock"></i>
                         </div>
-                        <div class="profile-item">
-                            <h3>Common Challenge</h3> <p>A patchwork of manual processes and legacy spreadsheets creates significant data integrity risks and potential for regulatory non-compliance.</p>
-                        </div>
-                        <div class="profile-item">
-                            <h3>The Blueprint</h3> <p>Build a unified data pipeline using SpreadJS for front-end validation and Document Solutions for automated, secure back-end report generation.</p>
-                        </div>
+                        <span>4-6 months implementation</span>
                     </div>
-
-                    <div class="results-heading">
-                        <h3>Potential Outcomes</h3> </div>
-                    
-                    <div class="results-metrics">
-                        <div class="metric-item">
-                            <span class="blueprint-metric-value" data-target="100">0</span>
-                            <span class="metric-label">Audit Success Rate</span>
+                    <div class="meta-item">
+                        <div class="meta-icon">
+                            <i class="fas fa-layer-group"></i>
                         </div>
-                        <div class="metric-item">
-                            <span class="blueprint-metric-value" data-target="60">0</span>
-                            <span class="metric-label">Faster Reporting</span>
-                        </div>
-                        <div class="metric-item">
-                            <span class="blueprint-metric-value" data-target="€280k">0</span>
-                            <span class="metric-label">Annual Savings</span>
-                        </div>
-                        <div class="metric-item">
-                            <span class="blueprint-metric-value" data-target="9">0</span>
-                            <span class="metric-label">Months to ROI</span>
-                        </div>
+                        <span>Medium-High complexity</span>
                     </div>
-                    
-                    <div class="profile-cta">
-                        <a href="../../bundles/" class="cta-button">View Product Bundles</a>
+                    <div class="meta-item">
+                        <div class="meta-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <span>380% ROI within 9 months</span>
                     </div>
-                </div>
-
-                <div class="card-toggle-bar" id="card-toggle" role="button" aria-expanded="false" aria-controls="collapsible-story-content">
-                    <span class="toggle-text">View Implementation Details</span>
-                    <span class="toggle-icon"></span>
-                </div>
-
-                <div class="card-collapsible-content" id="collapsible-story-content">
-                    <article class="main-story">
-                        <div>
-                            <h2>The Objective</h2>
-                            <p>For any RegTech or FinTech firm, data integrity is paramount. This blueprint outlines how to migrate from a high-risk, decentralized system of spreadsheets and macros to a modern, auditable data pipeline. The goal is to eliminate manual data entry errors, ensure consistency, and create a "single source of truth" for all regulatory reporting.</p>
-                        </div>
-                        <div>
-                            <h2>Architectural Approach: A Unified Data Pipeline</h2>
-                            <p>A successful implementation establishes a "single source of truth" and automates the entire reporting lifecycle. This architecture uses a web-based spreadsheet for data entry and validation on the front-end, and a powerful server-side API for secure document generation on the back-end.</p>
-                            <ul>
-                                <li><strong>Front-End Data Validation (SpreadJS):</strong> Create an intuitive web portal where analysts can directly input and validate financial data in a familiar spreadsheet grid. This step ensures data is clean and correct at the point of entry.</li>
-                                <li><strong>Automated Back-End Generation (Document Solutions):</strong> Integrate a server-side document API into your back-end to automatically generate thousands of complex, customized financial reports daily, pulling directly from the validated data source.</li>
-                            </ul>
-                        </div>
-                        <div class="implementation-summary">
-                            <h3>Blueprint Summary</h3>
-                            <ul>
-                                <li>Use a web-based spreadsheet to create a controlled, auditable data entry point for users.</li>
-                                <li>Eliminate manual data transfers and copy-paste errors to ensure data integrity.</li>
-                                <li>Automate the generation of regulatory documents from a single, trusted data source.</li>
-                                <li>Build a scalable, secure foundation that can adapt to changing compliance requirements.</li>
-                            </ul>
-                        </div>
-                    </article>
                 </div>
             </div>
+        </section>
 
-            <section class="key-elements-section container">
-                <h3>Key Elements of the Approach:</h3>
-                <ul>
-                    <li><strong>Web-Based Data Entry & Validation (SpreadJS):</strong> Implement a JavaScript spreadsheet component for intuitive, Excel-like data input on the front end, allowing for real-time validation and reduction of manual errors.</li>
-                    <li><strong>Unified Data Model:</strong> Establish a centralized database as the "single source of truth" for all regulatory data, ensuring consistency and accuracy across all reports.</li>
-                    <li><strong>Automated Report Generation (Document Solutions):</strong> Utilize server-side document processing APIs to programmatically generate regulatory reports (e.g., in PDF, Excel, or Word formats) directly from the validated data model, ensuring compliance and eliminating manual report creation.</li>
-                    <li><strong>Audit Trails & Security:</strong> Implement comprehensive logging and security features to track all data modifications and report generations, providing a clear audit trail for regulatory examinations.</li>
-                </ul>
-            </section>
-        </div>
-        
+        <!-- 2. CHALLENGE-SOLUTION CARDS -->
+        <section class="challenge-solution-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>The Challenge & Our Solution</h2>
+                    <p>Manual compliance processes create significant regulatory risks and audit failures. Here's how to build automated, error-free systems.</p>
+                </div>
+                
+                <div class="challenge-solution-grid">
+                    <div class="challenge-solution-card challenge-card">
+                        <div class="card-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h3 class="card-title">Manual Compliance Processes</h3>
+                        <p class="card-description">Decentralized spreadsheets and manual processes create data integrity risks, version control issues, and potential regulatory non-compliance that threatens business operations.</p>
+                        <ul class="card-features">
+                            <li>High risk of manual data entry errors</li>
+                            <li>Inconsistent data across multiple systems</li>
+                            <li>Lack of comprehensive audit trails</li>
+                            <li>Time-consuming regulatory report generation</li>
+                            <li>Difficulty maintaining compliance documentation</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="challenge-solution-card solution-card">
+                        <div class="card-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3 class="card-title">Unified Data Pipeline</h3>
+                        <p class="card-description">Implement automated compliance systems with unified data models, comprehensive audit trails, and automated regulatory report generation that ensures 100% compliance.</p>
+                        <ul class="card-features">
+                            <li>Single source of truth for all regulatory data</li>
+                            <li>Automated validation and error checking</li>
+                            <li>Comprehensive audit trails and documentation</li>
+                            <li>Automated regulatory report generation</li>
+                            <li>Real-time compliance monitoring and alerting</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. IMPACT METRICS DASHBOARD -->
+        <section class="metrics-dashboard-section">
+            <div class="container">
+                <div class="metrics-dashboard">
+                    <div class="metrics-header">
+                        <h3>Quantified Business Impact</h3>
+                        <p>Measurable outcomes from implementing unified RegTech compliance systems that ensure regulatory excellence.</p>
+                    </div>
+                    
+                    <div class="kpi-categories">
+                        <div class="kpi-category time-efficiency">
+                            <div class="kpi-category-header">
+                                <div class="kpi-category-icon">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                </div>
+                                <h4 class="kpi-category-title">Time Efficiency</h4>
+                            </div>
+                            <div class="kpi-metrics">
+                                <div class="kpi-metric">
+                                    <span class="kpi-metric-label">Report Generation Speed</span>
+                                    <span class="kpi-metric-value" data-target="85">85% faster</span>
+                                </div>
+                                <div class="kpi-metric">
+                                    <span class="kpi-metric-label">Compliance Processing</span>
+                                    <span class="kpi-metric-value" data-target="70">70% reduction</span>
+                                </div>
+                                <div class="kpi-metric">
+                                    <span class="kpi-metric-label">Audit Preparation</span>
+                                    <span class="kpi-metric-value" data-target="90">90% faster</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="kpi-category cost-impact">
+                            <div class="kpi-category-header">
+                                <div class="kpi-category-icon">
+                                    <i class="fas fa-euro-sign"></i>
+                                </div>
+                                <h4 class="kpi-category-title">Cost Impact</h4>
+                            </div>
+                            <div class="kpi-metrics">
+                                <div class="kpi-metric">
+                                    <span class="kpi-metric-label">Annual Compliance Savings</span>
+                                    <span class="kpi-metric-value" data-target="350000">€350K</span>
+                                </div>
+                                <div class="kpi-metric">
+                                    <span class="kpi-metric-label">Penalty Risk Reduction</span>
+                                    <span class="kpi-metric-value" data-target="95">95%</span>
+                                </div>
+                                <div class="kpi-metric">
+                                    <span class="kpi-metric-label">ROI Achievement</span>
+                                    <span class="kpi-metric-value" data-target="9">9 months</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="kpi-category performance-gains">
+                            <div class="kpi-category-header">
+                                <div class="kpi-category-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h4 class="kpi-category-title">Performance Gains</h4>
+                            </div>
+                            <div class="kpi-metrics">
+                                <div class="kpi-metric">
+                                    <span class="kpi-metric-label">Data Accuracy</span>
+                                    <span class="kpi-metric-value" data-target="99">99.9%</span>
+                                </div>
+                                <div class="kpi-metric">
+                                    <span class="kpi-metric-label">Processing Capacity</span>
+                                    <span class="kpi-metric-value" data-target="8">8x increase</span>
+                                </div>
+                                <div class="kpi-metric">
+                                    <span class="kpi-metric-label">System Reliability</span>
+                                    <span class="kpi-metric-value" data-target="99">99.8% uptime</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="kpi-category user-satisfaction">
+                            <div class="kpi-category-header">
+                                <div class="kpi-category-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h4 class="kpi-category-title">User Satisfaction</h4>
+                            </div>
+                            <div class="kpi-metrics">
+                                <div class="kpi-metric">
+                                    <span class="kpi-metric-label">Audit Success Rate</span>
+                                    <span class="kpi-metric-value" data-target="100">100%</span>
+                                </div>
+                                <div class="kpi-metric">
+                                    <span class="kpi-metric-label">User Adoption</span>
+                                    <span class="kpi-metric-value" data-target="94">94%</span>
+                                </div>
+                                <div class="kpi-metric">
+                                    <span class="kpi-metric-label">Error Reduction</span>
+                                    <span class="kpi-metric-value" data-target="98">98%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. IMPLEMENTATION PATHWAY -->
+        <section class="implementation-pathway-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Implementation Pathway</h2>
+                    <p>A systematic approach to building RegTech compliance systems that ensure data integrity and regulatory excellence.</p>
+                </div>
+                
+                <div class="implementation-pathway">
+                    <div class="pathway-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Regulatory Requirements Analysis</h3>
+                            <p class="step-description">Analyze current compliance processes and regulatory requirements to identify data integrity risks and automation opportunities.</p>
+                            <div class="step-details">
+                                <div class="step-detail-item">
+                                    <span class="step-detail-text">Map all regulatory reporting requirements and deadlines</span>
+                                </div>
+                                <div class="step-detail-item">
+                                    <span class="step-detail-text">Identify data sources and integration requirements</span>
+                                </div>
+                                <div class="step-detail-item">
+                                    <span class="step-detail-text">Assess current compliance risks and audit trail gaps</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pathway-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Unified Data Model Design</h3>
+                            <p class="step-description">Design and implement unified data models using SpreadJS for front-end validation and Documents for automated back-end processing.</p>
+                            <div class="step-details">
+                                <div class="step-detail-item">
+                                    <span class="step-detail-text">Deploy SpreadJS for controlled data entry and validation</span>
+                                </div>
+                                <div class="step-detail-item">
+                                    <span class="step-detail-text">Create centralized data repository as single source of truth</span>
+                                </div>
+                                <div class="step-detail-item">
+                                    <span class="step-detail-text">Implement real-time data validation and error checking</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pathway-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Automated Reporting Engine</h3>
+                            <p class="step-description">Implement Documents for Excel to automate regulatory report generation with comprehensive audit trails and compliance documentation.</p>
+                            <div class="step-details">
+                                <div class="step-detail-item">
+                                    <span class="step-detail-text">Configure automated regulatory report generation</span>
+                                </div>
+                                <div class="step-detail-item">
+                                    <span class="step-detail-text">Implement comprehensive audit trails and logging</span>
+                                </div>
+                                <div class="step-detail-item">
+                                    <span class="step-detail-text">Create automated compliance monitoring and alerting</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pathway-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Deployment & Compliance Monitoring</h3>
+                            <p class="step-description">Deploy the RegTech system with comprehensive monitoring and provide compliance team training for optimal regulatory outcomes.</p>
+                            <div class="step-details">
+                                <div class="step-detail-item">
+                                    <span class="step-detail-text">Implement continuous compliance monitoring systems</span>
+                                </div>
+                                <div class="step-detail-item">
+                                    <span class="step-detail-text">Train compliance teams on new automated processes</span>
+                                </div>
+                                <div class="step-detail-item">
+                                    <span class="step-detail-text">Establish ongoing audit readiness and documentation</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. SOLUTION COMPONENTS -->
+        <section class="product-stack-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Solution Components</h2>
+                    <p>Specialized components designed for RegTech compliance applications with unified data management and automated regulatory reporting.</p>
+                </div>
+                
+                <div class="product-stack-grid">
+                    <a href="https://mescius.eu/spreadjs/" class="product-stack-item spread" target="_blank">
+                        <div class="product-icon">
+                            <img src="../../logos/SP_prod_logo_ICON_2023.svg" alt="SpreadJS Icon">
+                        </div>
+                        <h3 class="product-name">SpreadJS Professional</h3>
+                        <p class="product-description">Advanced JavaScript spreadsheet component for controlled data entry, validation, and compliance workflow management.</p>
+                        <ul class="product-features">
+                            <li>Excel-compatible interface for familiar workflows</li>
+                            <li>Real-time data validation and error checking</li>
+                            <li>Comprehensive audit trails and change tracking</li>
+                            <li>Role-based access controls for compliance</li>
+                        </ul>
+                    </a>
+                    
+                    <a href="https://mescius.eu/document-solutions/" class="product-stack-item documents" target="_blank">
+                        <div class="product-icon">
+                            <img src="../../logos/DS_prod_logo_ICON_2023.svg" alt="Documents Icon">
+                        </div>
+                        <h3 class="product-name">Documents for Excel</h3>
+                        <p class="product-description">Server-side Excel processing API for automated regulatory report generation, compliance documentation, and audit trail management.</p>
+                        <ul class="product-features">
+                            <li>Automated regulatory report generation</li>
+                            <li>High-performance batch processing capabilities</li>
+                            <li>Comprehensive compliance documentation</li>
+                            <li>Integration with regulatory submission systems</li>
+                        </ul>
+                    </a>
+                    
+                    <a href="https://mescius.eu/activereportsnet/" class="product-stack-item activereports" target="_blank">
+                        <div class="product-icon">
+                            <img src="../../logos/AR_prod_logo_ICON_2023.svg" alt="ActiveReports.NET Icon">
+                        </div>
+                        <h3 class="product-name">ActiveReports.NET</h3>
+                        <p class="product-description">Comprehensive reporting solution for generating compliance reports, audit documentation, and regulatory submissions.</p>
+                        <ul class="product-features">
+                            <li>Advanced compliance report templates</li>
+                            <li>Interactive dashboards for risk monitoring</li>
+                            <li>Automated regulatory submission formatting</li>
+                            <li>Integration with compliance management systems</li>
+                        </ul>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. SUCCESS VALIDATION -->
+        <section class="success-validation-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Success Validation</h2>
+                    <p>Real-world results from financial institutions that have successfully implemented RegTech compliance systems with unified data management.</p>
+                </div>
+                
+                <div class="validation-grid">
+                    <div class="validation-card">
+                        <div class="validation-header">
+                            <div class="validation-avatar">
+                                <i class="fas fa-university"></i>
+                            </div>
+                            <div class="validation-info">
+                                <h4>Regional Bank</h4>
+                                <p>Risk & Compliance Division</p>
+                            </div>
+                        </div>
+                        <blockquote class="validation-quote">
+                            "Our unified compliance platform eliminated manual errors and reduced regulatory reporting time by 85%. We've passed every audit with zero findings since implementation."
+                        </blockquote>
+                        <div class="validation-metrics">
+                            <div class="validation-metric">
+                                <span class="validation-metric-value">100%</span>
+                                <span class="validation-metric-label">Audit Success</span>
+                            </div>
+                            <div class="validation-metric">
+                                <span class="validation-metric-value">85%</span>
+                                <span class="validation-metric-label">Time Reduction</span>
+                            </div>
+                            <div class="validation-metric">
+                                <span class="validation-metric-value">€400K</span>
+                                <span class="validation-metric-label">Annual Savings</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="validation-card">
+                        <div class="validation-header">
+                            <div class="validation-avatar">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="validation-info">
+                                <h4>Investment Firm</h4>
+                                <p>Regulatory Reporting</p>
+                            </div>
+                        </div>
+                        <blockquote class="validation-quote">
+                            "The automated reporting system processes thousands of transactions daily with perfect accuracy. Our compliance costs dropped 60% while improving data quality significantly."
+                        </blockquote>
+                        <div class="validation-metrics">
+                            <div class="validation-metric">
+                                <span class="validation-metric-value">99.9%</span>
+                                <span class="validation-metric-label">Data Accuracy</span>
+                            </div>
+                            <div class="validation-metric">
+                                <span class="validation-metric-value">60%</span>
+                                <span class="validation-metric-label">Cost Reduction</span>
+                            </div>
+                            <div class="validation-metric">
+                                <span class="validation-metric-value">1000+</span>
+                                <span class="validation-metric-label">Daily Transactions</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="validation-card">
+                        <div class="validation-header">
+                            <div class="validation-avatar">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="validation-info">
+                                <h4>FinTech Company</h4>
+                                <p>Compliance Technology</p>
+                            </div>
+                        </div>
+                        <blockquote class="validation-quote">
+                            "Building our RegTech platform on SpreadJS and Documents enabled us to offer compliance-as-a-service. Our clients achieve 100% regulatory compliance with minimal effort."
+                        </blockquote>
+                        <div class="validation-metrics">
+                            <div class="validation-metric">
+                                <span class="validation-metric-value">100%</span>
+                                <span class="validation-metric-label">Client Compliance</span>
+                            </div>
+                            <div class="validation-metric">
+                                <span class="validation-metric-value">8x</span>
+                                <span class="validation-metric-label">Processing Speed</span>
+                            </div>
+                            <div class="validation-metric">
+                                <span class="validation-metric-value">6 Mo</span>
+                                <span class="validation-metric-label">Development Time</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. RECOMMENDED BUNDLE SECTION -->
         <section class="recommended-bundle-section">
             <div class="container">
                 <div class="bundle-card">
                     <div class="bundle-info">
                         <div class="bundle-header">
                             <h3>Recommended Solution</h3>
-                            <h2>SpreadJS + Documents for Excel</h2>
+                            <h2>RegTech Compliance Suite</h2>
                         </div>
                         <div class="bundle-content">
-                            <ul class="bundle-inclusions">
-                                <li>
-                                    <div class="product-name">
-                                        <span class="checkmark">✓</span>
-                                        SpreadJS
-                                    </div>
-                                    <div class="product-actions">
-                                        <a href="https://mescius.eu/spreadjs/download" target="_blank" class="action-link">Try</a>
-                                        <span class="action-divider">|</span>
-                                        <a href="#" class="action-link product-info-trigger"
-                                            data-product-id="spreadjs">
-                                            Info
-                                        </a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="product-name">
-                                        <span class="checkmark">✓</span>
-                                        Document Solutions for Excel
-                                    </div>
-                                    <div class="product-actions">
-                                        <a href="https://mescius.eu/document-solutions/download-product" target="_blank" class="action-link">Try</a>
-                                        <span class="action-divider">|</span>
-                                        <a href="#" class="action-link product-info-trigger"
-                                            data-product-id="documentsolutions-excel">
-                                            Info
-                                        </a>
-                                    </div>
-                                </li>
-                            </ul>
+                            <div class="bundle-inclusions">
+                                <ul>
+                                    <li>
+                                        <div class="product-name">
+                                            <span class="checkmark">✓</span>
+                                            SpreadJS Professional
+                                        </div>
+                                        <div class="product-actions">
+                                            <a href="https://mescius.eu/spreadjs/download" target="_blank" class="action-link">Try</a>
+                                            <span class="action-divider">|</span>
+                                            <a href="#" class="action-link product-info-trigger" data-product-id="spreadjs-professional">Info</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="product-name">
+                                            <span class="checkmark">✓</span>
+                                            Documents for Excel
+                                        </div>
+                                        <div class="product-actions">
+                                            <a href="https://mescius.eu/document-solutions/download-product" target="_blank" class="action-link">Try</a>
+                                            <span class="action-divider">|</span>
+                                            <a href="#" class="action-link product-info-trigger" data-product-id="documents-excel">Info</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="product-name">
+                                            <span class="checkmark">✓</span>
+                                            ActiveReports.NET
+                                        </div>
+                                        <div class="product-actions">
+                                            <a href="https://mescius.eu/activereportsnet/download" target="_blank" class="action-link">Try</a>
+                                            <span class="action-divider">|</span>
+                                            <a href="#" class="action-link product-info-trigger" data-product-id="activereports-net">Info</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                             <div class="bundle-purchase">
                                 <div class="bundle-price">
                                     <span class="price">€1,203</span>
@@ -290,28 +627,73 @@
                 </div>
             </div>
         </section>
+
+        <!-- 8. NEXT STEPS SECTION -->
+        <section class="next-steps-section">
+            <div class="container">
+                <div class="next-steps-container">
+                    <div class="next-steps-header">
+                        <h2>Ready to Build RegTech Compliance Systems?</h2>
+                        <p>Take the next step towards creating unified compliance platforms that ensure regulatory excellence and eliminate audit risks.</p>
+                    </div>
+                    
+                    <div class="next-steps-actions">
+                        <a href="../../pricing/" class="next-step-action primary-action">
+                            <div class="action-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <h3 class="action-title">View SpreadJS Pricing</h3>
+                            <p class="action-description">Explore pricing for SpreadJS and compliance components to start your RegTech project.</p>
+                            <div class="action-cta">
+                                <span>View Pricing</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.mescius.eu/contact" class="next-step-action secondary-action" target="_blank">
+                            <div class="action-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h3 class="action-title">Compliance Consultation</h3>
+                            <p class="action-description">Discuss your specific regulatory compliance requirements with our technical specialists.</p>
+                            <div class="action-cta">
+                                <span>Contact Us</span>
+                                <i class="fas fa-external-link-alt"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <div id="product-info-modal" class="modal-overlay">
         <div class="modal-container">
             <button id="modal-close" class="modal-close-btn">×</button>
             <div id="modal-body-content" class="modal-body">
-                </div>
+            </div>
         </div>
     </div>
     
-    <template id="spreadjs-modal-content">
-        <h2 class="modal-title">SpreadJS</h2>
-        <p><strong>Empower your web applications with the industry-leading JavaScript spreadsheet solution.</strong><br>SpreadJS provides a complete, Excel-like experience for your users, including:<ul><li>High-speed grids</li><li>Complex calculations & charts</li><li>Pivot tables</li><li>Advanced data analysis tools</li></ul><p>It is ideal for creating financial, scientific, and enterprise resource planning (ERP) applications.</p></p>
+    <template id="spreadjs-professional-modal-content">
+        <h2 class="modal-title">SpreadJS Professional</h2>
+        <p><strong>The industry-leading JavaScript spreadsheet component for compliance applications.</strong><br>SpreadJS Professional provides Excel-compatible interface with comprehensive audit trails, data validation, and role-based access controls for regulatory compliance.</p>
         <a href="https://mescius.eu/spreadjs/download" target="_blank" class="cta-button cta-primary">Download Trial</a>
         <a href="https://developer.mescius.com/spreadjs" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>
     </template>
 
-    <template id="documentsolutions-excel-modal-content">
-        <h2 class="modal-title">Document Solutions for Excel</h2>
-        <p><strong>Supercharge your document processing</strong> with Document Solutions, a suite of <strong>high-speed, dependency-free APIs</strong> for .NET and Java.<p>Key features allow you to:</p><ul><li>Programmatically create, load, and save <strong>Excel, PDF, & Word</strong> documents.</li><li>Deploy on any server (<strong>Windows, Linux, & macOS</strong>) with zero server-side dependencies on MS Office or Acrobat.</li><li>Automate common tasks like <strong>generating invoices and creating reports from templates.</strong></li></ul></p>
+    <template id="documents-excel-modal-content">
+        <h2 class="modal-title">Documents for Excel</h2>
+        <p><strong>High-performance server-side Excel processing for regulatory reporting.</strong><br>Documents for Excel provides automated report generation, compliance documentation, and batch processing capabilities essential for RegTech applications.</p>
         <a href="https://mescius.eu/document-solutions/download-product" target="_blank" class="cta-button cta-primary">Download Trial</a>
-        <a href="https://developer.mescius.com/document-solutions/dot-net-excel-api" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>
+        <a href="https://developer.mescius.com/document-solutions/excel-api" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>
+    </template>
+
+    <template id="activereports-net-modal-content">
+        <h2 class="modal-title">ActiveReports.NET</h2>
+        <p><strong>Comprehensive reporting solution for compliance and regulatory submissions.</strong><br>ActiveReports.NET provides advanced compliance report templates, interactive dashboards, and automated regulatory submission formatting for complete RegTech solutions.</p>
+        <a href="https://mescius.eu/activereportsnet/download" target="_blank" class="cta-button cta-primary">Download Trial</a>
+        <a href="https://developer.mescius.com/activereportsnet" target="_blank" class="cta-button cta-secondary">Visit Product Page</a>
     </template>
 
     <footer class="footer">
@@ -332,7 +714,7 @@
                     <i class="fas fa-envelope"></i> Subscribe to Newsletter
                 </button>
             </div>
-            
+
             <div class="footer-col">
                 <h4 class="footer-heading">Company</h4>
                 <ul class="footer-links">
@@ -341,7 +723,7 @@
                     <li><a href="https://developer.mescius.com/about/media-center" target="_blank">Media Center</a></li>
                 </ul>
             </div>
-            
+
             <div class="footer-col">
                 <h4 class="footer-heading">Legal</h4>
                 <ul class="footer-links">
@@ -352,6 +734,7 @@
                 </ul>
             </div>
         </div>
+        
         <div class="container copyright-section">
             <p>© 2025 Mescius Europe GmbH | All Rights Reserved</p>
         </div>
@@ -366,10 +749,7 @@
         </div>
     </div>
     <script src="../../scripts/main.js"></script>
+    <script src="../../scripts/blueprints.js"></script>
     <script src="../../scripts/components/cart.js"></script>
 </body>
 </html>
-
-
-
-
