@@ -62,11 +62,13 @@ function toggleCardExpansion(card, content, icon, isExpanded) {
         content.style.maxHeight = content.scrollHeight + 'px';
         content.setAttribute('aria-hidden', 'false');
         card.classList.add('expanded');
+        card.classList.add('is-expanded'); // Add theme-aware class
     } else {
         // Collapse
         content.style.maxHeight = '0';
         content.setAttribute('aria-hidden', 'true');
         card.classList.remove('expanded');
+        card.classList.remove('is-expanded'); // Remove theme-aware class
     }
 
     // Update toggle button
@@ -77,7 +79,7 @@ function toggleCardExpansion(card, content, icon, isExpanded) {
         // Update button text if it contains text
         const buttonText = toggleBtn.querySelector('.toggle-text');
         if (buttonText) {
-            buttonText.textContent = isExpanded ? 'Show Less' : 'Read Full Story';
+            buttonText.textContent = isExpanded ? 'Show Less' : 'View Implementation Details';
         }
     }
 
@@ -190,9 +192,10 @@ function animateMetricValue(element) {
         const formattedValue = formatMetricValue(currentValue, suffix);
         element.textContent = formattedValue;
         
-        // Add pulse effect during animation
+        // Add pulse effect during animation - theme-aware
         if (currentValue < number) {
             element.style.transform = 'scale(1.05)';
+            element.style.transition = 'transform 0.1s ease-out';
             setTimeout(() => {
                 element.style.transform = 'scale(1)';
             }, stepDuration / 2);

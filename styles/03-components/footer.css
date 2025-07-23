@@ -79,6 +79,22 @@
   object-fit: contain;
   align-self: flex-start;
   margin-bottom: var(--space-2);
+  transition: filter var(--transition-base) var(--ease-out);
+}
+
+/* Ensure logo works with all variants in dark theme */
+[data-theme="dark"] .footer-logo {
+  filter: brightness(0) invert(1);
+}
+
+/* Support for SVG logos that may need different handling */
+[data-theme="dark"] .footer-logo[src*=".svg"] {
+  filter: brightness(0) invert(1);
+}
+
+/* Support for PNG logos with transparency */
+[data-theme="dark"] .footer-logo[src*=".png"] {
+  filter: brightness(0) invert(1);
 }
 
 .footer-text {
@@ -155,6 +171,35 @@
   color: white;
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
+}
+
+/* Enhanced dark theme social icons with proper contrast */
+[data-theme="dark"] .social-icon {
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .social-icon:hover {
+  background: var(--primary);
+  color: var(--text-on-primary);
+  border-color: var(--primary);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
+}
+
+/* Light theme social icons with proper contrast */
+[data-theme="light"] .social-icon {
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  border-color: var(--border-color);
+}
+
+[data-theme="light"] .social-icon:hover {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
 }
 
 /* Newsletter Signup */

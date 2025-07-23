@@ -14,7 +14,16 @@
 .card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-xl);
-  border-color: var(--gray-300);
+  border-color: var(--card-hover-border, var(--gray-300));
+}
+
+.card:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.card:focus:not(:focus-visible) {
+  outline: none;
 }
 
 .card-body {
@@ -57,7 +66,7 @@
 }
 
 .card-glass:hover {
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--card-glass-hover-bg, rgba(255, 255, 255, 0.9));
   box-shadow: var(--shadow-glass-lg);
 }
 
@@ -80,7 +89,7 @@
 
 .card-flat:hover {
   box-shadow: var(--shadow-md);
-  border-color: var(--primary-light);
+  border-color: var(--card-flat-hover-border, var(--primary-light));
 }
 
 /* Product cards */
@@ -117,6 +126,15 @@
   transform: translateY(-6px);
   box-shadow: var(--shadow-2xl);
   border-color: var(--gray-300);
+}
+
+.product-card:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.product-card:focus:not(:focus-visible) {
+  outline: none;
 }
 
 .product-card-icon {
@@ -331,7 +349,7 @@
 }
 
 .pricing-card:hover:not(.featured) {
-  border-color: var(--primary);
+  border-color: var(--pricing-card-hover-border, var(--primary));
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
 }
@@ -417,6 +435,15 @@
   transform: translateY(-6px);
   box-shadow: var(--shadow-2xl);
   border-color: var(--primary-light);
+}
+
+.challenge-card:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.challenge-card:focus:not(:focus-visible) {
+  outline: none;
 }
 
 .challenge-card h4 {

@@ -308,9 +308,9 @@
 }
 
 .form-file-label:hover {
-  border-color: var(--primary);
-  background: var(--primary-light);
-  color: var(--primary);
+  border-color: var(--form-file-hover-border, var(--primary));
+  background: var(--form-file-hover-bg, var(--primary-light));
+  color: var(--form-file-hover-text, var(--primary));
 }
 
 .form-file input:focus + .form-file-label {
@@ -359,6 +359,7 @@
 
 .search-button:hover {
   background: var(--primary-hover);
+  color: var(--text-on-primary);
   transform: scale(1.05);
 }
 

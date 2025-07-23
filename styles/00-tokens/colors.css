@@ -6,10 +6,35 @@
   --primary-active: #4A7BA7;
   --primary-light: #E6EDF5;
   
+  /* PRIMARY COLOR SCALE */
+  --primary-50: #F0F7FF;
+  --primary-100: #E6EDF5;
+  --primary-200: #BFDBFE;
+  --primary-300: #93C5FD;
+  --primary-400: #60A5FA;
+  --primary-500: #2E5984;
+  --primary-600: #1E3A56;
+  --primary-700: #1E40AF;
+  --primary-800: #1E3A8A;
+  --primary-900: #1E3A56;
+  
   /* ACCENT COLORS */
   --accent: #3B82F6;
   --accent-hover: #2563EB;
+  --accent-active: #1D4ED8;
   --accent-light: #DBEAFE;
+  
+  /* ACCENT COLOR SCALE */
+  --accent-50: #EFF6FF;
+  --accent-100: #DBEAFE;
+  --accent-200: #BFDBFE;
+  --accent-300: #93C5FD;
+  --accent-400: #60A5FA;
+  --accent-500: #3B82F6;
+  --accent-600: #2563EB;
+  --accent-700: #1D4ED8;
+  --accent-800: #1E40AF;
+  --accent-900: #1E3A8A;
   
   /* PRODUCT BRAND COLORS */
   --componentone: #D93E3A;
@@ -29,6 +54,7 @@
   --bg-primary: #FFFFFF;
   --bg-secondary: #F9FAFB;
   --bg-tertiary: #F3F4F6;
+  --bg-quaternary: #E5E7EB;
   --bg-overlay: rgba(0, 0, 0, 0.5);
   
   /* STATUS COLORS */
@@ -36,6 +62,8 @@
   --warning: #F59E0B;
   --warning-dark: #D97706;
   --error: #DC2626;
+  --error-hover: #B91C1C;
+  --error-active: #991B1B;
   --info: #3B82F6;
   
   /* NEUTRAL SCALE */
@@ -59,4 +87,22 @@
   --white-80: rgba(255, 255, 255, 0.8);
   --black-10: rgba(0, 0, 0, 0.1);
   --black-20: rgba(0, 0, 0, 0.2);
+  
+  /* GLASS EFFECT COLORS */
+  --glass-hover-bg: rgba(255, 255, 255, 0.2);
+  
+  /* NAVIGATION HOVER COLORS */
+  --tab-hover-bg: rgba(255, 255, 255, 0.5);
+  --cart-btn-hover-bg: var(--bg-quaternary);
+  
+  /* CARD HOVER COLORS */
+  --card-hover-border: var(--gray-300);
+  --card-glass-hover-bg: rgba(255, 255, 255, 0.9);
+  --card-flat-hover-border: var(--primary-light);
+  --pricing-card-hover-border: var(--primary);
+  
+  /* FORM HOVER COLORS */
+  --form-file-hover-border: var(--primary);
+  --form-file-hover-bg: var(--primary-light);
+  --form-file-hover-text: var(--primary);
 }

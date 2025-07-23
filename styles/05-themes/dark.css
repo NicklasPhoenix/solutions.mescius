@@ -5,6 +5,7 @@
   --bg-primary: #111827;
   --bg-secondary: #1F2937;
   --bg-tertiary: #374151;
+  --bg-quaternary: #4B5563;
   --bg-overlay: rgba(0, 0, 0, 0.8);
   
   --text-primary: #F9FAFB;
@@ -51,6 +52,24 @@
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
   --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.3), 0 8px 10px -6px rgb(0 0 0 / 0.3);
   --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.5);
+  
+  /* Glass effect colors for dark theme */
+  --glass-hover-bg: rgba(75, 85, 99, 0.4);
+  
+  /* Navigation hover colors for dark theme */
+  --tab-hover-bg: rgba(75, 85, 99, 0.5);
+  --cart-btn-hover-bg: var(--bg-quaternary);
+  
+  /* Card hover colors for dark theme */
+  --card-hover-border: var(--gray-500);
+  --card-glass-hover-bg: rgba(55, 65, 81, 0.9);
+  --card-flat-hover-border: var(--primary-300);
+  --pricing-card-hover-border: var(--primary-300);
+  
+  /* Form hover colors for dark theme */
+  --form-file-hover-border: var(--primary-300);
+  --form-file-hover-bg: rgba(96, 165, 250, 0.2);
+  --form-file-hover-text: var(--primary-300);
 }
 
 /* Dark theme component overrides */
@@ -536,4 +555,98 @@
 
 [data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
   background: var(--gray-500);
+}
+
+/* Dark theme blueprint pages */
+[data-theme="dark"] .case-study-header {
+  background:
+    radial-gradient(circle at 30% 70%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 70% 30%, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+}
+
+[data-theme="dark"] .blueprint-hero {
+  background:
+    radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(34, 197, 94, 0.15) 0%, transparent 50%),
+    linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+}
+
+[data-theme="dark"] .expandable-card {
+  background: rgba(31, 41, 55, 0.95);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .expandable-card.is-expanded {
+  border-color: var(--primary);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+}
+
+[data-theme="dark"] .metric-item {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .metric-item:hover {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: var(--primary);
+}
+
+[data-theme="dark"] .code-examples-section {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .code-tab {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .code-tab.active {
+  background: var(--bg-primary);
+  color: var(--primary);
+}
+
+[data-theme="dark"] .code-example {
+  background: var(--bg-tertiary);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .code-copy {
+  background: var(--bg-quaternary);
+  border-color: var(--border-color);
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .code-copy:hover {
+  background: var(--primary);
+  color: var(--text-on-primary);
+}
+
+[data-theme="dark"] .recommended-bundle-section {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(34, 197, 94, 0.08));
+}
+
+[data-theme="dark"] .bundle-info {
+  background: rgba(31, 41, 55, 0.95);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .architecture-diagram {
+  background: rgba(31, 41, 55, 0.9);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .tech-item {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .resource-card {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .step-content {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
 }
