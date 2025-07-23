@@ -279,7 +279,6 @@ class ShoppingCart {
     minimizeCart() {
         if (!this.cartElement) return;
         
-        console.log('Minimizing cart');
         this.cartElement.classList.add('is-minimized');
         
         // Ensure cart remains visible when minimized
@@ -292,7 +291,6 @@ class ShoppingCart {
     expandCart() {
         if (!this.cartElement) return;
         
-        console.log('Expanding cart');
         this.cartElement.classList.remove('is-minimized');
         
         // Ensure cart is visible when expanded
@@ -306,7 +304,6 @@ class ShoppingCart {
         if (!this.cartElement) return;
         
         const isMinimized = this.cartElement.classList.contains('is-minimized');
-        console.log('Toggling minimize state. Currently minimized:', isMinimized);
         
         if (isMinimized) {
             this.expandCart();
@@ -386,7 +383,6 @@ class ShoppingCart {
     showCart() {
         if (!this.cartElement) return;
 
-        console.log('Showing cart');
         this.cartElement.classList.add('is-open');
         this.isVisible = true;
         
@@ -405,7 +401,6 @@ class ShoppingCart {
     hideCart() {
         if (!this.cartElement) return;
 
-        console.log('Hiding cart');
         this.cartElement.classList.remove('is-open');
         this.cartElement.classList.remove('is-minimized');
         this.isVisible = false;
@@ -476,7 +471,6 @@ class ShoppingCart {
     setupFloatingCart() {
         // No need to create separate floating button - use header button
         // Just ensure cart functionality is ready
-        console.log('Floating cart functionality enabled for header button');
     }
 
     createCartPanel() {
