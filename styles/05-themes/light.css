@@ -189,18 +189,18 @@
 }
 
 .hero-cta-button.secondary {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
-  color: var(--text-primary) !important;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.1);
+  color: var(--primary) !important;
+  border: 1px solid var(--primary);
+  box-shadow: 0 4px 14px 0 rgba(46, 89, 132, 0.2);
 }
 
 .hero-cta-button.secondary:hover {
   background: rgba(255, 255, 255, 1);
-  color: var(--text-primary) !important;
-  border-color: rgba(0, 0, 0, 0.2);
-  box-shadow: 0 8px 25px 0 rgba(0, 0, 0, 0.15);
+  color: var(--primary-hover) !important;
+  border-color: var(--primary-hover);
+  box-shadow: 0 8px 25px 0 rgba(46, 89, 132, 0.3);
   transform: translateY(-4px);
 }
 
