@@ -704,6 +704,11 @@
 }
 
 /* Dark theme bundles page specific overrides */
+[data-theme="dark"] .bundle-card {
+  background: rgba(31, 41, 55, 0.8);
+  border-color: var(--border-color);
+}
+
 [data-theme="dark"] .price-container {
   background: rgba(31, 41, 55, 0.8);
   border-color: var(--border-color);
@@ -722,4 +727,70 @@
 
 [data-theme="dark"] .discount-calculator:hover {
   color: var(--text-primary);
+}
+
+[data-theme="dark"] .main-price {
+  color: white;
+}
+
+[data-theme="dark"] .cart-total-label {
+  color: white;
+}
+
+[data-theme="dark"] .multi-year-options label {
+  background: rgba(31, 41, 55, 0.8);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .multi-year-options label:hover {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: var(--primary);
+}
+
+[data-theme="dark"] .multi-year-options input[type="radio"]:checked + label,
+[data-theme="dark"] .multi-year-options label:has(input[type="radio"]:checked) {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: var(--primary);
+  color: white;
+}
+
+[data-theme="dark"] .discount-tag {
+  color: white;
+}
+
+[data-theme="dark"] .summary-line.total {
+  color: white;
+}
+
+[data-theme="dark"] .quantity-input {
+  background: rgba(31, 41, 55, 0.8);
+  border-color: var(--border-color);
+  color: white;
+}
+
+[data-theme="dark"] .quantity-input:focus {
+  border-color: var(--primary);
+  background: rgba(31, 41, 55, 0.9);
+}
+
+[data-theme="dark"] .price.custom-pricing {
+  color: white;
+}
+
+[data-theme="dark"] .hero-cta-button.primary {
+  color: white !important;
+  border: 2px solid var(--primary);
+}
+
+[data-theme="dark"] .hero-cta-button.secondary {
+  background: rgba(31, 41, 55, 0.9);
+  border: 2px solid var(--border-color);
+  color: white !important;
+}
+
+[data-theme="dark"] .hero-cta-button.secondary:hover {
+  background: rgba(31, 41, 55, 1);
+  border-color: var(--primary);
+  color: white !important;
 }
