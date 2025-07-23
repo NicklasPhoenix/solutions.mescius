@@ -903,7 +903,6 @@
 
 [data-theme="dark"] .case-study-card:hover {
   background: rgba(31, 41, 55, 0.95);
-  border-color: var(--primary-300);
   box-shadow: var(--shadow-xl);
 }
 
