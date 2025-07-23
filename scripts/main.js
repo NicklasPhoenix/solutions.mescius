@@ -363,7 +363,6 @@ function initializeCart() {
         // Check if global cart instance already exists (from pricing.js)
         if (!window.cart) {
             window.cart = new ShoppingCart();
-            console.log('Cart initialized globally');
         }
     }
 }

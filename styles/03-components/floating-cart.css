@@ -5,7 +5,7 @@
   position: fixed;
   top: 50%;
   right: var(--space-6);
-  transform: translateY(-50%);
+  transform: translateY(-50%) translateX(120%);
   width: 380px;
   max-height: 80vh;
   background: rgba(255, 255, 255, 0.98);
@@ -18,7 +18,15 @@
   flex-direction: column;
   transition: all var(--transition-base) var(--ease-out);
   overflow: hidden;
-  opacity: 1 !important;
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Show cart when is-open class is present */
+#floating-cart.is-open {
+  transform: translateY(-50%) translateX(0);
+  opacity: 1;
+  visibility: visible;
 }
 
 /* Default floating cart styles - now handled by base styles above */
@@ -447,10 +455,13 @@
 }
 
 /* Minimized state */
-#floating-cart.is-minimized {
+#floating-cart.is-minimized.is-open {
   width: 380px;
   height: auto;
   max-height: none;
+  transform: translateY(-50%) translateX(0);
+  opacity: 1;
+  visibility: visible;
 }
 
 #floating-cart.is-minimized .cart-content,
@@ -538,12 +549,6 @@
   height: 16px;
   top: -4px;
   right: -4px;
-}
-
-/* Ensure no transparency issues */
-#floating-cart,
-.floating-cart {
-  opacity: 1 !important;
 }
 
 /* Focus styles for accessibility */
