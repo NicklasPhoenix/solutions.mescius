@@ -35,4 +35,12 @@
   --space-72: 18rem;        /* 288px */
   --space-80: 20rem;        /* 320px */
   --space-96: 24rem;        /* 384px */
+
+  /* CARD LAYOUT TOKENS */
+  --card-min-height: 24rem;      /* 384px - minimum height for consistent alignment */
+  --card-content-spacing: var(--space-6);    /* 24px - consistent content spacing */
+  --card-header-spacing: var(--space-4);     /* 16px - header bottom margin */
+  --card-footer-spacing: var(--space-6);     /* 24px - footer top margin */
+  --card-list-spacing: var(--space-4);       /* 16px - list bottom margin */
+  --card-button-spacing: var(--space-8);     /* 32px - space above buttons */
 }
