@@ -325,9 +325,14 @@ function initializeProductTabs() {
         const sectionTabButtons = productSection.querySelectorAll('.tab-btn');
         const sectionTabPanes = productSection.querySelectorAll('.tab-pane');
 
+        // Get the target pane ID from the button's aria-controls attribute
+        const activeButton = productSection.querySelector(`.tab-btn[data-tab="${tabId}"]`);
+        const targetPaneId = activeButton ? activeButton.getAttribute('aria-controls') : tabId + '-pane';
+
         // Update tab button states
         sectionTabButtons.forEach(btn => {
             const isActive = btn.getAttribute('data-tab') === tabId;
+            btn.classList.toggle('is-active', isActive);
             btn.classList.toggle('active', isActive);
             btn.setAttribute('aria-selected', isActive);
             btn.setAttribute('tabindex', isActive ? '0' : '-1');
@@ -335,14 +340,13 @@ function initializeProductTabs() {
 
         // Update tab pane visibility - use both is-active class and hidden attribute
         sectionTabPanes.forEach(pane => {
-            const isActive = pane.id === tabId;
+            const isActive = pane.id === targetPaneId;
             pane.classList.toggle('is-active', isActive);
             pane.hidden = !isActive;
             pane.setAttribute('aria-hidden', !isActive);
         });
 
         // Focus management
-        const activeButton = productSection.querySelector(`.tab-btn[data-tab="${tabId}"]`);
         if (activeButton && document.activeElement !== activeButton) {
             activeButton.focus();
         }
