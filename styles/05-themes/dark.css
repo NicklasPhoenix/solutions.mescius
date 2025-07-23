@@ -638,7 +638,7 @@
 
 [data-theme="dark"] .tab-btn.is-active {
   background: var(--bg-secondary);
-  color: var(--primary);
+  color: var(--primary-300);
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px -1px rgba(0, 0, 0, 0.3);
 }
 
