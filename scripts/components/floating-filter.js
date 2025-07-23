@@ -152,29 +152,8 @@ class FloatingFilter {
         // Clear filters button
         this.clearBtn.addEventListener('click', () => this.clearAllFilters());
         
-        // Close on outside click (desktop only) with enhanced debugging
-        document.addEventListener('click', (e) => {
-            console.log('[FloatingFilter] Document click detected', {
-                timestamp: new Date().toISOString(),
-                target: e.target,
-                targetTagName: e.target.tagName,
-                targetClasses: e.target.className,
-                isOpen: this.isOpen,
-                windowWidth: window.innerWidth,
-                containsTarget: this.filterElement?.contains(e.target),
-                filterElementExists: !!this.filterElement,
-                isToggleButton: e.target === this.toggleBtn || this.toggleBtn?.contains(e.target)
-            });
-            
-            // Don't close if clicking on the toggle button or if filter is not open
-            if (window.innerWidth > 1024 &&
-                this.isOpen &&
-                !this.filterElement.contains(e.target) &&
-                !(e.target === this.toggleBtn || this.toggleBtn?.contains(e.target))) {
-                console.log('[FloatingFilter] Closing due to outside click');
-                this.close();
-            }
-        });
+        // Note: Outside click to close removed as per UX requirements
+        // Filter now only closes when collapse button is clicked or Escape key is pressed
         
         // Escape key to close
         document.addEventListener('keydown', (e) => {
