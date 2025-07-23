@@ -20,6 +20,25 @@ class ShoppingCart {
         this.init();
     }
 
+    // Utility method to check if screen is mobile
+    isMobileScreen() {
+        return window.innerWidth < 768;
+    }
+    
+    // Method to close other floating components on mobile
+    closeOtherFloatingComponents() {
+        if (this.isMobileScreen()) {
+            const floatingFilter = document.getElementById('floating-filter');
+            if (floatingFilter && floatingFilter.classList.contains('is-open')) {
+                // Find the filter instance and close it
+                const filterToggle = floatingFilter.querySelector('.filter-toggle');
+                if (filterToggle) {
+                    filterToggle.click();
+                }
+            }
+        }
+    }
+
     init() {
         // Load cart from localStorage
         this.loadCart();
@@ -154,8 +173,8 @@ class ShoppingCart {
 
         this.addToCart(productId, productName, price);
         
-        // Show cart after adding item
-        this.showCart();
+        // Do not auto-show cart - let user explicitly open it
+        // this.showCart(); // Removed auto-show behavior
         
         // Add visual feedback
         this.showAddToCartFeedback(button);
@@ -382,6 +401,9 @@ class ShoppingCart {
 
     showCart() {
         if (!this.cartElement) return;
+
+        // Close other floating components on mobile
+        this.closeOtherFloatingComponents();
 
         this.cartElement.classList.add('is-open');
         this.isVisible = true;

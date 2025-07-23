@@ -14,10 +14,22 @@ class FloatingFilter {
         };
         
         this.activeFilters = {};
-        this.isOpen = true;
-        this.isCollapsed = false;
+        this.isOpen = false;
+        this.isCollapsed = true;
         
         this.init();
+    }
+    
+    // Utility method to check if screen is mobile
+    isMobileScreen() {
+        return window.innerWidth < 768;
+    }
+    
+    // Method to close other floating components on mobile
+    closeOtherFloatingComponents() {
+        if (this.isMobileScreen() && window.cart && window.cart.isVisible) {
+            window.cart.hideCart();
+        }
     }
     
     init() {
@@ -35,11 +47,11 @@ class FloatingFilter {
         
         // Create filter HTML
         const filterHTML = `
-            <div id="${this.config.containerId}" class="floating-filter is-open">
+            <div id="${this.config.containerId}" class="floating-filter is-collapsed">
                 <div class="filter-header">
                     <h3>Filters</h3>
                     <button class="filter-toggle" aria-label="Toggle filters">
-                        <i class="fas fa-chevron-left"></i>
+                        <i class="fas fa-filter"></i>
                     </button>
                 </div>
                 <div class="filter-content">
@@ -259,6 +271,9 @@ class FloatingFilter {
             beforeState: { isOpen: this.isOpen, isCollapsed: this.isCollapsed },
             filterClasses: this.filterElement?.className
         });
+        
+        // Close other floating components on mobile
+        this.closeOtherFloatingComponents();
         
         this.isOpen = true;
         this.isCollapsed = false;
