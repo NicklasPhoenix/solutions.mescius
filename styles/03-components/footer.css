@@ -188,19 +188,7 @@
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
 }
 
-/* Light theme social icons with proper contrast */
-[data-theme="light"] .social-icon {
-  background: var(--bg-tertiary);
-  color: var(--text-secondary);
-  border-color: var(--border-color);
-}
-
-[data-theme="light"] .social-icon:hover {
-  background: var(--primary);
-  color: white;
-  border-color: var(--primary);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-}
+/* Default light theme social icons - these styles are now in the base .social-icon selector above */
 
 /* Newsletter Signup */
 .newsletter-section {
