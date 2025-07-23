@@ -397,7 +397,7 @@
 }
 
 .cart-total {
-  color: var(--primary);
+  color: var(--text-primary);
 }
 
 /* Light theme filter toolbar */
