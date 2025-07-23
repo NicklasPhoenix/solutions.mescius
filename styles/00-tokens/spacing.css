@@ -43,4 +43,15 @@
   --card-footer-spacing: var(--space-6);     /* 24px - footer top margin */
   --card-list-spacing: var(--space-4);       /* 16px - list bottom margin */
   --card-button-spacing: var(--space-8);     /* 32px - space above buttons */
+
+  /* BUTTON SIZING TOKENS */
+  --button-padding-compact: var(--space-2) var(--space-4);    /* 8px 16px - compact buttons */
+  --button-padding-small: var(--space-2-5) var(--space-5);    /* 10px 20px - small buttons */
+  --button-padding-medium: var(--space-3) var(--space-6);     /* 12px 24px - medium buttons */
+  --button-padding-large: var(--space-4) var(--space-8);      /* 16px 32px - large buttons */
+  
+  /* TAB BUTTON SPECIFIC TOKENS */
+  --tab-button-padding: var(--space-2-5) var(--space-4);      /* 10px 16px - tab buttons */
+  --tab-button-gap: var(--space-1);                           /* 4px - gap between tabs */
+  --tab-button-radius: var(--space-2);                        /* 8px - tab border radius */
 }
