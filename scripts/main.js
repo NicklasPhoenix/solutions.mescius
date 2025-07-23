@@ -216,32 +216,38 @@ function initializeScrollEffects() {
  * Theme management
  */
 function initializeTheme() {
-    // Theme is already set in head to prevent flash, just get the current value
+    // Get saved theme or default to light
     const savedTheme = localStorage.getItem('theme') || 'light';
+    
+    // Apply saved theme immediately
+    document.documentElement.setAttribute('data-theme', savedTheme);
     
     // Theme toggle functionality (if theme switcher exists)
     const themeToggle = document.querySelector('.theme-toggle');
     if (themeToggle) {
         themeToggle.addEventListener('click', function() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
             const newTheme = currentTheme === 'light' ? 'dark' : 'light';
             
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
             
-            // Update toggle button state
-            themeToggle.classList.toggle('dark', newTheme === 'dark');
+            // Update toggle button state - fix icon logic
+            updateThemeToggleIcons(newTheme);
         });
         
         // Set initial toggle state
-        themeToggle.classList.toggle('dark', savedTheme === 'dark');
+        updateThemeToggleIcons(savedTheme);
     }
 
-    // Respect system preference
+    // Respect system preference only if no saved theme
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     if (!localStorage.getItem('theme')) {
         const systemTheme = mediaQuery.matches ? 'dark' : 'light';
         document.documentElement.setAttribute('data-theme', systemTheme);
+        if (themeToggle) {
+            updateThemeToggleIcons(systemTheme);
+        }
     }
     
     // Listen for system theme changes
@@ -249,8 +255,20 @@ function initializeTheme() {
         if (!localStorage.getItem('theme')) {
             const systemTheme = e.matches ? 'dark' : 'light';
             document.documentElement.setAttribute('data-theme', systemTheme);
+            if (themeToggle) {
+                updateThemeToggleIcons(systemTheme);
+            }
         }
     });
+}
+
+/**
+ * Update theme toggle icons - icons are now controlled by CSS
+ * This function is kept for compatibility but CSS handles the visibility
+ */
+function updateThemeToggleIcons(theme) {
+    // Icons are now controlled by CSS [data-theme] selectors
+    // No JavaScript needed for icon display
 }
 
 
@@ -366,6 +384,7 @@ window.MesciusDesignSystem = {
     initializeScrollEffects,
     initializeTheme,
     initializeCart,
+    updateThemeToggleIcons,
     debounce,
     throttle
 };

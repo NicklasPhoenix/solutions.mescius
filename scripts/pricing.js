@@ -297,6 +297,12 @@ function initializeProductTabs() {
     const tabButtons = document.querySelectorAll('.tab-btn[data-tab]');
     const tabPanes = document.querySelectorAll('.tab-pane');
     
+    // Fix blueprints CSS conflict: add 'active' class to all tab-content elements
+    const tabContents = document.querySelectorAll('.tab-content');
+    tabContents.forEach(content => {
+        content.classList.add('active');
+    });
+    
     tabButtons.forEach(button => {
         button.addEventListener('click', function() {
             const tabId = this.getAttribute('data-tab');
@@ -326,9 +332,10 @@ function initializeProductTabs() {
             btn.setAttribute('tabindex', isActive ? '0' : '-1');
         });
 
-        // Update tab pane visibility
+        // Update tab pane visibility - use both is-active class and hidden attribute
         sectionTabPanes.forEach(pane => {
             const isActive = pane.id === tabId;
+            pane.classList.toggle('is-active', isActive);
             pane.hidden = !isActive;
             pane.setAttribute('aria-hidden', !isActive);
         });

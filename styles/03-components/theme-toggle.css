@@ -34,24 +34,25 @@
   transition: all var(--transition-base) var(--ease-out);
 }
 
+/* Default state (light mode): show moon icon (to switch TO dark), hide sun icon */
 .theme-icon-light {
-  opacity: 1;
+  display: none;
   transform: rotate(0deg);
 }
 
 .theme-icon-dark {
-  opacity: 0;
+  display: inline-block;
   transform: rotate(-90deg);
 }
 
-/* Dark theme icon states */
+/* Dark theme icon states: show sun icon (to switch TO light), hide moon icon */
 [data-theme="dark"] .theme-icon-light {
-  opacity: 0;
+  display: inline-block;
   transform: rotate(90deg);
 }
 
 [data-theme="dark"] .theme-icon-dark {
-  opacity: 1;
+  display: none;
   transform: rotate(0deg);
 }
 

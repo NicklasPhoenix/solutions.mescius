@@ -43,6 +43,14 @@
     <noscript><link rel="stylesheet" href="styles/main.css"></noscript>
 
     <link rel="icon" type="image/svg+xml" href="https://cdn.mescius.io/umb/media/zzgitm01/msc-favicon.svg">
+    
+    <!-- Theme initialization script to prevent flash -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
 </head>
 <body>
 

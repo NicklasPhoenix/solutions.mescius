@@ -50,6 +50,14 @@
     <link rel="preload" href="../logos/DS_prod_logo_full_2023.svg" as="image">
     
     <link rel="stylesheet" href="../styles/main.css?v=2025">
+    
+    <!-- Theme initialization script to prevent flash -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
 
     <script type="application/ld+json">
 {
