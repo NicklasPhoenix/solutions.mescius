@@ -263,25 +263,12 @@ function initializeTheme() {
 }
 
 /**
- * Update theme toggle icons - fix backwards logic
- * Light mode should show moon (to switch TO dark)
- * Dark mode should show sun (to switch TO light)
+ * Update theme toggle icons - icons are now controlled by CSS
+ * This function is kept for compatibility but CSS handles the visibility
  */
 function updateThemeToggleIcons(theme) {
-    const lightIcon = document.querySelector('.theme-icon-light'); // sun icon
-    const darkIcon = document.querySelector('.theme-icon-dark');   // moon icon
-    
-    if (lightIcon && darkIcon) {
-        if (theme === 'light') {
-            // In light mode, show moon icon (to switch TO dark)
-            lightIcon.style.display = 'none';
-            darkIcon.style.display = 'inline-block';
-        } else {
-            // In dark mode, show sun icon (to switch TO light)  
-            lightIcon.style.display = 'inline-block';
-            darkIcon.style.display = 'none';
-        }
-    }
+    // Icons are now controlled by CSS [data-theme] selectors
+    // No JavaScript needed for icon display
 }
 
 
