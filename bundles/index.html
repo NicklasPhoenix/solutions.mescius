@@ -46,6 +46,14 @@
     
     <link rel="stylesheet" href="../styles/main.css?v=2025070403">
     
+    <!-- Theme initialization script to prevent flash -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+    
     <!-- Product Schema Markup for Bundles -->
     <script type="application/ld+json">
     {
