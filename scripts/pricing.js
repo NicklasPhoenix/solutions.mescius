@@ -1,6 +1,6 @@
 /**
  * Pricing Page JavaScript
- * Handles shopping cart, product filtering, and tabs functionality
+ * Handles shopping cart, product filtering, tabs functionality, and product info modals
  */
 
 // Global cart instance
@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeFloatingFilter();
     initializeProductTabs();
     initializeRenewalForms();
+    initializeProductInfoModals();
 });
 
 /**
@@ -575,3 +576,148 @@ window.PricingPage = {
     proceedToCheckout,
     cart: () => cart
 };
+
+/**
+ * Initialize product info modals
+ */
+function initializeProductInfoModals() {
+    const infoTriggers = document.querySelectorAll('.product-info-trigger');
+    
+    infoTriggers.forEach(trigger => {
+        // Add ARIA attributes for accessibility
+        trigger.setAttribute('role', 'button');
+        trigger.setAttribute('tabindex', '0');
+        trigger.setAttribute('aria-label', trigger.getAttribute('aria-label') || 'More information about this product');
+        
+        // Click handler
+        trigger.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            openProductInfoModal(this);
+        });
+
+        // Keyboard handler
+        trigger.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                e.stopPropagation();
+                openProductInfoModal(this);
+            }
+        });
+    });
+}
+
+/**
+ * Open product info modal
+ */
+function openProductInfoModal(trigger) {
+    // Get modal data from the trigger element
+    const title = trigger.getAttribute('data-title') || 'Product Information';
+    const description = trigger.getAttribute('data-description') || 'No description available';
+    const demoLink = trigger.getAttribute('data-demolink');
+    const productLink = trigger.getAttribute('data-productlink');
+    
+    // Build modal content
+    let modalContent = `
+        <div class="product-info-content">
+            <div class="product-description">
+                ${description}
+            </div>
+    `;
+    
+    // Add action buttons if links are available
+    if (demoLink || productLink) {
+        modalContent += `
+            <div class="product-info-actions">
+        `;
+        
+        if (demoLink) {
+            modalContent += `
+                <a href="${demoLink}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                    <i class="fas fa-play"></i> Try Demo
+                </a>
+            `;
+        }
+        
+        if (productLink) {
+            modalContent += `
+                <a href="${productLink}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                    <i class="fas fa-external-link-alt"></i> Product Page
+                </a>
+            `;
+        }
+        
+        modalContent += `
+            </div>
+        `;
+    }
+    
+    modalContent += `
+        </div>
+    `;
+    
+    // Use existing modal system if available
+    if (window.modalSystem) {
+        // Check if modal already exists, destroy it first
+        const existingModal = document.getElementById('product-info-modal');
+        if (existingModal && window.modalSystem.isModalOpen('product-info-modal')) {
+            window.modalSystem.closeModal('product-info-modal');
+        }
+        
+        // Update existing modal content
+        const modalBody = document.querySelector('#product-info-modal .modal-body');
+        const modalTitle = document.querySelector('#product-info-modal .modal-title');
+        
+        if (modalBody && modalTitle) {
+            modalTitle.textContent = title;
+            modalBody.innerHTML = modalContent;
+            window.modalSystem.openModal('product-info-modal');
+        } else {
+            // Create new modal if existing one doesn't have the right structure
+            const modalId = 'product-info-modal-' + Date.now();
+            window.modalSystem.createModal(modalId, modalContent, {
+                title: title,
+                size: 'large',
+                ariaLabel: `${title} - Product Information`
+            });
+            window.modalSystem.openModal(modalId);
+        }
+    } else {
+        // Fallback: use existing modal in DOM
+        const modal = document.getElementById('product-info-modal');
+        const modalBodyContent = document.getElementById('modal-body-content');
+        
+        if (modal && modalBodyContent) {
+            modalBodyContent.innerHTML = `
+                <h3 id="modal-title">${title}</h3>
+                ${modalContent}
+            `;
+            
+            modal.classList.add('active');
+            modal.setAttribute('aria-hidden', 'false');
+            
+            // Simple close functionality
+            const closeBtn = modal.querySelector('#modal-close');
+            if (closeBtn) {
+                closeBtn.onclick = function() {
+                    modal.classList.remove('active');
+                    modal.setAttribute('aria-hidden', 'true');
+                };
+            }
+            
+            // Close on backdrop click
+            modal.onclick = function(e) {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    modal.setAttribute('aria-hidden', 'true');
+                }
+            };
+            
+            // Focus management
+            const firstFocusable = modal.querySelector('button, a, input, [tabindex]');
+            if (firstFocusable) {
+                firstFocusable.focus();
+            }
+        }
+    }
+}

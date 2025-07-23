@@ -399,3 +399,107 @@
   transform: translateY(-1px);
   box-shadow: var(--shadow-md);
 }
+
+/* Tab buttons for pricing page */
+.tab-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--tab-button-padding);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.2;
+  text-decoration: none;
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: var(--tab-button-radius);
+  background: var(--bg-secondary, #f9fafb);
+  color: var(--text-secondary, #6b7280);
+  cursor: pointer;
+  transition: all var(--transition-base, 0.2s) var(--ease-out, ease-out);
+  position: relative;
+  white-space: nowrap;
+  user-select: none;
+  margin-right: var(--tab-button-gap);
+}
+
+.tab-btn:last-child {
+  margin-right: 0;
+}
+
+.tab-btn:hover:not(.is-active) {
+  background: var(--bg-primary, #ffffff);
+  border-color: var(--border-hover, #d1d5db);
+  color: var(--text-primary, #111827);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm, 0 1px 2px 0 rgba(0, 0, 0, 0.05));
+}
+
+.tab-btn.is-active {
+  background: var(--primary, #3b82f6);
+  border-color: var(--primary, #3b82f6);
+  color: var(--text-on-primary, #ffffff);
+  box-shadow: var(--shadow-sm, 0 1px 2px 0 rgba(0, 0, 0, 0.05));
+}
+
+.tab-btn:focus {
+  outline: 2px solid var(--primary, #3b82f6);
+  outline-offset: 2px;
+}
+
+.tab-btn:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.tab-btn:focus-visible {
+  outline: 2px solid var(--primary, #3b82f6);
+  outline-offset: 2px;
+}
+
+/* Product info trigger button (i button) */
+.product-info-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--space-6);          /* 24px */
+  height: var(--space-6);         /* 24px */
+  border-radius: var(--radius-full, 50%);
+  background: var(--primary, #3b82f6);
+  color: var(--text-on-primary, #ffffff);
+  font-size: var(--text-xs, 0.75rem);
+  font-weight: var(--font-weight-bold, 700);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-base, 0.2s) var(--ease-out, ease-out);
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  z-index: 10;
+  user-select: none;
+}
+
+.product-info-trigger:hover {
+  background: var(--primary-hover, #2563eb);
+  color: var(--text-on-primary, #ffffff);
+  transform: scale(1.1);
+  box-shadow: var(--shadow-md, 0 4px 6px -1px rgba(0, 0, 0, 0.1));
+}
+
+.product-info-trigger:focus {
+  outline: 2px solid var(--primary, #3b82f6);
+  outline-offset: 2px;
+}
+
+.product-info-trigger:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.product-info-trigger:focus-visible {
+  outline: 2px solid var(--primary, #3b82f6);
+  outline-offset: 2px;
+}
+
+.product-info-trigger:active {
+  transform: scale(1.05);
+  transition: transform 0.1s ease-out;
+}
