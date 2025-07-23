@@ -888,3 +888,69 @@
   border-color: var(--primary);
   color: white !important;
 }
+
+/* Dark theme solutions page specific styles */
+[data-theme="dark"] .case-study-section {
+  background: var(--bg-primary);
+}
+
+[data-theme="dark"] .case-study-card {
+  background: rgba(31, 41, 55, 0.8);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+  backdrop-filter: blur(20px);
+}
+
+[data-theme="dark"] .case-study-card:hover {
+  background: rgba(31, 41, 55, 0.95);
+  border-color: var(--primary-300);
+  box-shadow: var(--shadow-xl);
+}
+
+[data-theme="dark"] .case-study-card .card-title {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .case-study-card .card-title a {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+[data-theme="dark"] .case-study-card .card-title a:hover {
+  color: var(--primary-300);
+}
+
+[data-theme="dark"] .case-study-card .card-excerpt {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .case-study-card .card-link {
+  color: var(--primary-300);
+}
+
+[data-theme="dark"] .case-study-card .card-link:hover {
+  color: var(--primary-200);
+}
+
+/* Dark theme no results message */
+[data-theme="dark"] .no-results-message {
+  background: rgba(31, 41, 55, 0.8);
+  border-color: var(--border-color);
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .no-results-message h3 {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .clear-filters-btn {
+  background: var(--bg-tertiary);
+  border-color: var(--border-color);
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .clear-filters-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: var(--error);
+  color: var(--error);
+}
