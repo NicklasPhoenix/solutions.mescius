@@ -95,19 +95,22 @@
   backdrop-filter: blur(20px);
   border: 2px solid var(--border-color);
   border-radius: var(--radius-2xl);
-  padding: var(--space-8);
+  padding: var(--card-content-spacing);
   text-align: center;
   transition: all var(--transition-base) var(--ease-out);
   position: relative;
   overflow: hidden;
   box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  min-height: var(--card-min-height);
 }
 
 .price-card h4 {
   color: var(--text-primary);
   font-size: var(--text-lg);
   font-weight: var(--font-weight-semibold);
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--card-header-spacing);
   line-height: var(--leading-tight);
 }
 
@@ -123,15 +126,16 @@
 .price-card .price-term {
   color: var(--text-muted);
   font-size: var(--text-sm);
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--card-footer-spacing);
   font-weight: var(--font-weight-medium);
 }
 
 .price-card ul {
   list-style: none;
   padding: 0;
-  margin: 0 0 var(--space-6);
+  margin: 0 0 var(--card-button-spacing);
   text-align: left;
+  flex: 1;
 }
 
 .price-card ul li {
@@ -273,8 +277,9 @@
 .pricing-features {
   list-style: none;
   padding: 0;
-  margin: 0 0 var(--space-8);
+  margin: 0 0 var(--card-button-spacing);
   text-align: left;
+  flex: 1;
 }
 
 .pricing-features li {
@@ -721,6 +726,7 @@
   gap: var(--space-2);
   justify-content: center;
   width: 100%;
+  margin-top: auto;
 }
 
 .add-to-cart-btn:hover {

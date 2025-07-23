@@ -321,11 +321,14 @@
   background: var(--bg-primary);
   border-radius: var(--radius-2xl);
   border: 2px solid var(--gray-200);
-  padding: var(--space-8);
+  padding: var(--card-content-spacing);
   text-align: center;
   transition: all var(--transition-base) var(--ease-out);
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: var(--card-min-height);
 }
 
 .pricing-card.featured {
@@ -337,7 +340,7 @@
 .pricing-card.featured::before {
   content: 'Most Popular';
   position: absolute;
-  top: var(--space-4);
+  top: var(--card-header-spacing);
   left: 50%;
   transform: translateX(-50%);
   background: var(--primary);
@@ -371,14 +374,15 @@
 .pricing-period {
   color: var(--text-muted);
   font-size: var(--text-sm);
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--card-footer-spacing);
 }
 
 .pricing-features {
   list-style: none;
   padding: 0;
-  margin: 0 0 var(--space-8);
+  margin: 0 0 var(--card-button-spacing);
   text-align: left;
+  flex: 1;
 }
 
 .pricing-features li {
