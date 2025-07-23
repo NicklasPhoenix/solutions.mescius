@@ -870,9 +870,7 @@
   background: rgba(31, 41, 55, 0.9);
 }
 
-[data-theme="dark"] .price.custom-pricing {
-  color: white;
-}
+
 
 [data-theme="dark"] .hero-cta-button.primary {
   color: white !important;

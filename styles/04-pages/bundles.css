@@ -8,6 +8,11 @@
   margin: var(--space-16) 0;
 }
 
+/* OEM Card Alignment Fix */
+.pricing-card .cta-button {
+  margin-top: auto;
+}
+
 .bundle-card {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
