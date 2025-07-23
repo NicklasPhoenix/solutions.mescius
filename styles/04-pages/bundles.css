@@ -116,8 +116,10 @@
 .price-details {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: var(--space-3);
   margin-bottom: var(--space-2);
+  text-align: center;
 }
 
 .list-price {
@@ -297,6 +299,21 @@
   font-size: var(--text-base);
   font-weight: var(--font-weight-medium);
   transition: all var(--transition-base) var(--ease-out);
+}
+
+/* Hide number input spinners for webkit browsers */
+.quantity-input::-webkit-outer-spin-button,
+.quantity-input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  margin: 0 !important;
+  display: none !important;
+}
+
+/* Hide number input spinners for Firefox */
+.quantity-input[type=number] {
+  -moz-appearance: textfield !important;
+  appearance: textfield !important;
 }
 
 .quantity-input:focus {
