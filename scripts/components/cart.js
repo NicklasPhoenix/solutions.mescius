@@ -67,43 +67,47 @@ class ShoppingCart {
     initializeEventListeners() {
         // Cart toggle button
         if (this.cartToggleBtn) {
-            this.cartToggleBtn.addEventListener('click', () => this.toggleCart());
+            this.cartToggleBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.toggleCart();
+            });
         }
 
-        // Cart close, minimize buttons, and header clicks
+        // Cart close and minimize buttons - use event delegation with higher priority
         document.addEventListener('click', (e) => {
-            // Close button clicked
+            // Close button clicked - handle with highest priority
             if (e.target.id === 'cart-close-btn' || e.target.classList.contains('cart-close')) {
+                e.preventDefault();
                 e.stopPropagation();
+                e.stopImmediatePropagation();
                 this.hideCart();
                 return;
             }
             
             // Minimize button clicked
             if (e.target.id === 'cart-minimize-btn') {
+                e.preventDefault();
                 e.stopPropagation();
+                e.stopImmediatePropagation();
                 this.minimizeCart();
                 return;
             }
-            
-            // Header clicked (but not action buttons)
-            const cartHeader = e.target.closest('.cart-header');
-            if (cartHeader && this.isVisible) {
-                const headerActions = e.target.closest('.cart-header-actions');
-                if (!headerActions) {
-                    e.stopPropagation();
-                    this.toggleMinimize();
-                }
-            }
-        });
+        }, true); // Use capture phase for higher priority
 
-        // Add direct event listener to cart header for more reliable toggling
+        // Cart header click for minimize/expand toggle
         if (this.cartElement) {
             const cartHeader = this.cartElement.querySelector('.cart-header');
             if (cartHeader) {
                 cartHeader.addEventListener('click', (e) => {
-                    // Only toggle if not clicking on action buttons and cart is visible
-                    if (!e.target.closest('.cart-header-actions') && this.isVisible) {
+                    // Don't toggle if clicking on action buttons
+                    if (e.target.closest('.cart-header-actions')) {
+                        return;
+                    }
+                    
+                    // Only toggle if cart is visible
+                    if (this.isVisible) {
+                        e.preventDefault();
                         e.stopPropagation();
                         this.toggleMinimize();
                     }
@@ -121,8 +125,8 @@ class ShoppingCart {
 
         // Close cart when clicking outside
         document.addEventListener('click', (e) => {
-            if (this.isVisible && this.cartElement && 
-                !this.cartElement.contains(e.target) && 
+            if (this.isVisible && this.cartElement &&
+                !this.cartElement.contains(e.target) &&
                 !this.cartToggleBtn?.contains(e.target) &&
                 !this.floatingCartBtn?.contains(e.target) &&
                 !e.target.classList.contains('add-to-cart-btn')) {
@@ -274,17 +278,37 @@ class ShoppingCart {
 
     minimizeCart() {
         if (!this.cartElement) return;
+        
+        console.log('Minimizing cart');
         this.cartElement.classList.add('is-minimized');
+        
+        // Ensure cart remains visible when minimized
+        if (!this.isVisible) {
+            this.isVisible = true;
+            this.cartElement.classList.add('is-open');
+        }
     }
 
     expandCart() {
         if (!this.cartElement) return;
+        
+        console.log('Expanding cart');
         this.cartElement.classList.remove('is-minimized');
+        
+        // Ensure cart is visible when expanded
+        if (!this.isVisible) {
+            this.isVisible = true;
+            this.cartElement.classList.add('is-open');
+        }
     }
 
     toggleMinimize() {
         if (!this.cartElement) return;
-        if (this.cartElement.classList.contains('is-minimized')) {
+        
+        const isMinimized = this.cartElement.classList.contains('is-minimized');
+        console.log('Toggling minimize state. Currently minimized:', isMinimized);
+        
+        if (isMinimized) {
             this.expandCart();
         } else {
             this.minimizeCart();
@@ -362,8 +386,12 @@ class ShoppingCart {
     showCart() {
         if (!this.cartElement) return;
 
+        console.log('Showing cart');
         this.cartElement.classList.add('is-open');
         this.isVisible = true;
+        
+        // Remove minimized state when showing cart
+        this.cartElement.classList.remove('is-minimized');
         
         // Update aria-expanded for accessibility
         if (this.cartToggleBtn) {
@@ -377,7 +405,9 @@ class ShoppingCart {
     hideCart() {
         if (!this.cartElement) return;
 
+        console.log('Hiding cart');
         this.cartElement.classList.remove('is-open');
+        this.cartElement.classList.remove('is-minimized');
         this.isVisible = false;
         
         // Update aria-expanded for accessibility

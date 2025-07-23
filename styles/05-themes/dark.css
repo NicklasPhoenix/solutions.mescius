@@ -447,6 +447,38 @@
   color: var(--text-secondary);
 }
 
+/* Dark theme cart header text */
+[data-theme="dark"] .cart-header h3 {
+  color: var(--text-on-primary);
+}
+
+/* Dark theme cart item details */
+[data-theme="dark"] .cart-item-details h4 {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .item-unit-price {
+  color: var(--text-muted);
+}
+
+/* Dark theme cart item price */
+[data-theme="dark"] .cart-item-price {
+  color: var(--primary-300);
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+/* Dark theme cart total */
+[data-theme="dark"] .cart-total-label {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .cart-total-amount {
+  color: var(--primary-300);
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
 [data-theme="dark"] .cart-footer {
   background: var(--bg-tertiary);
   border-top-color: var(--border-color);
@@ -454,6 +486,26 @@
 
 [data-theme="dark"] .cart-total {
   color: var(--primary);
+}
+
+/* Dark theme cart buttons */
+[data-theme="dark"] .cta-button {
+  background: linear-gradient(135deg, var(--primary-300) 0%, var(--primary-400) 100%);
+  color: var(--text-on-primary);
+  border: none;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+[data-theme="dark"] .cta-button:hover:not(.is-disabled) {
+  background: linear-gradient(135deg, var(--primary-200) 0%, var(--primary-300) 100%);
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.5);
+}
+
+[data-theme="dark"] .cta-button.is-disabled {
+  background: var(--bg-quaternary);
+  color: var(--text-muted);
+  box-shadow: none;
+  cursor: not-allowed;
 }
 
 /* Dark theme filter toolbar */

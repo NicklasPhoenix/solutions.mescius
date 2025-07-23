@@ -317,6 +317,61 @@
   gap: var(--space-3);
 }
 
+/* CTA button base styles for cart checkout */
+.cta-button {
+  width: 100%;
+  padding: var(--space-4) var(--space-6);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-600) 100%);
+  color: var(--text-on-primary);
+  border: none;
+  border-radius: var(--radius-xl);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: all var(--transition-base) var(--ease-out);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 48px;
+  text-decoration: none;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.cta-button:hover:not(.is-disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
+  background: linear-gradient(135deg, var(--primary-hover) 0%, var(--primary-700) 100%);
+}
+
+.cta-button:active:not(.is-disabled) {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.cta-button.is-disabled {
+  background: var(--bg-tertiary);
+  color: var(--text-muted);
+  cursor: not-allowed;
+  box-shadow: none;
+  opacity: 0.6;
+}
+
+.cta-button.is-disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
 /* Checkout and proceed buttons with proper theme contrast */
 .checkout-btn,
 .proceed-btn {
@@ -399,6 +454,8 @@
 /* Minimized state */
 #floating-cart.is-minimized {
   width: auto;
+  min-width: 200px;
+  max-width: 280px;
   height: auto;
   max-height: none;
 }
@@ -412,6 +469,14 @@
   cursor: pointer;
   border-radius: var(--radius-2xl);
   padding: var(--space-4) var(--space-5);
+  overflow: hidden;
+}
+
+#floating-cart.is-minimized .cart-header h3 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
 }
 
 #floating-cart.is-minimized .cart-header:hover {
@@ -504,6 +569,16 @@
     width: calc(100vw - 2 * var(--space-4));
     right: var(--space-4);
     max-height: 70vh;
+  }
+  
+  #floating-cart.is-minimized {
+    min-width: 160px;
+    max-width: 240px;
+  }
+  
+  #floating-cart.is-minimized .cart-header h3 {
+    max-width: 120px;
+    font-size: var(--text-base);
   }
   
   .cart-items {
