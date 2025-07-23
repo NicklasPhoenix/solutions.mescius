@@ -237,6 +237,22 @@
   transform: translateY(-4px);
 }
 
+/* Hero CTA button without modifiers (used on bundles page) */
+[data-theme="dark"] .hero-cta-button {
+  background: linear-gradient(135deg, var(--primary-300) 0%, var(--primary-400) 100%);
+  color: white !important;
+  box-shadow: 0 4px 14px 0 rgba(96, 165, 250, 0.4);
+  border: 1px solid var(--primary-200);
+}
+
+[data-theme="dark"] .hero-cta-button:hover {
+  background: linear-gradient(135deg, var(--primary-200) 0%, var(--primary-300) 100%);
+  color: white !important;
+  box-shadow: 0 8px 25px 0 rgba(96, 165, 250, 0.5);
+  transform: translateY(-4px);
+  border-color: var(--primary-100);
+}
+
 [data-theme="dark"] .card,
 [data-theme="dark"] .product-card,
 [data-theme="dark"] .feature-card,
