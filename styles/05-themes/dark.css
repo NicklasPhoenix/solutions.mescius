@@ -149,7 +149,7 @@
 
 /* Dark theme footer link hover fix */
 [data-theme="dark"] .footer-links a:hover {
-  color: var(--primary-300);
+  color: var(--text-hover);
 }
 
 [data-theme="dark"] .hero-section {
