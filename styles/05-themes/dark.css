@@ -449,7 +449,7 @@
 
 /* Dark theme cart header text */
 [data-theme="dark"] .cart-header h3 {
-  color: var(--text-on-primary);
+  color: white;
 }
 
 /* Dark theme cart item details */
@@ -701,4 +701,25 @@
 [data-theme="dark"] .step-content {
   background: var(--bg-secondary);
   border-color: var(--border-color);
+}
+
+/* Dark theme bundles page specific overrides */
+[data-theme="dark"] .price-container {
+  background: rgba(31, 41, 55, 0.8);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .price-container:hover {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .discount-calculator {
+  background: rgba(31, 41, 55, 0.8);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .discount-calculator:hover {
+  color: var(--text-primary);
 }
