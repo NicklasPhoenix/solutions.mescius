@@ -109,7 +109,7 @@
 
 .challenge-solution-section {
   padding: var(--space-32) 0;
-  background: var(--bg-secondary);
+  background: var(--bg-flow-light);
 }
 
 .challenge-solution-grid {
@@ -230,7 +230,7 @@
 
 .metrics-dashboard-section {
   padding: var(--space-32) 0;
-  background: var(--bg-primary);
+  background: var(--bg-flow-subtle);
 }
 
 .metrics-dashboard {
@@ -408,7 +408,7 @@
 
 .implementation-pathway-section {
   padding: var(--space-32) 0;
-  background: var(--bg-secondary);
+  background: var(--bg-flow-medium);
 }
 
 .implementation-pathway {
@@ -515,7 +515,7 @@
 
 .product-stack-section {
   padding: var(--space-32) 0;
-  background: var(--bg-primary);
+  background: var(--bg-flow-reverse);
 }
 
 .product-stack-grid {
@@ -651,7 +651,7 @@
 
 .progressive-tabs-section {
   padding: var(--space-32) 0;
-  background: var(--bg-secondary);
+  background: var(--bg-flow-subtle);
 }
 
 .progressive-tabs {
@@ -773,7 +773,7 @@
 
 .progressive-disclosure-section {
   padding: var(--space-32) 0;
-  background: var(--bg-primary);
+  background: var(--bg-flow-light);
 }
 
 .disclosure-container {
@@ -1037,7 +1037,7 @@
 
 .success-validation-section {
   padding: var(--space-32) 0;
-  background: var(--bg-primary);
+  background: var(--bg-flow-medium);
 }
 
 .validation-grid {
