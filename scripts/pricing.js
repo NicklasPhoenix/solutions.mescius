@@ -38,7 +38,7 @@ function initializeCart() {
 function initializeFloatingFilter() {
     if (typeof FloatingFilter !== 'undefined') {
         const filterConfig = {
-            containerId: 'floating-filter',
+            containerId: 'pricing-floating-filter',
             targetGridId: 'pricing-content',
             filters: [
                 {
@@ -48,8 +48,7 @@ function initializeFloatingFilter() {
                     options: [
                         { value: 'all', label: 'All Platforms', icon: 'fas fa-globe' },
                         { value: 'net', label: '.NET Framework', icon: 'fab fa-microsoft' },
-                        { value: 'web', label: 'Web / JavaScript', icon: 'fab fa-js-square' },
-                        { value: 'mobile', label: 'Mobile Apps', icon: 'fas fa-mobile-alt' }
+                        { value: 'js', label: 'Web / JavaScript', icon: 'fab fa-js-square' }
                     ]
                 },
                 {
@@ -61,8 +60,10 @@ function initializeFloatingFilter() {
                         { value: 'spreadjs', label: 'SpreadJS', icon: 'fas fa-table' },
                         { value: 'wijmo', label: 'Wijmo', icon: 'fas fa-chart-area' },
                         { value: 'componentone', label: 'ComponentOne', icon: 'fas fa-cube' },
-                        { value: 'documents', label: 'Documents API', icon: 'fas fa-file-alt' },
-                        { value: 'activereports', label: 'ActiveReports', icon: 'fas fa-chart-bar' }
+                        { value: 'spread-net', label: 'Spread.NET', icon: 'fas fa-table' },
+                        { value: 'activereports-js', label: 'ActiveReportsJS', icon: 'fas fa-chart-bar' },
+                        { value: 'activereports-net', label: 'ActiveReports.NET', icon: 'fas fa-chart-bar' },
+                        { value: 'document-solutions', label: 'Document Solutions', icon: 'fas fa-file-alt' }
                     ]
                 }
             ],

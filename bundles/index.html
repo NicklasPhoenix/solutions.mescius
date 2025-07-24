@@ -46,11 +46,53 @@
     
     <link rel="stylesheet" href="../styles/main.css?v=2025070403">
     
+    <!-- Immediate theme styling to prevent flash -->
+    <style>
+        /* Prevent theme flash by setting immediate background colors */
+        html, body {
+            margin: 0;
+            padding: 0;
+            background-color: #FFFFFF;
+            color: #1F2937;
+            transition: background-color 0.2s ease-out, color 0.2s ease-out;
+        }
+        
+        /* Dark theme immediate styling */
+        html[data-theme="dark"], 
+        html[data-theme="dark"] body {
+            background-color: #111827;
+            color: #F9FAFB;
+        }
+        
+        /* Loading state styling */
+        body:not(.page-ready) {
+            overflow: hidden;
+        }
+    </style>
+    
     <!-- Theme initialization script to prevent flash -->
     <script>
         (function() {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            document.documentElement.setAttribute('data-theme', savedTheme);
+            // Get saved theme - only 'dark' is stored, default (no attribute) is light
+            const savedTheme = localStorage.getItem('theme');
+            
+            // Apply saved theme immediately - only set attribute for dark mode
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                // For light mode, remove any theme attribute to use default styles
+                document.documentElement.removeAttribute('data-theme');
+            }
+            
+            // Respect system preference only if no saved theme
+            if (!savedTheme) {
+                const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+                if (mediaQuery.matches) {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                } else {
+                    document.documentElement.removeAttribute('data-theme');
+                }
+            }
         })();
     </script>
     
@@ -60,7 +102,7 @@
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "Mescius Developer Tool Bundles",
-    "image": "https://solutions.mescius.eu/logos/Universal-Subscription.png",
+    "image": "https://solutions.mescius.eu/logos/C1_prod_logo_ICON_2023.svg",
     "description": "Comprehensive developer tool bundles for .NET and JavaScript, featuring UI components, reporting tools, and document automation.",
     "brand": {
         "@type": "Brand",
@@ -598,7 +640,7 @@
     {
       "@type": "Product",
       "name": ".NET Professional Suite",
-      "image": "https://solutions.mescius.eu/logos/NET-Suite.png",
+      "image": "https://solutions.mescius.eu/logos/C1_prod_logo_ICON_2023.svg",
       "description": "The complete toolkit for professional .NET desktop and web developers, including ComponentOne Studio, Wijmo Enterprise, ActiveReports.NET, and Spread.NET.",
       "sku": "285847",
       "offers": {
@@ -613,7 +655,7 @@
     {
       "@type": "Product",
       "name": "SpreadJS + Documents Bundle",
-      "image": "https://solutions.mescius.eu/logos/SpreadJS-Documents.png",
+      "image": "https://solutions.mescius.eu/logos/SP_prod_logo_ICON_2023.svg",
       "description": "The essential toolkit for web-based financial reporting and spreadsheet applications, combining SpreadJS and Documents for Excel (JS).",
       "sku": "285849",
       "offers": {
@@ -628,7 +670,7 @@
     {
       "@type": "Product",
       "name": "Spread.NET + Documents Bundle",
-      "image": "https://solutions.mescius.eu/logos/Spread.NET-Documents.png",
+      "image": "https://solutions.mescius.eu/logos/SP_prod_logo_ICON_2023.svg",
       "description": "The essential toolkit for .NET desktop financial reporting and spreadsheet applications, combining Spread.NET and Documents for Excel (.NET).",
       "sku": "285851",
       "offers": {
@@ -643,7 +685,7 @@
     {
       "@type": "Product",
       "name": "Real-Time Analytics & Reporting Bundle",
-      "image": "https://solutions.mescius.eu/logos/Real-Time-Analytics-Reporting-Bundle.png",
+      "image": "https://solutions.mescius.eu/logos/AR_prod_logo_ICON_2023.svg",
       "description": "A powerful suite for embedding analytics and reporting into your .NET applications, including ActiveReportsJS Deployment License and Wijmo Enterprise.",
       "sku": "285868",
       "offers": {
@@ -658,7 +700,7 @@
     {
       "@type": "Product",
       "name": "Automated Reporting & Document Generation Bundle",
-      "image": "https://solutions.mescius.eu/logos/Automated-Reporting-Document-Generation-Bundle.png",
+      "image": "https://solutions.mescius.eu/logos/AR_prod_logo_ICON_2023.svg",
       "description": "Generate complex reports and Excel documents on the server-side, with ActiveReports.NET Standard and Documents for Excel (.NET).",
       "sku": "285867",
       "offers": {
@@ -673,7 +715,7 @@
     {
       "@type": "Product",
       "name": "Blazor Hybrid Power Pack",
-      "image": "https://solutions.mescius.eu/logos/Blazor-Hybrid-Power-Pack.png",
+      "image": "https://solutions.mescius.eu/logos/C1_prod_logo_ICON_2023.svg",
       "description": "Everything you need for building data-centric Blazor Hybrid applications, including ComponentOne Studio, Wijmo Enterprise, and Documents for Excel (.NET).",
       "sku": "285848",
       "offers": {
@@ -688,7 +730,7 @@
     {
       "@type": "Product",
       "name": "OEM & SaaS Distribution License",
-      "image": "https://solutions.mescius.eu/logos/OEM-SaaS.png",
+      "image": "https://solutions.mescius.eu/logos/C1_prod_logo_ICON_2023.svg",
       "description": "A general custom license for distributing any Mescius components in your commercial software, with volume & revenue-share models available.",
       "offers": {
         "@type": "Offer",
@@ -702,7 +744,7 @@
     {
       "@type": "Product",
       "name": "SpreadJS SaaS & OEM Edition",
-      "image": "https://solutions.mescius.eu/logos/SpreadJS-SaaS-OEM-Edition.png",
+      "image": "https://solutions.mescius.eu/logos/SP_prod_logo_ICON_2023.svg",
       "description": "Deliver high-fidelity, Excel-like spreadsheet experiences in your commercial apps with this comprehensive SpreadJS edition including various add-ons.",
       "offers": {
         "@type": "Offer",
@@ -716,7 +758,7 @@
     {
       "@type": "Product",
       "name": "Small Team Universal Bundle (1-5 Devs)",
-      "image": "https://solutions.mescius.eu/logos/Universal-Subscription.png",
+      "image": "https://solutions.mescius.eu/logos/C1_prod_logo_ICON_2023.svg",
       "description": "Full access to all Mescius .NET & JavaScript products, reporting, and document APIs for teams of up to 5 developers, with centralized license management.",
       "offers": {
         "@type": "Offer",
@@ -730,7 +772,7 @@
     {
       "@type": "Product",
       "name": "Business Universal Bundle (5-10 Devs)",
-      "image": "https://solutions.mescius.eu/logos/Universal-Subscription.png",
+      "image": "https://solutions.mescius.eu/logos/C1_prod_logo_ICON_2023.svg",
       "description": "The best value Universal Bundle for growing teams needing the full Mescius toolset for up to 10 developers, including priority support.",
       "offers": {
         "@type": "Offer",
@@ -744,7 +786,7 @@
     {
       "@type": "Product",
       "name": "Enterprise Universal Bundle (10+ Devs)",
-      "image": "https://solutions.mescius.eu/logos/Universal-Subscription.png",
+      "image": "https://solutions.mescius.eu/logos/C1_prod_logo_ICON_2023.svg",
       "description": "A custom-built Universal subscription for large organizations with 10+ developers, offering company-wide site licenses, unlimited deployments, source code, and premium support.",
       "offers": {
         "@type": "Offer",
