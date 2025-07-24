@@ -52,10 +52,16 @@
   
   /* BACKGROUND SYSTEM */
   --bg-primary: #FFFFFF;
-  --bg-secondary: #F9FAFB;
-  --bg-tertiary: #F3F4F6;
-  --bg-quaternary: #E5E7EB;
+  --bg-secondary: #FBFCFD;
+  --bg-tertiary: #F7F8FA;
+  --bg-quaternary: #F2F3F6;
   --bg-overlay: rgba(0, 0, 0, 0.5);
+  
+  /* BACKGROUND FLOW GRADIENTS FOR SMOOTH TRANSITIONS */
+  --bg-flow-light: linear-gradient(180deg, #FFFFFF 0%, #FBFCFD 100%);
+  --bg-flow-subtle: linear-gradient(180deg, #FBFCFD 0%, #F7F8FA 100%);
+  --bg-flow-medium: linear-gradient(180deg, #F7F8FA 0%, #F2F3F6 100%);
+  --bg-flow-reverse: linear-gradient(180deg, #F2F3F6 0%, #F7F8FA 100%);
   
   /* STATUS COLORS */
   --success: #22C55E;
