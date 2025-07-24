@@ -1050,3 +1050,65 @@
   border-color: var(--error);
   color: var(--error);
 }
+
+/* Dark theme newsletter modal styles */
+[data-theme="dark"] .modal {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+[data-theme="dark"] .modal-content {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .modal-content h4 {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .modal-content p {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .modal-close-btn {
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .modal-close-btn:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .newsletter-iframe {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+}
+
+/* Dark theme modal overlay and container styles */
+[data-theme="dark"] .modal-overlay {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+[data-theme="dark"] .modal-container {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .modal-header {
+  background: var(--bg-secondary);
+  border-bottom-color: var(--border-color);
+}
+
+[data-theme="dark"] .modal-title {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .modal-body {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .modal-footer {
+  background: var(--bg-secondary);
+  border-top-color: var(--border-color);
+}
