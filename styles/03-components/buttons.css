@@ -324,7 +324,7 @@
 
 .hero-cta-button.primary:active {
   transform: translateY(-2px);
-  transition: transform 0.15s ease-out;
+  transition: transform var(--transition-hover-subtle) var(--ease-hover-gentle);
 }
 
 .hero-cta-button.secondary {
@@ -344,7 +344,7 @@
 
 .hero-cta-button.secondary:active {
   transform: translateY(-2px);
-  transition: transform 0.15s ease-out;
+  transition: transform var(--transition-hover-subtle) var(--ease-hover-gentle);
 }
 
 /* Contact button */
@@ -501,5 +501,5 @@
 
 .product-info-trigger:active {
   transform: scale(1.05);
-  transition: transform 0.1s ease-out;
+  transition: transform var(--transition-hover-scale) var(--ease-hover-scale);
 }

@@ -354,7 +354,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all var(--transition-base) var(--ease-out);
+  transition: all var(--transition-hover-scale) var(--ease-hover-scale);
 }
 
 .search-button:hover {
