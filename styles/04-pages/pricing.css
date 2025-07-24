@@ -141,10 +141,15 @@
 }
 
 .price-card .price-term {
-  color: var(--text-muted);
-  font-size: var(--text-base);
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
   margin-bottom: var(--card-footer-spacing);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+  line-height: var(--leading-relaxed);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  margin-top: var(--space-1);
 }
 
 .price-card ul {
