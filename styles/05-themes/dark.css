@@ -894,6 +894,103 @@
   background: var(--bg-primary);
 }
 
+/* Dark theme solutions page specific styles */
+[data-theme="dark"] .case-study-section {
+  background: var(--bg-primary);
+}
+
+/* Dark theme recommended solutions section */
+[data-theme="dark"] .recommended-solutions-section {
+  background: 
+    linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(34, 197, 94, 0.05) 100%),
+    var(--bg-primary);
+}
+
+[data-theme="dark"] .recommended-solutions-section::before {
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(34, 197, 94, 0.1) 0%, transparent 50%);
+}
+
+[data-theme="dark"] .recommended-solution-card {
+  background: rgba(31, 41, 55, 0.9);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+  backdrop-filter: blur(20px);
+}
+
+[data-theme="dark"] .recommended-solution-card:hover {
+  background: rgba(31, 41, 55, 0.95);
+  border-color: var(--primary-300);
+  box-shadow: 
+    0 25px 50px -12px rgba(59, 130, 246, 0.3),
+    0 0 0 1px rgba(59, 130, 246, 0.2);
+}
+
+[data-theme="dark"] .recommended-solution-card.featured {
+  background: rgba(31, 41, 55, 0.95);
+  border-color: var(--primary-300);
+  box-shadow: 
+    0 20px 25px -5px rgba(59, 130, 246, 0.2),
+    0 10px 10px -5px rgba(59, 130, 246, 0.1);
+}
+
+[data-theme="dark"] .recommended-solution-card.featured:hover {
+  box-shadow: 
+    0 32px 64px -12px rgba(59, 130, 246, 0.4),
+    0 0 0 1px rgba(59, 130, 246, 0.3);
+}
+
+[data-theme="dark"] .recommended-solution-card .card-title {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .recommended-solution-card .card-title a {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .recommended-solution-card:hover .card-title a {
+  color: var(--primary-300);
+}
+
+[data-theme="dark"] .recommended-solution-card .card-excerpt {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .benefit-tag {
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--primary-300);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+[data-theme="dark"] .recommended-solution-card:hover .benefit-tag {
+  background: rgba(59, 130, 246, 0.25);
+  border-color: rgba(59, 130, 246, 0.4);
+}
+
+[data-theme="dark"] .card-link-enhanced {
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--primary-300);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+[data-theme="dark"] .card-link-enhanced:hover {
+  background: var(--primary-300);
+  color: var(--text-on-primary);
+  border-color: var(--primary-300);
+}
+
+[data-theme="dark"] .view-all-solutions-btn {
+  color: var(--primary-300);
+  border-color: var(--primary-300);
+}
+
+[data-theme="dark"] .view-all-solutions-btn:hover {
+  background: var(--primary-300);
+  color: var(--text-on-primary);
+  border-color: var(--primary-300);
+}
+
 [data-theme="dark"] .case-study-card {
   background: rgba(31, 41, 55, 0.8);
   border-color: var(--border-color);
