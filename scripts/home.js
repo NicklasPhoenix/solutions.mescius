@@ -50,8 +50,29 @@ const productData = {
 document.addEventListener('DOMContentLoaded', function() {
     initializeProductTabs();
     initializeStatsAnimation();
-    initializeHeroAnimations();
     initializePillarsAnimation();
+    
+    // Wait for page ready signal before starting hero animations
+    if (document.body.classList.contains('page-ready')) {
+        initializeHeroAnimations();
+    } else {
+        // Listen for page ready event
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'attributes' && 
+                    mutation.attributeName === 'class' &&
+                    document.body.classList.contains('page-ready')) {
+                    initializeHeroAnimations();
+                    observer.disconnect();
+                }
+            });
+        });
+        
+        observer.observe(document.body, {
+            attributes: true,
+            attributeFilter: ['class']
+        });
+    }
 });
 
 /**
@@ -196,49 +217,47 @@ function initializeHeroAnimations() {
     const heroSubtitle = document.querySelector('.hero-subtitle');
     const heroButtons = document.querySelectorAll('.hero-cta-button');
 
-    // Start animations after a brief delay to ensure page is stable
-    setTimeout(() => {
-        // Stagger animations for hero elements
-        if (heroTitle) {
-            heroTitle.style.opacity = '0';
-            heroTitle.style.transform = 'translateY(30px)';
-            
-            setTimeout(() => {
-                heroTitle.style.transition = 'all 0.8s ease-out';
-                heroTitle.style.opacity = '1';
-                heroTitle.style.transform = 'translateY(0)';
-            }, 200);
-        }
+    // Start animations immediately since page is already ready
+    // Stagger animations for hero elements
+    if (heroTitle) {
+        heroTitle.style.opacity = '0';
+        heroTitle.style.transform = 'translateY(30px)';
+        
+        setTimeout(() => {
+            heroTitle.style.transition = 'all 0.8s ease-out';
+            heroTitle.style.opacity = '1';
+            heroTitle.style.transform = 'translateY(0)';
+        }, 100);
+    }
 
-        if (heroSubtitle) {
-            heroSubtitle.style.opacity = '0';
-            heroSubtitle.style.transform = 'translateY(30px)';
-            
-            setTimeout(() => {
-                heroSubtitle.style.transition = 'all 0.8s ease-out';
-                heroSubtitle.style.opacity = '1';
-                heroSubtitle.style.transform = 'translateY(0)';
-            }, 400);
-        }
+    if (heroSubtitle) {
+        heroSubtitle.style.opacity = '0';
+        heroSubtitle.style.transform = 'translateY(30px)';
+        
+        setTimeout(() => {
+            heroSubtitle.style.transition = 'all 0.8s ease-out';
+            heroSubtitle.style.opacity = '1';
+            heroSubtitle.style.transform = 'translateY(0)';
+        }, 200);
+    }
 
-        heroButtons.forEach((button, index) => {
-            button.style.opacity = '0';
-            button.style.transform = 'translateY(30px)';
-            
-            setTimeout(() => {
-                button.style.transition = 'all 0.8s ease-out';
-                button.style.opacity = '1';
-                button.style.transform = 'translateY(0)';
-            }, 600 + (index * 100));
-        });
+    heroButtons.forEach((button, index) => {
+        button.style.opacity = '0';
+        button.style.transform = 'translateY(30px)';
+        
+        setTimeout(() => {
+            button.style.transition = 'all 0.8s ease-out';
+            button.style.opacity = '1';
+            button.style.transform = 'translateY(0)';
+        }, 300 + (index * 100));
+    });
 
-        // Add floating animation to hero elements
-        if (heroTitle) {
-            setTimeout(() => {
-                heroTitle.classList.add('animate-float');
-            }, 1000);
-        }
-    }, 500); // Wait 500ms after DOM ready
+    // Add floating animation to hero elements after main animation completes
+    if (heroTitle) {
+        setTimeout(() => {
+            heroTitle.classList.add('animate-float');
+        }, 800);
+    }
 }
 
 /**

@@ -47,12 +47,90 @@
     <!-- Theme initialization script to prevent flash -->
     <script>
         (function() {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            document.documentElement.setAttribute('data-theme', savedTheme);
+            // Get saved theme - only 'dark' is stored, default (no attribute) is light
+            const savedTheme = localStorage.getItem('theme');
+            
+            // Apply saved theme immediately - only set attribute for dark mode
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                // For light mode, remove any theme attribute to use default styles
+                document.documentElement.removeAttribute('data-theme');
+            }
+            
+            // Respect system preference only if no saved theme
+            if (!savedTheme) {
+                const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+                if (mediaQuery.matches) {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                } else {
+                    document.documentElement.removeAttribute('data-theme');
+                }
+            }
         })();
     </script>
+    
+    <!-- Page loading state CSS -->
+    <style>
+        /* Page loading overlay to prevent FOUC and theme flash */
+        .page-loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-primary, #ffffff);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.3s ease-out;
+        }
+        
+        .page-loading.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .page-loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--gray-300, #e5e7eb);
+            border-top: 3px solid var(--primary, #2E5984);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Hide main content initially to prevent flash */
+        body:not(.page-ready) main {
+            opacity: 0;
+            transition: opacity 0.3s ease-out;
+        }
+        
+        body.page-ready main {
+            opacity: 1;
+        }
+        
+        /* Ensure theme transitions are smooth */
+        html {
+            transition: background-color 0.2s ease-out;
+        }
+        
+        body {
+            transition: background-color 0.2s ease-out, color 0.2s ease-out;
+        }
+    </style>
 </head>
 <body>
+    <!-- Page loading overlay -->
+    <div class="page-loading" id="page-loading">
+        <div class="page-loading-spinner"></div>
+    </div>
 
     <header class="header">
         <div class="container header-content">
