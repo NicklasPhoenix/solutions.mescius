@@ -1056,16 +1056,7 @@
   overflow: hidden;
 }
 
-.validation-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--success);
-  border-radius: var(--radius-full) var(--radius-full) 0 0;
-}
+
 
 .validation-card:hover {
   transform: translateY(-4px);
