@@ -319,7 +319,7 @@
 .modal {
   display: none;
   position: fixed;
-  z-index: 2000;
+  z-index: 10000;
   left: 0;
   top: 0;
   width: 100%;
@@ -345,7 +345,7 @@
 }
 
 .modal-content {
-  background: var(--bg-primary, white);
+  background: var(--bg-primary);
   margin: var(--space-4);
   padding: var(--space-8);
   border-radius: var(--radius-2xl);
@@ -409,7 +409,7 @@
 .modal-overlay {
   display: none;
   position: fixed;
-  z-index: 2000;
+  z-index: 10000;
   left: 0;
   top: 0;
   width: 100%;
