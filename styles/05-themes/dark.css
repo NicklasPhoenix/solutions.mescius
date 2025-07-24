@@ -309,6 +309,14 @@
   border-color: var(--border-color);
 }
 
+[data-theme="dark"] .stat-number {
+  color: var(--primary-300);
+}
+
+[data-theme="dark"] .stat-label {
+  color: var(--text-secondary);
+}
+
 [data-theme="dark"] .challenge-card {
   background: rgba(31, 41, 55, 0.4);
   border-color: rgba(75, 85, 99, 0.3);
