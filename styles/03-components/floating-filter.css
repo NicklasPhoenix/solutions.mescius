@@ -327,7 +327,7 @@
   border-color: rgba(55, 65, 81, 0.3);
 }
 
-[data-theme="dark"] .filter-header {
+[data-theme="dark"] .floating-filter-header {
   background: rgba(31, 41, 55, 0.8);
   border-color: rgba(55, 65, 81, 0.3);
 }
@@ -377,11 +377,11 @@
     border-radius: var(--radius-full);
   }
 
-  .filter-header {
+  .floating-filter-header {
     padding: var(--space-4) var(--space-6);
   }
 
-  .filter-content {
+  .floating-filter-content {
     max-height: calc(70vh - 80px);
   }
 
@@ -410,7 +410,7 @@
     max-height: 80vh;
   }
 
-  .filter-content {
+  .floating-filter-content {
     max-height: calc(80vh - 80px);
   }
 
@@ -517,7 +517,7 @@
 }
 
 /* Smooth transitions for filter state changes */
-.floating-filter.is-open .filter-content {
+.floating-filter.is-open .floating-filter-content {
   animation: filterContentSlideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 

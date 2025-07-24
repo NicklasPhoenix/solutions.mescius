@@ -670,6 +670,25 @@
   gap: var(--space-4);
 }
 
+.product-title-section {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.product-logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.product-title {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  margin: 0;
+}
+
 .product-info-trigger {
   background: var(--gray-100);
   border: none;

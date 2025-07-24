@@ -39,41 +39,49 @@ class FloatingFilter {
     }
     
     createFloatingFilter() {
-        // Remove existing filter if present
-        const existingFilter = document.getElementById(this.config.containerId);
-        if (existingFilter) {
-            existingFilter.remove();
-        }
-        
-        // Create filter HTML
-        const filterHTML = `
-            <div id="${this.config.containerId}" class="floating-filter is-collapsed">
-                <div class="filter-header">
-                    <h3>Filters</h3>
-                    <button class="filter-toggle" aria-label="Toggle filters">
-                        <i class="fas fa-filter"></i>
-                    </button>
-                </div>
-                <div class="filter-content">
-                    ${this.renderFilterSections()}
-                </div>
-                <div class="filter-clear">
-                    <button class="filter-clear-btn" disabled>Clear All Filters</button>
-                </div>
-                <div class="active-filters-badge" style="display: none;">0</div>
-            </div>
-        `;
-        
-        // Insert into DOM
-        document.body.insertAdjacentHTML('beforeend', filterHTML);
-        
-        // Store references with validation
+        // Store references to existing DOM elements with correct class names
         this.filterElement = document.getElementById(this.config.containerId);
-        this.toggleBtn = this.filterElement?.querySelector('.filter-toggle');
-        this.clearBtn = this.filterElement?.querySelector('.filter-clear-btn');
+        this.toggleBtn = this.filterElement?.querySelector('.floating-filter-toggle');
+        this.clearBtn = this.filterElement?.querySelector('.floating-filter-clear');
         this.badge = this.filterElement?.querySelector('.active-filters-badge');
         
-        console.log('[FloatingFilter] DOM elements created and referenced', {
+        // If filter element doesn't exist, create it with proper class names
+        if (!this.filterElement) {
+            const filterHTML = `
+                <div id="${this.config.containerId}" class="floating-filter is-collapsed">
+                    <div class="floating-filter-header">
+                        <h3>Filters</h3>
+                        <button class="floating-filter-toggle" aria-label="Toggle filters">
+                            <i class="fas fa-filter"></i>
+                        </button>
+                    </div>
+                    <div class="floating-filter-content">
+                        ${this.renderFilterSections()}
+                    </div>
+                    <div class="floating-filter-actions">
+                        <button class="floating-filter-clear" disabled>Clear All Filters</button>
+                    </div>
+                    <div class="active-filters-badge" style="display: none;">0</div>
+                </div>
+            `;
+            
+            // Insert into DOM
+            document.body.insertAdjacentHTML('beforeend', filterHTML);
+            
+            // Re-store references
+            this.filterElement = document.getElementById(this.config.containerId);
+            this.toggleBtn = this.filterElement?.querySelector('.floating-filter-toggle');
+            this.clearBtn = this.filterElement?.querySelector('.floating-filter-clear');
+            this.badge = this.filterElement?.querySelector('.active-filters-badge');
+        } else {
+            // Update existing content if needed
+            const contentElement = this.filterElement.querySelector('.floating-filter-content');
+            if (contentElement && this.config.filters.length > 0) {
+                contentElement.innerHTML = this.renderFilterSections();
+            }
+        }
+        
+        console.log('[FloatingFilter] DOM elements referenced', {
             timestamp: new Date().toISOString(),
             filterElement: !!this.filterElement,
             toggleBtn: !!this.toggleBtn,
@@ -90,26 +98,26 @@ class FloatingFilter {
             const options = section.options.map(option => {
                 const isActive = this.activeFilters[section.type] === option.value;
                 return `
-                    <button class="filter-option ${isActive ? 'active' : ''}"
+                    <button class="floating-filter-option ${isActive ? 'active' : ''}"
                             data-filter="${option.value}"
                             data-section="${section.type}"
                             aria-pressed="${isActive}">
-                        <span class="filter-option-icon">
+                        <span class="floating-filter-option-icon">
                             <i class="${option.icon || 'fas fa-circle'}"></i>
                         </span>
-                        <span class="filter-option-text">${option.label}</span>
-                        ${isActive ? '<i class="filter-option-check fas fa-check"></i>' : ''}
+                        <span class="floating-filter-option-text">${option.label}</span>
+                        ${isActive ? '<i class="floating-filter-option-check fas fa-check"></i>' : ''}
                     </button>
                 `;
             }).join('');
             
             return `
-                <div class="filter-section" data-filter-type="${section.type}">
-                    <h4 class="filter-section-title">
+                <div class="floating-filter-section" data-filter-type="${section.type}">
+                    <h4 class="floating-filter-section-title">
                         <i class="${section.icon || 'fas fa-filter'}"></i>
                         ${section.title}
                     </h4>
-                    <div class="filter-options-grid">
+                    <div class="floating-filter-options">
                         ${options}
                     </div>
                 </div>
@@ -118,6 +126,17 @@ class FloatingFilter {
     }
     
     setupEventListeners() {
+        // Check if required elements exist before adding listeners
+        if (!this.toggleBtn) {
+            console.error('[FloatingFilter] Toggle button not found. Cannot setup event listeners.');
+            return;
+        }
+        
+        if (!this.clearBtn) {
+            console.error('[FloatingFilter] Clear button not found. Cannot setup event listeners.');
+            return;
+        }
+        
         // Toggle button with enhanced debugging
         this.toggleBtn.addEventListener('click', (e) => {
             console.log('[FloatingFilter] Toggle button clicked', {
@@ -140,26 +159,28 @@ class FloatingFilter {
         });
         
         // Add additional click debugging for the entire filter element
-        this.filterElement.addEventListener('click', (e) => {
-            if (e.target.closest('.filter-toggle')) {
-                console.log('[FloatingFilter] Click detected on toggle area', {
-                    timestamp: new Date().toISOString(),
-                    clickX: e.clientX,
-                    clickY: e.clientY,
-                    target: e.target,
-                    toggleBounds: this.toggleBtn?.getBoundingClientRect(),
-                    computedStyle: window.getComputedStyle(this.toggleBtn || {})
-                });
-            }
-        });
-        
-        // Filter options - use event delegation for better performance
-        this.filterElement.addEventListener('click', (e) => {
-            const filterOption = e.target.closest('.filter-option');
-            if (filterOption) {
-                this.handleFilterClick(filterOption);
-            }
-        });
+        if (this.filterElement) {
+            this.filterElement.addEventListener('click', (e) => {
+                if (e.target.closest('.floating-filter-toggle')) {
+                    console.log('[FloatingFilter] Click detected on toggle area', {
+                        timestamp: new Date().toISOString(),
+                        clickX: e.clientX,
+                        clickY: e.clientY,
+                        target: e.target,
+                        toggleBounds: this.toggleBtn?.getBoundingClientRect(),
+                        computedStyle: window.getComputedStyle(this.toggleBtn || {})
+                    });
+                }
+            });
+            
+            // Filter options - use event delegation for better performance
+            this.filterElement.addEventListener('click', (e) => {
+                const filterOption = e.target.closest('.floating-filter-option');
+                if (filterOption) {
+                    this.handleFilterClick(filterOption);
+                }
+            });
+        }
         
         // Clear filters button
         this.clearBtn.addEventListener('click', () => this.clearAllFilters());
@@ -188,7 +209,7 @@ class FloatingFilter {
         const sectionType = optionElement.getAttribute('data-section');
         
         // Remove active class from siblings
-        const siblings = optionElement.parentElement.querySelectorAll('.filter-option');
+        const siblings = optionElement.parentElement.querySelectorAll('.floating-filter-option');
         siblings.forEach(sibling => {
             sibling.classList.remove('active');
             sibling.setAttribute('aria-pressed', 'false');
@@ -213,7 +234,7 @@ class FloatingFilter {
             
             // Update UI for each section
             const sectionElement = this.filterElement.querySelector(`[data-filter-type="${section.type}"]`);
-            const options = sectionElement.querySelectorAll('.filter-option');
+            const options = sectionElement.querySelectorAll('.floating-filter-option');
             options.forEach(option => {
                 option.classList.remove('active');
                 option.setAttribute('aria-pressed', 'false');
@@ -324,7 +345,7 @@ class FloatingFilter {
             // Update UI
             const sectionElement = this.filterElement.querySelector(`[data-filter-type="${sectionType}"]`);
             if (sectionElement) {
-                const options = sectionElement.querySelectorAll('.filter-option');
+                const options = sectionElement.querySelectorAll('.floating-filter-option');
                 options.forEach(option => {
                     const isActive = option.getAttribute('data-filter') === value;
                     option.classList.toggle('active', isActive);
