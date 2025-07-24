@@ -64,17 +64,17 @@
 .stat-item {
   text-align: center;
   padding: var(--space-6);
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--white-80);
   backdrop-filter: blur(10px);
   border-radius: var(--radius-2xl);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid var(--border-color);
   transition: all var(--transition-base) var(--ease-out);
 }
 
 .stat-item:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-xl);
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--white-90);
 }
 
 .stat-number {
@@ -274,9 +274,9 @@
 }
 
 .challenge-card {
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--white-80);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-2xl);
   padding: var(--space-8);
   text-decoration: none;
