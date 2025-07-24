@@ -7,6 +7,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     initializeFloatingFilter();
     initializeIntersectionObserver();
+    initializeCaseStudyCards();
 });
 
 /**
@@ -350,21 +351,21 @@ function initializeCaseStudyCards() {
             // Don't trigger if clicking on a link or button
             if (e.target.closest('a, button')) return;
             
-            const link = this.querySelector('.case-study-link, .solution-link');
+            const link = this.querySelector('.case-study-link, .solution-link, .card-title a');
             if (link) {
                 link.click();
             }
         });
 
         // Add keyboard navigation
-        if (card.querySelector('.case-study-link, .solution-link')) {
+        if (card.querySelector('.case-study-link, .solution-link, .card-title a')) {
             card.setAttribute('tabindex', '0');
             card.setAttribute('role', 'button');
             
             card.addEventListener('keydown', function(e) {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
-                    const link = this.querySelector('.case-study-link, .solution-link');
+                    const link = this.querySelector('.case-study-link, .solution-link, .card-title a');
                     if (link) {
                         link.click();
                     }
