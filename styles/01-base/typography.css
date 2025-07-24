@@ -106,7 +106,6 @@ li:last-child {
 
 /* Blockquote */
 blockquote {
-  border-left: 4px solid var(--primary);
   padding-left: var(--space-4);
   margin: var(--space-6) 0;
   font-style: italic;

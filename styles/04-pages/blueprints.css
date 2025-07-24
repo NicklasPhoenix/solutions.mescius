@@ -1890,7 +1890,6 @@
 
 .main-story blockquote {
   background: var(--primary-10);
-  border-left: 4px solid var(--primary);
   padding: var(--space-4) var(--space-6);
   margin: var(--space-6) 0;
   border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
