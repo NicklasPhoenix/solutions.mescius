@@ -28,14 +28,25 @@
   
   /* TRANSITION TIMINGS */
   --transition-fast: 150ms;
-  --transition-base: 200ms;
-  --transition-slow: 300ms;
-  --transition-slower: 500ms;
+  --transition-base: 320ms;
+  --transition-slow: 400ms;
+  --transition-slower: 600ms;
+  
+  /* HOVER-SPECIFIC TRANSITION TIMINGS */
+  --transition-hover-lift: 350ms;
+  --transition-hover-scale: 250ms;
+  --transition-hover-color: 200ms;
+  --transition-hover-subtle: 300ms;
   
   /* EASING FUNCTIONS */
   --ease-linear: linear;
   --ease-in: cubic-bezier(0.4, 0, 1, 1);
-  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  /* HOVER-OPTIMIZED EASING FUNCTIONS */
+  --ease-hover-lift: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-hover-scale: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-hover-gentle: cubic-bezier(0.165, 0.84, 0.44, 1);
 }

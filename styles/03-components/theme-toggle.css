@@ -11,7 +11,7 @@
   background: var(--bg-secondary);
   color: var(--text-secondary);
   cursor: pointer;
-  transition: all var(--transition-base) var(--ease-out);
+  transition: all var(--transition-hover-scale) var(--ease-hover-scale);
   position: relative;
   margin-left: var(--space-4);
   box-shadow: var(--shadow-sm);

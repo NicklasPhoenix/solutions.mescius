@@ -399,9 +399,12 @@
   background: #111827;
 }
 
-/* Theme transition */
+/* Theme transition - optimized for smooth animations */
 [data-theme="dark"] * {
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  transition: background-color var(--transition-base) var(--ease-out), 
+              border-color var(--transition-base) var(--ease-out), 
+              color var(--transition-base) var(--ease-out),
+              transform var(--transition-hover-lift) var(--ease-hover-lift);
 }
 
 /* Dark theme pricing page styles */
