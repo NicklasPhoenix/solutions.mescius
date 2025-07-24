@@ -1056,16 +1056,7 @@
   overflow: hidden;
 }
 
-.validation-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--success);
-  border-radius: var(--radius-full) var(--radius-full) 0 0;
-}
+
 
 .validation-card:hover {
   transform: translateY(-4px);
@@ -1899,7 +1890,6 @@
 
 .main-story blockquote {
   background: var(--primary-10);
-  border-left: 4px solid var(--primary);
   padding: var(--space-4) var(--space-6);
   margin: var(--space-6) 0;
   border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
