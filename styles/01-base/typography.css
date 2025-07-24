@@ -87,7 +87,6 @@ a:hover {
 a:focus {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
-  border-radius: var(--radius-sm);
 }
 
 /* List Styles */
