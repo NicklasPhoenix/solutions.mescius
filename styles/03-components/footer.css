@@ -345,7 +345,7 @@
 }
 
 .modal-content {
-  background: white;
+  background: var(--bg-primary);
   margin: var(--space-4);
   padding: var(--space-8);
   border-radius: var(--radius-2xl);
