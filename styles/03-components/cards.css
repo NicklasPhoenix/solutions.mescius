@@ -394,7 +394,7 @@
 
 
 .challenge-card:hover {
-  transform: translateY(-6px);
+  /* Removed translateY transform to fix strange expansion behavior on click */
   box-shadow: var(--shadow-2xl);
   border-color: var(--primary-light);
 }
