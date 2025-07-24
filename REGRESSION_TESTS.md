@@ -1,131 +1,329 @@
-# AGENT REGRESSION TESTING PROTOCOL
+# MESCIUS SOLUTIONS WEBSITE - COMPREHENSIVE REGRESSION TESTING PROTOCOL
 
-## MANDATORY TESTING AFTER ANY CSS CHANGES
+## TESTING OVERVIEW
 
-### THEME SYSTEM TESTING:
-- [ ] **Theme Toggle**: Click theme toggle - no flashing, correct mode applied
-- [ ] **Initial Load**: Page loads in correct default state (no "appears light but isn't")
+This document outlines comprehensive testing requirements for the MESCIUS Solutions website - a sophisticated B2B e-commerce platform featuring advanced shopping cart functionality, dynamic filtering systems, professional theme management, and responsive design. All functionality must be thoroughly tested after any changes to ensure system integrity and user experience quality.
+
+**Project Scope**: B2B e-commerce platform with:
+- Advanced shopping cart system with localStorage persistence
+- Dynamic product filtering with real-time updates
+- Professional light/dark theme system with system preference detection
+- Mobile-first responsive design with progressive enhancement
+- Animation framework using Intersection Observer
+- Component-driven vanilla JavaScript architecture
+
+---
+
+## CRITICAL TESTING AREAS
+
+### 🛒 SHOPPING CART FUNCTIONALITY
+**Location**: [`scripts/components/cart.js`](scripts/components/cart.js), [`styles/03-components/floating-cart.css`](styles/03-components/floating-cart.css)
+
+#### Core Cart Operations
+- [ ] **Add to Cart**: Products add correctly with proper data (ID, name, price)
+- [ ] **Remove Items**: Individual items remove completely from cart
+- [ ] **Quantity Management**: Increase/decrease buttons update quantities correctly
+- [ ] **Cart Persistence**: Cart state saves to localStorage and persists across sessions
+- [ ] **Cart Badge**: Header cart count updates in real-time
+- [ ] **Empty State**: "Your cart is empty" displays when no items present
+
+#### Cart Visibility & Controls
+- [ ] **Cart Toggle**: Header cart button opens/closes cart properly
+- [ ] **Close Button (X)**: Actually hides cart (not just console log)
+- [ ] **Minimize Button (-)**: Collapses cart to header-only view
+- [ ] **Header Click**: Clicking cart header toggles minimize/expand
+- [ ] **Outside Click**: Clicking outside cart closes it
+- [ ] **Escape Key**: ESC key closes cart when open
+
+#### Cart Display & Calculations
+- [ ] **Price Calculations**: Individual and total prices calculate correctly
+- [ ] **Currency Formatting**: Prices display in proper EUR format
+- [ ] **Item Details**: Product names, quantities, and unit prices show correctly
+- [ ] **Checkout Link**: Generates proper checkout URL with cart data
+- [ ] **Checkout State**: Link disabled when cart empty, enabled when items present
+
+#### Mobile Cart Behavior
+- [ ] **Mobile Collision**: Cart closes other floating components (filter) on mobile
+- [ ] **Touch Interactions**: All cart controls work properly on touch devices
+- [ ] **Responsive Layout**: Cart displays correctly on mobile screens
+
+### 🔍 ADVANCED FILTERING SYSTEM
+**Location**: [`scripts/components/floating-filter.js`](scripts/components/floating-filter.js), [`styles/03-components/floating-filter.css`](styles/03-components/floating-filter.css)
+
+#### Filter Operations
+- [ ] **Filter Toggle**: Filter button opens/closes filter panel
+- [ ] **Filter Options**: All filter categories (Platform, Product Family) work
+- [ ] **Multi-Criteria**: Multiple filters can be applied simultaneously
+- [ ] **Real-Time Updates**: Results update instantly without page reload
+- [ ] **Filter State**: Active filters persist during session
+- [ ] **Clear Filters**: "Clear All" button resets all filters to default
+
+#### Filter UI & Behavior
+- [ ] **Close Behavior**: Filter only closes on collapse button click (not outside clicks)
+- [ ] **Active Badge**: Badge shows count of active filters
+- [ ] **Filter Persistence**: Selected filters remain active during navigation
+- [ ] **Mobile Collision**: Filter closes cart when opened on mobile
+- [ ] **Accessibility**: Proper ARIA labels and keyboard navigation
+
+#### Filter Integration
+- [ ] **Pricing Page**: Filters work correctly on pricing page
+- [ ] **Solutions Page**: Filters integrate properly with solutions grid
+- [ ] **URL State**: Filter state can be shared via URL (if implemented)
+
+### 🎨 THEME SYSTEM
+**Location**: [`styles/05-themes/`](styles/05-themes/), [`scripts/main.js`](scripts/main.js)
+
+#### Theme Switching
+- [ ] **Theme Toggle**: Button switches between light and dark modes
 - [ ] **Icon Logic**: Light mode shows moon icon, dark mode shows sun icon
-- [ ] **Navigation Persistence**: Theme preserved when switching pages
-- [ ] **Both Directions**: Light→Dark and Dark→Light both work
+- [ ] **No Flash**: Page loads in correct theme without visual flash
+- [ ] **System Detection**: Automatically detects OS preference on first visit
+- [ ] **Theme Persistence**: Theme choice saves across page navigation and sessions
 
-### COLOR TOKEN REGRESSION TESTS:
+#### Theme Application
+- [ ] **Component Integration**: All components respect current theme
+- [ ] **Color Consistency**: All text remains readable in both themes
+- [ ] **Background Contrast**: Proper contrast maintained in all theme states
+- [ ] **Interactive Elements**: Buttons, links, and controls visible in both themes
 
-#### If Changed `--primary` token:
-- [ ] **Floating Cart**: Text is readable in dark mode (should be white, not primary color)
-- [ ] **Buttons**: All buttons still have correct colors
-- [ ] **Accents**: Links and highlights still visible
-- [ ] **Cards**: Product cards maintain color scheme
+### 📱 RESPONSIVE DESIGN
+**Location**: Various component CSS files
 
-#### If Changed `--text-color` token:
-- [ ] **All Pages**: Body text readable in both light/dark modes
-- [ ] **Cards**: Pricing cards, bundle cards, product cards readable
-- [ ] **Navigation**: Menu items visible
-- [ ] **Footer**: Footer text visible
+#### Mobile-First Approach
+- [ ] **Mobile Layout**: All components display correctly on mobile devices
+- [ ] **Touch Targets**: Buttons and interactive elements are touch-friendly
+- [ ] **Floating Components**: Cart and filter work properly on mobile
+- [ ] **Navigation**: Mobile menu functions correctly
+- [ ] **Typography**: Text scales appropriately across screen sizes
 
-#### If Changed `--button-*` tokens:
-- [ ] **Hero Button**: Visible in BOTH light and dark modes (critical issue)
-- [ ] **Cart Buttons**: Add to cart, quantity controls work
-- [ ] **Pricing Buttons**: New Licenses, Renewals buttons properly styled
-- [ ] **Navigation**: Menu buttons and theme toggle
+#### Progressive Enhancement
+- [ ] **Tablet View**: Layout adapts properly for tablet screens
+- [ ] **Desktop View**: Full functionality available on desktop
+- [ ] **Breakpoint Transitions**: Smooth transitions between breakpoints
+- [ ] **Component Stacking**: Components stack properly on smaller screens
 
-#### If Changed `--bg-color` token:
-- [ ] **Page Backgrounds**: All pages have correct backgrounds
-- [ ] **Card Backgrounds**: Cards stand out from page background
-- [ ] **Modal Backgrounds**: Overlays and popups visible
+### 🧭 NAVIGATION SYSTEM
+**Location**: [`styles/03-components/navigation.css`](styles/03-components/navigation.css)
 
-### LAYOUT TOKEN REGRESSION TESTS:
+#### Navigation Functionality
+- [ ] **Menu Links**: All navigation links work correctly
+- [ ] **Active States**: Current page highlighted in navigation
+- [ ] **Mobile Menu**: Hamburger menu opens/closes properly
+- [ ] **Theme Toggle**: Navigation theme toggle functions correctly
+- [ ] **Cart Access**: Cart button accessible from all pages
 
-#### If Changed Spacing Tokens:
-- [ ] **Card Alignment**: "Add to cart" buttons at same level across all cards
-- [ ] **Cart Layout**: "Your Cart" text and "-" button have proper spacing
-- [ ] **Cart Width**: Collapsed cart same width as expanded cart
-- [ ] **OEM Cards**: "Contact for OEM Quote" buttons aligned consistently
+---
 
-#### If Changed Card Tokens:
-- [ ] **Pricing Page**: All pricing cards properly aligned
-- [ ] **Bundle Page**: Bundle cards maintain structure
-- [ ] **Product Cards**: Homepage product showcase cards aligned
+## PAGE-SPECIFIC TESTING
 
-### COMPONENT-SPECIFIC TESTS:
+### 🏠 HOMEPAGE (`index.html`)
+- [ ] **Hero Section**: Hero buttons visible and functional in both themes
+- [ ] **Product Showcase**: Product cards display correctly with proper styling
+- [ ] **Stats Animation**: Statistics counter animations work properly
+- [ ] **Pillars Section**: All pillar cards display with correct metrics
+- [ ] **Logo Strip**: Company logos display correctly
+- [ ] **Challenge Cards**: Solution blueprint links work correctly
 
-#### Floating Cart:
-- [ ] **Visibility**: Cart text readable in dark mode
-- [ ] **Functionality**: X button hides cart (not just console log)
-- [ ] **Reopening**: Header cart button reopens hidden cart
-- [ ] **Width**: Collapsed and expanded widths consistent
-- [ ] **Spacing**: Proper space between "Your Cart" and "-" button
+### 💰 PRICING PAGE (`pricing/index.html`)
+- [ ] **Product Sections**: All product pricing sections display correctly
+- [ ] **Tab Switching**: New Licenses/Renewals tabs function properly
+- [ ] **Add to Cart**: All "Add to Cart" buttons work correctly
+- [ ] **Price Display**: All prices display in proper EUR format
+- [ ] **Info Buttons**: Product info modals open and display correctly
+- [ ] **Renewal Forms**: Renewal request forms submit properly
+- [ ] **Filter Integration**: Floating filter works with pricing grid
 
-#### Floating Filter:
-- [ ] **Close Behavior**: Only closes on collapse button click, not outside clicks
-- [ ] **Functionality**: Filter options work correctly
-- [ ] **Styling**: Filter maintains visual consistency
+### 🔧 SOLUTIONS PAGE (`solutions/index.html`)
+- [ ] **Solution Cards**: All solution cards display with proper styling
+- [ ] **Filter Integration**: Floating filter works with solutions grid
+- [ ] **Card Layouts**: Solution cards maintain proper grid layout
+- [ ] **Responsive Behavior**: Solutions grid adapts to different screen sizes
 
-#### Navigation:
-- [ ] **Theme Toggle**: Works correctly with proper icons
-- [ ] **Menu Items**: All navigation links visible and functional
-- [ ] **Mobile Menu**: Responsive navigation works
+### 📦 BUNDLES PAGE (`bundles/index.html`)
+- [ ] **Bundle Cards**: All bundle cards display correctly
+- [ ] **Dark Mode Styling**: Bundle cards have proper dark mode styling
+- [ ] **OEM Cards**: "Contact for OEM Quote" cards align consistently
+- [ ] **Pricing Display**: Bundle pricing displays correctly
+- [ ] **Cart Integration**: Bundle products can be added to cart
 
-#### Cards (All Types):
-- [ ] **Pricing Cards**: No dark blue on dark blue text
-- [ ] **Bundle Cards**: Have dark mode styling (major issue if missing)
-- [ ] **Product Cards**: Maintain alignment and readability
-- [ ] **OEM Cards**: Consistently aligned across page
+### 📋 BLUEPRINT PAGES (`blueprints/*/index.html`)
+- [ ] **Individual Pages**: Each blueprint page loads correctly
+- [ ] **Content Display**: Blueprint content displays properly
+- [ ] **Navigation**: Navigation between blueprint pages works
+- [ ] **Responsive Layout**: Blueprint content adapts to screen sizes
 
-### PAGE-SPECIFIC TESTS:
+---
 
-#### Homepage (`index.html`):
-- [ ] **Hero Button**: Visible and functional in both modes
-- [ ] **Product Showcase**: Cards properly styled
-- [ ] **Theme Toggle**: Works without page flash
+## COMPONENT TESTING
 
-#### Pricing Page (`pricing/index.html`):
-- [ ] **Card Text**: No dark blue on dark backgrounds
-- [ ] **Button Alignment**: "Add to cart" buttons level
-- [ ] **License Buttons**: "New Licenses"/"Renewals" properly sized
-- [ ] **Info Buttons**: "i" buttons functional (should open modals)
-- [ ] **Hero Section**: Has proper styling
+### 🛒 FloatingCart Component
+- [ ] **All Cart Operations**: Add, remove, quantity management work
+- [ ] **Mobile Behavior**: Proper collision detection with other components
+- [ ] **Checkout Flow**: Complete checkout process functions correctly
+- [ ] **State Management**: Cart state persists correctly
+- [ ] **Visual Feedback**: Loading states and animations work properly
 
-#### Bundles Page (`bundles/index.html`):
-- [ ] **Dark Mode**: Bundle cards have dark mode styling
-- [ ] **OEM Alignment**: Quote cards properly aligned
-- [ ] **Custom Pricing**: Text readable in dark mode
+### 🔍 FloatingFilter Component
+- [ ] **Filter Operations**: All filter types and combinations work
+- [ ] **Mobile Collision**: Proper interaction with cart on mobile
+- [ ] **State Persistence**: Filter state maintains across interactions
+- [ ] **Performance**: Filter updates happen smoothly without lag
 
-#### Solutions Page (`solutions/index.html`):
-- [ ] **Filter Integration**: Floating filter works with solutions
-- [ ] **Card Grid**: Solution cards maintain layout
+### 🃏 Card Components
+**All Card Variants**: Product, pricing, feature, testimonial, bundle cards
+- [ ] **Light Theme**: All cards display correctly in light mode
+- [ ] **Dark Theme**: All cards display correctly in dark mode
+- [ ] **Interactive States**: Hover and focus states work properly
+- [ ] **Content Layout**: Text, images, and buttons align correctly
+- [ ] **Responsive Behavior**: Cards adapt to different screen sizes
 
-### PSEUDO ELEMENT CHECK:
-- [ ] **Product Cards**: NO `.product-card::before` thin lines
-- [ ] **Floating Cart**: NO pseudo element decorations
-- [ ] **Hover States**: NO pseudo elements on hover
-- [ ] **Default States**: NO unwanted pseudo element lines
+### 🧭 Navigation Component
+- [ ] **Mobile Menu**: Hamburger menu functions correctly
+- [ ] **Theme Toggle**: Theme switching works from navigation
+- [ ] **Cart Access**: Cart button accessible and functional
+- [ ] **Accessibility**: Proper keyboard navigation and screen reader support
 
-### CROSS-BROWSER TESTING:
-- [ ] **Chrome**: All functionality works
-- [ ] **Firefox**: Theme switching and cart work
-- [ ] **Safari**: No layout breaks
-- [ ] **Mobile**: Responsive design maintained
+### 📝 Form Components
+- [ ] **Contact Forms**: All contact forms submit correctly
+- [ ] **Validation**: Form validation works properly
+- [ ] **Error Handling**: Error messages display appropriately
+- [ ] **Renewal Forms**: Product renewal forms function correctly
 
-### PERFORMANCE CHECKS:
-- [ ] **No New Issues**: Changes don't slow page load
-- [ ] **CSS Size**: No unnecessary duplication added
-- [ ] **Theme Switch Speed**: Toggle remains fast
+---
 
-## CRITICAL FAILURE INDICATORS:
-If ANY of these occur, changes must be reverted immediately:
-- ❌ Hero button becomes invisible in either mode
-- ❌ Theme toggle stops working or causes flashing
-- ❌ Cart text becomes unreadable in dark mode
-- ❌ Cards lose alignment across any page
-- ❌ Theme doesn't persist across page navigation
-- ❌ Bundle cards lose dark mode styling
-- ❌ Any text becomes dark blue on dark backgrounds
+## CROSS-BROWSER TESTING
 
-## AGENT REPORTING REQUIREMENTS:
-After testing, report:
-1. Which tokens were changed
-2. Which components were affected
-3. Which tests passed/failed
-4. Any unexpected side effects observed
-5. Confirmation that documented issues weren't recreated
+### Browser Compatibility
+- [ ] **Chrome**: All functionality works in latest Chrome
+- [ ] **Firefox**: Theme switching and cart work in Firefox
+- [ ] **Safari**: No layout breaks in Safari
+- [ ] **Edge**: All features function in Microsoft Edge
+- [ ] **Mobile Browsers**: iOS Safari and Android Chrome work correctly
+
+### Feature Testing Across Browsers
+- [ ] **localStorage**: Cart persistence works in all browsers
+- [ ] **CSS Custom Properties**: Theme system works across browsers
+- [ ] **JavaScript ES6+**: All modern JavaScript features supported
+- [ ] **Intersection Observer**: Animation framework works properly
+
+---
+
+## PERFORMANCE TESTING
+
+### Core Web Vitals
+- [ ] **LCP (Largest Contentful Paint)**: < 2.5s on all pages
+- [ ] **FID (First Input Delay)**: < 100ms for all interactions
+- [ ] **CLS (Cumulative Layout Shift)**: < 0.1 across all pages
+- [ ] **JavaScript Bundle**: < 100KB compressed total size
+
+### Loading Performance
+- [ ] **Initial Page Load**: Pages load quickly without blocking
+- [ ] **Theme Switch Speed**: Theme toggle remains fast and responsive
+- [ ] **Cart Operations**: Add/remove operations happen instantly
+- [ ] **Filter Updates**: Filter results update without noticeable delay
+
+### Animation Performance
+- [ ] **60fps Requirement**: All animations maintain 60fps
+- [ ] **Scroll Animations**: Intersection Observer animations smooth
+- [ ] **Reduced Motion**: Respects user's reduced motion preferences
+- [ ] **Hardware Acceleration**: Animations use GPU acceleration where appropriate
+
+---
+
+## ACCESSIBILITY TESTING
+
+### WCAG 2.1 AA Compliance
+- [ ] **Color Contrast**: 4.5:1 minimum contrast ratio maintained
+- [ ] **Keyboard Navigation**: All interactive elements keyboard accessible
+- [ ] **Screen Reader**: All content accessible to screen readers
+- [ ] **Focus Management**: Proper focus indicators and management
+- [ ] **ARIA Labels**: Appropriate ARIA labels on interactive elements
+
+### Accessibility Features
+- [ ] **Alt Text**: All images have appropriate alt text
+- [ ] **Form Labels**: All form inputs properly labeled
+- [ ] **Heading Structure**: Proper heading hierarchy maintained
+- [ ] **Skip Links**: Skip navigation links available where needed
+
+---
+
+## KNOWN ISSUES TESTING
+
+### Theme System Issues
+- [ ] **Theme Conflicts**: No conflicts between default, light, and dark modes
+- [ ] **Page Load State**: Pages load in correct theme without flash
+- [ ] **Icon Display**: Theme toggle icons display correctly
+- [ ] **Navigation Persistence**: Theme persists across page navigation
+
+### Color Visibility Issues
+- [ ] **Dark Mode Text**: No dark blue text on dark backgrounds
+- [ ] **Cart Text Color**: Cart total text uses correct color token
+- [ ] **Footer Visibility**: Footer hover animations visible in both themes
+- [ ] **Hero Button Visibility**: Hero buttons visible in both light and dark modes
+- [ ] **Bundle Card Styling**: Bundle cards have complete dark mode styling
+
+### Cart Functionality Issues
+- [ ] **X Button Function**: Cart X button actually closes cart (not just logs)
+- [ ] **Width Consistency**: Cart width consistent between collapsed/expanded states
+- [ ] **Button Alignment**: Add to cart buttons aligned across all product cards
+- [ ] **Spacing Issues**: Proper spacing between cart elements
+
+### Layout Issues
+- [ ] **Card Alignment**: All product cards maintain consistent alignment
+- [ ] **OEM Card Levels**: OEM quote cards align at same level
+- [ ] **Spacing Consistency**: Consistent spacing and padding throughout
+
+---
+
+## EMERGENCY PROTOCOLS
+
+### Stop Conditions
+**STOP TESTING IMMEDIATELY if**:
+- Hero button becomes invisible in either theme mode
+- Theme toggle stops working or causes page flashing
+- Cart text becomes unreadable in dark mode
+- Cards lose alignment across any page
+- Theme doesn't persist across page navigation
+- Bundle cards lose dark mode styling completely
+- Any text becomes dark blue on dark backgrounds
+
+### Rollback Procedures
+1. **Immediate Revert**: Return to last known good state
+2. **Impact Assessment**: Document all affected components
+3. **Root Cause Analysis**: Identify what caused the regression
+4. **Fix Verification**: Test fix thoroughly before re-deployment
+
+### Emergency Contacts
+- **Technical Lead**: Immediate escalation for critical issues
+- **QA Team**: Coordinate comprehensive re-testing
+- **DevOps**: Handle deployment rollbacks if necessary
+
+---
+
+## TESTING CHECKLIST COMPLETION
+
+### Pre-Testing Requirements
+- [ ] All related files read and understood
+- [ ] Testing environment properly configured
+- [ ] Both light and dark themes available for testing
+- [ ] Multiple browsers available for cross-browser testing
+- [ ] Mobile devices available for responsive testing
+
+### Post-Testing Requirements
+- [ ] All test cases executed and documented
+- [ ] Any failures properly logged with reproduction steps
+- [ ] Performance metrics recorded and within acceptable ranges
+- [ ] Accessibility compliance verified
+- [ ] Cross-browser compatibility confirmed
+
+### Testing Sign-off
+- [ ] **Functional Testing**: All functionality works as expected
+- [ ] **Visual Testing**: All components display correctly in both themes
+- [ ] **Performance Testing**: All performance metrics within acceptable ranges
+- [ ] **Accessibility Testing**: WCAG 2.1 AA compliance maintained
+- [ ] **Cross-Browser Testing**: Functionality verified across all target browsers
+- [ ] **Mobile Testing**: All features work correctly on mobile devices
+
+---
+
+**This comprehensive testing protocol ensures the MESCIUS Solutions website maintains its high standards of functionality, performance, and user experience across all features and platforms. All tests must pass before any changes are considered complete.**

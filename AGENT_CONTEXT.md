@@ -1,204 +1,244 @@
-# FOR GITHUB COPILOT AGENT - CRITICAL SYSTEM RULES
+# MESCIUS Solutions Website - Agent Context & Development Guide
 
-## 🚨 MANDATORY READING BEFORE ANY CSS CHANGES
+## 🏢 PROJECT OVERVIEW
 
-This solutions.mescius codebase uses a STRICT ITCSS token-based CSS architecture. Based on documented regression patterns, ANY violation of these rules will break multiple components simultaneously.
+### Project Context
+This is a sophisticated **B2B e-commerce platform** for MESCIUS developer tools and solutions. The website serves as a comprehensive digital storefront featuring:
 
-### REPOSITORY CSS ARCHITECTURE:
+- **Advanced Shopping Cart System**: Full e-commerce functionality with localStorage persistence and checkout integration
+- **Dynamic Product Filtering**: Advanced filtering system for pricing and solutions pages with real-time updates
+- **Professional Theme System**: Sophisticated light/dark mode with system preference detection
+- **Responsive Design**: Mobile-first approach with progressive enhancement
+- **Animation Framework**: Scroll-based animations and interactive effects using Intersection Observer
+
+### Business Purpose
+- Showcase MESCIUS developer tools (SpreadJS, ComponentOne, ActiveReports, etc.)
+- Provide solution blueprints for various industries (healthcare, finance, logistics)
+- Enable direct product purchases and bundle configurations
+- Support enterprise sales with OEM and SaaS options
+
+## 🏗️ TECHNICAL ARCHITECTURE
+
+### Design System Foundation
+**Token-Based ITCSS Methodology**:
+```
 styles/
-├── main.css (entry point - imports all files)
-├── 00-tokens/ (CSS custom properties - CHANGE THESE ONLY)
-│   ├── colors.css (color palette variables)
-│   ├── typography.css (font system)
-│   ├── spacing.css (spacing scale)
-│   └── shadows.css (elevation system)
-├── 01-base/ (reset, typography, utilities)
-├── 02-layout/ (containers, grid, sections)
-├── 03-components/ (all UI components)
-├── 04-pages/ (page-specific styles)
-└── 05-themes/ (light.css, dark.css)
+├── 00-tokens/     ← CSS custom properties (CHANGE THESE ONLY)
+├── 01-base/       ← Reset, typography, utilities
+├── 02-layout/     ← Containers, grid, sections
+├── 03-components/ ← UI components
+├── 04-pages/      ← Page-specific styles
+└── 05-themes/     ← Light/dark theme overrides
+```
 
-### ABSOLUTE FORBIDDEN ACTIONS:
+### JavaScript Architecture
+**Component-Driven Development**:
+- **Vanilla JavaScript**: No frameworks, pure ES6+ classes
+- **Class-Based Components**: Modular, reusable component system
+- **Event Delegation**: Performance-optimized event handling
+- **Intersection Observer**: Efficient scroll-based animations
+- **localStorage Integration**: Cart persistence and user preferences
+
+### Performance Optimizations
+- **Lazy Loading**: Images and components load on demand
+- **Event Delegation**: Minimized event listeners
+- **CSS Custom Properties**: Dynamic theming without JavaScript
+- **Intersection Observer**: Efficient scroll detection
+- **Component Caching**: Reusable component instances
+
+## 🛒 CORE CAPABILITIES
+
+### Shopping Cart System
+**Location**: [`scripts/components/cart.js`](scripts/components/cart.js), [`styles/03-components/floating-cart.css`](styles/03-components/floating-cart.css)
+- **Persistent Storage**: localStorage-based cart state
+- **Dynamic Updates**: Real-time price calculations
+- **Checkout Integration**: Direct purchase flow
+- **Responsive Design**: Mobile-optimized interface
+- **Bundle Support**: Complex product configurations
+
+### Advanced Filtering System
+**Location**: [`scripts/components/floating-filter.js`](scripts/components/floating-filter.js), [`styles/03-components/floating-filter.css`](styles/03-components/floating-filter.css)
+- **Multi-Criteria Filtering**: Price, category, features
+- **Real-Time Updates**: Instant results without page reload
+- **URL State Management**: Shareable filtered views
+- **Mobile Optimization**: Touch-friendly interface
+
+### Theme System
+**Location**: [`styles/05-themes/`](styles/05-themes/), [`scripts/main.js`](scripts/main.js)
+- **Three-Mode Support**: System, light, dark preferences
+- **System Detection**: Automatic OS preference detection
+- **Persistent State**: Theme choice saved across sessions
+- **Component Integration**: All components theme-aware
+
+### Animation Framework
+**Location**: [`scripts/components/animations.js`](scripts/components/animations.js), [`styles/03-components/animations.css`](styles/03-components/animations.css)
+- **Scroll Animations**: Intersection Observer-based
+- **Performance Optimized**: Hardware acceleration
+- **Accessibility Compliant**: Respects reduced motion preferences
+- **Modular System**: Reusable animation classes
+
+## 🚨 DEVELOPMENT CONSTRAINTS
+
+### STRICT ITCSS COMPLIANCE
+**ABSOLUTE FORBIDDEN ACTIONS**:
 - ❌ Component-specific CSS overrides (`.cart-total { color: white; }`)
 - ❌ Inline styles (`style="color: white"`) 
 - ❌ !important declarations (`color: white !important`)
-- ❌ New CSS properties outside the token system in `/00-tokens/`
+- ❌ New CSS properties outside [`/00-tokens/`](styles/00-tokens/)
 - ❌ Duplicate color/spacing/layout definitions
-- ❌ Dark blue fonts on dark backgrounds (documented visibility crisis)
-- ❌ Adding pseudo elements (`.product-card::before` - these must be REMOVED)
-- ❌ Modifying files outside your assigned component scope
+- ❌ Adding pseudo elements without token system
+- ❌ Modifying files outside assigned component scope
 
-### DOCUMENTED CRITICAL ISSUES (DO NOT RECREATE):
+### Token System Rules
+**ONLY MODIFY**:
+- **Colors**: [`/00-tokens/colors.css`](styles/00-tokens/colors.css) or [`/05-themes/light.css|dark.css`](styles/05-themes/)
+- **Spacing**: [`/00-tokens/spacing.css`](styles/00-tokens/spacing.css)
+- **Typography**: [`/00-tokens/typography.css`](styles/00-tokens/typography.css)
+- **Shadows**: [`/00-tokens/shadows.css`](styles/00-tokens/shadows.css)
 
-#### Theme System Crisis:
-- **Three-Mode Conflict**: Currently has default, light, AND dark modes causing conflicts
-- **Page Load Problem**: "Page loads appearing light, then clicking theme toggle (showing light icon) makes page flash and get lighter"
-- **Backwards Icons**: Light mode shows light icon (should show moon), dark mode shows dark icon (should show sun)
-- **Theme Loss**: "When switching pages darkmode gets lost and we are in default mode"
+### Mandatory Process
+1. **READ [`TOKEN_MAP.md`](TOKEN_MAP.md) FIRST** - Understand token dependencies
+2. **IDENTIFY EXACT TOKEN FILE** - Find correct token location
+3. **MAP ALL USAGE** - Find every component using the token
+4. **ANALYZE CASCADE** - Predict impact of changes
+5. **IMPLEMENT SURGICALLY** - Change only in token files
+6. **TEST REGRESSION** - Follow [`REGRESSION_TESTS.md`](REGRESSION_TESTS.md) checklist
 
-#### Color Token Disasters:
-- **Cart Color Bug**: `[data-theme="dark"] .cart-total { color: var(--primary); }` should be white font
-- **Hero Button Crisis**: "in light mode its not visible at all since its color does not exist"
-- **Pricing Cards**: "font of the cards are Darkblue on darkblue so not visible in darkmode"
-- **Footer Invisible**: "hover animation not visible because its a blue color on dark blue"
-- **Bundle Cards**: "have no darkmode styling at all"
+## 🐛 CURRENT CRITICAL ISSUES
 
-#### Layout Token Problems:
-- **Card Misalignment**: "Add to cart buttons are not always on the same level for each card"
-- **Cart Width**: "collapsed cart should maintain the same size as the uncollapsed cart"
-- **OEM Cards**: "Contact for OEM Quote are on different levels compared to each other"
+### Theme System Conflicts
+**Three-Mode Issue**:
+- Default, light, AND dark modes causing conflicts
+- Page loads in wrong theme state
+- Theme toggle icons display backwards
+- Theme loss when navigating between pages
 
-#### JavaScript Functionality Breaks:
-- **Cart Hide**: "X button has no functionality... console logs show 'hide cart' but nothing happens"
-- **Filter Behavior**: "floating filter closes on click outside making it confusing"
+### Color Visibility Problems
+**Dark Mode Issues**:
+- Dark blue fonts on dark backgrounds (pricing cards)
+- Cart total text using wrong color token
+- Footer hover animations invisible
+- Hero buttons invisible in light mode
+- Bundle cards missing dark mode styling entirely
 
-### REQUIRED INVESTIGATION PROCESS:
-1. **READ TOKEN_MAP.md FIRST** - Understand token dependencies
-2. **IDENTIFY EXACT TOKEN FILE** - Find which file in `/00-tokens/` contains your target
-3. **MAP ALL USAGE** - Find every component using the same token
-4. **ANALYZE CASCADE** - Predict what breaks when you change this token
-5. **IMPLEMENT SURGICALLY** - Change ONLY in `/00-tokens/` or `/05-themes/`
-6. **TEST REGRESSION LIST** - Follow REGRESSION_TESTS.md checklist
+### Cart Functionality Issues
+**JavaScript Problems**:
+- X button logs 'hide cart' but doesn't close cart
+- Cart width inconsistency between collapsed/expanded states
+- Add to cart buttons misaligned across product cards
 
-### TOKEN CHANGE RULES:
-- **Colors**: Only change in `/00-tokens/colors.css` or `/05-themes/light.css|dark.css`
-- **Spacing**: Only change in `/00-tokens/spacing.css`
-- **Typography**: Only change in `/00-tokens/typography.css`
-- **Shadows**: Only change in `/00-tokens/shadows.css`
-- **Component Files**: NEVER add custom colors/spacing - use tokens only
+### Layout Token Problems
+**Spacing Issues**:
+- Card button alignment inconsistencies
+- OEM quote cards at different levels
+- Cart spacing and padding irregularities
 
-### SUCCESS CRITERIA FOR ALL CHANGES:
-- [ ] Problem fixed using token system only
-- [ ] No new component-specific CSS added
-- [ ] All related components still work (list them)
-- [ ] Theme switching works in both directions
-- [ ] No visual regressions in light/dark modes
-- [ ] Cart functionality preserved
-- [ ] Navigation theme persistence maintained
+## 🤖 AGENT CAPABILITIES
 
-### EMERGENCY STOP CONDITIONS:
-If you encounter ANY of these, STOP immediately and ask for guidance:
+### What the Agent CAN Do
+**Token-Level Changes**:
+- Modify CSS custom properties in [`/00-tokens/`](styles/00-tokens/)
+- Update theme definitions in [`/05-themes/`](styles/05-themes/)
+- Adjust component behavior through token system
+
+**JavaScript Component Modifications**:
+- Update component logic in [`/scripts/components/`](scripts/components/)
+- Fix event handling and state management
+- Improve performance and accessibility
+
+**HTML Content Updates**:
+- Modify page content and structure
+- Update component markup
+- Improve semantic HTML
+
+**Documentation Maintenance**:
+- Update technical documentation
+- Maintain component dependencies
+- Track regression test results
+
+### What the Agent SHOULD Do
+**Quality Assurance**:
+- Always test changes across light/dark themes
+- Verify cart functionality after modifications
+- Check responsive behavior on mobile
+- Validate accessibility compliance
+
+**Regression Testing**:
+- Follow [`REGRESSION_TESTS.md`](REGRESSION_TESTS.md) protocol
+- Test all related components after token changes
+- Verify theme switching works bidirectionally
+- Confirm no visual regressions introduced
+
+## 📋 QUALITY STANDARDS
+
+### CSS Linting
+**Stylelint Configuration**: [`.stylelintrc.json`](.stylelintrc.json)
+- ITCSS order enforcement
+- Custom property validation
+- No duplicate selectors
+- Performance rule compliance
+
+### Testing Protocols
+**Comprehensive Testing Required**:
+- **Cross-Theme Testing**: Light/dark mode verification
+- **Responsive Testing**: Mobile, tablet, desktop breakpoints
+- **Cart Functionality**: Add, remove, persist, checkout flow
+- **Filter System**: All filter combinations and edge cases
+- **Animation Performance**: 60fps requirement, reduced motion support
+
+### Accessibility Compliance
+**WCAG 2.1 AA Standards**:
+- Color contrast ratios (4.5:1 minimum)
+- Keyboard navigation support
+- Screen reader compatibility
+- Focus management
+- Reduced motion preferences
+
+### Performance Requirements
+**Core Web Vitals**:
+- **LCP**: < 2.5s (Largest Contentful Paint)
+- **FID**: < 100ms (First Input Delay)
+- **CLS**: < 0.1 (Cumulative Layout Shift)
+- **JavaScript Bundle**: < 100KB compressed
+
+## 🔧 EMERGENCY PROTOCOLS
+
+### Stop Conditions
+**STOP IMMEDIATELY if**:
 - Need to add `!important` to override something
 - Want to add component-specific colors/spacing
 - Token change affects more than 5 components
 - Can't find the right token to modify
 - Solution requires new CSS properties outside token system
 
-## AGENT MUST READ: TOKEN_MAP.md, REGRESSION_TESTS.md, COMPONENT_DEPENDENCIES.md
+### Recovery Process
+1. **Revert Changes**: Return to last known good state
+2. **Analyze Impact**: Review [`COMPONENT_DEPENDENCIES.md`](COMPONENT_DEPENDENCIES.md)
+3. **Consult Documentation**: Check [`TOKEN_MAP.md`](TOKEN_MAP.md) for alternatives
+4. **Request Guidance**: Ask for architectural review
 
-File 2: TOKEN_MAP.md (Place in Repository Root)
-markdown# CSS TOKEN DEPENDENCY MAP - AGENT REFERENCE
+## 📚 REQUIRED READING
 
-## Token File Locations:
-- **Color Tokens**: `/styles/00-tokens/colors.css`
-- **Typography Tokens**: `/styles/00-tokens/typography.css`  
-- **Spacing Tokens**: `/styles/00-tokens/spacing.css`
-- **Shadow Tokens**: `/styles/00-tokens/shadows.css`
-- **Theme Overrides**: `/styles/05-themes/light.css` and `/styles/05-themes/dark.css`
+**Before ANY modifications, agents must read**:
+- [`TOKEN_MAP.md`](TOKEN_MAP.md) - Token dependency mapping
+- [`REGRESSION_TESTS.md`](REGRESSION_TESTS.md) - Testing protocols
+- [`COMPONENT_DEPENDENCIES.md`](COMPONENT_DEPENDENCIES.md) - Component relationships
+- [`DESIGN_SYSTEM_ANALYSIS.md`](DESIGN_SYSTEM_ANALYSIS.md) - Architecture overview
 
-## CRITICAL TOKEN DEPENDENCIES:
+## ✅ SUCCESS CRITERIA
 
-### Color System (colors.css):
-**⚠️ DOCUMENTED PROBLEM TOKENS:**
-- `--primary`: MISUSED for text color in `.cart-total` (should use `--text-color`)
-- `--text-color`: Missing proper dark mode definition
-- `--button-bg`: Missing in light mode (hero button invisible)
-- `--button-text`: Wrong value in dark mode (dark blue on dark)
+**All changes must meet these requirements**:
+- [ ] Problem fixed using token system only
+- [ ] No new component-specific CSS added
+- [ ] All related components still work
+- [ ] Theme switching works in both directions
+- [ ] No visual regressions in light/dark modes
+- [ ] Cart functionality preserved
+- [ ] Navigation theme persistence maintained
+- [ ] Performance metrics maintained
+- [ ] Accessibility standards met
+- [ ] Mobile responsiveness verified
 
-**Components Using Color Tokens:**
-- **Floating Cart**: Uses `--primary` (WRONG), needs `--text-color`
-- **Hero Button**: Uses `--button-bg`, `--button-text` (BROKEN in both modes)
-- **Pricing Cards**: Uses `--text-color` (BROKEN in dark mode)
-- **Footer**: Uses hover color tokens (INVISIBLE in both modes)
-- **Bundle Cards**: NO dark mode tokens at all
+---
 
-### Spacing System (spacing.css):
-**Components Using Spacing Tokens:**
-- **Floating Cart**: `--cart-width`, `--cart-padding`, `--cart-spacing`
-- **Card Components**: `--card-padding`, `--card-margin`, `--card-gap`
-- **Button Alignment**: `--button-spacing`, `--element-gap`
-
-**⚠️ DOCUMENTED PROBLEMS:**
-- Cart collapsed/expanded width inconsistency
-- "Add to cart" buttons at different levels
-- "Your Cart" text and "-" button spacing
-
-### Typography System (typography.css):
-**Global Typography Tokens:**
-- `--font-primary`: Montserrat (all headings)
-- `--font-body`: System fonts (all body text)
-- `--font-size-*`: Size scale
-- `--font-weight-*`: Weight scale
-- `--line-height-*`: Line height scale
-
-### Theme System (light.css / dark.css):
-**⚠️ CRITICAL THEME PROBLEMS:**
-- **Three-Mode Conflict**: Default + Light + Dark creating conflicts
-- **Token Inheritance**: `:root` → `[data-theme="light"]` → `[data-theme="dark"]`
-- **Missing Tokens**: Bundle cards have NO dark mode tokens
-- **Wrong Values**: Dark blue fonts in dark mode
-
-## COMPONENT-TOKEN USAGE MAP:
-
-### Floating Cart (`/styles/03-components/floating-cart.css`):
-- **Colors**: `--primary` (WRONG - should be `--text-color`), `--bg-color`, `--border-color`
-- **Spacing**: `--cart-width`, `--cart-padding`, `--cart-item-spacing`
-- **Typography**: `--font-size-body`, `--font-weight-medium`
-
-### Navigation (`/styles/03-components/navigation.css`):
-- **Colors**: `--nav-bg`, `--nav-text`, `--nav-hover`
-- **Spacing**: `--nav-padding`, `--nav-item-spacing`
-
-### Cards (`/styles/03-components/cards.css`):
-- **Colors**: `--card-bg`, `--card-text`, `--card-border`
-- **Spacing**: `--card-padding`, `--card-margin`, `--card-radius`
-- **Shadows**: `--shadow-card`, `--shadow-card-hover`
-
-### Buttons (`/styles/03-components/buttons.css`):
-- **Colors**: `--button-bg`, `--button-text`, `--button-hover-bg`
-- **Spacing**: `--button-padding`, `--button-radius`
-- **Typography**: `--button-font-size`, `--button-font-weight`
-
-### Footer (`/styles/03-components/footer.css`):
-- **Colors**: `--footer-bg`, `--footer-text`, `--footer-hover` (BROKEN)
-- **Spacing**: `--footer-padding`, `--footer-item-spacing`
-
-## PAGE-SPECIFIC TOKEN USAGE:
-
-### Pricing Page (`/styles/04-pages/pricing.css`):
-- Uses card tokens + `--pricing-highlight`, `--pricing-accent`
-- **⚠️ PROBLEM**: Dark blue text on dark backgrounds
-
-### Bundles Page (`/styles/04-pages/bundles.css`):
-- **⚠️ CRITICAL**: NO dark mode tokens defined at all
-- Uses: `--bundle-bg`, `--bundle-text`, `--bundle-accent`
-
-### Home Page (`/styles/04-pages/home.css`):
-- Hero section: `--hero-bg`, `--hero-text`, `--hero-button-*`
-- **⚠️ PROBLEM**: Hero button invisible in light mode
-
-## TOKEN CHANGE IMPACT MATRIX:
-
-### High-Risk Tokens (Affect 5+ Components):
-- `--primary`: Cart, buttons, accents, links
-- `--text-color`: All text, cards, navigation, footer
-- `--bg-color`: Page backgrounds, card backgrounds, modals
-- `--spacing-*`: All layout components
-
-### Medium-Risk Tokens (Affect 2-4 Components):
-- `--button-*`: All button types, CTAs
-- `--card-*`: Product cards, pricing cards, bundle cards
-- `--nav-*`: Header navigation, mobile menu
-
-### Low-Risk Tokens (Component-Specific):
-- `--hero-*`: Only hero section
-- `--footer-*`: Only footer component
-- `--cart-*`: Only floating cart
-
-## AGENT SAFETY CHECKLIST:
-Before changing ANY token:
-- [ ] Identify which risk category (high/medium/low)
-- [ ] List ALL components using this token
-- [ ] Check if change affects theme switching
-- [ ] Verify no pseudo elements will be created
-- [ ] Confirm change is in correct token file location
+**This document serves as the definitive guide for understanding the MESCIUS Solutions website project architecture, constraints, and development protocols. All modifications must comply with these standards to maintain system integrity and user experience quality.**

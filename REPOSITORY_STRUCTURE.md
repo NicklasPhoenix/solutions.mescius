@@ -1,15 +1,53 @@
-# MESCIUS Solutions Repository Structure
+# MESCIUS Solutions Website - Repository Structure
 
-## Overview
-This repository contains the complete Mescius Europe solutions website - a modern UX design system showcasing developer tools, UI components, and solution blueprints for .NET and JavaScript development.
+## Project Overview
 
-## Architecture
-The project follows a modular, component-based architecture with:
-- **Token-based design system** for consistent styling
-- **Component-driven development** with reusable UI elements
-- **Page-specific implementations** for different content types
-- **Theme system** supporting light/dark modes
-- **Modern JavaScript** with ES6+ modules and classes
+The MESCIUS Solutions website is a sophisticated B2B e-commerce platform designed for showcasing and selling MESCIUS developer tools and solutions. This modern web application serves as a comprehensive digital storefront featuring:
+
+- **Advanced product catalog** with filtering and search capabilities
+- **Shopping cart system** with real-time pricing and checkout integration
+- **Solution blueprints** demonstrating real-world implementation scenarios
+- **Product bundles** with comparison and pricing matrices
+- **Theme system** supporting light and dark modes
+- **Responsive design** optimized for all device types
+
+The platform targets enterprise developers and technical decision-makers, providing detailed product information, pricing transparency, and streamlined purchasing workflows.
+
+## Architecture Pattern
+
+### ITCSS Methodology (Inverted Triangle CSS)
+
+The project follows the **ITCSS (Inverted Triangle CSS)** methodology, organizing styles in a hierarchical structure from generic to specific:
+
+```
+00-tokens/     ← Most generic (CSS custom properties)
+01-base/       ← Element defaults and resets
+02-layout/     ← Layout patterns and grids
+03-components/ ← UI components and modules
+04-pages/      ← Page-specific styles
+05-themes/     ← Theme variations (most specific)
+```
+
+**Critical Architecture Rules:**
+- **Token-only changes**: All design modifications must be made through tokens (CSS custom properties) in the `00-tokens/` layer
+- **No direct value changes**: Never modify hardcoded values in components or pages
+- **ITCSS compliance**: Maintain the specificity hierarchy - lower layers cannot import from higher layers
+- **Component isolation**: Each component should be self-contained with clear dependencies
+
+### Component-Driven Development
+
+- **Modular architecture** with reusable UI components
+- **Vanilla JavaScript** approach for maximum performance and minimal dependencies
+- **Class-based components** for complex functionality (Cart, FloatingFilter)
+- **Event-driven communication** between components
+- **Progressive enhancement** ensuring core functionality without JavaScript
+
+### Design System Foundation
+
+- **Token-based design system** ensuring visual consistency
+- **Semantic color system** with theme-aware variables
+- **Typography scale** with consistent spacing and hierarchy
+- **Component library** with standardized patterns and behaviors
 
 ---
 
@@ -17,30 +55,188 @@ The project follows a modular, component-based architecture with:
 
 ```
 solutions.mescius/
-├── .claude/                          # Claude AI configuration
-├── .git/                             # Git version control
-├── .github/                          # GitHub specific files
 ├── .gitignore                        # Git ignore rules
 ├── .stylelintrc.json                 # CSS linting configuration
-├── 404.html                          # Error page
-├── DESIGN_SYSTEM_ANALYSIS.md         # Design system documentation
-├── THEME_NAVIGATION_IMPROVEMENT_PLAN.md # Development planning document
+├── 404.html                          # Custom error page
 ├── index.html                        # Homepage (main entry point)
 ├── package.json                      # Node.js dependencies and scripts
 ├── package-lock.json                 # Dependency lock file
 ├── robots.txt                        # SEO crawler instructions
 ├── sitemap.xml / sitemap-V2.xml      # SEO site maps
+├── AGENT_CONTEXT.md                  # AI development context
+├── COMPONENT_DEPENDENCIES.md         # Component relationship mapping
+├── DESIGN_SYSTEM_ANALYSIS.md         # Design system documentation
+├── REGRESSION_TESTS.md               # Testing documentation
+├── REPOSITORY_STRUCTURE.md           # This file
+├── THEME_NAVIGATION_IMPROVEMENT_PLAN.md # Development planning
+├── TOKEN_MAP.md                      # Design token documentation
 ├── blueprints/                       # Solution blueprint pages
+│   ├── bi-performance/
+│   ├── blazor-hybrid/
+│   ├── document-automation/
+│   ├── excel-vba-migration/
+│   ├── financial-modeling/
+│   ├── healthcare-reporting/
+│   ├── logistics-modernization/
+│   ├── real-time-dashboards/
+│   └── regtech-compliance/
 ├── bundles/                          # Product bundle pages
-├── cookie-policy/                    # Privacy compliance page
+│   └── index.html
+├── cookie-policy/                    # Privacy compliance
+│   └── index.html
 ├── favicon/                          # Site icons
+│   └── favicon.svg
 ├── gif/                              # Animated assets
+│   └── An_Overview_of_SpreadJS_The_Leading_JavaScript_Spreadsheet_L.gif
 ├── logos/                            # Product and brand logos
-├── pricing/                          # Pricing information page
+│   ├── AR_prod_logo_[ICON|full]_2023.svg
+│   ├── C1_prod_logo_[ICON|full]_2023.svg
+│   ├── DS_prod_logo_[ICON|full]_2023.svg
+│   ├── SP_prod_logo_[ICON|full]_2023.svg
+│   ├── WJ_prod_logo_[ICON|full]_2023.svg
+│   └── [Various bundle logos].png
+├── pricing/                          # Pricing information
+│   └── index.html
 ├── scripts/                          # JavaScript functionality
-├── solutions/                        # Solutions overview page
-└── styles/                           # CSS design system
+│   ├── main.js                       # Core application logic
+│   ├── home.js                       # Homepage functionality
+│   ├── pricing.js                    # Pricing page logic
+│   ├── solutions.js                  # Solutions filtering
+│   ├── blueprints.js                 # Blueprint interactions
+│   ├── bundles.js                    # Bundle comparisons
+│   ├── pillars.js                    # Legacy (deprecated)
+│   └── components/                   # Reusable components
+│       ├── animations.js
+│       ├── cart.js
+│       ├── floating-filter.js
+│       ├── forms.js
+│       └── modals.js
+├── solutions/                        # Solutions overview
+│   └── index.html
+└── styles/                           # CSS design system (ITCSS)
+    ├── main.css                      # Entry point (imports all layers)
+    ├── 00-tokens/                    # Design tokens (CSS custom properties)
+    │   ├── colors.css
+    │   ├── shadows.css
+    │   ├── spacing.css
+    │   └── typography.css
+    ├── 01-base/                      # Element defaults and resets
+    │   ├── reset.css
+    │   ├── typography.css
+    │   └── utilities.css
+    ├── 02-layout/                    # Layout patterns
+    │   ├── containers.css
+    │   ├── grid.css
+    │   └── sections.css
+    ├── 03-components/                # UI components
+    │   ├── animations.css
+    │   ├── buttons.css
+    │   ├── cards.css
+    │   ├── cart.css
+    │   ├── floating-cart.css
+    │   ├── floating-filter.css
+    │   ├── footer.css
+    │   ├── forms.css
+    │   ├── navigation.css
+    │   └── theme-toggle.css
+    ├── 04-pages/                     # Page-specific styles
+    │   ├── blueprints.css
+    │   ├── bundles.css
+    │   ├── home.css
+    │   ├── pricing.css
+    │   └── solutions.css
+    └── 05-themes/                    # Theme variations
+        ├── dark.css
+        └── light.css
 ```
+
+---
+
+## Key Features
+
+### Shopping Cart System
+- **Real-time cart management** with add/remove functionality
+- **Quantity controls** with automatic price calculations
+- **Floating cart UI** with modern design and animations
+- **Checkout integration** with external e-commerce platform
+- **Persistent cart state** across page navigation
+- **Mobile-optimized** cart interface
+
+### Advanced Filtering System
+- **Multi-criteria filtering** by industry, product, and features
+- **Real-time search** with instant results
+- **Collapsible filter panels** with professional UI
+- **State management** preserving filter selections
+- **Mobile-responsive** filter interface
+- **No-results handling** with helpful messaging
+
+### Theme System
+- **Light/dark mode toggle** with smooth transitions
+- **System preference detection** for automatic theme selection
+- **Theme persistence** across browser sessions
+- **Component-aware theming** with CSS custom properties
+- **Accessibility compliance** with proper contrast ratios
+- **Performance optimized** theme switching
+
+### Responsive Design
+- **Mobile-first approach** with progressive enhancement
+- **Flexible grid systems** using CSS Grid and Flexbox
+- **Adaptive typography** scaling across device sizes
+- **Touch-optimized interactions** for mobile devices
+- **Cross-browser compatibility** with modern web standards
+
+### Performance Optimizations
+- **Vanilla JavaScript** for minimal bundle size
+- **CSS custom properties** for efficient theming
+- **Lazy loading** for images and non-critical resources
+- **Optimized asset delivery** with proper caching headers
+- **Minimal external dependencies** reducing load times
+
+---
+
+## Development Guidelines
+
+### CSS Architecture Rules
+
+**CRITICAL: Token-Only Modifications**
+- All design changes MUST be made through tokens in [`styles/00-tokens/`](styles/00-tokens/)
+- Never modify hardcoded values in components or pages
+- Use CSS custom properties for all design values
+- Maintain ITCSS layer hierarchy and specificity
+
+**ITCSS Layer Dependencies**
+```
+00-tokens → 01-base → 02-layout → 03-components → 04-pages → 05-themes
+```
+- Lower layers cannot import from higher layers
+- Each layer builds upon the previous layers
+- Themes override token values, not component styles
+
+**Component Development**
+- Use BEM-inspired naming conventions
+- Ensure components are theme-aware
+- Test in both light and dark modes
+- Maintain responsive behavior across breakpoints
+
+### JavaScript Architecture
+
+**Component Pattern**
+- Use ES6+ classes for complex components
+- Implement clear public APIs for component interaction
+- Handle cleanup and memory management properly
+- Follow event-driven communication patterns
+
+**Performance Guidelines**
+- Minimize DOM queries and cache references
+- Use event delegation for dynamic content
+- Implement debouncing for expensive operations
+- Avoid memory leaks in event listeners
+
+**Code Quality Standards**
+- Use consistent naming conventions
+- Document complex functionality with comments
+- Handle error cases gracefully
+- Test across different browsers and devices
 
 ---
 
@@ -48,516 +244,258 @@ solutions.mescius/
 
 ### Root Level Files
 
-#### **index.html**
+#### [`index.html`](index.html)
 - **Purpose**: Homepage and main entry point
 - **Dependencies**: 
-  - `styles/main.css` (design system)
-  - `scripts/main.js` (core functionality)
-  - `scripts/home.js` (page-specific features)
-  - `scripts/components/cart.js` (shopping cart)
+  - [`styles/main.css`](styles/main.css) (complete design system)
+  - [`scripts/main.js`](scripts/main.js) (core functionality)
+  - [`scripts/home.js`](scripts/home.js) (page-specific features)
+  - [`scripts/components/cart.js`](scripts/components/cart.js) (shopping cart)
 - **Features**: Hero section, product showcase, navigation, theme toggle
 - **External Dependencies**: Font Awesome, Google Fonts, Google Analytics, Cookiebot
 
-#### **404.html**
+#### [`404.html`](404.html)
 - **Purpose**: Custom error page for missing resources
-- **Dependencies**: Same as index.html
 - **Features**: User-friendly error messaging, navigation back to main site
 
-#### **package.json**
-- **Purpose**: Node.js project configuration
+#### [`package.json`](package.json)
+- **Purpose**: Node.js project configuration and development tools
 - **Dependencies**: 
-  - `stylelint` (CSS linting)
-  - `stylelint-config-standard` (CSS standards)
+  - [`stylelint`](https://stylelint.io/) (CSS linting)
+  - [`stylelint-config-standard`](https://github.com/stylelint/stylelint-config-standard) (CSS standards)
 - **Scripts**: 
-  - `lint:css` - Check CSS for errors
-  - `lint:css:fix` - Auto-fix CSS issues
+  - `lint:css` - Check CSS for errors and style violations
+  - `lint:css:fix` - Auto-fix CSS issues where possible
 
-#### **robots.txt**
-- **Purpose**: SEO crawler instructions
-- **Content**: Sitemap location, crawl permissions
+### Content Directories
 
-#### **sitemap.xml / sitemap-V2.xml**
-- **Purpose**: SEO site structure for search engines
-- **Content**: All page URLs, update frequencies, priorities
+#### Blueprints Directory ([`/blueprints/`](blueprints/))
 
-### Blueprints Directory (`/blueprints/`)
+Industry-specific solution blueprints demonstrating real-world implementations:
 
-Solution blueprint pages showcasing real-world implementation guides:
+- **[`bi-performance/`](blueprints/bi-performance/)** - High-performance BI dashboards with Wijmo
+- **[`blazor-hybrid/`](blueprints/blazor-hybrid/)** - Cross-platform Blazor applications
+- **[`document-automation/`](blueprints/document-automation/)** - Automated document generation for insurance/legal
+- **[`excel-vba-migration/`](blueprints/excel-vba-migration/)** - VBA to web migration with SpreadJS
+- **[`financial-modeling/`](blueprints/financial-modeling/)** - Interactive financial models
+- **[`healthcare-reporting/`](blueprints/healthcare-reporting/)** - EHR reporting with ActiveReportsJS
+- **[`logistics-modernization/`](blueprints/logistics-modernization/)** - Legacy modernization with ComponentOne
+- **[`real-time-dashboards/`](blueprints/real-time-dashboards/)** - IoT/Energy dashboards with Wijmo
+- **[`regtech-compliance/`](blueprints/regtech-compliance/)** - Financial compliance systems
 
-#### **bi-performance/index.html**
-- **Industry**: Business Intelligence
-- **Solution**: High-performance BI dashboards
-- **Products**: Wijmo components
-- **Dependencies**: `../../styles/main.css`, `../../scripts/blueprints.js`
+#### Other Content Directories
 
-#### **blazor-hybrid/index.html**
-- **Industry**: Cross-platform development
-- **Solution**: Blazor Hybrid applications
-- **Products**: .NET components
-- **Dependencies**: Blueprint-specific styling and JavaScript
+- **[`bundles/`](bundles/)** - Product bundle showcase and comparison
+- **[`pricing/`](pricing/)** - Comprehensive pricing tables with filtering
+- **[`solutions/`](solutions/)** - Solution overview with advanced filtering
+- **[`cookie-policy/`](cookie-policy/)** - GDPR compliance and privacy policy
 
-#### **document-automation/index.html**
-- **Industry**: Insurance/Legal
-- **Solution**: Automated document generation
-- **Products**: Document Solutions for .NET
-- **Dependencies**: Standard blueprint structure
+### Asset Directories
 
-#### **excel-vba-migration/index.html**
-- **Industry**: Finance
-- **Solution**: VBA to web application migration
-- **Products**: SpreadJS + Document Solutions
-- **Dependencies**: Standard blueprint structure
+#### [`/logos/`](logos/)
+Comprehensive brand and product identity assets:
+- **Product Logos**: ActiveReports, ComponentOne, Document Solutions, SpreadJS, Wijmo
+- **Bundle Logos**: Various product combinations and subscription packages
+- **Format**: SVG for scalability, PNG for complex designs
 
-#### **financial-modeling/index.html**
-- **Industry**: Finance
-- **Solution**: Interactive financial models
-- **Products**: SpreadJS Professional
-- **Dependencies**: Standard blueprint structure
-
-#### **healthcare-reporting/index.html**
-- **Industry**: Healthcare
-- **Solution**: Client-side reporting for EHR
-- **Products**: ActiveReportsJS
-- **Dependencies**: Standard blueprint structure
-
-#### **logistics-modernization/index.html**
-- **Industry**: Logistics
-- **Solution**: Legacy application modernization
-- **Products**: ComponentOne .NET Suite
-- **Dependencies**: Standard blueprint structure
-
-#### **real-time-dashboards/index.html**
-- **Industry**: Energy/IoT
-- **Solution**: Real-time data dashboards
-- **Products**: Wijmo high-frequency components
-- **Dependencies**: Standard blueprint structure
-
-#### **regtech-compliance/index.html**
-- **Industry**: Financial Services
-- **Solution**: Regulatory compliance systems
-- **Products**: SpreadJS + Documents + ActiveReports
-- **Dependencies**: Enhanced blueprint structure with product modals
-
-### Bundles Directory (`/bundles/`)
-
-#### **index.html**
-- **Purpose**: Product bundle showcase and pricing
-- **Dependencies**: 
-  - `../styles/main.css`
-  - `../scripts/bundles.js`
-  - `../scripts/components/cart.js`
-- **Features**: Bundle comparison, pricing cards, shopping cart integration
-
-### Cookie Policy Directory (`/cookie-policy/`)
-
-#### **index.html**
-- **Purpose**: GDPR compliance and privacy policy
-- **Dependencies**: Standard site dependencies
-- **Features**: Legal compliance content, cookie usage explanation
-
-### Favicon Directory (`/favicon/`)
-
-#### **favicon.svg**
-- **Purpose**: Site icon in scalable vector format
-- **Usage**: Browser tabs, bookmarks, PWA icons
-
-### GIF Directory (`/gif/`)
-
-#### **An_Overview_of_SpreadJS_The_Leading_JavaScript_Spreadsheet_L.gif**
-- **Purpose**: Animated product demonstration
-- **Usage**: Product showcases, feature demonstrations
-
-### Logos Directory (`/logos/`)
-
-Brand and product identity assets:
-
-#### Product Logos:
-- **AR_prod_logo_[ICON|full]_2023.svg**: ActiveReports branding
-- **C1_prod_logo_[ICON|full]_2023.svg**: ComponentOne branding  
-- **DS_prod_logo_[ICON|full]_2023.svg**: Document Solutions branding
-- **SP_prod_logo_[ICON|full]_2023.svg**: SpreadJS branding
-- **WJ_prod_logo_[ICON|full]_2023.svg**: Wijmo branding
-
-#### Bundle Logos:
-- **Automated Reporting & Document Generation Bundle.png**
-- **Blazor Hybrid Power Pack.png**
-- **Real-Time Analytics & Reporting Bundle.png**
-- **Spread.NET + Documents.png**
-- **SpreadJS + Documents.png**
-- **SpreadJS SaaS & OEM Edition.png**
-- **Universal Subscription.png**
-- **OEM & SaaS.png**
-- **.NET Suite.png**
-
-### Pricing Directory (`/pricing/`)
-
-#### **index.html**
-- **Purpose**: Product pricing and purchase options
-- **Dependencies**: 
-  - `../styles/main.css`
-  - `../scripts/pricing.js`
-  - `../scripts/components/cart.js`
-  - `../scripts/components/floating-filter.js`
-- **Features**: 
-  - Product pricing tables
-  - Shopping cart integration
-  - Filtering system
-  - Renewal forms
-
-### Solutions Directory (`/solutions/`)
-
-#### **index.html**
-- **Purpose**: Solution blueprints overview and filtering
-- **Dependencies**: 
-  - `../styles/main.css`
-  - `../scripts/solutions.js`
-  - `../scripts/components/cart.js`
-  - `../scripts/components/floating-filter.js`
-- **Features**: 
-  - Solution card grid
-  - Advanced filtering system
-  - Search functionality
+#### [`/favicon/`](favicon/) & [`/gif/`](gif/)
+- **[`favicon.svg`](favicon/favicon.svg)** - Scalable site icon
+- **Product demonstrations** - Animated GIFs for feature showcases
 
 ---
 
-## Scripts Directory (`/scripts/`)
+## Scripts Architecture
 
 ### Core JavaScript Files
 
-#### **main.js**
-- **Purpose**: Global functionality and initialization
+#### [`main.js`](scripts/main.js)
+- **Purpose**: Global functionality and application initialization
 - **Features**: 
-  - Theme toggle (light/dark mode)
-  - Navigation handling
-  - Mobile menu
-  - Global event listeners
-  - Cart initialization
-- **Dependencies**: None (pure vanilla JS)
+  - Theme toggle system (light/dark mode)
+  - Navigation handling and mobile menu
+  - Global event listeners and utilities
+  - Shopping cart initialization
+  - Performance monitoring
+- **Dependencies**: None (pure vanilla JavaScript)
 
-#### **home.js**
-- **Purpose**: Homepage-specific functionality
-- **Features**: 
-  - Hero animations
-  - Product showcase interactions
-  - Scroll effects
-- **Dependencies**: `main.js`
+#### Page-Specific Scripts
 
-#### **pricing.js**
-- **Purpose**: Pricing page functionality
-- **Features**: 
-  - Floating filter integration
-  - Product filtering
-  - Renewal form handling
-  - Shopping cart integration
-- **Dependencies**: 
-  - `main.js`
-  - `components/cart.js`
-  - `components/floating-filter.js`
+- **[`home.js`](scripts/home.js)** - Homepage animations and interactions
+- **[`pricing.js`](scripts/pricing.js)** - Pricing page filtering and cart integration
+- **[`solutions.js`](scripts/solutions.js)** - Solution filtering and search
+- **[`blueprints.js`](scripts/blueprints.js)** - Blueprint metrics and modals
+- **[`bundles.js`](scripts/bundles.js)** - Bundle comparison and pricing
 
-#### **solutions.js**
-- **Purpose**: Solutions page functionality
-- **Features**: 
-  - Solution filtering by industry/product
-  - Filter state management
-  - No-results messaging
-- **Dependencies**: 
-  - `main.js`
-  - `components/floating-filter.js`
+### Component Architecture ([`/scripts/components/`](scripts/components/))
 
-#### **blueprints.js**
-- **Purpose**: Blueprint page functionality
-- **Features**: 
-  - Animated metrics counters
-  - Product modal system
-  - Interactive elements
-- **Dependencies**: `main.js`
-
-#### **bundles.js**
-- **Purpose**: Bundles page functionality
-- **Features**: 
-  - Bundle comparison
-  - Shopping cart integration
-  - Pricing calculations
-- **Dependencies**: 
-  - `main.js`
-  - `components/cart.js`
-
-#### **pillars.js**
-- **Purpose**: Legacy/unused functionality
-- **Status**: Deprecated
-
-### Components Directory (`/scripts/components/`)
-
-#### **cart.js**
-- **Purpose**: Shopping cart functionality
-- **Features**: 
-  - Add/remove products
-  - Quantity management
-  - Price calculations
-  - Floating cart UI
-  - Checkout integration
-- **Dependencies**: None (standalone class)
+#### [`cart.js`](scripts/components/cart.js)
 - **Class**: `ShoppingCart`
-
-#### **floating-filter.js**
-- **Purpose**: Advanced filtering system
 - **Features**: 
-  - Collapsible filter panel
-  - Multiple filter types
-  - Real-time filtering
-  - State management
-- **Dependencies**: None (standalone class)
+  - Add/remove products with validation
+  - Quantity management and price calculations
+  - Floating cart UI with animations
+  - Checkout integration and persistence
+- **API**: Public methods for cart manipulation
+
+#### [`floating-filter.js`](scripts/components/floating-filter.js)
 - **Class**: `FloatingFilter`
-
-#### **animations.js**
-- **Purpose**: UI animations and effects
 - **Features**: 
-  - Scroll animations
-  - Intersection observer
-  - Counter animations
-- **Dependencies**: None
+  - Collapsible filter panel with smooth animations
+  - Multiple filter types (checkboxes, radio, search)
+  - Real-time filtering with debounced search
+  - State management and URL synchronization
+- **Integration**: Used by pricing and solutions pages
 
-#### **forms.js**
-- **Purpose**: Form handling and validation
-- **Features**: 
-  - Form validation
-  - Newsletter signup
-  - Contact forms
-- **Dependencies**: None
+#### Other Components
 
-#### **modals.js**
-- **Purpose**: Modal dialog system
-- **Features**: 
-  - Product information modals
-  - Newsletter modals
-  - Dynamic content loading
-- **Dependencies**: None
+- **[`animations.js`](scripts/components/animations.js)** - Scroll animations and intersection observers
+- **[`forms.js`](scripts/components/forms.js)** - Form validation and submission handling
+- **[`modals.js`](scripts/components/modals.js)** - Modal dialog system with dynamic content
 
 ---
 
-## Styles Directory (`/styles/`)
+## Styles Architecture (ITCSS)
 
-### Main Entry Point
+### [`main.css`](styles/main.css)
+**Entry point** that imports all CSS layers in proper ITCSS order:
+```css
+@import '00-tokens/colors.css';
+@import '00-tokens/typography.css';
+@import '00-tokens/spacing.css';
+@import '00-tokens/shadows.css';
+@import '01-base/reset.css';
+/* ... continues through all layers */
+```
 
-#### **main.css**
-- **Purpose**: CSS architecture entry point
-- **Structure**: Imports all other CSS files in dependency order
-- **Architecture**: ITCSS (Inverted Triangle CSS) methodology
+### Layer 0: Tokens ([`/styles/00-tokens/`](styles/00-tokens/))
 
-### Tokens (`/styles/00-tokens/`)
+**Design system foundation** using CSS custom properties:
 
-Design system foundations - CSS custom properties:
+#### [`colors.css`](styles/00-tokens/colors.css)
+```css
+:root {
+  --color-primary: #007bff;
+  --color-secondary: #6c757d;
+  --color-success: #28a745;
+  /* Theme-aware variables */
+}
+```
 
-#### **colors.css**
-- **Purpose**: Color palette and theme variables
-- **Contents**: 
-  - Primary/secondary colors
-  - Semantic colors (success, error, warning)
-  - Text colors
-  - Background colors
-  - Border colors
+#### [`typography.css`](styles/00-tokens/typography.css)
+- Font families, sizes, weights, line heights
+- Consistent typography scale
+- Responsive font sizing
 
-#### **typography.css**
-- **Purpose**: Typography system
-- **Contents**: 
-  - Font families
-  - Font sizes
-  - Font weights
-  - Line heights
-  - Letter spacing
+#### [`spacing.css`](styles/00-tokens/spacing.css)
+- Spacing scale (space-1 through space-24)
+- Border radius values
+- Component dimensions
 
-#### **spacing.css**
-- **Purpose**: Spacing and sizing system
-- **Contents**: 
-  - Spacing scale (space-1 through space-24)
-  - Border radius values
-  - Component dimensions
+#### [`shadows.css`](styles/00-tokens/shadows.css)
+- Box shadow levels for elevation
+- Text shadows and effects
 
-#### **shadows.css**
-- **Purpose**: Shadow and elevation system
-- **Contents**: 
-  - Box shadow levels
-  - Text shadows
-  - Elevation effects
+### Layer 1: Base ([`/styles/01-base/`](styles/01-base/))
 
-### Base Styles (`/styles/01-base/`)
+#### [`reset.css`](styles/01-base/reset.css)
+- Modern CSS reset and normalization
+- Box-sizing reset to border-box
+- Consistent baseline across browsers
 
-#### **reset.css**
-- **Purpose**: CSS normalization and reset
-- **Contents**: 
-  - Browser inconsistency fixes
-  - Default element styling
-  - Box-sizing reset
+#### [`typography.css`](styles/01-base/typography.css)
+- Base typography styles using tokens
+- Heading hierarchy (h1-h6)
+- Paragraph and text element styling
 
-#### **typography.css**
-- **Purpose**: Base typography styles
-- **Contents**: 
-  - Heading styles (h1-h6)
-  - Paragraph styles
-  - Link styles
-  - Text utilities
+#### [`utilities.css`](styles/01-base/utilities.css)
+- Utility classes for common patterns
+- Display, text, spacing, and color utilities
+- Responsive utility variants
 
-#### **utilities.css**
-- **Purpose**: Utility classes
-- **Contents**: 
-  - Display utilities
-  - Text utilities
-  - Spacing utilities
-  - Color utilities
+### Layer 2: Layout ([`/styles/02-layout/`](styles/02-layout/))
 
-### Layout (`/styles/02-layout/`)
+#### [`containers.css`](styles/02-layout/containers.css)
+- Container widths and responsive behavior
+- Content wrappers and spacing
 
-#### **containers.css**
-- **Purpose**: Container and wrapper styles
-- **Contents**: 
-  - Main container widths
-  - Responsive containers
-  - Content wrappers
+#### [`grid.css`](styles/02-layout/grid.css)
+- CSS Grid and Flexbox layout patterns
+- Responsive grid systems
+- Layout utilities
 
-#### **grid.css**
-- **Purpose**: Grid layout systems
-- **Contents**: 
-  - CSS Grid layouts
-  - Flexbox patterns
-  - Responsive grids
+#### [`sections.css`](styles/02-layout/sections.css)
+- Page section layouts and spacing
+- Hero sections and content areas
 
-#### **sections.css**
-- **Purpose**: Page section layouts
-- **Contents**: 
-  - Section spacing
-  - Hero sections
-  - Content sections
+### Layer 3: Components ([`/styles/03-components/`](styles/03-components/))
 
-### Components (`/styles/03-components/`)
+**UI component styles** with theme awareness:
 
-#### **navigation.css**
-- **Purpose**: Header and navigation styling
-- **Features**: 
-  - Responsive navigation
-  - Mobile menu
-  - Active states
-  - Theme integration
+#### [`navigation.css`](styles/03-components/navigation.css)
+- Header and navigation styling
+- Mobile menu with hamburger animation
+- Active states and theme integration
 
-#### **buttons.css**
-- **Purpose**: Button component styles
-- **Features**: 
-  - Primary/secondary buttons
-  - Button states (hover, active, disabled)
-  - Button sizes
-  - Icon buttons
+#### [`buttons.css`](styles/03-components/buttons.css)
+- Button variants (primary, secondary, outline)
+- Button states and interactions
+- Size variations and icon buttons
 
-#### **cards.css**
-- **Purpose**: Card component styles
-- **Features**: 
-  - Product cards
-  - Blueprint cards
-  - Pricing cards
-  - Interactive states
+#### [`cards.css`](styles/03-components/cards.css)
+- Product, blueprint, and pricing cards
+- Interactive states and hover effects
+- Responsive card layouts
 
-#### **cart.css**
-- **Purpose**: Shopping cart panel styles
-- **Features**: 
-  - Cart panel layout
-  - Cart item styling
-  - Quantity controls
+#### [`floating-cart.css`](styles/03-components/floating-cart.css)
+- Modern floating cart design
+- Gradient headers and professional animations
+- Light/dark theme support
 
-#### **floating-cart.css**
-- **Purpose**: Floating cart component
-- **Features**: 
-  - Modern floating design
-  - Gradient headers
-  - Professional animations
-  - Light/dark theme support
+#### [`floating-filter.css`](styles/03-components/floating-filter.css)
+- Collapsible filter panel styling
+- Filter option layouts
+- Mobile-responsive design
 
-#### **floating-filter.css**
-- **Purpose**: Floating filter component
-- **Features**: 
-  - Collapsible filter panel
-  - Filter options styling
-  - Professional design
-  - Mobile responsive
+### Layer 4: Pages ([`/styles/04-pages/`](styles/04-pages/))
 
-#### **forms.css**
-- **Purpose**: Form component styles
-- **Features**: 
-  - Input styling
-  - Form validation states
-  - Newsletter forms
+**Page-specific styles** building on component foundation:
 
-#### **footer.css**
-- **Purpose**: Footer component styles
-- **Features**: 
-  - Multi-column layout
-  - Social icons
-  - Responsive design
+#### [`home.css`](styles/04-pages/home.css)
+- Homepage hero section
+- Product showcase layouts
+- Feature highlight sections
 
-#### **theme-toggle.css**
-- **Purpose**: Theme switcher component
-- **Features**: 
-  - Toggle animation
-  - Icon transitions
-  - Theme state indicators
+#### [`pricing.css`](styles/04-pages/pricing.css)
+- Pricing table layouts
+- Product section organization
+- Filter integration styling
 
-#### **animations.css**
-- **Purpose**: Animation utilities
-- **Features**: 
-  - Keyframe animations
-  - Transition effects
-  - Hover animations
+#### [`blueprints.css`](styles/04-pages/blueprints.css)
+- Blueprint-specific layouts
+- Metrics dashboard styling
+- Implementation pathway design
 
-### Pages (`/styles/04-pages/`)
+### Layer 5: Themes ([`/styles/05-themes/`](styles/05-themes/))
 
-#### **home.css**
-- **Purpose**: Homepage-specific styles
-- **Features**: 
-  - Hero section styling
-  - Product showcase
-  - Feature highlights
+**Theme variations** overriding token values:
 
-#### **pricing.css**
-- **Purpose**: Pricing page styles
-- **Features**: 
-  - Pricing table layouts
-  - Product sections
-  - Filter integration
+#### [`light.css`](styles/05-themes/light.css)
+```css
+:root {
+  --color-background: #ffffff;
+  --color-text: #333333;
+  /* Light theme token overrides */
+}
+```
 
-#### **solutions.css**
-- **Purpose**: Solutions page styles
-- **Features**: 
-  - Solution grid layout
-  - Filter panel integration
-  - Card interactions
-
-#### **blueprints.css**
-- **Purpose**: Blueprint page styles
-- **Features**: 
-  - Blueprint-specific layouts
-  - Metrics dashboard
-  - Implementation pathway
-  - Success validation
-
-#### **bundles.css**
-- **Purpose**: Bundles page styles
-- **Features**: 
-  - Bundle comparison tables
-  - Feature matrices
-  - Pricing displays
-
-### Themes (`/styles/05-themes/`)
-
-#### **light.css**
-- **Purpose**: Light theme variables
-- **Contents**: 
-  - Light mode color values
-  - Cart theme variables
-  - Component-specific theming
-
-#### **dark.css**
-- **Purpose**: Dark theme variables
-- **Contents**: 
-  - Dark mode color values
-  - Contrast adjustments
-  - Theme-specific overrides
+#### [`dark.css`](styles/05-themes/dark.css)
+```css
+[data-theme="dark"] {
+  --color-background: #1a1a1a;
+  --color-text: #ffffff;
+  /* Dark theme token overrides */
+}
+```
 
 ---
 
@@ -568,20 +506,20 @@ Design system foundations - CSS custom properties:
 #### **Font Awesome 6.5.2**
 - **Usage**: Icons throughout the application
 - **Source**: CDN (cdnjs.cloudflare.com)
-- **Components**: All UI components use FA icons
+- **Integration**: All UI components use Font Awesome icons
 
 #### **Google Fonts (Montserrat)**
-- **Usage**: Primary typography
+- **Usage**: Primary typography system
 - **Weights**: 300, 400, 500, 600, 700
-- **Fallback**: Sans-serif system fonts
+- **Fallback**: System sans-serif fonts
 
 #### **Google Analytics**
-- **Usage**: Site analytics and tracking
+- **Usage**: Site analytics and user behavior tracking
 - **Implementation**: Global site tag (gtag.js)
 
 #### **Cookiebot**
-- **Usage**: GDPR compliance and cookie management
-- **Implementation**: Banner script with consent management
+- **Usage**: GDPR compliance and cookie consent management
+- **Implementation**: Automated banner with consent tracking
 
 ### Internal Dependencies
 
@@ -596,83 +534,61 @@ main.js (core) → page-specific.js → components/*.js
 ```
 
 #### **Component Dependencies**
-- All pages depend on `main.js`
-- Shopping functionality requires `cart.js`
-- Filtering requires `floating-filter.js`
-- Animations require `animations.js`
+- All pages depend on [`main.js`](scripts/main.js)
+- Shopping functionality requires [`cart.js`](scripts/components/cart.js)
+- Filtering requires [`floating-filter.js`](scripts/components/floating-filter.js)
+- Animations require [`animations.js`](scripts/components/animations.js)
 
 ---
 
 ## Development Workflow
 
-### CSS Architecture
+### CSS Development
 - **Methodology**: ITCSS (Inverted Triangle CSS)
 - **Linting**: Stylelint with standard configuration
 - **Theming**: CSS custom properties for light/dark modes
+- **Testing**: Cross-browser compatibility testing
 
-### JavaScript Architecture
+### JavaScript Development
 - **Style**: ES6+ with classes and modules
-- **No Framework**: Vanilla JavaScript for maximum performance
-- **Component Pattern**: Reusable classes for complex functionality
+- **Framework**: Vanilla JavaScript for performance
+- **Pattern**: Component-based architecture
+- **Testing**: Manual testing across devices and browsers
 
 ### Build Process
 - **No Build Step**: Direct file serving for simplicity
-- **CSS**: Imported via @import in main.css
-- **JS**: Script tags with proper dependency order
-- **Assets**: Static file serving
+- **CSS**: Imported via @import in [`main.css`](styles/main.css)
+- **JavaScript**: Script tags with dependency order
+- **Assets**: Static file serving with proper caching
 
 ### Code Quality
 - **CSS Linting**: Automated via Stylelint
-- **Conventions**: Consistent naming (BEM-inspired)
-- **Documentation**: Inline comments and external docs
+- **Conventions**: BEM-inspired naming
+- **Documentation**: Comprehensive inline and external docs
+- **Version Control**: Git with semantic commit messages
 
 ---
 
-## Key Features
+## Maintenance Guidelines
 
-### Design System
-- Token-based architecture for consistency
-- Comprehensive component library
-- Light/dark theme support
-- Responsive design patterns
+### Regular Updates
+- **Product Information**: Logos, pricing, feature descriptions
+- **Content**: Blueprint solutions, bundle configurations
+- **Dependencies**: External library versions and security updates
+- **SEO**: Sitemap updates, meta descriptions, schema markup
 
-### User Experience
-- Modern floating components (cart, filters)
-- Smooth animations and transitions
-- Professional visual design
-- Mobile-first responsive layout
+### Performance Monitoring
+- **Asset Optimization**: Image compression, CSS/JS minification
+- **Loading Performance**: Core Web Vitals monitoring
+- **Accessibility**: WCAG compliance testing
+- **Cross-browser Testing**: Modern browser compatibility
 
-### Technical Excellence
-- Performance-optimized vanilla JavaScript
-- SEO-friendly structure and content
-- GDPR compliance integration
-- Cross-browser compatibility
-
-### Business Features
-- Shopping cart with checkout integration
-- Advanced product filtering
-- Solution blueprint showcase
-- Pricing and bundle comparison
+### Security Considerations
+- **Dependency Updates**: Regular security patch application
+- **Content Security Policy**: CSP headers for XSS protection
+- **HTTPS**: Secure connection enforcement
+- **Privacy Compliance**: GDPR and cookie policy maintenance
 
 ---
 
-## Maintenance Notes
-
-### Regular Updates Needed
-- Product logos and branding assets
-- Pricing information in pricing/index.html
-- Blueprint content for new solutions
-- Bundle configurations
-
-### Performance Considerations
-- Image optimization for logos and assets
-- CSS/JS minification for production
-- CDN usage for external dependencies
-
-### SEO Maintenance
-- Sitemap updates for new pages
-- Meta description optimization
-- Schema markup validation
-- Analytics monitoring
-
-This documentation provides a complete overview of the MESCIUS Solutions repository structure, dependencies, and functionality for developers and maintainers.
+This documentation provides a comprehensive overview of the MESCIUS Solutions website architecture, emphasizing the sophisticated B2B e-commerce platform with its token-based design system, ITCSS methodology, and component-driven development approach. The structure supports scalable development while maintaining design consistency and performance optimization.
