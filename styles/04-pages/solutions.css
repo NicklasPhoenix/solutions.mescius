@@ -517,7 +517,7 @@
   box-shadow: var(--shadow-xl);
 }
 
-.case-study-card::before {
+/*.case-study-card::before {
   content: '';
   position: absolute;
   top: 0;
