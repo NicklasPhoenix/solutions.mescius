@@ -68,7 +68,7 @@
   backdrop-filter: blur(10px);
   border-radius: var(--radius-2xl);
   border: 1px solid var(--border-color);
-  transition: all var(--transition-base) var(--ease-out);
+  transition: all var(--transition-hover-lift) var(--ease-hover-lift);
 }
 
 .stat-item:hover {
@@ -143,7 +143,7 @@
   border: 1px solid var(--border-color);
   border-radius: var(--radius-xl);
   padding: var(--space-6);
-  transition: all var(--transition-base) var(--ease-out);
+  transition: all var(--transition-hover-lift) var(--ease-hover-lift);
 }
 
 .pillar:hover {
@@ -282,7 +282,7 @@
   text-decoration: none;
   color: var(--text-primary);
   display: block;
-  transition: all var(--transition-base) var(--ease-out);
+  transition: all var(--transition-hover-lift) var(--ease-hover-lift);
   position: relative;
   overflow: hidden;
 }
