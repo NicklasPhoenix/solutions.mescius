@@ -215,9 +215,11 @@ class FloatingFilter {
             const sectionElement = this.filterElement.querySelector(`[data-filter-type="${section.type}"]`);
             const options = sectionElement.querySelectorAll('.filter-option');
             options.forEach(option => {
-                option.classList.remove('is-active');
+                option.classList.remove('active');
+                option.setAttribute('aria-pressed', 'false');
                 if (option.getAttribute('data-filter') === 'all') {
-                    option.classList.add('is-active');
+                    option.classList.add('active');
+                    option.setAttribute('aria-pressed', 'true');
                 }
             });
         });
