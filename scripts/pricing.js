@@ -38,7 +38,7 @@ function initializeCart() {
 function initializeFloatingFilter() {
     if (typeof FloatingFilter !== 'undefined') {
         const filterConfig = {
-            containerId: 'floating-filter',
+            containerId: 'pricing-floating-filter',
             targetGridId: 'pricing-content',
             filters: [
                 {

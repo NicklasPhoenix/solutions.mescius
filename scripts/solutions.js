@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function initializeFloatingFilter() {
     if (typeof FloatingFilter !== 'undefined') {
         const filterConfig = {
-            containerId: 'floating-filter',
+            containerId: 'solutions-floating-filter',
             targetGridId: 'case-study-grid',
             filters: [
                 {
@@ -99,7 +99,7 @@ function handleFilterChange(activeFilters) {
  */
     function updateNoResultsMessage() {
         const visibleCards = document.querySelectorAll('.case-study-card:not([style*="display: none"])');
-        const noResultsMessage = document.getElementById('no-results-message');
+        const noResultsMessage = document.getElementById('solutions-no-results-message');
         const activeFilters = document.querySelectorAll('.floating-filter .filter-option.active');
         
         if (visibleCards.length === 0 && activeFilters.length > 0) {
@@ -126,7 +126,7 @@ function handleFilterChange(activeFilters) {
                 });
                 
                 // Hide no results message
-                document.getElementById('no-results-message').style.display = 'none';
+                document.getElementById('solutions-no-results-message').style.display = 'none';
             }
         }
     });
