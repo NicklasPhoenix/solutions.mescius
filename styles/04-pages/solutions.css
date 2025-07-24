@@ -534,7 +534,7 @@
   transform: scaleX(1);
 }
 
-/* Product-specific card styling */
+/* Product-specific card styling 
 .case-study-card.product-net::before {
   background: linear-gradient(90deg, #4c1d95, #7c3aed);
 }
@@ -554,7 +554,7 @@
 .case-study-card.product-arjs::before {
   background: linear-gradient(90deg, #dc2626, #ef4444);
 }
-
+*/
 .card-content {
   flex-grow: 1;
   display: flex;
