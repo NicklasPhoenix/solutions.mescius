@@ -259,8 +259,8 @@
 
 .pillar,
 .stat-item {
-  background: rgba(255, 255, 255, 0.8);
-  border-color: var(--border-color);
+  background: rgba(255, 255, 255, 0.95);
+  border-color: var(--gray-400);
 }
 
 .logo-item {
