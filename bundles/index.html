@@ -46,11 +46,53 @@
     
     <link rel="stylesheet" href="../styles/main.css?v=2025070403">
     
+    <!-- Immediate theme styling to prevent flash -->
+    <style>
+        /* Prevent theme flash by setting immediate background colors */
+        html, body {
+            margin: 0;
+            padding: 0;
+            background-color: #FFFFFF;
+            color: #1F2937;
+            transition: background-color 0.2s ease-out, color 0.2s ease-out;
+        }
+        
+        /* Dark theme immediate styling */
+        html[data-theme="dark"], 
+        html[data-theme="dark"] body {
+            background-color: #111827;
+            color: #F9FAFB;
+        }
+        
+        /* Loading state styling */
+        body:not(.page-ready) {
+            overflow: hidden;
+        }
+    </style>
+    
     <!-- Theme initialization script to prevent flash -->
     <script>
         (function() {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            document.documentElement.setAttribute('data-theme', savedTheme);
+            // Get saved theme - only 'dark' is stored, default (no attribute) is light
+            const savedTheme = localStorage.getItem('theme');
+            
+            // Apply saved theme immediately - only set attribute for dark mode
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                // For light mode, remove any theme attribute to use default styles
+                document.documentElement.removeAttribute('data-theme');
+            }
+            
+            // Respect system preference only if no saved theme
+            if (!savedTheme) {
+                const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+                if (mediaQuery.matches) {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                } else {
+                    document.documentElement.removeAttribute('data-theme');
+                }
+            }
         })();
     </script>
     

@@ -5,13 +5,52 @@
 
 // Initialize the application when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
+    // Start initialization but don't show content yet
+    initializeTheme();
     initializeNavigation();
-    initializeAnimations();
     initializeModals();
     initializeScrollEffects();
-    initializeTheme();
     initializeCart();
+    
+    // Wait for page to be fully ready before showing content and starting animations
+    ensurePageReady();
 });
+
+/**
+ * Ensure page is fully ready before showing content
+ */
+function ensurePageReady() {
+    // Wait for fonts and critical resources to load
+    Promise.all([
+        document.fonts.ready,
+        new Promise(resolve => {
+            if (document.readyState === 'complete') {
+                resolve();
+            } else {
+                window.addEventListener('load', resolve);
+            }
+        })
+    ]).then(() => {
+        // Additional small delay to ensure theme is fully applied
+        setTimeout(() => {
+            // Mark page as ready
+            document.body.classList.add('page-ready');
+            
+            // Hide loading overlay
+            const loadingOverlay = document.getElementById('page-loading');
+            if (loadingOverlay) {
+                loadingOverlay.classList.add('fade-out');
+                setTimeout(() => {
+                    loadingOverlay.style.display = 'none';
+                }, 300);
+            }
+            
+            // Now initialize animations after content is visible
+            initializeAnimations();
+            
+        }, 100);
+    });
+}
 
 /**
  * Navigation functionality
