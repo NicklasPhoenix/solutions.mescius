@@ -1,7 +1,7 @@
 :root {
   /* PRIMARY INTERACTION COLORS */
   --primary: #2E5984;
-  --primary-hover: #FFFFFF;
+  --primary-hover: transparent;
   --primary-dark: #1E3A56;
   --primary-active: #4A7BA7;
   --primary-light: #E6EDF5;
