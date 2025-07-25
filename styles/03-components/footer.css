@@ -351,8 +351,8 @@
   border-radius: var(--radius-2xl);
   box-shadow: var(--shadow-2xl);
   position: relative;
-  max-width: 700px;
-  width: 100%;
+  max-width: 500px; /* Reduced from 700px for better sizing */
+  width: 90%;
   max-height: 90vh;
   transform: scale(0.9);
   animation: modal-scale-in var(--transition-base) var(--ease-out);

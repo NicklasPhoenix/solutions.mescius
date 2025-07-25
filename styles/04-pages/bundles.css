@@ -203,6 +203,7 @@
   overflow: hidden;
   box-shadow: var(--shadow-2xl);
   border: 1px solid var(--border-color);
+  margin: auto; /* Ensure proper centering */
 }
 
 .modal-header {
