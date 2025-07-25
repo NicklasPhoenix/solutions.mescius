@@ -195,13 +195,14 @@
   border-radius: var(--radius-xl);
   max-width: 450px; /* Reduced for more appropriate sizing */
   width: 90%;
-  max-height: 70vh;
+  max-height: 80vh; /* Increased to allow for content */
   overflow: hidden;
   box-shadow: var(--shadow-2xl);
   border: 1px solid var(--border-color);
   margin: 0 auto; /* Center horizontally */
   position: relative; /* Ensure proper positioning */
-  display: block; /* Always display when parent is shown */
+  display: flex; /* Use flex for proper content sizing */
+  flex-direction: column; /* Stack header and body vertically */
 }
 
 .modal-header {
@@ -210,6 +211,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-shrink: 0; /* Prevent header from shrinking */
 }
 
 .modal-header h3 {
@@ -238,7 +240,8 @@
 .modal-body {
   padding: var(--space-6);
   overflow-y: auto;
-  max-height: calc(80vh - 120px);
+  flex: 1; /* Allow content to determine height */
+  min-height: 0; /* Allow shrinking */
   color: var(--text-primary);
 }
 

@@ -1173,3 +1173,26 @@
   background: var(--primary-hover);
   color: white;
 }
+
+/* Dark theme styles for pricing modal buttons */
+[data-theme="dark"] #product-info-modal .btn-primary {
+  background: var(--primary);
+  color: white;
+  border: none;
+}
+
+[data-theme="dark"] #product-info-modal .btn-primary:hover {
+  background: var(--primary-hover);
+  color: white;
+}
+
+[data-theme="dark"] #product-info-modal .btn-secondary {
+  background: transparent;
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+[data-theme="dark"] #product-info-modal .btn-secondary:hover {
+  background: rgba(59, 130, 246, 0.2);
+  color: var(--primary);
+}
