@@ -70,6 +70,12 @@
   --form-file-hover-border: var(--primary-300);
   --form-file-hover-bg: rgba(96, 165, 250, 0.2);
   --form-file-hover-text: var(--primary-300);
+  
+  /* Blueprint-specific dark mode backgrounds */
+  --bg-flow-light: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  --bg-flow-subtle: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+  --bg-flow-medium: linear-gradient(180deg, var(--bg-tertiary) 0%, var(--bg-quaternary) 100%);
+  --bg-flow-reverse: linear-gradient(180deg, var(--bg-quaternary) 0%, var(--bg-tertiary) 100%);
 }
 
 /* Dark theme component overrides */
@@ -1139,5 +1145,281 @@
 
 [data-theme="dark"] .modal-footer {
   background: var(--bg-secondary);
+  border-top-color: var(--border-color);
+}
+
+/* ==========================================
+   BLUEPRINT PAGES DARK MODE FIXES
+   ========================================== */
+
+/* Dark theme pill components (meta items) */
+[data-theme="dark"] .meta-item {
+  background: rgba(55, 65, 81, 0.8);
+  border-color: var(--border-color);
+  color: var(--text-secondary);
+  backdrop-filter: blur(10px);
+}
+
+[data-theme="dark"] .meta-icon {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--primary-300);
+}
+
+/* Dark theme challenge and solution section */
+[data-theme="dark"] .challenge-solution-section {
+  background: var(--bg-flow-light);
+}
+
+[data-theme="dark"] .challenge-solution-card {
+  background: rgba(31, 41, 55, 0.9);
+  border-color: var(--border-color);
+  backdrop-filter: blur(20px);
+}
+
+[data-theme="dark"] .challenge-solution-card:hover {
+  border-color: var(--primary-300);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+}
+
+[data-theme="dark"] .challenge-card .card-icon {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--error);
+}
+
+[data-theme="dark"] .solution-card .card-icon {
+  background: rgba(34, 197, 94, 0.1);
+  color: var(--success);
+}
+
+/* Dark theme quantified business impact section */
+[data-theme="dark"] .metrics-dashboard-section {
+  background: var(--bg-flow-subtle);
+}
+
+[data-theme="dark"] .metrics-dashboard {
+  background: rgba(31, 41, 55, 0.9);
+  border-color: var(--border-color);
+  backdrop-filter: blur(20px);
+}
+
+[data-theme="dark"] .kpi-category {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .kpi-category:hover {
+  border-color: var(--primary-300);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+}
+
+/* Dark theme implementation pathway section */
+[data-theme="dark"] .implementation-pathway-section {
+  background: var(--bg-flow-medium);
+}
+
+[data-theme="dark"] .step-content {
+  background: rgba(31, 41, 55, 0.9);
+  border-color: var(--border-color);
+  backdrop-filter: blur(20px);
+}
+
+[data-theme="dark"] .step-content:hover {
+  border-color: var(--primary-300);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .step-detail-item {
+  background: var(--bg-tertiary);
+  border-color: var(--border-color);
+}
+
+/* Dark theme solution components section */
+[data-theme="dark"] .product-stack-section {
+  background: var(--bg-flow-reverse);
+}
+
+[data-theme="dark"] .product-stack-item {
+  background: rgba(31, 41, 55, 0.9);
+  border-color: var(--border-color);
+  backdrop-filter: blur(20px);
+}
+
+[data-theme="dark"] .product-stack-item:hover {
+  border-color: var(--primary-300);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+}
+
+/* Dark theme success validation section */
+[data-theme="dark"] .success-validation-section {
+  background: var(--bg-flow-medium);
+}
+
+[data-theme="dark"] .validation-card {
+  background: rgba(31, 41, 55, 0.9);
+  border-color: var(--border-color);
+  backdrop-filter: blur(20px);
+}
+
+[data-theme="dark"] .validation-card:hover {
+  border-color: var(--success);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+}
+
+[data-theme="dark"] .validation-metrics {
+  background: var(--bg-tertiary);
+  border-color: var(--border-color);
+}
+
+/* Dark theme recommended solution section fixes */
+[data-theme="dark"] .recommended-bundle-section {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(34, 197, 94, 0.08));
+}
+
+[data-theme="dark"] .bundle-info {
+  background: rgba(31, 41, 55, 0.95);
+  border-color: var(--border-color);
+  backdrop-filter: blur(20px);
+}
+
+[data-theme="dark"] .bundle-inclusions {
+  background: var(--bg-tertiary);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .bundle-inclusions li {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .bundle-inclusions li:hover {
+  border-color: var(--primary-300);
+}
+
+[data-theme="dark"] .bundle-purchase {
+  background: var(--bg-tertiary);
+  border-color: var(--border-color);
+}
+
+/* Fix dark blue price text in recommended solution section */
+[data-theme="dark"] .bundle-price .price {
+  color: var(--primary-300);
+  background: linear-gradient(135deg, var(--primary-300) 0%, var(--primary-400) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+[data-theme="dark"] .bundle-cta .cta-button {
+  background: linear-gradient(135deg, var(--primary-300) 0%, var(--primary-400) 100%);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+[data-theme="dark"] .bundle-cta .cta-button:hover {
+  background: linear-gradient(135deg, var(--primary-200) 0%, var(--primary-300) 100%);
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.5);
+}
+
+/* Dark theme ready to build section (next steps) */
+[data-theme="dark"] .next-steps-section {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(34, 197, 94, 0.08) 100%);
+}
+
+[data-theme="dark"] .next-step-action {
+  background: rgba(31, 41, 55, 0.9);
+  border-color: var(--border-color);
+  backdrop-filter: blur(20px);
+}
+
+[data-theme="dark"] .next-step-action:hover {
+  border-color: var(--primary-300);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+}
+
+[data-theme="dark"] .next-step-action.primary-action {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(59, 130, 246, 0.25) 100%);
+  border-color: var(--primary-300);
+}
+
+[data-theme="dark"] .action-icon {
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--primary-300);
+}
+
+[data-theme="dark"] .primary-action .action-icon {
+  background: rgba(59, 130, 246, 0.2);
+}
+
+[data-theme="dark"] .secondary-action .action-icon {
+  background: rgba(34, 197, 94, 0.15);
+  color: var(--accent-300);
+}
+
+/* Dark theme progressive tabs section */
+[data-theme="dark"] .progressive-tabs-section {
+  background: var(--bg-flow-subtle);
+}
+
+[data-theme="dark"] .tabs-navigation {
+  background: var(--bg-tertiary);
+}
+
+[data-theme="dark"] .tab-button {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .tab-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .tab-button.active {
+  background: var(--bg-secondary);
+  color: var(--primary-300);
+}
+
+[data-theme="dark"] .tab-content {
+  background: rgba(31, 41, 55, 0.9);
+  border-color: var(--border-color);
+  backdrop-filter: blur(20px);
+}
+
+[data-theme="dark"] .tab-content-item {
+  background: var(--bg-tertiary);
+  border-color: var(--border-color);
+}
+
+/* Dark theme progressive disclosure section */
+[data-theme="dark"] .progressive-disclosure-section {
+  background: var(--bg-flow-light);
+}
+
+[data-theme="dark"] .disclosure-item {
+  background: rgba(31, 41, 55, 0.9);
+  border-color: var(--border-color);
+  backdrop-filter: blur(20px);
+}
+
+[data-theme="dark"] .disclosure-item.is-expanded {
+  border-color: var(--primary-300);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .disclosure-header:hover {
+  background: var(--bg-tertiary);
+}
+
+[data-theme="dark"] .disclosure-toggle {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--primary-300);
+}
+
+[data-theme="dark"] .disclosure-item.is-expanded .disclosure-toggle {
+  background: var(--primary-300);
+  color: white;
+}
+
+[data-theme="dark"] .disclosure-content-inner {
   border-top-color: var(--border-color);
 }

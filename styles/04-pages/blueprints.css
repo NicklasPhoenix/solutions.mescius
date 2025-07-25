@@ -132,22 +132,6 @@
   overflow: hidden;
 }
 
-.challenge-solution-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--card-accent-color, var(--primary));
-  transform: translateY(-4px);
-  transition: transform var(--transition-base) var(--ease-out);
-}
-
-.challenge-solution-card:hover::before {
-  transform: translateY(0);
-}
-
 .challenge-solution-card:hover {
   transform: translateY(-6px);
   box-shadow: var(--shadow-xl);
@@ -287,6 +271,14 @@
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--space-8);
   margin-bottom: var(--space-12);
+  /* Fix container overflow */
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.kpi-categories::-webkit-scrollbar {
+  display: none;
 }
 
 .kpi-category {
@@ -537,22 +529,6 @@
   text-decoration: none;
   color: inherit;
   display: block;
-}
-
-.product-stack-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--product-color, var(--primary));
-  transform: translateY(-4px);
-  transition: transform var(--transition-base) var(--ease-out);
-}
-
-.product-stack-item:hover::before {
-  transform: translateY(0);
 }
 
 .product-stack-item:hover {
@@ -932,12 +908,9 @@
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-color);
   transition: all var(--transition-base) var(--ease-out);
-}
-
-.bundle-inclusions li:hover {
-  border-color: var(--primary-light);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-sm);
+  /* Fix overlapping issue */
+  gap: var(--space-4);
+  min-height: var(--space-12);
 }
 
 .product-name {
@@ -946,6 +919,15 @@
   gap: var(--space-3);
   font-weight: var(--font-weight-medium);
   color: var(--text-primary);
+  /* Allow text to wrap if needed */
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.bundle-inclusions li:hover {
+  border-color: var(--primary-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
 }
 
 .checkmark {
@@ -957,6 +939,9 @@
   display: flex;
   align-items: center;
   gap: var(--space-2);
+  /* Prevent shrinking and ensure adequate spacing */
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .action-link {
@@ -986,12 +971,23 @@
   background: var(--bg-secondary);
   border-radius: var(--radius-xl);
   border: 1px solid var(--border-color);
+  /* Fix overlapping buttons */
+  flex-wrap: wrap;
+  min-height: auto;
 }
 
 .bundle-price {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  /* Ensure adequate spacing */
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.bundle-cta {
+  /* Prevent shrinking below content size */
+  flex-shrink: 0;
 }
 
 .bundle-price .price {
@@ -1057,8 +1053,6 @@
   position: relative;
   overflow: hidden;
 }
-
-
 
 .validation-card:hover {
   transform: translateY(-4px);
@@ -1223,22 +1217,6 @@
   display: block;
   position: relative;
   overflow: hidden;
-}
-
-.next-step-action::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--action-color, var(--primary));
-  transform: translateY(-4px);
-  transition: transform var(--transition-base) var(--ease-out);
-}
-
-.next-step-action:hover::before {
-  transform: translateY(0);
 }
 
 .next-step-action:hover {
