@@ -1141,3 +1141,58 @@
   background: var(--bg-secondary);
   border-top-color: var(--border-color);
 }
+
+/* Dark theme bundle modal content fix */
+[data-theme="dark"] #bundle-info-modal .modal-body {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] #bundle-info-modal .bundle-description {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] #bundle-info-modal .bundle-description * {
+  color: inherit;
+}
+
+[data-theme="dark"] #bundle-info-modal .bundle-info-content {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] #bundle-info-modal .bundle-info-content * {
+  color: inherit;
+}
+
+[data-theme="dark"] #bundle-info-modal .btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+}
+
+[data-theme="dark"] #bundle-info-modal .btn:hover {
+  background: var(--primary-hover);
+  color: white;
+}
+
+/* Dark theme styles for pricing modal buttons */
+[data-theme="dark"] #product-info-modal .btn-primary {
+  background: var(--primary);
+  color: white;
+  border: none;
+}
+
+[data-theme="dark"] #product-info-modal .btn-primary:hover {
+  background: var(--primary-hover);
+  color: white;
+}
+
+[data-theme="dark"] #product-info-modal .btn-secondary {
+  background: transparent;
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+[data-theme="dark"] #product-info-modal .btn-secondary:hover {
+  background: rgba(59, 130, 246, 0.2);
+  color: var(--primary);
+}

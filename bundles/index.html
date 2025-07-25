@@ -210,6 +210,12 @@
                 <div class="pricing-grid">
                     <div class="bundle-card" data-product-id="285847" data-base-price="2772" data-list-price="4265" id="card-net">
                         <div class="card-tag net-tag">.NET Suite</div>
+                        <span class="bundle-info-trigger" role="button" aria-label="More information about .NET Professional Suite"
+                                data-title=".NET Professional Suite"
+                                data-description='<strong>The complete toolkit for professional .NET desktop and web developers.</strong><br>This bundle is perfect for teams building enterprise .NET applications, providing comprehensive UI controls, reporting tools, and spreadsheet components.<br><br><strong>Recommended for:</strong><ul><li>Enterprise .NET development teams</li><li>Desktop application developers</li><li>Web application projects requiring rich UI</li></ul>'
+                                data-solutionlink="../solutions/">
+                                i
+                        </span>
                         <h3 class="card-title">.NET Professional Suite</h3>
                         <p class="card-subtitle">The complete toolkit for professional .NET desktop and web developers.</p>
                         <div class="price-container">
@@ -264,6 +270,12 @@
                     </div>
                     <div class="bundle-card" data-product-id="285849" data-base-price="1203" data-list-price="1850" id="card-js">
                         <div class="card-tag js-tag">Web Excel Apps</div>
+                        <span class="bundle-info-trigger" role="button" aria-label="More information about SpreadJS+Documents"
+                                data-title="SpreadJS+Documents"
+                                data-description='<strong>The essential toolkit for web-based financial reporting and spreadsheet apps.</strong><br>Perfect for building Excel-like functionality in web applications with document generation capabilities.<br><br><strong>Recommended for:</strong><ul><li>Financial reporting applications</li><li>Data analysis dashboards</li><li>Document automation workflows</li></ul>'
+                                data-solutionlink="../solutions/">
+                                i
+                        </span>
                         <h3 class="card-title">SpreadJS+Documents</h3>
                         <p class="card-subtitle">The essential toolkit for web-based financial reporting and spreadsheet apps.</p>
                         <div class="price-container">
@@ -316,6 +328,12 @@
                     </div>
                     <div class="bundle-card" data-product-id="285851" data-base-price="1508" data-list-price="2320" id="card-desktop">
                         <div class="card-tag net-tag">Desktop Excel Apps</div>
+                        <span class="bundle-info-trigger" role="button" aria-label="More information about Spread.NET+Documents"
+                                data-title="Spread.NET+Documents"
+                                data-description='<strong>The essential toolkit for .NET desktop financial reporting and spreadsheet apps.</strong><br>Ideal for desktop applications requiring Excel-like functionality with document generation.<br><br><strong>Recommended for:</strong><ul><li>.NET desktop spreadsheet applications</li><li>Financial reporting systems</li><li>Data visualization tools</li></ul>'
+                                data-solutionlink="../solutions/">
+                                i
+                        </span>
                         <h3 class="card-title">Spread.NET+Documents</h3>
                         <p class="card-subtitle">The essential toolkit for .NET desktop financial reporting and spreadsheet apps.</p>
                         <div class="price-container">
@@ -368,6 +386,12 @@
                     </div>
                     <div class="bundle-card" data-product-id="285868" data-base-price="1649" data-list-price="2870" id="card-analytics">
                         <div class="card-tag reporting-tag">Reporting</div>
+                        <span class="bundle-info-trigger" role="button" aria-label="More information about Real-Time Analytics & Reporting"
+                                data-title="Real-Time Analytics & Reporting"
+                                data-description='<strong>A powerful suite for embedding analytics and reporting into your .NET applications.</strong><br>Perfect for building business intelligence dashboards and real-time data visualization.<br><br><strong>Recommended for:</strong><ul><li>Business intelligence applications</li><li>Real-time analytics dashboards</li><li>Data visualization projects</li></ul>'
+                                data-solutionlink="../solutions/">
+                                i
+                        </span>
                         <h3 class="card-title">Real-Time Analytics & Reporting</h3>
                         <p class="card-subtitle">A powerful suite for embedding analytics and reporting into your .NET applications.</p>
                         <div class="price-container">
@@ -420,6 +444,12 @@
                     </div>
                     <div class="bundle-card" data-product-id="285867" data-base-price="1555" data-list-price="2410" id="card-autoreport">
                         <div class="card-tag ar-tag">Reporting & Docs</div>
+                        <span class="bundle-info-trigger" role="button" aria-label="More information about Automated Reporting & Document Generation"
+                                data-title="Automated Reporting & Document Generation"
+                                data-description='<strong>Generate complex reports and Excel documents on the server-side.</strong><br>Ideal for automated reporting workflows and server-side document generation.<br><br><strong>Recommended for:</strong><ul><li>Automated reporting systems</li><li>Server-side document generation</li><li>Enterprise report automation</li></ul>'
+                                data-solutionlink="../solutions/">
+                                i
+                        </span>
                         <h3 class="card-title">Automated Reporting & Document Generation</h3>
                         <p class="card-subtitle">Generate complex reports and Excel documents on the server-side.</p>
                         <div class="price-container">
@@ -472,6 +502,12 @@
                     </div>
                     <div class="bundle-card" data-product-id="285848" data-base-price="2658" data-list-price="3415" id="card-blazor">
                         <div class="card-tag blazor-tag">Blazor Suite</div>
+                        <span class="bundle-info-trigger" role="button" aria-label="More information about Blazor Hybrid Power Pack"
+                                data-title="Blazor Hybrid Power Pack"
+                                data-description='<strong>Everything you need for building data-centric Blazor Hybrid applications.</strong><br>Perfect for modern Blazor applications with rich UI controls and data visualization.<br><br><strong>Recommended for:</strong><ul><li>Blazor Hybrid applications</li><li>Data-centric web applications</li><li>Modern .NET client applications</li></ul>'
+                                data-solutionlink="../solutions/">
+                                i
+                        </span>
                         <h3 class="card-title">Blazor Hybrid Power Pack</h3>
                         <p class="card-subtitle">Everything you need for building data-centric Blazor Hybrid applications.</p>
                         <div class="price-container">
@@ -656,6 +692,18 @@
             <p>© 2025 Mescius Europe GmbH | All Rights Reserved</p>
         </div>
     </footer>
+
+    <!-- Bundle Info Modal -->
+    <div id="bundle-info-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="bundle-modal-title">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="bundle-modal-title">Bundle Information</h3>
+                <button id="bundle-modal-close" class="modal-close" aria-label="Close bundle information modal">×</button>
+            </div>
+            <div id="bundle-modal-body-content" class="modal-body">
+            </div>
+        </div>
+    </div>
 
     <div id="newsletter-modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-modal="true">
         <div class="modal-content">

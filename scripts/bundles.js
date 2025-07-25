@@ -87,6 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeBundleCalculators();
     initializeSubscriptionToggles();
     initializeTooltips();
+    initializeBundleInfoModals();
 });
 
 /**
@@ -408,7 +409,7 @@ function updateSubscriptionPeriod(bundleId, years) {
  * Initialize tooltip system
  */
 function initializeTooltips() {
-    const tooltipTriggers = document.querySelectorAll('.tooltip-icon, [data-tooltip]');
+    const tooltipTriggers = document.querySelectorAll('[data-tooltip]');
     
     tooltipTriggers.forEach(trigger => {
         trigger.addEventListener('mouseenter', function() {
@@ -428,7 +429,7 @@ function initializeTooltips() {
     
     // Hide tooltips when clicking elsewhere
     document.addEventListener('click', function(e) {
-        if (!e.target.closest('.tooltip-icon, [data-tooltip]')) {
+        if (!e.target.closest('[data-tooltip]')) {
             hideAllTooltips();
         }
     });
@@ -438,8 +439,7 @@ function initializeTooltips() {
  * Show tooltip
  */
 function showTooltip(element) {
-    const tooltipText = element.getAttribute('data-tooltip') || 
-                      element.querySelector('.tooltip-text')?.textContent;
+    const tooltipText = element.getAttribute('data-tooltip');
     
     if (!tooltipText) return;
     
@@ -598,6 +598,123 @@ Thank you!`);
     window.location.href = `mailto:eu.sales@mescius.com?subject=${subject}&body=${body}`;
 }
 
+/**
+ * Initialize bundle info modals
+ */
+function initializeBundleInfoModals() {
+    const infoTriggers = document.querySelectorAll('.bundle-info-trigger');
+    
+    infoTriggers.forEach(trigger => {
+        // Add ARIA attributes for accessibility
+        trigger.setAttribute('role', 'button');
+        trigger.setAttribute('tabindex', '0');
+        trigger.setAttribute('aria-label', trigger.getAttribute('aria-label') || 'More information about this bundle');
+        
+        // Click handler
+        trigger.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            openBundleInfoModal(this);
+        });
+
+        // Keyboard handler
+        trigger.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                e.stopPropagation();
+                openBundleInfoModal(this);
+            }
+        });
+    });
+}
+
+/**
+ * Open bundle info modal
+ */
+function openBundleInfoModal(trigger) {
+    // Get modal data from the trigger element
+    const title = trigger.getAttribute('data-title') || 'Bundle Information';
+    const description = trigger.getAttribute('data-description') || 'No description available';
+    const solutionLink = trigger.getAttribute('data-solutionlink');
+    
+    // Build modal content
+    let modalContent = `
+        <div class="bundle-info-content">
+            <div class="bundle-description">
+                ${description}
+            </div>
+    `;
+    
+    // Add action buttons if links are available
+    if (solutionLink) {
+        modalContent += `
+            <div class="bundle-info-actions">
+                <a href="${solutionLink}" class="btn btn-primary">Explore Solutions</a>
+            </div>
+        `;
+    }
+    
+    modalContent += `</div>`;
+    
+    // Create and show modal using existing modal system
+    if (typeof ModalSystem !== 'undefined' && window.modalSystem) {
+        window.modalSystem.createAndShowModal(title, modalContent);
+    } else {
+        // Fallback: create a simple modal
+        showSimpleModal(title, modalContent);
+    }
+}
+
+/**
+ * Simple modal fallback
+ */
+function showSimpleModal(title, content) {
+    // Use the existing bundle info modal in the DOM
+    const modal = document.getElementById('bundle-info-modal');
+    const modalTitle = document.getElementById('bundle-modal-title');
+    const modalBodyContent = document.getElementById('bundle-modal-body-content');
+    
+    if (modal && modalTitle && modalBodyContent) {
+        modalTitle.textContent = title;
+        modalBodyContent.innerHTML = content;
+        
+        modal.classList.add('show');
+        modal.setAttribute('aria-hidden', 'false');
+        
+        // Simple close functionality
+        const closeBtn = modal.querySelector('#bundle-modal-close');
+        if (closeBtn) {
+            closeBtn.onclick = function() {
+                modal.classList.remove('show');
+                modal.setAttribute('aria-hidden', 'true');
+            };
+        }
+        
+        // Close on backdrop click
+        modal.onclick = function(e) {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+                modal.setAttribute('aria-hidden', 'true');
+            }
+        };
+        
+        // Handle escape key
+        const handleEscape = (e) => {
+            if (e.key === 'Escape') {
+                modal.classList.remove('show');
+                modal.setAttribute('aria-hidden', 'true');
+                document.removeEventListener('keydown', handleEscape);
+            }
+        };
+        document.addEventListener('keydown', handleEscape);
+        
+        // Focus management
+        modal.focus();
+    } else {
+        console.warn('Bundle info modal structure not found in DOM');
+    }
+}
+
 // Export functions for global use
 window.BundlesPage = {
     updateBundlePrice,
@@ -605,5 +722,6 @@ window.BundlesPage = {
     calculateMultiYearDiscount,
     addBundleToCart,
     contactSales,
-    formatCurrency
+    formatCurrency,
+    initializeBundleInfoModals
 };

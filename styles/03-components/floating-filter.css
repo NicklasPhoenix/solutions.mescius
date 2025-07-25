@@ -259,7 +259,8 @@
   border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.floating-filter-clear-btn {
+.floating-filter-clear-btn,
+.floating-filter-clear {
   width: 100%;
   padding: var(--space-3) var(--space-4);
   background: var(--accent-50);
@@ -272,13 +273,15 @@
   transition: all var(--transition-hover-lift) var(--ease-hover-lift);
 }
 
-.floating-filter-clear-btn:hover {
+.floating-filter-clear-btn:hover,
+.floating-filter-clear:hover {
   background: var(--accent-100);
   border-color: var(--accent-300);
   transform: translateY(-1px);
 }
 
-.floating-filter-clear-btn:disabled {
+.floating-filter-clear-btn:disabled,
+.floating-filter-clear:disabled {
   opacity: 0.5;
   cursor: not-allowed;
   transform: none;
@@ -347,6 +350,20 @@
 
 [data-theme="dark"] .floating-filter-clear {
   border-color: rgba(55, 65, 81, 0.3);
+}
+
+[data-theme="dark"] .floating-filter-clear-btn,
+[data-theme="dark"] .floating-filter-clear {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.3);
+  color: var(--primary-300);
+}
+
+[data-theme="dark"] .floating-filter-clear-btn:hover,
+[data-theme="dark"] .floating-filter-clear:hover {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.4);
+  color: var(--primary-200);
 }
 
 /* Mobile Responsiveness */

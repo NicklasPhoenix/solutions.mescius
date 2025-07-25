@@ -43,7 +43,6 @@ class FloatingFilter {
         this.filterElement = document.getElementById(this.config.containerId);
         this.toggleBtn = this.filterElement?.querySelector('.floating-filter-toggle');
         this.clearBtn = this.filterElement?.querySelector('.floating-filter-clear');
-        this.badge = this.filterElement?.querySelector('.active-filters-badge');
         
         // If filter element doesn't exist, create it with proper class names
         if (!this.filterElement) {
@@ -61,7 +60,6 @@ class FloatingFilter {
                     <div class="floating-filter-actions">
                         <button class="floating-filter-clear" disabled>Clear All Filters</button>
                     </div>
-                    <div class="active-filters-badge" style="display: none;">0</div>
                 </div>
             `;
             
@@ -72,7 +70,6 @@ class FloatingFilter {
             this.filterElement = document.getElementById(this.config.containerId);
             this.toggleBtn = this.filterElement?.querySelector('.floating-filter-toggle');
             this.clearBtn = this.filterElement?.querySelector('.floating-filter-clear');
-            this.badge = this.filterElement?.querySelector('.active-filters-badge');
         } else {
             // Update existing content if needed
             const contentElement = this.filterElement.querySelector('.floating-filter-content');
@@ -86,7 +83,6 @@ class FloatingFilter {
             filterElement: !!this.filterElement,
             toggleBtn: !!this.toggleBtn,
             clearBtn: !!this.clearBtn,
-            badge: !!this.badge,
             filterElementConnected: this.filterElement?.isConnected,
             toggleBtnConnected: this.toggleBtn?.isConnected,
             toggleBtnBounds: this.toggleBtn?.getBoundingClientRect()
@@ -252,14 +248,6 @@ class FloatingFilter {
     updateUI() {
         // Count active filters (excluding 'all')
         const activeCount = Object.values(this.activeFilters).filter(value => value !== 'all').length;
-        
-        // Update badge
-        if (activeCount > 0) {
-            this.badge.textContent = activeCount;
-            this.badge.style.display = 'flex';
-        } else {
-            this.badge.style.display = 'none';
-        }
         
         // Update clear button
         this.clearBtn.disabled = activeCount === 0;

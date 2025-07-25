@@ -698,14 +698,14 @@ function openProductInfoModal(trigger) {
                 ${modalContent}
             `;
             
-            modal.classList.add('active');
+            modal.classList.add('show');
             modal.setAttribute('aria-hidden', 'false');
             
             // Simple close functionality
             const closeBtn = modal.querySelector('#modal-close');
             if (closeBtn) {
                 closeBtn.onclick = function() {
-                    modal.classList.remove('active');
+                    modal.classList.remove('show');
                     modal.setAttribute('aria-hidden', 'true');
                 };
             }
@@ -713,7 +713,7 @@ function openProductInfoModal(trigger) {
             // Close on backdrop click
             modal.onclick = function(e) {
                 if (e.target === modal) {
-                    modal.classList.remove('active');
+                    modal.classList.remove('show');
                     modal.setAttribute('aria-hidden', 'true');
                 }
             };
