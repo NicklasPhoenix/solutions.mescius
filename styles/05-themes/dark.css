@@ -733,6 +733,88 @@
     linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
 }
 
+/* Fix pill components (meta-item) in dark mode */
+[data-theme="dark"] .meta-item {
+  background: rgba(31, 41, 55, 0.8);
+  border: 1px solid rgba(75, 85, 99, 0.5);
+  color: var(--text-secondary);
+  backdrop-filter: blur(10px);
+}
+
+[data-theme="dark"] .meta-icon {
+  background: rgba(59, 130, 246, 0.2);
+  color: var(--primary-300);
+}
+
+/* Add dark mode styling for Challenge & Solution section */
+[data-theme="dark"] .challenge-solution-section {
+  background: var(--bg-primary);
+}
+
+/* Add dark mode styling for Implementation Pathway section */
+[data-theme="dark"] .implementation-pathway-section {
+  background: var(--bg-primary);
+}
+
+/* Add dark mode styling for Solution Components section */
+[data-theme="dark"] .product-stack-section {
+  background: var(--bg-primary);
+}
+
+/* Add dark mode styling for Success Validation section */
+[data-theme="dark"] .success-validation-section {
+  background: var(--bg-primary);
+}
+
+[data-theme="dark"] .success-validation-section .section-header h2,
+[data-theme="dark"] .success-validation-section .section-header p {
+  color: var(--text-primary);
+}
+
+/* Add dark mode styling for Next Steps section */
+[data-theme="dark"] .next-steps-section {
+  background: var(--bg-primary);
+}
+
+/* Fix dark mode styling for Recommended Bundle section */
+[data-theme="dark"] .recommended-bundle-section {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(34, 197, 94, 0.08));
+}
+
+[data-theme="dark"] .bundle-price .price {
+  color: var(--primary-300);
+  background: linear-gradient(135deg, var(--primary-300) 0%, var(--primary-400) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+[data-theme="dark"] .action-link {
+  color: var(--primary-300);
+}
+
+[data-theme="dark"] .action-link:hover {
+  color: var(--primary-200);
+}
+
+/* Fix dark mode for Next Steps action cards */
+[data-theme="dark"] .next-step-action .action-icon i {
+  color: var(--primary-300);
+}
+
+[data-theme="dark"] .next-step-action:hover .action-icon i {
+  color: white;
+}
+
+/* Ensure shopping cart icon is visible in dark mode */
+[data-theme="dark"] .action-icon .fa-shopping-cart {
+  color: var(--primary-300);
+}
+
+[data-theme="dark"] .next-step-action:hover .action-icon .fa-shopping-cart {
+  color: white;
+}
+
 [data-theme="dark"] .expandable-card {
   background: rgba(31, 41, 55, 0.95);
   border-color: var(--border-color);

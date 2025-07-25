@@ -298,16 +298,7 @@
   position: relative;
 }
 
-.kpi-category::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--kpi-color, var(--primary));
-  border-radius: var(--radius-full) var(--radius-full) 0 0;
-}
+/* Removed pseudo element bars on KPI categories as per issue requirements */
 
 .kpi-category:hover {
   transform: translateY(-4px);
@@ -539,21 +530,7 @@
   display: block;
 }
 
-.product-stack-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--product-color, var(--primary));
-  transform: translateY(-4px);
-  transition: transform var(--transition-base) var(--ease-out);
-}
-
-.product-stack-item:hover::before {
-  transform: translateY(0);
-}
+/* Removed pseudo element bars on hover as per issue requirements */
 
 .product-stack-item:hover {
   transform: translateY(-6px);
@@ -1225,21 +1202,7 @@
   overflow: hidden;
 }
 
-.next-step-action::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--action-color, var(--primary));
-  transform: translateY(-4px);
-  transition: transform var(--transition-base) var(--ease-out);
-}
-
-.next-step-action:hover::before {
-  transform: translateY(0);
-}
+/* Removed pseudo element bars on next-step-action as per issue requirements */
 
 .next-step-action:hover {
   transform: translateY(-6px);
