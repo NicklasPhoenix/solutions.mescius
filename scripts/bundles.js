@@ -669,50 +669,50 @@ function openBundleInfoModal(trigger) {
  * Simple modal fallback
  */
 function showSimpleModal(title, content) {
-    // Remove existing modal
-    const existingModal = document.getElementById('simple-bundle-modal');
-    if (existingModal) {
-        existingModal.remove();
+    // Use the existing bundle info modal in the DOM
+    const modal = document.getElementById('bundle-info-modal');
+    const modalTitle = document.getElementById('bundle-modal-title');
+    const modalBodyContent = document.getElementById('bundle-modal-body-content');
+    
+    if (modal && modalTitle && modalBodyContent) {
+        modalTitle.textContent = title;
+        modalBodyContent.innerHTML = content;
+        
+        modal.classList.add('show');
+        modal.setAttribute('aria-hidden', 'false');
+        
+        // Simple close functionality
+        const closeBtn = modal.querySelector('#bundle-modal-close');
+        if (closeBtn) {
+            closeBtn.onclick = function() {
+                modal.classList.remove('show');
+                modal.setAttribute('aria-hidden', 'true');
+            };
+        }
+        
+        // Close on backdrop click
+        modal.onclick = function(e) {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+                modal.setAttribute('aria-hidden', 'true');
+            }
+        };
+        
+        // Handle escape key
+        const handleEscape = (e) => {
+            if (e.key === 'Escape') {
+                modal.classList.remove('show');
+                modal.setAttribute('aria-hidden', 'true');
+                document.removeEventListener('keydown', handleEscape);
+            }
+        };
+        document.addEventListener('keydown', handleEscape);
+        
+        // Focus management
+        modal.focus();
+    } else {
+        console.warn('Bundle info modal structure not found in DOM');
     }
-    
-    // Create modal
-    const modal = document.createElement('div');
-    modal.id = 'simple-bundle-modal';
-    modal.className = 'modal-overlay show'; // Add 'show' class to make it visible
-    modal.innerHTML = `
-        <div class="modal">
-            <div class="modal-header">
-                <h3>${title}</h3>
-                <button class="modal-close" aria-label="Close modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                ${content}
-            </div>
-        </div>
-    `;
-    
-    // Add to DOM
-    document.body.appendChild(modal);
-    
-    // Add event listeners
-    modal.querySelector('.modal-close').addEventListener('click', () => {
-        modal.remove();
-    });
-    
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.remove();
-        }
-    });
-    
-    // Handle escape key
-    const handleEscape = (e) => {
-        if (e.key === 'Escape') {
-            modal.remove();
-            document.removeEventListener('keydown', handleEscape);
-        }
-    };
-    document.addEventListener('keydown', handleEscape);
 }
 
 // Export functions for global use

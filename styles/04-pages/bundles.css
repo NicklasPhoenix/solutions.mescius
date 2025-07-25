@@ -190,6 +190,10 @@
   display: flex;
 }
 
+.modal-overlay.show .modal {
+  display: block;
+}
+
 .modal {
   background: var(--bg-primary);
   border-radius: var(--radius-xl);
