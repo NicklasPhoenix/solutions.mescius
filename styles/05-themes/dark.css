@@ -889,15 +889,91 @@
   border-color: var(--border-color);
 }
 
-/* Dark theme bundle cards */
-[data-theme="dark"] .bundle-card {
+/* Dark theme bundle cards - REDESIGNED FOR BLUEPRINTS */
+[data-theme="dark"] .recommended-bundle-section .bundle-card {
+  background: transparent;
+}
+
+[data-theme="dark"] .recommended-bundle-section .bundle-info {
   background: rgba(31, 41, 55, 0.95);
+  border-color: var(--border-color);
+  backdrop-filter: blur(20px);
+}
+
+[data-theme="dark"] .recommended-bundle-section .bundle-info:hover {
+  border-color: var(--primary-300);
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.8),
+    0 0 0 1px rgba(59, 130, 246, 0.2);
+}
+
+[data-theme="dark"] .recommended-bundle-section .bundle-header {
+  background: linear-gradient(135deg, var(--primary-300) 0%, var(--primary-400) 100%);
+}
+
+[data-theme="dark"] .recommended-bundle-section .bundle-header h3 {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+[data-theme="dark"] .recommended-bundle-section .bundle-header h2 {
+  color: white;
+}
+
+[data-theme="dark"] .recommended-bundle-section .bundle-inclusions li {
+  background: var(--bg-tertiary);
   border-color: var(--border-color);
   color: var(--text-primary);
 }
 
-[data-theme="dark"] .bundle-card:hover {
+[data-theme="dark"] .recommended-bundle-section .bundle-inclusions li:hover {
+  background: var(--bg-quaternary);
   border-color: var(--primary-300);
+}
+
+[data-theme="dark"] .recommended-bundle-section .product-name {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .recommended-bundle-section .checkmark {
+  color: var(--accent);
+}
+
+[data-theme="dark"] .recommended-bundle-section .action-link {
+  border-color: var(--primary-300);
+  color: var(--primary-300);
+}
+
+[data-theme="dark"] .recommended-bundle-section .action-link:hover {
+  background: var(--primary-300);
+  color: var(--text-on-primary);
+}
+
+[data-theme="dark"] .recommended-bundle-section .bundle-purchase {
+  background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-quaternary) 100%);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .recommended-bundle-section .bundle-price .price {
+  color: var(--primary-300);
+  background: linear-gradient(135deg, var(--primary-300) 0%, var(--primary-400) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+[data-theme="dark"] .recommended-bundle-section .bundle-price .term {
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .recommended-bundle-section .bundle-cta .cta-button {
+  background: linear-gradient(135deg, var(--primary-300) 0%, var(--primary-400) 100%);
+  color: var(--text-on-primary);
+  box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.4);
+}
+
+[data-theme="dark"] .recommended-bundle-section .bundle-cta .cta-button:hover {
+  background: linear-gradient(135deg, var(--primary-200) 0%, var(--primary-300) 100%);
+  box-shadow: 0 8px 25px 0 rgba(59, 130, 246, 0.5);
 }
 
 /* Dark theme custom pricing text */

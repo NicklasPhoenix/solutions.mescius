@@ -41,11 +41,11 @@
   color: white;
   padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-full);
-  font-size: var(--text-xs);
+  font-size: var(--text-xl);
   font-weight: var(--font-weight-semibold);
   text-transform: uppercase;
   letter-spacing: var(--tracking-wide);
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-20);
   box-shadow: var(--shadow-sm);
 }
 
@@ -82,7 +82,7 @@
   align-items: center;
   gap: var(--space-3);
   color: var(--text-muted);
-  font-size: var(--text-sm);
+  font-size: var(--text-xl);
   padding: var(--space-2) var(--space-4);
   background: rgba(255, 255, 255, 0.8);
   border-radius: var(--radius-full);
@@ -828,148 +828,210 @@
   margin: var(--space-20) 0;
 }
 
-.bundle-card {
+/* ========================================
+   RECOMMENDED BUNDLE SECTION - BLUEPRINT SPECIFIC
+   ======================================== */
+
+.recommended-bundle-section .bundle-card {
   max-width: 800px;
   margin: 0 auto;
 }
 
-.bundle-info {
+/* ========================================
+   REDESIGNED BUNDLE CARD - CLEAN & MODERN
+   ======================================== */
+
+.recommended-bundle-section .bundle-info {
   background: var(--card-bg);
-  backdrop-filter: blur(20px);
-  border: 2px solid var(--border-color);
-  border-radius: var(--radius-3xl);
-  padding: var(--space-12);
-  text-align: center;
-  box-shadow: var(--shadow-xl);
-}
-
-.bundle-header {
-  margin-bottom: var(--space-8);
-}
-
-.bundle-header h3 {
-  font-size: var(--text-lg);
-  font-weight: var(--font-weight-medium);
-  color: var(--text-secondary);
-  margin-bottom: var(--space-2);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-wide);
-}
-
-.bundle-header h2 {
-  font-size: var(--text-3xl);
-  font-weight: var(--font-weight-bold);
-  color: var(--text-primary);
-  margin: 0;
-}
-
-.bundle-content {
-  display: grid;
-  gap: var(--space-8);
-}
-
-.bundle-inclusions {
-  text-align: left;
-  background: var(--bg-secondary);
-  border-radius: var(--radius-xl);
-  padding: var(--space-6);
   border: 1px solid var(--border-color);
-}
-
-.bundle-inclusions ul {
-  list-style: none;
+  border-radius: var(--radius-2xl);
   padding: 0;
-  margin: 0;
-  display: grid;
-  gap: var(--space-4);
-}
-
-.bundle-inclusions li {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--space-4);
-  background: var(--bg-primary);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border-color);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
   transition: all var(--transition-base) var(--ease-out);
 }
 
-.bundle-inclusions li:hover {
-  border-color: var(--primary-light);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-sm);
+.recommended-bundle-section .bundle-info:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-2xl);
+  border-color: var(--primary);
 }
 
-.product-name {
+.recommended-bundle-section .bundle-header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+  color: white;
+  padding: var(--space-8);
+  text-align: center;
+  position: relative;
+}
+
+.recommended-bundle-section .bundle-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.recommended-bundle-section .bundle-header h3 {
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 var(--space-2) 0;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+}
+
+.recommended-bundle-section .bundle-header h2 {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-bold);
+  color: white;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.recommended-bundle-section .bundle-content {
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+/* ========================================
+   REDESIGNED PRODUCT LIST - SIMPLIFIED
+   ======================================== */
+
+.recommended-bundle-section .bundle-inclusions {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+}
+
+.recommended-bundle-section .bundle-inclusions ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.recommended-bundle-section .bundle-inclusions li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-5);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-base) var(--ease-out);
+  position: relative;
+}
+
+.recommended-bundle-section .bundle-inclusions li:hover {
+  border-color: var(--primary);
+  background: var(--bg-tertiary);
+  transform: translateX(var(--space-2));
+}
+
+.recommended-bundle-section .product-name {
   display: flex;
   align-items: center;
   gap: var(--space-3);
   font-weight: var(--font-weight-medium);
   color: var(--text-primary);
+  flex: 1;
 }
 
-.checkmark {
+.recommended-bundle-section .checkmark {
   color: var(--success);
   font-weight: var(--font-weight-bold);
+  font-size: var(--text-lg);
 }
 
-.product-actions {
+/* ========================================
+   REDESIGNED ACTION BUTTONS - FUNCTIONAL
+   ======================================== */
+
+.recommended-bundle-section .product-actions {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: var(--space-3);
 }
 
-.action-link {
+.recommended-bundle-section .action-link {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-4);
+  background: transparent;
+  border: 1px solid var(--primary);
+  border-radius: var(--radius-lg);
   color: var(--primary);
   text-decoration: none;
   font-size: var(--text-sm);
   font-weight: var(--font-weight-medium);
-  transition: color var(--transition-base) var(--ease-out);
+  transition: all var(--transition-base) var(--ease-out);
+  min-width: 60px;
+  justify-content: center;
 }
 
-.action-link:hover {
-  color: var(--primary-hover);
-  text-decoration: underline;
+.recommended-bundle-section .action-link:hover {
+  background: var(--primary);
+  color: white;
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
 }
 
-.action-divider {
-  color: var(--text-muted);
-  font-size: var(--text-sm);
+.recommended-bundle-section .action-divider {
+  display: none; /* Remove divider - buttons are now styled individually */
 }
 
-.bundle-purchase {
+/* ========================================
+   REDESIGNED PURCHASE SECTION - PROMINENT
+   ======================================== */
+
+.recommended-bundle-section .bundle-purchase {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-6);
   padding: var(--space-6);
-  background: var(--bg-secondary);
-  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
   border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  margin-top: var(--space-4);
 }
 
-.bundle-price {
+.recommended-bundle-section .bundle-price {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.bundle-price .price {
+.recommended-bundle-section .bundle-price .price {
   font-size: var(--text-3xl);
   font-weight: var(--font-weight-black);
   color: var(--primary);
   font-variant-numeric: tabular-nums;
   line-height: 1;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.bundle-price .term {
+.recommended-bundle-section .bundle-price .term {
   font-size: var(--text-sm);
   color: var(--text-muted);
   margin-top: var(--space-1);
+  font-weight: var(--font-weight-medium);
 }
 
-.bundle-cta .cta-button {
+.recommended-bundle-section .bundle-cta .cta-button {
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
   color: white;
   border: none;
@@ -983,13 +1045,72 @@
   gap: var(--space-2);
   transition: all var(--transition-base) var(--ease-out);
   box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
 }
 
-.bundle-cta .cta-button:hover {
+.recommended-bundle-section .bundle-cta .cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left var(--transition-base) var(--ease-out);
+}
+
+.recommended-bundle-section .bundle-cta .cta-button:hover {
   background: linear-gradient(135deg, var(--primary-hover) 0%, var(--primary-dark) 100%);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-xl);
   text-decoration: none;
+}
+
+.recommended-bundle-section .bundle-cta .cta-button:hover::before {
+  left: 100%;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN - MOBILE OPTIMIZED
+   ======================================== */
+
+@media (max-width: 768px) {
+  .recommended-bundle-section .bundle-header h2 {
+    font-size: var(--text-xl);
+  }
+  
+  .recommended-bundle-section .bundle-content {
+    padding: var(--space-6);
+    gap: var(--space-6);
+  }
+  
+  .recommended-bundle-section .bundle-inclusions li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-4);
+  }
+  
+  .recommended-bundle-section .product-actions {
+    align-self: stretch;
+    justify-content: space-between;
+  }
+  
+  .recommended-bundle-section .action-link {
+    flex: 1;
+    max-width: 80px;
+  }
+  
+  .recommended-bundle-section .bundle-purchase {
+    flex-direction: column;
+    gap: var(--space-4);
+    text-align: center;
+  }
+  
+  .recommended-bundle-section .bundle-price .price {
+    font-size: var(--text-2xl);
+  }
 }
 
 /* ========================================
@@ -1340,10 +1461,6 @@
 @media (min-width: 1440px) {
   .blueprint-hero h1 {
     font-size: var(--text-6xl);
-  }
-  
-  .product-stack-grid {
-    grid-template-columns: repeat(4, 1fr);
   }
 }
 
