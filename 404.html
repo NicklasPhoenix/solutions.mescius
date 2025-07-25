@@ -12,6 +12,58 @@
   <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.mescius.io/umb/media/zzgitm01/msc-favicon-180.png">
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
   <link rel="stylesheet" href="/styles/main.css">
+  
+  <!-- Immediate theme styling to prevent flash -->
+  <style>
+      /* Prevent theme flash by setting immediate background colors */
+      html, body {
+          margin: 0;
+          padding: 0;
+          background-color: #FFFFFF;
+          color: #1F2937;
+          transition: none !important;
+      }
+      
+      /* Dark theme immediate styling */
+      html[data-theme="dark"], 
+      html[data-theme="dark"] body {
+          background-color: #111827;
+          color: #F9FAFB;
+      }
+      
+      /* Re-enable transitions after page is ready */
+      .page-ready *, 
+      .page-ready *::before, 
+      .page-ready *::after {
+          transition: background-color 0.2s ease-out, color 0.2s ease-out !important;
+      }
+  </style>
+
+  <!-- Theme initialization script to prevent flash -->
+  <script>
+      (function() {
+          // Get saved theme - only 'dark' is stored, default (no attribute) is light
+          const savedTheme = localStorage.getItem('theme');
+          
+          // Apply saved theme immediately - only set attribute for dark mode
+          if (savedTheme === 'dark') {
+              document.documentElement.setAttribute('data-theme', 'dark');
+          } else {
+              // For light mode, remove any theme attribute to use default styles
+              document.documentElement.removeAttribute('data-theme');
+          }
+          
+          // Respect system preference only if no saved theme
+          if (!savedTheme) {
+              const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+              if (mediaQuery.matches) {
+                  document.documentElement.setAttribute('data-theme', 'dark');
+              } else {
+                  document.documentElement.removeAttribute('data-theme');
+              }
+          }
+      })();
+  </script>
 </head>
 <body>
   <div class="container" style="text-align:center; margin-top:5em;">

@@ -59,7 +59,18 @@
             padding: 0;
             background-color: #FFFFFF;
             color: #1F2937;
-            transition: background-color 0.2s ease-out, color 0.2s ease-out;
+            transition: none !important;
+        }
+        
+        /* Immediate styling for critical elements to prevent flash */
+        .hero-section, .hero-section *, 
+        .nav-container, .nav-container *,
+        .section-header, .section-header *,
+        .product-card, .product-card *,
+        .price-card, .price-card *,
+        .challenge-card, .challenge-card *,
+        .footer, .footer * {
+            transition: none !important;
         }
         
         /* Dark theme immediate styling */
@@ -69,9 +80,34 @@
             color: #F9FAFB;
         }
         
+        html[data-theme="dark"] .hero-section,
+        html[data-theme="dark"] .nav-container,
+        html[data-theme="dark"] .section-header,
+        html[data-theme="dark"] .product-card,
+        html[data-theme="dark"] .price-card,
+        html[data-theme="dark"] .challenge-card,
+        html[data-theme="dark"] .footer {
+            background-color: #111827;
+            color: #F9FAFB;
+        }
+        
+        html[data-theme="dark"] .product-card,
+        html[data-theme="dark"] .price-card,
+        html[data-theme="dark"] .challenge-card {
+            background-color: #1F2937;
+            border-color: #374151;
+        }
+        
         /* Loading state styling */
         body:not(.page-ready) {
             overflow: hidden;
+        }
+        
+        /* Re-enable transitions after page is ready */
+        .page-ready *, 
+        .page-ready *::before, 
+        .page-ready *::after {
+            transition: background-color 0.2s ease-out, color 0.2s ease-out, border-color 0.2s ease-out, transform 0.3s ease-out, box-shadow 0.3s ease-out !important;
         }
     </style>
     
@@ -305,7 +341,8 @@
                         <section class="tab-pane is-active" id="c1-new-pane" role="tabpanel">
                             <h3>New License Pricing for ComponentOne</h3>
                             <div class="pricing-grid">
-                                <div class="price-card" data-badge="Recommended" aria-labelledby="c1-enterprise-title">
+                                <div class="price-card" aria-labelledby="c1-enterprise-title">
+                                    <div class="card-tag primary-tag">Recommended</div>
                                     <h4 id="c1-enterprise-title">Studio Enterprise</h4>
                                     <div class="price">€1,385</div><p class="price-term">per Developer</p>
                                     <ul>
@@ -445,7 +482,8 @@
                         <section class="tab-pane is-active" id="sjs-noncom-pane" role="tabpanel">
                             <h3>SpreadJS Licenses for Internal & Free Applications</h3>
                             <div class="pricing-grid">
-                                <div class="price-card" data-badge="Best Value" aria-labelledby="sjs-hostname-pack-title">
+                                <div class="price-card" aria-labelledby="sjs-hostname-pack-title">
+                                    <div class="card-tag accent-tag">Best Value</div>
                                     <h4 id="sjs-hostname-pack-title">Hostname License Pack</h4>
                                     <div class="price">€1,855</div><p class="price-term">for 3-5 Hostnames</p>
                                     <ul>
@@ -560,7 +598,8 @@
                         <section class="tab-pane is-active" id="snet-new-pane" role="tabpanel">
                             <h3>New License Pricing for Spread.NET</h3>
                             <div class="pricing-grid">
-                                <div class="price-card" data-badge="Popular" aria-labelledby="snet-license-title">
+                                <div class="price-card" aria-labelledby="snet-license-title">
+                                    <div class="card-tag warning-tag">Popular</div>
                                     <h4 id="snet-license-title">Spread.NET License</h4>
                                     <div class="price">€1,395</div><p class="price-term">per developer</p>
                                     <ul>
@@ -619,7 +658,8 @@
                         <section class="tab-pane is-active" id="wj-new-pane" role="tabpanel">
                             <h3>New License Pricing for Wijmo</h3>
                             <div class="pricing-grid">
-                                <div class="price-card" data-badge="Best Value" aria-labelledby="wijmo-enterprise-title">
+                                <div class="price-card" aria-labelledby="wijmo-enterprise-title">
+                                    <div class="card-tag accent-tag">Best Value</div>
                                     <h4 id="wijmo-enterprise-title">Wijmo Enterprise</h4>
                                     <div class="price">€645</div><p class="price-term">per developer</p>
                                     <ul>
@@ -781,7 +821,8 @@
                                     </ul>
                                     <button class="add-to-cart-btn" data-product-id="62965" data-product-name="AR.NET Standard" data-price="785">Add to Cart</button>
                                 </div>
-                                <div class="price-card" data-badge="Popular" aria-labelledby="arnet-professional-title">
+                                <div class="price-card" aria-labelledby="arnet-professional-title">
+                                    <div class="card-tag warning-tag">Popular</div>
                                     <h4 id="arnet-professional-title">Professional</h4>
                                     <div class="price">€1,485</div><p class="price-term">per Developer</p>
                                     <ul>
@@ -844,7 +885,8 @@
                         <section class="tab-pane is-active" id="ds-bundle-pane" role="tabpanel">
                             <h3>Documents for .NET Bundle</h3>
                             <div class="pricing-grid">
-                                <div class="price-card" data-badge="Best Value" aria-labelledby="ds-dev-bundle-title">
+                                <div class="price-card" aria-labelledby="ds-dev-bundle-title">
+                                    <div class="card-tag accent-tag">Best Value</div>
                                     <h4 id="ds-dev-bundle-title">Developer Bundle</h4>
                                     <div class="price">€1,665</div><p class="price-term">1 Dev, 1 Location</p>
                                     <ul><li>Excel, PDF, Word, Imaging</li></ul>

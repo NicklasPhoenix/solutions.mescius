@@ -10,21 +10,28 @@ const productData = {
             name: "ComponentOne",
             description: "Complete UI control collection for .NET applications with 100+ controls for WinForms, WPF, UWP, and .NET MAUI.",
             color: "#D93E3A",
-            logo: "../logos/C1_prod_logo_full_2023.svg",
+            logo: "../logos/C1_prod_logo_ICON_2023.svg",
             features: ["Data Grids", "Charts & Graphs", "Input Controls", "Navigation", "Reporting"]
         },
         {
             name: "ActiveReports",
             description: "Powerful .NET reporting solution for creating pixel-perfect reports with advanced formatting and data visualization.",
             color: "#F4812F", 
-            logo: "../logos/AR_prod_logo_full_2023.svg",
+            logo: "../logos/AR_prod_logo_ICON_2023.svg",
             features: ["Report Designer", "Dashboard Builder", "Export Options", "Data Sources", "Custom Controls"]
+        },
+        {
+            name: "Spread.NET",
+            description: "High-performance .NET spreadsheet component for creating Excel-compatible applications with advanced calculation engine.",
+            color: "#6F9E42",
+            logo: "../logos/SP_prod_logo_ICON_2023.svg",
+            features: ["Excel Compatibility", "Formula Engine", "WinForms/WPF", "No Dependencies", "High Performance"]
         },
         {
             name: "Documents",
             description: "High-performance document APIs for .NET to create, edit, and convert Excel, Word, and PDF files without dependencies.",
             color: "#0083B6",
-            logo: "../logos/DS_prod_logo_full_2023.svg", 
+            logo: "../logos/DS_prod_logo_ICON_2023.svg", 
             features: ["Excel API", "Word API", "PDF API", "No Dependencies", "High Performance"]
         }
     ],
@@ -33,15 +40,22 @@ const productData = {
             name: "SpreadJS",
             description: "JavaScript spreadsheet component that delivers true Excel-like functionality for web applications.",
             color: "#6F9E42",
-            logo: "../logos/SP_prod_logo_full_2023.svg",
+            logo: "../logos/SP_prod_logo_ICON_2023.svg",
             features: ["Excel Compatibility", "Formula Engine", "Charts", "Pivot Tables", "Import/Export"]
         },
         {
             name: "Wijmo",
             description: "Complete JavaScript UI control collection with 60+ controls for building responsive web applications.",
             color: "#0084C3",
-            logo: "../logos/WJ_prod_logo_full_2023.svg", 
+            logo: "../logos/WJ_prod_logo_ICON_2023.svg", 
             features: ["Data Grids", "Input Controls", "Charts", "Navigation", "Mobile Support"]
+        },
+        {
+            name: "ActiveReports JS",
+            description: "JavaScript reporting component for creating dynamic reports and dashboards in web applications.",
+            color: "#F4812F",
+            logo: "../logos/AR_prod_logo_ICON_2023.svg",
+            features: ["Report Designer", "Dashboard Builder", "Web-based", "Export Options", "Data Visualization"]
         }
     ]
 };

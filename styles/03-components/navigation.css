@@ -355,12 +355,20 @@
   font-size: var(--text-base);
   font-weight: var(--font-weight-semibold);
   min-width: 200px;
+  border: 2px solid var(--gray-200);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.product-tabs .tab-link:hover {
+  border-color: var(--primary-light);
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .product-tabs .tab-link.active {
   background: var(--primary);
   color: white;
   box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
 }
 
 /* Pagination */

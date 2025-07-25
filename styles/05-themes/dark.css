@@ -642,6 +642,20 @@
   background: var(--bg-tertiary);
 }
 
+[data-theme="dark"] .product-tabs .tab-link {
+  border-color: var(--border-color);
+  background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .product-tabs .tab-link:hover {
+  border-color: var(--primary-light);
+  background: var(--bg-tertiary);
+}
+
+[data-theme="dark"] .product-tabs .tab-link.active {
+  border-color: var(--primary);
+}
+
 [data-theme="dark"] .tab-btn {
   color: var(--text-secondary);
 }
