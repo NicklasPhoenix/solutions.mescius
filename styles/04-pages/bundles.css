@@ -118,6 +118,11 @@
   color: white;
 }
 
+.ar-tag {
+  background: linear-gradient(135deg, #7c2d12, #dc2626);
+  color: white;
+}
+
 /* Bundle Info Trigger Button */
 .bundle-info-trigger {
   display: inline-flex;

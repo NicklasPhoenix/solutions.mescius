@@ -589,6 +589,20 @@ class ShoppingCart {
             }, 300);
         }, 2000);
     }
+    
+    showCartPopupConfirmation() {
+        // Only show if cart is not already visible
+        if (!this.isVisible) {
+            this.showCart();
+            
+            // Auto-hide after 3 seconds
+            setTimeout(() => {
+                if (this.isVisible) {
+                    this.hideCart();
+                }
+            }, 3000);
+        }
+    }
 
     // Override the addToCart method to include notification
     addToCart(productId, name, price) {
@@ -612,6 +626,9 @@ class ShoppingCart {
         
         // Show notification
         this.showCartNotification(`${name} added to cart!`);
+        
+        // Briefly show cart popup for confirmation
+        this.showCartPopupConfirmation();
     }
 
     // Override updateQuantity to update panel
