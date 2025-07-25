@@ -171,8 +171,8 @@
   transition: transform var(--transition-hover-scale) var(--ease-hover-scale);
 }
 
-/* Simple Modal Styles */
-.modal-overlay {
+/* Bundle Modal Styles - Use specific selectors to avoid conflicts */
+#bundle-info-modal.modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -186,24 +186,22 @@
   backdrop-filter: blur(4px);
 }
 
-.modal-overlay.show {
+#bundle-info-modal.modal-overlay.show {
   display: flex;
 }
 
-.modal-overlay.show .modal {
-  display: block;
-}
-
-.modal {
+#bundle-info-modal .modal {
   background: var(--bg-primary);
   border-radius: var(--radius-xl);
-  max-width: 500px;
+  max-width: 400px; /* Smaller, more compact size */
   width: 90%;
-  max-height: 80vh;
+  max-height: 70vh; /* Reduced height */
   overflow: hidden;
   box-shadow: var(--shadow-2xl);
   border: 1px solid var(--border-color);
-  margin: auto; /* Ensure proper centering */
+  margin: 0 auto; /* Center horizontally */
+  position: relative; /* Ensure proper positioning */
+  display: block; /* Always display when parent is shown */
 }
 
 .modal-header {

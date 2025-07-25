@@ -668,6 +668,7 @@
   margin-bottom: var(--space-6);
   flex-wrap: wrap;
   gap: var(--space-4);
+  position: relative; /* Enable absolute positioning for info buttons */
 }
 
 .product-title-section {
