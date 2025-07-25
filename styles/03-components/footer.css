@@ -351,9 +351,9 @@
   border-radius: var(--radius-2xl);
   box-shadow: var(--shadow-2xl);
   position: relative;
-  max-width: 400px; /* Reduced from 500px for more compact size */
+  max-width: 600px; /* Increased for better content display */
   width: 90%;
-  max-height: 80vh; /* Reduced from 90vh */
+  max-height: 80vh;
   transform: scale(0.9);
   animation: modal-scale-in var(--transition-base) var(--ease-out);
 }
@@ -455,9 +455,9 @@
   border-radius: var(--radius-2xl);
   box-shadow: var(--shadow-2xl);
   position: relative;
-  max-width: 400px; /* Reduced from 600px for more compact size */
+  max-width: 600px; /* Increased for better content display */
   width: 90%;
-  max-height: 70vh; /* Reduced from 90vh */
+  max-height: 70vh;
   overflow: hidden;
   transform: scale(0.9);
   animation: modal-scale-in var(--transition-base) var(--ease-out);

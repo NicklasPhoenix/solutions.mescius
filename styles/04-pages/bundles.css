@@ -193,9 +193,9 @@
 #bundle-info-modal .modal {
   background: var(--bg-primary);
   border-radius: var(--radius-xl);
-  max-width: 400px; /* Smaller, more compact size */
+  max-width: 600px; /* Increased for better content display */
   width: 90%;
-  max-height: 70vh; /* Reduced height */
+  max-height: 70vh;
   overflow: hidden;
   box-shadow: var(--shadow-2xl);
   border: 1px solid var(--border-color);
