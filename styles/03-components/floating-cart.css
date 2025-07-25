@@ -335,6 +335,7 @@
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
   background: linear-gradient(135deg, var(--primary-hover) 0%, var(--primary-700) 100%);
+  color: var(--text-on-primary) !important;
 }
 
 .cta-button:active:not(.is-disabled) {
@@ -385,6 +386,7 @@
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
   background: linear-gradient(135deg, var(--primary-hover) 0%, var(--primary-700) 100%);
+  color: var(--text-on-primary) !important;
 }
 
 .checkout-btn:active,
