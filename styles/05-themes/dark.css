@@ -78,6 +78,11 @@
   color: var(--text-primary);
 }
 
+/* Dark theme link hover - lighter and brighter */
+[data-theme="dark"] a:hover {
+  color: var(--primary-300);
+}
+
 [data-theme="dark"] .header {
   background: rgba(17, 24, 39, 0.95);
   border-bottom: 1px solid rgba(55, 65, 81, 0.5);
@@ -358,6 +363,11 @@
 /* Dark theme ecosystem section */
 [data-theme="dark"] .ecosystem-section {
   background: #111827;
+}
+
+/* Remove darker background from section headers in dark mode */
+[data-theme="dark"] .section-header {
+  background: transparent;
 }
 
 /* Enhanced Dark Theme Pricing Styles */
@@ -749,6 +759,11 @@
 /* Add dark mode styling for Challenge & Solution section */
 [data-theme="dark"] .challenge-solution-section {
   background: var(--bg-primary);
+}
+
+/* Add dark mode styling for metrics dashboard section */
+[data-theme="dark"] .metrics-dashboard-section {
+  background: transparent;
 }
 
 /* Add dark mode styling for Implementation Pathway section */

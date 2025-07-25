@@ -191,18 +191,18 @@
 }
 
 #bundle-info-modal .modal {
-  background: var(--bg-primary);
-  border-radius: var(--radius-xl);
-  max-width: 450px; /* Reduced for more appropriate sizing */
-  width: 90%;
-  max-height: 80vh; /* Increased to allow for content */
-  overflow: hidden;
-  box-shadow: var(--shadow-2xl);
-  border: 1px solid var(--border-color);
-  margin: 0 auto; /* Center horizontally */
-  position: relative; /* Ensure proper positioning */
-  display: flex; /* Use flex for proper content sizing */
-  flex-direction: column; /* Stack header and body vertically */
+    background: var(--bg-primary);
+    border-radius: var(--radius-xl);
+    max-width: 550px;
+    width: 100%;
+    max-height: 55vh;
+    overflow: hidden;
+    box-shadow: var(--shadow-2xl);
+    border: 1px solid var(--border-color);
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .modal-header {

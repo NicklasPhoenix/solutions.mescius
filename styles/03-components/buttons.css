@@ -473,7 +473,7 @@
   transition: all var(--transition-base, 0.2s) var(--ease-out, ease-out);
   position: absolute;
   top: var(--space-4);
-  right: var(--space-4);
+  right: calc(var(--space-4) + 80px); /* Account for Try button width */
   z-index: 10;
   user-select: none;
 }

@@ -132,22 +132,6 @@
   overflow: hidden;
 }
 
-.challenge-solution-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--card-accent-color, var(--primary));
-  transform: translateY(-4px);
-  transition: transform var(--transition-base) var(--ease-out);
-}
-
-.challenge-solution-card:hover::before {
-  transform: translateY(0);
-}
-
 .challenge-solution-card:hover {
   transform: translateY(-6px);
   box-shadow: var(--shadow-xl);
@@ -1259,7 +1243,6 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  color: var(--action-color, var(--primary));
   font-weight: var(--font-weight-semibold);
   font-size: var(--text-sm);
   text-transform: uppercase;
@@ -1360,10 +1343,6 @@
   }
   
   .product-stack-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-  
-  .validation-grid {
     grid-template-columns: repeat(4, 1fr);
   }
 }
