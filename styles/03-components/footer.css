@@ -351,7 +351,7 @@
   border-radius: var(--radius-2xl);
   box-shadow: var(--shadow-2xl);
   position: relative;
-  max-width: 600px; /* Increased for better content display */
+  max-width: 450px; /* Reduced for more appropriate sizing */
   width: 90%;
   max-height: 80vh;
   transform: scale(0.9);

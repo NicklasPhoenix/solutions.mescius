@@ -193,7 +193,7 @@
 #bundle-info-modal .modal {
   background: var(--bg-primary);
   border-radius: var(--radius-xl);
-  max-width: 600px; /* Increased for better content display */
+  max-width: 450px; /* Reduced for more appropriate sizing */
   width: 90%;
   max-height: 70vh;
   overflow: hidden;
@@ -239,12 +239,17 @@
   padding: var(--space-6);
   overflow-y: auto;
   max-height: calc(80vh - 120px);
+  color: var(--text-primary);
 }
 
 .bundle-description {
   color: var(--text-secondary);
   line-height: var(--leading-relaxed);
   margin-bottom: var(--space-6);
+}
+
+.bundle-description * {
+  color: inherit;
 }
 
 .bundle-description ul {
