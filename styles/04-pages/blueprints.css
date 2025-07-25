@@ -114,7 +114,7 @@
 
 .challenge-solution-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-8);
   margin-top: var(--space-12);
   /* Ensure grid only creates columns for actual content */
@@ -825,7 +825,7 @@
 .recommended-bundle-section {
   background: linear-gradient(135deg, var(--primary-10), var(--accent-10));
   padding: var(--space-16) 0;
-  margin: var(--space-20) 0;
+  /* margin: var(--space-20) 0; */
 }
 
 /* ========================================
@@ -1376,6 +1376,14 @@
 
 /* Base styles are mobile-first (320px+) */
 
+/* Mobile phones (up to 640px) */
+@media (max-width: 640px) {
+  .challenge-solution-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+}
+
 /* Small tablets and large phones (768px+) */
 @media (min-width: 768px) {
   .blueprint-hero {
@@ -1387,7 +1395,7 @@
   }
   
   .challenge-solution-grid {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
   }
   
   .kpi-categories {
@@ -1434,10 +1442,8 @@
   }
   
   .challenge-solution-grid {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    max-width: 720px; /* Limit to ~2 columns max for typical challenge-solution pairs */
-    margin-left: auto;
-    margin-right: auto;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-10);
   }
   
   .kpi-categories {

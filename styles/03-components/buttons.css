@@ -461,8 +461,6 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--space-6);          /* 24px */
-  height: var(--space-6);         /* 24px */
   border-radius: var(--radius-full, 50%);
   background: var(--primary, #3b82f6);
   color: var(--text-on-primary, #ffffff);
