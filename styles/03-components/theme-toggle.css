@@ -1,7 +1,7 @@
 /* Theme Toggle Component */
 
 .theme-toggle {
-  display: flex;
+  display: none !important; /* HIDDEN - Light mode only launch */
   align-items: center;
   justify-content: center;
   width: 40px;
