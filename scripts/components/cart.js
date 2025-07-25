@@ -594,13 +594,7 @@ class ShoppingCart {
         // Only show if cart is not already visible
         if (!this.isVisible) {
             this.showCart();
-            
-            // Auto-hide after 3 seconds
-            setTimeout(() => {
-                if (this.isVisible) {
-                    this.hideCart();
-                }
-            }, 3000);
+            // Cart will stay open until manually closed - no auto-hide
         }
     }
 

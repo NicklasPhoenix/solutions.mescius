@@ -179,11 +179,15 @@
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
-  display: flex;
+  display: none; /* Hidden by default */
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 10001; /* Higher than newsletter modal */
   backdrop-filter: blur(4px);
+}
+
+.modal-overlay.show {
+  display: flex;
 }
 
 .modal {

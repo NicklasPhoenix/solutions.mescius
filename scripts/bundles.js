@@ -678,7 +678,7 @@ function showSimpleModal(title, content) {
     // Create modal
     const modal = document.createElement('div');
     modal.id = 'simple-bundle-modal';
-    modal.className = 'modal-overlay';
+    modal.className = 'modal-overlay show'; // Add 'show' class to make it visible
     modal.innerHTML = `
         <div class="modal">
             <div class="modal-header">
