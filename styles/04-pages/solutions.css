@@ -787,12 +787,22 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
 
 .case-study-card:hover {
   border-color: var(--primary);
   transform: translateY(-4px);
   box-shadow: var(--shadow-xl);
+}
+
+.case-study-card:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.case-study-card:focus:not(:focus-visible) {
+  outline: none;
 }
 
 /*.case-study-card::before {
