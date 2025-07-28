@@ -93,13 +93,39 @@
   outline-offset: 2px;
 }
 
-/* Enhanced Pricing Cards */
-.pricing-grid {
+/* Pricing Cards - Flexible columns that expand to fill space */
+/* Only apply to pricing page, not bundles page */
+body:not(.bundles-page) .pricing-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: var(--space-8);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-4);
   margin: var(--space-16) 0;
   padding: 0 var(--space-4);
+  max-width: 1200px; /* Limit maximum width for better readability */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Responsive breakpoints - adjust minimum card width for different screens */
+@media (max-width: 1024px) {
+  body:not(.bundles-page) .pricing-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-3);
+  }
+}
+
+@media (max-width: 768px) {
+  body:not(.bundles-page) .pricing-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-3);
+  }
+}
+
+@media (max-width: 480px) {
+  body:not(.bundles-page) .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
 }
 
 .pricing-card,
@@ -107,8 +133,8 @@
   background: var(--card-bg);
   backdrop-filter: blur(20px);
   border: 2px solid var(--border-color);
-  border-radius: var(--radius-2xl);
-  padding: var(--card-content-spacing);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
   text-align: center;
   transition: all var(--transition-base) var(--ease-out);
   position: relative;
@@ -116,20 +142,20 @@
   box-shadow: var(--shadow-lg);
   display: flex;
   flex-direction: column;
-  min-height: var(--card-min-height);
+  min-height: 350px;
 }
 
 .price-card h4 {
   color: var(--text-primary);
   font-size: var(--text-xl);
   font-weight: var(--font-weight-bold);
-  margin-bottom: var(--card-header-spacing);
+  margin-bottom: var(--space-3);
   line-height: var(--leading-tight);
 }
 
 .price-card .price {
   color: var(--primary);
-  font-size: var(--text-5xl);
+  font-size: var(--text-4xl);
   font-weight: var(--font-weight-black);
   margin-bottom: var(--space-2);
   font-variant-numeric: tabular-nums;
@@ -143,7 +169,7 @@
 .price-card .price-term {
   color: var(--text-muted);
   font-size: var(--text-base);
-  margin-bottom: var(--card-footer-spacing);
+  margin-bottom: var(--space-4);
   font-weight: var(--font-weight-semibold);
 }
 
@@ -527,12 +553,7 @@
 }
 
 /* Mobile Responsiveness */
-@media (max-width: 767px) {
-  .pricing-grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-6);
-  }
-  
+@media (max-width: 640px) {
   .pricing-card.featured,
   .price-card.featured {
     transform: none;
@@ -694,8 +715,6 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--space-6);          /* 24px */
-  height: var(--space-6);         /* 24px */
   border-radius: var(--radius-full, 50%);
   background: var(--primary, #3b82f6);
   color: var(--text-on-primary, #ffffff);
@@ -962,7 +981,7 @@
 }
 
 /* Enhanced Mobile Responsiveness */
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .pricing-hero,
   .pricing-section {
     padding: var(--space-24) 0 var(--space-16);
@@ -979,7 +998,7 @@
     padding: 0 var(--space-4);
   }
   
-  .pricing-grid {
+  body:not(.bundles-page) .pricing-grid {
     grid-template-columns: 1fr;
     gap: var(--space-6);
     padding: 0 var(--space-2);
@@ -1049,7 +1068,7 @@
 }
 
 @media (max-width: 480px) {
-  .pricing-grid {
+  body:not(.bundles-page) .pricing-grid {
     padding: 0;
   }
   
@@ -1141,14 +1160,14 @@
 
 /* Enhanced pricing grid responsiveness */
 @media (max-width: 1024px) {
-  .pricing-grid {
+  body:not(.bundles-page) .pricing-grid {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: var(--space-6);
   }
 }
 
 @media (max-width: 640px) {
-  .pricing-grid {
+  body:not(.bundles-page) .pricing-grid {
     grid-template-columns: 1fr;
     gap: var(--space-4);
   }
