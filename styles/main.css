@@ -35,9 +35,9 @@
 @import url('04-pages/blueprints.css');
 @import url('04-pages/bundles.css');
 
-/* 6. THEMES - Light/Dark mode support */
+/* 6. THEMES - Light mode only for launch */
 @import url('05-themes/light.css');
-@import url('05-themes/dark.css');
+/* DISABLED for light mode launch: @import url('05-themes/dark.css'); */
 
 /* Global page setup */
 html {
@@ -63,19 +63,7 @@ main {
   .modal {
     display: none !important;
   }
-  
-  body {
-    padding-top: 0;
-    font-size: 12pt;
-    line-height: 1.4;
-    color: black;
-    background: white;
-  }
-  
-  a {
-    color: black;
-  }
-  
+
   .container {
     max-width: none;
     padding: 0;

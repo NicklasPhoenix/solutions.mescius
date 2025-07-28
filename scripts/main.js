@@ -255,16 +255,21 @@ function initializeScrollEffects() {
  * Theme management - 2-mode system: default (light) and dark
  */
 function initializeTheme() {
-    // Get saved theme - only 'dark' is stored, default (no attribute) is light
-    const savedTheme = localStorage.getItem('theme');
+    // LIGHT MODE ONLY - Force light theme for launch
+    // Remove any theme attribute and clear localStorage to ensure light mode
+    document.documentElement.removeAttribute('data-theme');
+    localStorage.removeItem('theme');
     
-    // Apply saved theme immediately - only set attribute for dark mode
-    if (savedTheme === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark');
-    } else {
-        // For light mode, remove any theme attribute to use default styles
-        document.documentElement.removeAttribute('data-theme');
-    }
+    // Disabled: Get saved theme - only 'dark' is stored, default (no attribute) is light
+    // const savedTheme = localStorage.getItem('theme');
+    
+    // Disabled: Apply saved theme immediately - only set attribute for dark mode
+    // if (savedTheme === 'dark') {
+    //     document.documentElement.setAttribute('data-theme', 'dark');
+    // } else {
+    //     // For light mode, remove any theme attribute to use default styles
+    //     document.documentElement.removeAttribute('data-theme');
+    // }
     
     // Theme toggle functionality (if theme switcher exists)
     const themeToggle = document.querySelector('.theme-toggle');

@@ -48,13 +48,10 @@
     
     <link rel="stylesheet" href="../../styles/main.css?v=2025070403">
 
-    <!-- Theme initialization script to prevent flash -->
-    <script>
-        (function() {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            document.documentElement.setAttribute('data-theme', savedTheme);
-        })();
-    </script>
+    <!-- Prevent flash with dark background, then CSS applies light theme -->
+    <style>
+        html { background-color: #111827; }
+    </style>
 
     <script type="application/ld+json">
     {
@@ -586,6 +583,188 @@
             </div>
         </section>
 
+<!-- 7. TECHNICAL DEEP DIVE SECTION -->
+        <section class="technical-deep-dive-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Technical Deep Dive</h2>
+                    <p>Explore the implementation details, code examples, and interactive demos that power high-performance BI platforms.</p>
+                </div>
+                
+                <div class="technical-content-grid">
+                    <div class="technical-demo-card">
+                        <div class="demo-header">
+                            <h3>Interactive Data Grid Demo</h3>
+                            <p>Experience Wijmo FlexGrid handling 1M+ records with virtual scrolling</p>
+                        </div>
+                        <div class="demo-container">
+                            <div class="demo-placeholder">
+                                <div class="demo-preview">
+                                    <i class="fas fa-table demo-icon"></i>
+                                    <h4>Live FlexGrid Demo</h4>
+                                    <p>Interactive spreadsheet with 1M+ records, real-time filtering, and Excel-like functionality</p>
+                                    <button class="demo-launch-btn" onclick="launchDemo('flexgrid-bi')">
+                                        <i class="fas fa-play"></i> Launch Demo
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="technical-demo-card">
+                        <div class="demo-header">
+                            <h3>Real-time Charting Demo</h3>
+                            <p>Dynamic charts updating with live data streams</p>
+                        </div>
+                        <div class="demo-container">
+                            <div class="demo-placeholder">
+                                <div class="demo-preview">
+                                    <i class="fas fa-chart-line demo-icon"></i>
+                                    <h4>Live Charting Demo</h4>
+                                    <p>Real-time data visualization with 60+ chart types and smooth animations</p>
+                                    <button class="demo-launch-btn" onclick="launchDemo('charts-bi')">
+                                        <i class="fas fa-play"></i> Launch Demo
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="code-showcase">
+                    <h3>Implementation Code Examples</h3>
+                    <div class="code-tabs">
+                        <div class="code-tab active" data-tab="javascript">JavaScript</div>
+                        <div class="code-tab" data-tab="csharp">C#</div>
+                        <div class="code-tab" data-tab="typescript">TypeScript</div>
+                    </div>
+                    
+                    <div class="code-content">
+                        <div class="code-block active" data-content="javascript">
+<pre><code>// High-performance data grid with virtual scrolling
+const grid = new wijmo.grid.FlexGrid('#dataGrid', {
+    itemsSource: new wijmo.collections.CollectionView(data),
+    isReadOnly: true,
+    selectionMode: 'RowRange',
+    headersVisibility: 'Column',
+    autoGenerateColumns: false,
+    columns: [
+        { binding: 'id', header: 'ID', width: 80 },
+        { binding: 'customer', header: 'Customer', width: 200 },
+        { binding: 'revenue', header: 'Revenue', format: 'c2', width: 120 },
+        { binding: 'date', header: 'Date', format: 'yyyy-MM-dd', width: 120 }
+    ],
+    loadedRows: function(s, e) {
+        // Virtual scrolling optimization
+        s.deferUpdate(() => {
+            s.autoSizeColumns();
+        });
+    }
+});
+
+// Real-time data binding
+const socket = new WebSocket('wss://api.example.com/live-data');
+socket.onmessage = (event) => {
+    const newData = JSON.parse(event.data);
+    grid.itemsSource.sourceCollection.unshift(newData);
+    grid.itemsSource.refresh();
+};</code></pre>
+                        </div>
+                        
+                        <div class="code-block" data-content="csharp">
+<pre><code>// C# Backend API for high-performance data queries
+[ApiController]
+[Route("api/[controller]")]
+public class AnalyticsController : ControllerBase
+{
+    [HttpGet("dashboard-data")]
+    public async Task&lt;IActionResult&gt; GetDashboardData(
+        [FromQuery] DateTime startDate,
+        [FromQuery] DateTime endDate,
+        [FromQuery] int page = 1,
+        [FromQuery] int pageSize = 1000)
+    {
+        var query = _context.SalesData
+            .Where(s => s.Date >= startDate && s.Date <= endDate)
+            .OrderByDescending(s => s.Date);
+            
+        var totalCount = await query.CountAsync();
+        var data = await query
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync();
+            
+        return Ok(new {
+            data,
+            totalCount,
+            page,
+            pageSize
+        });
+    }
+    
+    [HttpGet("real-time-stream")]
+    public async Task GetRealTimeStream()
+    {
+        Response.Headers.Add("Content-Type", "text/event-stream");
+        
+        while (!HttpContext.RequestAborted.IsCancellationRequested)
+        {
+            var latestData = await _context.GetLatestMetrics();
+            await Response.WriteAsync($"data: {JsonSerializer.Serialize(latestData)}\n\n");
+            await Response.Body.FlushAsync();
+            await Task.Delay(1000); // 1 second updates
+        }
+    }
+}</code></pre>
+                        </div>
+                        
+                        <div class="code-block" data-content="typescript">
+<pre><code>// TypeScript interface definitions for BI data
+interface DashboardMetrics {
+    totalRevenue: number;
+    activeUsers: number;
+    conversionRate: number;
+    topProducts: ProductPerformance[];
+    salesTrend: TimeSeriesData[];
+}
+
+interface ProductPerformance {
+    productId: string;
+    productName: string;
+    revenue: number;
+    unitsSold: number;
+    growthRate: number;
+}
+
+interface TimeSeriesData {
+    timestamp: Date;
+    value: number;
+    category: string;
+}
+
+// High-performance data service
+class AnalyticsService {
+    private baseUrl = '/api/analytics';
+    
+    async getDashboardData(dateRange: DateRange): Promise&lt;DashboardMetrics&gt; {
+        const params = new URLSearchParams({
+            startDate: dateRange.start.toISOString(),
+            endDate: dateRange.end.toISOString()
+        });
+        
+        const response = await fetch(`${this.baseUrl}/dashboard-data?${params}`);
+        return response.json();
+    }
+    
+    createRealTimeConnection(): EventSource {
+        return new EventSource(`${this.baseUrl}/real-time-stream`);
+    }
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <!-- 7. RECOMMENDED BUNDLE SECTION -->
         <section class="recommended-bundle-section">
             <div class="container">

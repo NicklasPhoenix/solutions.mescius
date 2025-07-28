@@ -34,13 +34,10 @@
     
     <link rel="stylesheet" href="../../styles/main.css?v=2025070403">
 
-    <!-- Theme initialization script to prevent flash -->
-    <script>
-        (function() {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            document.documentElement.setAttribute('data-theme', savedTheme);
-        })();
-    </script>
+    <!-- Prevent flash with dark background, then CSS applies light theme -->
+    <style>
+        html { background-color: #111827; }
+    </style>
 
     <!-- HowTo Schema Markup -->
     <script type="application/ld+json">
@@ -574,7 +571,248 @@
             </div>
         </section>
 
-        <!-- 7. RECOMMENDED BUNDLE SECTION -->
+        <!-- 7. TECHNICAL DEEP DIVE SECTION -->
+        <section class="technical-deep-dive-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Technical Deep Dive</h2>
+                    <p>Explore the technical architecture and implementation details for building unified Blazor Hybrid applications with .NET MAUI and cross-platform components.</p>
+                </div>
+                
+                <div class="technical-content-grid">
+                    <div class="technical-demo-area">
+                        <h3>Interactive Demo: Blazor Hybrid Data Grid</h3>
+                        <p>Experience a unified data grid component that works seamlessly across desktop and web platforms with Wijmo FlexGrid.</p>
+                        
+                        <div class="demo-placeholder">
+                            <i class="fas fa-table"></i>
+                            <span>Blazor Hybrid Grid Demo</span>
+                        </div>
+                        
+                        <div class="demo-controls">
+                            <button class="demo-button" onclick="launchDemo('blazor-hybrid-grid')">Launch Demo</button>
+                            <button class="demo-button secondary" onclick="viewCode('blazor-hybrid-grid')">View Code</button>
+                        </div>
+                        
+                        <div class="demo-description">
+                            <p><strong>Features demonstrated:</strong></p>
+                            <ul>
+                                <li>Cross-platform data grid with virtual scrolling</li>
+                                <li>Shared business logic across desktop/web</li>
+                                <li>Platform-specific optimizations</li>
+                                <li>Real-time data synchronization</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="technical-demo-area">
+                        <h3>Interactive Demo: .NET MAUI Shell Integration</h3>
+                        <p>See how ComponentOne controls integrate with .NET MAUI to create native desktop applications hosting Blazor content.</p>
+                        
+                        <div class="demo-placeholder">
+                            <i class="fas fa-desktop"></i>
+                            <span>MAUI Shell Demo</span>
+                        </div>
+                        
+                        <div class="demo-controls">
+                            <button class="demo-button" onclick="launchDemo('maui-shell')">Launch Demo</button>
+                            <button class="demo-button secondary" onclick="viewCode('maui-shell')">View Code</button>
+                        </div>
+                        
+                        <div class="demo-description">
+                            <p><strong>Features demonstrated:</strong></p>
+                            <ul>
+                                <li>Native .NET MAUI window management</li>
+                                <li>Blazor WebView integration</li>
+                                <li>Platform-specific native features</li>
+                                <li>Cross-platform deployment pipeline</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="technical-content-grid">
+                    <div class="code-showcase">
+                        <h3>Implementation Code Examples</h3>
+                        <div class="code-tabs">
+                            <button class="code-tab active" data-lang="csharp">C#</button>
+                            <button class="code-tab" data-lang="razor">Razor</button>
+                            <button class="code-tab" data-lang="typescript">TypeScript</button>
+                        </div>
+                        
+                        <div class="code-content">
+                            <div class="code-block active" data-lang="csharp">
+<pre><code>// Blazor Hybrid Shared Service
+public interface IUnifiedDataService
+{
+    Task<List<TradeData>> GetTradesAsync();
+    Task<TradeData> GetTradeAsync(int id);
+    Task UpdateTradeAsync(TradeData trade);
+}
+
+public class UnifiedDataService : IUnifiedDataService
+{
+    private readonly HttpClient _httpClient;
+    private readonly IPlatformService _platformService;
+    
+    public UnifiedDataService(HttpClient httpClient, IPlatformService platformService)
+    {
+        _httpClient = httpClient;
+        _platformService = platformService;
+    }
+    
+    public async Task<List<TradeData>> GetTradesAsync()
+    {
+        // Shared business logic works across all platforms
+        var trades = await _httpClient.GetFromJsonAsync<List<TradeData>>("/api/trades");
+        
+        // Platform-specific optimizations
+        if (_platformService.IsDesktop)
+        {
+            return trades.Take(1000).ToList(); // Larger datasets for desktop
+        }
+        
+        return trades.Take(100).ToList(); // Optimized for web
+    }
+}
+
+// .NET MAUI Platform Service
+public interface IPlatformService
+{
+    bool IsDesktop { get; }
+    bool IsWeb { get; }
+    string PlatformName { get; }
+}
+
+public class MauiPlatformService : IPlatformService
+{
+    public bool IsDesktop => true;
+    public bool IsWeb => false;
+    public string PlatformName => "Desktop (.NET MAUI)";
+}</code></pre>
+                            </div>
+                            
+                            <div class="code-block" data-lang="razor">
+<pre><code>@* Blazor Hybrid Component *@
+@page "/trading-dashboard"
+@inject IUnifiedDataService DataService
+@inject IPlatformService PlatformService
+
+<div class="trading-dashboard">
+    <h3>Trading Dashboard - @PlatformService.PlatformName</h3>
+    
+    <WijmoFlexGrid Items="@trades"
+                   AutoGenerateColumns="false"
+                   SelectionMode="Row"
+                   @ref="grid">
+        <Columns>
+            <Column Binding="Symbol" Header="Symbol" Width="80" />
+            <Column Binding="Price" Header="Price" Format="C2" />
+            <Column Binding="Quantity" Header="Qty" />
+            <Column Binding="Total" Header="Total" Format="C2" />
+        </Columns>
+    </WijmoFlexGrid>
+    
+    <div class="platform-info">
+        @if (PlatformService.IsDesktop)
+        {
+            <p>Desktop mode: Full dataset with advanced features</p>
+        }
+        else
+        {
+            <p>Web mode: Optimized for browser performance</p>
+        }
+    </div>
+</div>
+
+@code {
+    private List<TradeData> trades = new();
+    private WijmoFlexGrid grid;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        trades = await DataService.GetTradesAsync();
+    }
+}</code></pre>
+                            </div>
+                            
+                            <div class="code-block" data-lang="typescript">
+<pre><code>// TypeScript Interface Definitions
+interface TradeData {
+    id: number;
+    symbol: string;
+    price: number;
+    quantity: number;
+    total: number;
+    timestamp: Date;
+    platform: 'desktop' | 'web';
+}
+
+interface PlatformCapabilities {
+    maxDataRows: number;
+    supportsVirtualization: boolean;
+    hasNativeFeatures: boolean;
+    performanceProfile: 'high' | 'medium' | 'low';
+}
+
+// Platform-specific configuration
+const platformConfig: Record<string, PlatformCapabilities> = {
+    desktop: {
+        maxDataRows: 10000,
+        supportsVirtualization: true,
+        hasNativeFeatures: true,
+        performanceProfile: 'high'
+    },
+    web: {
+        maxDataRows: 1000,
+        supportsVirtualization: true,
+        hasNativeFeatures: false,
+        performanceProfile: 'medium'
+    }
+};
+
+// Shared service interface
+interface IUnifiedService {
+    getPlatformCapabilities(): PlatformCapabilities;
+    optimizeForPlatform(data: any[]): any[];
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="technical-resources">
+                        <h3>Developer Resources</h3>
+                        <div class="resource-grid">
+                            <div class="resource-card">
+                                <h4>Blazor Hybrid Documentation</h4>
+                                <p>Complete guide for building cross-platform applications with .NET MAUI and Blazor.</p>
+                                <a href="https://developer.mescius.com/blazor-hybrid" class="resource-link" target="_blank">
+                                    View Documentation <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            
+                            <div class="resource-card">
+                                <h4>Sample Projects</h4>
+                                <p>Download complete Blazor Hybrid sample applications with source code and deployment guides.</p>
+                                <a href="https://developer.mescius.com/blazor-hybrid/samples" class="resource-link" target="_blank">
+                                    Browse Samples <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            
+                            <div class="resource-card">
+                                <h4>Migration Guides</h4>
+                                <p>Step-by-step guides for migrating from WPF/WinForms to Blazor Hybrid architecture.</p>
+                                <a href="https://developer.mescius.com/migration-guides" class="resource-link" target="_blank">
+                                    Read Migration Guides <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. RECOMMENDED BUNDLE SECTION -->
         <section class="recommended-bundle-section">
             <div class="container">
                 <div class="bundle-card">

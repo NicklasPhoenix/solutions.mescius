@@ -18,13 +18,10 @@
     
     <link rel="stylesheet" href="../styles/main.css?v=2025070403">
 
-    <!-- Theme initialization script to prevent flash -->
-    <script>
-        (function() {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            document.documentElement.setAttribute('data-theme', savedTheme);
-        })();
-    </script>
+    <!-- Prevent flash with dark background, then CSS applies light theme -->
+    <style>
+        html { background-color: #111827; }
+    </style>
 
     <!-- BreadcrumbList Schema Markup -->
     <script type="application/ld+json">
