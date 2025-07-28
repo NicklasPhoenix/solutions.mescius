@@ -197,57 +197,65 @@
                                 data-solutionlink="../solutions/">
                                 i
                         </span>
-                        <h3 class="card-title">.NET Professional Suite</h3>
-                        <p class="card-subtitle">The complete toolkit for professional .NET desktop and web developers.</p>
-                        <div class="price-container">
-                            <div class="main-price" id="price-net">€2.772</div>
-                            <div class="price-details">
-                                <del class="list-price" id="total-list-value-net-inline">€4.265</del>
-                                <span class="savings" id="savings-net-inline">Save €1.493</span>
-                            </div>
-                            <div class="price-term">per developer / year</div>
-                            <span class="discount-per-dev"></span>
-                        </div>
-                        <ul class="inclusions-list">
-                            <li data-original-price="1385"><span>ComponentOne Studio</span><span>€1.385</span></li>
-                            <li data-original-price="0"><span>Wijmo Enterprise</span><span>€0,00</span></li>
-                            <li data-original-price="1485"><span>ActiveReports.NET (Prof.)</span><span>€1.485</span></li>
-                            <li data-original-price="1395"><span>Spread.NET</span><span>€1.395</span></li>
-                        </ul>
-                        <div class="total-list-value-section" style="display: none;">
-                            <div class="total-list-divider"></div>
-                            <div class="total-list-value">
-                                <span>Total List Value:</span> 
-                                <span id="total-list-value-net"><del>€4.265</del></span>
+                        
+                        <!-- Left Column: Title, Description, Price -->
+                        <div class="bundle-card-left">
+                            <h3 class="card-title">.NET Professional Suite</h3>
+                            <p class="card-subtitle">The complete toolkit for professional .NET desktop and web developers.</p>
+                            <div class="price-container">
+                                <div class="main-price" id="price-net">€2.772</div>
+                                <div class="price-details">
+                                    <del class="list-price" id="total-list-value-net-inline">€4.265</del>
+                                    <span class="savings" id="savings-net-inline">Save €1.493</span>
+                                </div>
+                                <div class="price-term">per developer / year</div>
+                                <span class="discount-per-dev"></span>
                             </div>
                         </div>
-                        <div class="discount-calculator">
-                            <div class="discount-option">
-                                <label for="quantity-net">Volume
-                                        <span class="tooltip-icon" role="tooltip" aria-describedby="tooltip-net-volume">?
-                                            <span class="tooltip-text" id="tooltip-net-volume">5-9 licenses: 5% off<br>10+ licenses: 10% off</span>
-                                        </span>
-                                </label>
-                                <div class="volume-control-wrapper">
-                                    <button type="button" class="quantity-btn" data-action="decrease" aria-label="Decrease quantity">−</button>
-                                    <input type="number" id="quantity-net" class="quantity-input" value="1" min="1" aria-label="Number of licenses for .NET Professional Suite">
-                                    <button type="button" class="quantity-btn" data-action="increase" aria-label="Increase quantity">+</button>
+                        
+                        <!-- Right Column: Inclusions, Options, Actions -->
+                        <div class="bundle-card-right">
+                            <ul class="inclusions-list">
+                                <li data-original-price="1385"><span>ComponentOne Studio</span><span>€1.385</span></li>
+                                <li data-original-price="0"><span>Wijmo Enterprise</span><span>€0,00</span></li>
+                                <li data-original-price="1485"><span>ActiveReports.NET (Prof.)</span><span>€1.485</span></li>
+                                <li data-original-price="1395"><span>Spread.NET</span><span>€1.395</span></li>
+                            </ul>
+                            <div class="total-list-value-section" style="display: none;">
+                                <div class="total-list-divider"></div>
+                                <div class="total-list-value">
+                                    <span>Total List Value:</span> 
+                                    <span id="total-list-value-net"><del>€4.265</del></span>
                                 </div>
                             </div>
-                            <div class="discount-option">
-                                <label>Term</label>
-                                <div class="multi-year-options" role="radiogroup" aria-labelledby="subscription-net-label">
-                                    <input type="radio" id="years1-net" name="years-net" value="1" checked aria-label="1 year subscription"> <label for="years1-net">1Y</label>
-                                    <input type="radio" id="years2-net" name="years-net" value="2" aria-label="2 year subscription with 10 percent discount"> <label for="years2-net">2Y <span class="discount-tag">10%</span></label>
-                                    <input type="radio" id="years3-net" name="years-net" value="3" aria-label="3 year subscription with 15 percent discount"> <label for="years3-net">3Y <span class="discount-tag">15%</span></label>
+                            <div class="discount-calculator">
+                                <div class="discount-option">
+                                    <label for="quantity-net">Volume
+                                            <span class="tooltip-icon" role="tooltip" aria-describedby="tooltip-net-volume">?
+                                                <span class="tooltip-text" id="tooltip-net-volume">5-9 licenses: 5% off<br>10+ licenses: 10% off</span>
+                                            </span>
+                                    </label>
+                                    <div class="volume-control-wrapper">
+                                        <button type="button" class="quantity-btn" data-action="decrease" aria-label="Decrease quantity">−</button>
+                                        <input type="number" id="quantity-net" class="quantity-input" value="1" min="1" aria-label="Number of licenses for .NET Professional Suite">
+                                        <button type="button" class="quantity-btn" data-action="increase" aria-label="Increase quantity">+</button>
+                                    </div>
+                                </div>
+                                <div class="discount-option">
+                                    <label>Term</label>
+                                    <div class="multi-year-options" role="radiogroup" aria-labelledby="subscription-net-label">
+                                        <input type="radio" id="years1-net" name="years-net" value="1" checked aria-label="1 year subscription"> <label for="years1-net">1Y</label>
+                                        <input type="radio" id="years2-net" name="years-net" value="2" aria-label="2 year subscription with 10 percent discount"> <label for="years2-net">2Y <span class="discount-tag">10%</span></label>
+                                        <input type="radio" id="years3-net" name="years-net" value="3" aria-label="3 year subscription with 15 percent discount"> <label for="years3-net">3Y <span class="discount-tag">15%</span></label>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="price-summary-container" id="price-summary-net">
+                                <span class="total-actual-cost">Total Cost: €3.491</span>
+                                <span class="total-price-subtle">Grand Total: €3.491</span>
+                            </div>
+                            <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285847" class="cta-button" id="cta-net">Buy Now</a>
                         </div>
-                        <div class="price-summary-container" id="price-summary-net">
-                            <span class="total-actual-cost">Total Cost: €3.491</span>
-                            <span class="total-price-subtle">Grand Total: €3.491</span>
-                        </div>
-                        <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285847" class="cta-button" id="cta-net">Buy Now</a>
                     </div>
                     <div class="bundle-card" data-product-id="285849" data-base-price="1203" data-list-price="1850" id="card-js">
                         <div class="card-tag js-tag">Web Excel Apps</div>
