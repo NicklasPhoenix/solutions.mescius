@@ -181,8 +181,24 @@ function initializeStatsAnimation() {
  */
 function animateCounter(element) {
     const target = element.getAttribute('data-target');
-    const numericTarget = parseInt(target.replace(/[^\d]/g, ''));
-    const suffix = target.replace(/[\d]/g, '');
+    
+    // Parse the target value properly
+    let numericTarget, suffix, multiplier = 1;
+    
+    if (target.includes('K+')) {
+        numericTarget = parseFloat(target.replace('K+', ''));
+        suffix = 'K+';
+        // For K values, animate in thousands (e.g., 250K = animate from 0 to 250000)
+        numericTarget = numericTarget * 1000;
+    } else if (target.includes('M+')) {
+        numericTarget = parseFloat(target.replace('M+', ''));
+        suffix = 'M+';
+        // For M values, animate in millions (e.g., 1.2M = animate from 0 to 1200000)
+        numericTarget = numericTarget * 1000000;
+    } else {
+        numericTarget = parseFloat(target.replace('+', ''));
+        suffix = '+';
+    }
     
     let current = 0;
     const duration = 2000; // 2 seconds
@@ -198,19 +214,27 @@ function animateCounter(element) {
             clearInterval(timer);
         }
         
-        // Format number with suffix
-        let displayValue = Math.floor(current);
-        if (suffix.includes('K')) {
-            displayValue = (displayValue / 1000).toFixed(displayValue >= 1000 ? 0 : 1) + 'K';
-        } else if (suffix.includes('M')) {
-            displayValue = (displayValue / 1000000).toFixed(1) + 'M';
+        // Format number with appropriate suffix
+        let displayValue;
+        if (suffix === 'K+') {
+            displayValue = (current / 1000).toFixed(current >= 100000 ? 0 : 1);
+            // Remove unnecessary decimal places
+            if (displayValue.endsWith('.0')) {
+                displayValue = displayValue.replace('.0', '');
+            }
+            displayValue += 'K+';
+        } else if (suffix === 'M+') {
+            displayValue = (current / 1000000).toFixed(1);
+            // Remove unnecessary decimal places
+            if (displayValue.endsWith('.0')) {
+                displayValue = displayValue.replace('.0', '');
+            }
+            displayValue += 'M+';
         } else {
-            displayValue = displayValue.toString();
+            displayValue = Math.floor(current) + '+';
         }
         
-        // Add any remaining suffix characters
-        const cleanSuffix = suffix.replace(/[KM]/g, '');
-        element.textContent = displayValue + cleanSuffix;
+        element.textContent = displayValue;
         
         // Add pulse animation during counting
         element.parentElement.classList.add('counting');
