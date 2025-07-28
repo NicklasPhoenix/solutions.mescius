@@ -3,7 +3,7 @@
 /* Bundle Cards Grid */
 .pricing-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(800px, 1fr));
   gap: var(--space-8);
   margin: var(--space-16) 0;
 }
@@ -71,15 +71,16 @@
   backdrop-filter: blur(20px);
   border: 2px solid var(--gray-200);
   border-radius: var(--radius-2xl);
-  padding: var(--space-8);
+  padding: var(--space-10);
   transition: all var(--transition-base) var(--ease-out);
   position: relative;
   overflow: hidden;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-8);
+  gap: var(--space-10);
   height: auto;
   min-height: auto;
+  align-items: start;
 }
 
 .bundle-card:hover {
@@ -91,21 +92,29 @@
 .bundle-card-left {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-2);
+  padding-right: var(--space-6);
+  justify-content: flex-start;
+  min-height: 100%;
 }
 
 .bundle-card-right {
   display: flex;
   flex-direction: column;
   gap: var(--space-6);
-  border-left: 1px solid var(--gray-200);
-  padding-left: var(--space-6);
+  border-left: 2px solid var(--gray-200);
+  padding-left: var(--space-8);
+  justify-content: space-between;
+  min-height: 100%;
 }
 
 /* Adjust elements for new layout */
 .bundle-card .card-tag {
-  align-self: flex-start;
-  margin-bottom: var(--space-2);
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-4);
+  z-index: 10;
+  margin-bottom: 0;
 }
 
 .bundle-card .bundle-info-trigger {
@@ -347,17 +356,19 @@
   line-height: var(--leading-tight);
 }
 
-.card-subtitle {
+.bundle-card .card-subtitle {
   font-size: var(--text-base);
   color: var(--text-secondary);
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-1);
+  margin-top: var(--space-2);
   line-height: var(--leading-relaxed);
 }
 
 /* Price Container */
-.price-container {
-  margin-bottom: var(--space-6);
-  padding: var(--space-4);
+.bundle-card .price-container {
+  margin-bottom: var(--space-3);
+  margin-top: var(--space-1);
+  padding: var(--space-3);
   background: rgba(248, 250, 252, 0.8);
   border-radius: var(--radius-lg);
   border: 1px solid var(--gray-200);
@@ -419,8 +430,8 @@
 .inclusions-list {
   list-style: none;
   padding: 0;
-  margin: var(--space-6) 0;
-  flex-grow: 1;
+  margin: var(--space-3) 0;
+  flex-grow: 0;
 }
 
 .inclusions-list.multi-column {
@@ -487,7 +498,7 @@
   border: 1px solid var(--gray-200);
   border-radius: var(--radius-lg);
   padding: var(--space-6);
-  margin: var(--space-8) 0;
+  margin: var(--space-4) 0;
 }
 
 .discount-calculator:hover {
@@ -502,10 +513,24 @@
 
 .discount-option {
   margin-bottom: var(--space-6);
+  padding: var(--space-4);
+  background: rgba(248, 250, 252, 0.5);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--gray-100);
 }
 
 .discount-option:last-child {
   margin-bottom: 0;
+}
+
+.discount-option label {
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
 }
 
 .discount-option h4 {
@@ -522,14 +547,13 @@
 .volume-control-wrapper {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: var(--space-3);
-  margin-bottom: var(--space-4);
-}
-
-.volume-control-wrapper label {
-  font-weight: var(--font-weight-medium);
-  color: var(--text-primary);
-  min-width: 120px;
+  margin-top: var(--space-2);
+  padding: var(--space-3);
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--gray-200);
 }
 
 .quantity-btn {
@@ -594,21 +618,29 @@
 /* Multi-year Options */
 .multi-year-options {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--space-3);
+  margin-top: var(--space-2);
+  padding: var(--space-3);
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--gray-200);
 }
 
 .multi-year-options label {
   position: relative;
   display: flex;
   align-items: center;
-  padding: var(--space-3) var(--space-4);
-  background: rgba(255, 255, 255, 0.8);
+  justify-content: center;
+  padding: var(--space-3) var(--space-2);
+  background: rgba(255, 255, 255, 0.9);
   border: 2px solid var(--gray-200);
   border-radius: var(--radius-lg);
   cursor: pointer;
   transition: all var(--transition-base) var(--ease-out);
   font-weight: var(--font-weight-medium);
+  font-size: var(--text-sm);
+  text-align: center;
 }
 
 .multi-year-options label:hover {
@@ -662,12 +694,13 @@
 
 /* Price Summary */
 .price-summary-container {
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(34, 197, 94, 0.05));
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(34, 197, 94, 0.08));
   border: 2px solid var(--primary-light);
   border-radius: var(--radius-xl);
-  padding: var(--space-6);
-  margin: var(--space-8) 0;
+  padding: var(--space-5);
+  margin: var(--space-4) 0;
   text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .total-actual-cost {

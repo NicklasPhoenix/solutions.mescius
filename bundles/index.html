@@ -198,7 +198,7 @@
                                 i
                         </span>
                         
-                        <!-- Left Column: Title, Description, Price -->
+                        <!-- Left Column: Essential Info & Inclusions -->
                         <div class="bundle-card-left">
                             <h3 class="card-title">.NET Professional Suite</h3>
                             <p class="card-subtitle">The complete toolkit for professional .NET desktop and web developers.</p>
@@ -211,16 +211,16 @@
                                 <div class="price-term">per developer / year</div>
                                 <span class="discount-per-dev"></span>
                             </div>
-                        </div>
-                        
-                        <!-- Right Column: Inclusions, Options, Actions -->
-                        <div class="bundle-card-right">
                             <ul class="inclusions-list">
                                 <li data-original-price="1385"><span>ComponentOne Studio</span><span>€1.385</span></li>
                                 <li data-original-price="0"><span>Wijmo Enterprise</span><span>€0,00</span></li>
                                 <li data-original-price="1485"><span>ActiveReports.NET (Prof.)</span><span>€1.485</span></li>
                                 <li data-original-price="1395"><span>Spread.NET</span><span>€1.395</span></li>
                             </ul>
+                        </div>
+                        
+                        <!-- Right Column: Calculator & Actions -->
+                        <div class="bundle-card-right">
                             <div class="total-list-value-section" style="display: none;">
                                 <div class="total-list-divider"></div>
                                 <div class="total-list-value">
@@ -265,55 +265,63 @@
                                 data-solutionlink="../solutions/">
                                 i
                         </span>
-                        <h3 class="card-title">SpreadJS+Documents</h3>
-                        <p class="card-subtitle">The essential toolkit for web-based financial reporting and spreadsheet apps.</p>
-                        <div class="price-container">
-                            <div class="main-price" id="price-js">€1.203</div>
-                            <div class="price-details">
-                                <del class="list-price" id="total-list-value-js-inline">€1.850</del>
-                                <span class="savings" id="savings-js-inline">Save €647</span>
+                        
+                        <!-- Left Column: Essential Info & Inclusions -->
+                        <div class="bundle-card-left">
+                            <h3 class="card-title">SpreadJS+Documents</h3>
+                            <p class="card-subtitle">The essential toolkit for web-based financial reporting and spreadsheet apps.</p>
+                            <div class="price-container">
+                                <div class="main-price" id="price-js">€1.203</div>
+                                <div class="price-details">
+                                    <del class="list-price" id="total-list-value-js-inline">€1.850</del>
+                                    <span class="savings" id="savings-js-inline">Save €647</span>
+                                </div>
+                                <div class="price-term">per developer / year</div>
+                                <span class="discount-per-dev"></span>
                             </div>
-                            <div class="price-term">per developer / year</div>
-                            <span class="discount-per-dev"></span>
+                            <ul class="inclusions-list">
+                                <li data-original-price="925"><span>SpreadJS</span><span>€925</span></li>
+                                <li data-original-price="925"><span>Documents for Excel (JS)</span><span>€925</span></li>
+                            </ul>
                         </div>
-                        <ul class="inclusions-list">
-                            <li data-original-price="925"><span>SpreadJS</span><span>€925</span></li>
-                            <li data-original-price="925"><span>Documents for Excel (JS)</span><span>€925</span></li>
-                        </ul>
-                        <div class="total-list-value-section" style="display: none;">
-                            <div class="total-list-divider"></div>
-                            <div class="total-list-value">
-                                <span>Total List Price:</span> 
-                                <span id="total-list-value-js"><del>€1.850</del></span>
-                            </div>
-                        </div>
-                        <div class="discount-calculator">
-                            <div class="discount-option">
-                                <label for="quantity-js">Volume
-                                        <span class="tooltip-icon" role="tooltip" aria-describedby="tooltip-js-volume">?
-                                            <span class="tooltip-text" id="tooltip-js-volume">5-9 licenses: 5% off<br>10+ licenses: 10% off</span>
-                                        </span>
-                                </label>
-                                <div class="volume-control-wrapper">
-                                    <button type="button" class="quantity-btn" data-action="decrease" aria-label="Decrease quantity">−</button>
-                                    <input type="number" id="quantity-js" class="quantity-input" value="1" min="1" aria-label="Number of licenses for SpreadJS + Documents">
-                                    <button type="button" class="quantity-btn" data-action="increase" aria-label="Increase quantity">+</button>
+                        
+                        <!-- Right Column: Calculator & Actions -->
+                        <div class="bundle-card-right">
+                            <div class="total-list-value-section" style="display: none;">
+                                <div class="total-list-divider"></div>
+                                <div class="total-list-value">
+                                    <span>Total List Price:</span> 
+                                    <span id="total-list-value-js"><del>€1.850</del></span>
                                 </div>
                             </div>
-                            <div class="discount-option">
-                                <label>Term</label>
-                                <div class="multi-year-options" role="radiogroup" aria-labelledby="subscription-js-label">
-                                    <input type="radio" id="years1-js" name="years-js" value="1" checked aria-label="1 year subscription"> <label for="years1-js">1Y</label>
-                                    <input type="radio" id="years2-js" name="years-js" value="2" aria-label="2 year subscription with 10 percent discount"> <label for="years2-js">2Y <span class="discount-tag">10%</span></label>
-                                    <input type="radio" id="years3-js" name="years-js" value="3" aria-label="3 year subscription with 15 percent discount"> <label for="years3-js">3Y <span class="discount-tag">15%</span></label>
+                            <div class="discount-calculator">
+                                <div class="discount-option">
+                                    <label for="quantity-js">Volume
+                                            <span class="tooltip-icon" role="tooltip" aria-describedby="tooltip-js-volume">?
+                                                <span class="tooltip-text" id="tooltip-js-volume">5-9 licenses: 5% off<br>10+ licenses: 10% off</span>
+                                            </span>
+                                    </label>
+                                    <div class="volume-control-wrapper">
+                                        <button type="button" class="quantity-btn" data-action="decrease" aria-label="Decrease quantity">−</button>
+                                        <input type="number" id="quantity-js" class="quantity-input" value="1" min="1" aria-label="Number of licenses for SpreadJS + Documents">
+                                        <button type="button" class="quantity-btn" data-action="increase" aria-label="Increase quantity">+</button>
+                                    </div>
+                                </div>
+                                <div class="discount-option">
+                                    <label>Term</label>
+                                    <div class="multi-year-options" role="radiogroup" aria-labelledby="subscription-js-label">
+                                        <input type="radio" id="years1-js" name="years-js" value="1" checked aria-label="1 year subscription"> <label for="years1-js">1Y</label>
+                                        <input type="radio" id="years2-js" name="years-js" value="2" aria-label="2 year subscription with 10 percent discount"> <label for="years2-js">2Y <span class="discount-tag">10%</span></label>
+                                        <input type="radio" id="years3-js" name="years-js" value="3" aria-label="3 year subscription with 15 percent discount"> <label for="years3-js">3Y <span class="discount-tag">15%</span></label>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="price-summary-container" id="price-summary-js">
+                                <span class="total-actual-cost">Total Cost: €1.203</span>
+                                <span class="total-price-subtle">Grand Total: €1.203</span>
+                            </div>
+                            <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285849" class="cta-button" id="cta-js">Buy Now</a>
                         </div>
-                        <div class="price-summary-container" id="price-summary-js">
-                            <span class="total-actual-cost">Total Cost: €1.203</span>
-                            <span class="total-price-subtle">Grand Total: €1.203</span>
-                        </div>
-                        <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285849" class="cta-button" id="cta-js">Buy Now</a>
                     </div>
                     <div class="bundle-card" data-product-id="285851" data-base-price="1508" data-list-price="2320" id="card-desktop">
                         <div class="card-tag net-tag">Desktop Excel Apps</div>
@@ -323,21 +331,28 @@
                                 data-solutionlink="../solutions/">
                                 i
                         </span>
-                        <h3 class="card-title">Spread.NET+Documents</h3>
-                        <p class="card-subtitle">The essential toolkit for .NET desktop financial reporting and spreadsheet apps.</p>
-                        <div class="price-container">
-                            <div class="main-price" id="price-desktop">€1.508</div>
-                            <div class="price-details">
-                                <del class="list-price" id="total-list-value-desktop-inline">€2.320</del>
-                                <span class="savings" id="savings-desktop-inline">Save €812</span>
+                        
+                        <!-- Left Column: Essential Info & Inclusions -->
+                        <div class="bundle-card-left">
+                            <h3 class="card-title">Spread.NET+Documents</h3>
+                            <p class="card-subtitle">The essential toolkit for .NET desktop financial reporting and spreadsheet apps.</p>
+                            <div class="price-container">
+                                <div class="main-price" id="price-desktop">€1.508</div>
+                                <div class="price-details">
+                                    <del class="list-price" id="total-list-value-desktop-inline">€2.320</del>
+                                    <span class="savings" id="savings-desktop-inline">Save €812</span>
+                                </div>
+                                <div class="price-term">per developer / year</div>
+                                <span class="discount-per-dev"></span>
                             </div>
-                            <div class="price-term">per developer / year</div>
-                            <span class="discount-per-dev"></span>
+                            <ul class="inclusions-list">
+                                <li data-original-price="1395"><span>Spread.NET</span><span>€1.395</span></li>
+                                <li data-original-price="925"><span>Documents for Excel (.NET)</span><span>€925</span></li>
+                            </ul>
                         </div>
-                        <ul class="inclusions-list">
-                            <li data-original-price="1395"><span>Spread.NET</span><span>€1.395</span></li>
-                            <li data-original-price="925"><span>Documents for Excel (.NET)</span><span>€925</span></li>
-                        </ul>
+                        
+                        <!-- Right Column: Calculator & Actions -->
+                        <div class="bundle-card-right">
                         <div class="total-list-value-section" style="display: none;">
                             <div class="total-list-divider"></div>
                             <div class="total-list-value">
@@ -371,7 +386,8 @@
                             <span class="total-actual-cost">Total Cost: €1.508</span>
                             <span class="total-price-subtle">Grand Total: €1.508</span>
                         </div>
-                        <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285851" class="cta-button" id="cta-desktop">Buy Now</a>
+                            <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285851" class="cta-button" id="cta-desktop">Buy Now</a>
+                        </div>
                     </div>
                     <div class="bundle-card" data-product-id="285868" data-base-price="1649" data-list-price="2870" id="card-analytics">
                         <div class="card-tag reporting-tag">Reporting</div>
@@ -381,55 +397,63 @@
                                 data-solutionlink="../solutions/">
                                 i
                         </span>
-                        <h3 class="card-title">Real-Time Analytics & Reporting</h3>
-                        <p class="card-subtitle">A powerful suite for embedding analytics and reporting into your .NET applications.</p>
-                        <div class="price-container">
-                            <div class="main-price" id="price-analytics">€1.649</div>
-                            <div class="price-details">
-                                <del class="list-price" id="total-list-value-analytics-inline">€2.870</del>
-                                <span class="savings" id="savings-analytics-inline">Save €1.221</span>
+                        
+                        <!-- Left Column: Essential Info & Inclusions -->
+                        <div class="bundle-card-left">
+                            <h3 class="card-title">Real-Time Analytics & Reporting</h3>
+                            <p class="card-subtitle">A powerful suite for embedding analytics and reporting into your .NET applications.</p>
+                            <div class="price-container">
+                                <div class="main-price" id="price-analytics">€1.649</div>
+                                <div class="price-details">
+                                    <del class="list-price" id="total-list-value-analytics-inline">€2.870</del>
+                                    <span class="savings" id="savings-analytics-inline">Save €1.221</span>
+                                </div>
+                                <div class="price-term">per developer / year</div>
+                                <span class="discount-per-dev"></span>
                             </div>
-                            <div class="price-term">per developer / year</div>
-                            <span class="discount-per-dev"></span>
+                            <ul class="inclusions-list">
+                                <li data-original-price="1485"><span>ActiveReportsJS Single Domain</span><span>€1.485</span></li>
+                                <li data-original-price="1385"><span>Wijmo Enterprise</span><span>€1.385</span></li>
+                            </ul>
                         </div>
-                        <ul class="inclusions-list">
-                            <li data-original-price="1485"><span>ActiveReportsJS Single Domain</span><span>€1.485</span></li>
-                            <li data-original-price="1385"><span>Wijmo Enterprise</span><span>€1.385</span></li>
-                        </ul>
-                        <div class="total-list-value-section" style="display: none;">
-                            <div class="total-list-divider"></div>
-                            <div class="total-list-value">
-                                <span>Total List Value:</span> 
-                                <span id="total-list-value-analytics"><del>€2.870</del></span>
-                            </div>
-                        </div>
-                        <div class="discount-calculator">
-                            <div class="discount-option">
-                                <label for="quantity-analytics">Volume
-                                        <span class="tooltip-icon" role="tooltip" aria-describedby="tooltip-analytics-volume">?
-                                            <span class="tooltip-text" id="tooltip-analytics-volume">5-9 licenses: 5% off<br>10+ licenses: 10% off</span>
-                                        </span>
-                                </label>
-                                <div class="volume-control-wrapper">
-                                    <button type="button" class="quantity-btn" data-action="decrease" aria-label="Decrease quantity">−</button>
-                                    <input type="number" id="quantity-analytics" class="quantity-input" value="1" min="1" aria-label="Number of licenses for Real-Time Analytics & Reporting">
-                                    <button type="button" class="quantity-btn" data-action="increase" aria-label="Increase quantity">+</button>
+                        
+                        <!-- Right Column: Calculator & Actions -->
+                        <div class="bundle-card-right">
+                            <div class="total-list-value-section" style="display: none;">
+                                <div class="total-list-divider"></div>
+                                <div class="total-list-value">
+                                    <span>Total List Value:</span> 
+                                    <span id="total-list-value-analytics"><del>€2.870</del></span>
                                 </div>
                             </div>
-                            <div class="discount-option">
-                                <label>Term</label>
-                                <div class="multi-year-options" role="radiogroup" aria-labelledby="subscription-analytics-label">
-                                    <input type="radio" id="years1-analytics" name="years-analytics" value="1" checked aria-label="1 year subscription"> <label for="years1-analytics">1Y</label>
-                                    <input type="radio" id="years2-analytics" name="years-analytics" value="2" aria-label="2 year subscription with 10 percent discount"> <label for="years2-analytics">2Y <span class="discount-tag">10%</span></label>
-                                    <input type="radio" id="years3-analytics" name="years-analytics" value="3" aria-label="3 year subscription with 15 percent discount"> <label for="years3-analytics">3Y <span class="discount-tag">15%</span></label>
+                            <div class="discount-calculator">
+                                <div class="discount-option">
+                                    <label for="quantity-analytics">Volume
+                                            <span class="tooltip-icon" role="tooltip" aria-describedby="tooltip-analytics-volume">?
+                                                <span class="tooltip-text" id="tooltip-analytics-volume">5-9 licenses: 5% off<br>10+ licenses: 10% off</span>
+                                            </span>
+                                    </label>
+                                    <div class="volume-control-wrapper">
+                                        <button type="button" class="quantity-btn" data-action="decrease" aria-label="Decrease quantity">−</button>
+                                        <input type="number" id="quantity-analytics" class="quantity-input" value="1" min="1" aria-label="Number of licenses for Real-Time Analytics & Reporting">
+                                        <button type="button" class="quantity-btn" data-action="increase" aria-label="Increase quantity">+</button>
+                                    </div>
+                                </div>
+                                <div class="discount-option">
+                                    <label>Term</label>
+                                    <div class="multi-year-options" role="radiogroup" aria-labelledby="subscription-analytics-label">
+                                        <input type="radio" id="years1-analytics" name="years-analytics" value="1" checked aria-label="1 year subscription"> <label for="years1-analytics">1Y</label>
+                                        <input type="radio" id="years2-analytics" name="years-analytics" value="2" aria-label="2 year subscription with 10 percent discount"> <label for="years2-analytics">2Y <span class="discount-tag">10%</span></label>
+                                        <input type="radio" id="years3-analytics" name="years-analytics" value="3" aria-label="3 year subscription with 15 percent discount"> <label for="years3-analytics">3Y <span class="discount-tag">15%</span></label>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="price-summary-container" id="price-summary-analytics">
+                                <span class="total-actual-cost">Total Cost: €1.649</span>
+                                <span class="total-price-subtle">Grand Total: €1.649</span>
+                            </div>
+                            <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285868" class="cta-button" id="cta-analytics">Buy Now</a>
                         </div>
-                        <div class="price-summary-container" id="price-summary-analytics">
-                            <span class="total-actual-cost">Total Cost: €1.649</span>
-                            <span class="total-price-subtle">Grand Total: €1.649</span>
-                        </div>
-                        <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285868" class="cta-button" id="cta-analytics">Buy Now</a>
                     </div>
                     <div class="bundle-card" data-product-id="285867" data-base-price="1555" data-list-price="2410" id="card-autoreport">
                         <div class="card-tag ar-tag">Reporting & Docs</div>
@@ -439,55 +463,63 @@
                                 data-solutionlink="../solutions/">
                                 i
                         </span>
-                        <h3 class="card-title">Automated Reporting & Document Generation</h3>
-                        <p class="card-subtitle">Generate complex reports and Excel documents on the server-side.</p>
-                        <div class="price-container">
-                            <div class="main-price" id="price-autoreport">€1.555</div>
-                            <div class="price-details">
-                                <del class="list-price" id="total-list-value-autoreport-inline">€2.410</del>
-                                <span class="savings" id="savings-autoreport-inline">Save €855</span>
+                        
+                        <!-- Left Column: Essential Info & Inclusions -->
+                        <div class="bundle-card-left">
+                            <h3 class="card-title">Automated Reporting & Document Generation</h3>
+                            <p class="card-subtitle">Generate complex reports and Excel documents on the server-side.</p>
+                            <div class="price-container">
+                                <div class="main-price" id="price-autoreport">€1.555</div>
+                                <div class="price-details">
+                                    <del class="list-price" id="total-list-value-autoreport-inline">€2.410</del>
+                                    <span class="savings" id="savings-autoreport-inline">Save €855</span>
+                                </div>
+                                <div class="price-term">per developer / year</div>
+                                <span class="discount-per-dev"></span>
                             </div>
-                            <div class="price-term">per developer / year</div>
-                            <span class="discount-per-dev"></span>
+                            <ul class="inclusions-list">
+                                <li data-original-price="1485"><span>ActiveReports.NET Standard</span><span>€1.485</span></li>
+                                <li data-original-price="925"><span>Documents for Excel (.NET)</span><span>€925</span></li>
+                            </ul>
                         </div>
-                        <ul class="inclusions-list">
-                            <li data-original-price="1485"><span>ActiveReports.NET Standard</span><span>€1.485</span></li>
-                            <li data-original-price="925"><span>Documents for Excel (.NET)</span><span>€925</span></li>
-                        </ul>
-                        <div class="total-list-value-section" style="display: none;">
-                            <div class="total-list-divider"></div>
-                            <div class="total-list-value">
-                                <span>Total List Value:</span> 
-                                <span id="total-list-value-autoreport"><del>€2.410</del></span>
-                            </div>
-                        </div>
-                        <div class="discount-calculator">
-                            <div class="discount-option">
-                                <label for="quantity-autoreport">Volume
-                                        <span class="tooltip-icon" role="tooltip" aria-describedby="tooltip-autoreport-volume">?
-                                            <span class="tooltip-text" id="tooltip-autoreport-volume">5-9 licenses: 5% off<br>10+ licenses: 10% off</span>
-                                        </span>
-                                </label>
-                                <div class="volume-control-wrapper">
-                                    <button type="button" class="quantity-btn" data-action="decrease" aria-label="Decrease quantity">−</button>
-                                    <input type="number" id="quantity-autoreport" class="quantity-input" value="1" min="1" aria-label="Number of licenses for Automated Reporting & Document Generation">
-                                    <button type="button" class="quantity-btn" data-action="increase" aria-label="Increase quantity">+</button>
+                        
+                        <!-- Right Column: Calculator & Actions -->
+                        <div class="bundle-card-right">
+                            <div class="total-list-value-section" style="display: none;">
+                                <div class="total-list-divider"></div>
+                                <div class="total-list-value">
+                                    <span>Total List Value:</span> 
+                                    <span id="total-list-value-autoreport"><del>€2.410</del></span>
                                 </div>
                             </div>
-                            <div class="discount-option">
-                                <label>Term</label>
-                                <div class="multi-year-options" role="radiogroup" aria-labelledby="subscription-autoreport-label">
-                                    <input type="radio" id="years1-autoreport" name="years-autoreport" value="1" checked aria-label="1 year subscription"> <label for="years1-autoreport">1Y</label>
-                                    <input type="radio" id="years2-autoreport" name="years-autoreport" value="2" aria-label="2 year subscription with 10 percent discount"> <label for="years2-autoreport">2Y <span class="discount-tag">10%</span></label>
-                                    <input type="radio" id="years3-autoreport" name="years-autoreport" value="3" aria-label="3 year subscription with 15 percent discount"> <label for="years3-autoreport">3Y <span class="discount-tag">15%</span></label>
+                            <div class="discount-calculator">
+                                <div class="discount-option">
+                                    <label for="quantity-autoreport">Volume
+                                            <span class="tooltip-icon" role="tooltip" aria-describedby="tooltip-autoreport-volume">?
+                                                <span class="tooltip-text" id="tooltip-autoreport-volume">5-9 licenses: 5% off<br>10+ licenses: 10% off</span>
+                                            </span>
+                                    </label>
+                                    <div class="volume-control-wrapper">
+                                        <button type="button" class="quantity-btn" data-action="decrease" aria-label="Decrease quantity">−</button>
+                                        <input type="number" id="quantity-autoreport" class="quantity-input" value="1" min="1" aria-label="Number of licenses for Automated Reporting & Document Generation">
+                                        <button type="button" class="quantity-btn" data-action="increase" aria-label="Increase quantity">+</button>
+                                    </div>
+                                </div>
+                                <div class="discount-option">
+                                    <label>Term</label>
+                                    <div class="multi-year-options" role="radiogroup" aria-labelledby="subscription-autoreport-label">
+                                        <input type="radio" id="years1-autoreport" name="years-autoreport" value="1" checked aria-label="1 year subscription"> <label for="years1-autoreport">1Y</label>
+                                        <input type="radio" id="years2-autoreport" name="years-autoreport" value="2" aria-label="2 year subscription with 10 percent discount"> <label for="years2-autoreport">2Y <span class="discount-tag">10%</span></label>
+                                        <input type="radio" id="years3-autoreport" name="years-autoreport" value="3" aria-label="3 year subscription with 15 percent discount"> <label for="years3-autoreport">3Y <span class="discount-tag">15%</span></label>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="price-summary-container" id="price-summary-autoreport">
+                                <span class="total-actual-cost">Total Cost: €1.555</span>
+                                <span class="total-price-subtle">Grand Total: €1.555</span>
+                            </div>
+                            <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285867" class="cta-button" id="cta-autoreport">Buy Now</a>
                         </div>
-                        <div class="price-summary-container" id="price-summary-autoreport">
-                            <span class="total-actual-cost">Total Cost: €1.555</span>
-                            <span class="total-price-subtle">Grand Total: €1.555</span>
-                        </div>
-                        <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285867" class="cta-button" id="cta-autoreport">Buy Now</a>
                     </div>
                     <div class="bundle-card" data-product-id="285848" data-base-price="2658" data-list-price="3415" id="card-blazor">
                         <div class="card-tag blazor-tag">Blazor Suite</div>
@@ -497,56 +529,64 @@
                                 data-solutionlink="../solutions/">
                                 i
                         </span>
-                        <h3 class="card-title">Blazor Hybrid Power Pack</h3>
-                        <p class="card-subtitle">Everything you need for building data-centric Blazor Hybrid applications.</p>
-                        <div class="price-container">
-                            <div class="main-price" id="price-blazor">€2.658</div>
-                            <div class="price-details">
-                                <del class="list-price" id="total-list-value-blazor-inline">€3.415</del>
-                                <span class="savings" id="savings-blazor-inline">Save €757</span>
+                        
+                        <!-- Left Column: Essential Info & Inclusions -->
+                        <div class="bundle-card-left">
+                            <h3 class="card-title">Blazor Hybrid Power Pack</h3>
+                            <p class="card-subtitle">Everything you need for building data-centric Blazor Hybrid applications.</p>
+                            <div class="price-container">
+                                <div class="main-price" id="price-blazor">€2.658</div>
+                                <div class="price-details">
+                                    <del class="list-price" id="total-list-value-blazor-inline">€3.415</del>
+                                    <span class="savings" id="savings-blazor-inline">Save €757</span>
+                                </div>
+                                <div class="price-term">per developer / year</div>
+                                <span class="discount-per-dev"></span>
                             </div>
-                            <div class="price-term">per developer / year</div>
-                            <span class="discount-per-dev"></span>
+                            <ul class="inclusions-list">
+                                <li data-original-price="1385"><span>ComponentOne Studio</span><span>€1.385</span></li>
+                                <li data-original-price="1105"><span>Wijmo Enterprise</span><span>€1.105</span></li>
+                                <li data-original-price="925"><span>Documents for Excel (.NET)</span><span>€925</span></li>
+                            </ul>
                         </div>
-                        <ul class="inclusions-list">
-                            <li data-original-price="1385"><span>ComponentOne Studio</span><span>€1.385</span></li>
-                            <li data-original-price="1105"><span>Wijmo Enterprise</span><span>€1.105</span></li>
-                            <li data-original-price="925"><span>Documents for Excel (.NET)</span><span>€925</span></li>
-                        </ul>
-                        <div class="total-list-value-section" style="display: none;">
-                            <div class="total-list-divider"></div>
-                            <div class="total-list-value">
-                                <span>Total List Value:</span> 
-                                <span id="total-list-value-blazor"><del>€3.415</del></span>
-                            </div>
-                        </div>
-                        <div class="discount-calculator">
-                            <div class="discount-option">
-                                <label for="quantity-blazor">Volume
-                                        <span class="tooltip-icon" role="tooltip" aria-describedby="tooltip-blazor-volume">?
-                                            <span class="tooltip-text" id="tooltip-blazor-volume">5-9 licenses: 5% off<br>10+ licenses: 10% off</span>
-                                        </span>
-                                </label>
-                                <div class="volume-control-wrapper">
-                                    <button type="button" class="quantity-btn" data-action="decrease" aria-label="Decrease quantity">−</button>
-                                    <input type="number" id="quantity-blazor" class="quantity-input" value="1" min="1" aria-label="Number of licenses for Blazor Hybrid Power Pack">
-                                    <button type="button" class="quantity-btn" data-action="increase" aria-label="Increase quantity">+</button>
+                        
+                        <!-- Right Column: Calculator & Actions -->
+                        <div class="bundle-card-right">
+                            <div class="total-list-value-section" style="display: none;">
+                                <div class="total-list-divider"></div>
+                                <div class="total-list-value">
+                                    <span>Total List Value:</span> 
+                                    <span id="total-list-value-blazor"><del>€3.415</del></span>
                                 </div>
                             </div>
-                            <div class="discount-option">
-                                <label>Term</label>
-                                <div class="multi-year-options" role="radiogroup" aria-labelledby="subscription-blazor-label">
-                                    <input type="radio" id="years1-blazor" name="years-blazor" value="1" checked aria-label="1 year subscription"> <label for="years1-blazor">1Y</label>
-                                    <input type="radio" id="years2-blazor" name="years-blazor" value="2" aria-label="2 year subscription with 10 percent discount"> <label for="years2-blazor">2Y <span class="discount-tag">10%</span></label>
-                                    <input type="radio" id="years3-blazor" name="years-blazor" value="3" aria-label="3 year subscription with 15 percent discount"> <label for="years3-blazor">3Y <span class="discount-tag">15%</span></label>
+                            <div class="discount-calculator">
+                                <div class="discount-option">
+                                    <label for="quantity-blazor">Volume
+                                            <span class="tooltip-icon" role="tooltip" aria-describedby="tooltip-blazor-volume">?
+                                                <span class="tooltip-text" id="tooltip-blazor-volume">5-9 licenses: 5% off<br>10+ licenses: 10% off</span>
+                                            </span>
+                                    </label>
+                                    <div class="volume-control-wrapper">
+                                        <button type="button" class="quantity-btn" data-action="decrease" aria-label="Decrease quantity">−</button>
+                                        <input type="number" id="quantity-blazor" class="quantity-input" value="1" min="1" aria-label="Number of licenses for Blazor Hybrid Power Pack">
+                                        <button type="button" class="quantity-btn" data-action="increase" aria-label="Increase quantity">+</button>
+                                    </div>
+                                </div>
+                                <div class="discount-option">
+                                    <label>Term</label>
+                                    <div class="multi-year-options" role="radiogroup" aria-labelledby="subscription-blazor-label">
+                                        <input type="radio" id="years1-blazor" name="years-blazor" value="1" checked aria-label="1 year subscription"> <label for="years1-blazor">1Y</label>
+                                        <input type="radio" id="years2-blazor" name="years-blazor" value="2" aria-label="2 year subscription with 10 percent discount"> <label for="years2-blazor">2Y <span class="discount-tag">10%</span></label>
+                                        <input type="radio" id="years3-blazor" name="years-blazor" value="3" aria-label="3 year subscription with 15 percent discount"> <label for="years3-blazor">3Y <span class="discount-tag">15%</span></label>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="price-summary-container" id="price-summary-blazor">
+                                <span class="total-actual-cost">Total Cost: €2.658</span>
+                                <span class="total-price-subtle">Grand Total: €2.658</span>
+                            </div>
+                            <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285848" class="cta-button" id="cta-blazor">Buy Now</a>
                         </div>
-                        <div class="price-summary-container" id="price-summary-blazor">
-                            <span class="total-actual-cost">Total Cost: €2.658</span>
-                            <span class="total-price-subtle">Grand Total: €2.658</span>
-                        </div>
-                        <a href="https://checkout.mescius.eu/1878/purl-shop?cart=i285848" class="cta-button" id="cta-blazor">Buy Now</a>
                     </div>
                 </div>
 
