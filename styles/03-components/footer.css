@@ -80,21 +80,22 @@
   align-self: flex-start;
   margin-bottom: var(--space-2);
   transition: filter var(--transition-base) var(--ease-out);
+  filter: grayscale(1) brightness(0.7);
 }
 
 /* Ensure logo works with all variants in dark theme */
 [data-theme="dark"] .footer-logo {
-  filter: brightness(0) invert(1);
+  filter: grayscale(1) brightness(2) invert(1);
 }
 
 /* Support for SVG logos that may need different handling */
 [data-theme="dark"] .footer-logo[src*=".svg"] {
-  filter: brightness(0) invert(1);
+  filter: grayscale(1) brightness(2) invert(1);
 }
 
 /* Support for PNG logos with transparency */
 [data-theme="dark"] .footer-logo[src*=".png"] {
-  filter: brightness(0) invert(1);
+  filter: grayscale(1) brightness(2) invert(1);
 }
 
 .footer-text {
@@ -411,7 +412,6 @@
   /* Note: External iframe content cannot be directly styled due to CORS restrictions.
      For complete dark mode support, the external form service would need to provide
      a dark theme option or separate dark mode URL parameter. */
-  filter: invert(0.9) hue-rotate(180deg) brightness(0.8) contrast(1.1);
   background: var(--bg-tertiary);
 }
 

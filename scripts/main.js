@@ -274,59 +274,86 @@ function initializeTheme() {
     // Theme toggle functionality (if theme switcher exists)
     const themeToggle = document.querySelector('.theme-toggle');
     if (themeToggle) {
-        themeToggle.addEventListener('click', function() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
+        // DISABLED: Theme toggle - Force light mode only
+        // themeToggle.addEventListener('click', function() {
+        //     const currentTheme = document.documentElement.getAttribute('data-theme');
             
-            if (currentTheme === 'dark') {
-                // Switch to light mode (remove attribute)
-                document.documentElement.removeAttribute('data-theme');
-                localStorage.setItem('theme', 'light');
-                updateThemeToggleIcons('light');
-            } else {
-                // Switch to dark mode (set attribute)
-                document.documentElement.setAttribute('data-theme', 'dark');
-                localStorage.setItem('theme', 'dark');
-                updateThemeToggleIcons('dark');
-            }
-        });
+        //     if (currentTheme === 'dark') {
+        //         // Switch to light mode (remove attribute)
+        //         document.documentElement.removeAttribute('data-theme');
+        //         localStorage.setItem('theme', 'light');
+        //         updateThemeToggleIcons('light');
+        //     } else {
+        //         // Switch to dark mode (set attribute)
+        //         document.documentElement.setAttribute('data-theme', 'dark');
+        //         localStorage.setItem('theme', 'dark');
+        //         updateThemeToggleIcons('dark');
+        //     }
+        // });
         
         // Set initial toggle state
         const currentTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
         updateThemeToggleIcons(currentTheme);
     }
 
-    // Respect system preference only if no saved theme
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    if (!localStorage.getItem('theme')) {
-        if (mediaQuery.matches) {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            if (themeToggle) {
-                updateThemeToggleIcons('dark');
-            }
-        } else {
-            document.documentElement.removeAttribute('data-theme');
-            if (themeToggle) {
-                updateThemeToggleIcons('light');
-            }
-        }
+    // DISABLED: Force light mode only - no system theme detection
+    // const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    // if (!localStorage.getItem('theme')) {
+    //     if (mediaQuery.matches) {
+    //         document.documentElement.setAttribute('data-theme', 'dark');
+    //         if (themeToggle) {
+    //             updateThemeToggleIcons('dark');
+    //         }
+    //     } else {
+    //         document.documentElement.removeAttribute('data-theme');
+    //         if (themeToggle) {
+    //             updateThemeToggleIcons('light');
+    //         }
+    //     }
+    // }
+
+    // Simple light mode enforcement
+    document.documentElement.removeAttribute('data-theme');
+    localStorage.removeItem('theme');
+    
+    if (themeToggle) {
+        updateThemeToggleIcons('light');
     }
     
-    // Listen for system theme changes
-    mediaQuery.addEventListener('change', function(e) {
-        if (!localStorage.getItem('theme')) {
-            if (e.matches) {
-                document.documentElement.setAttribute('data-theme', 'dark');
-                if (themeToggle) {
-                    updateThemeToggleIcons('dark');
-                }
-            } else {
-                document.documentElement.removeAttribute('data-theme');
-                if (themeToggle) {
-                    updateThemeToggleIcons('light');
-                }
-            }
+    // Aggressive light mode enforcement to prevent external scripts from setting dark theme
+    const forceLight = () => {
+        if (document.documentElement.getAttribute('data-theme') === 'dark') {
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.removeItem('theme');
         }
-    });
+    };
+    
+    // Run after DOM is complete and scripts have loaded
+    window.addEventListener('load', forceLight);
+    
+    // Also check periodically for the first few seconds after page load
+    setTimeout(() => {
+        forceLight();
+        setTimeout(forceLight, 500);
+        setTimeout(forceLight, 1000);
+    }, 100);
+
+    // DISABLED: Listen for system theme changes
+    // mediaQuery.addEventListener('change', function(e) {
+    //     if (!localStorage.getItem('theme')) {
+    //         if (e.matches) {
+    //             document.documentElement.setAttribute('data-theme', 'dark');
+    //             if (themeToggle) {
+    //                 updateThemeToggleIcons('dark');
+    //             }
+    //         } else {
+    //             document.documentElement.removeAttribute('data-theme');
+    //             if (themeToggle) {
+    //                 updateThemeToggleIcons('light');
+    //             }
+    //         }
+    //     }
+    // });
 }
 
 /**

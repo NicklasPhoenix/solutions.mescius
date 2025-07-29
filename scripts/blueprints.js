@@ -243,6 +243,87 @@ function formatMetricValue(value, suffix) {
 }
 
 /**
+ * Get product information by ID (matching pricing page data)
+ */
+function getProductInfo(productId) {
+    const productDatabase = {
+        'componentone': {
+            title: 'ComponentOne',
+            description: '<strong>The complete UI toolkit for .NET developers.</strong><br>ComponentOne includes hundreds of controls to solve any business need. Key features include:<ul><li>High-performance DataGrids and Charts</li><li>Full support for WinForms, WPF, Blazor, and MAUI</li><li>Powerful reporting and document generation</li></ul>',
+            demoLink: 'https://mescius.eu/componentone/download',
+            productLink: 'https://developer.mescius.com/componentone'
+        },
+        'componentone-studio': {
+            title: 'ComponentOne',
+            description: '<strong>The complete UI toolkit for .NET developers.</strong><br>ComponentOne includes hundreds of controls to solve any business need. Key features include:<ul><li>High-performance DataGrids and Charts</li><li>Full support for WinForms, WPF, Blazor, and MAUI</li><li>Powerful reporting and document generation</li></ul>',
+            demoLink: 'https://mescius.eu/componentone/download',
+            productLink: 'https://developer.mescius.com/componentone'
+        },
+        'spreadjs-professional': {
+            title: 'SpreadJS',
+            description: '<strong>Empower your web applications with the industry-leading JavaScript spreadsheet solution.</strong><br>SpreadJS provides a complete, Excel-like experience for your users, including:<ul><li>High-speed grids</li><li>Complex calculations & charts</li><li>Pivot tables</li><li>Advanced data analysis tools</li></ul><p>It is ideal for creating <strong>financial, scientific, and enterprise resource planning (ERP)</strong> applications.</p>',
+            demoLink: 'https://mescius.eu/spreadjs/download',
+            productLink: 'https://developer.mescius.com/spreadjs'
+        },
+        'spreadnet': {
+            title: 'Spread.NET',
+            description: '<strong>Deliver the ultimate spreadsheet experience in your .NET desktop and web applications with Spread.NET.</strong><br>This powerful component suite provides high-performance data grids and designers for <strong>WinForms, ASP.NET, and WPF</strong>.<p>Enable advanced features including:</p><ul><li>Complex calculations, charting, and pivot tables</li><li>Seamless Excel (.XLSX) import and export</li></ul><p>The perfect toolset for creating feature-rich <strong>financial and data analysis</strong> applications.</p>',
+            demoLink: 'https://mescius.eu/spreadnet/download',
+            productLink: 'https://developer.mescius.com/spreadnet'
+        },
+        'wijmo-enterprise': {
+            title: 'Wijmo',
+            description: "<strong>Build high-performance, enterprise-level web applications</strong> with Wijmo's comprehensive library of JavaScript/TypeScript UI components.<p>Key features include:</p><ul><li>A <strong>zero-dependency, small footprint</strong> architecture written for performance.</li><li>The industry's best datagrid, <strong>FlexGrid</strong>, plus 100+ other controls for data visualization and UI.</li><li>Full framework support for <strong>Angular, React, Vue</strong>, and more.</li></ul><p>Wijmo is the premier choice for your most <strong>demanding data-driven applications.</strong></p>",
+            demoLink: 'https://mescius.eu/wijmo/download',
+            productLink: 'https://developer.mescius.com/wijmo'
+        },
+        'activereportsjs': {
+            title: 'ActiveReportsJS',
+            description: "<strong>Integrate fast, feature-rich reporting</strong> into your client-side web applications with ActiveReportsJS.<p>This complete JavaScript solution provides:</p><ul><li>A powerful, <strong>embeddable report designer and viewer</strong>.</li><li>The ability for your end-users to create and interact with reports on <strong>any platform</strong>.</li><li>Connectivity to local and remote JSON data sources.</li><li>Direct-in-browser export to popular formats like <strong>PDF, Excel (XLSX), and HTML</strong>.</li></ul>",
+            demoLink: 'https://mescius.eu/activereportsjs/download',
+            productLink: 'https://developer.mescius.com/activereportsjs'
+        },
+        'activereportsnet': {
+            title: 'ActiveReports.NET',
+            description: "<strong>Add powerful, interactive reporting</strong> to your <strong>WinForms, WPF, and ASP.NET</strong> applications with ActiveReports.NET.<p>This complete .NET reporting toolkit <strong>seamlessly integrates with Visual Studio</strong>, allowing developers to create everything from simple to complex reports.</p><p>Key capabilities include:</p><ul><li>Embeddable end-user report designers.</li><li>Extensive data-binding to any .NET data source.</li><li>Support for multiple report types, including <strong>RDL and Page reports</strong>.</li><li>Rich data visualization and export to popular formats like <strong>PDF, Excel, and Word</strong>.</li></ul>",
+            demoLink: 'https://mescius.eu/activereportsnet/download',
+            productLink: 'https://developer.mescius.com/activereportsnet'
+        },
+        'activereports-net': {
+            title: 'ActiveReports.NET',
+            description: "<strong>Add powerful, interactive reporting</strong> to your <strong>WinForms, WPF, and ASP.NET</strong> applications with ActiveReports.NET.<p>This complete .NET reporting toolkit <strong>seamlessly integrates with Visual Studio</strong>, allowing developers to create everything from simple to complex reports.</p><p>Key capabilities include:</p><ul><li>Embeddable end-user report designers.</li><li>Extensive data-binding to any .NET data source.</li><li>Support for multiple report types, including <strong>RDL and Page reports</strong>.</li><li>Rich data visualization and export to popular formats like <strong>PDF, Excel, and Word</strong>.</li></ul>",
+            demoLink: 'https://mescius.eu/activereportsnet/download',
+            productLink: 'https://developer.mescius.com/activereportsnet'
+        },
+        'documentsolutions-dotnet': {
+            title: 'Document Solutions',
+            description: "<strong>Supercharge your document processing</strong> with Document Solutions, a suite of <strong>high-speed, dependency-free APIs</strong> for .NET and Java.<p>Key features allow you to:</p><ul><li>Programmatically create, load, manipulate, and save <strong>Excel, PDF, & Word</strong> documents.</li><li>Deploy on any server (<strong>Windows, Linux, & macOS</strong>) with zero server-side dependencies on MS Office or Acrobat.</li><li>Automate common tasks like <strong>generating invoices, creating reports from templates,</strong> and managing documents in your enterprise applications.</li></ul>",
+            demoLink: 'https://mescius.eu/document-solutions/download-product',
+            productLink: 'https://developer.mescius.com/document-solutions'
+        },
+        'documents-excel': {
+            title: 'Document Solutions',
+            description: "<strong>Supercharge your document processing</strong> with Document Solutions, a suite of <strong>high-speed, dependency-free APIs</strong> for .NET and Java.<p>Key features allow you to:</p><ul><li>Programmatically create, load, manipulate, and save <strong>Excel, PDF, & Word</strong> documents.</li><li>Deploy on any server (<strong>Windows, Linux, & macOS</strong>) with zero server-side dependencies on MS Office or Acrobat.</li><li>Automate common tasks like <strong>generating invoices, creating reports from templates,</strong> and managing documents in your enterprise applications.</li></ul>",
+            demoLink: 'https://mescius.eu/document-solutions/download-product',
+            productLink: 'https://developer.mescius.com/document-solutions'
+        },
+        'documents-pdf': {
+            title: 'Document Solutions',
+            description: "<strong>Supercharge your document processing</strong> with Document Solutions, a suite of <strong>high-speed, dependency-free APIs</strong> for .NET and Java.<p>Key features allow you to:</p><ul><li>Programmatically create, load, manipulate, and save <strong>Excel, PDF, & Word</strong> documents.</li><li>Deploy on any server (<strong>Windows, Linux, & macOS</strong>) with zero server-side dependencies on MS Office or Acrobat.</li><li>Automate common tasks like <strong>generating invoices, creating reports from templates,</strong> and managing documents in your enterprise applications.</li></ul>",
+            demoLink: 'https://mescius.eu/document-solutions/download-product',
+            productLink: 'https://developer.mescius.com/document-solutions'
+        }
+    };
+    
+    return productDatabase[productId] || {
+        title: 'Product Information',
+        description: 'Product details will be available soon.',
+        demoLink: '',
+        productLink: ''
+    };
+}
+
+/**
  * Initialize product information modals
  */
 function initializeProductModals() {
@@ -287,10 +368,19 @@ function initializeProductModals() {
 
     function openProductModal(trigger) {
         const productId = trigger.getAttribute('data-product-id');
-        const title = trigger.getAttribute('data-title');
-        const description = trigger.getAttribute('data-description');
-        const demoLink = trigger.getAttribute('data-demolink');
-        const productLink = trigger.getAttribute('data-productlink');
+        let title = trigger.getAttribute('data-title');
+        let description = trigger.getAttribute('data-description');
+        let demoLink = trigger.getAttribute('data-demolink');
+        let productLink = trigger.getAttribute('data-productlink');
+        
+        // If no title/description, get from product database
+        if (!title || !description) {
+            const productInfo = getProductInfo(productId);
+            title = title || productInfo.title;
+            description = description || productInfo.description;
+            demoLink = demoLink || productInfo.demoLink;
+            productLink = productLink || productInfo.productLink;
+        }
         
         loadModalContent(title, description, demoLink, productLink);
         

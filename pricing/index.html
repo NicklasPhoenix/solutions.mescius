@@ -58,7 +58,7 @@
             margin: 0;
             padding: 0;
             background-color: #FFFFFF;
-            color: #1F2937;
+            color: #111827;
             transition: none !important;
         }
         
@@ -113,9 +113,9 @@
         }
     </style>
     
-    <!-- Prevent flash with dark background, then CSS applies light theme -->
+    <!-- Light theme background -->
     <style>
-        html { background-color: #111827; }
+        html { background-color: #ffffff; }
     </style>
 
     <script type="application/ld+json">
@@ -305,7 +305,7 @@
                             <img src="../logos/C1_prod_logo_ICON_2023.svg" alt="ComponentOne Logo" class="product-logo">
                             <h2 class="product-title">ComponentOne</h2>
                         </div>
-                        <span class="product-info-trigger" role="button" aria-label="More information about ComponentOne"
+                        <span class="product-info-trigger pricing-info-btn" style="width: 24px !important; height: 24px !important; background: #3b82f6 !important; color: white !important; right: 16px !important;" role="button" aria-label="More information about ComponentOne"
                                 data-title="ComponentOne"
                                 data-description='<strong>The complete UI toolkit for .NET developers.</strong><br>ComponentOne includes hundreds of controls to solve any business need. Key features include:<ul><li>High-performance DataGrids and Charts</li><li>Full support for WinForms, WPF, Blazor, and MAUI</li><li>Powerful reporting and document generation</li></ul>'
                                 data-demolink="https://mescius.eu/componentone/download"
@@ -386,18 +386,22 @@
                             <p>To receive a personalized renewal quote and purchase link, please enter your details and existing product key(s) below. Our team will verify your eligibility and send a private purchase link to your email.</p>
                             <form class="renewal-form" data-product-name="ComponentOne" data-renewal-product-ids='[{"id": "54087", "name": "Studio Enterprise"}, {"id": "60892", "name": "WinForms Data Services"}, {"id": "53600", "name": "ActiveX Edition"}, {"id": "53597", "name": "WinForms Edition"}, {"id": "55920", "name": "WPF Edition"}, {"id": "61875", "name": "WinUI & MAUI Edition"}, {"id": "58274", "name": "ASP.NET MVC Edition"}, {"id": "60326", "name": "Blazor Edition"}]'>
                                 <div class="form-group product-selector-group">
-                                    <label for="c1-renewal-product">Select Product:</label>
-                                    <select id="c1-renewal-product" required aria-required="true"></select>
-                                    <label for="c1-renewal-quantity">Quantity:</label>
-                                    <input type="number" id="c1-renewal-quantity" min="1" value="1" required aria-required="true">
+                                    <div class="product-selector-item">
+                                        <label for="c1-renewal-product">Select Product:</label>
+                                        <select id="c1-renewal-product" name="product" required aria-required="true"></select>
+                                    </div>
+                                    <div class="quantity-selector-item">
+                                        <label for="c1-renewal-quantity">Quantity:</label>
+                                        <input type="number" id="c1-renewal-quantity" name="quantity" min="1" value="1" required aria-required="true">
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="c1-renewal-email">Your Email Address:</label>
-                                    <input type="email" id="c1-renewal-email" class="renewal-email-input" required aria-required="true" autocomplete="email">
+                                    <input type="email" id="c1-renewal-email" name="email" class="renewal-email-input" required aria-required="true" autocomplete="email">
                                 </div>
                                 <div class="form-group">
                                     <label for="c1-renewal-keys">Your Existing Product Key(s) (comma-separated if multiple, match quantity):</label>
-                                    <textarea id="c1-renewal-keys" class="renewal-keys-textarea" rows="4" placeholder="Enter each key on a new line or comma-separated" required aria-required="true"></textarea>
+                                    <textarea id="c1-renewal-keys" name="license-keys" class="renewal-keys-textarea" rows="4" placeholder="Enter each key on a new line or comma-separated" required aria-required="true"></textarea>
                                 </div>
                                 <button type="submit" class="cta-button">Request Renewal Link</button>
                                 <div class="form-feedback" aria-live="polite"></div>
@@ -412,7 +416,7 @@
                             <img src="../logos/SP_prod_logo_ICON_2023.svg" alt="SpreadJS Logo" class="product-logo">
                             <h2 class="product-title">SpreadJS</h2>
                         </div>
-                        <span class="product-info-trigger" role="button" aria-label="More information about SpreadJS"
+                        <span class="product-info-trigger pricing-info-btn" style="width: 24px !important; height: 24px !important; background: #3b82f6 !important; color: white !important; right: 16px !important;" role="button" aria-label="More information about SpreadJS"
                                 data-title="SpreadJS"
                                 data-description='<strong>Empower your web applications with the industry-leading JavaScript spreadsheet solution.</strong><br>SpreadJS provides a complete, Excel-like experience for your users, including:<ul><li>High-speed grids</li><li>Complex calculations & charts</li><li>Pivot tables</li><li>Advanced data analysis tools</li></ul><p>It is ideal for creating <strong>financial, scientific, and enterprise resource planning (ERP)</strong> applications.</p>'
                                 data-demolink="https://mescius.eu/spreadjs/download"
@@ -494,18 +498,22 @@
                             <p>To receive a personalized renewal quote and purchase link, please enter your details and existing product key(s) below. Our team will verify your eligibility and send a private purchase link to your email.</p>
                             <form class="renewal-form" data-product-name="SpreadJS" data-renewal-product-ids='[{"id": "57922", "name": "Developer License (Paid Apps)"}, {"id": "61408", "name": "Limited Annual Deployment"}, {"id": "60976", "name": "Hostname License Pack"}, {"id": "62805", "name": "Dev + Hostname Bundle"}, {"id": "60974", "name": "Annual Hostname License"}]'>
                                 <div class="form-group product-selector-group">
-                                    <label for="sjs-renewal-product">Select Product:</label>
-                                    <select id="sjs-renewal-product" required aria-required="true"></select>
-                                    <label for="sjs-renewal-quantity">Quantity:</label>
-                                    <input type="number" id="sjs-renewal-quantity" min="1" value="1" required aria-required="true">
+                                    <div class="product-selector-item">
+                                        <label for="sjs-renewal-product">Select Product:</label>
+                                        <select id="sjs-renewal-product" name="product" required aria-required="true"></select>
+                                    </div>
+                                    <div class="quantity-selector-item">
+                                        <label for="sjs-renewal-quantity">Quantity:</label>
+                                        <input type="number" id="sjs-renewal-quantity" name="quantity" min="1" value="1" required aria-required="true">
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="sjs-renewal-email">Your Email Address:</label>
-                                    <input type="email" id="sjs-renewal-email" class="renewal-email-input" required aria-required="true" autocomplete="email">
+                                    <input type="email" id="sjs-renewal-email" name="email" class="renewal-email-input" required aria-required="true" autocomplete="email">
                                 </div>
                                 <div class="form-group">
                                     <label for="sjs-renewal-keys">Your Existing Product Key(s) (comma-separated if multiple, match quantity):</label>
-                                    <textarea id="sjs-renewal-keys" class="renewal-keys-textarea" rows="4" placeholder="Enter each key on a new line or comma-separated" required aria-required="true"></textarea>
+                                    <textarea id="sjs-renewal-keys" name="license-keys" class="renewal-keys-textarea" rows="4" placeholder="Enter each key on a new line or comma-separated" required aria-required="true"></textarea>
                                 </div>
                                 <button type="submit" class="cta-button">Request Renewal Link</button>
                                 <div class="form-feedback" aria-live="polite"></div>
@@ -562,7 +570,7 @@
                             <img src="../logos/SP_prod_logo_ICON_2023.svg" alt="Spread.NET Logo" class="product-logo">
                             <h2 class="product-title">Spread.NET</h2>
                         </div>
-                        <span class="product-info-trigger" role="button" aria-label="More information about Spread.NET"
+                        <span class="product-info-trigger pricing-info-btn" style="width: 24px !important; height: 24px !important; background: #3b82f6 !important; color: white !important; right: 16px !important;" role="button" aria-label="More information about Spread.NET"
                                 data-title="Spread.NET"
                                 data-description='<strong>Deliver the ultimate spreadsheet experience in your .NET desktop and web applications with Spread.NET.</strong><br>This powerful component suite provides high-performance data grids and designers for <strong>WinForms, ASP.NET, and WPF</strong>.<p>Enable advanced features including:</p><ul><li>Complex calculations, charting, and pivot tables</li><li>Seamless Excel (.XLSX) import and export</li></ul><p>The perfect toolset for creating feature-rich <strong>financial and data analysis</strong> applications.</p>'
                                 data-demolink="https://mescius.eu/spreadnet/download"
@@ -596,18 +604,22 @@
                             <p>To receive a personalized renewal quote and purchase link, please enter your details and existing product key(s) below. Our team will verify your eligibility and send a private purchase link to your email.</p>
                             <form class="renewal-form" data-product-name="Spread.NET" data-renewal-product-ids='[{"id": "62799", "name": "Spread.NET License"}]'>
                                 <div class="form-group product-selector-group">
-                                    <label for="snet-renewal-product">Select Product:</label>
-                                    <select id="snet-renewal-product" required aria-required="true"></select>
-                                    <label for="snet-renewal-quantity">Quantity:</label>
-                                    <input type="number" id="snet-renewal-quantity" min="1" value="1" required aria-required="true">
+                                    <div class="product-selector-item">
+                                        <label for="snet-renewal-product">Select Product:</label>
+                                        <select id="snet-renewal-product" name="product" required aria-required="true"></select>
+                                    </div>
+                                    <div class="quantity-selector-item">
+                                        <label for="snet-renewal-quantity">Quantity:</label>
+                                        <input type="number" id="snet-renewal-quantity" name="quantity" min="1" value="1" required aria-required="true">
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="snet-renewal-email">Your Email Address:</label>
-                                    <input type="email" id="snet-renewal-email" class="renewal-email-input" required aria-required="true" autocomplete="email">
+                                    <input type="email" id="snet-renewal-email" name="email" class="renewal-email-input" required aria-required="true" autocomplete="email">
                                 </div>
                                 <div class="form-group">
                                     <label for="snet-renewal-keys">Your Existing Product Key(s) (comma-separated if multiple, match quantity):</label>
-                                    <textarea id="snet-renewal-keys" class="renewal-keys-textarea" rows="4" placeholder="Enter each key on a new line or comma-separated" required aria-required="true"></textarea>
+                                    <textarea id="snet-renewal-keys" name="license-keys" class="renewal-keys-textarea" rows="4" placeholder="Enter each key on a new line or comma-separated" required aria-required="true"></textarea>
                                 </div>
                                 <button type="submit" class="cta-button">Request Renewal Link</button>
                                 <div class="form-feedback" aria-live="polite"></div>
@@ -622,7 +634,7 @@
                             <img src="../logos/WJ_prod_logo_ICON_2023.svg" alt="Wijmo Logo" class="product-logo">
                             <h2 class="product-title">Wijmo</h2>
                         </div>
-                        <span class="product-info-trigger" role="button" aria-label="More information about Wijmo"
+                        <span class="product-info-trigger pricing-info-btn" style="width: 24px !important; height: 24px !important; background: #3b82f6 !important; color: white !important; right: 16px !important;" role="button" aria-label="More information about Wijmo"
                                 data-title="Wijmo"
                                 data-description="<strong>Build high-performance, enterprise-level web applications</strong> with Wijmo's comprehensive library of JavaScript/TypeScript UI components.<p>Key features include:</p><ul><li>A <strong>zero-dependency, small footprint</strong> architecture written for performance.</li><li>The industry's best datagrid, <strong>FlexGrid</strong>, plus 100+ other controls for data visualization and UI.</li><li>Full framework support for <strong>Angular, React, Vue</strong>, and more.</li></ul><p>Wijmo is the premier choice for your most <strong>demanding data-driven applications.</strong></p>"
                                 data-demolink="https://mescius.eu/wijmo/download"
@@ -664,18 +676,22 @@
                             <p>To receive a personalized renewal quote and purchase link, please enter your details and existing product key(s) below. Our team will verify your eligibility and send a private purchase link to your email.</p>
                             <form class="renewal-form" data-product-name="Wijmo" data-renewal-product-ids='[{"id": "59102", "name": "Wijmo Enterprise"}, {"id": "62767", "name": "Paid & SaaS Apps Hostname"}]'>
                                 <div class="form-group product-selector-group">
-                                    <label for="wj-renewal-product">Select Product:</label>
-                                    <select id="wj-renewal-product" required aria-required="true"></select>
-                                    <label for="wj-renewal-quantity">Quantity:</label>
-                                    <input type="number" id="wj-renewal-quantity" min="1" value="1" required aria-required="true">
+                                    <div class="product-selector-item">
+                                        <label for="wj-renewal-product">Select Product:</label>
+                                        <select id="wj-renewal-product" name="product" required aria-required="true"></select>
+                                    </div>
+                                    <div class="quantity-selector-item">
+                                        <label for="wj-renewal-quantity">Quantity:</label>
+                                        <input type="number" id="wj-renewal-quantity" name="quantity" min="1" value="1" required aria-required="true">
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="wj-renewal-email">Your Email Address:</label>
-                                    <input type="email" id="wj-renewal-email" class="renewal-email-input" required aria-required="true" autocomplete="email">
+                                    <input type="email" id="wj-renewal-email" name="email" class="renewal-email-input" required aria-required="true" autocomplete="email">
                                 </div>
                                 <div class="form-group">
                                     <label for="wj-renewal-keys">Your Existing Product Key(s) (comma-separated if multiple, match quantity):</label>
-                                    <textarea id="wj-renewal-keys" class="renewal-keys-textarea" rows="4" placeholder="Enter each key on a new line or comma-separated" required aria-required="true"></textarea>
+                                    <textarea id="wj-renewal-keys" name="license-keys" class="renewal-keys-textarea" rows="4" placeholder="Enter each key on a new line or comma-separated" required aria-required="true"></textarea>
                                 </div>
                                 <button type="submit" class="cta-button">Request Renewal Link</button>
                                 <div class="form-feedback" aria-live="polite"></div>
@@ -690,7 +706,7 @@
                             <img src="../logos/AR_prod_logo_ICON_2023.svg" alt="ActiveReportsJS Logo" class="product-logo">
                             <h2 class="product-title">ActiveReportsJS</h2>
                         </div>
-                        <span class="product-info-trigger" role="button" aria-label="More information about ActiveReportsJS"
+                        <span class="product-info-trigger pricing-info-btn" style="width: 24px !important; height: 24px !important; background: #3b82f6 !important; color: white !important; right: 16px !important;" role="button" aria-label="More information about ActiveReportsJS"
                                 data-title="ActiveReportsJS"
                                 data-description="<strong>Integrate fast, feature-rich reporting</strong> into your client-side web applications with ActiveReportsJS.<p>This complete JavaScript solution provides:</p><ul><li>A powerful, <strong>embeddable report designer and viewer</strong>.</li><li>The ability for your end-users to create and interact with reports on <strong>any platform</strong>.</li><li>Connectivity to local and remote JSON data sources.</li><li>Direct-in-browser export to popular formats like <strong>PDF, Excel (XLSX), and HTML</strong>.</li></ul>"
                                 data-demolink="https://mescius.eu/activereportsjs/download"
@@ -716,6 +732,7 @@
                                     <button class="add-to-cart-btn" data-product-id="62780" data-product-name="ARJS Single Deployment" data-price="1155">Add to Cart</button>
                                 </div>
                                 <div class="price-card" aria-labelledby="arjs-single-domain-title">
+                                    <div class="card-tag warning-tag">Popular</div>
                                     <h4 id="arjs-single-domain-title">Single Domain License</h4>
                                     <div class="price">€3,715</div><p class="price-term">Annual - Paid & SaaS Apps</p>
                                     <ul><li>Unlimited hostnames on *.domain</li></ul>
@@ -776,7 +793,7 @@
                             <img src="../logos/AR_prod_logo_ICON_2023.svg" alt="ActiveReports.NET Logo" class="product-logo">
                             <h2 class="product-title">ActiveReports.NET</h2>
                         </div>
-                        <span class="product-info-trigger" role="button" aria-label="More information about ActiveReports.NET"
+                        <span class="product-info-trigger pricing-info-btn" style="width: 24px !important; height: 24px !important; background: #3b82f6 !important; color: white !important; right: 16px !important;" role="button" aria-label="More information about ActiveReports.NET"
                                 data-title="ActiveReports.NET"
                                 data-description="<strong>Add powerful, interactive reporting</strong> to your <strong>WinForms, WPF, and ASP.NET</strong> applications with ActiveReports.NET.<p>This complete .NET reporting toolkit <strong>seamlessly integrates with Visual Studio</strong>, allowing developers to create everything from simple to complex reports.</p><p>Key capabilities include:</p><ul><li>Embeddable end-user report designers.</li><li>Extensive data-binding to any .NET data source.</li><li>Support for multiple report types, including <strong>RDL and Page reports</strong>.</li><li>Rich data visualization and export to popular formats like <strong>PDF, Excel, and Word</strong>.</li></ul>"
                                 data-demolink="https://mescius.eu/activereportsnet/download"
@@ -818,18 +835,22 @@
                             <p>To receive a personalized renewal quote and purchase link, please enter your details and existing product key(s) below. Our team will verify your eligibility and send a private purchase link to your email.</p>
                             <form class="renewal-form" data-product-name="ActiveReports.NET" data-renewal-product-ids='[{"id": "62965", "name": "Standard"}, {"id": "62957", "name": "Professional"}]'>
                                 <div class="form-group product-selector-group">
-                                    <label for="arnet-renewal-product">Select Product:</label>
-                                    <select id="arnet-renewal-product" required aria-required="true"></select>
-                                    <label for="arnet-renewal-quantity">Quantity:</label>
-                                    <input type="number" id="arnet-renewal-quantity" min="1" value="1" required aria-required="true">
+                                    <div class="product-selector-item">
+                                        <label for="arnet-renewal-product">Select Product:</label>
+                                        <select id="arnet-renewal-product" name="product" required aria-required="true"></select>
+                                    </div>
+                                    <div class="quantity-selector-item">
+                                        <label for="arnet-renewal-quantity">Quantity:</label>
+                                        <input type="number" id="arnet-renewal-quantity" name="quantity" min="1" value="1" required aria-required="true">
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="arnet-renewal-email">Your Email Address:</label>
-                                    <input type="email" id="arnet-renewal-email" class="renewal-email-input" required aria-required="true" autocomplete="email">
+                                    <input type="email" id="arnet-renewal-email" name="email" class="renewal-email-input" required aria-required="true" autocomplete="email">
                                 </div>
                                 <div class="form-group">
                                     <label for="arnet-renewal-keys">Your Existing Product Key(s) (comma-separated if multiple, match quantity):</label>
-                                    <textarea id="arnet-renewal-keys" class="renewal-keys-textarea" rows="4" placeholder="Enter each key on a new line or comma-separated" required aria-required="true"></textarea>
+                                    <textarea id="arnet-renewal-keys" name="license-keys" class="renewal-keys-textarea" rows="4" placeholder="Enter each key on a new line or comma-separated" required aria-required="true"></textarea>
                                 </div>
                                 <button type="submit" class="cta-button">Request Renewal Link</button>
                                 <div class="form-feedback" aria-live="polite"></div>
@@ -844,7 +865,7 @@
                             <img src="../logos/DS_prod_logo_ICON_2023.svg" alt="Document Solutions Logo" class="product-logo">
                             <h2 class="product-title">Document Solutions</h2>
                         </div>
-                        <span class="product-info-trigger" role="button" aria-label="More information about Document Solutions"
+                        <span class="product-info-trigger pricing-info-btn" style="width: 24px !important; height: 24px !important; background: #3b82f6 !important; color: white !important; right: 16px !important;" role="button" aria-label="More information about Document Solutions"
                                 data-title="Document Solutions"
                                 data-description="<strong>Supercharge your document processing</strong> with Document Solutions, a suite of <strong>high-speed, dependency-free APIs</strong> for .NET and Java.<p>Key features allow you to:</p><ul><li>Programmatically create, load, manipulate, and save <strong>Excel, PDF, & Word</strong> documents.</li><li>Deploy on any server (<strong>Windows, Linux, & macOS</strong>) with zero server-side dependencies on MS Office or Acrobat.</li><li>Automate common tasks like <strong>generating invoices, creating reports from templates,</strong> and managing documents in your enterprise applications.</li></ul>"
                                 data-demolink="https://mescius.eu/document-solutions/download-product"
@@ -1006,18 +1027,22 @@
                             <p>To receive a personalized renewal quote, please select your renewal type and enter the details for your existing license below.</p>
                             <form class="renewal-form" data-product-name="Document Solutions" data-renewal-product-ids='[{"id": "62879", "name": ".NET Developer Bundle"}, {"id": "62881", "name": ".NET Unlimited Bundle"}, {"id": "62884", "name": ".NET Team Unlimited Bundle"}, {"id": "62845", "name": "Excel .NET Developer"}, {"id": "62848", "name": "Excel .NET Unlimited"}, {"id": "62850", "name": "Excel .NET Team Unlimited"}, {"id": "62859", "name": "PDF .NET Developer"}, {"id": "62863", "name": "PDF .NET Unlimited"}, {"id": "62865", "name": "PDF .NET Team Unlimited"}, {"id": "62886", "name": "Word .NET Developer"}, {"id": "62888", "name": "Word .NET Unlimited"}, {"id": "62890", "name": "Word .NET Team Unlimited"}, {"id": "62893", "name": "Imaging .NET Developer"}, {"id": "62895", "name": "Imaging .NET Unlimited"}, {"id": "62897", "name": "Imaging .NET Team Unlimited"}, {"id": "62873", "name": "Excel Java Developer"}, {"id": "62875", "name": "Excel Java Unlimited"}, {"id": "62877", "name": "Excel Java Team Unlimited"}]'>
                                 <div class="form-group product-selector-group">
-                                    <label for="ds-renewal-product">Select Product:</label>
-                                    <select id="ds-renewal-product" required aria-required="true"></select>
-                                    <label for="ds-renewal-quantity">Quantity:</label>
-                                    <input type="number" id="ds-renewal-quantity" min="1" value="1" required aria-required="true">
+                                    <div class="product-selector-item">
+                                        <label for="ds-renewal-product">Select Product:</label>
+                                        <select id="ds-renewal-product" name="product" required aria-required="true"></select>
+                                    </div>
+                                    <div class="quantity-selector-item">
+                                        <label for="ds-renewal-quantity">Quantity:</label>
+                                        <input type="number" id="ds-renewal-quantity" name="quantity" min="1" value="1" required aria-required="true">
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="ds-renewal-email">Your Email Address:</label>
-                                    <input type="email" id="ds-renewal-email" class="renewal-email-input" required aria-required="true" autocomplete="email">
+                                    <input type="email" id="ds-renewal-email" name="email" class="renewal-email-input" required aria-required="true" autocomplete="email">
                                 </div>
                                 <div class="form-group">
                                     <label for="ds-renewal-keys">Your Existing Product Key(s) (comma-separated if multiple, match quantity):</label>
-                                    <textarea id="ds-renewal-keys" class="renewal-keys-textarea" rows="4" placeholder="Enter each key on a new line or comma-separated" required aria-required="true"></textarea>
+                                    <textarea id="ds-renewal-keys" name="license-keys" class="renewal-keys-textarea" rows="4" placeholder="Enter each key on a new line or comma-separated" required aria-required="true"></textarea>
                                 </div>
                                 <button type="submit" class="cta-button">Request Renewal Link</button>
                                 <div class="form-feedback" aria-live="polite"></div>

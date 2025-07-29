@@ -12,7 +12,7 @@ const bundleConfig = {
         name: '.NET Professional Suite',
         products: [
             { name: 'ComponentOne Studio', price: 1385 },
-            { name: 'Wijmo Enterprise', price: 0 },
+            { name: 'Wijmo Enterprise', price: 1385 },
             { name: 'ActiveReports.NET (Prof.)', price: 1485 },
             { name: 'Spread.NET', price: 1395 }
         ]
@@ -88,6 +88,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeSubscriptionToggles();
     initializeTooltips();
     initializeBundleInfoModals();
+    initializeTermSwitching();
+    initializeBundleCartButtons();
 });
 
 /**
@@ -715,6 +717,94 @@ function showSimpleModal(title, content) {
     }
 }
 
+/**
+ * Initialize bundle cart buttons to handle quantities
+ */
+function initializeBundleCartButtons() {
+    // Find all bundle cards
+    const bundleCards = document.querySelectorAll('.bundle-card');
+    
+    bundleCards.forEach(card => {
+        const cardId = card.id;
+        const config = bundleConfig[cardId];
+        if (!config) return;
+        
+        const quantityInput = card.querySelector('.quantity-input');
+        const quantityButtons = card.querySelectorAll('.quantity-btn');
+        const ctaButton = card.querySelector('.cta-button');
+        
+        if (!quantityInput || !ctaButton) return;
+        
+        // Function to update button URL with current quantity
+        const updateButtonURL = () => {
+            const quantity = parseInt(quantityInput.value) || 1;
+            const yearInputs = card.querySelectorAll('input[name^="years-"]');
+            const selectedYear = Array.from(yearInputs).find(input => input.checked);
+            const years = selectedYear ? parseInt(selectedYear.value) : 1;
+            
+            if (years === 1 && ctaButton.textContent === 'Buy Now') {
+                ctaButton.href = `https://checkout.mescius.eu/1878/purl-shop?cart=i${config.id}&quantity_i${config.id}=${quantity}`;
+            }
+        };
+        
+        // Listen to quantity input changes
+        quantityInput.addEventListener('input', updateButtonURL);
+        quantityInput.addEventListener('change', updateButtonURL);
+        
+        // Listen to quantity button clicks
+        quantityButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                setTimeout(updateButtonURL, 10); // Small delay to ensure input value is updated
+            });
+        });
+        
+        // Initial URL update
+        updateButtonURL();
+    });
+}
+
+/**
+ * Initialize term switching functionality
+ */
+function initializeTermSwitching() {
+    // Find all multi-year radio button groups
+    const termGroups = document.querySelectorAll('.multi-year-options');
+    
+    termGroups.forEach(group => {
+        const radioButtons = group.querySelectorAll('input[type="radio"]');
+        
+        radioButtons.forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.checked) {
+                    const years = parseInt(this.value);
+                    const bundleCard = this.closest('.bundle-card');
+                    const ctaButton = bundleCard.querySelector('.cta-button');
+                    
+                    if (years > 1) {
+                        // Multi-year selected - change to Contact Sales
+                        ctaButton.textContent = 'Contact Sales';
+                        ctaButton.href = 'mailto:eu.sales@mescius.com?subject=Multi-Year Bundle Inquiry';
+                        ctaButton.classList.add('contact-sales');
+                    } else {
+                        // 1 year selected - change back to Buy Now
+                        const cardId = bundleCard.id;
+                        const config = bundleConfig[cardId];
+                        if (config) {
+                            ctaButton.textContent = 'Buy Now';
+                            ctaButton.classList.remove('contact-sales');
+                            // Trigger URL update which will include current quantity
+                            const quantityInput = bundleCard.querySelector('.quantity-input');
+                            if (quantityInput) {
+                                quantityInput.dispatchEvent(new Event('change'));
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    });
+}
+
 // Export functions for global use
 window.BundlesPage = {
     updateBundlePrice,
@@ -723,5 +813,6 @@ window.BundlesPage = {
     addBundleToCart,
     contactSales,
     formatCurrency,
-    initializeBundleInfoModals
+    initializeBundleInfoModals,
+    initializeTermSwitching
 };

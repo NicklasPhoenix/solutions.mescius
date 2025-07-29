@@ -345,6 +345,16 @@ function initializeProductTabs() {
             pane.classList.toggle('is-active', isActive);
             pane.hidden = !isActive;
             pane.setAttribute('aria-hidden', !isActive);
+            
+            // Re-populate dropdowns when switching to renewal tabs
+            if (isActive && tabId.includes('renew')) {
+                const renewalForm = pane.querySelector('.renewal-form');
+                if (renewalForm) {
+                    setTimeout(() => {
+                        populateProductDropdown(renewalForm);
+                    }, 50);
+                }
+            }
         });
 
         // Focus management
@@ -392,6 +402,22 @@ function initializeRenewalForms() {
     const renewalForms = document.querySelectorAll('.renewal-form');
     
     renewalForms.forEach(form => {
+        // Populate product dropdown with a small delay to ensure DOM is ready
+        setTimeout(() => {
+            populateProductDropdown(form);
+        }, 100);
+        
+        // Also populate when form becomes visible (fallback)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    populateProductDropdown(form);
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+        observer.observe(form);
+        
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             handleRenewalFormSubmit(this);
@@ -413,6 +439,40 @@ function initializeRenewalForms() {
             });
         }
     });
+
+    function populateProductDropdown(form) {
+        const productDataAttr = form.getAttribute('data-renewal-product-ids');
+        
+        if (!productDataAttr) return;
+        
+        try {
+            const products = JSON.parse(productDataAttr);
+            const productSelect = form.querySelector('select[name="product"]');
+            
+            if (!productSelect || productSelect.options.length > 1) return;
+            
+            productSelect.innerHTML = '';
+            
+            // Add default option
+            const defaultOption = document.createElement('option');
+            defaultOption.value = '';
+            defaultOption.textContent = 'Choose a product...';
+            defaultOption.disabled = true;
+            defaultOption.selected = true;
+            productSelect.appendChild(defaultOption);
+            
+            // Add product options
+            products.forEach(product => {
+                const option = document.createElement('option');
+                option.value = product.id;
+                option.textContent = product.name;
+                productSelect.appendChild(option);
+            });
+            
+        } catch (error) {
+            console.error('Error parsing product data:', error);
+        }
+    }
 
     function handleRenewalFormSubmit(form) {
         const formData = new FormData(form);
@@ -504,26 +564,39 @@ function initializeRenewalForms() {
     }
 
     function displayFormFeedback(message, type) {
-        // Find or create feedback container
-        let feedback = document.querySelector('.form-feedback');
+        // Find or create feedback container within the current form
+        const currentForm = event && event.target ? event.target.closest('.renewal-form') : document.querySelector('.renewal-form');
+        let feedback = currentForm ? currentForm.querySelector('.form-feedback') : document.querySelector('.form-feedback');
         
         if (!feedback) {
             feedback = document.createElement('div');
             feedback.className = 'form-feedback';
-            // Insert after the last renewal form
-            const lastForm = document.querySelector('.renewal-form:last-of-type');
-            if (lastForm && lastForm.parentElement) {
-                lastForm.parentElement.insertBefore(feedback, lastForm.nextSibling);
+            // Insert within the current form if available
+            if (currentForm) {
+                const submitButton = currentForm.querySelector('.cta-button');
+                if (submitButton) {
+                    submitButton.parentNode.insertBefore(feedback, submitButton.nextSibling);
+                } else {
+                    currentForm.appendChild(feedback);
+                }
+            } else {
+                // Fallback: insert after the last renewal form
+                const lastForm = document.querySelector('.renewal-form:last-of-type');
+                if (lastForm && lastForm.parentElement) {
+                    lastForm.parentElement.insertBefore(feedback, lastForm.nextSibling);
+                }
             }
         }
 
-        feedback.className = `form-feedback ${type}`;
+        feedback.className = `form-feedback ${type} show`;
         feedback.textContent = message;
-        feedback.style.display = 'block';
 
         // Auto-hide after 5 seconds
         setTimeout(() => {
-            feedback.style.display = 'none';
+            feedback.classList.remove('show');
+            setTimeout(() => {
+                feedback.style.display = 'none';
+            }, 300);
         }, 5000);
     }
 

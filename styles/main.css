@@ -38,7 +38,6 @@
 
 /* 6. THEMES - Light mode only for launch */
 @import url('05-themes/light.css');
-/* DISABLED for light mode launch: @import url('05-themes/dark.css'); */
 
 /* Global page setup */
 html {
@@ -69,4 +68,23 @@ main {
     max-width: none;
     padding: 0;
   }
+}
+
+/* PRICING PAGE INFO BUTTON OVERRIDE - MUST BE LAST */
+.pricing-info-btn {
+  width: var(--space-6) !important;
+  height: var(--space-6) !important;
+  right: var(--space-4) !important;
+  background: var(--primary, #3b82f6) !important;
+  color: var(--text-on-primary, #ffffff) !important;
+  border-radius: var(--radius-full, 50%) !important;
+  font-size: var(--text-xs, 0.75rem) !important;
+  font-weight: var(--font-weight-bold, 700) !important;
+}
+
+.pricing-info-btn:hover {
+  background: var(--primary-hover, #2563eb) !important;
+  color: var(--text-on-primary, #ffffff) !important;
+  transform: scale(1.1) !important;
+  box-shadow: var(--shadow-md, 0 4px 6px -1px rgba(0, 0, 0, 0.1)) !important;
 }

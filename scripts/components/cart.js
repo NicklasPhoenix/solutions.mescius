@@ -370,14 +370,17 @@ class ShoppingCart {
     }
 
     generateCheckoutURL() {
-        const baseURL = 'https://www.mescius.eu/contact';
-        const cartData = encodeURIComponent(JSON.stringify({
-            items: this.items,
-            total: this.items.reduce((sum, item) => sum + (item.price * item.quantity), 0),
-            timestamp: new Date().toISOString()
-        }));
+        if (this.items.length === 0) return '#';
         
-        return `${baseURL}?cart=${cartData}`;
+        const baseURL = 'https://checkout.mescius.eu/1878/purl-shop';
+        
+        // Build cart parameter with product IDs
+        const cartItems = this.items.map(item => `i${item.id}`).join(',');
+        
+        // Build quantity parameters
+        const quantityParams = this.items.map(item => `quantity_i${item.id}=${item.quantity}`).join('&');
+        
+        return `${baseURL}?cart=${cartItems}&${quantityParams}`;
     }
 
     toggleCart() {

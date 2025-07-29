@@ -3,7 +3,7 @@
 :root[data-theme="dark"] {
   /* Dark theme color overrides */
   --bg-primary: #111827;
-  --bg-secondary: #1F2937;
+  /* --bg-secondary: #1F2937; */
   --bg-tertiary: #374151;
   --bg-quaternary: #4B5563;
   --bg-overlay: rgba(0, 0, 0, 0.8);

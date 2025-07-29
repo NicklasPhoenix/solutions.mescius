@@ -125,19 +125,134 @@
   border: 2px solid var(--gray-200);
   border-radius: var(--radius-2xl);
   padding: var(--space-10);
-  transition: all var(--transition-base) var(--ease-out);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-10);
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: var(--space-12);
   height: auto;
   min-height: auto;
   align-items: start;
 }
 
 .bundles-page .bundle-card:hover {
-  border-color: var(--primary);
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-4px);
+}
+
+/* Bundle card product color borders */
+.bundle-card.net-bundle {
+  border: 3px solid transparent;
+  background: linear-gradient(white, white) padding-box, linear-gradient(135deg, var(--componentone) 0%, var(--activereports) 40%, var(--spread) 100%) border-box;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bundle-card.net-bundle .card-title {
+  background: linear-gradient(135deg, var(--componentone) 0%, var(--activereports) 40%, var(--spread) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.bundle-card.net-bundle:hover {
+  background: linear-gradient(white, white) padding-box, linear-gradient(135deg, var(--componentone) 0%, var(--activereports) 40%, var(--spread) 100%) border-box;
+  box-shadow: var(--shadow-xl);
+}
+
+.bundle-card.js-bundle {
+  border: 3px solid transparent;
+  background: linear-gradient(white, white) padding-box, linear-gradient(135deg, var(--spread) 0%, var(--spread) 30%, var(--documents) 100%) border-box;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bundle-card.js-bundle .card-title {
+  background: linear-gradient(135deg, var(--spread) 0%, var(--spread) 30%, var(--documents) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.bundle-card.js-bundle:hover {
+  background: linear-gradient(white, white) padding-box, linear-gradient(135deg, var(--spread) 0%, var(--spread) 30%, var(--documents) 100%) border-box;
+  box-shadow: var(--shadow-xl);
+}
+
+.bundle-card.spread-bundle {
+  border: 3px solid transparent;
+  background: linear-gradient(white, white) padding-box, linear-gradient(135deg, var(--spread) 0%, var(--spread) 30%, var(--documents) 100%) border-box;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bundle-card.spread-bundle .card-title {
+  background: linear-gradient(135deg, var(--spread) 0%, var(--spread) 30%, var(--documents) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.bundle-card.spread-bundle:hover {
+  background: linear-gradient(white, white) padding-box, linear-gradient(135deg, var(--spread) 0%, var(--spread) 30%, var(--documents) 100%) border-box;
+  box-shadow: var(--shadow-xl);
+}
+
+.bundle-card.analytics-bundle {
+  border: 3px solid transparent;
+  background: linear-gradient(white, white) padding-box, linear-gradient(135deg, var(--activereports) 0%, var(--wijmo) 100%) border-box;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bundle-card.analytics-bundle .card-title {
+  background: linear-gradient(135deg, var(--activereports) 0%, var(--wijmo) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.bundle-card.analytics-bundle:hover {
+  background: linear-gradient(white, white) padding-box, linear-gradient(135deg, var(--activereports) 0%, var(--wijmo) 100%) border-box;
+  box-shadow: var(--shadow-xl);
+}
+
+.bundle-card.ar-bundle {
+  border: 3px solid transparent;
+  background: linear-gradient(white, white) padding-box, linear-gradient(135deg, var(--activereports) 0%, var(--documents) 100%) border-box;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bundle-card.ar-bundle .card-title {
+  background: linear-gradient(135deg, var(--activereports) 0%, var(--documents) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.bundle-card.ar-bundle:hover {
+  background: linear-gradient(white, white) padding-box, linear-gradient(135deg, var(--activereports) 0%, var(--documents) 100%) border-box;
+  box-shadow: var(--shadow-xl);
+}
+
+.bundle-card.blazor-bundle {
+  border: 3px solid transparent;
+  background: linear-gradient(white, white) padding-box, linear-gradient(135deg, var(--componentone) 0%, var(--componentone) 40%, var(--wijmo) 70%, var(--documents) 100%) border-box;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bundle-card.blazor-bundle .card-title {
+  background: linear-gradient(135deg, var(--componentone) 0%, var(--componentone) 40%, var(--wijmo) 70%, var(--documents) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.bundle-card.blazor-bundle:hover {
+  background: linear-gradient(white, white) padding-box, linear-gradient(135deg, var(--componentone) 0%, var(--componentone) 40%, var(--wijmo) 70%, var(--documents) 100%) border-box;
   box-shadow: var(--shadow-xl);
 }
 
@@ -145,9 +260,9 @@
 .bundles-page .bundle-card-left {
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
+  gap: var(--space-4);
   min-height: 350px;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .bundles-page .bundle-card-right {
@@ -494,41 +609,356 @@
   height: var(--space-5);
 }
 
-/* Inclusions List */
-.inclusions-list {
+/* Inclusions List - ONLY applies to bundle cards */
+.bundle-card .inclusions-list {
   list-style: none;
   padding: 0;
-  margin: var(--space-3) 0;
-  flex-grow: 0;
+  margin: var(--space-4) 0;
+  flex-grow: 1;
+  background: linear-gradient(135deg, rgba(249, 250, 251, 0.8) 0%, rgba(243, 244, 246, 0.4) 100%);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  border: 1px solid rgba(229, 231, 235, 0.6);
 }
 
-.inclusions-list.multi-column {
+.bundle-card .inclusions-list.multi-column {
   columns: 2;
   column-gap: var(--space-6);
   break-inside: avoid-column;
 }
 
-.inclusions-list li {
-  padding: var(--space-2) 0;
-  border-bottom: 1px solid var(--gray-100);
+.bundle-card .inclusions-list li {
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-2);
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(229, 231, 235, 0.4);
+  border-radius: var(--radius-md);
   display: flex;
   align-items: center;
-  gap: var(--space-2);
-  color: var(--text-secondary);
-  font-size: var(--text-sm);
+  justify-content: space-between;
+  gap: var(--space-3);
+  color: var(--text-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
   break-inside: avoid;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-.inclusions-list li::before {
+.bundle-card .inclusions-list li:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.bundle-card .inclusions-list li::before {
+  content: '★';
+  color: var(--primary);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--text-lg);
+  flex-shrink: 0;
+  margin-right: var(--space-2);
+}
+
+.bundle-card .inclusions-list li:last-child {
+  margin-bottom: 0;
+}
+
+/* Bundle card product name styling */
+.bundle-card .inclusions-list li span:first-of-type {
+  flex: 1;
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  line-height: 1.4;
+  position: relative;
+}
+
+/* Bundle card free product styling */
+.bundle-card .inclusions-list li[data-original-price="0"] span:last-of-type {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.1) 100%);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: var(--success);
+}
+
+/* Bundle card price styling */
+.bundle-card .inclusions-list li span:last-of-type {
+  font-weight: var(--font-weight-bold);
+  color: var(--primary);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--text-base);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(147, 51, 234, 0.1) 100%);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  min-width: 80px;
+  text-align: center;
+  display: inline-block;
+}
+
+/* Bundle-specific theming for inclusions lists */
+.bundle-card.net-bundle .inclusions-list {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(147, 51, 234, 0.03) 50%, rgba(16, 185, 129, 0.05) 100%);
+  border-color: rgba(59, 130, 246, 0.15);
+}
+
+.bundle-card.net-bundle .inclusions-list li::before {
+  color: var(--componentone);
+}
+
+.bundle-card.js-bundle .inclusions-list {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(90, 126, 158, 0.03) 100%);
+  border-color: rgba(16, 185, 129, 0.15);
+}
+
+.bundle-card.js-bundle .inclusions-list li::before {
+  color: var(--spread);
+}
+
+.bundle-card.spread-bundle .inclusions-list {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(90, 126, 158, 0.03) 100%);
+  border-color: rgba(16, 185, 129, 0.15);
+}
+
+.bundle-card.spread-bundle .inclusions-list li::before {
+  color: var(--spread);
+}
+
+.bundle-card.analytics-bundle .inclusions-list {
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.05) 0%, rgba(59, 130, 246, 0.03) 100%);
+  border-color: rgba(236, 72, 153, 0.15);
+}
+
+.bundle-card.analytics-bundle .inclusions-list li::before {
+  color: var(--activereports);
+}
+
+.bundle-card.ar-bundle .inclusions-list {
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.05) 0%, rgba(90, 126, 158, 0.03) 100%);
+  border-color: rgba(236, 72, 153, 0.15);
+}
+
+.bundle-card.ar-bundle .inclusions-list li::before {
+  color: var(--activereports);
+}
+
+.bundle-card.blazor-bundle .inclusions-list {
+  background: linear-gradient(135deg, rgba(220, 38, 127, 0.05) 0%, rgba(59, 130, 246, 0.03) 50%, rgba(90, 126, 158, 0.03) 100%);
+  border-color: rgba(220, 38, 127, 0.15);
+}
+
+.bundle-card.blazor-bundle .inclusions-list li::before {
+  color: var(--componentone);
+}
+
+/* Bundle card enhanced hover effects and animations */
+.bundle-card .inclusions-list li {
+  position: relative;
+  overflow: hidden;
+}
+
+.bundle-card .inclusions-list li::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.5s ease-in-out;
+}
+
+.bundle-card .inclusions-list:hover li::after {
+  left: 100%;
+}
+
+/* Bundle card staggered animation delay for list items */
+.bundle-card .inclusions-list li:nth-child(1) { animation-delay: 0.1s; }
+.bundle-card .inclusions-list li:nth-child(2) { animation-delay: 0.2s; }
+.bundle-card .inclusions-list li:nth-child(3) { animation-delay: 0.3s; }
+.bundle-card .inclusions-list li:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.bundle-card .inclusions-list li {
+  animation: slideInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+/* Professional styling for pricing-card inclusions (OEM & Universal cards) */
+.pricing-card .inclusions-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-4) 0;
+}
+
+.pricing-card .inclusions-list li {
+  display: flex;
+  align-items: center;
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--gray-100);
+  font-size: var(--text-base);
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.pricing-card .inclusions-list li:last-child {
+  border-bottom: none;
+}
+
+.pricing-card .inclusions-list li::before {
   content: '✓';
   color: var(--success);
   font-weight: var(--font-weight-bold);
   font-size: var(--text-base);
+  margin-right: var(--space-2);
   flex-shrink: 0;
+  width: 16px;
+  text-align: center;
 }
 
-.inclusions-list li:last-child {
-  border-bottom: none;
+/* Universal cards - clean single text layout */
+.universal-cards .inclusions-list li span {
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+}
+
+/* OEM cards - proper two-column layout for items with prices */
+/* First OEM card - single text items (no prices) */
+.oem-cards .pricing-card:first-child .inclusions-list li {
+  justify-content: flex-start;
+}
+
+.oem-cards .pricing-card:first-child .inclusions-list li span {
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+}
+
+/* Second OEM card (SpreadJS) - items with prices */
+.oem-cards .pricing-card:last-child .inclusions-list li {
+  justify-content: space-between;
+}
+
+.oem-cards .pricing-card:last-child .inclusions-list li span:first-of-type {
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+}
+
+.oem-cards .pricing-card:last-child .inclusions-list li span:last-of-type {
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-secondary);
+  margin-left: var(--space-2);
+}
+
+/* Special styling for total value rows */
+.pricing-card .inclusions-list li.total-value {
+  border-top: 1px solid var(--gray-200);
+  padding-top: var(--space-3);
+  margin-top: var(--space-2);
+  font-weight: var(--font-weight-semibold);
+}
+
+.pricing-card .inclusions-list li.total-value span:first-of-type {
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-secondary);
+}
+
+.pricing-card .inclusions-list li.total-value span:last-of-type {
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+}
+
+/* Professional prominence for SpreadJS SaaS & OEM Edition */
+.oem-cards .pricing-card:last-child {
+  position: relative;
+  border: 2px solid var(--spread);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.12);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(240, 253, 244, 0.3) 100%);
+}
+
+.oem-cards .pricing-card:last-child::before {
+  content: 'FEATURED';
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  background: var(--spread);
+  color: white;
+  padding: var(--space-1) var(--space-3);
+  border-radius: 0 var(--radius-lg) 0 var(--radius-md);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.5px;
+}
+
+.oem-cards .pricing-card:last-child .card-title {
+  color: var(--spread);
+  font-weight: var(--font-weight-bold);
+}
+
+.oem-cards .pricing-card:last-child .price {
+  color: var(--spread);
+  font-weight: var(--font-weight-bold);
+}
+
+.oem-cards .pricing-card:last-child .cta-button {
+  background: var(--spread);
+  border-color: var(--spread);
+  color: white;
+  font-weight: var(--font-weight-semibold);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.oem-cards .pricing-card:last-child .cta-button:hover {
+  background: #059669;
+  border-color: #059669;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+}
+
+/* Enhanced mobile responsiveness */
+@media (max-width: 768px) {
+  .bundle-card .inclusions-list {
+    padding: var(--space-4);
+    margin: var(--space-3) 0;
+  }
+  
+  .bundle-card .inclusions-list li {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--text-sm);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-1);
+  }
+  
+  .bundle-card .inclusions-list li span:last-of-type {
+    align-self: flex-end;
+    font-size: var(--text-sm);
+  }
+  
+  .bundle-card .inclusions-list li::before {
+    font-size: var(--text-base);
+    margin-right: var(--space-1);
+  }
+  
+  /* Clean mobile styling for pricing cards */
+  .pricing-card .inclusions-list li {
+    padding: var(--space-2) 0;
+    font-size: var(--text-base);
+  }
+  
+  .pricing-card .inclusions-list li::before {
+    margin-right: var(--space-2);
+    width: 16px;
+  }
 }
 
 /* Total List Value Section */
@@ -861,7 +1291,7 @@
     gap: var(--space-6);
   }
   
-  .inclusions-list.multi-column {
+  .bundle-card .inclusions-list.multi-column {
     columns: 1;
   }
   

@@ -121,6 +121,7 @@
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--primary-300) transparent;
+  background: white;
 }
 
 .floating-filter-content::-webkit-scrollbar {
@@ -325,46 +326,7 @@
 }
 
 /* Dark Mode Support */
-[data-theme="dark"] .floating-filter {
-  background: rgba(17, 24, 39, 0.95);
-  border-color: rgba(55, 65, 81, 0.3);
-}
-
-[data-theme="dark"] .floating-filter-header {
-  background: rgba(31, 41, 55, 0.8);
-  border-color: rgba(55, 65, 81, 0.3);
-}
-
-[data-theme="dark"] .floating-filter-section {
-  border-color: rgba(55, 65, 81, 0.2);
-}
-
-[data-theme="dark"] .floating-filter-option:hover {
-  background: rgba(55, 65, 81, 0.5);
-}
-
-[data-theme="dark"] .floating-filter-option.is-active {
-  background: rgba(59, 130, 246, 0.2);
-  border-color: var(--primary-400);
-}
-
-[data-theme="dark"] .floating-filter-clear {
-  border-color: rgba(55, 65, 81, 0.3);
-}
-
-[data-theme="dark"] .floating-filter-clear-btn,
-[data-theme="dark"] .floating-filter-clear {
-  background: rgba(59, 130, 246, 0.1);
-  border-color: rgba(59, 130, 246, 0.3);
-  color: var(--primary-300);
-}
-
-[data-theme="dark"] .floating-filter-clear-btn:hover,
-[data-theme="dark"] .floating-filter-clear:hover {
-  background: rgba(59, 130, 246, 0.2);
-  border-color: rgba(59, 130, 246, 0.4);
-  color: var(--primary-200);
-}
+/* Dark theme rules removed for light mode only */
 
 /* Mobile Responsiveness */
 @media (max-width: 1024px) {

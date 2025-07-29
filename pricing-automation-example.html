@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automated Pricing System Example</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .section { margin: 20px 0; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .pricing-card { border: 1px solid #ccc; padding: 15px; border-radius: 8px; }
+        .price { font-size: 24px; font-weight: bold; color: #2563eb; }
+        .cta-button { background: #2563eb; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; }
+        .debug-output { background: #f5f5f5; padding: 15px; border-radius: 4px; font-family: monospace; white-space: pre-wrap; }
+        button { margin: 5px; padding: 10px 15px; border: 1px solid #ddd; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #f0f0f0; }
+    </style>
+</head>
+<body>
+    <h1>🤖 Automated Pricing System</h1>
+    
+    <div class="section">
+        <h2>📋 Step 1: Validate Your Pricelist</h2>
+        <p>This will analyze your pricelist.json and show you what products match your criteria:</p>
+        <button onclick="runValidation()">🔍 Validate Pricelist</button>
+        <button onclick="showFilteredProducts()">📦 Show Filtered Products</button>
+        <button onclick="clearOutput()">🧹 Clear Output</button>
+        
+        <div id="validation-output" class="debug-output" style="display: none;"></div>
+    </div>
+
+    <div class="section">
+        <h2>🎯 Step 2: Generate Pricing Page</h2>
+        <p>Generate the pricing page HTML automatically from your filtered products:</p>
+        <button onclick="generatePricing()">⚡ Generate Pricing Page</button>
+        <button onclick="downloadConfig()">💾 Download Configuration</button>
+        
+        <div id="pricing-container"></div>
+    </div>
+
+    <div class="section">
+        <h2>⚙️ Configuration</h2>
+        <p>You can modify the configuration in <code>pricing-config.js</code> to:</p>
+        <ul>
+            <li>Add/remove products to display</li>
+            <li>Change license types to include</li>
+            <li>Adjust price filtering thresholds</li>
+            <li>Modify exclusion patterns</li>
+            <li>Update bundle configurations</li>
+        </ul>
+        
+        <h3>Current Configuration:</h3>
+        <button onclick="showCurrentConfig()">📄 Show Current Config</button>
+        <div id="config-output" class="debug-output" style="display: none;"></div>
+    </div>
+
+    <div class="section">
+        <h2>🔧 Integration Instructions</h2>
+        <ol>
+            <li><strong>Include the scripts</strong> in your pricing page:
+                <div class="debug-output">
+&lt;script src="scripts/pricing-config.js"&gt;&lt;/script&gt;
+&lt;script src="scripts/validate-pricelist.js"&gt;&lt;/script&gt;
+&lt;script src="scripts/pricing-generator.js"&gt;&lt;/script&gt;
+                </div>
+            </li>
+            <li><strong>Add a container</strong> for the generated content:
+                <div class="debug-output">
+&lt;div id="pricing-container"&gt;&lt;/div&gt;
+                </div>
+            </li>
+            <li><strong>Initialize</strong> the generator:
+                <div class="debug-output">
+const generator = new PricingGenerator();
+generator.updatePricingPage('pricing-container');
+                </div>
+            </li>
+        </ol>
+    </div>
+
+    <!-- Include the scripts -->
+    <script src="scripts/pricing-config.js"></script>
+    <script src="scripts/validate-pricelist.js"></script>
+    <script src="scripts/pricing-generator.js"></script>
+
+    <script>
+        let validationResults = null;
+        let pricingGenerator = null;
+
+        async function runValidation() {
+            const output = document.getElementById('validation-output');
+            output.style.display = 'block';
+            output.textContent = '🔄 Validating pricelist.json...\n\n';
+            
+            try {
+                // Capture console output
+                const originalLog = console.log;
+                let logOutput = '';
+                console.log = (...args) => {
+                    logOutput += args.join(' ') + '\\n';
+                    originalLog(...args);
+                };
+
+                validationResults = await validatePricelist();
+                
+                // Restore console.log
+                console.log = originalLog;
+                
+                output.textContent = logOutput;
+                
+                if (validationResults) {
+                    output.textContent += '\\n✅ Validation completed successfully!';
+                } else {
+                    output.textContent += '\\n❌ Validation failed.';
+                }
+            } catch (error) {
+                output.textContent += `\\n❌ Error: ${error.message}`;
+            }
+        }
+
+        async function showFilteredProducts() {
+            if (!validationResults) {
+                alert('Please run validation first!');
+                return;
+            }
+            
+            const output = document.getElementById('validation-output');
+            output.style.display = 'block';
+            
+            let content = '🎯 FILTERED PRODUCTS FOR PRICING PAGE:\\n';
+            content += '=========================================\\n\\n';
+            
+            Object.entries(validationResults.filtered).forEach(([productName, products]) => {
+                content += `${productName}:\\n`;
+                products.forEach(product => {
+                    content += `   • ${product['Product Name']} - €${product.Euro} (ID: ${product['Internal Product ID']})\\n`;
+                });
+                content += '\\n';
+            });
+            
+            output.textContent = content;
+        }
+
+        async function generatePricing() {
+            const container = document.getElementById('pricing-container');
+            container.innerHTML = '🔄 Generating pricing page...';
+            
+            try {
+                pricingGenerator = new PricingGenerator();
+                const result = await pricingGenerator.generate();
+                
+                container.innerHTML = result.html;
+                
+                console.log('Generated pricing data:', result.data);
+                alert('✅ Pricing page generated successfully! Check the console for data.');
+            } catch (error) {
+                container.innerHTML = `❌ Error generating pricing: ${error.message}`;
+            }
+        }
+
+        function showCurrentConfig() {
+            const output = document.getElementById('config-output');
+            output.style.display = 'block';
+            output.textContent = JSON.stringify(PRICING_CONFIG, null, 2);
+        }
+
+        function downloadConfig() {
+            const dataStr = JSON.stringify(PRICING_CONFIG, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'pricing-config.json';
+            link.click();
+        }
+
+        function clearOutput() {
+            document.getElementById('validation-output').style.display = 'none';
+            document.getElementById('config-output').style.display = 'none';
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Pricing automation system loaded');
+            console.log('Available functions:', {
+                validatePricelist: 'Validate your pricelist.json',
+                PricingGenerator: 'Generate pricing page content',
+                PRICING_CONFIG: 'Current configuration'
+            });
+        });
+    </script>
+</body>
+</html>
