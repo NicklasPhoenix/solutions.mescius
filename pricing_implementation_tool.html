@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MESCIUS Pricing Implementation Tool</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        .tool-header {
+            text-align: center;
+            padding: 2rem 0;
+            background: linear-gradient(135deg, var(--primary-600) 0%, var(--warning-600) 100%);
+            color: white;
+            margin-bottom: 2rem;
+        }
+        
+        .implementation-section {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .missing-product-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border: 1px solid var(--gray-200);
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            background: var(--gray-50);
+        }
+        
+        .missing-product-item.hidden {
+            display: none;
+        }
+        
+        .product-info {
+            flex: 1;
+        }
+        
+        .product-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .product-details {
+            font-size: 0.9rem;
+            color: var(--text-600);
+        }
+        
+        .implementation-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .impl-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .impl-btn.yes {
+            background: #22c55e;
+            color: white;
+            border: 2px solid #16a34a;
+        }
+        
+        .impl-btn.yes:hover {
+            background: #16a34a;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .impl-btn.no {
+            background: #ef4444;
+            color: white;
+            border: 2px solid #dc2626;
+        }
+        
+        .impl-btn.no:hover {
+            background: #dc2626;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-600);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--gray-300);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        /* License type styling */
+        .license-badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+        
+        .license-badge.license-upgrade {
+            background: #f59e0b;
+            color: white;
+        }
+        
+        .license-badge.license-perpetual {
+            background: #8b5cf6;
+            color: white;
+        }
+        
+        .license-badge.license-renewal {
+            background: #10b981;
+            color: white;
+        }
+        
+        .license-badge.license-new-license {
+            background: #3b82f6;
+            color: white;
+        }
+        
+        .license-badge.license-subscription {
+            background: #ef4444;
+            color: white;
+        }
+        
+        .license-badge.license-other {
+            background: #6b7280;
+            color: white;
+        }
+        
+        .license-filter {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .license-filter input[type="checkbox"] {
+            width: auto;
+        }
+        
+        /* Modal tab selection styling */
+        .existing-family-tabs {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+        }
+        
+        .tab-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            margin: 0.25rem 0;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .tab-option:hover {
+            background: #f3f4f6;
+        }
+        
+        .tab-option input[type="radio"] {
+            width: auto;
+        }
+        
+        .new-tab-form {
+            background: #fff;
+            padding: 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+        }
+        
+        .family-logo {
+            width: 24px;
+            height: 24px;
+            margin-right: 0.5rem;
+        }
+        
+        .product-info-display {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 6px;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .family-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            border: 1px solid var(--gray-200);
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .family-option:hover {
+            background: var(--gray-50);
+        }
+        
+        .family-option.selected {
+            background: var(--primary-100);
+            border-color: var(--primary-500);
+        }
+        
+        .family-logo {
+            width: 32px;
+            height: 32px;
+        }
+        
+        .new-family-form {
+            display: none;
+            background: var(--gray-50);
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
+        
+        .new-family-form.show {
+            display: block;
+        }
+        
+        .tabs-config {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .tab-input {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .implementation-preview {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-300);
+            border-radius: 4px;
+            padding: 1rem;
+            margin-top: 1rem;
+            font-family: monospace;
+            font-size: 0.8rem;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--gray-200);
+        }
+        
+        .modal-btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .modal-btn.primary {
+            background: var(--primary-600);
+            color: white;
+        }
+        
+        .modal-btn.secondary {
+            background: var(--gray-600);
+            color: white;
+        }
+        
+        .success-message {
+            background: var(--success-100);
+            color: var(--success-700);
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: var(--gray-200);
+            border-radius: 2px;
+            margin-bottom: 2rem;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--success-600);
+            border-radius: 2px;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="tool-header">
+        <div class="container">
+            <h1>🛠️ MESCIUS Pricing Implementation Tool</h1>
+            <p>Auto-implement missing products into your pricing page</p>
+            <div id="loading">Loading missing products...</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Progress Bar -->
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        
+        <!-- Success Messages -->
+        <div class="success-message" id="success-message"></div>
+
+        <!-- Implementation Section -->
+        <div class="implementation-section">
+            <h2>Missing Products from Your Pricing Page</h2>
+            <p>Review each missing product and decide whether to implement it. Click "Yes" to configure and auto-implement.</p>
+            
+            <div id="missing-products-list">
+                <!-- Populated by JavaScript -->
+            </div>
+            
+            <div id="no-products" style="display:none;">
+                <p>✅ All products have been reviewed! Run the pricing validator again to check for new products.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Implementation Modal -->
+    <div id="implementation-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Configure Product Implementation</h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            
+            <div class="form-group">
+                <label>Product to Implement:</label>
+                <div id="selected-product-info"></div>
+            </div>
+            
+            <div class="form-group">
+                <label>Select Product Family:</label>
+                <div id="family-options">
+                    <!-- Populated by JavaScript -->
+                </div>
+                <label>
+                    <input type="radio" name="family" value="new"> Create New Product Family
+                </label>
+            </div>
+            
+            <!-- Tab Selection for Existing Families -->
+            <div id="existing-family-tabs" class="existing-family-tabs" style="display: none;">
+                <h4>Select Tab for Implementation</h4>
+                <div id="tab-selection">
+                    <!-- Populated by JavaScript based on selected family -->
+                </div>
+                <label>
+                    <input type="radio" name="tab-option" value="new-tab"> Create New Tab
+                </label>
+                <div id="new-tab-form" class="new-tab-form" style="display: none;">
+                    <div class="form-group">
+                        <label for="new-tab-name">Tab Name:</label>
+                        <input type="text" id="new-tab-name" placeholder="e.g., Upgrades, Perpetual">
+                    </div>
+                    <div class="form-group">
+                        <label for="tab-position">Tab Position:</label>
+                        <select id="tab-position">
+                            <option value="end">At the End</option>
+                            <option value="after-new">After New Licenses</option>
+                            <option value="after-renewals">After Renewals</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- New Family Configuration -->
+            <div id="new-family-form" class="new-family-form">
+                <h4>New Product Family Configuration</h4>
+                
+                <div class="form-group">
+                    <label for="family-name">Family Name:</label>
+                    <input type="text" id="family-name" placeholder="e.g., SpreadCom">
+                </div>
+                
+                <div class="form-group">
+                    <label for="family-logo">Copy Logo From:</label>
+                    <select id="family-logo">
+                        <option value="C1_prod_logo_ICON_2023.svg">ComponentOne Logo</option>
+                        <option value="SP_prod_logo_ICON_2023.svg">SpreadJS Logo</option>
+                        <option value="WJ_prod_logo_ICON_2023.svg">Wijmo Logo</option>
+                        <option value="AR_prod_logo_ICON_2023.svg">ActiveReports Logo</option>
+                        <option value="DS_prod_logo_ICON_2023.svg">Document Solutions Logo</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="family-position">Position (relative to existing families):</label>
+                    <select id="family-position">
+                        <option value="after-componentone">After ComponentOne</option>
+                        <option value="after-spreadjs">After SpreadJS</option>
+                        <option value="after-spreadnet">After Spread.NET</option>
+                        <option value="after-wijmo">After Wijmo</option>
+                        <option value="after-activereportsjs">After ActiveReportsJS</option>
+                        <option value="after-activereportsnet">After ActiveReports.NET</option>
+                        <option value="after-documentsolutions">After Document Solutions</option>
+                        <option value="end">At the End</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Configure Tabs:</label>
+                    <div class="tabs-config">
+                        <div class="tab-input">
+                            <input type="checkbox" id="tab-new" checked>
+                            <label for="tab-new">New Licenses</label>
+                        </div>
+                        <div class="tab-input">
+                            <input type="checkbox" id="tab-renewals" checked>
+                            <label for="tab-renewals">Renewals</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="family-description">Product Description:</label>
+                    <textarea id="family-description" rows="3" placeholder="Brief description of the product family..."></textarea>
+                </div>
+            </div>
+            
+            <!-- Preview -->
+            <div class="form-group">
+                <label>Implementation Preview:</label>
+                <div id="implementation-preview" class="implementation-preview">
+                    <!-- Generated HTML preview -->
+                </div>
+            </div>
+            
+            <div class="modal-actions">
+                <button class="modal-btn secondary" onclick="closeModal()">Cancel</button>
+                <button class="modal-btn primary" onclick="implementProduct()">Implement Product</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let validationData = null;
+        let currentProduct = null;
+        let hiddenProducts = JSON.parse(localStorage.getItem('hiddenProducts') || '[]');
+        let processedCount = 0;
+        
+        // Existing product families from pricing page
+        const existingFamilies = [
+            {
+                id: 'componentone',
+                name: 'ComponentOne', 
+                logo: 'C1_prod_logo_ICON_2023.svg',
+                tabs: ['new', 'renewals']
+            },
+            {
+                id: 'spreadjs',
+                name: 'SpreadJS',
+                logo: 'SP_prod_logo_ICON_2023.svg', 
+                tabs: ['internal-free', 'paid-saas', 'renewals', 'perpetual']
+            },
+            {
+                id: 'spreadnet',
+                name: 'Spread.NET',
+                logo: 'SP_prod_logo_ICON_2023.svg',
+                tabs: ['new', 'renewals']
+            },
+            {
+                id: 'wijmo',
+                name: 'Wijmo',
+                logo: 'WJ_prod_logo_ICON_2023.svg',
+                tabs: ['new', 'renewals']
+            },
+            {
+                id: 'activereportsjs',
+                name: 'ActiveReportsJS',
+                logo: 'AR_prod_logo_ICON_2023.svg',
+                tabs: ['annual', 'perpetual']
+            },
+            {
+                id: 'activereportsnet',
+                name: 'ActiveReports.NET',
+                logo: 'AR_prod_logo_ICON_2023.svg',
+                tabs: ['new', 'renewals']
+            },
+            {
+                id: 'documentsolutions',
+                name: 'Document Solutions',
+                logo: 'DS_prod_logo_ICON_2023.svg',
+                tabs: ['bundle', 'excel', 'pdf', 'word', 'imaging', 'renewals']
+            }
+        ];
+
+        // License type categorization and formatting functions
+        function categorizeLicenseType(productName) {
+            const name = productName.toLowerCase();
+            if (name.includes('renewal') || name.includes('renew')) return 'renewal';
+            if (name.includes('upgrade')) return 'upgrade';
+            if (name.includes('perpetual')) return 'perpetual';
+            if (name.includes('subscription')) return 'subscription';
+            if (name.includes('new') && name.includes('license')) return 'new-license';
+            return 'other';
+        }
+
+        function formatLicenseType(type) {
+            const typeMap = {
+                'renewal': 'Renewals',
+                'upgrade': 'Upgrades',
+                'perpetual': 'Perpetual',
+                'subscription': 'Subscription',
+                'new-license': 'New License',
+                'other': 'Other'
+            };
+            return typeMap[type] || type;
+        }
+
+        async function loadValidationData() {
+            try {
+                // Load complete validation data that includes both missing products and price mismatches
+                console.log('🔄 Loading complete validation data...');
+                const response = await fetch('./complete_pricing_validation.json');
+                
+                if (!response.ok) {
+                    console.error(`❌ Failed to load complete_pricing_validation.json: ${response.status} ${response.statusText}`);
+                    // Fallback to enhanced validation data
+                    console.log('🔄 Trying fallback to enhanced_pricing_validation.json...');
+                    const fallbackResponse = await fetch('./enhanced_pricing_validation.json');
+                    if (!fallbackResponse.ok) {
+                        throw new Error(`Both validation files failed to load: ${fallbackResponse.status}`);
+                    }
+                    validationData = await fallbackResponse.json();
+                    console.log('⚠️ Loaded fallback enhanced validation data');
+                } else {
+                    validationData = await response.json();
+                    console.log('✅ Loaded complete validation data');
+                }
+                
+                // Debug: Check data structure
+                console.log('📊 Data summary:', {
+                    missing_count: validationData.missing_from_page?.length || 0,
+                    total_products: validationData.summary?.total_sku_products || 0,
+                    price_mismatches: validationData.summary?.price_mismatches || 0,
+                    validation_date: validationData.timestamp
+                });
+                
+                document.getElementById('loading').style.display = 'none';
+                displayMissingProducts();
+                updateProgress();
+                
+            } catch (error) {
+                console.error('❌ Error loading validation data:', error);
+                document.getElementById('loading').innerHTML = `
+                    <div style="text-align: center; color: red; padding: 20px;">
+                        <h3>Error Loading Data</h3>
+                        <p>Could not load validation data: ${error.message}</p>
+                        <p>Please ensure complete_pricing_validation.json exists in the workspace.</p>
+                        <button onclick="location.reload()" style="margin-top: 10px; padding: 8px 16px;">Retry</button>
+                    </div>
+                `;
+            }
+        }
+
+        function displayMissingProducts() {
+            const missingProducts = validationData.missing_from_page || [];
+            const container = document.getElementById('missing-products-list');
+            
+            // Create license type filter
+            const licenseTypes = new Set();
+            missingProducts.forEach(product => {
+                const licenseType = categorizeLicenseType(product.excel_name);
+                licenseTypes.add(licenseType);
+            });
+            
+            // Create filter section
+            const filterHtml = Array.from(licenseTypes).map(type => 
+                `<label class="license-filter">
+                    <input type="checkbox" value="${type}" checked onchange="filterByLicenseType()">
+                    <span>${formatLicenseType(type)} (${missingProducts.filter(p => categorizeLicenseType(p.excel_name) === type).length})</span>
+                </label>`
+            ).join('');
+            
+            // Add filter controls above the product list
+            container.parentElement.insertAdjacentHTML('afterbegin', 
+                `<div id="license-filters" style="margin-bottom: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 6px;">
+                    <h4>Filter by License Type:</h4>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        ${filterHtml}
+                        <button onclick="toggleAllFilters()" style="margin-left: auto;">Toggle All</button>
+                    </div>
+                </div>`
+            );
+            
+            if (missingProducts.length === 0) {
+                document.getElementById('no-products').style.display = 'block';
+                return;
+            }
+
+            const html = missingProducts.map((product, index) => {
+                const isHidden = hiddenProducts.includes(product.product_id);
+                const licenseType = categorizeLicenseType(product.excel_name);
+                return `
+                    <div class="missing-product-item ${isHidden ? 'hidden' : ''}" 
+                         data-product-id="${product.product_id}" 
+                         data-license-type="${licenseType}">
+                        <div class="product-info">
+                            <div class="product-name">${product.excel_name}</div>
+                            <div class="product-details">
+                                <span class="license-badge license-${licenseType}">${formatLicenseType(licenseType)}</span>
+                                ID: ${product.product_id} | €${product.price_eur} | SKU: ${product.sku}
+                            </div>
+                        </div>
+                        <div class="implementation-actions">
+                            <button class="impl-btn yes" onclick="openImplementationModal(${index})">Yes</button>
+                            <button class="impl-btn no" onclick="hideProduct('${product.product_id}')">No</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            container.innerHTML = html;
+            updateProgress();
+        }
+        
+        function categorizeLicenseType(productName) {
+            const name = productName.toLowerCase();
+            if (name.includes('upgrade')) return 'upgrade';
+            if (name.includes('perpetual')) return 'perpetual';
+            if (name.includes('renewal') || name.includes('maintenance renewal')) return 'renewal';
+            if (name.includes('new license') || name.includes('esd')) return 'new-license';
+            if (name.includes('annual') && name.includes('dues')) return 'subscription';
+            return 'other';
+        }
+        
+        function formatTabName(tabId) {
+            const tabNameMap = {
+                'new': 'New Licenses',
+                'renewals': 'Renewals',
+                'upgrades': 'Upgrades',
+                'perpetual': 'Perpetual',
+                'internal-free': 'Internal & Free Apps',
+                'paid-saas': 'Paid & SaaS Apps',
+                'annual': 'Annual License',
+                'bundle': '.NET Bundle',
+                'excel': '.NET Excel',
+                'pdf': '.NET PDF',
+                'word': '.NET Word',
+                'imaging': '.NET Imaging',
+                'java': 'Java'
+            };
+            return tabNameMap[tabId] || tabId;
+        }
+        
+        function filterByLicenseType() {
+            const checkedTypes = Array.from(document.querySelectorAll('#license-filters input:checked'))
+                .map(input => input.value);
+            
+            document.querySelectorAll('.missing-product-item').forEach(item => {
+                const licenseType = item.dataset.licenseType;
+                const shouldShow = checkedTypes.includes(licenseType) && !item.classList.contains('hidden');
+                item.style.display = shouldShow ? 'flex' : 'none';
+            });
+        }
+        
+        function toggleAllFilters() {
+            const checkboxes = document.querySelectorAll('#license-filters input[type="checkbox"]');
+            const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+            
+            checkboxes.forEach(cb => {
+                cb.checked = !allChecked;
+            });
+            
+            filterByLicenseType();
+        }
+
+        function hideProduct(productId) {
+            if (!hiddenProducts.includes(productId)) {
+                hiddenProducts.push(productId);
+                localStorage.setItem('hiddenProducts', JSON.stringify(hiddenProducts));
+            }
+            
+            const element = document.querySelector(`[data-product-id="${productId}"]`);
+            element.classList.add('hidden');
+            
+            processedCount++;
+            updateProgress();
+            checkIfAllProcessed();
+        }
+
+        function openImplementationModal(productIndex) {
+            const missingProducts = validationData.missing_from_page || [];
+            currentProduct = missingProducts[productIndex];
+            
+            // Populate modal
+            document.getElementById('selected-product-info').innerHTML = `
+                <div class="product-info-display">
+                    <strong>${currentProduct.excel_name}</strong><br>
+                    <span class="license-badge license-${currentProduct.license_type}">${formatLicenseType(currentProduct.license_type)}</span>
+                    Price: €${currentProduct.price_eur} | SKU: ${currentProduct.sku}
+                </div>
+            `;
+            
+            // Populate family options
+            const familyOptionsHtml = existingFamilies.map(family => `
+                <label class="family-option" onclick="selectFamily('${family.id}')">
+                    <input type="radio" name="family" value="${family.id}">
+                    <img src="../logos/${family.logo}" alt="${family.name}" class="family-logo">
+                    <span>${family.name}</span>
+                </label>
+            `).join('');
+            
+            document.getElementById('family-options').innerHTML = familyOptionsHtml;
+            
+            // Show modal
+            document.getElementById('implementation-modal').style.display = 'block';
+            
+            // Reset form
+            document.getElementById('new-family-form').classList.remove('show');
+            document.getElementById('existing-family-tabs').style.display = 'none';
+            updatePreview();
+        }
+
+        function selectFamily(familyId) {
+            // Update radio selection
+            document.querySelectorAll('.family-option').forEach(el => el.classList.remove('selected'));
+            event.currentTarget.classList.add('selected');
+            
+            // Hide new family form and show tab selection
+            document.getElementById('new-family-form').classList.remove('show');
+            document.getElementById('existing-family-tabs').style.display = 'block';
+            
+            // Find selected family and populate tab options
+            const selectedFamily = existingFamilies.find(f => f.id === familyId);
+            if (selectedFamily) {
+                const tabOptionsHtml = selectedFamily.tabs.map(tab => `
+                    <label class="tab-option">
+                        <input type="radio" name="tab-option" value="${tab}">
+                        <span>${formatTabName(tab)}</span>
+                    </label>
+                `).join('');
+                
+                document.getElementById('tab-selection').innerHTML = tabOptionsHtml;
+            }
+            document.getElementById('new-family-form').classList.remove('show');
+            
+            updatePreview();
+        }
+
+        function closeModal() {
+            document.getElementById('implementation-modal').style.display = 'none';
+            currentProduct = null;
+        }
+
+        // Handle new family radio selection
+        document.addEventListener('change', function(e) {
+            if (e.target.name === 'family' && e.target.value === 'new') {
+                document.getElementById('new-family-form').classList.add('show');
+                document.getElementById('existing-family-tabs').style.display = 'none';
+                document.querySelectorAll('.family-option').forEach(el => el.classList.remove('selected'));
+                updatePreview();
+            }
+            
+            // Handle new tab radio selection
+            if (e.target.name === 'tab-option' && e.target.value === 'new-tab') {
+                document.getElementById('new-tab-form').style.display = 'block';
+                updatePreview();
+            } else if (e.target.name === 'tab-option') {
+                document.getElementById('new-tab-form').style.display = 'none';
+                updatePreview();
+            }
+        });
+
+        // Update preview when form changes
+        document.addEventListener('input', updatePreview);
+        document.addEventListener('change', updatePreview);
+
+        function updatePreview() {
+            if (!currentProduct) return;
+            
+            const selectedFamily = document.querySelector('input[name="family"]:checked');
+            if (!selectedFamily) return;
+            
+            let preview = '';
+            
+            if (selectedFamily.value === 'new') {
+                // New family preview
+                const name = document.getElementById('family-name').value || 'New Family';
+                const logo = document.getElementById('family-logo').value;
+                
+                preview = `<!-- New Product Family: ${name} -->
+<article class="product-pricing-section" data-platform="net" data-product-family="${name.toLowerCase()}">
+    <div class="product-header">
+        <div class="product-title-section">
+            <img src="../logos/${logo}" alt="${name} Logo" class="product-logo">
+            <h2 class="product-title">${name}</h2>
+        </div>
+    </div>
+    <div class="product-tabs">
+        ${document.getElementById('tab-new').checked ? '<button class="tab-btn is-active" data-tab="new">New Licenses</button>' : ''}
+        ${document.getElementById('tab-renewals').checked ? '<button class="tab-btn" data-tab="renewals">Renewals</button>' : ''}
+    </div>
+    <div class="tab-content">
+        <section class="tab-pane is-active">
+            <h3>New License Pricing for ${name}</h3>
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <h4>${currentProduct.excel_name}</h4>
+                    <div class="price">€${currentProduct.price_eur}</div>
+                    <p class="price-term">per License</p>
+                    <button class="add-to-cart-btn" data-product-id="${currentProduct.product_id}">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+    </div>
+</article>`;
+            } else {
+                // Existing family implementation
+                const family = existingFamilies.find(f => f.id === selectedFamily.value);
+                const selectedTab = document.querySelector('input[name="tab-option"]:checked');
+                
+                if (!selectedTab) {
+                    preview = '<!-- Please select a tab for implementation -->';
+                } else if (selectedTab.value === 'new-tab') {
+                    const newTabName = document.getElementById('new-tab-name').value || 'New Tab';
+                    preview = `<!-- Add new tab "${newTabName}" to ${family.name} -->
+<button class="tab-btn" data-tab="${newTabName.toLowerCase().replace(/\s+/g, '-')}">${newTabName}</button>
+
+<!-- New tab content -->
+<section class="tab-pane" id="${family.id}-${newTabName.toLowerCase().replace(/\s+/g, '-')}-pane">
+    <h3>${newTabName} for ${family.name}</h3>
+    <div class="pricing-grid">
+        <div class="price-card">
+            <h4>${currentProduct.excel_name}</h4>
+            <div class="price">€${currentProduct.price_eur}</div>
+            <p class="price-term">per License</p>
+            <button class="add-to-cart-btn" data-product-id="${currentProduct.product_id}">Add to Cart</button>
+        </div>
+    </div>
+</section>`;
+                } else {
+                    preview = `<!-- Add to existing ${formatTabName(selectedTab.value)} tab in ${family.name} -->
+<div class="price-card">
+    <h4>${currentProduct.excel_name}</h4>
+    <div class="price">€${currentProduct.price_eur}</div>
+    <p class="price-term">per License</p>
+    <button class="add-to-cart-btn" data-product-id="${currentProduct.product_id}">Add to Cart</button>
+</div>`;
+                }
+            }
+            
+            document.getElementById('implementation-preview').textContent = preview;
+        }
+
+        function implementProduct() {
+            if (!currentProduct) return;
+            
+            const selectedFamily = document.querySelector('input[name="family"]:checked');
+            if (!selectedFamily) {
+                alert('Please select a product family');
+                return;
+            }
+            
+            // For existing families, check if tab is selected
+            if (selectedFamily.value !== 'new') {
+                const selectedTab = document.querySelector('input[name="tab-option"]:checked');
+                if (!selectedTab) {
+                    alert('Please select a tab for implementation');
+                    return;
+                }
+            }
+            
+            // Generate implementation
+            const implementation = generateImplementation();
+            
+            // Save implementation to a file that can be manually added
+            downloadImplementation(implementation);
+            
+            // Mark as processed
+            hideProduct(currentProduct.product_id);
+            
+            // Show success message
+            showSuccessMessage(`${currentProduct.excel_name} implementation generated!`);
+            
+            closeModal();
+        }
+
+        function generateImplementation() {
+            const selectedFamily = document.querySelector('input[name="family"]:checked');
+            
+            if (selectedFamily.value === 'new') {
+                return generateNewFamilyImplementation();
+            } else {
+                const selectedTab = document.querySelector('input[name="tab-option"]:checked');
+                return generateExistingFamilyImplementation(selectedFamily.value, selectedTab.value);
+            }
+        }
+
+        function generateExistingFamilyImplementation(familyId, tabOption) {
+            const family = existingFamilies.find(f => f.id === familyId);
+            
+            if (tabOption === 'new-tab') {
+                const newTabName = document.getElementById('new-tab-name').value;
+                const tabId = newTabName.toLowerCase().replace(/\s+/g, '-');
+                
+                return {
+                    type: 'new_tab',
+                    family_id: familyId,
+                    family_name: family.name,
+                    new_tab_id: tabId,
+                    new_tab_name: newTabName,
+                    product: currentProduct,
+                    instructions: `Add new tab "${newTabName}" to ${family.name} product section`
+                };
+            } else {
+                return {
+                    type: 'existing_tab',
+                    family_id: familyId,
+                    family_name: family.name,
+                    tab_id: tabOption,
+                    tab_name: formatTabName(tabOption),
+                    product: currentProduct,
+                    instructions: `Add product to existing "${formatTabName(tabOption)}" tab in ${family.name}`
+                };
+            }
+        }
+
+        function generateNewFamilyImplementation() {
+            const name = document.getElementById('family-name').value;
+            const logo = document.getElementById('family-logo').value;
+            const description = document.getElementById('family-description').value;
+            const hasNew = document.getElementById('tab-new').checked;
+            const hasRenewals = document.getElementById('tab-renewals').checked;
+            
+            const familyId = name.toLowerCase().replace(/[^a-z0-9]/g, '');
+            
+            return {
+                type: 'new_family',
+                family_id: familyId,
+                family_name: name,
+                logo: logo,
+                description: description,
+                tabs: {
+                    new: hasNew,
+                    renewals: hasRenewals
+                },
+                product: currentProduct,
+                html: generateNewFamilyHTML(familyId, name, logo, description, hasNew, hasRenewals)
+            };
+        }
+
+        function generateExistingFamilyImplementation(familyId) {
+            const family = existingFamilies.find(f => f.id === familyId);
+            
+            return {
+                type: 'existing_family',
+                family_id: familyId,
+                family_name: family.name,
+                product: currentProduct,
+                html: generateProductCardHTML()
+            };
+        }
+
+        function generateNewFamilyHTML(familyId, name, logo, description, hasNew, hasRenewals) {
+            return `
+<!-- ${name} Product Family -->
+<section class="product-section" data-product="${familyId}">
+    <div class="product-header">
+        <div class="product-title-section">
+            <img src="../logos/${logo}" alt="${name} Logo" class="product-logo">
+            <h2 class="product-title">${name}</h2>
+        </div>
+        <span class="product-info-trigger pricing-info-btn" style="width: 24px !important; height: 24px !important; background: #3b82f6 !important; color: white !important; right: 16px !important;" role="button" aria-label="More information about ${name}"
+                data-title="${name}"
+                data-description="${description || 'Product family description'}"
+                data-demolink="#"
+                data-productlink="#">
+                i
+        </span>
+    </div>
+    <div class="product-tabs" role="tablist" aria-label="${name} License Types">
+        ${hasNew ? `<button class="tab-btn is-active" data-tab="${familyId}-new" role="tab" aria-selected="true" aria-controls="${familyId}-new-pane">New Licenses</button>` : ''}
+        ${hasRenewals ? `<button class="tab-btn" data-tab="${familyId}-renew" role="tab" aria-selected="false" aria-controls="${familyId}-renew-pane">Renewals</button>` : ''}
+    </div>
+    <div class="tab-content">
+        ${hasNew ? `
+        <section class="tab-pane is-active" id="${familyId}-new-pane" role="tabpanel">
+            <h3>New License Pricing for ${name}</h3>
+            <div class="pricing-grid">
+                ${generateProductCardHTML()}
+            </div>
+        </section>` : ''}
+        ${hasRenewals ? `
+        <section class="tab-pane" id="${familyId}-renew-pane" role="tabpanel" hidden>
+            <h3>Renew Your ${name} License</h3>
+            <p>To receive a personalized renewal quote and purchase link, please enter your details and existing product key(s) below.</p>
+            <form class="renewal-form" data-product-name="${name}">
+                <!-- Renewal form content -->
+            </form>
+        </section>` : ''}
+    </div>
+</section>`;
+        }
+
+        function generateProductCardHTML() {
+            return `
+                <div class="price-card" aria-labelledby="${currentProduct.product_id}-title">
+                    <h4 id="${currentProduct.product_id}-title">${currentProduct.excel_name}</h4>
+                    <div class="price">€${currentProduct.price_eur}</div>
+                    <p class="price-term">per License</p>
+                    <ul>
+                        <li>Feature 1</li>
+                        <li>Feature 2</li>
+                        <li>Feature 3</li>
+                    </ul>
+                    <button class="add-to-cart-btn" data-product-id="${currentProduct.product_id}" data-product-name="${currentProduct.excel_name}" data-price="${currentProduct.price_eur}">Add to Cart</button>
+                </div>`;
+        }
+
+        function downloadImplementation(implementation) {
+            const filename = `${implementation.family_name}_${currentProduct.excel_name}_implementation.html`.replace(/[^a-zA-Z0-9._-]/g, '_');
+            
+            const content = `<!-- MESCIUS Pricing Implementation -->
+<!-- Product: ${currentProduct.excel_name} -->
+<!-- Family: ${implementation.family_name} -->
+<!-- Type: ${implementation.type} -->
+
+${implementation.html}
+
+<!-- Instructions:
+1. Copy the HTML above
+2. ${implementation.type === 'new_family' ? 'Add as a new section in your pricing page' : 'Insert into the existing ' + implementation.family_name + ' pricing grid'}
+3. Update the product features list as needed
+4. Test the add-to-cart functionality
+-->`;
+
+            const blob = new Blob([content], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = filename;
+            link.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function showSuccessMessage(message) {
+            const successDiv = document.getElementById('success-message');
+            successDiv.textContent = message;
+            successDiv.style.display = 'block';
+            
+            setTimeout(() => {
+                successDiv.style.display = 'none';
+            }, 3000);
+        }
+
+        function updateProgress() {
+            const totalProducts = validationData?.validation?.missing_from_page?.length || 0;
+            const visibleProducts = document.querySelectorAll('.missing-product-item:not(.hidden)').length;
+            const processed = totalProducts - visibleProducts;
+            
+            const percentage = totalProducts > 0 ? (processed / totalProducts) * 100 : 0;
+            document.getElementById('progress-fill').style.width = percentage + '%';
+        }
+
+        function checkIfAllProcessed() {
+            const visibleProducts = document.querySelectorAll('.missing-product-item:not(.hidden)').length;
+            if (visibleProducts === 0) {
+                document.getElementById('no-products').style.display = 'block';
+                showSuccessMessage('🎉 All products have been processed!');
+            }
+        }
+
+        // Load validation data when page loads
+        document.addEventListener('DOMContentLoaded', loadValidationData);
+    </script>
+</body>
+</html>

@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MESCIUS Pricing Validation Report</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        .report-header {
+            text-align: center;
+            padding: 2rem 0;
+            background: linear-gradient(135deg, var(--primary-600) 0%, var(--success-600) 100%);
+            color: white;
+            margin-bottom: 2rem;
+        }
+        
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .summary-stat {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--primary-500);
+        }
+        
+        .summary-stat.success { border-left-color: var(--success-500); }
+        .summary-stat.warning { border-left-color: var(--warning-500); }
+        .summary-stat.error { border-left-color: var(--error-500); }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-number.success { color: var(--success-600); }
+        .stat-number.warning { color: var(--warning-600); }
+        .stat-number.error { color: var(--error-600); }
+        .stat-number.info { color: var(--primary-600); }
+        
+        .section {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .product-list {
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid var(--gray-200);
+            border-radius: 6px;
+        }
+        
+        .product-item {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--gray-100);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .product-item:last-child {
+            border-bottom: none;
+        }
+        
+        .product-item:hover {
+            background: var(--gray-50);
+        }
+        
+        .product-name {
+            font-weight: 500;
+            flex: 1;
+        }
+        
+        .product-details {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            font-size: 0.9rem;
+            color: var(--text-600);
+        }
+        
+        .price-badge {
+            background: var(--primary-100);
+            color: var(--primary-700);
+            padding: 0.25rem 0.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        
+        .mismatch-badge {
+            background: var(--error-100);
+            color: var(--error-700);
+        }
+        
+        .missing-badge {
+            background: var(--warning-100);
+            color: var(--warning-700);
+        }
+        
+        .mismatch-details {
+            font-size: 0.8rem;
+            color: var(--text-500);
+            margin-top: 0.25rem;
+        }
+        
+        .actions {
+            background: var(--gray-50);
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .action-btn {
+            background: var(--primary-600);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .action-btn:hover {
+            background: var(--primary-700);
+        }
+        
+        .action-btn.secondary {
+            background: var(--gray-600);
+        }
+        
+        .action-btn.secondary:hover {
+            background: var(--gray-700);
+        }
+    </style>
+</head>
+<body>
+    <div class="report-header">
+        <div class="container">
+            <h1>📊 MESCIUS Pricing Validation Report</h1>
+            <p>Excel → pricelist.json → pricing/index.html validation</p>
+            <div id="validation-mode-indicator" style="margin: 10px 0; padding: 8px 12px; background: #e8f5e8; border-radius: 4px; font-size: 14px; color: #2e7d32;">
+                ✅ Complete Mode: Missing products + Price validation + License type analysis
+            </div>
+            <div id="loading">Loading validation results...</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Summary Statistics -->
+        <div class="summary-grid" id="summary-grid">
+            <!-- Populated by JavaScript -->
+        </div>
+
+        <!-- Price Mismatches -->
+        <div class="section" id="mismatches-section" style="display:none;">
+            <div class="section-title">⚠️ Price Mismatches</div>
+            <p>Products with different prices between your pricing page and expected EUR prices:</p>
+            <div class="product-list" id="mismatches-content"></div>
+        </div>
+
+        <!-- Missing Products -->
+        <div class="section" id="missing-section" style="display:none;">
+            <div class="section-title">❌ Missing from Pricing Page</div>
+            <p>Current products from your Excel catalog that aren't on the pricing page:</p>
+            <div class="product-list" id="missing-content"></div>
+        </div>
+
+        <!-- Unknown Products -->
+        <div class="section" id="unknown-section" style="display:none;">
+            <div class="section-title">❓ Unknown on Pricing Page</div>
+            <p>Products on your pricing page that don't match current Excel catalog:</p>
+            <div class="product-list" id="unknown-content"></div>
+        </div>
+
+        <!-- Actions -->
+        <div class="actions">
+            <h3>🔧 Recommended Actions</h3>
+            <ul>
+                <li><strong>Fix Price Mismatches:</strong> Update pricing page or pricelist.json for consistency</li>
+                <li><strong>Add Missing Products:</strong> Consider adding high-value missing products to pricing page</li>
+                <li><strong>Review Unknown Products:</strong> Verify if products on pricing page are current</li>
+                <li><strong>Update Process:</strong> Run this validation regularly when Excel pricing changes</li>
+            </ul>
+            
+            <div class="action-buttons">
+                <button class="action-btn" onclick="exportMismatches()">📄 Export Mismatches</button>
+                <button class="action-btn" onclick="exportMissing()">📊 Export Missing Products</button>
+                <button class="action-btn secondary" onclick="window.location.reload()">🔄 Refresh Report</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let validationData = null;
+
+        async function loadValidation() {
+            try {
+                // Load complete validation data that includes both missing products and price mismatches
+                console.log('🔄 Loading complete validation data...');
+                const response = await fetch('./complete_pricing_validation.json');
+                
+                if (!response.ok) {
+                    console.error(`❌ Failed to load complete_pricing_validation.json: ${response.status}`);
+                    // Fallback to enhanced validation data
+                    console.log('🔄 Trying fallback to enhanced_pricing_validation.json...');
+                    const fallbackResponse = await fetch('./enhanced_pricing_validation.json');
+                    if (!fallbackResponse.ok) {
+                        throw new Error(`Both validation files failed to load: ${fallbackResponse.status}`);
+                    }
+                    validationData = await fallbackResponse.json();
+                    console.log('⚠️ Loaded fallback enhanced validation data');
+                } else {
+                    validationData = await response.json();
+                    console.log('✅ Loaded complete validation data');
+                }
+                
+                document.getElementById('loading').style.display = 'none';
+                
+                displaySummary();
+                displayMismatches();
+                displayMissing();
+                displayUnknown();
+                
+            } catch (error) {
+                console.error('❌ Error loading validation data:', error);
+                document.getElementById('loading').textContent = 'Error loading validation. Run pricing_validator.py first.';
+            }
+        }
+
+        function displaySummary() {
+            // Handle complete validation data format
+            let stats = [];
+            
+            if (validationData.summary && validationData.summary.total_sku_products !== undefined) {
+                // Complete validation data format (includes both missing and price mismatches)
+                console.log('📊 Using complete validation data format');
+                stats = [
+                    { number: validationData.summary.total_sku_products || 0, label: 'Total SKU Products', class: 'neutral' },
+                    { number: validationData.summary.implemented_products || 0, label: 'Implemented Products', class: 'success' },
+                    { number: validationData.summary.missing_products || 0, label: 'Missing Products', class: 'warning' },
+                    { number: validationData.summary.price_mismatches || 0, label: 'Price Mismatches', class: 'error' },
+                    { number: validationData.summary.unknown_on_page || 0, label: 'Unknown Products', class: 'info' }
+                ];
+            } else if (validationData.validation) {
+                // Original validation data format (fallback)
+                console.log('📊 Using original validation data format');
+                const summary = validationData.summary;
+                stats = [
+                    { number: summary.excel_products || 0, label: 'Excel Products', class: 'info' },
+                    { number: summary.matched_products || 0, label: 'Matched', class: 'success' },
+                    { number: summary.exact_matches || 0, label: 'Exact Matches', class: 'success' },
+                    { number: summary.price_mismatches || 0, label: 'Price Mismatches', class: 'error' }
+                ];
+            } else {
+                console.error('❌ Unknown data format:', validationData);
+                document.getElementById('summary-grid').innerHTML = '<div class="error">Unable to display summary - unknown data format</div>';
+                return;
+            }
+
+            const html = stats.map(stat => `
+                <div class="summary-stat ${stat.class}">
+                    <div class="stat-number ${stat.class}">${stat.number}</div>
+                    <div>${stat.label}</div>
+                </div>
+            `).join('');
+
+            document.getElementById('summary-grid').innerHTML = html;
+        }
+
+        function displayMismatches() {
+            // Handle complete validation data that includes price mismatches
+            const mismatches = validationData.price_mismatches || validationData.validation?.price_mismatches || [];
+            
+            if (mismatches.length === 0) {
+                document.getElementById('mismatches-section').style.display = 'none';
+                return;
+            }
+
+            document.getElementById('mismatches-section').style.display = 'block';
+
+            document.getElementById('mismatches-section').style.display = 'block';
+
+            const html = mismatches.map(mismatch => `
+                <div class="product-item">
+                    <div>
+                        <div class="product-name">${mismatch.name}</div>
+                        <div class="mismatch-details">ID: ${mismatch.product_id} | Expected: €${mismatch.expected_price}</div>
+                    </div>
+                    <div class="product-details">
+                        <span class="price-badge mismatch-badge">€${mismatch.page_price}</span>
+                        <span>Diff: €${mismatch.difference.toFixed(0)}</span>
+                    </div>
+                </div>
+            `).join('');
+
+            document.getElementById('mismatches-content').innerHTML = html;
+        }
+
+        function displayMissing() {
+            // Handle both enhanced and original data formats
+            let missing = [];
+            
+            if (validationData.summary && validationData.summary.total_sku_products !== undefined) {
+                // Enhanced validation data format
+                missing = validationData.missing_from_page || [];
+            } else {
+                // Original validation data format
+                missing = validationData.validation?.missing_from_page || [];
+            }
+            
+            if (missing.length === 0) {
+                document.getElementById('missing-section').style.display = 'none';
+                return;
+            }
+
+            document.getElementById('missing-section').style.display = 'block';
+
+            const html = missing.map(product => `
+                <div class="product-item">
+                    <div>
+                        <div class="product-name">${product.excel_name}</div>
+                        <div class="mismatch-details">
+                            SKU: ${product.sku || product.product_id} 
+                            ${product.license_type ? `| Type: ${product.license_type}` : ''} 
+                            ${product.match_score ? `| Match: ${(product.match_score * 100).toFixed(0)}%` : ''}
+                        </div>
+                    </div>
+                    <div class="product-details">
+                        <span class="price-badge missing-badge">€${product.price_eur}</span>
+                        ${product.excel_price_usd ? `<span>$${product.excel_price_usd}</span>` : ''}
+                    </div>
+                </div>
+            `).join('');
+
+            document.getElementById('missing-content').innerHTML = html;
+        }
+
+        function displayUnknown() {
+            // Handle complete validation data format
+            const unknown = validationData.unknown_on_page || validationData.validation?.unknown_on_page || [];
+            
+            if (unknown.length === 0) {
+                document.getElementById('unknown-section').style.display = 'none';
+                return;
+            }
+
+            document.getElementById('unknown-section').style.display = 'block';
+
+            const html = unknown.map(product => `
+                <div class="product-item">
+                    <div>
+                        <div class="product-name">Product ID: ${product.product_id}</div>
+                        <div class="mismatch-details">Not found in current Excel catalog</div>
+                    </div>
+                    <div class="product-details">
+                        <span class="price-badge">€${product.page_price}</span>
+                    </div>
+                </div>
+            `).join('');
+
+            document.getElementById('unknown-content').innerHTML = html;
+        }
+
+        // Function to load original validation data for price mismatch analysis
+        async function loadOriginalValidation() {
+            try {
+                console.log('🔄 Loading original validation data for price analysis...');
+                const response = await fetch('./pricing_validation.json');
+                
+                if (!response.ok) {
+                    throw new Error(`Failed to load pricing_validation.json: ${response.status}`);
+                }
+                
+                validationData = await response.json();
+                console.log('✅ Loaded original validation data');
+                
+                // Update the page indicators to show original mode
+                document.querySelector('h1').textContent = '📊 MESCIUS Pricing Validation Report (Original Mode)';
+                document.getElementById('validation-mode-indicator').innerHTML = 
+                    '⚖️ Original Mode: Price validation and mismatch analysis';
+                document.getElementById('validation-mode-indicator').style.background = '#fff3cd';
+                document.getElementById('validation-mode-indicator').style.color = '#856404';
+                
+                // Refresh all sections with original data
+                displaySummary();
+                displayMismatches();
+                displayMissing();
+                displayUnknown();
+                
+            } catch (error) {
+                console.error('❌ Error loading original validation data:', error);
+                alert('Failed to load original validation data: ' + error.message);
+            }
+        }
+
+        function exportMismatches() {
+            const mismatches = validationData.validation.price_mismatches;
+            if (mismatches.length === 0) {
+                alert('No price mismatches to export!');
+                return;
+            }
+
+            let csv = 'Product Name,Product ID,Page Price,Expected Price,Difference\\n';
+            mismatches.forEach(m => {
+                csv += `"${m.name}",${m.product_id},${m.page_price},${m.expected_price},${m.difference}\\n`;
+            });
+
+            downloadCSV(csv, 'price_mismatches.csv');
+        }
+
+        function exportMissing() {
+            const missing = validationData.validation.missing_from_page;
+            if (missing.length === 0) {
+                alert('No missing products to export!');
+                return;
+            }
+
+            let csv = 'Product Name,Product ID,EUR Price,USD Price,Match Score\\n';
+            missing.forEach(m => {
+                csv += `"${m.excel_name}",${m.product_id},${m.price_eur},${m.excel_price_usd},${m.match_score}\\n`;
+            });
+
+            downloadCSV(csv, 'missing_products.csv');
+        }
+
+        function downloadCSV(csv, filename) {
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = filename;
+            link.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // Load validation data when page loads
+        document.addEventListener('DOMContentLoaded', loadValidation);
+    </script>
+</body>
+</html>

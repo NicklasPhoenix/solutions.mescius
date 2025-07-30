@@ -1,0 +1,3022 @@
+{
+  "timestamp": "2025-07-30T13:08:59.588108",
+  "summary": {
+    "total_sku_products": 316,
+    "implemented_products": 122,
+    "missing_products": 184,
+    "missing_by_license_type": {
+      "renewal": 60,
+      "upgrade": 55,
+      "other": 12,
+      "new-license": 5,
+      "perpetual": 51,
+      "subscription": 1
+    },
+    "price_mismatches": 1,
+    "exact_matches": [
+      {
+        "product_id": 54087,
+        "name": "ComponentOne Studio - Enterprise Edition - New License",
+        "price": 1385.0,
+        "matched_name": "ComponentOne Studio - Enterprise Edition - New License"
+      },
+      {
+        "product_id": 60892,
+        "name": "ComponentOne Studio - Winforms Data Services Edition - New License",
+        "price": 1205.0,
+        "matched_name": "ComponentOne Studio - Winforms Data Services Edition - New License"
+      },
+      {
+        "product_id": 53600,
+        "name": "ComponentOne Studio - ActiveX Edition- New License",
+        "price": 1385.0,
+        "matched_name": "ComponentOne Studio - ActiveX Edition- New License"
+      },
+      {
+        "product_id": 53597,
+        "name": "ComponentOne Studio - WinForms Edition - New License",
+        "price": 925.0,
+        "matched_name": "ComponentOne Studio - WinForms Edition - New License"
+      },
+      {
+        "product_id": 55920,
+        "name": "ComponentOne Studio - WPF Edition - New License",
+        "price": 925.0,
+        "matched_name": "ComponentOne Studio - WPF Edition - New License"
+      },
+      {
+        "product_id": 61875,
+        "name": "ComponentOne WinUI & MAUI Edition - New License",
+        "price": 925.0,
+        "matched_name": "ComponentOne WinUI & MAUI Edition - New License"
+      },
+      {
+        "product_id": 58274,
+        "name": "ComponentOne Studio - ASP.NET MVC Edition - New License",
+        "price": 835.0,
+        "matched_name": "ComponentOne Studio - MVC Edition - New License"
+      },
+      {
+        "product_id": 60326,
+        "name": "ComponentOne Studio - Blazor Edition - New License",
+        "price": 465.0,
+        "matched_name": "ComponentOne Studio - Blazor Edition - New License"
+      },
+      {
+        "product_id": 61408,
+        "name": "SpreadJS Deployment License Single Domain or SaaS (*.domain)\u00a0Hostname - ANNUAL DUES",
+        "price": 11605.0,
+        "matched_name": "SpreadJS Deployment License Single Domain or SaaS (*.domain) Hostname - ANNUAL DUES"
+      },
+      {
+        "product_id": 60976,
+        "name": "SpreadJS Deployment License Three (3) to Five (5) Hostname - ANNUAL DUES",
+        "price": 1855.0,
+        "matched_name": "SpreadJS Deployment License  Three (3) to Five (5) Hostname - ANNUAL DUES"
+      },
+      {
+        "product_id": 60974,
+        "name": "SpreadJS Deployment License Single Hostname - ANNUAL DUES",
+        "price": 555.0,
+        "matched_name": "SpreadJS Deployment License Single Hostname - ANNUAL DUES"
+      },
+      {
+        "product_id": 62767,
+        "name": "Wijmo Deployment License Single Hostname",
+        "price": 465.0,
+        "matched_name": "Wijmo Deployment License Single Hostname"
+      },
+      {
+        "product_id": 62780,
+        "name": "ActiveReportsJS v5 Deployment License Three (3) Hostname - ANNUAL",
+        "price": 1155.0,
+        "matched_name": "ActiveReportsJS v5 Deployment License Three (3) Hostname - ANNUAL"
+      },
+      {
+        "product_id": 62783,
+        "name": "ActiveReportsJS v5 Deployment License Single Domain (*.domain) - ANNUAL",
+        "price": 3715.0,
+        "matched_name": "ActiveReportsJS v5 Deployment License Single Domain (*.domain) - ANNUAL"
+      },
+      {
+        "product_id": 62879,
+        "name": "Document Solutions .NET Bundle v8 Developer - New License",
+        "price": 1665.0,
+        "matched_name": "Document Solutions .NET Bundle v8 Developer - New License"
+      },
+      {
+        "product_id": 62881,
+        "name": "Document Solutions .NET Bundle v8 Developer Unlimited - New License",
+        "price": 4595.0,
+        "matched_name": "Document Solutions .NET Bundle v8 Developer Unlimited - New License"
+      },
+      {
+        "product_id": 62884,
+        "name": "Document Solutions .NET Bundle v8 Team Unlimited - New License",
+        "price": 9605.0,
+        "matched_name": "Document Solutions .NET Bundle v8 Team Unlimited - New License"
+      },
+      {
+        "product_id": 62845,
+        "name": "Document Solutions for Excel, .NET v8 Developer - New License",
+        "price": 925.0,
+        "matched_name": "Document Solutions for Excel, .NET v8 Developer - New License"
+      },
+      {
+        "product_id": 62848,
+        "name": "Document Solutions for Excel, .NET v8 Developer Unlimited - New License",
+        "price": 2595.0,
+        "matched_name": "Document Solutions for Excel, .NET v8 Developer Unlimited - New License"
+      },
+      {
+        "product_id": 62850,
+        "name": "Document Solutions for Excel, .NET v8 Team Unlimited - New License",
+        "price": 5385.0,
+        "matched_name": "Document Solutions for Excel, .NET v8 Team Unlimited - New License"
+      },
+      {
+        "product_id": 62859,
+        "name": "Document Solutions for PDF v8 Developer - New License",
+        "price": 925.0,
+        "matched_name": "Document Solutions for PDF v8 Developer - New License"
+      },
+      {
+        "product_id": 62863,
+        "name": "Document Solutions for PDF v8 Developer Unlimited - New License",
+        "price": 2595.0,
+        "matched_name": "Document Solutions for PDF v8 Developer Unlimited - New License"
+      },
+      {
+        "product_id": 62865,
+        "name": "Document Solutions for PDF v8 Team Unlimited - New License",
+        "price": 5385.0,
+        "matched_name": "Document Solutions for PDF v8 Team Unlimited - New License"
+      },
+      {
+        "product_id": 62886,
+        "name": "Document Solutions for Word v8 Developer - New License",
+        "price": 925.0,
+        "matched_name": "Document Solutions for Word v8 Developer - New License"
+      },
+      {
+        "product_id": 62888,
+        "name": "Document Solutions for Word v8 Developer Unlimited - New License",
+        "price": 2595.0,
+        "matched_name": "Document Solutions for Word v8 Developer Unlimited - New License"
+      },
+      {
+        "product_id": 62890,
+        "name": "Document Solutions for Word v8 Team Unlimited - New License",
+        "price": 5385.0,
+        "matched_name": "Document Solutions for Word v8 Team Unlimited - New License"
+      },
+      {
+        "product_id": 62893,
+        "name": "Document Solutions for Imaging v8 Developer - New License",
+        "price": 925.0,
+        "matched_name": "Document Solutions for Imaging v8 Developer - New License"
+      },
+      {
+        "product_id": 62897,
+        "name": "Document Solutions for Imaging v8 Team Unlimited - New License",
+        "price": 5385.0,
+        "matched_name": "Document Solutions for Imaging v8 Team Unlimited - New License"
+      },
+      {
+        "product_id": 62873,
+        "name": "Document Solutions for Excel, Java Edition v8 Developer - New License",
+        "price": 925.0,
+        "matched_name": "Document Solutions for Excel, Java Edition v8 Developer - New License"
+      },
+      {
+        "product_id": 62875,
+        "name": "Document Solutions for Excel, Java Edition v8 Developer Unlimited - New License",
+        "price": 2595.0,
+        "matched_name": "Document Solutions for Excel, Java Edition v8 Developer Unlimited - New License"
+      },
+      {
+        "product_id": 62877,
+        "name": "Document Solutions for Excel, Java Edition v8 Team Unlimited - New License",
+        "price": 5385.0,
+        "matched_name": "Document Solutions for Excel, Java Edition v8 Team Unlimited - New License"
+      }
+    ],
+    "unknown_on_page": 6
+  },
+  "missing_from_page": [
+    {
+      "excel_name": "ComponentOne Studio - Enterprise Edition - Renewal",
+      "sku": "ESD-ENT-STUDIO-R",
+      "price_eur": 835,
+      "license_type": "renewal",
+      "product_id": "277382"
+    },
+    {
+      "excel_name": "ComponentOne Studio - Enterprise Edition - Upgrade Version",
+      "sku": "ESD-ENT-STUDIO-U",
+      "price_eur": 1175,
+      "license_type": "upgrade",
+      "product_id": "277368"
+    },
+    {
+      "excel_name": "ComponentOne Studio - Enterprise Edition 5 Developer Team License - Renewal",
+      "sku": "ESD-ENT-STUDIO-5PK-R",
+      "price_eur": 3705,
+      "license_type": "renewal",
+      "product_id": "277296"
+    },
+    {
+      "excel_name": "ComponentOne Studio - ActiveX Edition  - Renewal",
+      "sku": "ESD-STUDIO-R",
+      "price_eur": 595,
+      "license_type": "renewal",
+      "product_id": "277325"
+    },
+    {
+      "excel_name": "ComponentOne Studio - ActiveX Edition - Upgrade Version",
+      "sku": "ESD-STUDIO-U",
+      "price_eur": 1175,
+      "license_type": "upgrade",
+      "product_id": "277406"
+    },
+    {
+      "excel_name": "ComponentOne Studio - ASP.NET MVC Edition - Renewal",
+      "sku": "ESD-AH-STUDIO-R",
+      "price_eur": 495,
+      "license_type": "renewal",
+      "product_id": "277295"
+    },
+    {
+      "excel_name": "ComponentOne Studio - ASP.NET MVC Edition - Upgrade",
+      "sku": "ESD-AH-STUDIO-U",
+      "price_eur": 705,
+      "license_type": "upgrade",
+      "product_id": "277398"
+    },
+    {
+      "excel_name": "ComponentOne Studio - Web Forms Edition - Renewal",
+      "sku": "ESD-A-STUDIO-R",
+      "price_eur": 495,
+      "license_type": "renewal",
+      "product_id": "277437"
+    },
+    {
+      "excel_name": "ComponentOne Studio - Web Forms Edition - Upgrade Version",
+      "sku": "ESD-A-STUDIO-U",
+      "price_eur": 705,
+      "license_type": "upgrade",
+      "product_id": "277513"
+    },
+    {
+      "excel_name": "ComponentOne Studio - Blazor Edition - Renewal ",
+      "sku": "ESD-BLAZOR-STUDIO-R",
+      "price_eur": 275,
+      "license_type": "renewal",
+      "product_id": "277019"
+    },
+    {
+      "excel_name": "ComponentOne Studio - Blazor Edition -  Upgrade",
+      "sku": "ESD-BLAZOR-STUDIO-U",
+      "price_eur": 385,
+      "license_type": "upgrade",
+      "product_id": "277057"
+    },
+    {
+      "excel_name": "ComponentOne Studio - Data Services Edition - Renewal",
+      "sku": "ESD-DS-STUDIO-R",
+      "price_eur": 495,
+      "license_type": "renewal",
+      "product_id": "276986"
+    },
+    {
+      "excel_name": "\tComponentOne Studio - Data Services Edition - Upgrade",
+      "sku": "ESD-DS-STUDIO-U",
+      "price_eur": 705,
+      "license_type": "upgrade",
+      "product_id": "276942"
+    },
+    {
+      "excel_name": "ComponentOne Studio - UWP Edition  - Renewal",
+      "sku": "ESD-STUDIO-UWP-R",
+      "price_eur": 415,
+      "license_type": "renewal",
+      "product_id": "276970"
+    },
+    {
+      "excel_name": "ComponentOne Studio - UWP Edition - Upgrade Version",
+      "sku": "ESD-STUDIO-UWP-U",
+      "price_eur": 645,
+      "license_type": "upgrade",
+      "product_id": "276957"
+    },
+    {
+      "excel_name": "ComponentOne Platinum Support Addon",
+      "sku": "C1PSADDON",
+      "price_eur": 300,
+      "license_type": "other",
+      "product_id": "C1PSADDON"
+    },
+    {
+      "excel_name": "ComponentOne Studio - WinForms Edition - Renewal",
+      "sku": "ESD-N-STUDIO-R",
+      "price_eur": 555,
+      "license_type": "renewal",
+      "product_id": "277472"
+    },
+    {
+      "excel_name": "ComponentOne Studio - WinForms Edition - Upgrade Version",
+      "sku": "ESD-N-STUDIO-U",
+      "price_eur": 785,
+      "license_type": "upgrade",
+      "product_id": "277480"
+    },
+    {
+      "excel_name": "ComponentOne Studio - Winforms Data Services Edition - Renewal",
+      "sku": "ESD-WDS-STUDIO-R",
+      "price_eur": 715,
+      "license_type": "renewal",
+      "product_id": "276981"
+    },
+    {
+      "excel_name": "ComponentOne Studio - Winforms Data Services Edition - Upgrade",
+      "sku": "ESD-WDS-STUDIO-U",
+      "price_eur": 1015,
+      "license_type": "upgrade",
+      "product_id": "276985"
+    },
+    {
+      "excel_name": "ComponentOne WinUI & MAUI Edition - Renewal",
+      "sku": "ESD-WM-STUDIO-R",
+      "price_eur": 555,
+      "license_type": "renewal",
+      "product_id": "277020"
+    },
+    {
+      "excel_name": "ComponentOne WinUI & MAUI Edition - Upgrade",
+      "sku": "ESD-WM-STUDIO-U",
+      "price_eur": 785,
+      "license_type": "upgrade",
+      "product_id": "277017"
+    },
+    {
+      "excel_name": "ComponentOne Studio - WinUI Edition - Renewal",
+      "sku": "ESD-WINUI-STUDIO-R",
+      "price_eur": 225,
+      "license_type": "renewal",
+      "product_id": "276934"
+    },
+    {
+      "excel_name": "ComponentOne Studio - WinUI Edition - Upgrade",
+      "sku": "ESD-WINUI-STUDIO-U",
+      "price_eur": 365,
+      "license_type": "upgrade",
+      "product_id": "276902"
+    },
+    {
+      "excel_name": "ComponentOne Platinum Support Addon",
+      "sku": "C1PSADDON",
+      "price_eur": 300,
+      "license_type": "other",
+      "product_id": "C1PSADDON"
+    },
+    {
+      "excel_name": "ComponentOne Studio - WPF Edition - Renewal",
+      "sku": "ESD-W-STUDIO-R",
+      "price_eur": 555,
+      "license_type": "renewal",
+      "product_id": "277537"
+    },
+    {
+      "excel_name": "ComponentOne Studio - WPF Edition - Upgrade Version",
+      "sku": "ESD-W-STUDIO-U",
+      "price_eur": 785,
+      "license_type": "upgrade",
+      "product_id": "277529"
+    },
+    {
+      "excel_name": "ComponentOne Studio - Silverlight Edition- Renewal",
+      "sku": "ESD-S-STUDIO-R",
+      "price_eur": 665,
+      "license_type": "renewal",
+      "product_id": "277554"
+    },
+    {
+      "excel_name": "ComponentOne Studio - Silverlight Edition - Upgrade Version",
+      "sku": "ESD-S-STUDIO-U",
+      "price_eur": 945,
+      "license_type": "upgrade",
+      "product_id": "277541"
+    },
+    {
+      "excel_name": "ComponentOne Studio - LightSwitch Edition - Renewal",
+      "sku": "ESD-LTS-STUDIO-R",
+      "price_eur": 605,
+      "license_type": "renewal",
+      "product_id": "277489"
+    },
+    {
+      "excel_name": "ComponentOne Studio - LightSwitch Edition - Upgrade",
+      "sku": "ESD-LTS-STUDIO-U",
+      "price_eur": 855,
+      "license_type": "upgrade",
+      "product_id": "277507"
+    },
+    {
+      "excel_name": "ComponentOne Studio for Xamarin - Renewal ",
+      "sku": "ESD-XUNI-ENT-R",
+      "price_eur": 415,
+      "license_type": "renewal",
+      "product_id": "278944"
+    },
+    {
+      "excel_name": "ComponentOne Studio for Xamarin -Upgrade Version ",
+      "sku": "ESD-XUNI-ENT-U",
+      "price_eur": 645,
+      "license_type": "upgrade",
+      "product_id": "278975"
+    },
+    {
+      "excel_name": "ComponentOne Platinum Support Addon",
+      "sku": "C1PSADDON",
+      "price_eur": 300,
+      "license_type": "other",
+      "product_id": "C1PSADDON"
+    },
+    {
+      "excel_name": "ComponentOne Xamarin.iOS Edition- Renewal",
+      "sku": "ESD-XUNI-IOS-R",
+      "price_eur": 225,
+      "license_type": "renewal",
+      "product_id": "278966"
+    },
+    {
+      "excel_name": "ComponentOne Xamarin.iOS Edition-Upgrade Version ",
+      "sku": "ESD-XUNI-IOS-U",
+      "price_eur": 365,
+      "license_type": "upgrade",
+      "product_id": "278991"
+    },
+    {
+      "excel_name": "ComponentOne Platinum Support Addon",
+      "sku": "C1PSADDON",
+      "price_eur": 300,
+      "license_type": "other",
+      "product_id": "C1PSADDON"
+    },
+    {
+      "excel_name": "ComponentOne Xamarin.Android Edition- Renewal",
+      "sku": "ESD-XUNI-AND-R",
+      "price_eur": 225,
+      "license_type": "renewal",
+      "product_id": "278938"
+    },
+    {
+      "excel_name": "ComponentOne Xamarin.Android Edition -Upgrade Version ",
+      "sku": "ESD-XUNI-AND-U",
+      "price_eur": 365,
+      "license_type": "upgrade",
+      "product_id": "278838"
+    },
+    {
+      "excel_name": "ComponentOne Platinum Support Addon",
+      "sku": "C1PSADDON",
+      "price_eur": 300,
+      "license_type": "other",
+      "product_id": "C1PSADDON"
+    },
+    {
+      "excel_name": "ActiveReports 19 Professional Edition w/ Maintenance DEVELOPER - New License",
+      "sku": "APN19M",
+      "price_eur": 1945,
+      "license_type": "new-license",
+      "product_id": "279070"
+    },
+    {
+      "excel_name": "ActiveReports Professional Edition Maintenance Renewal",
+      "sku": "APNMR",
+      "price_eur": 925,
+      "license_type": "renewal",
+      "product_id": "279144"
+    },
+    {
+      "excel_name": "ActiveReports 19 Professional Edition w/ Maintenance - Upgrade from ARN19 Std",
+      "sku": "APN19MU19S",
+      "price_eur": 1115,
+      "license_type": "upgrade",
+      "product_id": "279111"
+    },
+    {
+      "excel_name": "ActiveReports 19 Professional Edition w/ Maintenance - Upgrade from any prior Pro version",
+      "sku": "APN19MUP",
+      "price_eur": 1395,
+      "license_type": "upgrade",
+      "product_id": "276328"
+    },
+    {
+      "excel_name": "ActiveReports 19 Professional Edition w/ Maintenance - Upgrade from any prior Std version",
+      "sku": "APN19MUS",
+      "price_eur": 1575,
+      "license_type": "upgrade",
+      "product_id": "279177"
+    },
+    {
+      "excel_name": "ActiveReports 19 Professional Edition - Upgrade from ARN19 Std",
+      "sku": "APN19U19S",
+      "price_eur": 745,
+      "license_type": "upgrade",
+      "product_id": "279225"
+    },
+    {
+      "excel_name": "ActiveReports 19 Professional Edition - Upgrade from any prior Pro version",
+      "sku": "APN19UP",
+      "price_eur": 1065,
+      "license_type": "upgrade",
+      "product_id": "279139"
+    },
+    {
+      "excel_name": "ActiveReports 19 Professional Edition - Upgrade from any prior Std version",
+      "sku": "APN19US",
+      "price_eur": 1295,
+      "license_type": "upgrade",
+      "product_id": "279078"
+    },
+    {
+      "excel_name": "ActiveReports 19 Standard Edition w/ Maintenance DEVELOPER - New License",
+      "sku": "ARN19M",
+      "price_eur": 1255,
+      "license_type": "new-license",
+      "product_id": "279077"
+    },
+    {
+      "excel_name": "ActiveReports Standard Edition Maintenance Renewal",
+      "sku": "ARNMR",
+      "price_eur": 645,
+      "license_type": "renewal",
+      "product_id": "279220"
+    },
+    {
+      "excel_name": "ActiveReports 19 Standard Edition w/ Maintenance - Upgrade from any prior Std version",
+      "sku": "ARN19MUS",
+      "price_eur": 835,
+      "license_type": "upgrade",
+      "product_id": "279141"
+    },
+    {
+      "excel_name": "ActiveReports 19 Standard Edition - Upgrade from any prior Std version",
+      "sku": "ARN19US",
+      "price_eur": 695,
+      "license_type": "upgrade",
+      "product_id": "279179"
+    },
+    {
+      "excel_name": "ActiveReports 15 Professional Edition w/ Maintenance - SITE LICENSE",
+      "sku": "APN15SM",
+      "price_eur": 23205,
+      "license_type": "other",
+      "product_id": "279196"
+    },
+    {
+      "excel_name": "ActiveReports Professional Edition Maintenance Renewal for Site Licenses",
+      "sku": "APNSMR",
+      "price_eur": 6775,
+      "license_type": "renewal",
+      "product_id": "279157"
+    },
+    {
+      "excel_name": "ActiveReports 15 Professional Edition w/ Maintenance - SITE LICENSE Upgrade from any prior Std Site License",
+      "sku": "APN15SMUS",
+      "price_eur": 18935,
+      "license_type": "upgrade",
+      "product_id": "279182"
+    },
+    {
+      "excel_name": "ActiveReports 15 Professional Edition w/ Maintenance -\u00a0SITE LICENSE Upgrade from any prior Pro Site License",
+      "sku": "APN15SMUP",
+      "price_eur": 16705,
+      "license_type": "upgrade",
+      "product_id": "279227"
+    },
+    {
+      "excel_name": "ActiveReports 15 Professional Edition w/ Maintenance -\u00a0SITE LICENSE Upgrade from ARN15 Std Site License",
+      "sku": "APN15SMU15S",
+      "price_eur": 13365,
+      "license_type": "upgrade",
+      "product_id": "279167"
+    },
+    {
+      "excel_name": "ActiveReports 15 Standard Edition w/ Maintenance - SITE LICENSE",
+      "sku": "ARN15SM",
+      "price_eur": 13365,
+      "license_type": "other",
+      "product_id": "279137"
+    },
+    {
+      "excel_name": "ActiveReports Standard Edition Maintenance Renewal for Site Licenses",
+      "sku": "ARNSMR",
+      "price_eur": 3895,
+      "license_type": "renewal",
+      "product_id": "279209"
+    },
+    {
+      "excel_name": "ActiveReports 15 Standard Edition w/ Maintenance \u00a0- SITE LICENSE Upgrade from any prior Std version",
+      "sku": "ARN15SMUS",
+      "price_eur": 9655,
+      "license_type": "upgrade",
+      "product_id": "279132"
+    },
+    {
+      "excel_name": "ActiveReportsJS v5 Deployment License Three (3) Hostname - PERPETUAL",
+      "sku": "ARJS05DP03",
+      "price_eur": 4055,
+      "license_type": "perpetual",
+      "product_id": "279292"
+    },
+    {
+      "excel_name": "ActiveReportsJS Deployment License Three (3) Hostname - PERPETUAL - Annual Maintenance",
+      "sku": "ARJSDP03M",
+      "price_eur": 815,
+      "license_type": "perpetual",
+      "product_id": "279378"
+    },
+    {
+      "excel_name": "ActiveReportsJS Deployment License Three (3) Hostname - PERPETUAL - Annual Maintenance Renewal ",
+      "sku": "ARJSDP03MR",
+      "price_eur": 815,
+      "license_type": "perpetual",
+      "product_id": "279325"
+    },
+    {
+      "excel_name": "ActiveReportsJS v5 Deployment License Three (3) Hostname - PERPETUAL - Upgrade",
+      "sku": "ARJS05DP03U",
+      "price_eur": 2025,
+      "license_type": "upgrade",
+      "product_id": "279418"
+    },
+    {
+      "excel_name": "ActiveReportsJS v5 Deployment License Single Domain (*.domain) - PERPETUAL",
+      "sku": "ARJS05DUP01",
+      "price_eur": 12995,
+      "license_type": "perpetual",
+      "product_id": "279343"
+    },
+    {
+      "excel_name": "ActiveReportsJS Deployment License Single Domain (*.domain) - PERPETUAL - Annual Maintenance",
+      "sku": "ARJSDUP01M",
+      "price_eur": 2595,
+      "license_type": "perpetual",
+      "product_id": "279371"
+    },
+    {
+      "excel_name": "ActiveReportsJS Deployment License Single Domain (.domain) - PERPETUAL - Annual Maintenance Renewal ",
+      "sku": "ARJSDUP01MR",
+      "price_eur": 2595,
+      "license_type": "perpetual",
+      "product_id": "279338"
+    },
+    {
+      "excel_name": "ActiveReportsJS v5 Deployment License Single Domain (*.domain) - PERPETUAL - Upgrade",
+      "sku": "ARJS05DUP01U",
+      "price_eur": 6495,
+      "license_type": "upgrade",
+      "product_id": "279406"
+    },
+    {
+      "excel_name": "ActiveReportsJS v5 Deployment License Unlimited Domains (*.*) - ANNUAL",
+      "sku": "ARJS05DUA02",
+      "price_eur": 6035,
+      "license_type": "other",
+      "product_id": "279320"
+    },
+    {
+      "excel_name": "ActiveReportsJS Unlimited Domains (*.*) - ANNUAL DUES",
+      "sku": "ARJS02AF",
+      "price_eur": 6035,
+      "license_type": "subscription",
+      "product_id": "279365"
+    },
+    {
+      "excel_name": "ActiveReportsJS v5 Deployment License Unlimited Domains (*.*) - PERPETUAL",
+      "sku": "ARJS05DUP02",
+      "price_eur": 21115,
+      "license_type": "perpetual",
+      "product_id": "279259"
+    },
+    {
+      "excel_name": "ActiveReportsJS Deployment License Unlimited Domains (*.*) - PERPETUAL - Annual Maintenance",
+      "sku": "ARJSDUP02M",
+      "price_eur": 4225,
+      "license_type": "perpetual",
+      "product_id": "279323"
+    },
+    {
+      "excel_name": "ActiveReportsJS Deployment License Unlimited Domains (*.*) - PERPETUAL - Annual Maintenance Renewal ",
+      "sku": "ARJSDUP02MR",
+      "price_eur": 4225,
+      "license_type": "perpetual",
+      "product_id": "279374"
+    },
+    {
+      "excel_name": "ActiveReportsJS v5 Deployment License Unlimited Domains (*.*) - PERPETUAL - Upgrade",
+      "sku": "ARJS05DUP02U",
+      "price_eur": 10555,
+      "license_type": "upgrade",
+      "product_id": "279304"
+    },
+    {
+      "excel_name": "Spread.NET 18 Developer License with Maintenance - New License",
+      "sku": "SS18M01",
+      "price_eur": 1395,
+      "license_type": "new-license",
+      "product_id": "279614"
+    },
+    {
+      "excel_name": "Spread.NET Maintenance Renewal",
+      "sku": "SSMR03",
+      "price_eur": 745,
+      "license_type": "renewal",
+      "product_id": "279754"
+    },
+    {
+      "excel_name": "Spread.NET 18 Developer License with Maintenance - Upgrade from any earlier version",
+      "sku": "SS18M02",
+      "price_eur": 1205,
+      "license_type": "upgrade",
+      "product_id": "279603"
+    },
+    {
+      "excel_name": "SpreadJS 18 Developer License with Maintenance - New License + Single Hostname Deployment License - ANNUAL",
+      "sku": "SJS18M01",
+      "price_eur": 1395,
+      "license_type": "new-license",
+      "product_id": "279886"
+    },
+    {
+      "excel_name": "SpreadJS 18 Developer License with Maintenance - New License",
+      "sku": "SJS18M02",
+      "price_eur": 925,
+      "license_type": "new-license",
+      "product_id": "279949"
+    },
+    {
+      "excel_name": "SpreadJS Maintenance Renewal for Developer and Deployment",
+      "sku": "SJSDDM02-R",
+      "price_eur": 835,
+      "license_type": "renewal",
+      "product_id": "280101"
+    },
+    {
+      "excel_name": "SpreadJS Maintenance Renewal - Developer",
+      "sku": "SJSM02-R",
+      "price_eur": 465,
+      "license_type": "renewal",
+      "product_id": "280119"
+    },
+    {
+      "excel_name": "SpreadJS 18 Developer License with Maintenance - Upgrade from any earlier version + Single Hostname Deployment License - ANNUAL",
+      "sku": "SJS18MU01",
+      "price_eur": 1205,
+      "license_type": "upgrade",
+      "product_id": "279863"
+    },
+    {
+      "excel_name": "SpreadJS 18 Developer License with Maintenance - Upgrade from any earlier version",
+      "sku": "SJS18MU03",
+      "price_eur": 745,
+      "license_type": "upgrade",
+      "product_id": "279802"
+    },
+    {
+      "excel_name": "SpreadJS 18 Deployment License Single Hostname - PERPETUAL",
+      "sku": "SJS18DP00",
+      "price_eur": 2785,
+      "license_type": "perpetual",
+      "product_id": "279902"
+    },
+    {
+      "excel_name": "SpreadJS 18 Deployment License Three (3) to Five (5) Hostname - PERPETUAL",
+      "sku": "SJS18DP01",
+      "price_eur": 6495,
+      "license_type": "perpetual",
+      "product_id": "279865"
+    },
+    {
+      "excel_name": "SpreadJS 18 Deployment License Single Domain or SaaS (*.domain)\u00a0Hostname - PERPETUAL",
+      "sku": "SJS18DSDP01",
+      "price_eur": 40605,
+      "license_type": "perpetual",
+      "product_id": "279903"
+    },
+    {
+      "excel_name": "SpreadJS 18 Deployment License 5 Named Hostnames or SaaS - PERPETUAL",
+      "sku": "SJS18D5CP01",
+      "price_eur": 40605,
+      "license_type": "perpetual",
+      "product_id": "279852"
+    },
+    {
+      "excel_name": "SpreadJS 18 Deployment License Unlimited Domain or SaaS (*.*) - PERPETUAL",
+      "sku": "SJS18DP03",
+      "price_eur": 64975,
+      "license_type": "perpetual",
+      "product_id": "279835"
+    },
+    {
+      "excel_name": "SpreadJS 18 Designer Ribbon Component Addon Deployment License\u00a0Single Hostname - PERPETUAL",
+      "sku": "SJS18DESDP00",
+      "price_eur": 1665,
+      "license_type": "perpetual",
+      "product_id": "280057"
+    },
+    {
+      "excel_name": "SpreadJS 18 Designer Ribbon Component Addon Deployment License Three (3) to Five (5) Hostname - PERPETUAL",
+      "sku": "SJS18DESDP01",
+      "price_eur": 4545,
+      "license_type": "perpetual",
+      "product_id": "280107"
+    },
+    {
+      "excel_name": "SpreadJS 18 Designer Ribbon Component Addon Deployment License\u00a0Single Domain or SaaS (*.domain) - PERPETUAL",
+      "sku": "SJS18DESDP02",
+      "price_eur": 13645,
+      "license_type": "perpetual",
+      "product_id": "279995"
+    },
+    {
+      "excel_name": "SpreadJS 18 Designer Ribbon Component Addon Deployment License 5 Named Hostnames or SaaS - PERPETUAL",
+      "sku": "SJS18DESD5CP01",
+      "price_eur": 13645,
+      "license_type": "perpetual",
+      "product_id": "280089"
+    },
+    {
+      "excel_name": "SpreadJS 18 Designer Ribbon Component Addon Deployment License\u00a0Unlimited Domain or SaaS (*.*) - PERPETUAL",
+      "sku": "SJS18DESDP03",
+      "price_eur": 21815,
+      "license_type": "perpetual",
+      "product_id": "280078"
+    },
+    {
+      "excel_name": "SpreadJS 18 Pivot Table Addon Deployment License\u00a0Single Hostname - PERPETUAL",
+      "sku": "SJS18PTDP00",
+      "price_eur": 1855,
+      "license_type": "perpetual",
+      "product_id": "280131"
+    },
+    {
+      "excel_name": "SpreadJS 18 Pivot Table Addon Deployment License\u00a0Three (3) to Five (5) Hostname - PERPETUAL",
+      "sku": "SJS18PTDP01",
+      "price_eur": 3155,
+      "license_type": "perpetual",
+      "product_id": "280054"
+    },
+    {
+      "excel_name": "SpreadJS 18 Pivot Table Addon Deployment License\u00a0Single Domain or SaaS (*.domain)\u00a0Hostname - PERPETUAL",
+      "sku": "SJS18PTDP02",
+      "price_eur": 27845,
+      "license_type": "perpetual",
+      "product_id": "279993"
+    },
+    {
+      "excel_name": "SpreadJS 18 Pivot Table Addon Deployment License 5 Named Hostnames or SaaS - PERPETUAL",
+      "sku": "SJS18PT5CDP01",
+      "price_eur": 27845,
+      "license_type": "perpetual",
+      "product_id": "279968"
+    },
+    {
+      "excel_name": "SpreadJS 18 Pivot Table Addon Deployment License\u00a0Unlimited Domain or SaaS (*.*) - PERPETUAL",
+      "sku": "SJS18PTDP03",
+      "price_eur": 43625,
+      "license_type": "perpetual",
+      "product_id": "280042"
+    },
+    {
+      "excel_name": "SpreadJS 18 GanttSheet Addon Deployment License\u00a0Single Hostname - PERPETUAL",
+      "sku": "SJS18GSDP00",
+      "price_eur": 1665,
+      "license_type": "perpetual",
+      "product_id": "279937"
+    },
+    {
+      "excel_name": "SpreadJS 18 GanttSheet Addon Deployment License\u00a0Three (3) to Five (5) Hostname - PERPETUAL",
+      "sku": "SJS18GSDP01",
+      "price_eur": 5845,
+      "license_type": "perpetual",
+      "product_id": "279832"
+    },
+    {
+      "excel_name": "SpreadJS 18 GanttSheet Addon Deployment License\u00a0Single Domain or SaaS (*.domain)\u00a0Hostname - PERPETUAL",
+      "sku": "SJS18GSDP02",
+      "price_eur": 14665,
+      "license_type": "perpetual",
+      "product_id": "279859"
+    },
+    {
+      "excel_name": "SpreadJS 18 GanttSheet Addon Deployment License 5 Named Hostnames or SaaS - PERPETUAL",
+      "sku": "SJS18GS5CDP01",
+      "price_eur": 14665,
+      "license_type": "perpetual",
+      "product_id": "279820"
+    },
+    {
+      "excel_name": "SpreadJS 18 GanttSheet Addon Deployment License\u00a0Unlimited Domain or SaaS (*.*) - PERPETUAL",
+      "sku": "SJS18GSDP03",
+      "price_eur": 23395,
+      "license_type": "perpetual",
+      "product_id": "279806"
+    },
+    {
+      "excel_name": "SpreadJS 18 ReportSheet Addon Deployment License\u00a0Single Hostname - PERPETUAL",
+      "sku": "SJS18RSDP00",
+      "price_eur": 1665,
+      "license_type": "perpetual",
+      "product_id": "279946"
+    },
+    {
+      "excel_name": "SpreadJS 18 ReportSheet Addon Deployment License\u00a0Three (3) to Five (5) Hostname - PERPETUAL",
+      "sku": "SJS18RSDP01",
+      "price_eur": 5845,
+      "license_type": "perpetual",
+      "product_id": "279888"
+    },
+    {
+      "excel_name": "SpreadJS 18 ReportSheet Addon Deployment License\u00a0Single Domain or SaaS (*.domain)\u00a0Hostname - PERPETUAL",
+      "sku": "SJS18RSDP02",
+      "price_eur": 14665,
+      "license_type": "perpetual",
+      "product_id": "279923"
+    },
+    {
+      "excel_name": "SpreadJS 18 ReportSheet Addon Deployment License 5 Named Hostnames or SaaS - PERPETUAL",
+      "sku": "SJS18RS5CDP01",
+      "price_eur": 14665,
+      "license_type": "perpetual",
+      "product_id": "279897"
+    },
+    {
+      "excel_name": "SpreadJS 18 ReportSheet Addon Deployment License\u00a0Unlimited Domain or SaaS (*.*) - PERPETUAL",
+      "sku": "SJS18RSDP03",
+      "price_eur": 23395,
+      "license_type": "perpetual",
+      "product_id": "279877"
+    },
+    {
+      "excel_name": "SpreadJS 18 DataChart Addon Deployment License\u00a0Single Hostname - PERPETUAL",
+      "sku": "SJS18DCDP00",
+      "price_eur": 1665,
+      "license_type": "perpetual",
+      "product_id": "279950"
+    },
+    {
+      "excel_name": "SpreadJS 18 DataChart Addon Deployment License\u00a0Three (3) to Five (5) Hostname - PERPETUAL",
+      "sku": "SJS18DCDP01",
+      "price_eur": 5845,
+      "license_type": "perpetual",
+      "product_id": "279830"
+    },
+    {
+      "excel_name": "SpreadJS 18 DataChart Addon Deployment License\u00a0Single Domain or SaaS (*.domain)\u00a0Hostname - PERPETUAL",
+      "sku": "SJS18DCDP02",
+      "price_eur": 14665,
+      "license_type": "perpetual",
+      "product_id": "279969"
+    },
+    {
+      "excel_name": "SpreadJS 18 DataChart Addon Deployment License 5 Named Hostnames or SaaS - PERPETUAL",
+      "sku": "SJS18DC5CDP01",
+      "price_eur": 14665,
+      "license_type": "perpetual",
+      "product_id": "280081"
+    },
+    {
+      "excel_name": "SpreadJS 18 DataChart Addon Deployment License\u00a0Unlimited Domain or SaaS (*.*) - PERPETUAL",
+      "sku": "SJS18DCDP03",
+      "price_eur": 23395,
+      "license_type": "perpetual",
+      "product_id": "280124"
+    },
+    {
+      "excel_name": "DataViewsJS v1 Single (1) Hostname Deployment License \u2013 ANNUAL",
+      "sku": "DVJS01DA03 ",
+      "price_eur": 999,
+      "license_type": "other",
+      "product_id": "DVJS01DA03 "
+    },
+    {
+      "excel_name": "DataViewsJS v1 Single (1) Hostname Deployment License \u2013  PERPETUAL",
+      "sku": "DVJS01DP03",
+      "price_eur": 3245,
+      "license_type": "perpetual",
+      "product_id": "279423"
+    },
+    {
+      "excel_name": "DataViewsJS v1 Single Domain (*.domain) Deployment License - PERPETUAL",
+      "sku": "DVJS01DUP01",
+      "price_eur": 11695,
+      "license_type": "perpetual",
+      "product_id": "279434"
+    },
+    {
+      "excel_name": "DataViewsJS v1 Unlimited Domains (*.*) Deployment License - ANNUAL",
+      "sku": "DVJS01DUA02",
+      "price_eur": 5295,
+      "license_type": "other",
+      "product_id": "279494"
+    },
+    {
+      "excel_name": "DataViewsJS v1 Unlimited Domains (*.*) Deployment License - PERPETUAL",
+      "sku": "DVJS01DUP02",
+      "price_eur": 18515,
+      "license_type": "perpetual",
+      "product_id": "279422"
+    },
+    {
+      "excel_name": "Wijmo Core - Renewal License",
+      "sku": "ESD-WIJMO-5-R",
+      "price_eur": 325,
+      "license_type": "renewal",
+      "product_id": "280199"
+    },
+    {
+      "excel_name": "Wijmo Enterprise with Platinum Support - Renewal License",
+      "sku": "ESD-WIJMO-ENT-PLAT-R",
+      "price_eur": 555,
+      "license_type": "renewal",
+      "product_id": "280183"
+    },
+    {
+      "excel_name": "Wijmo Enterprise with Platinum Support - Upgrade License",
+      "sku": "ESD-WIJMO-ENT-PLAT-U",
+      "price_eur": 645,
+      "license_type": "upgrade",
+      "product_id": "280179"
+    },
+    {
+      "excel_name": "Wijmo Deployment License Single Hostname - Annual Renewal",
+      "sku": "WIJMODSH-R",
+      "price_eur": 465,
+      "license_type": "renewal",
+      "product_id": "280212"
+    },
+    {
+      "excel_name": "Wijmo 3 - Renewal License",
+      "sku": "ESD-WIJMO-PRO-R",
+      "price_eur": 225,
+      "license_type": "renewal",
+      "product_id": "280038"
+    },
+    {
+      "excel_name": "Document Solutions for Excel, .NET Developer - Renewal",
+      "sku": "DSEXCELD-R",
+      "price_eur": 605,
+      "license_type": "renewal",
+      "product_id": "278287"
+    },
+    {
+      "excel_name": "Document Solutions for Excel, .NET v8 Developer - Upgrade",
+      "sku": "DSEXCEL8D-U",
+      "price_eur": 785,
+      "license_type": "upgrade",
+      "product_id": "278179"
+    },
+    {
+      "excel_name": "Document Solutions for Excel, .NET Developer Unlimited - Renewal",
+      "sku": "DSEXCELDU-R",
+      "price_eur": 1715,
+      "license_type": "renewal",
+      "product_id": "278300"
+    },
+    {
+      "excel_name": "Document Solutions for Excel, .NET v8 Developer Unlimited - Upgrade",
+      "sku": "DSEXCEL8DU-U",
+      "price_eur": 2225,
+      "license_type": "upgrade",
+      "product_id": "278184"
+    },
+    {
+      "excel_name": "Document Solutions for Excel, .NET Team Unlimited - Renewal",
+      "sku": "DSEXCELTU-R",
+      "price_eur": 3525,
+      "license_type": "renewal",
+      "product_id": "278289"
+    },
+    {
+      "excel_name": "Document Solutions for Excel, .NET v8 Team Unlimited - Upgrade",
+      "sku": "DSEXCEL8TU-U",
+      "price_eur": 4595,
+      "license_type": "upgrade",
+      "product_id": "278243"
+    },
+    {
+      "excel_name": "Document Solutions Data Viewer Professional One (1) Hostname - ANNUAL RENEWAL",
+      "sku": "DSDVPDA03-R",
+      "price_eur": 925,
+      "license_type": "renewal",
+      "product_id": "278507"
+    },
+    {
+      "excel_name": "Document Solutions Data Viewer Professional v8 Deployment License One (1) Hostname - PERPETUAL",
+      "sku": "DSDVP8DP03",
+      "price_eur": 3245,
+      "license_type": "perpetual",
+      "product_id": "278226"
+    },
+    {
+      "excel_name": "Document Solutions Data Viewer Professional Single Domain (*.domain) - ANNUAL RENEWAL",
+      "sku": "DSDVPDUA01-R",
+      "price_eur": 3345,
+      "license_type": "renewal",
+      "product_id": "278355"
+    },
+    {
+      "excel_name": "Document Solutions Data Viewer Professional v8 Deployment License Single Domain (*.domain) - PERPETUAL",
+      "sku": "DSDVP8DUP01",
+      "price_eur": 11695,
+      "license_type": "perpetual",
+      "product_id": "278171"
+    },
+    {
+      "excel_name": "Document Solutions Data Viewer Professional Unlimited Domain (*.*) - ANNUAL RENEWAL",
+      "sku": "DSDVPRDUA02-R",
+      "price_eur": 5295,
+      "license_type": "renewal",
+      "product_id": "278407"
+    },
+    {
+      "excel_name": "Document Solutions Data Viewer Professional v8 Deployment License Unlimited Domain (*.*) - PERPETUAL",
+      "sku": "DSDVP8DUP02",
+      "price_eur": 18565,
+      "license_type": "perpetual",
+      "product_id": "278156"
+    },
+    {
+      "excel_name": "Document Solutions for PDF Developer - Renewal",
+      "sku": "DSPDFD-R",
+      "price_eur": 605,
+      "license_type": "renewal",
+      "product_id": "278471"
+    },
+    {
+      "excel_name": "Document Solutions for PDF v8 Developer - Upgrade",
+      "sku": "DSPDF8D-U",
+      "price_eur": 785,
+      "license_type": "upgrade",
+      "product_id": "278298"
+    },
+    {
+      "excel_name": "Document Solutions for PDF Developer Unlimited - Renewal",
+      "sku": "DSPDFDU-R",
+      "price_eur": 1715,
+      "license_type": "renewal",
+      "product_id": "278482"
+    },
+    {
+      "excel_name": "Document Solutions for PDF v8 Developer Unlimited - Upgrade",
+      "sku": "DSPDF8DU-U",
+      "price_eur": 2225,
+      "license_type": "upgrade",
+      "product_id": "278313"
+    },
+    {
+      "excel_name": "Document Solutions for PDF Team Unlimited - Renewal",
+      "sku": "DSPDFTU-R",
+      "price_eur": 3525,
+      "license_type": "renewal",
+      "product_id": "278368"
+    },
+    {
+      "excel_name": "Document Solutions for PDF v8 Team Unlimited - Upgrade",
+      "sku": "DSPDF8TU-U",
+      "price_eur": 4595,
+      "license_type": "upgrade",
+      "product_id": "278284"
+    },
+    {
+      "excel_name": "Document Solutions for PDF Developer with DsPdfViewer Professional 1 Hostname ANNUAL - Renewal",
+      "sku": "GCPDFDP01-R",
+      "price_eur": 1525,
+      "license_type": "renewal",
+      "product_id": "278559"
+    },
+    {
+      "excel_name": "Document Solutions for PDF Developer Unlimited with DsPdfViewer Professional 1 Hostname ANNUAL - Renewal",
+      "sku": "GCPDFDUP01-R",
+      "price_eur": 2645,
+      "license_type": "renewal",
+      "product_id": "278394"
+    },
+    {
+      "excel_name": "Document Solutions for PDF Team Unlimited with DsPdfViewer Professional 1 Hostname ANNUAL - Renewal",
+      "sku": "GCPDFTUP01-R",
+      "price_eur": 4455,
+      "license_type": "renewal",
+      "product_id": "278531"
+    },
+    {
+      "excel_name": "Document Solutions PDF Viewer Professional One (1) Hostname - ANNUAL RENEWAL",
+      "sku": "DSPDFVPDA03-R",
+      "price_eur": 925,
+      "license_type": "renewal",
+      "product_id": "278666"
+    },
+    {
+      "excel_name": "Document Solutions PDF Viewer Professional v8 Deployment License One (1) Hostname - PERPETUAL",
+      "sku": "DSPDFVP8DP03",
+      "price_eur": 3245,
+      "license_type": "perpetual",
+      "product_id": "278280"
+    },
+    {
+      "excel_name": "Document Solutions PDF Viewer Professional Single Domain (*.domain) - ANNUAL RENEWAL",
+      "sku": "DSPDFVPDUA01-R",
+      "price_eur": 3345,
+      "license_type": "renewal",
+      "product_id": "278609"
+    },
+    {
+      "excel_name": "Document Solutions PDF Viewer Professional v8 Deployment License Single Domain (*.domain) - PERPETUAL",
+      "sku": "DSPDFVP8DUP01",
+      "price_eur": 11695,
+      "license_type": "perpetual",
+      "product_id": "278296"
+    },
+    {
+      "excel_name": "Document Solutions PDF Viewer Professional Unlimited Domain (*.*) - ANNUAL RENEWAL",
+      "sku": "DSPDFVPRDUA02-R",
+      "price_eur": 5295,
+      "license_type": "renewal",
+      "product_id": "278597"
+    },
+    {
+      "excel_name": "Document Solutions PDF Viewer Professional v8 Deployment License Unlimited Domain (*.*) - PERPETUAL",
+      "sku": "DSPDFVP8DUP02",
+      "price_eur": 18565,
+      "license_type": "perpetual",
+      "product_id": "278321"
+    },
+    {
+      "excel_name": "Document Solutions for Excel, Java Edition Developer - Renewal",
+      "sku": "DSEXCELJD-R",
+      "price_eur": 605,
+      "license_type": "renewal",
+      "product_id": "278409"
+    },
+    {
+      "excel_name": "Document Solutions for Excel, Java Edition v8 Developer - Upgrade",
+      "sku": "DSEXCELJ8D-U",
+      "price_eur": 785,
+      "license_type": "upgrade",
+      "product_id": "278222"
+    },
+    {
+      "excel_name": "Document Solutions for Excel, Java Edition Developer Unlimited - Renewal",
+      "sku": "DSEXCELJDU-R",
+      "price_eur": 1715,
+      "license_type": "renewal",
+      "product_id": "278487"
+    },
+    {
+      "excel_name": "Document Solutions for Excel, Java Edition v8 Developer Unlimited - Upgrade",
+      "sku": "DSEXCELJ8DU-U",
+      "price_eur": 2225,
+      "license_type": "upgrade",
+      "product_id": "278232"
+    },
+    {
+      "excel_name": "Document Solutions for Excel, Java Edition Team Unlimited - Renewal",
+      "sku": "DSEXCELJTU-R",
+      "price_eur": 3525,
+      "license_type": "renewal",
+      "product_id": "278504"
+    },
+    {
+      "excel_name": "Document Solutions for Excel, Java Edition v8 Team Unlimited - Upgrade",
+      "sku": "DSEXCELJ8TU-U",
+      "price_eur": 4595,
+      "license_type": "upgrade",
+      "product_id": "278189"
+    },
+    {
+      "excel_name": "Document Solutions Data Viewer Professional One (1) Hostname - ANNUAL RENEWAL",
+      "sku": "DSDVPDA03-R",
+      "price_eur": 925,
+      "license_type": "renewal",
+      "product_id": "278507"
+    },
+    {
+      "excel_name": "Document Solutions Data Viewer Professional v8 Deployment License One (1) Hostname - PERPETUAL",
+      "sku": "DSDVP8DP03",
+      "price_eur": 3245,
+      "license_type": "perpetual",
+      "product_id": "278226"
+    },
+    {
+      "excel_name": "Document Solutions Data Viewer Professional Single Domain (*.domain) - ANNUAL RENEWAL",
+      "sku": "DSDVPDUA01-R",
+      "price_eur": 3345,
+      "license_type": "renewal",
+      "product_id": "278355"
+    },
+    {
+      "excel_name": "Document Solutions Data Viewer Professional v8 Deployment License Single Domain (*.domain) - PERPETUAL",
+      "sku": "DSDVP8DUP01",
+      "price_eur": 11695,
+      "license_type": "perpetual",
+      "product_id": "278171"
+    },
+    {
+      "excel_name": "Document Solutions Data Viewer Professional Unlimited Domain (*.*) - ANNUAL RENEWAL",
+      "sku": "DSDVPRDUA02-R",
+      "price_eur": 5295,
+      "license_type": "renewal",
+      "product_id": "278407"
+    },
+    {
+      "excel_name": "Document Solutions Data Viewer Professional v8 Deployment License Unlimited Domain (*.*) - PERPETUAL",
+      "sku": "DSDVP8DUP02",
+      "price_eur": 18565,
+      "license_type": "perpetual",
+      "product_id": "278156"
+    },
+    {
+      "excel_name": "Document Solutions for Word Developer - Renewal",
+      "sku": "DSWORDD-R",
+      "price_eur": 605,
+      "license_type": "renewal",
+      "product_id": "278599"
+    },
+    {
+      "excel_name": "Document Solutions for Word v8 Developer - Upgrade",
+      "sku": "DSWORD8D-U",
+      "price_eur": 785,
+      "license_type": "upgrade",
+      "product_id": "278259"
+    },
+    {
+      "excel_name": "Document Solutions for Word Developer Unlimited - Renewal",
+      "sku": "DSWORDDU-R",
+      "price_eur": 1715,
+      "license_type": "renewal",
+      "product_id": "278544"
+    },
+    {
+      "excel_name": "Document Solutions for Word v8 Developer Unlimited - Upgrade",
+      "sku": "DSWORD8DU-U",
+      "price_eur": 2225,
+      "license_type": "upgrade",
+      "product_id": "278261"
+    },
+    {
+      "excel_name": "Document Solutions for Word Team Unlimited - Renewal",
+      "sku": "DSWORDTU-R",
+      "price_eur": 3525,
+      "license_type": "renewal",
+      "product_id": "278679"
+    },
+    {
+      "excel_name": "Document Solutions for Word v8 Team Unlimited - Upgrade",
+      "sku": "DSWORD8TU-U",
+      "price_eur": 4595,
+      "license_type": "upgrade",
+      "product_id": "278286"
+    },
+    {
+      "excel_name": "Document Solutions for Imaging Developer - Renewal",
+      "sku": "DSIMAGEDU-R",
+      "price_eur": 1715,
+      "license_type": "renewal",
+      "product_id": "278352"
+    },
+    {
+      "excel_name": "Document Solutions for Imaging v8 Developer - Upgrade",
+      "sku": "DSIMAGE8D-U",
+      "price_eur": 785,
+      "license_type": "upgrade",
+      "product_id": "278291"
+    },
+    {
+      "excel_name": "Document Solutions for Imaging Developer Unlimited - Renewal",
+      "sku": "DSIMAGEDU-R",
+      "price_eur": 1715,
+      "license_type": "renewal",
+      "product_id": "278352"
+    },
+    {
+      "excel_name": "Document Solutions for Imaging v8 Developer Unlimited - Upgrade",
+      "sku": "DSIMAGE8DU-U",
+      "price_eur": 2225,
+      "license_type": "upgrade",
+      "product_id": "278281"
+    },
+    {
+      "excel_name": "Document Solutions for Imaging Team Unlimited - Renewal",
+      "sku": "DSIMAGETU-R",
+      "price_eur": 3525,
+      "license_type": "renewal",
+      "product_id": "278396"
+    },
+    {
+      "excel_name": "Document Solutions for Imaging v8 Team Unlimited - Upgrade",
+      "sku": "DSIMAGE8TU-U",
+      "price_eur": 4595,
+      "license_type": "upgrade",
+      "product_id": "278312"
+    },
+    {
+      "excel_name": "Document Solutions .NET Bundle Developer - Renewal",
+      "sku": "DSNETD-R",
+      "price_eur": 1115,
+      "license_type": "renewal",
+      "product_id": "278545"
+    },
+    {
+      "excel_name": "Document Solutions .NET Bundle v8 Developer - Upgrade",
+      "sku": "DSNET8D-U",
+      "price_eur": 1435,
+      "license_type": "upgrade",
+      "product_id": "278306"
+    },
+    {
+      "excel_name": "Document Solutions .NET Bundle Developer Unlimited - Renewal",
+      "sku": "DSNETDU-R",
+      "price_eur": 3015,
+      "license_type": "renewal",
+      "product_id": "278660"
+    },
+    {
+      "excel_name": "Document Solutions .NET Bundle v8 Developer Unlimited - Upgrade",
+      "sku": "DSNET8DU-U",
+      "price_eur": 3925,
+      "license_type": "upgrade",
+      "product_id": "278176"
+    },
+    {
+      "excel_name": "Document Solutions .NET Bundle Team Unlimited - Renewal",
+      "sku": "DSNETTU-R",
+      "price_eur": 6315,
+      "license_type": "renewal",
+      "product_id": "278626"
+    },
+    {
+      "excel_name": "Document Solutions .NET Bundle v8 Team Unlimited - Upgrade",
+      "sku": "DSNET8TU-U",
+      "price_eur": 8165,
+      "license_type": "upgrade",
+      "product_id": "278191"
+    },
+    {
+      "excel_name": "XapOptimizer - Renewal Version",
+      "sku": "ESD-XAPO-R",
+      "price_eur": 225,
+      "license_type": "renewal",
+      "product_id": "278127"
+    },
+    {
+      "excel_name": "XapOptimizer - Upgrade Version",
+      "sku": "ESD-XAPO-U",
+      "price_eur": 365,
+      "license_type": "upgrade",
+      "product_id": "278136"
+    },
+    {
+      "excel_name": "Platinum Support (for any dev tool)\u00a0\u00a0",
+      "sku": "SUPPORT-TS\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0 \u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0 ",
+      "price_eur": 300,
+      "license_type": "other",
+      "product_id": "SUPPORT-TS\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0 \u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0 "
+    },
+    {
+      "excel_name": "Additional Premier Support Incident (20+ Licenses)",
+      "sku": "SUPPORT-PREMIER ",
+      "price_eur": 300,
+      "license_type": "other",
+      "product_id": "SUPPORT-PREMIER "
+    }
+  ],
+  "missing_by_license_type": {
+    "renewal": [
+      {
+        "excel_name": "ComponentOne Studio - Enterprise Edition - Renewal",
+        "sku": "ESD-ENT-STUDIO-R",
+        "price_eur": 835,
+        "license_type": "renewal",
+        "product_id": "277382"
+      },
+      {
+        "excel_name": "ComponentOne Studio - Enterprise Edition 5 Developer Team License - Renewal",
+        "sku": "ESD-ENT-STUDIO-5PK-R",
+        "price_eur": 3705,
+        "license_type": "renewal",
+        "product_id": "277296"
+      },
+      {
+        "excel_name": "ComponentOne Studio - ActiveX Edition  - Renewal",
+        "sku": "ESD-STUDIO-R",
+        "price_eur": 595,
+        "license_type": "renewal",
+        "product_id": "277325"
+      },
+      {
+        "excel_name": "ComponentOne Studio - ASP.NET MVC Edition - Renewal",
+        "sku": "ESD-AH-STUDIO-R",
+        "price_eur": 495,
+        "license_type": "renewal",
+        "product_id": "277295"
+      },
+      {
+        "excel_name": "ComponentOne Studio - Web Forms Edition - Renewal",
+        "sku": "ESD-A-STUDIO-R",
+        "price_eur": 495,
+        "license_type": "renewal",
+        "product_id": "277437"
+      },
+      {
+        "excel_name": "ComponentOne Studio - Blazor Edition - Renewal ",
+        "sku": "ESD-BLAZOR-STUDIO-R",
+        "price_eur": 275,
+        "license_type": "renewal",
+        "product_id": "277019"
+      },
+      {
+        "excel_name": "ComponentOne Studio - Data Services Edition - Renewal",
+        "sku": "ESD-DS-STUDIO-R",
+        "price_eur": 495,
+        "license_type": "renewal",
+        "product_id": "276986"
+      },
+      {
+        "excel_name": "ComponentOne Studio - UWP Edition  - Renewal",
+        "sku": "ESD-STUDIO-UWP-R",
+        "price_eur": 415,
+        "license_type": "renewal",
+        "product_id": "276970"
+      },
+      {
+        "excel_name": "ComponentOne Studio - WinForms Edition - Renewal",
+        "sku": "ESD-N-STUDIO-R",
+        "price_eur": 555,
+        "license_type": "renewal",
+        "product_id": "277472"
+      },
+      {
+        "excel_name": "ComponentOne Studio - Winforms Data Services Edition - Renewal",
+        "sku": "ESD-WDS-STUDIO-R",
+        "price_eur": 715,
+        "license_type": "renewal",
+        "product_id": "276981"
+      },
+      {
+        "excel_name": "ComponentOne WinUI & MAUI Edition - Renewal",
+        "sku": "ESD-WM-STUDIO-R",
+        "price_eur": 555,
+        "license_type": "renewal",
+        "product_id": "277020"
+      },
+      {
+        "excel_name": "ComponentOne Studio - WinUI Edition - Renewal",
+        "sku": "ESD-WINUI-STUDIO-R",
+        "price_eur": 225,
+        "license_type": "renewal",
+        "product_id": "276934"
+      },
+      {
+        "excel_name": "ComponentOne Studio - WPF Edition - Renewal",
+        "sku": "ESD-W-STUDIO-R",
+        "price_eur": 555,
+        "license_type": "renewal",
+        "product_id": "277537"
+      },
+      {
+        "excel_name": "ComponentOne Studio - Silverlight Edition- Renewal",
+        "sku": "ESD-S-STUDIO-R",
+        "price_eur": 665,
+        "license_type": "renewal",
+        "product_id": "277554"
+      },
+      {
+        "excel_name": "ComponentOne Studio - LightSwitch Edition - Renewal",
+        "sku": "ESD-LTS-STUDIO-R",
+        "price_eur": 605,
+        "license_type": "renewal",
+        "product_id": "277489"
+      },
+      {
+        "excel_name": "ComponentOne Studio for Xamarin - Renewal ",
+        "sku": "ESD-XUNI-ENT-R",
+        "price_eur": 415,
+        "license_type": "renewal",
+        "product_id": "278944"
+      },
+      {
+        "excel_name": "ComponentOne Xamarin.iOS Edition- Renewal",
+        "sku": "ESD-XUNI-IOS-R",
+        "price_eur": 225,
+        "license_type": "renewal",
+        "product_id": "278966"
+      },
+      {
+        "excel_name": "ComponentOne Xamarin.Android Edition- Renewal",
+        "sku": "ESD-XUNI-AND-R",
+        "price_eur": 225,
+        "license_type": "renewal",
+        "product_id": "278938"
+      },
+      {
+        "excel_name": "ActiveReports Professional Edition Maintenance Renewal",
+        "sku": "APNMR",
+        "price_eur": 925,
+        "license_type": "renewal",
+        "product_id": "279144"
+      },
+      {
+        "excel_name": "ActiveReports Standard Edition Maintenance Renewal",
+        "sku": "ARNMR",
+        "price_eur": 645,
+        "license_type": "renewal",
+        "product_id": "279220"
+      },
+      {
+        "excel_name": "ActiveReports Professional Edition Maintenance Renewal for Site Licenses",
+        "sku": "APNSMR",
+        "price_eur": 6775,
+        "license_type": "renewal",
+        "product_id": "279157"
+      },
+      {
+        "excel_name": "ActiveReports Standard Edition Maintenance Renewal for Site Licenses",
+        "sku": "ARNSMR",
+        "price_eur": 3895,
+        "license_type": "renewal",
+        "product_id": "279209"
+      },
+      {
+        "excel_name": "Spread.NET Maintenance Renewal",
+        "sku": "SSMR03",
+        "price_eur": 745,
+        "license_type": "renewal",
+        "product_id": "279754"
+      },
+      {
+        "excel_name": "SpreadJS Maintenance Renewal for Developer and Deployment",
+        "sku": "SJSDDM02-R",
+        "price_eur": 835,
+        "license_type": "renewal",
+        "product_id": "280101"
+      },
+      {
+        "excel_name": "SpreadJS Maintenance Renewal - Developer",
+        "sku": "SJSM02-R",
+        "price_eur": 465,
+        "license_type": "renewal",
+        "product_id": "280119"
+      },
+      {
+        "excel_name": "Wijmo Core - Renewal License",
+        "sku": "ESD-WIJMO-5-R",
+        "price_eur": 325,
+        "license_type": "renewal",
+        "product_id": "280199"
+      },
+      {
+        "excel_name": "Wijmo Enterprise with Platinum Support - Renewal License",
+        "sku": "ESD-WIJMO-ENT-PLAT-R",
+        "price_eur": 555,
+        "license_type": "renewal",
+        "product_id": "280183"
+      },
+      {
+        "excel_name": "Wijmo Deployment License Single Hostname - Annual Renewal",
+        "sku": "WIJMODSH-R",
+        "price_eur": 465,
+        "license_type": "renewal",
+        "product_id": "280212"
+      },
+      {
+        "excel_name": "Wijmo 3 - Renewal License",
+        "sku": "ESD-WIJMO-PRO-R",
+        "price_eur": 225,
+        "license_type": "renewal",
+        "product_id": "280038"
+      },
+      {
+        "excel_name": "Document Solutions for Excel, .NET Developer - Renewal",
+        "sku": "DSEXCELD-R",
+        "price_eur": 605,
+        "license_type": "renewal",
+        "product_id": "278287"
+      },
+      {
+        "excel_name": "Document Solutions for Excel, .NET Developer Unlimited - Renewal",
+        "sku": "DSEXCELDU-R",
+        "price_eur": 1715,
+        "license_type": "renewal",
+        "product_id": "278300"
+      },
+      {
+        "excel_name": "Document Solutions for Excel, .NET Team Unlimited - Renewal",
+        "sku": "DSEXCELTU-R",
+        "price_eur": 3525,
+        "license_type": "renewal",
+        "product_id": "278289"
+      },
+      {
+        "excel_name": "Document Solutions Data Viewer Professional One (1) Hostname - ANNUAL RENEWAL",
+        "sku": "DSDVPDA03-R",
+        "price_eur": 925,
+        "license_type": "renewal",
+        "product_id": "278507"
+      },
+      {
+        "excel_name": "Document Solutions Data Viewer Professional Single Domain (*.domain) - ANNUAL RENEWAL",
+        "sku": "DSDVPDUA01-R",
+        "price_eur": 3345,
+        "license_type": "renewal",
+        "product_id": "278355"
+      },
+      {
+        "excel_name": "Document Solutions Data Viewer Professional Unlimited Domain (*.*) - ANNUAL RENEWAL",
+        "sku": "DSDVPRDUA02-R",
+        "price_eur": 5295,
+        "license_type": "renewal",
+        "product_id": "278407"
+      },
+      {
+        "excel_name": "Document Solutions for PDF Developer - Renewal",
+        "sku": "DSPDFD-R",
+        "price_eur": 605,
+        "license_type": "renewal",
+        "product_id": "278471"
+      },
+      {
+        "excel_name": "Document Solutions for PDF Developer Unlimited - Renewal",
+        "sku": "DSPDFDU-R",
+        "price_eur": 1715,
+        "license_type": "renewal",
+        "product_id": "278482"
+      },
+      {
+        "excel_name": "Document Solutions for PDF Team Unlimited - Renewal",
+        "sku": "DSPDFTU-R",
+        "price_eur": 3525,
+        "license_type": "renewal",
+        "product_id": "278368"
+      },
+      {
+        "excel_name": "Document Solutions for PDF Developer with DsPdfViewer Professional 1 Hostname ANNUAL - Renewal",
+        "sku": "GCPDFDP01-R",
+        "price_eur": 1525,
+        "license_type": "renewal",
+        "product_id": "278559"
+      },
+      {
+        "excel_name": "Document Solutions for PDF Developer Unlimited with DsPdfViewer Professional 1 Hostname ANNUAL - Renewal",
+        "sku": "GCPDFDUP01-R",
+        "price_eur": 2645,
+        "license_type": "renewal",
+        "product_id": "278394"
+      },
+      {
+        "excel_name": "Document Solutions for PDF Team Unlimited with DsPdfViewer Professional 1 Hostname ANNUAL - Renewal",
+        "sku": "GCPDFTUP01-R",
+        "price_eur": 4455,
+        "license_type": "renewal",
+        "product_id": "278531"
+      },
+      {
+        "excel_name": "Document Solutions PDF Viewer Professional One (1) Hostname - ANNUAL RENEWAL",
+        "sku": "DSPDFVPDA03-R",
+        "price_eur": 925,
+        "license_type": "renewal",
+        "product_id": "278666"
+      },
+      {
+        "excel_name": "Document Solutions PDF Viewer Professional Single Domain (*.domain) - ANNUAL RENEWAL",
+        "sku": "DSPDFVPDUA01-R",
+        "price_eur": 3345,
+        "license_type": "renewal",
+        "product_id": "278609"
+      },
+      {
+        "excel_name": "Document Solutions PDF Viewer Professional Unlimited Domain (*.*) - ANNUAL RENEWAL",
+        "sku": "DSPDFVPRDUA02-R",
+        "price_eur": 5295,
+        "license_type": "renewal",
+        "product_id": "278597"
+      },
+      {
+        "excel_name": "Document Solutions for Excel, Java Edition Developer - Renewal",
+        "sku": "DSEXCELJD-R",
+        "price_eur": 605,
+        "license_type": "renewal",
+        "product_id": "278409"
+      },
+      {
+        "excel_name": "Document Solutions for Excel, Java Edition Developer Unlimited - Renewal",
+        "sku": "DSEXCELJDU-R",
+        "price_eur": 1715,
+        "license_type": "renewal",
+        "product_id": "278487"
+      },
+      {
+        "excel_name": "Document Solutions for Excel, Java Edition Team Unlimited - Renewal",
+        "sku": "DSEXCELJTU-R",
+        "price_eur": 3525,
+        "license_type": "renewal",
+        "product_id": "278504"
+      },
+      {
+        "excel_name": "Document Solutions Data Viewer Professional One (1) Hostname - ANNUAL RENEWAL",
+        "sku": "DSDVPDA03-R",
+        "price_eur": 925,
+        "license_type": "renewal",
+        "product_id": "278507"
+      },
+      {
+        "excel_name": "Document Solutions Data Viewer Professional Single Domain (*.domain) - ANNUAL RENEWAL",
+        "sku": "DSDVPDUA01-R",
+        "price_eur": 3345,
+        "license_type": "renewal",
+        "product_id": "278355"
+      },
+      {
+        "excel_name": "Document Solutions Data Viewer Professional Unlimited Domain (*.*) - ANNUAL RENEWAL",
+        "sku": "DSDVPRDUA02-R",
+        "price_eur": 5295,
+        "license_type": "renewal",
+        "product_id": "278407"
+      },
+      {
+        "excel_name": "Document Solutions for Word Developer - Renewal",
+        "sku": "DSWORDD-R",
+        "price_eur": 605,
+        "license_type": "renewal",
+        "product_id": "278599"
+      },
+      {
+        "excel_name": "Document Solutions for Word Developer Unlimited - Renewal",
+        "sku": "DSWORDDU-R",
+        "price_eur": 1715,
+        "license_type": "renewal",
+        "product_id": "278544"
+      },
+      {
+        "excel_name": "Document Solutions for Word Team Unlimited - Renewal",
+        "sku": "DSWORDTU-R",
+        "price_eur": 3525,
+        "license_type": "renewal",
+        "product_id": "278679"
+      },
+      {
+        "excel_name": "Document Solutions for Imaging Developer - Renewal",
+        "sku": "DSIMAGEDU-R",
+        "price_eur": 1715,
+        "license_type": "renewal",
+        "product_id": "278352"
+      },
+      {
+        "excel_name": "Document Solutions for Imaging Developer Unlimited - Renewal",
+        "sku": "DSIMAGEDU-R",
+        "price_eur": 1715,
+        "license_type": "renewal",
+        "product_id": "278352"
+      },
+      {
+        "excel_name": "Document Solutions for Imaging Team Unlimited - Renewal",
+        "sku": "DSIMAGETU-R",
+        "price_eur": 3525,
+        "license_type": "renewal",
+        "product_id": "278396"
+      },
+      {
+        "excel_name": "Document Solutions .NET Bundle Developer - Renewal",
+        "sku": "DSNETD-R",
+        "price_eur": 1115,
+        "license_type": "renewal",
+        "product_id": "278545"
+      },
+      {
+        "excel_name": "Document Solutions .NET Bundle Developer Unlimited - Renewal",
+        "sku": "DSNETDU-R",
+        "price_eur": 3015,
+        "license_type": "renewal",
+        "product_id": "278660"
+      },
+      {
+        "excel_name": "Document Solutions .NET Bundle Team Unlimited - Renewal",
+        "sku": "DSNETTU-R",
+        "price_eur": 6315,
+        "license_type": "renewal",
+        "product_id": "278626"
+      },
+      {
+        "excel_name": "XapOptimizer - Renewal Version",
+        "sku": "ESD-XAPO-R",
+        "price_eur": 225,
+        "license_type": "renewal",
+        "product_id": "278127"
+      }
+    ],
+    "upgrade": [
+      {
+        "excel_name": "ComponentOne Studio - Enterprise Edition - Upgrade Version",
+        "sku": "ESD-ENT-STUDIO-U",
+        "price_eur": 1175,
+        "license_type": "upgrade",
+        "product_id": "277368"
+      },
+      {
+        "excel_name": "ComponentOne Studio - ActiveX Edition - Upgrade Version",
+        "sku": "ESD-STUDIO-U",
+        "price_eur": 1175,
+        "license_type": "upgrade",
+        "product_id": "277406"
+      },
+      {
+        "excel_name": "ComponentOne Studio - ASP.NET MVC Edition - Upgrade",
+        "sku": "ESD-AH-STUDIO-U",
+        "price_eur": 705,
+        "license_type": "upgrade",
+        "product_id": "277398"
+      },
+      {
+        "excel_name": "ComponentOne Studio - Web Forms Edition - Upgrade Version",
+        "sku": "ESD-A-STUDIO-U",
+        "price_eur": 705,
+        "license_type": "upgrade",
+        "product_id": "277513"
+      },
+      {
+        "excel_name": "ComponentOne Studio - Blazor Edition -  Upgrade",
+        "sku": "ESD-BLAZOR-STUDIO-U",
+        "price_eur": 385,
+        "license_type": "upgrade",
+        "product_id": "277057"
+      },
+      {
+        "excel_name": "\tComponentOne Studio - Data Services Edition - Upgrade",
+        "sku": "ESD-DS-STUDIO-U",
+        "price_eur": 705,
+        "license_type": "upgrade",
+        "product_id": "276942"
+      },
+      {
+        "excel_name": "ComponentOne Studio - UWP Edition - Upgrade Version",
+        "sku": "ESD-STUDIO-UWP-U",
+        "price_eur": 645,
+        "license_type": "upgrade",
+        "product_id": "276957"
+      },
+      {
+        "excel_name": "ComponentOne Studio - WinForms Edition - Upgrade Version",
+        "sku": "ESD-N-STUDIO-U",
+        "price_eur": 785,
+        "license_type": "upgrade",
+        "product_id": "277480"
+      },
+      {
+        "excel_name": "ComponentOne Studio - Winforms Data Services Edition - Upgrade",
+        "sku": "ESD-WDS-STUDIO-U",
+        "price_eur": 1015,
+        "license_type": "upgrade",
+        "product_id": "276985"
+      },
+      {
+        "excel_name": "ComponentOne WinUI & MAUI Edition - Upgrade",
+        "sku": "ESD-WM-STUDIO-U",
+        "price_eur": 785,
+        "license_type": "upgrade",
+        "product_id": "277017"
+      },
+      {
+        "excel_name": "ComponentOne Studio - WinUI Edition - Upgrade",
+        "sku": "ESD-WINUI-STUDIO-U",
+        "price_eur": 365,
+        "license_type": "upgrade",
+        "product_id": "276902"
+      },
+      {
+        "excel_name": "ComponentOne Studio - WPF Edition - Upgrade Version",
+        "sku": "ESD-W-STUDIO-U",
+        "price_eur": 785,
+        "license_type": "upgrade",
+        "product_id": "277529"
+      },
+      {
+        "excel_name": "ComponentOne Studio - Silverlight Edition - Upgrade Version",
+        "sku": "ESD-S-STUDIO-U",
+        "price_eur": 945,
+        "license_type": "upgrade",
+        "product_id": "277541"
+      },
+      {
+        "excel_name": "ComponentOne Studio - LightSwitch Edition - Upgrade",
+        "sku": "ESD-LTS-STUDIO-U",
+        "price_eur": 855,
+        "license_type": "upgrade",
+        "product_id": "277507"
+      },
+      {
+        "excel_name": "ComponentOne Studio for Xamarin -Upgrade Version ",
+        "sku": "ESD-XUNI-ENT-U",
+        "price_eur": 645,
+        "license_type": "upgrade",
+        "product_id": "278975"
+      },
+      {
+        "excel_name": "ComponentOne Xamarin.iOS Edition-Upgrade Version ",
+        "sku": "ESD-XUNI-IOS-U",
+        "price_eur": 365,
+        "license_type": "upgrade",
+        "product_id": "278991"
+      },
+      {
+        "excel_name": "ComponentOne Xamarin.Android Edition -Upgrade Version ",
+        "sku": "ESD-XUNI-AND-U",
+        "price_eur": 365,
+        "license_type": "upgrade",
+        "product_id": "278838"
+      },
+      {
+        "excel_name": "ActiveReports 19 Professional Edition w/ Maintenance - Upgrade from ARN19 Std",
+        "sku": "APN19MU19S",
+        "price_eur": 1115,
+        "license_type": "upgrade",
+        "product_id": "279111"
+      },
+      {
+        "excel_name": "ActiveReports 19 Professional Edition w/ Maintenance - Upgrade from any prior Pro version",
+        "sku": "APN19MUP",
+        "price_eur": 1395,
+        "license_type": "upgrade",
+        "product_id": "276328"
+      },
+      {
+        "excel_name": "ActiveReports 19 Professional Edition w/ Maintenance - Upgrade from any prior Std version",
+        "sku": "APN19MUS",
+        "price_eur": 1575,
+        "license_type": "upgrade",
+        "product_id": "279177"
+      },
+      {
+        "excel_name": "ActiveReports 19 Professional Edition - Upgrade from ARN19 Std",
+        "sku": "APN19U19S",
+        "price_eur": 745,
+        "license_type": "upgrade",
+        "product_id": "279225"
+      },
+      {
+        "excel_name": "ActiveReports 19 Professional Edition - Upgrade from any prior Pro version",
+        "sku": "APN19UP",
+        "price_eur": 1065,
+        "license_type": "upgrade",
+        "product_id": "279139"
+      },
+      {
+        "excel_name": "ActiveReports 19 Professional Edition - Upgrade from any prior Std version",
+        "sku": "APN19US",
+        "price_eur": 1295,
+        "license_type": "upgrade",
+        "product_id": "279078"
+      },
+      {
+        "excel_name": "ActiveReports 19 Standard Edition w/ Maintenance - Upgrade from any prior Std version",
+        "sku": "ARN19MUS",
+        "price_eur": 835,
+        "license_type": "upgrade",
+        "product_id": "279141"
+      },
+      {
+        "excel_name": "ActiveReports 19 Standard Edition - Upgrade from any prior Std version",
+        "sku": "ARN19US",
+        "price_eur": 695,
+        "license_type": "upgrade",
+        "product_id": "279179"
+      },
+      {
+        "excel_name": "ActiveReports 15 Professional Edition w/ Maintenance - SITE LICENSE Upgrade from any prior Std Site License",
+        "sku": "APN15SMUS",
+        "price_eur": 18935,
+        "license_type": "upgrade",
+        "product_id": "279182"
+      },
+      {
+        "excel_name": "ActiveReports 15 Professional Edition w/ Maintenance -\u00a0SITE LICENSE Upgrade from any prior Pro Site License",
+        "sku": "APN15SMUP",
+        "price_eur": 16705,
+        "license_type": "upgrade",
+        "product_id": "279227"
+      },
+      {
+        "excel_name": "ActiveReports 15 Professional Edition w/ Maintenance -\u00a0SITE LICENSE Upgrade from ARN15 Std Site License",
+        "sku": "APN15SMU15S",
+        "price_eur": 13365,
+        "license_type": "upgrade",
+        "product_id": "279167"
+      },
+      {
+        "excel_name": "ActiveReports 15 Standard Edition w/ Maintenance \u00a0- SITE LICENSE Upgrade from any prior Std version",
+        "sku": "ARN15SMUS",
+        "price_eur": 9655,
+        "license_type": "upgrade",
+        "product_id": "279132"
+      },
+      {
+        "excel_name": "ActiveReportsJS v5 Deployment License Three (3) Hostname - PERPETUAL - Upgrade",
+        "sku": "ARJS05DP03U",
+        "price_eur": 2025,
+        "license_type": "upgrade",
+        "product_id": "279418"
+      },
+      {
+        "excel_name": "ActiveReportsJS v5 Deployment License Single Domain (*.domain) - PERPETUAL - Upgrade",
+        "sku": "ARJS05DUP01U",
+        "price_eur": 6495,
+        "license_type": "upgrade",
+        "product_id": "279406"
+      },
+      {
+        "excel_name": "ActiveReportsJS v5 Deployment License Unlimited Domains (*.*) - PERPETUAL - Upgrade",
+        "sku": "ARJS05DUP02U",
+        "price_eur": 10555,
+        "license_type": "upgrade",
+        "product_id": "279304"
+      },
+      {
+        "excel_name": "Spread.NET 18 Developer License with Maintenance - Upgrade from any earlier version",
+        "sku": "SS18M02",
+        "price_eur": 1205,
+        "license_type": "upgrade",
+        "product_id": "279603"
+      },
+      {
+        "excel_name": "SpreadJS 18 Developer License with Maintenance - Upgrade from any earlier version + Single Hostname Deployment License - ANNUAL",
+        "sku": "SJS18MU01",
+        "price_eur": 1205,
+        "license_type": "upgrade",
+        "product_id": "279863"
+      },
+      {
+        "excel_name": "SpreadJS 18 Developer License with Maintenance - Upgrade from any earlier version",
+        "sku": "SJS18MU03",
+        "price_eur": 745,
+        "license_type": "upgrade",
+        "product_id": "279802"
+      },
+      {
+        "excel_name": "Wijmo Enterprise with Platinum Support - Upgrade License",
+        "sku": "ESD-WIJMO-ENT-PLAT-U",
+        "price_eur": 645,
+        "license_type": "upgrade",
+        "product_id": "280179"
+      },
+      {
+        "excel_name": "Document Solutions for Excel, .NET v8 Developer - Upgrade",
+        "sku": "DSEXCEL8D-U",
+        "price_eur": 785,
+        "license_type": "upgrade",
+        "product_id": "278179"
+      },
+      {
+        "excel_name": "Document Solutions for Excel, .NET v8 Developer Unlimited - Upgrade",
+        "sku": "DSEXCEL8DU-U",
+        "price_eur": 2225,
+        "license_type": "upgrade",
+        "product_id": "278184"
+      },
+      {
+        "excel_name": "Document Solutions for Excel, .NET v8 Team Unlimited - Upgrade",
+        "sku": "DSEXCEL8TU-U",
+        "price_eur": 4595,
+        "license_type": "upgrade",
+        "product_id": "278243"
+      },
+      {
+        "excel_name": "Document Solutions for PDF v8 Developer - Upgrade",
+        "sku": "DSPDF8D-U",
+        "price_eur": 785,
+        "license_type": "upgrade",
+        "product_id": "278298"
+      },
+      {
+        "excel_name": "Document Solutions for PDF v8 Developer Unlimited - Upgrade",
+        "sku": "DSPDF8DU-U",
+        "price_eur": 2225,
+        "license_type": "upgrade",
+        "product_id": "278313"
+      },
+      {
+        "excel_name": "Document Solutions for PDF v8 Team Unlimited - Upgrade",
+        "sku": "DSPDF8TU-U",
+        "price_eur": 4595,
+        "license_type": "upgrade",
+        "product_id": "278284"
+      },
+      {
+        "excel_name": "Document Solutions for Excel, Java Edition v8 Developer - Upgrade",
+        "sku": "DSEXCELJ8D-U",
+        "price_eur": 785,
+        "license_type": "upgrade",
+        "product_id": "278222"
+      },
+      {
+        "excel_name": "Document Solutions for Excel, Java Edition v8 Developer Unlimited - Upgrade",
+        "sku": "DSEXCELJ8DU-U",
+        "price_eur": 2225,
+        "license_type": "upgrade",
+        "product_id": "278232"
+      },
+      {
+        "excel_name": "Document Solutions for Excel, Java Edition v8 Team Unlimited - Upgrade",
+        "sku": "DSEXCELJ8TU-U",
+        "price_eur": 4595,
+        "license_type": "upgrade",
+        "product_id": "278189"
+      },
+      {
+        "excel_name": "Document Solutions for Word v8 Developer - Upgrade",
+        "sku": "DSWORD8D-U",
+        "price_eur": 785,
+        "license_type": "upgrade",
+        "product_id": "278259"
+      },
+      {
+        "excel_name": "Document Solutions for Word v8 Developer Unlimited - Upgrade",
+        "sku": "DSWORD8DU-U",
+        "price_eur": 2225,
+        "license_type": "upgrade",
+        "product_id": "278261"
+      },
+      {
+        "excel_name": "Document Solutions for Word v8 Team Unlimited - Upgrade",
+        "sku": "DSWORD8TU-U",
+        "price_eur": 4595,
+        "license_type": "upgrade",
+        "product_id": "278286"
+      },
+      {
+        "excel_name": "Document Solutions for Imaging v8 Developer - Upgrade",
+        "sku": "DSIMAGE8D-U",
+        "price_eur": 785,
+        "license_type": "upgrade",
+        "product_id": "278291"
+      },
+      {
+        "excel_name": "Document Solutions for Imaging v8 Developer Unlimited - Upgrade",
+        "sku": "DSIMAGE8DU-U",
+        "price_eur": 2225,
+        "license_type": "upgrade",
+        "product_id": "278281"
+      },
+      {
+        "excel_name": "Document Solutions for Imaging v8 Team Unlimited - Upgrade",
+        "sku": "DSIMAGE8TU-U",
+        "price_eur": 4595,
+        "license_type": "upgrade",
+        "product_id": "278312"
+      },
+      {
+        "excel_name": "Document Solutions .NET Bundle v8 Developer - Upgrade",
+        "sku": "DSNET8D-U",
+        "price_eur": 1435,
+        "license_type": "upgrade",
+        "product_id": "278306"
+      },
+      {
+        "excel_name": "Document Solutions .NET Bundle v8 Developer Unlimited - Upgrade",
+        "sku": "DSNET8DU-U",
+        "price_eur": 3925,
+        "license_type": "upgrade",
+        "product_id": "278176"
+      },
+      {
+        "excel_name": "Document Solutions .NET Bundle v8 Team Unlimited - Upgrade",
+        "sku": "DSNET8TU-U",
+        "price_eur": 8165,
+        "license_type": "upgrade",
+        "product_id": "278191"
+      },
+      {
+        "excel_name": "XapOptimizer - Upgrade Version",
+        "sku": "ESD-XAPO-U",
+        "price_eur": 365,
+        "license_type": "upgrade",
+        "product_id": "278136"
+      }
+    ],
+    "other": [
+      {
+        "excel_name": "ComponentOne Platinum Support Addon",
+        "sku": "C1PSADDON",
+        "price_eur": 300,
+        "license_type": "other",
+        "product_id": "C1PSADDON"
+      },
+      {
+        "excel_name": "ComponentOne Platinum Support Addon",
+        "sku": "C1PSADDON",
+        "price_eur": 300,
+        "license_type": "other",
+        "product_id": "C1PSADDON"
+      },
+      {
+        "excel_name": "ComponentOne Platinum Support Addon",
+        "sku": "C1PSADDON",
+        "price_eur": 300,
+        "license_type": "other",
+        "product_id": "C1PSADDON"
+      },
+      {
+        "excel_name": "ComponentOne Platinum Support Addon",
+        "sku": "C1PSADDON",
+        "price_eur": 300,
+        "license_type": "other",
+        "product_id": "C1PSADDON"
+      },
+      {
+        "excel_name": "ComponentOne Platinum Support Addon",
+        "sku": "C1PSADDON",
+        "price_eur": 300,
+        "license_type": "other",
+        "product_id": "C1PSADDON"
+      },
+      {
+        "excel_name": "ActiveReports 15 Professional Edition w/ Maintenance - SITE LICENSE",
+        "sku": "APN15SM",
+        "price_eur": 23205,
+        "license_type": "other",
+        "product_id": "279196"
+      },
+      {
+        "excel_name": "ActiveReports 15 Standard Edition w/ Maintenance - SITE LICENSE",
+        "sku": "ARN15SM",
+        "price_eur": 13365,
+        "license_type": "other",
+        "product_id": "279137"
+      },
+      {
+        "excel_name": "ActiveReportsJS v5 Deployment License Unlimited Domains (*.*) - ANNUAL",
+        "sku": "ARJS05DUA02",
+        "price_eur": 6035,
+        "license_type": "other",
+        "product_id": "279320"
+      },
+      {
+        "excel_name": "DataViewsJS v1 Single (1) Hostname Deployment License \u2013 ANNUAL",
+        "sku": "DVJS01DA03 ",
+        "price_eur": 999,
+        "license_type": "other",
+        "product_id": "DVJS01DA03 "
+      },
+      {
+        "excel_name": "DataViewsJS v1 Unlimited Domains (*.*) Deployment License - ANNUAL",
+        "sku": "DVJS01DUA02",
+        "price_eur": 5295,
+        "license_type": "other",
+        "product_id": "279494"
+      },
+      {
+        "excel_name": "Platinum Support (for any dev tool)\u00a0\u00a0",
+        "sku": "SUPPORT-TS\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0 \u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0 ",
+        "price_eur": 300,
+        "license_type": "other",
+        "product_id": "SUPPORT-TS\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0 \u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0 "
+      },
+      {
+        "excel_name": "Additional Premier Support Incident (20+ Licenses)",
+        "sku": "SUPPORT-PREMIER ",
+        "price_eur": 300,
+        "license_type": "other",
+        "product_id": "SUPPORT-PREMIER "
+      }
+    ],
+    "new-license": [
+      {
+        "excel_name": "ActiveReports 19 Professional Edition w/ Maintenance DEVELOPER - New License",
+        "sku": "APN19M",
+        "price_eur": 1945,
+        "license_type": "new-license",
+        "product_id": "279070"
+      },
+      {
+        "excel_name": "ActiveReports 19 Standard Edition w/ Maintenance DEVELOPER - New License",
+        "sku": "ARN19M",
+        "price_eur": 1255,
+        "license_type": "new-license",
+        "product_id": "279077"
+      },
+      {
+        "excel_name": "Spread.NET 18 Developer License with Maintenance - New License",
+        "sku": "SS18M01",
+        "price_eur": 1395,
+        "license_type": "new-license",
+        "product_id": "279614"
+      },
+      {
+        "excel_name": "SpreadJS 18 Developer License with Maintenance - New License + Single Hostname Deployment License - ANNUAL",
+        "sku": "SJS18M01",
+        "price_eur": 1395,
+        "license_type": "new-license",
+        "product_id": "279886"
+      },
+      {
+        "excel_name": "SpreadJS 18 Developer License with Maintenance - New License",
+        "sku": "SJS18M02",
+        "price_eur": 925,
+        "license_type": "new-license",
+        "product_id": "279949"
+      }
+    ],
+    "perpetual": [
+      {
+        "excel_name": "ActiveReportsJS v5 Deployment License Three (3) Hostname - PERPETUAL",
+        "sku": "ARJS05DP03",
+        "price_eur": 4055,
+        "license_type": "perpetual",
+        "product_id": "279292"
+      },
+      {
+        "excel_name": "ActiveReportsJS Deployment License Three (3) Hostname - PERPETUAL - Annual Maintenance",
+        "sku": "ARJSDP03M",
+        "price_eur": 815,
+        "license_type": "perpetual",
+        "product_id": "279378"
+      },
+      {
+        "excel_name": "ActiveReportsJS Deployment License Three (3) Hostname - PERPETUAL - Annual Maintenance Renewal ",
+        "sku": "ARJSDP03MR",
+        "price_eur": 815,
+        "license_type": "perpetual",
+        "product_id": "279325"
+      },
+      {
+        "excel_name": "ActiveReportsJS v5 Deployment License Single Domain (*.domain) - PERPETUAL",
+        "sku": "ARJS05DUP01",
+        "price_eur": 12995,
+        "license_type": "perpetual",
+        "product_id": "279343"
+      },
+      {
+        "excel_name": "ActiveReportsJS Deployment License Single Domain (*.domain) - PERPETUAL - Annual Maintenance",
+        "sku": "ARJSDUP01M",
+        "price_eur": 2595,
+        "license_type": "perpetual",
+        "product_id": "279371"
+      },
+      {
+        "excel_name": "ActiveReportsJS Deployment License Single Domain (.domain) - PERPETUAL - Annual Maintenance Renewal ",
+        "sku": "ARJSDUP01MR",
+        "price_eur": 2595,
+        "license_type": "perpetual",
+        "product_id": "279338"
+      },
+      {
+        "excel_name": "ActiveReportsJS v5 Deployment License Unlimited Domains (*.*) - PERPETUAL",
+        "sku": "ARJS05DUP02",
+        "price_eur": 21115,
+        "license_type": "perpetual",
+        "product_id": "279259"
+      },
+      {
+        "excel_name": "ActiveReportsJS Deployment License Unlimited Domains (*.*) - PERPETUAL - Annual Maintenance",
+        "sku": "ARJSDUP02M",
+        "price_eur": 4225,
+        "license_type": "perpetual",
+        "product_id": "279323"
+      },
+      {
+        "excel_name": "ActiveReportsJS Deployment License Unlimited Domains (*.*) - PERPETUAL - Annual Maintenance Renewal ",
+        "sku": "ARJSDUP02MR",
+        "price_eur": 4225,
+        "license_type": "perpetual",
+        "product_id": "279374"
+      },
+      {
+        "excel_name": "SpreadJS 18 Deployment License Single Hostname - PERPETUAL",
+        "sku": "SJS18DP00",
+        "price_eur": 2785,
+        "license_type": "perpetual",
+        "product_id": "279902"
+      },
+      {
+        "excel_name": "SpreadJS 18 Deployment License Three (3) to Five (5) Hostname - PERPETUAL",
+        "sku": "SJS18DP01",
+        "price_eur": 6495,
+        "license_type": "perpetual",
+        "product_id": "279865"
+      },
+      {
+        "excel_name": "SpreadJS 18 Deployment License Single Domain or SaaS (*.domain)\u00a0Hostname - PERPETUAL",
+        "sku": "SJS18DSDP01",
+        "price_eur": 40605,
+        "license_type": "perpetual",
+        "product_id": "279903"
+      },
+      {
+        "excel_name": "SpreadJS 18 Deployment License 5 Named Hostnames or SaaS - PERPETUAL",
+        "sku": "SJS18D5CP01",
+        "price_eur": 40605,
+        "license_type": "perpetual",
+        "product_id": "279852"
+      },
+      {
+        "excel_name": "SpreadJS 18 Deployment License Unlimited Domain or SaaS (*.*) - PERPETUAL",
+        "sku": "SJS18DP03",
+        "price_eur": 64975,
+        "license_type": "perpetual",
+        "product_id": "279835"
+      },
+      {
+        "excel_name": "SpreadJS 18 Designer Ribbon Component Addon Deployment License\u00a0Single Hostname - PERPETUAL",
+        "sku": "SJS18DESDP00",
+        "price_eur": 1665,
+        "license_type": "perpetual",
+        "product_id": "280057"
+      },
+      {
+        "excel_name": "SpreadJS 18 Designer Ribbon Component Addon Deployment License Three (3) to Five (5) Hostname - PERPETUAL",
+        "sku": "SJS18DESDP01",
+        "price_eur": 4545,
+        "license_type": "perpetual",
+        "product_id": "280107"
+      },
+      {
+        "excel_name": "SpreadJS 18 Designer Ribbon Component Addon Deployment License\u00a0Single Domain or SaaS (*.domain) - PERPETUAL",
+        "sku": "SJS18DESDP02",
+        "price_eur": 13645,
+        "license_type": "perpetual",
+        "product_id": "279995"
+      },
+      {
+        "excel_name": "SpreadJS 18 Designer Ribbon Component Addon Deployment License 5 Named Hostnames or SaaS - PERPETUAL",
+        "sku": "SJS18DESD5CP01",
+        "price_eur": 13645,
+        "license_type": "perpetual",
+        "product_id": "280089"
+      },
+      {
+        "excel_name": "SpreadJS 18 Designer Ribbon Component Addon Deployment License\u00a0Unlimited Domain or SaaS (*.*) - PERPETUAL",
+        "sku": "SJS18DESDP03",
+        "price_eur": 21815,
+        "license_type": "perpetual",
+        "product_id": "280078"
+      },
+      {
+        "excel_name": "SpreadJS 18 Pivot Table Addon Deployment License\u00a0Single Hostname - PERPETUAL",
+        "sku": "SJS18PTDP00",
+        "price_eur": 1855,
+        "license_type": "perpetual",
+        "product_id": "280131"
+      },
+      {
+        "excel_name": "SpreadJS 18 Pivot Table Addon Deployment License\u00a0Three (3) to Five (5) Hostname - PERPETUAL",
+        "sku": "SJS18PTDP01",
+        "price_eur": 3155,
+        "license_type": "perpetual",
+        "product_id": "280054"
+      },
+      {
+        "excel_name": "SpreadJS 18 Pivot Table Addon Deployment License\u00a0Single Domain or SaaS (*.domain)\u00a0Hostname - PERPETUAL",
+        "sku": "SJS18PTDP02",
+        "price_eur": 27845,
+        "license_type": "perpetual",
+        "product_id": "279993"
+      },
+      {
+        "excel_name": "SpreadJS 18 Pivot Table Addon Deployment License 5 Named Hostnames or SaaS - PERPETUAL",
+        "sku": "SJS18PT5CDP01",
+        "price_eur": 27845,
+        "license_type": "perpetual",
+        "product_id": "279968"
+      },
+      {
+        "excel_name": "SpreadJS 18 Pivot Table Addon Deployment License\u00a0Unlimited Domain or SaaS (*.*) - PERPETUAL",
+        "sku": "SJS18PTDP03",
+        "price_eur": 43625,
+        "license_type": "perpetual",
+        "product_id": "280042"
+      },
+      {
+        "excel_name": "SpreadJS 18 GanttSheet Addon Deployment License\u00a0Single Hostname - PERPETUAL",
+        "sku": "SJS18GSDP00",
+        "price_eur": 1665,
+        "license_type": "perpetual",
+        "product_id": "279937"
+      },
+      {
+        "excel_name": "SpreadJS 18 GanttSheet Addon Deployment License\u00a0Three (3) to Five (5) Hostname - PERPETUAL",
+        "sku": "SJS18GSDP01",
+        "price_eur": 5845,
+        "license_type": "perpetual",
+        "product_id": "279832"
+      },
+      {
+        "excel_name": "SpreadJS 18 GanttSheet Addon Deployment License\u00a0Single Domain or SaaS (*.domain)\u00a0Hostname - PERPETUAL",
+        "sku": "SJS18GSDP02",
+        "price_eur": 14665,
+        "license_type": "perpetual",
+        "product_id": "279859"
+      },
+      {
+        "excel_name": "SpreadJS 18 GanttSheet Addon Deployment License 5 Named Hostnames or SaaS - PERPETUAL",
+        "sku": "SJS18GS5CDP01",
+        "price_eur": 14665,
+        "license_type": "perpetual",
+        "product_id": "279820"
+      },
+      {
+        "excel_name": "SpreadJS 18 GanttSheet Addon Deployment License\u00a0Unlimited Domain or SaaS (*.*) - PERPETUAL",
+        "sku": "SJS18GSDP03",
+        "price_eur": 23395,
+        "license_type": "perpetual",
+        "product_id": "279806"
+      },
+      {
+        "excel_name": "SpreadJS 18 ReportSheet Addon Deployment License\u00a0Single Hostname - PERPETUAL",
+        "sku": "SJS18RSDP00",
+        "price_eur": 1665,
+        "license_type": "perpetual",
+        "product_id": "279946"
+      },
+      {
+        "excel_name": "SpreadJS 18 ReportSheet Addon Deployment License\u00a0Three (3) to Five (5) Hostname - PERPETUAL",
+        "sku": "SJS18RSDP01",
+        "price_eur": 5845,
+        "license_type": "perpetual",
+        "product_id": "279888"
+      },
+      {
+        "excel_name": "SpreadJS 18 ReportSheet Addon Deployment License\u00a0Single Domain or SaaS (*.domain)\u00a0Hostname - PERPETUAL",
+        "sku": "SJS18RSDP02",
+        "price_eur": 14665,
+        "license_type": "perpetual",
+        "product_id": "279923"
+      },
+      {
+        "excel_name": "SpreadJS 18 ReportSheet Addon Deployment License 5 Named Hostnames or SaaS - PERPETUAL",
+        "sku": "SJS18RS5CDP01",
+        "price_eur": 14665,
+        "license_type": "perpetual",
+        "product_id": "279897"
+      },
+      {
+        "excel_name": "SpreadJS 18 ReportSheet Addon Deployment License\u00a0Unlimited Domain or SaaS (*.*) - PERPETUAL",
+        "sku": "SJS18RSDP03",
+        "price_eur": 23395,
+        "license_type": "perpetual",
+        "product_id": "279877"
+      },
+      {
+        "excel_name": "SpreadJS 18 DataChart Addon Deployment License\u00a0Single Hostname - PERPETUAL",
+        "sku": "SJS18DCDP00",
+        "price_eur": 1665,
+        "license_type": "perpetual",
+        "product_id": "279950"
+      },
+      {
+        "excel_name": "SpreadJS 18 DataChart Addon Deployment License\u00a0Three (3) to Five (5) Hostname - PERPETUAL",
+        "sku": "SJS18DCDP01",
+        "price_eur": 5845,
+        "license_type": "perpetual",
+        "product_id": "279830"
+      },
+      {
+        "excel_name": "SpreadJS 18 DataChart Addon Deployment License\u00a0Single Domain or SaaS (*.domain)\u00a0Hostname - PERPETUAL",
+        "sku": "SJS18DCDP02",
+        "price_eur": 14665,
+        "license_type": "perpetual",
+        "product_id": "279969"
+      },
+      {
+        "excel_name": "SpreadJS 18 DataChart Addon Deployment License 5 Named Hostnames or SaaS - PERPETUAL",
+        "sku": "SJS18DC5CDP01",
+        "price_eur": 14665,
+        "license_type": "perpetual",
+        "product_id": "280081"
+      },
+      {
+        "excel_name": "SpreadJS 18 DataChart Addon Deployment License\u00a0Unlimited Domain or SaaS (*.*) - PERPETUAL",
+        "sku": "SJS18DCDP03",
+        "price_eur": 23395,
+        "license_type": "perpetual",
+        "product_id": "280124"
+      },
+      {
+        "excel_name": "DataViewsJS v1 Single (1) Hostname Deployment License \u2013  PERPETUAL",
+        "sku": "DVJS01DP03",
+        "price_eur": 3245,
+        "license_type": "perpetual",
+        "product_id": "279423"
+      },
+      {
+        "excel_name": "DataViewsJS v1 Single Domain (*.domain) Deployment License - PERPETUAL",
+        "sku": "DVJS01DUP01",
+        "price_eur": 11695,
+        "license_type": "perpetual",
+        "product_id": "279434"
+      },
+      {
+        "excel_name": "DataViewsJS v1 Unlimited Domains (*.*) Deployment License - PERPETUAL",
+        "sku": "DVJS01DUP02",
+        "price_eur": 18515,
+        "license_type": "perpetual",
+        "product_id": "279422"
+      },
+      {
+        "excel_name": "Document Solutions Data Viewer Professional v8 Deployment License One (1) Hostname - PERPETUAL",
+        "sku": "DSDVP8DP03",
+        "price_eur": 3245,
+        "license_type": "perpetual",
+        "product_id": "278226"
+      },
+      {
+        "excel_name": "Document Solutions Data Viewer Professional v8 Deployment License Single Domain (*.domain) - PERPETUAL",
+        "sku": "DSDVP8DUP01",
+        "price_eur": 11695,
+        "license_type": "perpetual",
+        "product_id": "278171"
+      },
+      {
+        "excel_name": "Document Solutions Data Viewer Professional v8 Deployment License Unlimited Domain (*.*) - PERPETUAL",
+        "sku": "DSDVP8DUP02",
+        "price_eur": 18565,
+        "license_type": "perpetual",
+        "product_id": "278156"
+      },
+      {
+        "excel_name": "Document Solutions PDF Viewer Professional v8 Deployment License One (1) Hostname - PERPETUAL",
+        "sku": "DSPDFVP8DP03",
+        "price_eur": 3245,
+        "license_type": "perpetual",
+        "product_id": "278280"
+      },
+      {
+        "excel_name": "Document Solutions PDF Viewer Professional v8 Deployment License Single Domain (*.domain) - PERPETUAL",
+        "sku": "DSPDFVP8DUP01",
+        "price_eur": 11695,
+        "license_type": "perpetual",
+        "product_id": "278296"
+      },
+      {
+        "excel_name": "Document Solutions PDF Viewer Professional v8 Deployment License Unlimited Domain (*.*) - PERPETUAL",
+        "sku": "DSPDFVP8DUP02",
+        "price_eur": 18565,
+        "license_type": "perpetual",
+        "product_id": "278321"
+      },
+      {
+        "excel_name": "Document Solutions Data Viewer Professional v8 Deployment License One (1) Hostname - PERPETUAL",
+        "sku": "DSDVP8DP03",
+        "price_eur": 3245,
+        "license_type": "perpetual",
+        "product_id": "278226"
+      },
+      {
+        "excel_name": "Document Solutions Data Viewer Professional v8 Deployment License Single Domain (*.domain) - PERPETUAL",
+        "sku": "DSDVP8DUP01",
+        "price_eur": 11695,
+        "license_type": "perpetual",
+        "product_id": "278171"
+      },
+      {
+        "excel_name": "Document Solutions Data Viewer Professional v8 Deployment License Unlimited Domain (*.*) - PERPETUAL",
+        "sku": "DSDVP8DUP02",
+        "price_eur": 18565,
+        "license_type": "perpetual",
+        "product_id": "278156"
+      }
+    ],
+    "subscription": [
+      {
+        "excel_name": "ActiveReportsJS Unlimited Domains (*.*) - ANNUAL DUES",
+        "sku": "ARJS02AF",
+        "price_eur": 6035,
+        "license_type": "subscription",
+        "product_id": "279365"
+      }
+    ]
+  },
+  "price_mismatches": [
+    {
+      "product_id": 62895,
+      "name": "Document Solutions for Imaging v8 Developer Unlimited - New License",
+      "page_price": 2595.0,
+      "expected_price": 2225.0,
+      "difference": 370.0,
+      "matched_name": "Document Solutions for Imaging v8 Developer Unlimited - New License"
+    }
+  ],
+  "unknown_on_page": [
+    {
+      "product_id": 57922,
+      "page_price": 925.0
+    },
+    {
+      "product_id": 62805,
+      "page_price": 1395.0
+    },
+    {
+      "product_id": 62799,
+      "page_price": 1395.0
+    },
+    {
+      "product_id": 59102,
+      "page_price": 645.0
+    },
+    {
+      "product_id": 62965,
+      "page_price": 785.0
+    },
+    {
+      "product_id": 62957,
+      "page_price": 1485.0
+    }
+  ],
+  "exact_matches": [
+    {
+      "product_id": 54087,
+      "name": "ComponentOne Studio - Enterprise Edition - New License",
+      "price": 1385.0,
+      "matched_name": "ComponentOne Studio - Enterprise Edition - New License"
+    },
+    {
+      "product_id": 60892,
+      "name": "ComponentOne Studio - Winforms Data Services Edition - New License",
+      "price": 1205.0,
+      "matched_name": "ComponentOne Studio - Winforms Data Services Edition - New License"
+    },
+    {
+      "product_id": 53600,
+      "name": "ComponentOne Studio - ActiveX Edition- New License",
+      "price": 1385.0,
+      "matched_name": "ComponentOne Studio - ActiveX Edition- New License"
+    },
+    {
+      "product_id": 53597,
+      "name": "ComponentOne Studio - WinForms Edition - New License",
+      "price": 925.0,
+      "matched_name": "ComponentOne Studio - WinForms Edition - New License"
+    },
+    {
+      "product_id": 55920,
+      "name": "ComponentOne Studio - WPF Edition - New License",
+      "price": 925.0,
+      "matched_name": "ComponentOne Studio - WPF Edition - New License"
+    },
+    {
+      "product_id": 61875,
+      "name": "ComponentOne WinUI & MAUI Edition - New License",
+      "price": 925.0,
+      "matched_name": "ComponentOne WinUI & MAUI Edition - New License"
+    },
+    {
+      "product_id": 58274,
+      "name": "ComponentOne Studio - ASP.NET MVC Edition - New License",
+      "price": 835.0,
+      "matched_name": "ComponentOne Studio - MVC Edition - New License"
+    },
+    {
+      "product_id": 60326,
+      "name": "ComponentOne Studio - Blazor Edition - New License",
+      "price": 465.0,
+      "matched_name": "ComponentOne Studio - Blazor Edition - New License"
+    },
+    {
+      "product_id": 61408,
+      "name": "SpreadJS Deployment License Single Domain or SaaS (*.domain)\u00a0Hostname - ANNUAL DUES",
+      "price": 11605.0,
+      "matched_name": "SpreadJS Deployment License Single Domain or SaaS (*.domain) Hostname - ANNUAL DUES"
+    },
+    {
+      "product_id": 60976,
+      "name": "SpreadJS Deployment License Three (3) to Five (5) Hostname - ANNUAL DUES",
+      "price": 1855.0,
+      "matched_name": "SpreadJS Deployment License  Three (3) to Five (5) Hostname - ANNUAL DUES"
+    },
+    {
+      "product_id": 60974,
+      "name": "SpreadJS Deployment License Single Hostname - ANNUAL DUES",
+      "price": 555.0,
+      "matched_name": "SpreadJS Deployment License Single Hostname - ANNUAL DUES"
+    },
+    {
+      "product_id": 62767,
+      "name": "Wijmo Deployment License Single Hostname",
+      "price": 465.0,
+      "matched_name": "Wijmo Deployment License Single Hostname"
+    },
+    {
+      "product_id": 62780,
+      "name": "ActiveReportsJS v5 Deployment License Three (3) Hostname - ANNUAL",
+      "price": 1155.0,
+      "matched_name": "ActiveReportsJS v5 Deployment License Three (3) Hostname - ANNUAL"
+    },
+    {
+      "product_id": 62783,
+      "name": "ActiveReportsJS v5 Deployment License Single Domain (*.domain) - ANNUAL",
+      "price": 3715.0,
+      "matched_name": "ActiveReportsJS v5 Deployment License Single Domain (*.domain) - ANNUAL"
+    },
+    {
+      "product_id": 62879,
+      "name": "Document Solutions .NET Bundle v8 Developer - New License",
+      "price": 1665.0,
+      "matched_name": "Document Solutions .NET Bundle v8 Developer - New License"
+    },
+    {
+      "product_id": 62881,
+      "name": "Document Solutions .NET Bundle v8 Developer Unlimited - New License",
+      "price": 4595.0,
+      "matched_name": "Document Solutions .NET Bundle v8 Developer Unlimited - New License"
+    },
+    {
+      "product_id": 62884,
+      "name": "Document Solutions .NET Bundle v8 Team Unlimited - New License",
+      "price": 9605.0,
+      "matched_name": "Document Solutions .NET Bundle v8 Team Unlimited - New License"
+    },
+    {
+      "product_id": 62845,
+      "name": "Document Solutions for Excel, .NET v8 Developer - New License",
+      "price": 925.0,
+      "matched_name": "Document Solutions for Excel, .NET v8 Developer - New License"
+    },
+    {
+      "product_id": 62848,
+      "name": "Document Solutions for Excel, .NET v8 Developer Unlimited - New License",
+      "price": 2595.0,
+      "matched_name": "Document Solutions for Excel, .NET v8 Developer Unlimited - New License"
+    },
+    {
+      "product_id": 62850,
+      "name": "Document Solutions for Excel, .NET v8 Team Unlimited - New License",
+      "price": 5385.0,
+      "matched_name": "Document Solutions for Excel, .NET v8 Team Unlimited - New License"
+    },
+    {
+      "product_id": 62859,
+      "name": "Document Solutions for PDF v8 Developer - New License",
+      "price": 925.0,
+      "matched_name": "Document Solutions for PDF v8 Developer - New License"
+    },
+    {
+      "product_id": 62863,
+      "name": "Document Solutions for PDF v8 Developer Unlimited - New License",
+      "price": 2595.0,
+      "matched_name": "Document Solutions for PDF v8 Developer Unlimited - New License"
+    },
+    {
+      "product_id": 62865,
+      "name": "Document Solutions for PDF v8 Team Unlimited - New License",
+      "price": 5385.0,
+      "matched_name": "Document Solutions for PDF v8 Team Unlimited - New License"
+    },
+    {
+      "product_id": 62886,
+      "name": "Document Solutions for Word v8 Developer - New License",
+      "price": 925.0,
+      "matched_name": "Document Solutions for Word v8 Developer - New License"
+    },
+    {
+      "product_id": 62888,
+      "name": "Document Solutions for Word v8 Developer Unlimited - New License",
+      "price": 2595.0,
+      "matched_name": "Document Solutions for Word v8 Developer Unlimited - New License"
+    },
+    {
+      "product_id": 62890,
+      "name": "Document Solutions for Word v8 Team Unlimited - New License",
+      "price": 5385.0,
+      "matched_name": "Document Solutions for Word v8 Team Unlimited - New License"
+    },
+    {
+      "product_id": 62893,
+      "name": "Document Solutions for Imaging v8 Developer - New License",
+      "price": 925.0,
+      "matched_name": "Document Solutions for Imaging v8 Developer - New License"
+    },
+    {
+      "product_id": 62897,
+      "name": "Document Solutions for Imaging v8 Team Unlimited - New License",
+      "price": 5385.0,
+      "matched_name": "Document Solutions for Imaging v8 Team Unlimited - New License"
+    },
+    {
+      "product_id": 62873,
+      "name": "Document Solutions for Excel, Java Edition v8 Developer - New License",
+      "price": 925.0,
+      "matched_name": "Document Solutions for Excel, Java Edition v8 Developer - New License"
+    },
+    {
+      "product_id": 62875,
+      "name": "Document Solutions for Excel, Java Edition v8 Developer Unlimited - New License",
+      "price": 2595.0,
+      "matched_name": "Document Solutions for Excel, Java Edition v8 Developer Unlimited - New License"
+    },
+    {
+      "product_id": 62877,
+      "name": "Document Solutions for Excel, Java Edition v8 Team Unlimited - New License",
+      "price": 5385.0,
+      "matched_name": "Document Solutions for Excel, Java Edition v8 Team Unlimited - New License"
+    }
+  ]
+}

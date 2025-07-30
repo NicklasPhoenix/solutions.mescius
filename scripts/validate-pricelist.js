@@ -1,6 +1,7 @@
 /**
- * Pricelist Validator
- * Analyzes pricelist.json and suggests which products to include/exclude
+ * Enhanced Pricelist Validator
+ * Analyzes pricelist.json and provides comprehensive product filtering
+ * Supports ALL license types: New, Renewal, Upgrade, Perpetual, Subscription
  * 
  * Enable debug mode: window.DEBUG_PRICING = true;
  */
@@ -12,7 +13,7 @@ class PricelistValidator {
     }
     
     getDefaultConfig() {
-        // Use the enhanced config if available, otherwise fall back to basic config
+        // Use the enhanced config if available, otherwise fall back to comprehensive config
         if (window.PRICING_CONFIG) {
             return window.PRICING_CONFIG;
         }
@@ -23,78 +24,80 @@ class PricelistValidator {
                     name: 'ComponentOne Studio',
                     keywords: ['ComponentOne Studio', 'ComponentOne Enterprise', 'ComponentOne Professional'],
                     versionPattern: /ComponentOne.*(?:v)?(\d+)/i,
-                    preferLatestVersion: true
+                    preferLatestVersion: true,
+                    category: 'UI Controls'
                 },
                 {
                     name: 'Wijmo Enterprise',
                     keywords: ['Wijmo Enterprise', 'Wijmo Professional', 'Wijmo'],
                     versionPattern: /Wijmo.*(?:v)?(\d+)/i,
-                    preferLatestVersion: true
+                    preferLatestVersion: true,
+                    category: 'JavaScript Controls'
                 },
                 {
                     name: 'ActiveReports.NET',
-                    keywords: ['ActiveReports.NET', 'ActiveReports .NET', 'ActiveReports'],
+                    keywords: ['ActiveReports', 'ActiveReports.NET', 'ActiveReports .NET'],
                     versionPattern: /ActiveReports.*(?:v)?(\d+)/i,
-                    preferLatestVersion: true
+                    preferLatestVersion: true,
+                    category: 'Reporting'
                 },
                 {
                     name: 'SpreadJS',
                     keywords: ['SpreadJS', 'Spread JS'],
                     versionPattern: /SpreadJS.*(?:v)?(\d+)/i,
-                    preferLatestVersion: true
+                    preferLatestVersion: true,
+                    category: 'Spreadsheet'
                 },
                 {
                     name: 'Spread.NET',
-                    keywords: ['Spread.NET 18', 'Spread .NET 18'],
-                    versionPattern: /Spread\.NET\s+(\d+)/i,
+                    keywords: ['Spread.NET', 'Spread .NET'],
+                    versionPattern: /Spread\.NET.*(\d+)/i,
                     preferLatestVersion: true,
-                    minimumVersion: 16
+                    minimumVersion: 16,
+                    category: 'Spreadsheet'
                 },
                 {
                     name: 'Documents for Excel (.NET)',
-                    keywords: ['GrapeCity Documents for Excel', 'GcExcel', 'Documents for Excel'],
-                    versionPattern: /Documents for Excel.*(?:v)?(\d+)/i,
-                    preferLatestVersion: true
+                    keywords: ['Document Solutions for Excel', 'GcExcel', 'Documents for Excel'],
+                    versionPattern: /(?:Document Solutions for Excel|GcExcel).*v(\d+)/i,
+                    preferLatestVersion: true,
+                    category: 'Document API'
                 },
                 {
                     name: 'Documents for Word',
-                    keywords: ['GrapeCity Documents for Word', 'GcWord', 'Documents for Word'],
-                    versionPattern: /Documents for Word.*(?:v)?(\d+)/i,
-                    preferLatestVersion: true
+                    keywords: ['Document Solutions for Word', 'GcWord', 'Documents for Word'],
+                    versionPattern: /(?:Document Solutions for Word|GcWord).*v(\d+)/i,
+                    preferLatestVersion: true,
+                    category: 'Document API'
                 },
                 {
                     name: 'Documents for PDF',
-                    keywords: ['GrapeCity Documents for PDF', 'GcPdf', 'Documents for PDF'],
-                    versionPattern: /Documents for PDF.*(?:v)?(\d+)/i,
-                    preferLatestVersion: true
+                    keywords: ['Document Solutions for PDF', 'GcPdf', 'Documents for PDF'],
+                    versionPattern: /(?:Document Solutions for PDF|GcPdf).*v(\d+)/i,
+                    preferLatestVersion: true,
+                    category: 'Document API'
                 },
                 {
                     name: 'Documents for Imaging',
-                    keywords: ['GrapeCity Documents for Imaging', 'GcImaging', 'Documents for Imaging'],
-                    versionPattern: /Documents for Imaging.*(?:v)?(\d+)/i,
-                    preferLatestVersion: true
-                },
-                {
-                    name: 'Documents for Excel (JS)',
-                    keywords: ['Documents for Excel JavaScript', 'Documents for Excel JS', 'GcExcel JavaScript'],
-                    versionPattern: /Documents for Excel.*JavaScript.*(?:v)?(\d+)/i,
-                    preferLatestVersion: true
+                    keywords: ['Document Solutions for Imaging', 'GcImaging', 'Documents for Imaging'],
+                    versionPattern: /(?:Document Solutions for Imaging|GcImaging).*v(\d+)/i,
+                    preferLatestVersion: true,
+                    category: 'Document API'
                 }
             ],
             licenseTypes: [
-                { type: 'new-license', keywords: ['New License', 'ESD', 'Developer License'], priority: 1 },
-                { type: 'renewal', keywords: ['Renewal'], priority: 3 },
-                { type: 'upgrade', keywords: ['Upgrade'], priority: 2 }
+                { type: 'new-license', keywords: ['New License', 'ESD'], priority: 1, displayName: 'New License', tabId: 'new' },
+                { type: 'renewal', keywords: ['Renewal', 'Maintenance Renewal'], priority: 2, displayName: 'Renewal', tabId: 'renewal' },
+                { type: 'upgrade', keywords: ['Upgrade'], priority: 2, displayName: 'Upgrade', tabId: 'upgrade' },
+                { type: 'perpetual', keywords: ['PERPETUAL', 'Perpetual'], priority: 3, displayName: 'Perpetual', tabId: 'perpetual' },
+                { type: 'subscription', keywords: ['Subscription', 'Annual'], priority: 1, displayName: 'Subscription', tabId: 'subscription' }
             ],
             excludePatterns: [
                 'Source Code', 'Compact Framework', 'Pre Renewal', 'Post Renewal', 
                 'Base Product', 'Educational', 'Archive', 'Debugging', 'Beta', 
-                'Legacy', 'Discontinued', 'Team License', 'Site License', 'SITE LICENSE',
-                'Team Unlimited', '10 Pack', '5 Developer', 'Deployment License',
-                'Unlimited Domain', 'SaaS (*.*)', 'Pipeline License', 'with Maintenance',
-                'w/ Maintenance', 'w. Platinum Support', 'Platinum Support'
+                'Legacy', 'Discontinued', 'Japanese Version', 'Promotion'
             ],
-            priceFilter: { minPrice: 100, maxPrice: 5000 }, // Focus on individual developer licenses
+            priceFilter: { minPrice: 100, maxPrice: 15000 },
             editions: [
                 { name: 'Enterprise', priority: 3 },
                 { name: 'Professional', priority: 2 },
@@ -120,6 +123,7 @@ class PricelistValidator {
             totalProducts: this.priceList.length,
             withValidPrices: 0,
             currentProducts: {},
+            licenseTypeBreakdown: {},
             recommendations: {
                 include: [],
                 exclude: [],
@@ -132,10 +136,23 @@ class PricelistValidator {
             p.Euro && typeof p.Euro === 'number' && p.Euro > 0
         ).length;
 
+        // Initialize license type breakdown
+        this.config.licenseTypes?.forEach(licenseType => {
+            analysis.licenseTypeBreakdown[licenseType.type] = 0;
+        });
+
         // Analyze each configured product
         this.config.currentProducts?.forEach(configProduct => {
             const matches = this.findProductMatches(configProduct);
             analysis.currentProducts[configProduct.name] = matches;
+            
+            // Count by license type
+            matches.forEach(product => {
+                const licenseType = this.identifyLicenseType(product['Product Name']);
+                if (analysis.licenseTypeBreakdown[licenseType] !== undefined) {
+                    analysis.licenseTypeBreakdown[licenseType]++;
+                }
+            });
             
             if (matches.length === 0) {
                 analysis.recommendations.missing.push(configProduct.name);
@@ -160,6 +177,7 @@ class PricelistValidator {
                 const shouldInclude = this.shouldIncludeProduct(product);
                 const version = this.extractVersion(productName, configProduct);
                 const versionNumber = version ? parseInt(version) : 0;
+                const licenseType = this.identifyLicenseType(productName);
                 
                 // Check minimum version requirement
                 if (configProduct.minimumVersion && versionNumber > 0 && versionNumber < configProduct.minimumVersion) {
@@ -174,12 +192,14 @@ class PricelistValidator {
                     recommended: shouldInclude.include,
                     reason: shouldInclude.reason,
                     version: version,
-                    versionNumber: versionNumber
+                    versionNumber: versionNumber,
+                    licenseType: licenseType,
+                    category: configProduct.category || 'Other'
                 });
             }
         });
 
-        // Sort by version (latest first), then recommendation, then license type preference, then price
+        // Sort by version (latest first), then license type priority, then price
         return matches.sort((a, b) => {
             // If we prefer latest version for this product
             if (configProduct.preferLatestVersion) {
@@ -193,24 +213,15 @@ class PricelistValidator {
                 return b.recommended - a.recommended;
             }
             
-            // Prefer "New License" or "ESD" over upgrades and renewals
-            const aIsNew = a['Product Name'].toLowerCase().includes('new license') || 
-                          a['Product Name'].toLowerCase().includes('esd');
-            const bIsNew = b['Product Name'].toLowerCase().includes('new license') || 
-                          b['Product Name'].toLowerCase().includes('esd');
+            // Then by license type priority
+            const aLicenseType = this.config.licenseTypes?.find(lt => lt.type === a.licenseType);
+            const bLicenseType = this.config.licenseTypes?.find(lt => lt.type === b.licenseType);
+            const aPriority = aLicenseType ? aLicenseType.priority : 999;
+            const bPriority = bLicenseType ? bLicenseType.priority : 999;
             
-            if (aIsNew !== bIsNew) {
-                return bIsNew - aIsNew; // New licenses first
+            if (aPriority !== bPriority) {
+                return aPriority - bPriority; // Lower priority number = higher priority
             }
-            
-            // Prefer upgrade over renewal
-            const aIsUpgrade = a['Product Name'].toLowerCase().includes('upgrade');
-            const bIsUpgrade = b['Product Name'].toLowerCase().includes('upgrade');
-            const aIsRenewal = a['Product Name'].toLowerCase().includes('renewal');
-            const bIsRenewal = b['Product Name'].toLowerCase().includes('renewal');
-            
-            if (aIsUpgrade && bIsRenewal) return -1;
-            if (bIsUpgrade && aIsRenewal) return 1;
             
             // Finally by price (lower first for individual developer licenses)
             return (a.Euro || 0) - (b.Euro || 0);
@@ -218,80 +229,68 @@ class PricelistValidator {
     }
 
     /**
-     * Get the best (recommended) products with latest versions
-     * This method returns one product per configured product type
+     * Get products organized by license type for tabbed interface
      */
-    getRecommendedProducts() {
-        const recommended = {};
+    getProductsByLicenseType() {
+        const productsByLicenseType = {};
+        
+        // Initialize each license type
+        this.config.licenseTypes?.forEach(licenseType => {
+            productsByLicenseType[licenseType.type] = {};
+        });
         
         this.config.currentProducts?.forEach(configProduct => {
             const matches = this.findProductMatches(configProduct);
             
-            // Filter to only recommended products
-            const recommendedMatches = matches.filter(product => product.recommended);
+            matches.forEach(product => {
+                const licenseType = product.licenseType;
+                if (!productsByLicenseType[licenseType]) {
+                    productsByLicenseType[licenseType] = {};
+                }
+                if (!productsByLicenseType[licenseType][configProduct.name]) {
+                    productsByLicenseType[licenseType][configProduct.name] = [];
+                }
+                productsByLicenseType[licenseType][configProduct.name].push(product);
+            });
+        });
+        
+        return productsByLicenseType;
+    }
+
+    /**
+     * Get the best product for each license type for each configured product
+     */
+    getRecommendedProductsByLicenseType() {
+        const recommended = {};
+        
+        this.config.licenseTypes?.forEach(licenseType => {
+            recommended[licenseType.type] = {};
+        });
+        
+        this.config.currentProducts?.forEach(configProduct => {
+            const matches = this.findProductMatches(configProduct);
             
-            if (recommendedMatches.length > 0) {
-                // Take the first one (already sorted by version, recommendation, license type, price)
-                const bestProduct = recommendedMatches[0];
+            // Group by license type
+            const byLicenseType = {};
+            matches.forEach(product => {
+                if (!byLicenseType[product.licenseType]) {
+                    byLicenseType[product.licenseType] = [];
+                }
+                byLicenseType[product.licenseType].push(product);
+            });
+            
+            // Get best product for each license type
+            Object.entries(byLicenseType).forEach(([licenseType, products]) => {
+                const recommendedProducts = products.filter(p => p.recommended);
+                const bestProduct = recommendedProducts.length > 0 ? recommendedProducts[0] : products[0];
                 
-                // Additional validation for the best product
-                if (window.DEBUG_PRICING) {
-                    console.log(`🎯 Best product for ${configProduct.name}: ${bestProduct['Product Name']} - €${bestProduct.Euro}`);
+                if (bestProduct) {
+                    recommended[licenseType][configProduct.name] = bestProduct;
                 }
-                
-                recommended[configProduct.name] = bestProduct;
-            } else if (matches.length > 0) {
-                // If no recommended products, log why and potentially take the best available
-                if (window.DEBUG_PRICING) {
-                    console.warn(`⚠️ No recommended products found for ${configProduct.name}, available matches:`);
-                    matches.slice(0, 3).forEach(product => {
-                        console.log(`   • ${product['Product Name']} - €${product.Euro} (${product.reason})`);
-                    });
-                }
-                
-                // Only take non-recommended if it's at least a reasonable price
-                if (matches[0].Euro <= 3000) {
-                    recommended[configProduct.name] = matches[0];
-                }
-            } else {
-                if (window.DEBUG_PRICING) {
-                    console.warn(`❌ No matches found for ${configProduct.name}`);
-                }
-            }
+            });
         });
         
         return recommended;
-    }
-
-    /**
-     * Get all available versions of a specific product
-     */
-    getProductVersions(productName) {
-        const configProduct = this.config.currentProducts?.find(cp => cp.name === productName);
-        if (!configProduct) {
-            console.warn(`Product configuration not found for: ${productName}`);
-            return [];
-        }
-        
-        return this.findProductMatches(configProduct);
-    }
-
-    /**
-     * Get products by category
-     */
-    getProductsByCategory(category) {
-        const productsByCategory = {};
-        
-        this.config.currentProducts?.forEach(configProduct => {
-            if (!category || configProduct.category === category) {
-                const matches = this.findProductMatches(configProduct);
-                if (matches.length > 0) {
-                    productsByCategory[configProduct.name] = matches;
-                }
-            }
-        });
-        
-        return productsByCategory;
     }
 
     extractVersion(productName, configProduct) {
@@ -308,156 +307,6 @@ class PricelistValidator {
         return version;
     }
 
-    shouldIncludeProduct(product) {
-        const productName = product['Product Name'];
-        const price = product.Euro;
-
-        // Check exclusion patterns first (most important)
-        const hasExcludePattern = this.config.excludePatterns?.some(pattern =>
-            productName.toLowerCase().includes(pattern.toLowerCase())
-        );
-
-        if (hasExcludePattern) {
-            return { include: false, reason: 'Contains excluded pattern' };
-        }
-
-        // Check price validity
-        if (!price || typeof price !== 'number' || price <= 0) {
-            return { include: false, reason: 'Invalid or missing price' };
-        }
-
-        // Check price range (focus on individual developer licenses)
-        if (this.config.priceFilter) {
-            if (price < this.config.priceFilter.minPrice) {
-                return { include: false, reason: 'Price below minimum threshold' };
-            }
-            if (price > this.config.priceFilter.maxPrice) {
-                return { include: false, reason: 'Price above maximum threshold' };
-            }
-        }
-
-        // Prefer "New License" or "ESD" products
-        const isNewLicense = productName.toLowerCase().includes('new license') || 
-                           productName.toLowerCase().includes('esd') ||
-                           productName.toLowerCase().includes('developer license');
-        
-        // Heavily penalize team, site, and enterprise multi-user licenses
-        const isMultiUserLicense = productName.toLowerCase().includes('team') ||
-                                 productName.toLowerCase().includes('site') ||
-                                 productName.toLowerCase().includes('pack') ||
-                                 productName.toLowerCase().includes('unlimited') ||
-                                 productName.toLowerCase().includes('deployment');
-
-        if (isMultiUserLicense) {
-            return { include: false, reason: 'Multi-user license (not individual developer)' };
-        }
-
-        // Check for maintenance/support add-ons that inflate the price
-        const hasMaintenanceAddons = productName.toLowerCase().includes('platinum support') ||
-                                   productName.toLowerCase().includes('w/ maintenance') ||
-                                   productName.toLowerCase().includes('w. maintenance');
-
-        if (hasMaintenanceAddons) {
-            return { include: false, reason: 'Includes maintenance/support add-ons' };
-        }
-
-        // Prefer basic individual developer licenses
-        if (isNewLicense) {
-            return { include: true, reason: 'Individual developer new license' };
-        }
-
-        // Accept upgrade licenses as secondary option
-        const isUpgrade = productName.toLowerCase().includes('upgrade');
-        if (isUpgrade) {
-            return { include: true, reason: 'Individual developer upgrade license' };
-        }
-
-        // Be more selective about renewals
-        const isRenewal = productName.toLowerCase().includes('renewal');
-        if (isRenewal && price <= (this.config.priceFilter?.maxPrice || 3000)) {
-            return { include: true, reason: 'Individual developer renewal license' };
-        }
-
-        // Default case - if it passes all filters, it's probably acceptable
-        return { include: true, reason: 'Meets basic criteria' };
-    }
-
-    generateReport() {
-        const analysis = this.analyzeProducts();
-        
-        console.log('📋 PRICELIST ANALYSIS REPORT');
-        console.log('=====================================');
-        console.log(`Total products in pricelist: ${analysis.totalProducts}`);
-        console.log(`Products with valid prices: ${analysis.withValidPrices}`);
-        console.log('');
-
-        // Report on each configured product
-        Object.entries(analysis.currentProducts).forEach(([productName, matches]) => {
-            console.log(`🔍 ${productName}:`);
-            
-            if (matches.length === 0) {
-                console.log('   ❌ No matches found in pricelist');
-            } else {
-                const recommended = matches.filter(m => m.recommended);
-                const notRecommended = matches.filter(m => !m.recommended);
-                
-                console.log(`   ✅ Found ${matches.length} matches (${recommended.length} recommended)`);
-                
-                if (recommended.length > 0) {
-                    console.log('   📦 Recommended products:');
-                    recommended.slice(0, 3).forEach(product => {
-                        console.log(`      • ${product['Product Name']} - €${product.Euro}`);
-                    });
-                }
-                
-                if (notRecommended.length > 0 && notRecommended.length <= 5) {
-                    console.log('   ⚠️  Not recommended:');
-                    notRecommended.slice(0, 3).forEach(product => {
-                        console.log(`      • ${product['Product Name']} - ${product.reason}`);
-                    });
-                }
-            }
-            console.log('');
-        });
-
-        // Missing products
-        if (analysis.recommendations.missing.length > 0) {
-            console.log('❌ MISSING PRODUCTS:');
-            analysis.recommendations.missing.forEach(product => {
-                console.log(`   • ${product}`);
-            });
-            console.log('');
-        }
-
-        return analysis;
-    }
-
-    // Generate filtered product list for pricing page
-    generateFilteredList() {
-        const analysis = this.analyzeProducts();
-        const filtered = {};
-
-        Object.entries(analysis.currentProducts).forEach(([productName, matches]) => {
-            const recommended = matches.filter(m => m.recommended);
-            if (recommended.length > 0) {
-                // Pick the best option for each license type
-                const byLicenseType = {};
-                
-                recommended.forEach(product => {
-                    const licenseType = this.identifyLicenseType(product['Product Name']);
-                    if (!byLicenseType[licenseType] || 
-                        this.comparePriority(product, byLicenseType[licenseType]) > 0) {
-                        byLicenseType[licenseType] = product;
-                    }
-                });
-                
-                filtered[productName] = Object.values(byLicenseType);
-            }
-        });
-
-        return filtered;
-    }
-
     identifyLicenseType(productName) {
         const name = productName.toLowerCase();
         
@@ -471,29 +320,87 @@ class PricelistValidator {
         return 'other';
     }
 
-    comparePriority(productA, productB) {
-        // Compare based on edition priority
-        const editionA = this.getEditionPriority(productA['Product Name']);
-        const editionB = this.getEditionPriority(productB['Product Name']);
-        
-        if (editionA !== editionB) {
-            return editionA - editionB;
-        }
-        
-        // If same edition, prefer lower price
-        return (productA.Euro || 0) - (productB.Euro || 0);
-    }
+    shouldIncludeProduct(product) {
+        const productName = product['Product Name'];
+        const price = product.Euro;
 
-    getEditionPriority(productName) {
-        const name = productName.toLowerCase();
-        
-        for (const edition of this.config.editions || []) {
-            if (name.includes(edition.name.toLowerCase())) {
-                return edition.priority;
+        // Check exclusion patterns first
+        const hasExcludePattern = this.config.excludePatterns?.some(pattern =>
+            productName.toLowerCase().includes(pattern.toLowerCase())
+        );
+
+        if (hasExcludePattern) {
+            return { include: false, reason: 'Contains excluded pattern' };
+        }
+
+        // Check price validity
+        if (!price || typeof price !== 'number' || price <= 0) {
+            return { include: false, reason: 'Invalid or missing price' };
+        }
+
+        // Check price range
+        if (this.config.priceFilter) {
+            if (price < this.config.priceFilter.minPrice) {
+                return { include: false, reason: 'Price below minimum threshold' };
+            }
+            if (price > this.config.priceFilter.maxPrice) {
+                return { include: false, reason: 'Price above maximum threshold' };
             }
         }
+
+        return { include: true, reason: 'Meets all criteria' };
+    }
+
+    generateReport() {
+        const analysis = this.analyzeProducts();
         
-        return 0; // Default priority
+        console.log('📋 COMPREHENSIVE PRICELIST ANALYSIS REPORT');
+        console.log('===========================================');
+        console.log(`Total products in pricelist: ${analysis.totalProducts}`);
+        console.log(`Products with valid prices: ${analysis.withValidPrices}`);
+        
+        console.log('\n📊 License Type Breakdown:');
+        Object.entries(analysis.licenseTypeBreakdown).forEach(([type, count]) => {
+            const licenseType = this.config.licenseTypes?.find(lt => lt.type === type);
+            const displayName = licenseType ? licenseType.displayName : type;
+            console.log(`   ${displayName}: ${count} products`);
+        });
+        console.log('');
+
+        // Report on each configured product
+        Object.entries(analysis.currentProducts).forEach(([productName, matches]) => {
+            console.log(`🔍 ${productName}:`);
+            
+            if (matches.length === 0) {
+                console.log('   ❌ No matches found in pricelist');
+            } else {
+                const recommended = matches.filter(m => m.recommended);
+                console.log(`   ✅ Found ${matches.length} matches (${recommended.length} recommended)`);
+                
+                // Group by license type
+                const byLicenseType = {};
+                matches.forEach(product => {
+                    if (!byLicenseType[product.licenseType]) {
+                        byLicenseType[product.licenseType] = [];
+                    }
+                    byLicenseType[product.licenseType].push(product);
+                });
+                
+                Object.entries(byLicenseType).forEach(([licenseType, products]) => {
+                    const licenseTypeConfig = this.config.licenseTypes?.find(lt => lt.type === licenseType);
+                    const displayName = licenseTypeConfig ? licenseTypeConfig.displayName : licenseType;
+                    console.log(`   📦 ${displayName} (${products.length}):`);
+                    products.slice(0, 2).forEach(product => {
+                        const versionInfo = product.version ? ` v${product.version}` : '';
+                        const recIcon = product.recommended ? '✅' : '⚠️';
+                        console.log(`      ${recIcon} ${product['Product Name']}${versionInfo} - €${product.Euro}`);
+                    });
+                });
+            }
+            console.log('');
+        });
+
+        return analysis;
     }
 
     async validate() {
@@ -501,25 +408,31 @@ class PricelistValidator {
         if (!loaded) return null;
         
         const report = this.generateReport();
-        const filtered = this.generateFilteredList();
+        const productsByLicenseType = this.getProductsByLicenseType();
+        const recommendedByLicenseType = this.getRecommendedProductsByLicenseType();
         
-        console.log('🎯 ENHANCED PRODUCT FILTERING RESULTS:');
-        console.log('===================================');
-        Object.entries(filtered).forEach(([productName, products]) => {
-            console.log(`${productName}:`);
-            products.forEach(product => {
-                const versionInfo = product.version ? ` (v${product.version})` : '';
-                const recommendedInfo = product.recommended ? ' ✅' : ' ⚠️';
-                console.log(`   • ${product['Product Name']}${versionInfo} - €${product.Euro}${recommendedInfo}`);
+        console.log('🎯 PRODUCTS BY LICENSE TYPE:');
+        console.log('=============================');
+        
+        Object.entries(productsByLicenseType).forEach(([licenseType, products]) => {
+            const licenseTypeConfig = this.config.licenseTypes?.find(lt => lt.type === licenseType);
+            const displayName = licenseTypeConfig ? licenseTypeConfig.displayName : licenseType;
+            
+            console.log(`\n📋 ${displayName.toUpperCase()}:`);
+            Object.entries(products).forEach(([productName, productList]) => {
+                if (productList.length > 0) {
+                    const bestProduct = productList[0]; // Already sorted
+                    const versionInfo = bestProduct.version ? ` v${bestProduct.version}` : '';
+                    console.log(`   • ${productName}${versionInfo}: €${bestProduct.Euro}`);
+                }
             });
-            console.log('');
         });
 
         return { 
             report, 
-            filtered,
-            recommended: this.getRecommendedProducts(),
-            validator: this // Expose validator instance for additional queries
+            productsByLicenseType,
+            recommendedByLicenseType,
+            validator: this
         };
     }
 }
@@ -527,29 +440,22 @@ class PricelistValidator {
 // Export for use
 window.PricelistValidator = PricelistValidator;
 
-// Provide easy validation function
+// Enhanced validation function that returns comprehensive data
 window.validatePricelist = async function() {
     const validator = new PricelistValidator();
     return await validator.validate();
 };
 
-// Provide easy access to recommended products with latest versions
-window.getRecommendedProducts = async function() {
+// Get products organized by license type for tabbed interface
+window.getProductsByLicenseType = async function() {
     const validator = new PricelistValidator();
     await validator.loadPriceList();
-    return validator.getRecommendedProducts();
+    return validator.getProductsByLicenseType();
 };
 
-// Provide easy access to specific product versions
-window.getProductVersions = async function(productName) {
+// Get recommended products by license type
+window.getRecommendedProductsByLicenseType = async function() {
     const validator = new PricelistValidator();
     await validator.loadPriceList();
-    return validator.getProductVersions(productName);
-};
-
-// Provide easy access to products by category
-window.getProductsByCategory = async function(category = null) {
-    const validator = new PricelistValidator();
-    await validator.loadPriceList();
-    return validator.getProductsByCategory(category);
+    return validator.getRecommendedProductsByLicenseType();
 };
