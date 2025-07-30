@@ -12,7 +12,7 @@ function initializeDemoPlaceholders() {
             
             const button = e.target.classList.contains('demo-launch-btn') ? 
                           e.target : e.target.closest('.demo-launch-btn');
-            const demoId = button.getAttribute('onclick')?.match(/launchDemo\('([^']+)'\)/)?.[1] || 'demo';
+            const demoId = button.getAttribute('data-demo-id') || 'demo';
             
             e.preventDefault();
             launchDemo(demoId);
@@ -49,7 +49,25 @@ function initializeDemoPlaceholders() {
 
 // Launch demo placeholder
 function launchDemo(demoId) {
+    // Check if this is the FlexGrid BI demo - launch the real demo
+    if (demoId === 'flexgrid-bi') {
+        launchFlexGridDemo();
+        return;
+    }
+    
+    // For other demos, show placeholder modal
     const modal = createDemoModal(demoId);
+    document.body.appendChild(modal);
+    
+    // Show modal with animation
+    requestAnimationFrame(() => {
+        modal.classList.add('show');
+    });
+}
+
+// Launch the actual FlexGrid BI demo
+function launchFlexGridDemo() {
+    const modal = createFlexGridDemoModal();
     document.body.appendChild(modal);
     
     // Show modal with animation
@@ -211,6 +229,51 @@ public class ${codeId.charAt(0).toUpperCase() + codeId.slice(1)}Controller : Con
     return modal;
 }
 
+// Create FlexGrid demo modal with embedded iframe
+function createFlexGridDemoModal() {
+    const modal = document.createElement('div');
+    modal.className = 'demo-modal flexgrid-demo-modal';
+    modal.innerHTML = `
+        <div class="demo-modal-content">
+            <div class="demo-modal-header">
+                <h3>FlexGrid BI Demo - Interactive Data Grid</h3>
+                <button class="demo-modal-close">&times;</button>
+            </div>
+            <div class="demo-modal-body">
+                <div class="demo-iframe-wrapper">
+                    <iframe 
+                        src="../../demos/flexgrid-bi-demo.html" 
+                        width="100%" 
+                        height="600" 
+                        frameborder="0"
+                        title="FlexGrid BI Demo">
+                    </iframe>
+                </div>
+                <div class="demo-info">
+                    <p><strong>This fully functional demo showcases:</strong> Virtual scrolling (1M+ records), real-time updates, advanced filtering, CSV export, and performance monitoring.</p>
+                    <div class="demo-actions">
+                        <button class="btn btn-primary" onclick="openFlexGridNewTab()">
+                            <i class="fas fa-external-link-alt"></i> Open Full Screen
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    // Add close functionality
+    const closeBtn = modal.querySelector('.demo-modal-close');
+    closeBtn.addEventListener('click', () => closeDemoModal(modal));
+    
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeDemoModal(modal);
+        }
+    });
+
+    return modal;
+}
+
 // Get demo features based on ID
 function getDemoFeatures(demoId) {
     const features = {
@@ -305,6 +368,15 @@ function downloadCode(codeId) {
     // In real implementation, would trigger download
 }
 
+// Open FlexGrid demo in new tab - simplified
+function openFlexGridNewTab() {
+    window.open('../../demos/flexgrid-bi-demo.html', '_blank');
+    // Close any open modals
+    const modal = document.querySelector('.flexgrid-demo-modal');
+    if (modal) closeDemoModal(modal);
+}
+
+
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', initializeDemoPlaceholders);
 
@@ -315,3 +387,4 @@ window.requestDemo = requestDemo;
 window.viewDocumentation = viewDocumentation;
 window.copyCode = copyCode;
 window.downloadCode = downloadCode;
+window.openFlexGridNewTab = openFlexGridNewTab;

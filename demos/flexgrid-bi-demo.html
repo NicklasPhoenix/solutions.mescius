@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlexGrid BI Demo - High Performance Data Grid</title>
+    
+    <!-- Wijmo CSS -->
+    <link href="https://cdn.grapecity.com/wijmo/5.20232.939/styles/wijmo.css" rel="stylesheet">
+    
+    <!-- Demo-specific styles -->
+    <style>
+        * { box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f8fafc;
+            color: #1e293b;
+        }
+        
+        .demo-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .demo-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .demo-header h1 {
+            margin: 0 0 10px 0;
+            color: #0f172a;
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+        
+        .demo-header p {
+            margin: 0;
+            color: #64748b;
+            font-size: 1.1rem;
+        }
+        
+        .demo-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #3b82f6;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .demo-controls {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .control-group label {
+            font-weight: 500;
+            color: #374151;
+            white-space: nowrap;
+        }
+        
+        .control-group input, .control-group select {
+            padding: 8px 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+        
+        .control-group input:focus, .control-group select:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        
+        .btn:hover {
+            background: #2563eb;
+        }
+        
+        .btn-secondary {
+            background: #6b7280;
+        }
+        
+        .btn-secondary:hover {
+            background: #4b5563;
+        }
+        
+        .btn-success {
+            background: #059669;
+        }
+        
+        .btn-success:hover {
+            background: #047857;
+        }
+        
+        .grid-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        
+        .grid-header {
+            padding: 20px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: between;
+            align-items: center;
+        }
+        
+        .grid-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin: 0;
+        }
+        
+        .performance-indicator {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #059669;
+            font-weight: 500;
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #059669;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        #flexGrid {
+            height: 600px;
+            width: 100%;
+        }
+        
+        .performance-metrics {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .metric-card {
+            text-align: center;
+            padding: 15px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+        }
+        
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #3b82f6;
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+        
+        .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+        
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #e5e7eb;
+            border-top: 4px solid #3b82f6;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .demo-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .control-group {
+                justify-content: space-between;
+            }
+            
+            .demo-stats {
+                gap: 20px;
+            }
+            
+            .stat-number {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="demo-header">
+            <h1>FlexGrid BI Demo</h1>
+            <p>Experience high-performance data visualization with virtual scrolling, real-time updates, and enterprise-grade features</p>
+            
+            <div class="demo-stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="recordCount">100,000</span>
+                    <span class="stat-label">Records</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="renderTime">< 100ms</span>
+                    <span class="stat-label">Render Time</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">Virtual</span>
+                    <span class="stat-label">Scrolling</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">Real-time</span>
+                    <span class="stat-label">Updates</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-controls">
+            <div class="control-group">
+                <label for="rowCount">Dataset Size:</label>
+                <select id="rowCount">
+                    <option value="1000">1K Records</option>
+                    <option value="10000">10K Records</option>
+                    <option value="50000">50K Records</option>
+                    <option value="100000" selected>100K Records</option>
+                    <option value="500000">500K Records</option>
+                    <option value="1000000">1M Records</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <button class="btn" onclick="loadData()">Load Data</button>
+                <button class="btn btn-secondary" onclick="toggleRealTimeUpdates()">Toggle Real-time</button>
+                <button class="btn btn-success" onclick="exportToCSV()">Export CSV</button>
+            </div>
+            
+            <div class="control-group">
+                <label for="filterText">Quick Filter:</label>
+                <input type="text" id="filterText" placeholder="Search records..." onkeyup="applyFilter()">
+            </div>
+        </div>
+        
+        <div class="grid-container">
+            <div class="grid-header">
+                <h3 class="grid-title">Business Intelligence Data Grid</h3>
+                <div class="performance-indicator">
+                    <div class="status-dot"></div>
+                    <span>Live Performance Monitoring</span>
+                </div>
+            </div>
+            <div style="position: relative;">
+                <div id="flexGrid"></div>
+                <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+                    <div class="loading-spinner"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="performance-metrics">
+            <div class="metric-card">
+                <div class="metric-value" id="visibleRows">0</div>
+                <div class="metric-label">Visible Rows</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" id="totalRows">0</div>
+                <div class="metric-label">Total Rows</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" id="scrollPosition">0%</div>
+                <div class="metric-label">Scroll Position</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" id="memoryUsage">--</div>
+                <div class="metric-label">Memory Usage</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" id="filterCount">0</div>
+                <div class="metric-label">Filtered Rows</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wijmo JS -->
+    <script src="https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.min.js"></script>
+    <script src="https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.grid.min.js"></script>
+    <script src="https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.grid.filter.min.js"></script>
+
+    <script>
+        let flexGrid;
+        let sampleData = [];
+        let realTimeInterval;
+        let isRealTimeActive = false;
+        
+        // Initialize the demo when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeFlexGrid();
+            loadData();
+        });
+        
+        function initializeFlexGrid() {
+            // Create FlexGrid instance
+            flexGrid = new wijmo.grid.FlexGrid('#flexGrid', {
+                autoGenerateColumns: false,
+                alternatingRowStep: 1,
+                headersVisibility: wijmo.grid.HeadersVisibility.Column,
+                selectionMode: wijmo.grid.SelectionMode.Row,
+                allowSorting: true,
+                allowResizing: wijmo.grid.AllowResizing.Columns,
+                isReadOnly: true,
+                columns: [
+                    { binding: 'id', header: 'ID', width: 80, format: 'n0' },
+                    { binding: 'companyName', header: 'Company', width: 200 },
+                    { binding: 'contactName', header: 'Contact', width: 150 },
+                    { binding: 'industry', header: 'Industry', width: 120 },
+                    { binding: 'revenue', header: 'Revenue', width: 120, format: 'c0' },
+                    { binding: 'employees', header: 'Employees', width: 100, format: 'n0' },
+                    { binding: 'region', header: 'Region', width: 100 },
+                    { binding: 'lastUpdated', header: 'Last Updated', width: 140, format: 'yyyy-MM-dd HH:mm' },
+                    { binding: 'growth', header: 'Growth %', width: 100, format: 'p2' },
+                    { binding: 'rating', header: 'Rating', width: 80, format: 'n1' }
+                ]
+            });
+            
+            // Add event handlers
+            flexGrid.scrollPositionChanged.addHandler(updateScrollMetrics);
+            flexGrid.loadedRows.addHandler(updateVisibleRowsMetric);
+            
+            // Add filter
+            const filter = new wijmo.grid.filter.FlexGridFilter(flexGrid);
+        }
+        
+        function generateSampleData(count) {
+            const companies = [
+                'Acme Corp', 'Global Industries', 'Tech Solutions', 'Innovation Labs', 'Future Systems',
+                'Digital Dynamics', 'Smart Analytics', 'Data Insights', 'Cloud Computing Inc', 'AI Technologies',
+                'Quantum Systems', 'Cyber Security Ltd', 'Blockchain Solutions', 'IoT Innovations', 'ML Analytics'
+            ];
+            
+            const industries = [
+                'Technology', 'Healthcare', 'Finance', 'Manufacturing', 'Retail', 
+                'Energy', 'Transportation', 'Education', 'Government', 'Real Estate'
+            ];
+            
+            const regions = ['North America', 'Europe', 'Asia Pacific', 'Latin America', 'Middle East', 'Africa'];
+            
+            const contacts = [
+                'John Smith', 'Jane Doe', 'Mike Johnson', 'Sarah Wilson', 'David Brown',
+                'Lisa Garcia', 'Tom Davis', 'Emily Chen', 'Mark Rodriguez', 'Anna Thompson'
+            ];
+            
+            const data = [];
+            const startTime = performance.now();
+            
+            for (let i = 1; i <= count; i++) {
+                data.push({
+                    id: i,
+                    companyName: companies[Math.floor(Math.random() * companies.length)] + ' ' + i,
+                    contactName: contacts[Math.floor(Math.random() * contacts.length)],
+                    industry: industries[Math.floor(Math.random() * industries.length)],
+                    revenue: Math.floor(Math.random() * 50000000) + 100000,
+                    employees: Math.floor(Math.random() * 10000) + 10,
+                    region: regions[Math.floor(Math.random() * regions.length)],
+                    lastUpdated: new Date(Date.now() - Math.random() * 365 * 24 * 60 * 60 * 1000),
+                    growth: (Math.random() - 0.5) * 0.5, // -25% to +25%
+                    rating: Math.random() * 5
+                });
+            }
+            
+            const endTime = performance.now();
+            console.log(`Generated ${count} records in ${(endTime - startTime).toFixed(2)}ms`);
+            
+            return data;
+        }
+        
+        function loadData() {
+            const rowCount = parseInt(document.getElementById('rowCount').value);
+            showLoading(true);
+            
+            // Use setTimeout to allow UI to update
+            setTimeout(() => {
+                const startTime = performance.now();
+                
+                sampleData = generateSampleData(rowCount);
+                flexGrid.itemsSource = new wijmo.collections.CollectionView(sampleData);
+                
+                const endTime = performance.now();
+                const renderTime = (endTime - startTime).toFixed(2);
+                
+                document.getElementById('recordCount').textContent = rowCount.toLocaleString();
+                document.getElementById('renderTime').textContent = renderTime + 'ms';
+                document.getElementById('totalRows').textContent = sampleData.length.toLocaleString();
+                
+                updateMemoryUsage();
+                showLoading(false);
+                
+                console.log(`Loaded ${rowCount} records in ${renderTime}ms`);
+            }, 100);
+        }
+        
+        function toggleRealTimeUpdates() {
+            if (isRealTimeActive) {
+                clearInterval(realTimeInterval);
+                isRealTimeActive = false;
+                document.querySelector('button[onclick="toggleRealTimeUpdates()"]').textContent = 'Start Real-time';
+                document.querySelector('button[onclick="toggleRealTimeUpdates()"]').classList.remove('btn-success');
+                document.querySelector('button[onclick="toggleRealTimeUpdates()"]').classList.add('btn-secondary');
+            } else {
+                startRealTimeUpdates();
+                isRealTimeActive = true;
+                document.querySelector('button[onclick="toggleRealTimeUpdates()"]').textContent = 'Stop Real-time';
+                document.querySelector('button[onclick="toggleRealTimeUpdates()"]').classList.remove('btn-secondary');
+                document.querySelector('button[onclick="toggleRealTimeUpdates()"]').classList.add('btn-success');
+            }
+        }
+        
+        function startRealTimeUpdates() {
+            realTimeInterval = setInterval(() => {
+                if (sampleData.length === 0) return;
+                
+                // Update random records
+                const recordsToUpdate = Math.min(10, sampleData.length);
+                for (let i = 0; i < recordsToUpdate; i++) {
+                    const randomIndex = Math.floor(Math.random() * sampleData.length);
+                    const record = sampleData[randomIndex];
+                    
+                    // Update some fields with new values
+                    record.revenue += (Math.random() - 0.5) * 100000;
+                    record.employees += Math.floor((Math.random() - 0.5) * 20);
+                    record.growth = (Math.random() - 0.5) * 0.5;
+                    record.rating = Math.random() * 5;
+                    record.lastUpdated = new Date();
+                }
+                
+                // Refresh the grid
+                flexGrid.collectionView.refresh();
+            }, 2000); // Update every 2 seconds
+        }
+        
+        function applyFilter() {
+            const filterText = document.getElementById('filterText').value.toLowerCase();
+            
+            if (!flexGrid.collectionView) return;
+            
+            flexGrid.collectionView.filter = function(item) {
+                if (!filterText) return true;
+                
+                return item.companyName.toLowerCase().includes(filterText) ||
+                       item.contactName.toLowerCase().includes(filterText) ||
+                       item.industry.toLowerCase().includes(filterText) ||
+                       item.region.toLowerCase().includes(filterText);
+            };
+            
+            document.getElementById('filterCount').textContent = flexGrid.collectionView.items.length.toLocaleString();
+        }
+        
+        function exportToCSV() {
+            if (!flexGrid.collectionView || flexGrid.collectionView.items.length === 0) {
+                alert('No data to export');
+                return;
+            }
+            
+            const startTime = performance.now();
+            
+            // Get visible items (filtered)
+            const items = flexGrid.collectionView.items;
+            
+            // Create CSV content
+            const headers = ['ID', 'Company', 'Contact', 'Industry', 'Revenue', 'Employees', 'Region', 'Last Updated', 'Growth %', 'Rating'];
+            let csvContent = headers.join(',') + '\n';
+            
+            items.forEach(item => {
+                const row = [
+                    item.id,
+                    `"${item.companyName}"`,
+                    `"${item.contactName}"`,
+                    `"${item.industry}"`,
+                    item.revenue,
+                    item.employees,
+                    `"${item.region}"`,
+                    `"${item.lastUpdated.toISOString()}"`,
+                    (item.growth * 100).toFixed(2) + '%',
+                    item.rating.toFixed(1)
+                ];
+                csvContent += row.join(',') + '\n';
+            });
+            
+            // Create and download file
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `flexgrid-bi-data-${new Date().toISOString().slice(0, 10)}.csv`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+            
+            const endTime = performance.now();
+            console.log(`Exported ${items.length} records in ${(endTime - startTime).toFixed(2)}ms`);
+        }
+        
+        function updateScrollMetrics() {
+            if (!flexGrid) return;
+            
+            const scrollPosition = flexGrid.scrollPosition;
+            const maxScroll = Math.max(1, flexGrid.rows.length - flexGrid.clientSize.height / flexGrid.rows.defaultSize);
+            const percentage = Math.round((scrollPosition.y / maxScroll) * 100);
+            
+            document.getElementById('scrollPosition').textContent = percentage + '%';
+        }
+        
+        function updateVisibleRowsMetric() {
+            if (!flexGrid) return;
+            
+            const visibleRows = flexGrid.viewRange.bottomRow - flexGrid.viewRange.topRow + 1;
+            document.getElementById('visibleRows').textContent = visibleRows.toLocaleString();
+        }
+        
+        function updateMemoryUsage() {
+            if ('memory' in performance) {
+                const memMB = Math.round(performance.memory.usedJSHeapSize / 1024 / 1024);
+                document.getElementById('memoryUsage').textContent = memMB + 'MB';
+            } else {
+                document.getElementById('memoryUsage').textContent = 'N/A';
+            }
+        }
+        
+        function showLoading(show) {
+            document.getElementById('loadingOverlay').style.display = show ? 'flex' : 'none';
+        }
+        
+        // Update memory usage periodically
+        setInterval(updateMemoryUsage, 5000);
+        
+        // Performance monitoring
+        setInterval(() => {
+            if (flexGrid && flexGrid.collectionView) {
+                updateVisibleRowsMetric();
+                updateScrollMetrics();
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
