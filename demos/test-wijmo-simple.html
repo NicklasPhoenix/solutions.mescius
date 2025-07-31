@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Wijmo Test</title>
+    
+    <!-- Wijmo CSS -->
+    <link href="https://cdn.grapecity.com/wijmo/5.20232.939/styles/wijmo.css" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .chart-container {
+            width: 600px;
+            height: 400px;
+            border: 1px solid #ccc;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple Wijmo Chart Test</h1>
+    
+    <h2>Line Chart</h2>
+    <div id="lineChart" class="chart-container"></div>
+    
+    <h2>Pie Chart</h2>
+    <div id="pieChart" class="chart-container"></div>
+    
+    <div id="status"></div>
+
+    <!-- Wijmo JS -->
+    <script src="https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.min.js"></script>
+    <script src="https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.chart.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const statusDiv = document.getElementById('status');
+            
+            // Check if Wijmo is loaded
+            if (typeof wijmo === 'undefined') {
+                statusDiv.innerHTML = '<p style="color: red;">ERROR: Wijmo library not loaded</p>';
+                return;
+            }
+            
+            statusDiv.innerHTML = '<p style="color: green;">Wijmo library loaded successfully</p>';
+            
+            try {
+                // Simple data
+                const lineData = [
+                    { month: 'Jan', value: 100 },
+                    { month: 'Feb', value: 150 },
+                    { month: 'Mar', value: 120 },
+                    { month: 'Apr', value: 180 }
+                ];
+                
+                const pieData = [
+                    { category: 'A', value: 30 },
+                    { category: 'B', value: 40 },
+                    { category: 'C', value: 30 }
+                ];
+                
+                // Initialize Line Chart
+                const lineChart = new wijmo.chart.FlexChart('#lineChart', {
+                    itemsSource: lineData,
+                    bindingX: 'month',
+                    chartType: wijmo.chart.ChartType.Line,
+                    axisX: { title: 'Month' },
+                    axisY: { title: 'Value' }
+                });
+                
+                lineChart.series.push(new wijmo.chart.Series({ 
+                    binding: 'value', 
+                    name: 'Test Data' 
+                }));
+                
+                // Initialize Pie Chart  
+                const pieChart = new wijmo.chart.FlexPie('#pieChart', {
+                    itemsSource: pieData,
+                    bindingName: 'category',
+                    binding: 'value'
+                });
+                
+                statusDiv.innerHTML += '<p style="color: green;">Charts initialized successfully</p>';
+                
+            } catch (error) {
+                statusDiv.innerHTML += '<p style="color: red;">ERROR: ' + error.message + '</p>';
+                console.error('Chart initialization error:', error);
+            }
+        });
+    </script>
+</body>
+</html>

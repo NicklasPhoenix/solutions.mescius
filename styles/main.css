@@ -28,6 +28,7 @@
 @import url('03-components/forms.css');
 @import url('03-components/animations.css');
 @import url('03-components/demo-placeholders.css');
+@import url('03-components/code-showcase-fix.css');
 
 /* 5. PAGES - Page-specific styles */
 @import url('04-pages/home.css');

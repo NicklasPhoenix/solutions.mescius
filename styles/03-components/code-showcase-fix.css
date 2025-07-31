@@ -52,7 +52,7 @@
     min-height: 200px !important;
 }
 
-.code-block {
+.code-showcase .code-content .code-block {
     display: none !important;
     margin: 0 !important;
     background: #f8fafc !important;
@@ -62,7 +62,7 @@
     padding: 0 !important;
 }
 
-.code-block.active {
+.code-showcase .code-content .code-block.active {
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
@@ -70,7 +70,7 @@
     max-height: none !important;
 }
 
-.code-block pre {
+.code-showcase .code-content .code-block pre {
     margin: 0 !important;
     padding: 0 !important;
     background: transparent !important;
@@ -78,7 +78,7 @@
     overflow: visible !important;
 }
 
-.code-block code {
+.code-showcase .code-content .code-block code {
     display: block !important;
     padding: 20px !important;
     color: #1e293b !important;
@@ -89,6 +89,34 @@
     overflow-x: auto !important;
     background: transparent !important;
     border: none !important;
+}
+
+.code-showcase .code-content .code-block-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 12px 16px !important;
+    background: #f1f5f9 !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    border-radius: 8px 8px 0 0 !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    color: #64748b !important;
+}
+
+.code-showcase .code-content .copy-btn {
+    background: #3b82f6 !important;
+    color: white !important;
+    border: none !important;
+    padding: 6px 12px !important;
+    border-radius: 4px !important;
+    font-size: 11px !important;
+    cursor: pointer !important;
+    transition: background 0.2s ease !important;
+}
+
+.code-showcase .code-content .copy-btn:hover {
+    background: #2563eb !important;
 }
 
 .code-actions {
@@ -131,13 +159,19 @@
     border-bottom-color: #60a5fa !important;
 }
 
-[data-theme="dark"] .code-block {
+[data-theme="dark"] .code-showcase .code-content .code-block {
     background: #0f172a !important;
     border-color: #334155 !important;
 }
 
-[data-theme="dark"] .code-block code {
+[data-theme="dark"] .code-showcase .code-content .code-block code {
     color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .code-showcase .code-content .code-block-header {
+    background: #334155 !important;
+    border-bottom-color: #475569 !important;
+    color: #94a3b8 !important;
 }
 
 [data-theme="dark"] .code-actions {

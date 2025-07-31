@@ -72,6 +72,16 @@
   --error-active: #991B1B;
   --info: #3B82F6;
   
+  /* CODE SYNTAX HIGHLIGHTING */
+  --code-keyword: #d73a49;
+  --code-string: #032f62;
+  --code-comment: #6a737d;
+  --code-function: #6f42c1;
+  --code-number: #005cc5;
+  --code-property: #e36209;
+  --code-operator: #d73a49;
+  --code-punctuation: #586e75;
+  
   /* NEUTRAL SCALE */
   --gray-50: #F9FAFB;
   --gray-100: #F3F4F6;

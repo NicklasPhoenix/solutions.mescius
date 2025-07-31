@@ -55,6 +55,12 @@ function launchDemo(demoId) {
         return;
     }
     
+    // Check if this is the FlexChart BI demo - launch the real demo
+    if (demoId === 'charts-bi') {
+        launchFlexChartDemo();
+        return;
+    }
+    
     // For other demos, show placeholder modal
     const modal = createDemoModal(demoId);
     document.body.appendChild(modal);
@@ -68,6 +74,17 @@ function launchDemo(demoId) {
 // Launch the actual FlexGrid BI demo
 function launchFlexGridDemo() {
     const modal = createFlexGridDemoModal();
+    document.body.appendChild(modal);
+    
+    // Show modal with animation
+    requestAnimationFrame(() => {
+        modal.classList.add('show');
+    });
+}
+
+// Launch the actual FlexChart BI demo
+function launchFlexChartDemo() {
+    const modal = createFlexChartDemoModal();
     document.body.appendChild(modal);
     
     // Show modal with animation
@@ -274,6 +291,51 @@ function createFlexGridDemoModal() {
     return modal;
 }
 
+// Create FlexChart demo modal with embedded iframe
+function createFlexChartDemoModal() {
+    const modal = document.createElement('div');
+    modal.className = 'demo-modal flexchart-demo-modal';
+    modal.innerHTML = `
+        <div class="demo-modal-content">
+            <div class="demo-modal-header">
+                <h3>FlexChart BI Demo - Real-time Data Visualization</h3>
+                <button class="demo-modal-close">&times;</button>
+            </div>
+            <div class="demo-modal-body">
+                <div class="demo-iframe-wrapper">
+                    <iframe 
+                        src="../../demos/flexchart-bi-demo.html" 
+                        width="100%" 
+                        height="600" 
+                        frameborder="0"
+                        title="FlexChart BI Demo">
+                    </iframe>
+                </div>
+                <div class="demo-info">
+                    <p><strong>This fully functional demo showcases:</strong> 60+ chart types, real-time data updates, interactive tooltips, smooth animations, and professional financial charts.</p>
+                    <div class="demo-actions">
+                        <button class="btn btn-primary" onclick="openFlexChartNewTab()">
+                            <i class="fas fa-external-link-alt"></i> Open Full Screen
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    // Add close functionality
+    const closeBtn = modal.querySelector('.demo-modal-close');
+    closeBtn.addEventListener('click', () => closeDemoModal(modal));
+    
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeDemoModal(modal);
+        }
+    });
+
+    return modal;
+}
+
 // Get demo features based on ID
 function getDemoFeatures(demoId) {
     const features = {
@@ -354,11 +416,41 @@ function viewDocumentation(demoId) {
     // In real implementation, would open docs in new tab
 }
 
-function copyCode() {
-    const activeCode = document.querySelector('.code-block.active code');
+function copyCode(buttonElement) {
+    let activeCode;
+    
+    if (buttonElement) {
+        // Find the code block within the same parent container as the button
+        const codeBlock = buttonElement.closest('.code-block');
+        if (codeBlock) {
+            activeCode = codeBlock.querySelector('code');
+        }
+    }
+    
+    // Fallback to finding the currently active code block
+    if (!activeCode) {
+        activeCode = document.querySelector('.code-block.active code');
+    }
+    
     if (activeCode) {
-        navigator.clipboard.writeText(activeCode.textContent).then(() => {
-            alert('Code copied to clipboard!');
+        // Get the text content and clean it up
+        const codeText = activeCode.textContent || activeCode.innerText;
+        navigator.clipboard.writeText(codeText).then(() => {
+            // Visual feedback - briefly change button text
+            const originalText = buttonElement ? buttonElement.innerHTML : '';
+            if (buttonElement) {
+                buttonElement.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                buttonElement.style.background = '#10b981';
+                setTimeout(() => {
+                    buttonElement.innerHTML = originalText;
+                    buttonElement.style.background = '';
+                }, 1000);
+            } else {
+                alert('Code copied to clipboard!');
+            }
+        }).catch(err => {
+            console.error('Failed to copy code:', err);
+            alert('Failed to copy code. Please select and copy manually.');
         });
     }
 }
@@ -376,6 +468,14 @@ function openFlexGridNewTab() {
     if (modal) closeDemoModal(modal);
 }
 
+// Open FlexChart demo in new tab
+function openFlexChartNewTab() {
+    window.open('../../demos/flexchart-bi-demo.html', '_blank');
+    // Close any open modals
+    const modal = document.querySelector('.flexchart-demo-modal');
+    if (modal) closeDemoModal(modal);
+}
+
 
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', initializeDemoPlaceholders);
@@ -388,3 +488,4 @@ window.viewDocumentation = viewDocumentation;
 window.copyCode = copyCode;
 window.downloadCode = downloadCode;
 window.openFlexGridNewTab = openFlexGridNewTab;
+window.openFlexChartNewTab = openFlexChartNewTab;

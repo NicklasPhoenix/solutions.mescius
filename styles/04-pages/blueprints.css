@@ -1917,11 +1917,14 @@
 }
 
 /* Syntax highlighting for dark/light themes */
-.code-block .keyword { color: var(--code-keyword, #d73a49); }
-.code-block .string { color: var(--code-string, #032f62); }
-.code-block .comment { color: var(--code-comment, #6a737d); }
-.code-block .function { color: var(--code-function, #6f42c1); }
-.code-block .number { color: var(--code-number, #005cc5); }
+.code-block .keyword { color: var(--code-keyword); }
+.code-block .string { color: var(--code-string); }
+.code-block .comment { color: var(--code-comment); }
+.code-block .function { color: var(--code-function); }
+.code-block .number { color: var(--code-number); }
+.code-block .property { color: var(--code-property); }
+.code-block .operator { color: var(--code-operator); }
+.code-block .punctuation { color: var(--code-punctuation); }
 
 /* Developer Resources Section */
 .developer-resources-section {
