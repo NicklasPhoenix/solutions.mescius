@@ -20,6 +20,16 @@ Multi-page website with established architecture. Make surgical fixes while pres
 **Use when:** Need project overview, planning next steps, managing scope  
 **Example:** `@context-manager what should we prioritize next?`
 
+### @mescius-expert
+**Expertise:** Strategic planning for all 9 MESCIUS products, architecture decisions, cross-product integration  
+**Use when:** Planning MESCIUS integrations, product selection, licensing strategy  
+**Example:** `@mescius-expert plan integration for web app with spreadsheet and reporting needs`
+
+### @spreadjs-developer  
+**Expertise:** Technical SpreadJS implementation, React/Angular/Vue integration, performance optimization  
+**Use when:** Building spreadsheet functionality, Excel import/export, formula engines  
+**Example:** `@spreadjs-developer implement real-time collaborative spreadsheet in React`
+
 ## 🚨 CRITICAL PROJECT RULES - NEVER BREAK THESE
 
 ### File System Integrity
