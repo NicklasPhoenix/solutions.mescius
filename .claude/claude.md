@@ -1,6 +1,26 @@
-# CLAUDE CODE PROJECT GUIDELINES
+# CLAUDE CODE PROJECT COORDINATION
 
-## 🚨 CRITICAL RULES - DO NOT BREAK THESE
+## 🎯 PROJECT CONTEXT
+Multi-page website with established architecture. Make surgical fixes while preserving all existing functionality and structure.
+
+## 🤖 AVAILABLE SUB-AGENTS
+
+### @code-reviewer
+**Expertise:** Code quality, security, performance, best practices  
+**Use when:** Reviewing implementations, debugging, optimization  
+**Example:** `@code-reviewer analyze this function for potential issues`
+
+### @content-marketer  
+**Expertise:** Copywriting, messaging, conversion optimization, user engagement  
+**Use when:** Creating website copy, product descriptions, marketing materials  
+**Example:** `@content-marketer write compelling homepage hero text`
+
+### @context-manager
+**Expertise:** Project coordination, requirements tracking, progress monitoring  
+**Use when:** Need project overview, planning next steps, managing scope  
+**Example:** `@context-manager what should we prioritize next?`
+
+## 🚨 CRITICAL PROJECT RULES - NEVER BREAK THESE
 
 ### File System Integrity
 - **NEVER create new directories** - use existing structure only
@@ -8,9 +28,14 @@
 - **NEVER delete existing files** - only add or modify
 - **NEVER create random utility files** - work within established patterns
 
-### Existing File Structure (DO NOT CHANGE)
+### Architecture Constraints
+- **USE EXISTING CSS FILES ONLY** - modify, don't create new ones
+- **FOLLOW BEM METHODOLOGY** - existing classes use this pattern
+- **COPY EXACT STRUCTURE** from `index.html` when adding missing elements
+- **MODIFY EXISTING JS FILES ONLY** - or create following established naming patterns
+
+## 📁 EXISTING FILE STRUCTURE (DO NOT CHANGE)
 ```
-/
 ├── index.html
 ├── pricing/
 │   └── index.html
@@ -76,119 +101,113 @@
     └── main.js
 ```
 
-### CSS Architecture Rules
-- **USE EXISTING CSS FILES ONLY** - modify, don't create new ones
-- **FOLLOW BEM METHODOLOGY** - existing classes use this pattern
-- **RESPECT CSS CASCADE** - imports in main.css are ordered intentionally
-- **USE EXISTING CSS CUSTOM PROPERTIES** - defined in 00-tokens/
-- **MATCH EXISTING PATTERNS** - copy structures from working pages
+## 🎯 COORDINATION LOGIC WITH PROJECT CONSTRAINTS
 
-### HTML Template Rules
-- **COPY EXACT STRUCTURE** from `index.html` when adding missing elements
-- **MAINTAIN EXISTING CLASS NAMES** - don't invent new ones
-- **PRESERVE ACCESSIBILITY ATTRIBUTES** - aria-labels, roles, etc.
-- **KEEP CONSISTENT HTML HIERARCHY** - header > container > content structure
+### Automatic Sub-Agent Invocation
+I will automatically invoke sub-agents when:
+- **Code changes** → @code-reviewer validates against project architecture rules
+- **Content creation** → @content-marketer creates copy, then @code-reviewer checks implementation
+- **Project planning** → @context-manager ensures scope respects file structure constraints
 
-### JavaScript Rules
-- **MODIFY EXISTING JS FILES ONLY** - main.js, home.js, solutions.js
-- **CREATE MISSING JS FILES** only if they follow the established naming pattern
-- **USE EXISTING EVENT PATTERNS** - copy from working implementations
-- **MAINTAIN EXISTING FUNCTION STRUCTURES** - don't rewrite working code
+### Multi-Agent Workflows (Project-Safe)
+For complex tasks, coordinate while respecting constraints:
+1. **@context-manager** → Clarify requirements within project boundaries
+2. **@content-marketer** or implementation → Execute using existing files only
+3. **@code-reviewer** → Final validation against architecture rules
 
-## 🎯 SPECIFIC ISSUES TO FIX
+## 🛠️ PROJECT-SPECIFIC WORKFLOWS
 
-### Priority 1: Theme Toggle Missing (SAFE FIX)
-**Files to modify:** All HTML files except index.html
-**Action:** Copy the exact theme toggle structure from index.html
-**Location:** Inside `.header-content` div, before `.menu-toggle`
+### Adding Missing Elements (Safe Pattern)
+```
+1. @context-manager confirm what's missing and why
+2. @code-reviewer identify which existing file to copy structure from
+3. Implement by copying exact patterns from working pages
+4. @code-reviewer verify no architecture rules violated
+```
 
-### Priority 2: Mobile Navigation Positioning (CSS ONLY)
-**File to modify:** `styles/03-components/navigation.css`
-**Action:** Adjust positioning values only, don't restructure
+### Content Updates
+```
+1. @content-marketer create compelling copy
+2. @code-reviewer ensure implementation uses existing CSS classes
+3. Test across all pages for consistency
+```
 
-### Priority 3: Container Standardization (HTML ONLY)
-**Files to modify:** Individual HTML files
-**Action:** Ensure consistent `.container` class usage (check styles/02-layout/containers.css for proper classes)
+### Bug Fixes
+```
+1. @code-reviewer diagnose issue within existing file structure
+2. Implement fix by modifying existing files only
+3. @code-reviewer verify solution maintains architecture integrity
+```
 
-### Priority 4: Missing JavaScript Files (FOLLOW PATTERN)
-**Missing files to create:** `scripts/pages/bundles.js`, `scripts/pages/blueprints.js`
-**Pattern:** Follow exact structure from existing `scripts/pages/*.js` files
-
-## 🔒 WHAT NOT TO TOUCH
+## 🔒 PROTECTED AREAS - DO NOT MODIFY
 
 ### Protected Files (NEVER MODIFY)
 - `styles/main.css` (import structure)
 - `styles/00-tokens/*.css` (design system foundations)
 - Logo and image files
-- Any configuration files
 
 ### Protected Structures
 - CSS Grid layouts (they work)
-- Existing working navigation
-- Current color system
-- Working homepage functionality
+- Existing working navigation HTML structure
+- Current color system and CSS custom properties
 
 ## 📋 SAFE MODIFICATION PATTERNS
 
-### Adding Theme Toggle (COPY THIS EXACTLY)
+### Theme Toggle Addition (COPY EXACTLY)
 ```html
-<!-- Copy from index.html between nav and menu-toggle -->
+<!-- From index.html, place in .header-content before .menu-toggle -->
 <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
     <span class="theme-toggle-icon light-icon" aria-hidden="true">☀️</span>
     <span class="theme-toggle-icon dark-icon" aria-hidden="true">🌙</span>
 </button>
 ```
 
-### CSS Modifications (SAFE APPROACH)
-- Only modify property values, not selectors
-- Add new properties to existing rules, don't create new rules
-- Test one property change at a time
+### CSS Changes (SAFE APPROACH)
+- Only modify property values in existing files
+- Add properties to existing rules, don't create new selectors
+- Use existing CSS custom properties from 00-tokens/
 
 ### JavaScript Additions (SAFE PATTERN)
 - Copy function structures from existing `scripts/pages/*.js` files
-- Use existing variable naming conventions from `scripts/core/` and `scripts/components/`
-- Follow existing event listener patterns from `scripts/main.js`
+- Follow existing variable naming from `scripts/core/` and `scripts/components/`
+- Create missing page JS only if following established naming pattern
 
-## 🚫 DANGER ZONES - AVOID THESE
+## 🎛️ USAGE PATTERNS
 
-### Don't Create These
-- New CSS architecture files
-- Random utility scripts
-- New directory structures
-- Custom build processes
-- New configuration files
+### Explicit Invocation (Recommended)
+- `@code-reviewer check this CSS change against our architecture rules`
+- `@content-marketer improve this copy while keeping existing HTML structure`
+- `@context-manager what can we safely fix without breaking architecture?`
 
-### Don't Restructure These
-- CSS import order in styles/main.css
-- Existing working layouts in styles/02-layout/
-- Color token system in styles/00-tokens/
-- Navigation HTML structure (just fix positioning in styles/03-components/navigation.css)
+### Let Me Coordinate (Architecture-Aware)
+- "Fix the mobile navigation" → I'll start with @code-reviewer to ensure safe CSS-only changes
+- "Improve the pricing page" → I'll coordinate @content-marketer + @code-reviewer within constraints
+- "Add missing theme toggles" → I'll manage the safe copy-paste workflow
 
 ## ✅ VALIDATION CHECKLIST
 
 Before any change:
 - [ ] Does this modify existing files only?
-- [ ] Does this follow established patterns?
+- [ ] Does this follow established patterns exactly?
 - [ ] Does this preserve existing working functionality?
-- [ ] Does this maintain the CSS/JS/HTML architecture?
+- [ ] Have I involved @code-reviewer for architecture validation?
 - [ ] Will this work consistently across all affected pages?
 
-## 🎯 SUCCESS CRITERIA
+## 🚫 EMERGENCY STOPS
 
-Each fix should:
-1. Solve the specific issue identified
-2. Not break any existing functionality
-3. Maintain consistency across all pages
-4. Follow the established code patterns
-5. Be minimal and surgical in scope
-
-## 📞 EMERGENCY STOPS
-
-If Claude Code suggests:
-- Creating new directories
+If any agent suggests:
+- Creating new directories or CSS files
 - Renaming existing files
 - Restructuring working layouts
 - Adding new build processes
-- Creating utility files
 
-**STOP and rephrase the prompt more specifically.**
+**STOP and rephrase the prompt more specifically within project constraints.**
+
+## 🎯 SUCCESS CRITERIA
+
+Every change must:
+1. **Solve the specific issue** without side effects
+2. **Maintain architecture integrity** - no new files/directories
+3. **Follow established patterns** exactly
+4. **Pass @code-reviewer validation** against project rules
+5. **Work across all pages** and themes consistently
