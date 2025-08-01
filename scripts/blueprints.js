@@ -140,14 +140,22 @@ function animateCardHeight(card, isExpanded) {
  * Initialize animated metrics counters
  */
 function initializeMetricsAnimation() {
-    const metrics = document.querySelectorAll('.metric-value[data-target], [data-target]');
+    const animatedMetrics = document.querySelectorAll('.metric-value[data-target], [data-target]');
+    const textMetrics = document.querySelectorAll('.metric-value[data-text], [data-text]');
     
-    if (metrics.length === 0) return;
+    if (animatedMetrics.length === 0 && textMetrics.length === 0) return;
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                animateMetricValue(entry.target);
+                // Check if this is a text-only metric or an animated metric
+                if (entry.target.hasAttribute('data-text')) {
+                    // Text-only metrics just get a fade-in effect
+                    entry.target.classList.add('counted');
+                } else if (entry.target.hasAttribute('data-target')) {
+                    // Animated metrics get the counting animation
+                    animateMetricValue(entry.target);
+                }
                 observer.unobserve(entry.target);
             }
         });
@@ -156,7 +164,12 @@ function initializeMetricsAnimation() {
         rootMargin: '0px 0px -20px 0px'
     });
 
-    metrics.forEach(metric => {
+    // Observe both types of metrics
+    animatedMetrics.forEach(metric => {
+        observer.observe(metric);
+    });
+    
+    textMetrics.forEach(metric => {
         observer.observe(metric);
     });
 }
@@ -224,7 +237,10 @@ function formatMetricValue(value, suffix) {
     
     // Handle specific formatting cases
     if (suffix.includes('%')) {
-        return formattedNumber + '%';
+        // Handle % with additional characters like +
+        const percentMatch = suffix.match(/%(.*)$/);
+        const additionalChars = percentMatch ? percentMatch[1] : '';
+        return formattedNumber + '%' + additionalChars;
     } else if (suffix.includes('€')) {
         return '€' + formattedNumber.toLocaleString('de-DE');
     } else if (suffix.includes('k') || suffix.includes('K')) {

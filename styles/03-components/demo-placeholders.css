@@ -16,6 +16,15 @@
     transition: all 0.3s ease;
 }
 
+/* Prevent main page scrolling when modal is open */
+body.modal-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    right: 0;
+}
+
 .demo-modal.show {
     opacity: 1;
     visibility: visible;
@@ -33,17 +42,25 @@
     transition: transform 0.3s ease;
 }
 
-/* FlexGrid Demo Modal - Better sizing and scrolling */
+/* FlexGrid Demo Modal - Larger sizing */
 .flexgrid-demo-modal .demo-modal-content {
-    width: 90vw;
-    max-width: 1200px;
-    height: 80vh;
-    max-height: 700px;
+    width: 95vw;
+    max-width: 1600px;
+    height: 90vh;
+    max-height: 900px;
+}
+
+/* FlexChart Demo Modal - Larger sizing matching FlexGrid */
+.flexchart-demo-modal .demo-modal-content {
+    width: 95vw;
+    max-width: 1600px;
+    height: 90vh;
+    max-height: 900px;
 }
 
 .demo-iframe-wrapper {
     width: 100%;
-    height: 600px;
+    height: 750px;
     border-radius: var(--radius-md);
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -518,13 +535,14 @@
         margin: var(--space-4);
     }
     
-    .flexgrid-demo-modal .demo-modal-content {
-        width: 95vw;
-        height: 85vh;
+    .flexgrid-demo-modal .demo-modal-content,
+    .flexchart-demo-modal .demo-modal-content {
+        width: 98vw;
+        height: 90vh;
     }
     
     .demo-iframe-wrapper {
-        height: 400px;
+        height: 500px;
     }
     
     .demo-modal-header,

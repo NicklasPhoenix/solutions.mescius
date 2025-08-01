@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Showcase Test</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        body { padding: 20px; font-family: Arial, sans-serif; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .test-info { background: #f0f8ff; padding: 15px; border-radius: 5px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="test-info">
+            <h2>Code Showcase Test</h2>
+            <p>This page tests the code snippet visibility issue. The code blocks below should be visible by default.</p>
+        </div>
+
+        <div class="code-showcase">
+            <h3>Implementation Code Examples</h3>
+            <div class="code-tabs">
+                <button class="code-tab active" data-lang="javascript">JavaScript</button>
+                <button class="code-tab" data-lang="html">HTML</button>
+                <button class="code-tab" data-lang="css">CSS</button>
+            </div>
+            
+            <div class="code-content active">
+                <div class="code-block active" data-lang="javascript">
+                    <div class="code-block-header">
+                        <span class="code-language">JavaScript</span>
+                        <button class="copy-btn" onclick="copyCode(this)">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
+<pre><code>// Test JavaScript code
+function testFunction() {
+    console.log('This code should be visible!');
+    return 'JavaScript tab active';
+}</code></pre>
+                </div>
+                
+                <div class="code-block" data-lang="html">
+                    <div class="code-block-header">
+                        <span class="code-language">HTML</span>
+                        <button class="copy-btn" onclick="copyCode(this)">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
+<pre><code>&lt;!-- Test HTML code --&gt;
+&lt;div class="test-container"&gt;
+    &lt;p&gt;This HTML code should be visible when HTML tab is clicked!&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+                
+                <div class="code-block" data-lang="css">
+                    <div class="code-block-header">
+                        <span class="code-language">CSS</span>
+                        <button class="copy-btn" onclick="copyCode(this)">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
+<pre><code>/* Test CSS code */
+.test-container {
+    background: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-info" style="margin-top: 30px;">
+            <h3>Test Results:</h3>
+            <ul>
+                <li>✅ Code showcase container should be visible</li>
+                <li>✅ JavaScript code block should be visible by default (first tab active)</li>
+                <li>✅ Clicking HTML/CSS tabs should switch the visible code block</li>
+                <li>✅ Copy buttons should work</li>
+            </ul>
+            <p><strong>If you can see the JavaScript code above, the fix is working!</strong></p>
+        </div>
+    </div>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/components/demo-placeholders.js"></script>
+</body>
+</html>

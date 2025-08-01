@@ -3,8 +3,14 @@
  * Handles temporary demo launches and code viewing for blueprint pages
  */
 
+// Track scroll position for modal state management
+let scrollPosition = 0;
+
 // Demo placeholder functionality
 function initializeDemoPlaceholders() {
+    // Initialize code showcases - ensure first code block is visible
+    initializeCodeShowcases();
+    
     // Handle all demo launch buttons
     document.addEventListener('click', function(e) {
         if (e.target.classList.contains('demo-launch-btn') || 
@@ -47,6 +53,34 @@ function initializeDemoPlaceholders() {
     });
 }
 
+// Initialize code showcases to ensure first code block is visible
+function initializeCodeShowcases() {
+    const codeShowcases = document.querySelectorAll('.code-showcase');
+    
+    codeShowcases.forEach(showcase => {
+        const codeBlocks = showcase.querySelectorAll('.code-block');
+        const tabs = showcase.querySelectorAll('.code-tab');
+        const codeContent = showcase.querySelector('.code-content');
+        
+        // Ensure code-content is active (required by blueprints.css)
+        if (codeContent && !codeContent.classList.contains('active')) {
+            codeContent.classList.add('active');
+        }
+        
+        // Ensure first code block and tab are active if none are active
+        const hasActiveBlock = showcase.querySelector('.code-block.active');
+        const hasActiveTab = showcase.querySelector('.code-tab.active');
+        
+        if (!hasActiveBlock && codeBlocks.length > 0) {
+            codeBlocks[0].classList.add('active');
+        }
+        
+        if (!hasActiveTab && tabs.length > 0) {
+            tabs[0].classList.add('active');
+        }
+    });
+}
+
 // Launch demo placeholder
 function launchDemo(demoId) {
     // Check if this is the FlexGrid BI demo - launch the real demo
@@ -65,6 +99,11 @@ function launchDemo(demoId) {
     const modal = createDemoModal(demoId);
     document.body.appendChild(modal);
     
+    // Prevent main page scrolling and preserve scroll position
+    scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+    document.body.style.top = `-${scrollPosition}px`;
+    document.body.classList.add('modal-open');
+    
     // Show modal with animation
     requestAnimationFrame(() => {
         modal.classList.add('show');
@@ -75,6 +114,11 @@ function launchDemo(demoId) {
 function launchFlexGridDemo() {
     const modal = createFlexGridDemoModal();
     document.body.appendChild(modal);
+    
+    // Prevent main page scrolling and preserve scroll position
+    scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+    document.body.style.top = `-${scrollPosition}px`;
+    document.body.classList.add('modal-open');
     
     // Show modal with animation
     requestAnimationFrame(() => {
@@ -87,6 +131,11 @@ function launchFlexChartDemo() {
     const modal = createFlexChartDemoModal();
     document.body.appendChild(modal);
     
+    // Prevent main page scrolling and preserve scroll position
+    scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+    document.body.style.top = `-${scrollPosition}px`;
+    document.body.classList.add('modal-open');
+    
     // Show modal with animation
     requestAnimationFrame(() => {
         modal.classList.add('show');
@@ -97,6 +146,11 @@ function launchFlexChartDemo() {
 function viewCode(codeId) {
     const modal = createCodeModal(codeId);
     document.body.appendChild(modal);
+    
+    // Prevent main page scrolling and preserve scroll position
+    scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+    document.body.style.top = `-${scrollPosition}px`;
+    document.body.classList.add('modal-open');
     
     // Show modal with animation
     requestAnimationFrame(() => {
@@ -304,7 +358,7 @@ function createFlexChartDemoModal() {
             <div class="demo-modal-body">
                 <div class="demo-iframe-wrapper">
                     <iframe 
-                        src="../../demos/flexchart-bi-demo.html" 
+                        src="../../demos/flexchart-bi-demo.html?v=${Date.now()}" 
                         width="100%" 
                         height="600" 
                         frameborder="0"
@@ -312,7 +366,7 @@ function createFlexChartDemoModal() {
                     </iframe>
                 </div>
                 <div class="demo-info">
-                    <p><strong>This fully functional demo showcases:</strong> 60+ chart types, real-time data updates, interactive tooltips, smooth animations, and professional financial charts.</p>
+                    <p><strong>This fully functional demo showcases:</strong> 4 interactive charts (Line, Pie, Column, Area), real-time data updates every 2 seconds, interactive tooltips, performance monitoring, and BI dashboard visualization.</p>
                     <div class="demo-actions">
                         <button class="btn btn-primary" onclick="openFlexChartNewTab()">
                             <i class="fas fa-external-link-alt"></i> Open Full Screen
@@ -347,11 +401,11 @@ function getDemoFeatures(demoId) {
             'Export to Excel functionality'
         ],
         'charts-bi': [
-            'Real-time data visualization',
-            '60+ chart types available',
-            'Interactive tooltips and legends',
-            'Responsive design',
-            'Custom styling options'
+            '4 chart types: Line (Revenue Trends), Pie (Market Share), Column (Performance), Area (Portfolio)',
+            'Real-time data updates every 2 seconds with smooth animations',
+            'Interactive tooltips with detailed data on hover',
+            'Performance monitoring with render time and data point tracking',
+            'Professional BI dashboard styling with responsive design'
         ],
         'blazor-hybrid-grid': [
             'Cross-platform data grid',
@@ -399,6 +453,10 @@ function switchCodeTab(clickedTab, targetLang) {
 // Close demo modal
 function closeDemoModal(modal) {
     modal.classList.remove('show');
+    // Re-enable main page scrolling and restore scroll position
+    document.body.classList.remove('modal-open');
+    document.body.style.top = '';
+    window.scrollTo(0, scrollPosition);
     setTimeout(() => {
         modal.remove();
     }, 300);
@@ -470,7 +528,7 @@ function openFlexGridNewTab() {
 
 // Open FlexChart demo in new tab
 function openFlexChartNewTab() {
-    window.open('../../demos/flexchart-bi-demo.html', '_blank');
+    window.open(`../../demos/flexchart-bi-demo.html?v=${Date.now()}`, '_blank');
     // Close any open modals
     const modal = document.querySelector('.flexchart-demo-modal');
     if (modal) closeDemoModal(modal);

@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>FlexChart BI Demo - Real-time Data Visualization</title>
     
     <!-- Wijmo CSS -->
@@ -199,7 +202,7 @@
         }
         
         /* Explicit dimensions for chart containers */
-        #lineChart, #pieChart, #columnChart, #ohlcChart {
+        #lineChart, #pieChart, #columnChart, #portfolioChart {
             width: 100%;
             height: 360px;
         }
@@ -342,7 +345,7 @@
             </div>
             
             <div class="control-group">
-                <button class="btn" onclick="toggleRealTimeUpdates()">Toggle Real-time</button>
+                <button class="btn" onclick="toggleRealTimeUpdates()">Start Real-time</button>
                 <button class="btn btn-secondary" onclick="generateNewData()">Generate New Data</button>
                 <button class="btn btn-success" onclick="exportCharts()">Export Charts</button>
             </div>
@@ -401,14 +404,14 @@
             
             <div class="chart-container">
                 <div class="chart-header">
-                    <h3 class="chart-title">Financial Analysis (OHLC Chart)</h3>
+                    <h3 class="chart-title">Portfolio Performance (Area Chart)</h3>
                     <div class="performance-indicator">
                         <div class="status-dot"></div>
                         <span>Professional</span>
                     </div>
                 </div>
                 <div class="chart-wrapper">
-                    <div id="ohlcChart"></div>
+                    <div id="portfolioChart"></div>
                 </div>
             </div>
         </div>
@@ -440,10 +443,9 @@
     <!-- Wijmo JS -->
     <script src="https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.min.js"></script>
     <script src="https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.chart.min.js"></script>
-    <script src="https://cdn.grapecity.com/wijmo/5.20232.939/controls/wijmo.chart.finance.min.js"></script>
 
     <script>
-        let lineChart, pieChart, columnChart, ohlcChart;
+        let lineChart, pieChart, columnChart, portfolioChart;
         let realTimeInterval;
         let isRealTimeActive = false;
         let updateCount = 0;
@@ -453,7 +455,7 @@
         let revenueData = [];
         let marketShareData = [];
         let performanceData = [];
-        let ohlcData = [];
+        let portfolioData = [];
         
         // Initialize the demo when page loads
         document.addEventListener('DOMContentLoaded', function() {
@@ -504,25 +506,27 @@
                 { metric: 'Error Rate', value: 0.3 }
             ];
             
-            // Generate OHLC financial data
-            ohlcData = [];
-            let price = 100;
+            // Generate Portfolio performance data
+            portfolioData = [];
+            let totalValue = 100000;
+            let stocks = 60000;
+            let bonds = 40000;
+            
             for (let i = 0; i < 30; i++) {
-                const open = price + (Math.random() - 0.5) * 5;
-                const close = open + (Math.random() - 0.5) * 8;
-                const high = Math.max(open, close) + Math.random() * 3;
-                const low = Math.min(open, close) - Math.random() * 3;
+                // Generate realistic portfolio growth
+                const stocksChange = (Math.random() - 0.45) * 3000; // Slightly upward bias
+                const bondsChange = (Math.random() - 0.48) * 1000; // More stable
                 
-                ohlcData.push({
+                stocks = Math.max(10000, stocks + stocksChange);
+                bonds = Math.max(10000, bonds + bondsChange);
+                totalValue = stocks + bonds;
+                
+                portfolioData.push({
                     date: new Date(Date.now() - (29 - i) * 24 * 60 * 60 * 1000),
-                    open: open,
-                    high: high,
-                    low: low,
-                    close: close,
-                    volume: Math.floor(Math.random() * 10000) + 5000
+                    totalValue: totalValue,
+                    stocks: stocks,
+                    bonds: bonds
                 });
-                
-                price = close;
             }
             
             const endTime = performance.now();
@@ -572,12 +576,28 @@
             // Add series to column chart
             columnChart.series.push(new wijmo.chart.Series({ binding: 'value', name: 'Performance' }));
             
-            // Initialize OHLC Chart
-            ohlcChart = new wijmo.chart.finance.FinancialChart('#ohlcChart', {
-                itemsSource: ohlcData,
+            // Initialize Portfolio Area Chart
+            portfolioChart = new wijmo.chart.FlexChart('#portfolioChart', {
+                itemsSource: portfolioData,
                 bindingX: 'date',
-                chartType: wijmo.chart.finance.FinancialChartType.Candlestick
+                chartType: wijmo.chart.ChartType.Area,
+                axisX: { title: 'Time Period' },
+                axisY: { title: 'Portfolio Value ($)' }
             });
+            
+            // Add series for portfolio components
+            portfolioChart.series.push(new wijmo.chart.Series({ 
+                binding: 'totalValue', 
+                name: 'Total Portfolio' 
+            }));
+            portfolioChart.series.push(new wijmo.chart.Series({ 
+                binding: 'stocks', 
+                name: 'Stocks' 
+            }));
+            portfolioChart.series.push(new wijmo.chart.Series({ 
+                binding: 'bonds', 
+                name: 'Bonds' 
+            }));
             
             const endTime = performance.now();
             const renderTime = (endTime - startTime).toFixed(2);
@@ -611,16 +631,14 @@
                 };
             }
             
-            if (ohlcChart) {
-                ohlcChart.tooltip.content = function(ht) {
+            if (portfolioChart) {
+                portfolioChart.tooltip.content = function(ht) {
                     if (ht.item) {
                         const item = ht.item;
                         return `<b>Date:</b> ${item.date.toLocaleDateString()}<br/>
-                                <b>Open:</b> $${item.open.toFixed(2)}<br/>
-                                <b>High:</b> $${item.high.toFixed(2)}<br/>
-                                <b>Low:</b> $${item.low.toFixed(2)}<br/>
-                                <b>Close:</b> $${item.close.toFixed(2)}<br/>
-                                <b>Volume:</b> ${item.volume.toLocaleString()}`;
+                                <b>Total Portfolio:</b> $${item.totalValue.toLocaleString()}<br/>
+                                <b>Stocks:</b> $${item.stocks.toLocaleString()}<br/>
+                                <b>Bonds:</b> $${item.bonds.toLocaleString()}`;
                     }
                     return '';
                 };
@@ -633,7 +651,6 @@
                 isRealTimeActive = false;
                 document.querySelector('button[onclick="toggleRealTimeUpdates()"]').textContent = 'Start Real-time';
                 document.querySelector('button[onclick="toggleRealTimeUpdates()"]').classList.remove('btn-success');
-                document.querySelector('button[onclick="toggleRealTimeUpdates()"]').classList.add('btn');
             } else {
                 startRealTimeUpdates();
             }
@@ -650,7 +667,6 @@
             
             isRealTimeActive = true;
             document.querySelector('button[onclick="toggleRealTimeUpdates()"]').textContent = 'Stop Real-time';
-            document.querySelector('button[onclick="toggleRealTimeUpdates()"]').classList.remove('btn');
             document.querySelector('button[onclick="toggleRealTimeUpdates()"]').classList.add('btn-success');
         }
         
@@ -687,25 +703,25 @@
                 item.value = Math.max(0.1, item.value);
             });
             
-            // Add new OHLC data point
-            const lastPrice = ohlcData[ohlcData.length - 1].close;
-            const open = lastPrice + (Math.random() - 0.5) * 3;
-            const close = open + (Math.random() - 0.5) * 5;
-            const high = Math.max(open, close) + Math.random() * 2;
-            const low = Math.min(open, close) - Math.random() * 2;
+            // Add new portfolio data point
+            const lastData = portfolioData[portfolioData.length - 1];
+            const stocksChange = (Math.random() - 0.45) * 3000; // Slightly upward bias
+            const bondsChange = (Math.random() - 0.48) * 1000; // More stable
             
-            ohlcData.push({
+            const newStocks = Math.max(10000, lastData.stocks + stocksChange);
+            const newBonds = Math.max(10000, lastData.bonds + bondsChange);
+            const newTotalValue = newStocks + newBonds;
+            
+            portfolioData.push({
                 date: new Date(),
-                open: open,
-                high: high,
-                low: low,
-                close: close,
-                volume: Math.floor(Math.random() * 10000) + 5000
+                totalValue: newTotalValue,
+                stocks: newStocks,
+                bonds: newBonds
             });
             
             // Keep only last 30 data points
-            if (ohlcData.length > 30) {
-                ohlcData.shift();
+            if (portfolioData.length > 30) {
+                portfolioData.shift();
             }
             
             // Refresh all charts with error handling
@@ -713,9 +729,10 @@
                 if (lineChart) lineChart.refresh();
                 if (pieChart) pieChart.refresh();
                 if (columnChart) columnChart.refresh();
-                if (ohlcChart) ohlcChart.refresh();
+                if (portfolioChart) portfolioChart.refresh();
             } catch (error) {
                 console.error('Error refreshing charts:', error);
+                console.error('Portfolio data structure:', portfolioData.slice(-3)); // Log last 3 items for debugging
             }
             
             const endTime = performance.now();
@@ -741,9 +758,9 @@
                 columnChart.itemsSource = performanceData;
                 columnChart.refresh();
             }
-            if (ohlcChart) {
-                ohlcChart.itemsSource = ohlcData;
-                ohlcChart.refresh();
+            if (portfolioChart) {
+                portfolioChart.itemsSource = portfolioData;
+                portfolioChart.refresh();
             }
             
             console.log('Generated new sample data for all charts');
@@ -773,7 +790,7 @@
             totalDataPoints = revenueData.length * 3 + // Line chart series
                             marketShareData.length +    // Pie chart
                             performanceData.length +     // Column chart
-                            ohlcData.length * 5;         // OHLC chart (O,H,L,C,V)
+                            portfolioData.length * 3;    // Portfolio chart (Total, Stocks, Bonds)
             
             document.getElementById('dataPoints').textContent = totalDataPoints.toLocaleString();
         }

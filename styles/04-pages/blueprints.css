@@ -910,6 +910,41 @@
   padding: 0;
 }
 
+/* Enhanced Bundle Description Styling */
+.recommended-bundle-section .bundle-description {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  margin-top: var(--space-6);
+  position: relative;
+  overflow: hidden;
+}
+
+.recommended-bundle-section .bundle-description::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--primary-10) 0%, var(--accent-10) 100%);
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.recommended-bundle-section .bundle-description > * {
+  position: relative;
+  z-index: 2;
+}
+
+.recommended-bundle-section .bundle-description p {
+  color: var(--text-primary);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  margin: 0 0 var(--space-4) 0;
+}
+
 .recommended-bundle-section .bundle-inclusions ul {
   list-style: none;
   padding: 0;
@@ -1028,6 +1063,41 @@
   font-size: var(--text-sm);
   color: var(--text-muted);
   margin-top: var(--space-1);
+  font-weight: var(--font-weight-medium);
+}
+
+.recommended-bundle-section .bundle-price .price-value {
+  font-size: var(--text-xs);
+  color: var(--success);
+  font-weight: var(--font-weight-semibold);
+  margin-top: var(--space-1);
+  padding: var(--space-1) var(--space-2);
+  background: var(--success-light);
+  border-radius: var(--radius-md);
+}
+
+.recommended-bundle-section .bundle-benefits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+.recommended-bundle-section .benefit-badge {
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--success);
+  background: var(--success-light);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--success-border);
+}
+
+.recommended-bundle-section .bundle-cta .cta-subtext {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: var(--space-2);
   font-weight: var(--font-weight-medium);
 }
 

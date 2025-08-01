@@ -153,11 +153,16 @@ function initializeAnimations() {
         });
     }
 
-    // Counter animations - just set the final values, no animation
+    // Counter animations - let blueprint-specific scripts handle this
+    // The blueprints.js file has proper animation support for data-target elements
+    // This simple fallback is only for pages without blueprint-specific animation
     const counters = document.querySelectorAll('[data-target]');
-    counters.forEach(counter => {
-        counter.textContent = counter.getAttribute('data-target');
-    });
+    if (counters.length > 0 && !document.querySelector('body').classList.contains('blueprint-page')) {
+        // Only apply simple counter for non-blueprint pages
+        counters.forEach(counter => {
+            counter.textContent = counter.getAttribute('data-target');
+        });
+    }
 }
 
 /**
