@@ -498,6 +498,15 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: var(--space-8);
   margin-top: var(--space-12);
+  justify-content: center;
+}
+
+/* Single item styling - center the card when only one is present */
+.product-stack-grid:has(.product-stack-item:only-child) {
+  grid-template-columns: 1fr;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .product-stack-item {

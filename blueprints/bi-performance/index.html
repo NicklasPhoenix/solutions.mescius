@@ -912,12 +912,12 @@ realtimeManager.<span class="function">start</span>();
                                     <i class="fas fa-copy"></i> Copy
                                 </button>
                             </div>
-<pre><code><span class="comment">// 1. Add Wijmo reference: npm install @mescius/wijmo.grid</span>
+<pre><code><span class="comment">// 1. Add Wijmo reference: npm install @mescius/wijmo.chart</span>
 
-<span class="comment">// 2. Add host element: &lt;div id="theGrid"&gt;&lt;/div&gt;</span>
+<span class="comment">// 2. Add host element: &lt;div id="theChart"&gt;&lt;/div&gt;</span>
 
 <span class="comment">// 3. Import Wijmo modules</span>
-<span class="keyword">import</span> * <span class="keyword">as</span> wjGrid <span class="keyword">from</span> <span class="string">'@mescius/wijmo.grid'</span>;
+<span class="keyword">import</span> * <span class="keyword">as</span> wjChart <span class="keyword">from</span> <span class="string">'@mescius/wijmo.chart'</span>;
 <span class="keyword">import</span> <span class="string">'@mescius/wijmo.styles/wijmo.css'</span>;
 
 <span class="comment">// 4. Create sample data</span>
@@ -925,23 +925,23 @@ realtimeManager.<span class="function">start</span>();
 <span class="keyword">var</span> <span class="property">data</span> = [];
 <span class="keyword">for</span> (<span class="keyword">var</span> <span class="property">i</span> = <span class="number">0</span>; i &lt; countries.length; i++) {
     data.push({
-        <span class="property">id</span>: i,
         <span class="property">country</span>: countries[i],
         <span class="property">sales</span>: Math.random() * <span class="number">10000</span>,
         <span class="property">expenses</span>: Math.random() * <span class="number">5000</span>
     });
 }
 
-<span class="comment">// 5. Create and configure FlexGrid</span>
-<span class="keyword">var</span> <span class="property">theGrid</span> = <span class="keyword">new</span> <span class="function">wjGrid.FlexGrid</span>(<span class="string">'#theGrid'</span>, {
-    <span class="property">autoGenerateColumns</span>: <span class="keyword">false</span>,
-    <span class="property">columns</span>: [
-        { <span class="property">binding</span>: <span class="string">'country'</span>, <span class="property">header</span>: <span class="string">'Country'</span>, <span class="property">width</span>: <span class="string">'2*'</span> },
-        { <span class="property">binding</span>: <span class="string">'sales'</span>, <span class="property">header</span>: <span class="string">'Sales'</span>, <span class="property">width</span>: <span class="string">'*'</span>, <span class="property">format</span>: <span class="string">'n2'</span> },
-        { <span class="property">binding</span>: <span class="string">'expenses'</span>, <span class="property">header</span>: <span class="string">'Expenses'</span>, <span class="property">width</span>: <span class="string">'*'</span>, <span class="property">format</span>: <span class="string">'n2'</span> }
-    ],
-    <span class="property">itemsSource</span>: data
-});</code></pre>
+<span class="comment">// 5. Create and configure FlexChart</span>
+<span class="keyword">var</span> <span class="property">theChart</span> = <span class="keyword">new</span> <span class="function">wjChart.FlexChart</span>(<span class="string">'#theChart'</span>, {
+    <span class="property">itemsSource</span>: data,
+    <span class="property">bindingX</span>: <span class="string">'country'</span>,
+    <span class="property">chartType</span>: wjChart.ChartType.Column,
+    <span class="property">legend</span>: wjChart.Position.Bottom
+});
+
+<span class="comment">// 6. Add data series</span>
+theChart.series.push(<span class="keyword">new</span> <span class="function">wjChart.Series</span>({ <span class="property">binding</span>: <span class="string">'sales'</span>, <span class="property">name</span>: <span class="string">'Sales'</span> }));
+theChart.series.push(<span class="keyword">new</span> <span class="function">wjChart.Series</span>({ <span class="property">binding</span>: <span class="string">'expenses'</span>, <span class="property">name</span>: <span class="string">'Expenses'</span> }));</code></pre>
                         </div>
                         
                         <div class="code-block" data-lang="react-setup">
@@ -951,28 +951,37 @@ realtimeManager.<span class="function">start</span>();
                                     <i class="fas fa-copy"></i> Copy
                                 </button>
                             </div>
-<pre><code><span class="comment">// 1. Installation: npm install @mescius/wijmo.react.all</span>
+<pre><code><span class="comment">// 1. Installation: npm install @mescius/wijmo.react.chart</span>
 
 <span class="comment">// 2. Import Wijmo React components</span>
 <span class="keyword">import</span> * <span class="keyword">as</span> React <span class="keyword">from</span> <span class="string">'react'</span>;
-<span class="keyword">import</span> * <span class="keyword">as</span> wjcGrid <span class="keyword">from</span> <span class="string">'@mescius/wijmo.react.grid'</span>;
+<span class="keyword">import</span> { FlexChart, FlexChartSeries } <span class="keyword">from</span> <span class="string">'@mescius/wijmo.react.chart'</span>;
+<span class="keyword">import</span> * <span class="keyword">as</span> wjChart <span class="keyword">from</span> <span class="string">'@mescius/wijmo.chart'</span>;
 <span class="keyword">import</span> <span class="string">'@mescius/wijmo.styles/wijmo.css'</span>;
 
-<span class="comment">// 3. Create React component with FlexGrid</span>
+<span class="comment">// 3. Create React component with FlexChart</span>
 <span class="keyword">const</span> <span class="function">App</span>: React.FC = () => {
   <span class="keyword">const</span> [data, setData] = React.useState(<span class="function">getData</span>());
 
   <span class="keyword">function</span> <span class="function">getData</span>() {
     <span class="keyword">let</span> <span class="property">countries</span> = [<span class="string">'US'</span>, <span class="string">'Germany'</span>, <span class="string">'UK'</span>, <span class="string">'Japan'</span>, <span class="string">'Italy'</span>];
     <span class="keyword">return</span> countries.map((country, i) => ({
-      <span class="property">id</span>: i,
       <span class="property">country</span>: country,
       <span class="property">sales</span>: Math.random() * <span class="number">10000</span>,
       <span class="property">expenses</span>: Math.random() * <span class="number">5000</span>
     }));
   }
 
-  <span class="keyword">return</span> &lt;wjcGrid.FlexGrid <span class="property">itemsSource</span>={data} /&gt;
+  <span class="keyword">return</span> (
+    &lt;FlexChart 
+      <span class="property">itemsSource</span>={data} 
+      <span class="property">bindingX</span>=<span class="string">"country"</span>
+      <span class="property">chartType</span>={wjChart.ChartType.Column}
+    &gt;
+      &lt;FlexChartSeries <span class="property">binding</span>=<span class="string">"sales"</span> <span class="property">name</span>=<span class="string">"Sales"</span> /&gt;
+      &lt;FlexChartSeries <span class="property">binding</span>=<span class="string">"expenses"</span> <span class="property">name</span>=<span class="string">"Expenses"</span> /&gt;
+    &lt;/FlexChart&gt;
+  );
 }
 
 <span class="comment">// 4. For Next.js, add 'use client' directive at top</span>
@@ -986,36 +995,39 @@ realtimeManager.<span class="function">start</span>();
                                     <i class="fas fa-copy"></i> Copy
                                 </button>
                             </div>
-<pre><code><span class="comment">// 1. Install: npm install @mescius/wijmo.angular2.all</span>
+<pre><code><span class="comment">// 1. Install: npm install @mescius/wijmo.angular2.chart</span>
 
 <span class="comment">// 2. Import modules in app.component.ts</span>
 <span class="keyword">import</span> { Component, ViewChild } <span class="keyword">from</span> <span class="string">'@angular/core'</span>;
-<span class="keyword">import</span> { WjGridModule, WjFlexGrid } <span class="keyword">from</span> <span class="string">'@mescius/wijmo.angular2.grid'</span>;
+<span class="keyword">import</span> { WjChartModule, WjFlexChart } <span class="keyword">from</span> <span class="string">'@mescius/wijmo.angular2.chart'</span>;
+<span class="keyword">import</span> * <span class="keyword">as</span> wjChart <span class="keyword">from</span> <span class="string">'@mescius/wijmo.chart'</span>;
 
 @Component({
   <span class="property">selector</span>: <span class="string">'app-root'</span>,
   <span class="property">standalone</span>: <span class="keyword">true</span>,
-  <span class="property">imports</span>: [WjGridModule],
+  <span class="property">imports</span>: [WjChartModule],
   <span class="property">templateUrl</span>: <span class="string">'./app.component.html'</span>,
   <span class="property">styleUrl</span>: <span class="string">'./app.component.css'</span>
 })
 <span class="keyword">export class</span> <span class="function">AppComponent</span> {
-  @ViewChild(<span class="string">'flex'</span>) flex!: WjFlexGrid;
+  @ViewChild(<span class="string">'chart'</span>) chart!: WjFlexChart;
   
   <span class="property">data</span>: <span class="keyword">any</span>[] = [
-    { <span class="property">id</span>: <span class="number">0</span>, <span class="property">country</span>: <span class="string">'US'</span>, <span class="property">sales</span>: <span class="number">1318.37</span>, <span class="property">expenses</span>: <span class="number">4212.41</span> },
-    { <span class="property">id</span>: <span class="number">1</span>, <span class="property">country</span>: <span class="string">'Germany'</span>, <span class="property">sales</span>: <span class="number">5847.95</span>, <span class="property">expenses</span>: <span class="number">89.79</span> },
-    { <span class="property">id</span>: <span class="number">2</span>, <span class="property">country</span>: <span class="string">'UK'</span>, <span class="property">sales</span>: <span class="number">502.55</span>, <span class="property">expenses</span>: <span class="number">2878.50</span> }
+    { <span class="property">country</span>: <span class="string">'US'</span>, <span class="property">sales</span>: <span class="number">1318</span>, <span class="property">expenses</span>: <span class="number">4212</span> },
+    { <span class="property">country</span>: <span class="string">'Germany'</span>, <span class="property">sales</span>: <span class="number">5848</span>, <span class="property">expenses</span>: <span class="number">890</span> },
+    { <span class="property">country</span>: <span class="string">'UK'</span>, <span class="property">sales</span>: <span class="number">503</span>, <span class="property">expenses</span>: <span class="number">2879</span> }
   ];
+  
+  <span class="property">chartType</span> = wjChart.ChartType.Column;
 }
 
 <span class="comment">// 3. Add to styles.css: @import '@mescius/wijmo.styles/wijmo.css';</span>
 
 <span class="comment">// 4. Template markup (app.component.html):</span>
-<span class="comment">// &lt;wj-flex-grid #flex [itemsSource]="data"&gt;</span>
-<span class="comment">//   &lt;wj-flex-grid-column header="Country" binding="country"&gt;&lt;/wj-flex-grid-column&gt;</span>
-<span class="comment">//   &lt;wj-flex-grid-column header="Sales" binding="sales" format="n2"&gt;&lt;/wj-flex-grid-column&gt;</span>
-<span class="comment">// &lt;/wj-flex-grid&gt;</span></code></pre>
+<span class="comment">// &lt;wj-flex-chart #chart [itemsSource]="data" bindingX="country" [chartType]="chartType"&gt;</span>
+<span class="comment">//   &lt;wj-flex-chart-series binding="sales" name="Sales"&gt;&lt;/wj-flex-chart-series&gt;</span>
+<span class="comment">//   &lt;wj-flex-chart-series binding="expenses" name="Expenses"&gt;&lt;/wj-flex-chart-series&gt;</span>
+<span class="comment">// &lt;/wj-flex-chart&gt;</span></code></pre>
                         </div>
                         
                         <div class="code-block" data-lang="vue-setup">
@@ -1025,22 +1037,22 @@ realtimeManager.<span class="function">start</span>();
                                     <i class="fas fa-copy"></i> Copy
                                 </button>
                             </div>
-<pre><code><span class="comment">// 1. Install: npm install @mescius/wijmo.vue2.all</span>
+<pre><code><span class="comment">// 1. Install: npm install @mescius/wijmo.vue2.chart</span>
 
 <span class="comment">// 2. App.vue - Composition API setup</span>
 &lt;<span class="keyword">script</span> setup&gt;
-<span class="keyword">import</span> * <span class="keyword">as</span> wjcCore <span class="keyword">from</span> <span class="string">'@mescius/wijmo'</span>;
+<span class="keyword">import</span> * <span class="keyword">as</span> wjChart <span class="keyword">from</span> <span class="string">'@mescius/wijmo.chart'</span>;
 <span class="keyword">import</span> { ref } <span class="keyword">from</span> <span class="string">'vue'</span>;
 <span class="keyword">import</span> <span class="string">'@mescius/wijmo.styles/wijmo.css'</span>;
 
 <span class="keyword">const</span> <span class="property">data</span> = ref(<span class="function">_getData</span>());
+<span class="keyword">const</span> <span class="property">chartType</span> = wjChart.ChartType.Column;
 
 <span class="keyword">function</span> <span class="function">_getData</span>() {
   <span class="keyword">let</span> <span class="property">countries</span> = <span class="string">'US,Germany,UK,Japan,Italy,Greece'</span>.split(<span class="string">','</span>);
   <span class="keyword">let</span> <span class="property">data</span> = [];
   <span class="keyword">for</span> (<span class="keyword">let</span> <span class="property">i</span> = <span class="number">0</span>; i &lt; countries.length; i++) {
     data.push({
-      <span class="property">id</span>: i,
       <span class="property">country</span>: countries[i],
       <span class="property">sales</span>: Math.random() * <span class="number">10000</span>,
       <span class="property">expenses</span>: Math.random() * <span class="number">5000</span>
@@ -1051,16 +1063,15 @@ realtimeManager.<span class="function">start</span>();
 &lt;/<span class="keyword">script</span>&gt;
 
 &lt;<span class="keyword">template</span>&gt;
-  &lt;<span class="keyword">wj-flex-grid</span> :<span class="property">itemsSource</span>=<span class="string">'data'</span>&gt;
-    &lt;<span class="keyword">wj-flex-grid-column</span> <span class="property">header</span>=<span class="string">'Country'</span> <span class="property">binding</span>=<span class="string">'country'</span> /&gt;
-    &lt;<span class="keyword">wj-flex-grid-column</span> <span class="property">header</span>=<span class="string">'Sales'</span> <span class="property">binding</span>=<span class="string">'sales'</span> <span class="property">format</span>=<span class="string">'n2'</span> /&gt;
-    &lt;<span class="keyword">wj-flex-grid-column</span> <span class="property">header</span>=<span class="string">'Expenses'</span> <span class="property">binding</span>=<span class="string">'expenses'</span> <span class="property">format</span>=<span class="string">'n2'</span> /&gt;
-  &lt;/<span class="keyword">wj-flex-grid</span>&gt;
+  &lt;<span class="keyword">wj-flex-chart</span> :<span class="property">itemsSource</span>=<span class="string">'data'</span> <span class="property">bindingX</span>=<span class="string">'country'</span> :<span class="property">chartType</span>=<span class="string">'chartType'</span>&gt;
+    &lt;<span class="keyword">wj-flex-chart-series</span> <span class="property">binding</span>=<span class="string">'sales'</span> <span class="property">name</span>=<span class="string">'Sales'</span> /&gt;
+    &lt;<span class="keyword">wj-flex-chart-series</span> <span class="property">binding</span>=<span class="string">'expenses'</span> <span class="property">name</span>=<span class="string">'Expenses'</span> /&gt;
+  &lt;/<span class="keyword">wj-flex-chart</span>&gt;
 &lt;/<span class="keyword">template</span>&gt;
 
 <span class="comment">// 3. Register in main.js:</span>
-<span class="comment">// import { registerGrid } from '@mescius/wijmo.vue2.grid';</span>
-<span class="comment">// registerGrid(app);</span></code></pre>
+<span class="comment">// import { registerChart } from '@mescius/wijmo.vue2.chart';</span>
+<span class="comment">// registerChart(app);</span></code></pre>
                         </div>
                         
                         <div class="code-block" data-lang="typescript-setup">
@@ -1070,43 +1081,42 @@ realtimeManager.<span class="function">start</span>();
                                     <i class="fas fa-copy"></i> Copy
                                 </button>
                             </div>
-<pre><code><span class="comment">// 1. Install: npm install @mescius/wijmo</span>
+<pre><code><span class="comment">// 1. Install: npm install @mescius/wijmo.chart</span>
 
-<span class="comment">// 2. TypeScript FlexGrid implementation</span>
-<span class="keyword">import</span> { FlexGrid } <span class="keyword">from</span> <span class="string">'@mescius/wijmo.grid'</span>;
+<span class="comment">// 2. TypeScript FlexChart implementation</span>
+<span class="keyword">import</span> { FlexChart, ChartType, Series } <span class="keyword">from</span> <span class="string">'@mescius/wijmo.chart'</span>;
 <span class="keyword">import</span> { CollectionView } <span class="keyword">from</span> <span class="string">'@mescius/wijmo'</span>;
 <span class="keyword">import</span> <span class="string">'@mescius/wijmo.styles/wijmo.css'</span>;
 
-<span class="keyword">interface</span> <span class="function">CountryData</span> {
-    id: <span class="keyword">number</span>;
+<span class="keyword">interface</span> <span class="function">ChartData</span> {
     country: <span class="keyword">string</span>;
     sales: <span class="keyword">number</span>;
     expenses: <span class="keyword">number</span>;
 }
 
-<span class="keyword">class</span> <span class="function">DataGridManager</span> {
-    <span class="keyword">private</span> grid: FlexGrid;
-    <span class="keyword">private</span> data: CountryData[] = [
-        { id: <span class="number">0</span>, country: <span class="string">'US'</span>, sales: <span class="number">1318.37</span>, expenses: <span class="number">4212.41</span> },
-        { id: <span class="number">1</span>, country: <span class="string">'Germany'</span>, sales: <span class="number">5847.95</span>, expenses: <span class="number">89.79</span> },
-        { id: <span class="number">2</span>, country: <span class="string">'UK'</span>, sales: <span class="number">502.55</span>, expenses: <span class="number">2878.50</span> },
-        { id: <span class="number">3</span>, country: <span class="string">'Japan'</span>, sales: <span class="number">4675.40</span>, expenses: <span class="number">488.65</span> }
+<span class="keyword">class</span> <span class="function">ChartManager</span> {
+    <span class="keyword">private</span> chart: FlexChart;
+    <span class="keyword">private</span> data: ChartData[] = [
+        { country: <span class="string">'US'</span>, sales: <span class="number">1318</span>, expenses: <span class="number">4212</span> },
+        { country: <span class="string">'Germany'</span>, sales: <span class="number">5848</span>, expenses: <span class="number">890</span> },
+        { country: <span class="string">'UK'</span>, sales: <span class="number">503</span>, expenses: <span class="number">2879</span> },
+        { country: <span class="string">'Japan'</span>, sales: <span class="number">4675</span>, expenses: <span class="number">489</span> }
     ];
 
     <span class="keyword">constructor</span>(<span class="keyword">private</span> container: <span class="keyword">string</span>) {
-        <span class="keyword">this</span>.initializeGrid();
+        <span class="keyword">this</span>.initializeChart();
     }
 
-    <span class="keyword">private</span> <span class="function">initializeGrid</span>(): <span class="keyword">void</span> {
-        <span class="keyword">this</span>.grid = <span class="keyword">new</span> <span class="function">FlexGrid</span>(<span class="keyword">this</span>.container, {
-            autoGenerateColumns: <span class="keyword">false</span>,
+    <span class="keyword">private</span> <span class="function">initializeChart</span>(): <span class="keyword">void</span> {
+        <span class="keyword">this</span>.chart = <span class="keyword">new</span> <span class="function">FlexChart</span>(<span class="keyword">this</span>.container, {
             itemsSource: <span class="keyword">new</span> <span class="function">CollectionView</span>(<span class="keyword">this</span>.data),
-            columns: [
-                { binding: <span class="string">'country'</span>, header: <span class="string">'Country'</span>, width: <span class="string">'2*'</span> },
-                { binding: <span class="string">'sales'</span>, header: <span class="string">'Sales'</span>, format: <span class="string">'c2'</span>, width: <span class="string">'*'</span> },
-                { binding: <span class="string">'expenses'</span>, header: <span class="string">'Expenses'</span>, format: <span class="string">'c2'</span>, width: <span class="string">'*'</span> }
-            ]
+            bindingX: <span class="string">'country'</span>,
+            chartType: ChartType.Column
         });
+        
+        <span class="comment">// Add data series</span>
+        <span class="keyword">this</span>.chart.series.push(<span class="keyword">new</span> <span class="function">Series</span>({ binding: <span class="string">'sales'</span>, name: <span class="string">'Sales'</span> }));
+        <span class="keyword">this</span>.chart.series.push(<span class="keyword">new</span> <span class="function">Series</span>({ binding: <span class="string">'expenses'</span>, name: <span class="string">'Expenses'</span> }));
     }
 }</code></pre>
                         </div>
